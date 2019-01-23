@@ -1,0 +1,22 @@
+# save all movies to home directory
+-o ~/Videos/youtube-dl/%(title)s.%(id)s.%(autonumber)s.%(ext)s
+
+--format best
+
+#--yes-playlist
+
+--restrict-filenames
+
+--no-overwrites
+
+#--verbose
+
+#--newline
+
+#--all-subs
+
+#--sub-format srt
+
+#--convert-subs srt
+
+#--audio-quality 0

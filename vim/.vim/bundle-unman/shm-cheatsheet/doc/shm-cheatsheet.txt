@@ -1,0 +1,14 @@
+*shm-cheatsheet.txt*    For Vim version 8.0 -- Last Change: 2017-12-07
+*shmvim*
+
+SHM Vim Cheatsheet
+
+- [Vim Sessions](https://jvns.ca/blog/2017/09/10/vim-sessions/)
+- [Vim Movements via Thoughtbot](https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally)
+- Vim Diff
+  - to diff two tabs in the current window --> :windo diffthis
+  - to end diff mode --> :diffoff!
+- Re-Syntax Highlight current buffer --> autocmd BufEnter * :syntax sync fromstart
+Vim has a built-in re-formatter for whitespace. Visually select some text and use the = key to re-indent all of it.
+- :%s/foo/bar/gc --> Change each 'foo' to 'bar', but ask for confirmation first
+- check GUI Font --> :set guifont?

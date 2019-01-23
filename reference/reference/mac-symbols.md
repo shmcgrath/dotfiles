@@ -1,0 +1,24 @@
+# Mac Symbols
+- Up: ↑
+- Tab Right: ⇥
+- Tab Left / Shift Tab: ⇤
+- Tab: ↹
+- Space: ␣
+- Shift: ⇧
+- Right: →
+- Return: ↵
+- Page Up: ⇞
+- Page Down: ⇟
+- Left: ←
+- Home: ↖
+- Escape / Power: ⎋
+- Enter: ⌅
+- End: ↘
+- Eject: ⏏
+- Down: ↓
+- Delete Forward: ⌦
+- Delete / Backspace: ⌫
+- Control: ⌃
+- Command: ⌘
+- Caps Lock: ⇪
+- Alt / Option: ⌥

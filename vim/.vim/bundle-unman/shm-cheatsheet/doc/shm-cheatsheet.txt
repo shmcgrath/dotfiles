@@ -12,3 +12,18 @@ SHM Vim Cheatsheet
 Vim has a built-in re-formatter for whitespace. Visually select some text and use the = key to re-indent all of it.
 - :%s/foo/bar/gc --> Change each 'foo' to 'bar', but ask for confirmation first
 - check GUI Font --> :set guifont?
+
+Mark Motions
+- go to last change: `.
+    - The ` goes to a mark, and . is a "special" mark which is automatically set to the position where the last change was made.
+- go back to where the cursor was before you made your last jump: ``
+- this is the position where the cursor was the last time when insert mode was stopped: `^
+- :help mark-motions
+
+- move between positions in the change list: g; and g,
+
+You can also use ' (apostrophe) instead of ` (backtick)
+
+- increment the next number: Ctrl-A (normal mode)
+- decrement the next number: Ctrl-X (normal mode)
+- The number can be at the cursor, or to the right of the cursor (on the same line).

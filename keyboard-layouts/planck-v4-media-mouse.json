@@ -1,0 +1,105 @@
+[
+  {
+    "backcolor": "",
+    "name": "Planck v4 - Media Mouse Layer",
+    "author": "shmcg",
+    "switchMount": "cherry",
+    "switchBrand": "gateron",
+    "switchType": "KS-3-Tea",
+    "plate": true,
+    "pcb": true
+  },
+  [
+    {
+      "c": "#B8B8B8",
+      "a": 7
+    },
+    "",
+    {
+      "c": "#cccccc",
+      "fa": [
+        2
+      ]
+    },
+    "Left Click (1)",
+    "Up (Mouse)",
+    "Right Click (2)",
+    "Media Player (Win)",
+    "Vol Down",
+    "Vol Up",
+    "",
+    "Browser Home (Win)",
+    "",
+    "Mouse Wheel Up",
+    {
+      "c": "#B8B8B8"
+    },
+    ""
+  ],
+  [
+    "",
+    {
+      "c": "#cccccc"
+    },
+    "Left (Mouse)",
+    "Down (Mouse)",
+    "Right (Mouse)",
+    "Prev Track (Win)",
+    "Next Track (Win)",
+    "Prev Track (macOS)",
+    "Next Track (macOS)",
+    "",
+    "Mouse Wheel Left",
+    "Mouse Wheel Down",
+    "Mouse Wheel Right"
+  ],
+  [
+    {
+      "c": "#B8B8B8"
+    },
+    "",
+    {
+      "c": "#cccccc"
+    },
+    "Mouse Btn 4",
+    "Middle Click (3)",
+    "Mouse Btn 5",
+    "Stop (Win)",
+    "Play / Pause",
+    "Vol Mute",
+    "Mail (Win)",
+    "My Comp (Win)",
+    "",
+    "",
+    {
+      "c": "#B8B8B8"
+    },
+    ""
+  ],
+  [
+    "",
+    "",
+    "",
+    "",
+    {
+      "c": "#1292D2"
+    },
+    "Lower",
+    {
+      "c": "#B8B8B8",
+      "w": 2
+    },
+    "",
+    {
+      "c": "#CD6C20"
+    },
+    "Raise",
+    {
+      "c": "#B8B8B8"
+    },
+    "Mouse Accel 0",
+    "Mouse Accel 1",
+    "Mouse Accel 2",
+    ""
+  ]
+]

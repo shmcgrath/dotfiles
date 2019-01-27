@@ -25,52 +25,85 @@
     "Debug",
     "",
     "",
+    {
+      "a": 5,
+      "fa": [
+        4,
+        4,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "|\n\\\n\n\n\n\nNon-US",
+    "#\n~\n\n\n\n\nNon-US",
+    {
+      "a": 7
+    },
     "",
     "",
-    "Plover",
-    "Print Screen",
+    {
+      "fa": [
+        2
+      ]
+    },
     "Scroll Lock",
     "Pause",
     {
       "c": "#B8B8B8"
     },
-    "Delete"
+    "Insert"
   ],
   [
     "",
     {
       "c": "#cccccc"
     },
-    "",
-    "",
     "Audio On",
     "Audio Off",
-    "Alt/OS Mac",
-    "Alt/OS Win",
-    "Qwerty",
-    "Insert",
-    "Home",
-    "Page Up",
-    ""
+    "",
+    "Print Screen",
+    "",
+    "",
+    "",
+    "",
+    "Power",
+    "Power (macOS / *nix)",
+    {
+      "a": 5,
+      "fa": [
+        2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    "\n(macOS)\n\n\n\n\nEject"
   ],
   [
     {
-      "c": "#B8B8B8"
+      "c": "#B8B8B8",
+      "a": 7
     },
     "",
     {
       "c": "#cccccc"
     },
-    "Cycle Voices Back",
-    "Cycle Voices Forw",
-    "Music Mode On",
-    "Music Mode Off",
-    "MIDI On",
-    "MIDI Off",
-    "Term On",
-    "Term Off",
-    "End",
-    "Page Down",
+    "Qwerty",
+    "Numpad",
+    "",
+    "",
+    "",
+    "",
+    "Media Mouse",
+    "",
+    "System Sleep",
+    "System Wake",
     {
       "c": "#B8B8B8"
     },
@@ -98,8 +131,8 @@
       "c": "#B8B8B8"
     },
     "",
-    "System Sleep",
-    "System Wake",
+    "Bright Down",
+    "Bright Up",
     ""
   ]
 ]

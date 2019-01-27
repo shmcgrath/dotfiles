@@ -27,7 +27,7 @@
     "Media Player (Win)",
     "Vol Down",
     "Vol Up",
-    "",
+    "My Comp (Win)",
     "Browser Home (Win)",
     "",
     "Mouse Wheel Up",
@@ -68,9 +68,9 @@
     "Play / Pause",
     "Vol Mute",
     "Mail (Win)",
-    "My Comp (Win)",
-    "",
-    "",
+    "Mouse Accel 0",
+    "Mouse Accel 1",
+    "Mouse Accel 2",
     {
       "c": "#B8B8B8"
     },
@@ -97,9 +97,9 @@
     {
       "c": "#B8B8B8"
     },
-    "Mouse Accel 0",
-    "Mouse Accel 1",
-    "Mouse Accel 2",
+    "",
+    "",
+    "",
     ""
   ]
 ]

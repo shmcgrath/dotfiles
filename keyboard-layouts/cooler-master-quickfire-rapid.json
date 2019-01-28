@@ -11,176 +11,406 @@
     "pcb": true
   },
   [
+    {
+      "t": "#000000\n\n#1292d2\n#369f2e"
+    },
     "Esc",
     {
-      "x": 1
+      "x": 1,
+      "fa": [
+        0,
+        0,
+        0,
+        2
+      ]
     },
-    "F1",
-    "F2",
-    "F3",
-    "F4",
+    "F1\n\n\nF13",
+    "F2\n\n\nF14",
+    "F3\n\n\nF15",
+    "F4\n\n\nF16",
     {
       "x": 0.5
     },
-    "F5",
-    "F6",
-    "F7",
-    "F8",
+    "F5\n\n\nF17",
+    "F6\n\n\nF18",
+    "F7\n\n\nF19",
+    "F8\n\n\nF20",
     {
       "x": 0.5
     },
-    "F9",
-    "F10",
-    "F11",
-    "F12",
+    "F9\n\n\nF21",
+    "F10\n\n\nF22",
+    "F11\n\n\nF23",
+    "F12\n\n\nF24",
     {
       "x": 0.25
     },
     "PrtSc",
-    "Scroll Lock",
-    "Pause\nBreak"
+    "Scroll Lock\n\n\nReset",
+    "Pause\n\n\nDebug\n\n\nBreak"
   ],
   [
     {
-      "y": 0.5
+      "y": 0.5,
+      "fa": [
+        0,
+        0,
+        0,
+        1
+      ]
     },
-    "~\n`",
-    "!\n1",
-    "@\n2",
-    "#\n3",
-    "$\n4",
-    "%\n5",
-    "^\n6",
-    "&\n7",
-    "*\n8",
-    "(\n9",
-    ")\n0",
-    "_\n-",
-    "+\n=",
+    "~\n`\n\nNon-US ~",
+    {
+      "t": "#000000\n\n#1292d2\n#369f2e\n\n\n\n\n\n#1292d2",
+      "fa": [
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "!\n1\n\nN1\n\n\n\n\n\nMouse Accel 0",
+    "@\n2\n\nN2\n\n\n\n\n\nMouse Accel 1",
+    "#\n3\n\nN3\n\n\n\n\n\nMouse Accel 2",
+    {
+      "t": "#000000\n\n#1292d2\n#369f2e"
+    },
+    "$\n4\n\nN4",
+    "%\n5\n\nN5",
+    {
+      "fa": [
+        0,
+        0,
+        1,
+        2
+      ]
+    },
+    "^\n6\nNum Lk\nN6",
+    {
+      "t": "#000000\n\n#1292d2\n#369f2e\n\n\n#1292d2",
+      "fa": [
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    "&\n7\n/\nN7",
+    {
+      "t": "#000000\n\n#1292d2\n#369f2e"
+    },
+    "*\n8\n*\nN8",
+    "(\n9\n-\nN9",
+    ")\n0\n\nN0",
+    "_\n-\n\nN-",
+    "+\n=\n\nN+",
     {
       "w": 2
     },
-    "Backspace",
+    "Backspace\n\n\nDelete",
     {
       "x": 0.25
     },
-    "Insert",
-    "Home",
-    "PgUp"
+    "Insert\n\n\nVol Up",
+    {
+      "fa": [
+        0,
+        0,
+        2,
+        1
+      ]
+    },
+    "Home\n\n\nQWERTY",
+    {
+      "c": "#a500ff"
+    },
+    "PgUp\n\n\nAPPLE"
   ],
   [
     {
+      "c": "#cccccc",
+      "fa": [
+        0,
+        0,
+        2,
+        2
+      ],
       "w": 1.5
     },
-    "Tab",
-    "Q",
-    "W",
-    "E",
-    "R",
+    "Tab\n\n\nEject (macOS)",
+    {
+      "t": "#000000\n#1292d2\n#1292d2\n#369f2e\n\n\n#1292d2\n\n\n#1292d2",
+      "fa": [
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "Q\n\n\nPower\n\n\n\n\n\nLeft Click (1)",
+    {
+      "fa": [
+        0,
+        0,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "W\n\nUp\nPower (macOS / *nix)",
+    "E\n\n\n\n\n\n\n\n\nRight Click (2)",
+    {
+      "t": "#000000\n\n#1292d2\n#369f2e\n\n\n#1292d2\n\n\n#1292d2"
+    },
+    "R\n\n\nMed Ply Win\n\n\n\n\n\nM Whl Up",
     "T",
-    "Y",
-    "U",
-    "I",
-    "O",
-    "P",
-    "{\n[",
-    "}\n]",
+    {
+      "t": "#000000\n\n#1292d2\n#369f2e"
+    },
+    "Y\n\nN7",
+    "U\n\nN8\nMy Comp (Win)",
+    "I\n\nN9\nBrowser Home (Win)",
+    {
+      "fa": [
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    "O\n\nN+\nN.",
+    "P\n\n%\nN/",
+    "{\n[\n(\nN*",
+    "}\n]\n)\nN=",
     {
       "w": 1.5
     },
-    "|\n\\",
+    "|\n\\\n\nNon-US | \\",
     {
       "x": 0.25
     },
-    "Delete",
-    "End",
-    "PgDn"
+    "Delete\n\n\nVol Down",
+    {
+      "c": "#cd6c20",
+      "fa": [
+        0,
+        0,
+        2,
+        1
+      ]
+    },
+    "End\n\n\nWINGAME",
+    {
+      "c": "#1292D2"
+    },
+    "PgDn\n\n\nNUMMOUSE"
   ],
   [
     {
+      "c": "#cccccc",
+      "t": "#000000\n#CD6C20\n#1292d2\n#369f2e\n\n\n\n\n\n#a500ff",
+      "fa": [
+        0,
+        0,
+        2,
+        2
+      ],
       "w": 1.75
     },
-    "Caps Lock",
-    "A",
-    "S",
-    "D",
-    "F",
-    "G",
-    "H",
-    "J",
-    "K",
-    "L",
-    ":\n;",
-    "\"\n'",
+    "LCtrl Esc\nLCtrl\n\nCpsLck\n\n\n\n\n\nLCtrl Esc",
     {
+      "t": "#000000\n#1292d2\n#1292d2\n#369f2e\n\n\n#1292d2\n\n\n#1292d2",
+      "fa": [
+        0,
+        0,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "A\n\n\nSys Sleep\n\n\n\n\n\nLeft (Mouse)",
+    "S\n\n\nSys Wake\n\n\n\n\n\nDown (Mouse)",
+    "D\n\n\n\n\n\n\n\n\nRight (Mouse)",
+    {
+      "t": "#000000\n\n#1292d2\n#369f2e\n\n\n#1292d2\n\n\n#1292d2"
+    },
+    "F\n\n\nPrev Tk Win\n\n\n\n\n\nM Whl Dn",
+    {
+      "t": "#000000\n\n#1292d2\n#369f2e",
+      "fa": [
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    "G\n\n\nNext Track Win",
+    {
+      "fa": [
+        0,
+        0,
+        2,
+        1
+      ]
+    },
+    "H\n\nN4\nPrev Track macOS",
+    "J\n\nN5\nNext Track macOS",
+    "K\n\nN6",
+    "L\n\nN Ent",
+    ":\n;\n^",
+    "\"\n'\n$",
+    {
+      "fa": [
+        0,
+        0,
+        2,
+        2
+      ],
       "w": 2.25
     },
-    "Enter"
+    "Enter\n\nN Ent\nN Ent"
   ],
   [
     {
       "w": 2.25
     },
     "Shift",
-    "Z",
-    "X",
-    "C",
-    "V",
-    "B",
-    "N",
-    "M",
-    "<\n,",
-    ">\n.",
-    "?\n/",
+    {
+      "t": "#000000\n#1292d2\n#1292d2\n#369f2e\n\n\n#1292d2\n\n\n#1292d2",
+      "fa": [
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "Z\n\n\n\n\n\n\n\n\nMouse Btn 4",
+    "X\n\n\n\n\n\n\n\n\nMiddle Click (3)",
+    {
+      "fa": [
+        0,
+        0,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "C\n\n\nCalculator\n\n\n\n\n\nMouse Btn 5",
+    {
+      "t": "#000000\n\n#1292d2\n#369f2e\n\n\n#1292d2\n\n\n#1292d2"
+    },
+    "V\n\n\nStop (Win)",
+    {
+      "t": "#000000\n\n#1292d2\n#369f2e"
+    },
+    "B\n\nN0\nPlay / Pause",
+    {
+      "fa": [
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    "N\n\nN1\nVol Mute",
+    "M\n\nN2\nMail (Win)",
+    {
+      "t": "#000000\n\n#1292d2\n#369f2e\n\n\n\n#369f2e"
+    },
+    "<\n,\nN3",
+    {
+      "t": "#000000\n\n#1292d2\n#369f2e"
+    },
+    ">\n.\nN.\nMenu (Win)",
+    "?\n/\n\nMenu",
     {
       "w": 2.75
     },
-    "Shift",
+    "Shift\n\n\nNum Lock",
     {
       "x": 1.25
     },
-    "↑"
+    "↑\n\n\nBright Up"
   ],
   [
     {
       "w": 1.25
     },
-    "Ctrl",
+    "Leader",
     {
+      "t": "#000000\n#CD6C20\n#1292d2\n#369f2e\n\n\n#a500ff",
       "w": 1.25
     },
-    "Win",
+    "Win/GUI\nWin/GUI\n\n\n\n\n⌥ / LAlt",
     {
+      "t": "Win/GUI\n#CD6C20\n#1292d2\n#369f2e\n\n\n#a500ff",
       "w": 1.25
     },
-    "Alt",
+    "LAlt\nLAlt\n\n\n\n\n⌘ / GUI",
     {
+      "t": "#000000",
       "a": 7,
       "w": 6.25
     },
     "",
     {
+      "t": "#000000\n\n#1292d2\n#369f2e",
       "a": 4,
       "w": 1.25
     },
-    "Alt",
+    "Hyper",
     {
       "w": 1.25
     },
-    "Win",
+    "Meh",
     {
+      "c": "#369f2e",
       "w": 1.25
     },
-    "Menu",
+    "Adjust",
     {
+      "c": "#cccccc",
       "w": 1.25
     },
-    "Ctrl",
+    "RCtrl\n\n\nAltGR",
     {
       "x": 0.25
     },
     "←",
-    "↓",
+    "↓\n\n\nBright Down",
     "→"
   ]
 ]

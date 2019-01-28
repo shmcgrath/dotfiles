@@ -1,0 +1,103 @@
+[
+  {
+    "backcolor": "",
+    "name": "Planck Blank",
+    "author": "shmcg",
+    "notes": "- Gunmetal Planck: rev4\n- Green Planck: rev5\n- [Planck rev4 and rev5 are the same electrically. The only difference is the mounting hole size.](https://www.reddit.com/r/olkb/comments/92msii/what_is_the_difference_between_massdrop_planck/)\n- To flash the Planck, use the QMK Toolbox and choose the amtega32u4 Microcontroller.",
+    "switchMount": "cherry",
+    "switchBrand": "gateron",
+    "switchType": "KS-3-Tea",
+    "plate": true
+  },
+  [
+    {
+      "c": "#B8B8B8",
+      "a": 7,
+      "f": 2
+    },
+    "",
+    {
+      "c": "#cccccc"
+    },
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    {
+      "c": "#B8B8B8"
+    },
+    ""
+  ],
+  [
+    "",
+    {
+      "c": "#cccccc"
+    },
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  [
+    {
+      "c": "#B8B8B8"
+    },
+    "",
+    {
+      "c": "#cccccc"
+    },
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    {
+      "c": "#B8B8B8"
+    },
+    ""
+  ],
+  [
+    "",
+    "",
+    "",
+    "",
+    {
+      "c": "#1292D2"
+    },
+    "",
+    {
+      "c": "#cccccc",
+      "w": 2
+    },
+    "",
+    {
+      "c": "#CD6C20"
+    },
+    "",
+    {
+      "c": "#B8B8B8"
+    },
+    "",
+    "",
+    "",
+    ""
+  ]
+]

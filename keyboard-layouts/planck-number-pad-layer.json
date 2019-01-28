@@ -1,12 +1,13 @@
 [
   {
     "backcolor": "",
-    "name": "Planck v4 - Number Pad Layer",
+    "name": "Planck Number Pad Layer",
     "author": "shmcg",
+    "notes": "- Gunmetal Planck: rev4\n- Green Planck: rev5\n- [Planck rev4 and rev5 are the same electrically. The only difference is the mounting hole size.](https://www.reddit.com/r/olkb/comments/92msii/what_is_the_difference_between_massdrop_planck/)\n- To flash the Planck, use the QMK Toolbox and choose the amtega32u4 Microcontroller.",
     "switchMount": "cherry",
     "switchBrand": "gateron",
     "switchType": "KS-3-Tea",
-    "pcb": true,
+    "pcb": false,
     "plate": true
   },
   [

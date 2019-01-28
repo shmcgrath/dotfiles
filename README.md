@@ -6,7 +6,7 @@ I will update this README with more links, tips, and information as I grow my do
 
 ## Dotfile Management with GNU Stow and GitHub
 
-I use [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html) to manage my dotfiles. This allows me to easily create symlinks on any system I am using. I chose Stow because it is easily and universally available on \*nix machines. I do use Windows boxes, but I don't see myself needing the majority of my dotfiles on those machines. One tool I found when looking for Windows alternatives is [stow-lite](https://github.com/ericsubach/stow-lite) but I have not used it yet. I also chose stow because I would be able to use it to manage config files that are not in ~/. In the future, I can use stow to deploy centralized config files across my system(s). 
+I use [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html) to manage my dotfiles. This allows me to easily create symlinks on any \*nix-based system I am using. I chose Stow because it is easily and universally available on \*nix machines. I do use Windows boxes, but I don't see myself needing the majority of my dotfiles on those machines. One tool I found when looking for Windows alternatives is [stow-lite](https://github.com/ericsubach/stow-lite) but I have not used it yet. I also chose stow because I would be able to use it to manage config files that are not in ~/. In the future, I can use stow to deploy centralized config files across my system(s). 
  
 ### GNU Stow and .DS\_Store Files
 
@@ -16,6 +16,8 @@ I ran into a bit of an issue when creating the symlinks on Sierra. I kept gettin
 $ stow -v --ignore ".DS_Store" - t ~/
 
 ```
+
+You can also create a [.stow-global-ignore file](https://www.gnu.org/software/stow/manual/stow.html#Ignore-Lists) in your home directory and add .DS_Store to that file.
 
 ## Useful Links for Dotfile Management and Creation
 These are some of the links that I found useful when figuring out how to manage dotfiles and when setting up the programs they configure.

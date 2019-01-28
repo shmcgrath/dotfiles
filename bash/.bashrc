@@ -71,6 +71,7 @@ alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
 alias findo='open -a Finder ./'             # findo:    Opens current directory in MacOS Finder
 alias ~="cd ~"                              # ~:        Go Home
+alias ~r="cd ~ && ranger"                   # Go home and launch ranger
 alias ~d="cd ~/Dropbox"						# ~d:		Go to Dropbox
 alias ~ddf="cd ~/Dropbox/dotfiles"          # ~ddf:     Go to Dotfiles
 alias ~dl="cd ~/Downloads"					# ~dl:		Go to Downloads
@@ -156,6 +157,9 @@ alias py3="python3"
 alias dex='deactivate && exit'				# dex:		deactivate && exit for virtualenv
 alias pei='pipenv install'					# pei:		pipenv install for pipenv
 alias pes='pipenv shell'					# pes:		pipenv shell for pipenv
+alias mvenv="python3 -m venv env"            # make virutal encironment
+alias avenv="source env/bin/activate"        # activate virtual environment
+alias dvenv="deactivate"                    #deactivate virtual encironment
 
 # TMUX{{{2
 #alias tmux="tmux -2"                            #tmux:      set 256 colors by default

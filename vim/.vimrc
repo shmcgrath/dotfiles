@@ -22,14 +22,14 @@ endif
 " vim-plug {{{1
 
 " Automatically install vim-plug if it is not installed. {{{2
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+if empty(glob('$HOME/.vim/autoload/plug.vim'))
+    silent !curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Plugins will be downloaded under the specified directory. {{{2
-call plug#begin('~/.vim/bundle')
+call plug#begin('$HOME/.vim/bundle')
 
 " Declare the list of plugins. {{{2
 " Chose vim-indent-guides over yggdroot/indentline because of conceallevel
@@ -67,10 +67,10 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'           " A vim git wrapper
 Plug 'tpope/vim-repeat'             " Repeats all commands, not just native
 Plug 'tpope/vim-surround'           " Change surrounding punctuation and markup
-Plug 'w0rp/ale'                    " Asynchonoous Lint Engine
+"Plug 'w0rp/ale'                    " Asynchonoous Lint Engine
 
-" Unmanaged plugins - installed from ~/.vim/bundle-unman {{{2
-Plug '~/.vim/bundle-unman/shm-cheatsheet'
+" Unmanaged plugins - installed from $HOME/.vim/bundle-unman {{{2
+Plug '$HOME/.vim/bundle-unman/shm-cheatsheet'
 
 " List ends here. Plugins become visible to vim after this call. {{{2
 call plug#end()
@@ -207,9 +207,11 @@ set laststatus=2    " Last window will always have a status line
 
 " Source and Edit Vim" {{{1
 "   Source vimrc and gvimrc file
-nnoremap <leader>sv :source ~/.vimrc<cr>:source ~/.gvimrc<cr>
+nnoremap <leader>sv :source $HOME/.vimrc<cr>:source $HOME/.gvimrc<cr>
 "   Open .vimrc, .gvimrc, and shm.vim in new tab
-nnoremap <leader>ev :tabnew ~/.gvimrc<cr>:e ~/.vim/autoload/shm.vim<CR>:e ~/.vimrc<cr>
+nnoremap <leader>ev :tabnew $HOME/.gvimrc<cr>:e $HOME/.vim/autoload/shm.vim<CR>:e $HOME/.vimrc<cr>
+
+nnoremap <leader>eshm :e $HOME/.vim/bundle-unman/shm-cheatsheet/doc/shm-cheatsheet.txt<cr>
 
 " Navigation {{{1
 
@@ -239,13 +241,13 @@ nnoremap <leader>ft :edit .<cr>
 nnoremap <leader>_$ :call Preserve("%s/\\s\\+$//e")<CR>
 
 " Backup and Swap Files {{{1
-set backupdir=~/.vim/.backup//
-set directory=~/.vim/.swp//
+set backupdir=$HOME/.vim/.backup//
+set directory=$HOME/.vim/.swp//
 
 " Undo and Redo" {{{1
 if has('persistent_undo')
     set undofile
-    set undodir=~/.vim/undodir//
+    set undodir=$HOME/.vim/undodir//
     nnoremap <silent> <Space>ut :UndotreeToggle<CR>
     if !exists('g:undotree_SetFocusWhenToggle')
         let g:undotree_SetFocusWhenToggle = 1
@@ -297,13 +299,11 @@ endif
 " Opens ack.vim command prompt
 nnoremap <leader>a :grep
 " Uses ack.vim to search in notes
-nnoremap <leader>an :grep "" ~/Dropbox/notes<home><right><right><right><right><right><right>
+nnoremap <leader>an :grep "" $HOME/Dropbox/notes<home><right><right><right><right><right><right>
 " Uses ack.vim to search for tags in notes 
-nnoremap <leader>at :grep "\\\#" ~/Dropbox/notes<home><right><right><right><right><right><right><right><right><right><right>
+nnoremap <leader>at :grep "\\\#" $HOME/Dropbox/notes<home><right><right><right><right><right><right><right><right><right><right>
 " Uses ack.vim to search for tasks
-nnoremap <leader>agt :grep "" ~/Dropbox/notes/00-tasks<home><right><right><right><right><right><right>
-" Uses ack.vim to search all code files
-nnoremap <leader>ac :grep! "" ~/Dropbox/code<home><right><right><right><right><right><right>
+nnoremap <leader>agt :grep "" $HOME/Dropbox/notes/00-tasks<home><right><right><right><right><right><right>
 
 " Plugins {{{1
 " The Silver Searcher
@@ -457,4 +457,4 @@ nnoremap <leader>hbli i<li><a href=""></a></li><esc><left><left><left><left><lef
 " Abreviations
 :iab <expr> dts strftime("%Y-%m-%d %H:%M")
 " HTML {{{2
-nnoremap <leader>shtml :-1read ~/.vim/snippets/skeleton-html.html<CR>
+nnoremap <leader>shtml :-1read $HOME/.vim/snippets/skeleton-html.html<CR>

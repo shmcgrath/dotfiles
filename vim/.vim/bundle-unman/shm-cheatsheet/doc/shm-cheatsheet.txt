@@ -1,4 +1,4 @@
-*shm-cheatsheet.txt*    For Vim version 8.0 -- Last Change: 2017-12-07
+*shm-cheatsheet.txt*    For Vim version 8.0 -- Last Change: 2019-01-30
 *shmvim*
 
 SHM Vim Cheatsheet
@@ -27,3 +27,12 @@ You can also use ' (apostrophe) instead of ` (backtick)
 - increment the next number: Ctrl-A (normal mode)
 - decrement the next number: Ctrl-X (normal mode)
 - The number can be at the cursor, or to the right of the cursor (on the same line).
+
+[vimgrep](http://vimcasts.org/episodes/search-multiple-files-with-vimgrep/)
+
+:vimgrep /{pattern}/ {% or *}
+% is the path of the active buffer
+* is the present working directory (pwd)
+
+:vimgrap/<C-r>// %
+seach for the last pattern in your search history

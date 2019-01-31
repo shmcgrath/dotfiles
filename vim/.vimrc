@@ -137,35 +137,20 @@ set showmatch       " Highlight matching [{()}]
 set scrolloff=8     " If able show at least 8 lines at top and bottom
 set splitbelow      " Sets split to below instead of above
 set splitright      " Sets split to right instead of left
-set colorcolumn=81  " Highlights column 81 to show when going over 80 chars
+" set colorcolumn per filetype going forward
+"set colorcolumn=81  " Highlights column 81 to show when going over 80 chars
 
 " Tabs {{{1
 " Move to the next tab
-nnoremap <leader>tk :tabnext<CR>
+nnoremap <leader>th :tabnext<CR>
 " Move to the previous tab
-nnoremap <leader>tj :tabprev<CR>
-" Move to the first tab
-nnoremap <leader>th :tabfirst<CR>
-" Move to the last tab
-nnoremap <leader>tl :tablast<CR>
+nnoremap <leader>tl :tabprev<CR>
 " Create a new tab
 nnoremap <leader>tn :tabnew<CR>
 " Close current tab
-nnoremap <leader>tq :tabclose<CR>
-" Move current tab to first
 nnoremap <leader>tmh :tabmove 0<CR>
 " Move current tab to last
 nnoremap <leader>tml :tabmove<CR>
-" Map first 10 tabs to <leader>t and the tab number
-nnoremap <leader>t1 1gt
-nnoremap <leader>t2 2gt
-nnoremap <leader>t3 3gt
-nnoremap <leader>t4 4gt
-nnoremap <leader>t5 5gt
-nnoremap <leader>t6 6gt
-nnoremap <leader>t7 7gt
-nnoremap <leader>t8 8gt
-nnoremap <leader>t9 9gt
 
 " Invisibles --> Show characters representing tabs and end of line" {{{1
 " :help listchars

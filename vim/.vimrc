@@ -12,13 +12,6 @@ if has ('win32') || has ('win64')
     set encoding=utf-8
 endif
 
-" Pathogen " {{{1
-" to use pathogen as a submodule in bundle change the runtime
-"runtime bundle/vim-pathogen/autoload/pathogen.vim
-
-" Enable Pathogen
-"execute pathogen#infect()
-
 " vim-plug {{{1
 
 " Automatically install vim-plug if it is not installed. {{{2
@@ -32,41 +25,28 @@ endif
 call plug#begin('$HOME/.vim/bundle')
 
 " Declare the list of plugins. {{{2
-" Chose vim-indent-guides over yggdroot/indentline because of conceallevel
-"Plug 'Xuyuanp/nerdtree-git-plugin'
-"Plug 'ap/vim-css-color'            " Preview color in source code
-"Plug 'digitaltoad/vim-jade'        " Pug syntax highlighting
-"Plug 'ervandew/supertab'           " Use <Tab> for insert completion needs
-"Plug 'lepture/vim-jinja'
-"Plug 'mileszs/ack.vim'
-"Plug 'mustache/vim-mustache-handlebars'
-"Plug 'nathangrigg/vim-beancount'
-"Plug 'scrooloose/nerdtree'
-"Plug 'tomasiser/vim-code-dark'
-"Plug 'tpope/vim-pathogen'
-"Plug 'tpope/vim-vinegar'
 Plug 'AndrewRadev/id3.vim'
-Plug 'ElmCast/elm-vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'       " Shows git status in gutter
-Plug 'ambv/black'
 Plug 'arcticicestudio/nord-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'chriskempson/base16-vim', { 'tag' : '2d991f14f688a38b7b2bcd397bad5efadd0f80a9' }      " Color themes
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidoc/taskpaper.vim'
+Plug 'glench/vim-jinja2-syntax'
 Plug 'godlygeek/tabular'           " Text filtering and alignment
 Plug 'justinmk/vim-sneak'           " Jump to any location via two characters
-Plug 'ledger/vim-ledger'
 Plug 'mbbill/undotree'
-Plug 'nathanaelkane/vim-indent-guides' " Visually show indent levels
+"Plug 'mileszs/ack.vim'
+Plug 'nathanaelkane/vim-indent-guides' "show indent levels Chose over yggdroot/indentline because of conceallevel
 Plug 'nathangrigg/vim-beancount'
-Plug 'niftylettuce/vim-jinja'
 Plug 'shmcgrath/vim-infolines'
+"Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'           " A vim git wrapper
 Plug 'tpope/vim-repeat'             " Repeats all commands, not just native
 Plug 'tpope/vim-surround'           " Change surrounding punctuation and markup
+"Plug 'tpope/vim-vinegar'
 "Plug 'w0rp/ale'                    " Asynchonoous Lint Engine
 
 " Unmanaged plugins - installed from $HOME/.vim/bundle-unman {{{2
@@ -142,20 +122,13 @@ set splitright      " Sets split to right instead of left
 
 " Tabs {{{1
 " Move to the next tab
-nnoremap <leader>th :tabnext<CR>
+nnoremap <leader>tl :tabnext<CR>
 " Move to the previous tab
-nnoremap <leader>tl :tabprev<CR>
+nnoremap <leader>th :tabprev<CR>
 " Create a new tab
 nnoremap <leader>tn :tabnew<CR>
-" Close current tab
-nnoremap <leader>tmh :tabmove 0<CR>
-" Move current tab to last
-nnoremap <leader>tml :tabmove<CR>
 
 " Invisibles --> Show characters representing tabs and end of line" {{{1
-" :help listchars
-" shortcut to rapidly toggle 'set list'
-nnoremap <leader>sl! :set list!<CR>
 
 " Use the following symbols for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬,trail:‽
@@ -194,9 +167,7 @@ set laststatus=2    " Last window will always have a status line
 "   Source vimrc and gvimrc file
 nnoremap <leader>sv :source $HOME/.vimrc<cr>:source $HOME/.gvimrc<cr>
 "   Open .vimrc, .gvimrc, and shm.vim in new tab
-nnoremap <leader>ev :tabnew $HOME/.gvimrc<cr>:e $HOME/.vim/autoload/shm.vim<CR>:e $HOME/.vimrc<cr>
-
-nnoremap <leader>eshm :e $HOME/.vim/bundle-unman/shm-cheatsheet/doc/shm-cheatsheet.txt<cr>
+nnoremap <leader>ev :15sp $HOME/.gvimrc<cr>:e $HOME/.vim/autoload/shm.vim<CR>:e $HOME/.vim/bundle-unman/shm-cheatsheet/doc/shm-cheatsheet.txt<cr>:e $HOME/.vim/pythonx/shm_snippet_helpers.py<cr>:e $HOME/.vimrc<cr>
 
 " Navigation {{{1
 
@@ -223,7 +194,7 @@ nnoremap <leader>ft :edit .<cr>
 "let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 " Mapping to Strip Out Trailing Whitespace {{{1
-nnoremap <leader>_$ :call Preserve("%s/\\s\\+$//e")<CR>
+nnoremap <leader>_$ :call shm#Preserve("%s/\\s\\+$//e")<CR>
 
 " Backup and Swap Files {{{1
 set backupdir=$HOME/.vim/.backup//

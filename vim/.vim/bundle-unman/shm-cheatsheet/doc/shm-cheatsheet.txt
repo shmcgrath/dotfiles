@@ -13,6 +13,23 @@ Vim has a built-in re-formatter for whitespace. Visually select some text and us
 - :%s/foo/bar/gc --> Change each 'foo' to 'bar', but ask for confirmation first
 - check GUI Font --> :set guifont?
 
+Show Invisible Characters
+Vim’s list feature can be used to reveal hidden characters, such as tabstops and newlines.
+- toggle list feature by typing set: list!
+- help: listchars
+
+Clipboard
+- The <C-r>{reg} command lets us paste a register from Insert mode (and it works in commandline mode too!)
+" the default register
+% the current file name
+# the alternate file name
+* the clipboard contents (X11: primary selection)
++ the clipboard contents
+/ the last search pattern
+: the last command-line
+. the last inserted text
+- the last small (less than a line) delete
+
 Mark Motions
 - go to last change: `.
     - The ` goes to a mark, and . is a "special" mark which is automatically set to the position where the last change was made.
@@ -36,3 +53,38 @@ You can also use ' (apostrophe) instead of ` (backtick)
 
 :vimgrap/<C-r>// %
 seach for the last pattern in your search history
+
+To Sort:
+- make session vim shortcut command
+- work on taskpaper vim folding
+- figure out how to use the vim taskpaper plugin
+- learn tags and how to use them to navigate to get rid of folds in code
+- learn how to auto create and auto update sessions
+- create commands to make and source sessions @vim
+- figure out searching in vim in windows
+- create a plugin that handles commenting for adding comments in markdown -- maybe automatically
+- create a mapping to an FN key to toggle spelling
+- To add a word to your personal dictionary, navigate to the word you want to add and type: zg (undo with zug).
+- To do the opposite and mark a word as incorrect, navigate to the word and type: zw (undo with zuw).
+- To jump between misspelled words, type: ]s and [s
+- To see a list of suggested spelling corrections, navigate to the word you want help with and type: z=
+- [Vim Sessions](https://jvns.ca/blog/2017/09/10/vim-sessions/)
+- [Vim Movements via Thoughtbot](https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally)
+- Vim Diff
+- to diff two tabs in the current window --> :windo diffthis
+- to end diff mode --> :diffoff!
+- Re-Syntax Highlight current buffer --> autocmd BufEnter * :syntax sync fromstart
+Vim has a built-in re-formatter for whitespace. Visually select some text and use the = key to re-indent all of it.
+- :%s/foo/bar/gc --> Change each 'foo' to 'bar', but ask for confirmation first
+- check GUI Font --> :setgui
+- The `. command will bring you to your last change.
+The ` goes to a mark, and . is a "special" mark which is automatically set to the position where the last change was made. See :help `. for some more information.
+There is also `` which will bring you back to where the cursor was before you made your last jump. See :help `` for more information.
+Another useful mark is `^; this is the position where the cursor was the last time when insert mode was stopped. See :help `^.
+See :help mark-motions for some more general info about using marks (including some other "special" marks that are automatically set).
+You can also use g; and g, to move between position in the change list. See :h g; and :h g
+You can also use ' (apostrophe) instead of ` (backtick)
+https://vi.stackexchange.com/questions/2001/how-do-i-jump-to-the-location-of-my-last-edit/2042
+http://vim.wikia.com/wiki/Moving_around
+https://stackoverflow.com/questions/8708154/open-current-file-in-web-browser-in-vim
+- In normal mode, typing Ctrl-A will increment the next number, and typing Ctrl-X will decrement the next number. The number can be at the cursor, or to the right of the cursor (on the same line). These are the defaults for Vim, although some scripts remap these keys to perform other functions.

@@ -91,7 +91,7 @@ alias disk?='df -h'                         # disk?:    Shows disk space and per
 alias weather='curl wttr.in/Pittsburgh?q'   # weather   Weather in Pittsburgh
 alias bcs='brew cask search'               # bcs: brew cask search
 alias bci='brew cask install'              # bci: brew cask install
-alias dockstart='sudo docker start rtorrentOPEN rtorrentCAN plex fava calibre-comics calibre-library organizr plexpy home-assistant huginn'
+alias dockstart='sudo docker start rtorrentOPEN rtorrentCAN plex fava calibre-comics calibre-library organizr tautulli home-assistant huginn'
 # FILE AND FOLDER MANAGEMENT{{{2
 
 zipf () { zip -r "$1".zip "$1" ; }          # zipf:         To create a ZIP archive of a folder

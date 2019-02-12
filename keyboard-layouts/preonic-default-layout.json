@@ -1,0 +1,132 @@
+[
+  {
+    "backcolor": "",
+    "name": "Preonic Default Layout",
+    "author": "shmcg",
+    "notes": "Preonic v3 has an ARM controller. Preonic v3 will use dfu-util to flash a bin file (NOT HEX) and will automatically know what to use. No need to select a microcontroller in QMK Toolbox.\n\nThe purple front ledgers indicate the default ADJUST layer.",
+    "switchMount": "cherry",
+    "switchBrand": "gateron",
+    "switchType": "KS-3-Tea",
+    "plate": true
+  },
+  [
+    {
+      "c": "#B8B8B8",
+      "t": "#000000\n#1292d2\n#cd6c20\n\n#7a18b8"
+    },
+    "\n~\n`\n\nF1\n\n\n\n\n`",
+    {
+      "c": "#cccccc"
+    },
+    "\n!\n1\n\nF2\n\n\n\n\n1",
+    "\n@\n2\n\nF3\n\n\n\n\n2",
+    "\n#\n3\n\nF4\n\n\n\n\n3",
+    "\n$\n4\n\nF5\n\n\n\n\n4",
+    "\n%\n5\n\nF6\n\n\n\n\n5",
+    "\n^\n6\n\nF7\n\n\n\n\n6",
+    "\n&\n7\n\nF8\n\n\n\n\n7",
+    "\n*\n8\n\nF9\n\n\n\n\n8",
+    "\n(\n9\n\nF10\n\n\n\n\n9",
+    "\n)\n0\n\nF11\n\n\n\n\n0",
+    {
+      "c": "#B8B8B8"
+    },
+    "\nBksp\nBksp\n\nF12\n\n\n\n\nBksp"
+  ],
+  [
+    "\n~\n`\n\n\n\n\n\n\nTab",
+    {
+      "c": "#cccccc"
+    },
+    "\n!\n1\n\n\n\n\n\n\nQ",
+    "\n@\n2\n\nReset\n\n\n\n\nW",
+    "\n#\n3\n\n\n\n\n\n\nE",
+    "\n$\n4\n\n\n\n\n\n\nR",
+    "\n%\n5\n\n\n\n\n\n\nT",
+    "\n^\n6\n\n\n\n\n\n\nY",
+    "\n&\n7\n\n\n\n\n\n\nU",
+    "\n*\n8\n\n\n\n\n\n\nI",
+    "\n(\n9\n\n\n\n\n\n\nO",
+    "\n)\n0\n\n\n\n\n\n\nP",
+    {
+      "c": "#B8B8B8"
+    },
+    "\nDel\nDel\n\nDel\n\n\n\n\nDel"
+  ],
+  [
+    "\nDel\nDel\n\n\n\n\n\n\nEsc",
+    {
+      "c": "#cccccc"
+    },
+    "\nF1\nF1\n\n\n\n\n\n\nA",
+    "\nF2\nF2\n\n\n\n\n\n\nS",
+    "\nF3\nF3\n\n\n\n\n\n\nD",
+    "\nF4\nF4\n\nAud On\n\n\n\n\nF",
+    "\nF5\nF5\n\nAud Off\n\n\n\n\nG",
+    "\nF6\nF6\n\nAG norm\n\n\n\n\nH",
+    "\n_\n-\n\nAGswap\n\n\n\n\nJ",
+    "\n+\n=\n\nQwerty\n\n\n\n\nK",
+    "\n{\n[\n\nColemk\n\n\n\n\nL",
+    "\n}\n]\n\nDvorak\n\n\n\n\n;",
+    "\n|\n\\\n\n\n\n\n\n\n\""
+  ],
+  [
+    {
+      "c": "#B8B8B8",
+      "t": "#000000\n\n\n\n#7a18b8",
+      "a": 7
+    },
+    "Shift",
+    {
+      "c": "#cccccc",
+      "t": "#000000\n#1292d2\n#cd6c20\n\n#7a18b8",
+      "a": 4
+    },
+    "\nF7\nF7\n\n\n\n\n\n\nZ",
+    "\nF8\nF8\n\nVoice -\n\n\n\n\nX",
+    "\nF9\nF9\n\nVoice +\n\n\n\n\nC",
+    "\nF10\nF10\n\nMus On\n\n\n\n\nV",
+    "\nF11\nF11\n\nMus Off\n\n\n\n\nB",
+    "\nF12\nF12\n\nMidi On\n\n\n\n\nN",
+    "\nISO ~\nISO #\n\nMidi Off\n\n\n\n\nM",
+    "\nISO |\nISO /\n\n\n\n\n\n\n,",
+    {
+      "t": "#000000\n\n\n\n#7a18b8",
+      "a": 7
+    },
+    ".",
+    "/",
+    {
+      "c": "#B8B8B8"
+    },
+    "Enter"
+  ],
+  [
+    "Brite",
+    "Ctrl",
+    "Alt",
+    "GUI",
+    {
+      "c": "#1292D2"
+    },
+    "Lower",
+    {
+      "c": "#cccccc"
+    },
+    "Space",
+    "Space",
+    {
+      "c": "#CD6C20"
+    },
+    "Raise",
+    {
+      "c": "#B8B8B8",
+      "t": "#000000\n#1292d2\n#cd6c20\n\n#7a18b8",
+      "a": 4
+    },
+    "\nNext\nNext\n\n\n\n\n\n\nLeft",
+    "\nVol -\nVol -\n\n\n\n\n\n\nDown",
+    "\nVol +\nVol +\n\n\n\n\n\n\nUp",
+    "\nPlay\nPlay\n\n\n\n\n\n\nRight"
+  ]
+]

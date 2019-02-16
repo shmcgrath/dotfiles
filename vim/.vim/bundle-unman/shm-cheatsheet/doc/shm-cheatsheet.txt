@@ -15,7 +15,7 @@ Vim has a built-in re-formatter for whitespace. Visually select some text and us
 
 Show Invisible Characters
 Vim’s list feature can be used to reveal hidden characters, such as tabstops and newlines.
-- toggle list feature by typing set: list!
+- toggle list feature by typing "set: list!"
 - help: listchars
 
 Clipboard

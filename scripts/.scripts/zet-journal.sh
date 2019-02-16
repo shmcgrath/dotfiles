@@ -37,4 +37,4 @@ EOF
 echo "Journal created; opening in Vim."
 sleep 1
 
-vim $fullFileName
+$EDITOR $fullFileName

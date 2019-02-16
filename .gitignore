@@ -1,6 +1,12 @@
 # GITIGNORE FOR MY DOTFILES
 # .gitignore for S. H. McGrath's dotfiles
 
+# scripts
+# ignore secrets.py that hold API keys
+scripts/.scripts/secrets.py
+scripts/.scrips/__pycache__
+
+
 # vim
 # Ignore managed vim-plug plugins
 vim/.vim/bundle
@@ -30,6 +36,9 @@ ranger/.config/ranger/history*
 ranger/.config/ranger/bookmarks*
 # ignore tagged
 ranger/.config/ranger/tagged*
+
+# Ignore uuid files in fonts
+themes/.fonts/**/.uuid
 
 # Ignore purchased fonts 
 themes/.fonts/OperatorMono

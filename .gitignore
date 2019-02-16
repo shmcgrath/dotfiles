@@ -1,6 +1,9 @@
 # GITIGNORE FOR MY DOTFILES
 # .gitignore for S. H. McGrath's dotfiles
 
+# personal reference
+*/**/fstab
+
 # scripts
 # ignore secrets.py that hold API keys
 scripts/.scripts/secrets.py

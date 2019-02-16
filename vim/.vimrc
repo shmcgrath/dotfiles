@@ -33,7 +33,6 @@ Plug 'chrisbra/csv.vim'
 Plug 'chriskempson/base16-vim', { 'tag' : '2d991f14f688a38b7b2bcd397bad5efadd0f80a9' }      " Color themes
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidoc/taskpaper.vim'
-"Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'glench/vim-jinja2-syntax'
 Plug 'godlygeek/tabular'           " Text filtering and alignment
 Plug 'justinmk/vim-sneak'           " Jump to any location via two characters

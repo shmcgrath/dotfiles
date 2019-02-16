@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>TaskPaper</name>
+  <version>1.0</version>
+  <bundle>com.github.robwalton.taskpaper-alfred-workflow</bundle>
+  <updated>1491060025</updated>
+  <file>taskpaper.alfredworkflow</file>
+</workflow>

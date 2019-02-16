@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>clearKeyword</key>
+	<string>clrclip</string>
+	<key>fastAppendBackToClipboard</key>
+	<true/>
+	<key>fastAppendSeparator</key>
+	<integer>1</integer>
+	<key>hotkey</key>
+	<dict>
+		<key>key</key>
+		<integer>42</integer>
+		<key>mod</key>
+		<integer>786432</integer>
+		<key>string</key>
+		<string>\</string>
+	</dict>
+	<key>persistFor</key>
+	<integer>3</integer>
+	<key>snippetKeywordEnabled</key>
+	<false/>
+	<key>snippetsAtTop</key>
+	<false/>
+	<key>viewerKeyword</key>
+	<string>cb</string>
+	<key>viewerKeywordEnabled</key>
+	<false/>
+</dict>
+</plist>

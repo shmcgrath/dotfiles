@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Safirechrome</name>
+  <version>1.3</version>
+  <bundle>com.apple.alfred2.workflow.safirechrome</bundle>
+  <updated>1459073114</updated>
+  <file>safirechrome.alfredworkflow</file>
+</workflow>

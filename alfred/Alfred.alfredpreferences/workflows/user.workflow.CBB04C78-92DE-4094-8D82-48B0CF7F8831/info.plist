@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.apple.alfred2.workflow.safirechrome</string>
+	<key>category</key>
+	<string>Internet</string>
+	<key>connections</key>
+	<dict>
+		<key>5790DDD9-721D-475D-8941-98D085A86032</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>88B6BE23-3394-4A76-A071-A19B685AF44A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>88B6BE23-3394-4A76-A071-A19B685AF44A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8963C469-F166-40BD-AA49-8AE7B9A99A34</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Acidham</string>
+	<key>description</key>
+	<string>Open URL from current browser in Safari, Firefox or Chrome</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Safirechrome</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>set theQuery to "{query}"set targetApp to theQuerytell application "System Events" to set sourceApp to (item 1 of (get bundle identifier of processes whose frontmost is true)) as stringif sourceApp is in {"com.apple.safari", "org.mozilla.firefox", "com.google.Chrome", "com.operasoftware.Opera"} then		if sourceApp = "com.apple.safari" then
+	set theURL to do shell script "osascript -e 'tell application id \"com.apple.safari\" to (URL of current tab of window 1 as text)'"		do shell script "osascript -e 'tell application id \"com.apple.safari\" to close (current tab of window 1)'"	end if		if sourceApp = "com.google.Chrome" then		tell application id "com.google.Chrome"			set theURL to (URL of active tab of window 1 as text)			close active tab of window 1		end tell	end if		if sourceApp = "org.mozilla.firefox" then		set theClip to the clipboard		tell application "System Events"			keystroke "l" using command down			keystroke "c" using command down			keystroke "w" using command down		end tell		delay 0.5		set theURL to the clipboard		set the clipboard to theClip	end if		if sourceApp = "com.operasoftware.Opera" then		set theClip to the clipboard		tell application "System Events"			keystroke "l" using command down			keystroke "c" using command down			keystroke "w" using command down		end tell		delay 0.5		set theURL to the clipboard		set the clipboard to theClip	end ifend ifif theURL does not start with "http" then	set theURL to "http://" &amp; theURLend iftell application id targetApp	open location theURL	activateend tellon theSplit(theString, theDelimiter)	set oldDelimiters to AppleScript's text item delimiters	set AppleScript's text item delimiters to theDelimiter	set theArray to every text item of theString	set AppleScript's text item delimiters to oldDelimiters	return theArrayend theSplit</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>8963C469-F166-40BD-AA49-8AE7B9A99A34</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>5790DDD9-721D-475D-8941-98D085A86032</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>38</integer>
+				<key>keyword</key>
+				<string>url</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string>set query to "{query}"set xml to "&lt;?xml version=\"1.0\"?&gt;&lt;items&gt;"set browsers to {"Google Chrome", "Firefox", "Safari", "Opera"}
+set browsersID to {"com.google.Chrome","org.mozilla.firefox","com.apple.safari","com.operasoftware.Opera"}set listCount to 0repeat with browser in browsers	set listCount to listCount + 1	set browserID to item listCount of browsersID	
+	if checkApp(browserID) and (query is equal to "" or browser contains query) then		set xml to xml &amp; "&lt;item arg=\"" &amp; browserID &amp; "\" valid=\"yes\"&gt;
+&lt;title&gt;" &amp; browser &amp; "&lt;/title&gt;
+&lt;subtitle&gt;Open URL in " &amp; browser &amp; "&lt;/subtitle&gt;
+&lt;icon&gt;" &amp; browser &amp; ".png&lt;/icon&gt;&lt;/item&gt;"	end ifend repeatset xml to xml &amp; "&lt;/items&gt;"return xml
+
+on checkApp(theBundleId)		try		tell application "Finder" to get application file id theBundleId		return true	on error		return false	end tryend checkApp</string>
+				<key>title</key>
+				<string>Open URL in Firefox, Safari or Chrome</string>
+				<key>type</key>
+				<integer>6</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>88B6BE23-3394-4A76-A071-A19B685AF44A</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>5790DDD9-721D-475D-8941-98D085A86032</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>88B6BE23-3394-4A76-A071-A19B685AF44A</key>
+		<dict>
+			<key>ypos</key>
+			<real>20</real>
+		</dict>
+		<key>8963C469-F166-40BD-AA49-8AE7B9A99A34</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>next</key>
+	<string>tkn</string>
+	<key>pause</key>
+	<string>pau</string>
+	<key>play</key>
+	<string>ply</string>
+	<key>previous</key>
+	<string>tkp</string>
+	<key>random</key>
+	<string>alr</string>
+	<key>volmax</key>
+	<string>v2</string>
+	<key>volmid</key>
+	<string>v1</string>
+	<key>volmin</key>
+	<string>v0</string>
+</dict>
+</plist>

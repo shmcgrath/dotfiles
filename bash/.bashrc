@@ -30,6 +30,7 @@ export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export RANGER_LOAD_DEFAULT_RC=FALSE
+export NOTES=$HOME/Dropbox/notes
 
 #   Set default blocksize for ls, df, du
 #   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491

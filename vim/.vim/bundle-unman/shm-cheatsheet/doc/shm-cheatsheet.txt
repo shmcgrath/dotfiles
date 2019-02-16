@@ -3,6 +3,9 @@
 
 SHM Vim Cheatsheet
 
+- When a command is noted as CTRL-\[LETTER\], the letter is typed as lowercase unless expressly noted.
+- If a capital letter is *anywhere* else in a command besides with CTRL, then type it as a capital.
+
 - [Vim Sessions](https://jvns.ca/blog/2017/09/10/vim-sessions/)
 - [Vim Movements via Thoughtbot](https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally)
 - Vim Diff
@@ -88,3 +91,200 @@ https://vi.stackexchange.com/questions/2001/how-do-i-jump-to-the-location-of-my-
 http://vim.wikia.com/wiki/Moving_around
 https://stackoverflow.com/questions/8708154/open-current-file-in-web-browser-in-vim
 - In normal mode, typing Ctrl-A will increment the next number, and typing Ctrl-X will decrement the next number. The number can be at the cursor, or to the right of the cursor (on the same line). These are the defaults for Vim, although some scripts remap these keys to perform other functions.
+
+
+## Movement and File Navigation
+
+| Command | Result | Example and Notes |
+|:-------:|:-------|:--------|
+| CTRL-G | message with file name and current position in file |-|
+| number G | moves to that line number |-|
+| CTRL-O | go back to previous cursor position | useful for searching |
+| CTRL-I | go forward on cursor position "tree" | useful for searching |
+
+### Buffers
+
+| Command | Result | Example and Notes |
+|:-------:|:-------|:--------|
+| from command line "vim \*.ext" or any listing of files and folder searches | loads all files in a directory into a buffer | learn regex |
+| :ls | shows buffer list |-|
+| :bn | open the next buffer in the current window |-|
+| :bp | open the previous buffer in the current window |-|
+| CTRL-^ CTRL-6 | switch to the alternate buffer |-|
+
+- % notes the active buffer and \# notes the alternate buffer
+
+### Related :help Searches
+- ruler
+- user-manual
+- insert-index
+- text-objects
+
+---
+
+## Windows and Tabs
+
+| Command | Result | Example and Notes |
+|:-------:|:-------|:--------|
+| :only | closes every window but current window |-|
+| CTRL-W W | cycle through open window |-|
+| CTRL-W + | increase size of current window |-|
+| CTRL-W - | decrease size of current window |-|
+| CTRL-W = | equalize size of windows |-|
+| CTRL-W _ | maximize current window vertically |-|
+| CTRL-W | | maximize current window horizontally |-|
+| ctrl-w r | rotate all windows |-|
+| ctrl-w R | rotate all windows |-|
+| ctrl-w x | exchange current window with its neighbour |-|
+| ctrl-w H | move current window to far left |-|
+| ctrl-w J | move current window to bottom |-|
+| ctrl-w K | move current window to top |-|
+| ctrl-w L | move current window to far right |-|
+
+### Related :help Searches
+- ctrl-w
+
+---
+
+## Folding
+
+| Command | Result | Example and Notes |
+|:-------:|:-------|:--------|
+| \[z | move to top of current fold |-|
+| \]z | move to bottom of current fold |-|
+| zM | close all folds |-|
+| zR | open all folds |-|
+| za | toggle state of current fold |-|
+| zj | jump to next fold |-|
+| zk | jump to previous fold |-|
+
+## Editing Text
+
+| Command | Result | Example and Notes |
+|:-------:|:-------|:--------|
+| r | replaces a single character in a word | Sarrh |
+| R number | replaces more than one character |-|
+| ce | change til end of word from cursor |-|
+| d$ or D | delete to end of line |-|
+| J | join line with line below it | puts space at join position |
+| gJ | join line with line below it | puts no space at join position |
+
+### Indentation Commands
+| Command | Result | Example and Notes |
+|:-------:|:-------|:--------|
+| number >> or visual > | indent entire lines | . indents the same selection of lines again |
+| number < or visual << | outdent entire lines |. outdents the same selection of lines again |
+| == or number = | auto indent lines based on indent rules for the language |-|
+| G=gg | auto indents the entire file |-|
+
+## Searching and Replacing
+
+| Command | Result | Example and Notes |
+|:-------:|:-------|:--------|
+| % | find and go to a matching \),\], or \} |-|
+| :s/old/new | substitue new for first old in a line type |-|
+| :s/old/new/g | substitue new for all olds in a line type |-|
+| :#,#s/old/new/g | where #,# are the line numbers of the range of lines where the substitution is to be done |-|
+| :%s/old/new/g | to change every occurrence in the whole file |-|
+| :%s/old/new/gc | to find every occurrence in whole file; prompt whether to substitute or not |-|
+
+## Other
+
+| Command | Result | Example and Notes |
+|:-------:|:-------|:--------|
+| r FILENAME | insert the contents of a file |-|
+| :! | execute any external shell command | :! ls |
+| v motion :w FILENAME | writes visual selection to a new file |-|
+| CTRL-X | decrease number |-|
+| CTRL-A | increase number |-|
+
+| <leader>sl! | show or hide invisible characters |-|
+: recent versions of MacVim change the working directory globally with `cd`, and locally for the current window with `lcd`
+You can reveal the current directory with the command:
+
+:pwd
+
+To change the working directory for the current tab, use the command:
+
+:cd
+
+Note that both :pwd and :cd commands are native to Vim. You can call the equivalent commands for your shell by running :!pwd or :!cd.
+
+Add a ? mark after the setting name and it will show the valu
+
+## Plugins
+
+### [pathogen.vim](https://github.com/tpope/vim-pathogen)
+- Normally to generate documentation, Vim expects you to run :helptags on each directory with documentation (e.g., :helptags ~/.vim/doc). Provided with pathogen.vim is a :Helptags command that does this on every directory in your 'runtimepath'. If you really want to get crazy, you could even invoke Helptags in your vimrc. I don't like to get crazy.
+
+### [surround.vim](https://github.com/tpope/vim-surround)
+
+### [undotree](https://github.com/mbbill/undotree)
+There are some hotkeys provided by vim to switch between the changes in history, like u, <ctrl-r>, g+, g- as well as the :earlier and :later commands.
+
+[Undotree Options](https://github.com/mbbill/undotree/blob/master/plugin/undotree.vim#L15)
+
+### [fugitive.vim](https://github.com/tpope/vim-fugitive)
+
+### [repeat.vim](https://github.com/tpope/vim-repeat)
+
+
+## vimrc Possibilities
+augroup highlight_follows_focus
+    autocmd!
+    autocmd WinEnter * set cursorline
+    autocmd WinLeave * set nocursorline
+augroup END
+
+augroup highligh_follows_vim
+    autocmd!
+    autocmd FocusGained * set cursorline
+    autocmd FocusLost * set nocursorline
+
+augroup END
+
+augroup active_relative_number
+  au!
+  au BufEnter * :setlocal number relativenumber
+  au WinEnter * :setlocal number relativenumber
+  au BufLeave * :setlocal nonumber norelativenumber
+  au WinLeave * :setlocal nonumber norelativenumber
+augroup END
+
+
+ack.vim - why is this awesome?
+
+It's not. It's completely useless. See :help :grep and :help 'grepprg'.
+
+" Whitespace
+set wrap
+set textwidth=79
+set formatoptions=tcqrn1
+set softtabstop=2
+
+## [Let Vim do the Typing](https://www.youtube.com/watch?v=3TX3kV3TICU)
+CTRL-R 
+then you have the register you want to paste from
+
+LEARN MORE ABOUT REGISTERS
+" next key is the register in normal mode
+
+CTRL-A allows you to repeat the insertion with a different command such as go to bracket instead of go to comma or end of line
+
+
+### Completion
+CTRL-P is default for completion -- it looks backwards through the document
+
+vim can see other files we have open and other parts of the project
+
+context about where you are in the documentation in the bottom in the status bar
+
+various vim plugins that will run ctags for you
+
+### CTRL-X and...
+
+CTRL+] = ctags
+CTRL+F = file names
+CTRL+K = dictionary
+CTRL+L = rest of line
+arbi

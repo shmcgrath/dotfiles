@@ -1,0 +1,57 @@
+:scriptnames - List the file loaded during initial startup
+
+    k
+h       l  - movements
+    j
+
+J - deletes a line break (join)
+u - undo; U - undo line
+x - deletes a character
+a - append
+o - open a line below; O - open a line above
+ZZ - write and exit
+$ - move 2 the end of line
+^ - move to beginning
+fX - find x
+Fx - Find x backwards
+% - find matching pairs
+nG - puts in line number 'n'; G- end of file
+gg - start of the file
+Ctrl-G - ruler display
+/ - search fwd
+? - search backward
+set hlsearch - highlight search
+set incsearch - incremental search
+set nowrapscan - stops scanning @ the EOF
+:edit ~./XXX.xxx - edits a file
+'' - to jump back 2 d old position
+dw - delete word
+dd - delete line
+d$ - delete till EOL
+cw - change word
+cc - changes whole line
+D - d$
+X- deletes char left to the cursor
+s- change one char
+S- change a whole line
+r - replace a char
+. - executes the last CHANGE command
+p - paste below the cursor
+P - pastes above the cursor
+y - copy
+yw- copy word
+yy - copy line
+R - replace till Esc
+~ - change case
+set background=dark
+syntax enable
+Ctrl-L - refreshes screen
+
+filetype indent on
+set cindent shiftwidth=4
+
+
+	
+
+
+

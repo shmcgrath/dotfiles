@@ -1,0 +1,17 @@
+libiec61883
+libxml++
+libconfig
+libffado
+celt
+jack-audio-connection-kit
+ffmpeg
+wxPython
+wxPython3
+ffmpegyag
+faad2
+libcue
+libmp4v2
+opus
+opusfile
+opus-tools
+cmus

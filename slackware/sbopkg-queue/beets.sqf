@@ -1,0 +1,11 @@
+PyYAML
+python3-PyYAML
+munkres
+musicbrainzngs
+libmusicbrainz
+libmusicbrainz3
+python-musicbrainz2
+jellyfish
+mutagen
+Unidecode
+beets

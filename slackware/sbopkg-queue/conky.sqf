@@ -1,0 +1,9 @@
+imlib2
+lua
+tolua++
+conky
+conkyforecast
+json-glib
+vala
+libgee
+conky-manager

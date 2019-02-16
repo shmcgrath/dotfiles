@@ -43,3 +43,6 @@ These are some of the links that I found useful when figuring out how to manage 
 - [A Good Vimrc](https://dougblack.io/words/a-good-vimrc.html)
 - [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com)
 - [Best of My Vimrc](http://sts10.github.io/blog/2016/02/12/best-of-my-vimrc/)
+
+## My Config Notes:
+- Current iTerm colorscheme: base16 tomorrownight dark 256

@@ -7,7 +7,8 @@
 # scripts
 # ignore secrets.py that hold API keys
 scripts/.scripts/secrets.py
-scripts/.scrips/__pycache__
+# ignore pycache
+**/__pycache__
 
 
 # vim

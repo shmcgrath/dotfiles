@@ -36,6 +36,7 @@ Plug 'davidoc/taskpaper.vim'
 Plug 'glench/vim-jinja2-syntax'
 Plug 'godlygeek/tabular'           " Text filtering and alignment
 Plug 'justinmk/vim-sneak'           " Jump to any location via two characters
+Plug 'LnL7/vim-nix'
 Plug 'mbbill/undotree'
 "Plug 'mileszs/ack.vim'
 Plug 'nathanaelkane/vim-indent-guides' "show indent levels Chose over yggdroot/indentline because of conceallevel

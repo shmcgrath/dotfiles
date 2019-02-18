@@ -1,4 +1,4 @@
-#/bim.bash
+#!/usr/bin/env bash
 tmux has-session -t shm 2>/dev/null
 if [ $? != 0 ]; then
     tmux new-session -s shm -n shell-notes -d

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This creates a new Journal in ~/Dropbox/notes/00-journal
 
 dateTimeRaw=$(date +%Y%m%d%H%M)

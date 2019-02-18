@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 dateTimeRaw=$(date +%Y%m%d%H%M)
 echo "URL of the video to download:"

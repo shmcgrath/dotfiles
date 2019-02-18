@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This creates a new .md Zettel in ~/Dropbox/notes
 
 dateTimeRaw=$(date +%Y%m%d%H%M)

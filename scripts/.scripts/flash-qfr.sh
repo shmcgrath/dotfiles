@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This script re-programs the CoolerMaster QuickFire Rapid with the
 # Frosty Flake Controller
 echo "Flashing QuickFire Rapid Frosty Flake in 15s..."

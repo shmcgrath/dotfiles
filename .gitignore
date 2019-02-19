@@ -1,6 +1,17 @@
 # GITIGNORE FOR MY DOTFILES
 # .gitignore for S. H. McGrath's dotfiles
 
+# Ignore contents of Hazel actions folders
+hazel/.hazel/actions/eject-all-disks/*
+hazel/.hazel/actions/find-callback-url/*
+hazel/.hazel/actions/grab-text/*
+hazel/.hazel/actions/image-exif-data/*
+hazel/.hazel/actions/standardize-filename/*
+hazel/.hazel/actions/timestamp-file/*
+hazel/.hazel/actions/un-nest/*
+hazel/.hazel/actions/unzip/*
+
+
 # personal reference
 */**/fstab
 

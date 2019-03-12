@@ -1,6 +1,9 @@
 # GITIGNORE FOR MY DOTFILES
 # .gitignore for S. H. McGrath's dotfiles
 
+# Ignore private bookmarks
+bookmarks/shm-private.html
+
 # Ignore contents of Hazel actions folders
 hazel/.hazel/actions/eject-all-disks/*
 hazel/.hazel/actions/find-callback-url/*

@@ -4,10 +4,6 @@
 SHM Vim Cheatsheet
 - Y will copy from cursor to end of line. Not vi. Custom mapping.
 
-Vim References
-[Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/)
-[vimcasts](http://vimcasts.org/)
-
 - When a command is noted as CTRL-\[LETTER\], the letter is typed as lowercase unless expressly noted.
 - If a capital letter is *anywhere* else in a command besides with CTRL, then type it as a capital.
 
@@ -314,3 +310,12 @@ buffer so, yes, you can search in search history!
 
 yep. if you just wanted to check if your scripts are run, you can use :scriptnames
 runtimepath is like your shell's PATH: it's where files are searched for, not which paths the actual files are in. you don't see /bin/ls your $PATH, just /bin
+
+Vim References
+[Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/)
+[vimcasts](http://vimcasts.org/)
+[vi-improved.org](https://www.vi-improved.org/)
+[VimAwesome](https://vimawesome.com/)
+[Vimways](https://vimways.org/)
+[/r/vim](https://old.reddit.com/r/vim/)
+[romainl's GitHub](https://github.com/romainl/)

@@ -1,0 +1,3 @@
+The seoul256 color scheme is by junegunn and can be found at https://github.com/junegunn/seoul256.vim.
+
+The iterm2 theme can be found here: https://github.com/mikker/seoul256-iTerm

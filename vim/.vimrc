@@ -3,14 +3,37 @@
 " https://github.com/shmcgrath/dotfiles
 " --------------------------------------
 
-" Multi-platform Setup {{{2
+" Multi-platform Setup (Configure by OS) {{{2
+" use function to determine os and set it to a global variable
+if !exists("g:osEnv")
+    if has ('win64') || has ('win32') || has ('win16')
+        let g:osEnv = "windows"
+    else
+        let g:osEnv = tolower(substitute(system('uname'), '\n', '', ''))
+    endif
+endif
+
 " On Windows, use .vim instead of vimfiles; this makes synchronization across
 " (heterogeneous) systems easier. Also make Windows use UTF-8 encoding.
 " http://vim.wikia.com/wiki/Synchronize_configuration_to_many_computers
-if has ('win64') || has ('win32') || has ('win16')
+if (g:osEnv == "windows")
     set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
     set encoding=utf-8
+elseif (g:osEnv == "darwin")
+    " macos settings
+elseif (g:osEnv == "linux")
+    " linux settings
+else
+    " other settings
 endif
+
+" Configure by Hostname {{{2
+if !exists("g:hostname")
+    let g:hostname = hostname()
+endif
+
+" Configure by dependencies
+" https://vimways.org/2018/make-your-setup-truly-cross-platform/
 
 " runtime config {{{2
 " settings files for plugins
@@ -28,6 +51,8 @@ endif
 call plug#begin('$HOME/.vim/bundle')
 
 " Declare the list of plugins.
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
 Plug 'AndrewRadev/id3.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter' " Shows git status in gutter
@@ -128,6 +153,13 @@ set scrolloff=8     " If able show at least 8 lines at top and bottom
 set splitbelow      " Sets split to below instead of above
 set splitright      " Sets split to right instead of left
 
+" Invisibles - Show characters representing tabs and end of line" {{{2
+" Use the following symbols for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬,trail:‽
+
+" Mapping to Strip Out Trailing Whitespace {{{2
+nnoremap <leader>_$ :call shm#Preserve("%s/\\s\\+$//e")<CR>
+
 " Tab Management {{{2
 " Move to the next tab
 nnoremap <leader>tl :tabnext<CR>
@@ -136,25 +168,33 @@ nnoremap <leader>th :tabprev<CR>
 " Create a new tab
 nnoremap <leader>tn :tabnew<CR>
 
-" Invisibles - Show characters representing tabs and end of line" {{{2
-" Use the following symbols for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬,trail:‽
+" Buffer Switching and Management {{{2
+nnoremap <leader>lb :ls<CR>:b<space>
 
-" Mapping to Strip Out Trailing Whitespace {{{2
-nnoremap <leader>_$ :call shm#Preserve("%s/\\s\\+$//e")<CR>
-
-" Searching, Grepping and Fuzzy File Search {{{2
+" Searching, Wildmenu, Grepping and Fuzzy File Search {{{2
 "set path+=**        " Search down into subfolders with :find
 set wildmenu        " Visual autocomplete for command menu
+" wildignore settings
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.ico
+set wildignore+=*.pdf,*.psd,*.epub,*.mobi,*.azw3,*.cbz,*.cbr
+set wildignore+=*.zip,
+set wildignore+=*.doc,*.docx,*.xls,*.xlsx,*.ppt,*.pptx
+set wildignore+=*.pages,*.numbers,*.keynote
+set wildignore+=*.exe,*.dmg
+set wildignore+=node_modules/*
+set wildignore+=__pycache__/*
+set wildignore+=*.swp
+set wildignore+=*/tmp/*,*.so    " MacOSX/Linux
+set wildignore+=*\\tmp\\* " Windows
 set incsearch       " Search as characters are entered
-set ignorecase      " Ignores case while searching - toggle set noignorecase
+set ignorecase      " Ignores case while searching
 set smartcase       " If search contains upper case it is case sensitive
 set hlsearch        " Highlight search result matches
 
 " TODO: Update this so that is uses the $NOTES environment variable
 "       check and see if $NOTES exists and set a variable to that path
 "       else see if you can have a variable be that path
-"       ddg vimscript variable path
+"       ddg vimscript variable path and check if system variable exists
 nnoremap <leader>a :grep
 " Uses ack.vim to search in notes
 nnoremap <leader>an :grep "" $HOME/Dropbox/notes<home><right><right><right><right><right><right>

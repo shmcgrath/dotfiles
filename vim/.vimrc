@@ -1,8 +1,8 @@
 " Sarah H. McGrath's .vimrc
 " sarah@shmcgrath.com
 " https://github.com/shmcgrath/dotfiles
-" IMPLEMENT THIS: https://github.com/romainl/idiomatic-vimrc/blob/master/idiomatic-vimrc.vim
 " --------------------------------------
+
 " Multi-platform Setup {{{2
 " On Windows, use .vim instead of vimfiles; this makes synchronization across
 " (heterogeneous) systems easier. Also make Windows use UTF-8 encoding.
@@ -12,7 +12,7 @@ if has ('win64') || has ('win32') || has ('win16')
     set encoding=utf-8
 endif
 
-" runtimepath config {{{2
+" runtime config {{{2
 " settings files for plugins
 runtime! settings/plugins/*.vim
 
@@ -209,8 +209,8 @@ set laststatus=2    " Last window will always have a status line
 
 " Source and Edit Vim {{{2
 "   Source vimrc and gvimrc file
-nnoremap <leader>sv :source $HOME/.vimrc<cr>:source $HOME/.gvimrc<cr>
-"   Open .vimrc, .gvimrc, and shm.vim in new tab
+nnoremap <leader>sv :source $MYVIMRC<cr>:source $MYGVIMRC<cr>
+"   Open .vimrc, .gvimrc, shm.vim, and shm_snippet_helpers.py in new window
 nnoremap <leader>ev :15sp $HOME/.gvimrc<cr>:e $HOME/.vim/autoload/shm.vim<CR>:e $HOME/.vim/bundle-unman/shm-cheatsheet/doc/shm-cheatsheet.txt<cr>:e $HOME/.vim/pythonx/shm_snippet_helpers.py<cr>:e $HOME/.vimrc<cr>
 
 " Navigation {{{2

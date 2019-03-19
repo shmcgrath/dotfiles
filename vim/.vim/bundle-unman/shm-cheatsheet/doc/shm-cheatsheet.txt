@@ -319,3 +319,6 @@ Vim References
 [Vimways](https://vimways.org/)
 [/r/vim](https://old.reddit.com/r/vim/)
 [romainl's GitHub](https://github.com/romainl/)
+
+ToDo
+- Read and implement https://github.com/romainl/idiomatic-vimrc/blob/master/idiomatic-vimrc.vim

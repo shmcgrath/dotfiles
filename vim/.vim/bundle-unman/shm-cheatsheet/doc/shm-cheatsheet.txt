@@ -2,6 +2,11 @@
 *shmvim*
 
 SHM Vim Cheatsheet
+- Y will copy from cursor to end of line. Not vi. Custom mapping.
+
+Vim References
+[Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/)
+[vimcasts](http://vimcasts.org/)
 
 - When a command is noted as CTRL-\[LETTER\], the letter is typed as lowercase unless expressly noted.
 - If a capital letter is *anywhere* else in a command besides with CTRL, then type it as a capital.
@@ -16,7 +21,7 @@ Vim has a built-in re-formatter for whitespace. Visually select some text and us
 - :%s/foo/bar/gc --> Change each 'foo' to 'bar', but ask for confirmation first
 - check GUI Font --> :set guifont?
 
-Show Invisible Characters
+Show Invisible Characters (whitespace)
 Vim’s list feature can be used to reveal hidden characters, such as tabstops and newlines.
 - toggle list feature by typing "set: list!"
 - help: listchars
@@ -288,3 +293,24 @@ CTRL+F = file names
 CTRL+K = dictionary
 CTRL+L = rest of line
 arbi
+
+### Search vim command history
+q:
+?
+(type)
+<CR> 
+
+you can nnoremap q: q:? to pre-populate the ? search field.. if you set incsearch then it even starts searching automatically.
+
+another possible map is cnoremap <expr> <c-f> '<c-u><c-f>?'.getcmdline().'<cr>'.. start typing a component into the command line then press ctrl-f (replace the first ctrl-f with whatever map you want, although i wouldn't recomment ctrl-r). this is somewhat close to bash's functionality
+
+you can always use the command window q:, q?, q/
+
+## Search Histroy
+#vim tip: Typing Ctrl-F during `/` search will open search history. It is opened as a
+buffer so, yes, you can search in search history!
+
+[Switching between files using vanilla vim](https://stackoverflow.com/questions/16082991/vim-switching-between-files-rapidly-using-vanilla-vim-no-plugins/16084326#16084326)
+
+yep. if you just wanted to check if your scripts are run, you can use :scriptnames
+runtimepath is like your shell's PATH: it's where files are searched for, not which paths the actual files are in. you don't see /bin/ls your $PATH, just /bin

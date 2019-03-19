@@ -6,5 +6,5 @@ setlocal expandtab
 setlocal spell
 setlocal spelllang=en_us
 setlocal complete+=kspell
-setlocal foldexpr=MarkdownFold()
 setlocal foldmethod=expr
+setlocal foldexpr=MarkdownFold()

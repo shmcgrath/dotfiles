@@ -143,7 +143,7 @@ set listchars=tab:▸\ ,eol:¬,trail:‽
 " Mapping to Strip Out Trailing Whitespace {{{2
 nnoremap <leader>_$ :call shm#Preserve("%s/\\s\\+$//e")<CR>
 
-" Searching and Fuzzy File Search {{{2
+" Searching, Grepping and Fuzzy File Search {{{2
 "set path+=**        " Search down into subfolders with :find
 set wildmenu        " Visual autocomplete for command menu
 set incsearch       " Search as characters are entered
@@ -151,7 +151,6 @@ set ignorecase      " Ignores case while searching - toggle set noignorecase
 set smartcase       " If search contains upper case it is case sensitive
 set hlsearch        " Highlight search result matches
 
-" Searching and grepping {{{2
 " TODO: Update this so that is uses the $NOTES environment variable
 "       check and see if $NOTES exists and set a variable to that path
 "       else see if you can have a variable be that path

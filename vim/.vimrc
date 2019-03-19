@@ -61,16 +61,19 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidoc/taskpaper.vim'
 Plug 'glench/vim-jinja2-syntax'
 Plug 'godlygeek/tabular' " Text filtering and alignment
-Plug 'justinmk/vim-sneak' " Jump to any location via two characters
+Plug 'joeytwiddle/vim-diff-traffic-lights-colors'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'justinmk/vim-sneak' " Jump to any location via two characters
 Plug 'LnL7/vim-nix'
 Plug 'mbbill/undotree'
 "Plug 'mileszs/ack.vim'
 Plug 'nathanaelkane/vim-indent-guides' " show indent levels; Chose over yggdroot/indentline because of conceallevel
 Plug 'nathangrigg/vim-beancount'
-Plug 'shmcgrath/vim-infolines' "Plug 'tomasiser/vim-code-dark'
+Plug 'shmcgrath/vim-infolines' 
+Plug 'shmcgrath/vim-vice'
+"Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive' " A vim git wrapper
 Plug 'tpope/vim-repeat' " Repeats all commands, not just native
@@ -99,16 +102,20 @@ set backspace=2     " Should make backspace like most other apps
 " Colors and Syntax {{{2
 set termguicolors   " Turn on 24 bit color in terminal
 highlight Comment cterm=italic gui=italic"
-colorscheme seoul256
+colorscheme vice
+"colorscheme seoul256
 "colorscheme base16-default-dark
 "colorscheme base16-tomorrow-night
 "colorscheme nord
+
+if &diff
+    colorscheme traffic_lights_diff
+endif
+
 if g:colors_name == "nord"
     let g:nord_italic = 1
     let g:nord_italic_comments = 1
-endif
-
-if g:colors_name == "seoul256"
+elseif g:colors_name == "seoul256"
     set background=dark
     let g:seoul256_background = 235
 endif

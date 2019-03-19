@@ -51,8 +51,6 @@ endif
 call plug#begin('$HOME/.vim/bundle')
 
 " Declare the list of plugins.
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf'
 Plug 'AndrewRadev/id3.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter' " Shows git status in gutter
@@ -64,6 +62,9 @@ Plug 'davidoc/taskpaper.vim'
 Plug 'glench/vim-jinja2-syntax'
 Plug 'godlygeek/tabular' " Text filtering and alignment
 Plug 'justinmk/vim-sneak' " Jump to any location via two characters
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'LnL7/vim-nix'
 Plug 'mbbill/undotree'
 "Plug 'mileszs/ack.vim'
@@ -98,14 +99,19 @@ set backspace=2     " Should make backspace like most other apps
 " Colors and Syntax {{{2
 set termguicolors   " Turn on 24 bit color in terminal
 highlight Comment cterm=italic gui=italic"
+colorscheme seoul256
 "colorscheme base16-default-dark
 "colorscheme base16-tomorrow-night
-colorscheme nord
+"colorscheme nord
 if g:colors_name == "nord"
     let g:nord_italic = 1
     let g:nord_italic_comments = 1
 endif
 
+if g:colors_name == "seoul256"
+    set background=dark
+    let g:seoul256_background = 235
+endif
 " Make comments italic and fix tmux/terminal issues {{{3
 " https://www.reddit.com/r/vim/comments/24g8r8/italics_in_terminal_vim_and_tmux/
 " Read above on italics in terminal Vim and tmux

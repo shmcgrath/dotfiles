@@ -319,6 +319,7 @@ Vim References
 [Vimways](https://vimways.org/)
 [/r/vim](https://old.reddit.com/r/vim/)
 [romainl's GitHub](https://github.com/romainl/)
+[Learn vim For the Last Time](https://danielmiessler.com/study/vim/)
 
 ToDo
 - Read and implement https://github.com/romainl/idiomatic-vimrc/blob/master/idiomatic-vimrc.vim
@@ -341,3 +342,9 @@ Ultisnips and Vim Lists
 [12:56:08] novum:	it's just a list
 [12:56:17] novum:	:echo ['hello', 'world'][0]
 [12:56:26] novum:	:echo ['hello', 'world'][1]
+
+More Ultisnips Information: https://castel.dev/post/lecture-notes-1/
+
+Vim Registers
+registers can be listed with :reg
+https://www.brianstorti.com/vim-registers/

@@ -9,3 +9,4 @@ setlocal complete+=kspell
 setlocal foldmethod=expr
 setlocal foldexpr=MarkdownFold()
 setlocal colorcolumn=0
+:UltiSnipsAddFiletypes markdown.text

@@ -107,10 +107,11 @@ set conceallevel=0  " Set conceal level to 0 to not coneceal things"
 set backspace=2     " Should make backspace like most other apps
 
 " Colors and Syntax {{{2
+" Best incudeded colorscheme is desert
 set termguicolors   " Turn on 24 bit color in terminal
 highlight Comment cterm=italic gui=italic"
-colorscheme OceanicNext
-"one palenight vice seoul256 base16-default-dark base16-tomorrow-night nord
+colorscheme jellybeans
+"jellybeans paramount OceanicNext one palenight vice seoul256 base16-default-dark base16-tomorrow-night nord
 
 if &diff
     colorscheme traffic_lights_diff
@@ -131,6 +132,8 @@ elseif g:colors_name == "one"
 elseif g:colors_name == "OceanicNext"
     let g:oceanic_next_terminal_bold = 1
     let g:oceanic_next_terminal_italic = 1
+elseif g:colors_name == "paramount"
+    set background=dark
 elseif g:colors_name == "jellybeans"
     let g:jellybeans_use_term_italics = 1
 endif

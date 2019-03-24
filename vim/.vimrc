@@ -57,8 +57,10 @@ Plug 'airblade/vim-gitgutter' " Shows git status in gutter
 Plug 'arcticicestudio/nord-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'chriskempson/base16-vim', { 'tag' : '2d991f14f688a38b7b2bcd397bad5efadd0f80a9' } " Color themes
+Plug 'ciaranm/inkpot'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidoc/taskpaper.vim'
+Plug 'drewtempelmeyer/palenight.vim'
 Plug 'glench/vim-jinja2-syntax'
 Plug 'godlygeek/tabular' " Text filtering and alignment
 Plug 'joeytwiddle/vim-diff-traffic-lights-colors'
@@ -68,9 +70,13 @@ Plug 'junegunn/seoul256.vim'
 Plug 'justinmk/vim-sneak' " Jump to any location via two characters
 Plug 'LnL7/vim-nix'
 Plug 'mbbill/undotree'
+Plug 'mhartington/oceanic-next'
 "Plug 'mileszs/ack.vim'
+Plug 'nanotech/jellybeans.vim'
 Plug 'nathanaelkane/vim-indent-guides' " show indent levels; Chose over yggdroot/indentline because of conceallevel
 Plug 'nathangrigg/vim-beancount'
+Plug 'owickstrom/vim-colors-paramount'
+Plug 'rakr/vim-one'
 Plug 'shmcgrath/vim-infolines' 
 Plug 'shmcgrath/vim-vice'
 "Plug 'tomasiser/vim-code-dark'
@@ -79,10 +85,11 @@ Plug 'tpope/vim-fugitive' " A vim git wrapper
 Plug 'tpope/vim-repeat' " Repeats all commands, not just native
 Plug 'tpope/vim-surround' " Change surrounding punctuation and markup
 "Plug 'tpope/vim-vinegar'
+"Plug 'vim-scripts/ReplaceWithRegister' " Replace without copying twice - learn
 Plug 'w0rp/ale' " Async Lint Engine
 
 " Unmanaged plugins - installed from $HOME/.vim/bundle-unman
-Plug '$HOME/.vim/bundle-unman/shm-cheatsheet'
+Plug $HOME.'/.vim/bundle-unman/shm-cheatsheet'
 
 " List ends here. Plugins become visible to vim after this call.
 call plug#end()
@@ -102,11 +109,8 @@ set backspace=2     " Should make backspace like most other apps
 " Colors and Syntax {{{2
 set termguicolors   " Turn on 24 bit color in terminal
 highlight Comment cterm=italic gui=italic"
-colorscheme vice
-"colorscheme seoul256
-"colorscheme base16-default-dark
-"colorscheme base16-tomorrow-night
-"colorscheme nord
+colorscheme OceanicNext
+"one palenight vice seoul256 base16-default-dark base16-tomorrow-night nord
 
 if &diff
     colorscheme traffic_lights_diff
@@ -118,6 +122,17 @@ if g:colors_name == "nord"
 elseif g:colors_name == "seoul256"
     set background=dark
     let g:seoul256_background = 235
+elseif g:colors_name == "palenight"
+    set background=dark
+    let g:palenight_terminal_italics=1
+elseif g:colors_name == "one"
+    set background=dark
+    let g:one_allow_italics = 1
+elseif g:colors_name == "OceanicNext"
+    let g:oceanic_next_terminal_bold = 1
+    let g:oceanic_next_terminal_italic = 1
+elseif g:colors_name == "jellybeans"
+    let g:jellybeans_use_term_italics = 1
 endif
 " Make comments italic and fix tmux/terminal issues {{{3
 " https://www.reddit.com/r/vim/comments/24g8r8/italics_in_terminal_vim_and_tmux/

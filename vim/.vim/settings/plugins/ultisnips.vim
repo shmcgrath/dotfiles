@@ -1,5 +1,4 @@
 " Settings for [UltiSnips](https://github.com/SirVer/ultisnips)
-let g:UltiSnipsUsePythonVersion=3
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsSnippetsDir=$HOME."/.vim/ultisnips-shm"
 let g:UltiSnipsSnippetDirectories=["ultisnips-shm"]

@@ -35,6 +35,10 @@ endif
 " Configure by dependencies
 " https://vimways.org/2018/make-your-setup-truly-cross-platform/
 
+" Leader Mapping {{{2
+" Set leader to space
+let mapleader ="\<space>"
+
 " runtime config {{{2
 " settings files for plugins
 runtime! settings/plugins/*.vim
@@ -58,7 +62,6 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'chriskempson/base16-vim', { 'tag' : '2d991f14f688a38b7b2bcd397bad5efadd0f80a9' } " Color themes
 Plug 'ciaranm/inkpot'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidoc/taskpaper.vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'glench/vim-jinja2-syntax'
@@ -93,10 +96,6 @@ Plug $HOME.'/.vim/bundle-unman/shm-cheatsheet'
 
 " List ends here. Plugins become visible to vim after this call.
 call plug#end()
-
-" Leader Mapping {{{2
-" Set leader to space
-let mapleader ="\<space>"
 
 " General Settings {{{2
 "set nocompatible    " Be Vim not Vi
@@ -137,6 +136,9 @@ elseif g:colors_name == "paramount"
 elseif g:colors_name == "jellybeans"
     let g:jellybeans_use_term_italics = 1
 endif
+" 0 black 1 dark red 2 dark green 3 brown 4 dark blue 5 dark magenta 6 dark cyan 7 light grey 8 dark grey 9 red 10 green 11 yellow 12 blue 13 magenta 14 cyan 15 white
+" copied colors from [nord-vim](https://github.com/arcticicestudio/nord-vim/blob/develop/colors/nord.vim)
+let g:terminal_ansi_colors = ['#2E3440', '#3B4252', '#434C5E', '#4C566A', '#D8DEE9', '#E5E9F0', '#ECEFF4', '#8FBCBB', '#88C0D0', '#81A1C1', '#5E81AC', '#BF616A', '#D08770', '#EBCB8B', '#A3BE8C', '#B48EAD']
 " Make comments italic and fix tmux/terminal issues {{{3
 " https://www.reddit.com/r/vim/comments/24g8r8/italics_in_terminal_vim_and_tmux/
 " Read above on italics in terminal Vim and tmux
@@ -206,17 +208,20 @@ nnoremap <leader>lb :ls<CR>:b<space>
 "set path+=**        " Search down into subfolders with :find
 set wildmenu        " Visual autocomplete for command menu
 " wildignore settings
-set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.ico
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.ico,*.tif,*.mov,*.unbound
+set wildignore+=*.brush,*.cryptomator.bkup,*.cryptomator,*.opvault,*.kdbx
+set wildignore+=*.torrent,*.pxm
 set wildignore+=*.pdf,*.psd,*.epub,*.mobi,*.azw3,*.cbz,*.cbr
-set wildignore+=*.zip,
+set wildignore+=*.zip,*.db
 set wildignore+=*.doc,*.docx,*.xls,*.xlsx,*.ppt,*.pptx
 set wildignore+=*.pages,*.numbers,*.keynote
 set wildignore+=*.exe,*.dmg
-set wildignore+=node_modules/*
-set wildignore+=__pycache__/*
+set wildignore+=*/node_modules/*,/node_modules/*,node_modules/*
+set wildignore+=*/__pycache__/*
 set wildignore+=*.swp
-set wildignore+=*/tmp/*,*.so    " MacOSX/Linux
-set wildignore+=*\\tmp\\* " Windows
+set wildignore+=Library/*,Applications/*
+set wildignore+=*.DS_Store
+set wildignore+=.dropbox.cache/*,*/.dropbox.cache/*
 set incsearch       " Search as characters are entered
 set ignorecase      " Ignores case while searching
 set smartcase       " If search contains upper case it is case sensitive
@@ -241,19 +246,8 @@ nnoremap <leader>K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Use ag instead of grep 
 if executable('ag')
     set grepprg =ag\ -B\ 2\ --nocolor\ --smart-case
-
     "set grepprg=ag\ --nogroup\ --nocolor
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-    " ag is fast enough that CtrlP doesn't need to cache
-    " let g:ctrlp_use_caching = 0
 endif
-
-
-" bind \ (backward slash) to grep shortcut
-"command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-"nnoremap \ :Ag<SPACE>
 
 " Auto-Completion {{{2
 " http://vim.wikia.com/wiki/Omni_completion
@@ -286,11 +280,11 @@ nnoremap <leader>ev :15sp $HOME/.gvimrc<cr>:e $HOME/.vim/autoload/shm.vim<CR>:e 
 
 " Navigation {{{2
 " Shortcut to :find - file find
-nnoremap <leader>ff :find 
+"nnoremap <leader>ff :find 
 " Shortcut to b: - file buffer
-nnoremap <leader>fb :b 
+"nnoremap <leader>fb :b 
 " Shortcut to netrw - file tree
-nnoremap <leader>ft :edit .<cr>
+"nnoremap <leader>ft :edit .<cr>
 
 " netrw Customization {{{2
 "let g:netrw_banner=0        " DISABLE TOP BANNER

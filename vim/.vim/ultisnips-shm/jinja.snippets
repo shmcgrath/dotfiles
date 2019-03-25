@@ -1,0 +1,24 @@
+snippet block
+\{% block ${1:BlockName} %}
+\{% endblock %}
+endsnippet
+
+snippet jvar
+\{\{ ${1:VariableName} }}
+endsnippet
+
+snippet if
+\{% if ${1:VarableName} %}
+$0
+\{% endif %}
+endsnippet
+
+snippet include
+\{% include "${1:IncludePath}" %}
+endsnippet
+
+snippet for
+\{% for ${1:SingularName} in ${2:PluralName} %}
+$0
+\{% endfor %}
+endsnippet

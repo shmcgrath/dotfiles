@@ -1,0 +1,229 @@
+global !p
+from shm_snippet_helpers import *
+endglobal
+
+snippet doctype
+<!DOCTYPE html>
+endsnippet
+
+snippet html
+<html lang="${1:en}">
+endsnippet
+
+snippet lia
+<li><a href="${1:URL}">${2:Description}</a></li>
+endsnippet
+
+snippet p
+<p>$0</p>
+endsnippet
+
+snippet h
+<h${1:HeadingSize}>$0</h$1>
+endsnippet
+
+snippet title
+<title>$0</title>
+endsnippet
+
+snippet body
+<body>$0</body>
+endsnippet
+
+snippet head
+<head>$0</head>
+endsnippet
+
+snippet ul
+<ul>$0</ul>
+endsnippet
+
+snippet ol
+<ol>$0</ol>
+endsnippet
+
+snippet a
+<a href="${1:URL}">$0</a>
+endsnippet
+
+snippet li
+<li>$0</li>
+endsnippet
+
+snippet main
+<main>$0</main>
+endsnippet
+
+snippet header
+<header id="${1:header-main}" class="${2:header}">$0</header>
+endsnippet
+
+snippet nav
+<nav>$0</nav>
+endsnippet
+
+snippet footer
+<footer id="${1:footer-main}" class="${2:footer}">$0</footer>
+endsnippet
+
+snippet details
+<details>
+	<summary>$0</summary>
+</details>
+endsnippet
+
+snippet metaauth
+<meta name="author" content="${1:Sarah H. McGrath}"/>
+endsnippet
+
+snippet metahttp
+<meta http-equiv="${1:X-UA-Compatible}" content="${2:IE=Edge}">
+endsnippet
+
+snippet metacharset
+<meta charset="${1:utf-8}">
+endsnippet
+
+snippet metaname
+<meta name="${1:viewport}" content="${2:width=device-width, initial-scale=1, shrink-to-fit=no}">
+endsnippet
+
+snippet script
+<script type="text/javascript">
+$0
+</script>
+endsnippet
+
+snippet scriptlink
+<script type="text/javascript" src="${1:./script/main.js}"></script>
+</script>
+endsnippet
+
+snippet jquery
+<script type="text/javascript" src="${1:./plugins/jquery-3.3.1.min.js"}></script>
+endsnippet
+
+snippet style
+<style type="text/css">
+$0
+</style>
+endsnippet
+
+snippet stylelink
+<link rel="stylesheet" href="${1:./css/main.css}">
+endsnippet
+
+snippet favicon
+<link rel="icon" href="${1:./img/favicon.ico}" type="image/x-icon"/>  
+endsnippet
+
+snippet div
+<div id="${1:id}" class="${2:class}">$0</div>
+endsnippet
+
+snippet toplink
+<a href="#top">${1:Back to Top}</a>
+endsnippet
+
+snippet idclass
+id="${1:id}" class="${2:class}"
+endsnippet
+
+snippet id
+id="${1:id}"
+endsnippet
+
+snippet class
+class="${1:class}"
+endsnippet
+
+snippet button
+<button class="${1:button}" type="${2:button}" onclick="${3:OnClick}">$0</button>
+endsnippet
+
+snippet input
+<input type="text" id="${1:id}" name="${2:name}" ${3:required} minlength="${4:minlength}" maxlength="${5:maxlength}" size="`!p snip.rv = HighPlusDifference(t[4], t[5])`">
+[More Info Here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input)
+endsnippet
+
+snippet label
+<label for="${1:ElementBeingLabeled}">$0</label>
+endsnippet
+
+snippet addr
+<address>$0</address>
+endsnippet
+
+snippet article
+<article>$0</article>
+endsnippet
+
+snippet span
+<span>$0</span>
+endsnippet
+
+snippet table
+<table>
+	<caption>${1:TableCaption}</caption>
+	<thead>
+		<tr>
+			<th colspan="${2:NumberOfCols}">${3:The Table Header}</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			$0
+		</tr>
+	</tbody>
+</table>
+endsnippet
+
+snippet thead
+<thead>
+	<tr>
+		<th scope="${1:row or col}">$0</th>
+	</tr>
+</thead>
+endsnippet
+
+snippet tfoot
+<tfoot>
+	<tr>
+		<th scope="row">${1:FooterName}</th>
+		<td>$0</td>
+	</tr>
+</tfoot>
+endsnippet
+
+snippet tbody
+<tbody>
+	<tr>
+		<th scope="row">${1:RowHeader}</th>
+		<td>$0</td>
+	</tr>
+</tbody>
+endsnippet
+
+snippet tr
+<tr>$0</tr>
+endsnippet
+
+snippet td
+<td>$0<td>
+endsnippet
+
+snippet thr
+<th scope="${1:row}">$0</th>
+endsnippet
+
+snippet thc
+<th scope="${1:col}">$0</th>
+endsnippet
+
+snippet th
+<th scope="${1:row or col}">$0</th>
+endsnippet
+
+snippet com
+<!-- $0 -->
+endsnippet

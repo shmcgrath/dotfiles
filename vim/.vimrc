@@ -338,4 +338,4 @@ nnoremap <silent> <F23> :!start C:\Program Files\Mozilla Firefox\firefox.exe %<C
 nnoremap <silent> <F22> :!start C:\Program Files (x86)\Google\Chrome\Application\chrome.exe %<CR>
 
 " Document Skeletons {{{2
-nnoremap <leader>htmlskele :-1read $HOME/.vim/snippets/skeleton-html.html<CR>
+nnoremap <leader>skel :-1read $HOME/.vim/skeletons/

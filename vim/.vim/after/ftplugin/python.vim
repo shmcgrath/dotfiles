@@ -7,4 +7,4 @@ setlocal expandtab
 setlocal autoindent
 setlocal makeprg=flake8\ %:S
 setlocal errorformat=%f:%l:%c:\ %t%n\ %m
-:UltiSnipsAddFiletypes python.jinja
+:UltiSnipsAddFiletypes python

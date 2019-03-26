@@ -1,0 +1,136 @@
+snippet func
+def ${1:functionName}(${2:variables passed}):
+	${3:returnVar} = ${4:returnVarValue}
+	$0
+	return $3
+endsnippet
+
+snippet com
+# $0
+endsnippet
+
+snippet bcom
+"""
+$0
+"""
+endsnippet
+
+snippet trycatch
+try:
+	${1:try}
+except Error as e:
+	${2:catch}
+finally:
+	${3:cleanup}
+endsnippet
+
+snippet main
+def main():
+	$0
+
+if __name__ == '__main__':
+	main()
+endsnippet
+
+snippet if
+if ${1:testExpression}:
+	${2:statements}
+endsnippet
+
+snippet else
+else:
+	${1:bodyOfElse}
+endsnippet
+
+snippet elif
+elif ${1:testExpression}:
+	${2:statements}
+endsnippet
+
+snippet for
+for ${1:value} in ${2:list}:
+	${3:body}
+	#continue
+	#break
+endsnippet
+
+snippet while
+while ${1:conditional}:
+	${2:body}
+	#continue
+	#break
+endsnippet
+
+snippet print
+print($0)
+endsnippet
+
+snippet int
+${1:name} = ${2:value}
+endsnippet
+
+snippet str
+${1:name} = "${2:value}"
+endsnippet
+
+snippet tuple
+${1:name} = (${2:element1}, ${3:element2}$0)
+endsnippet
+
+snippet list
+${1:name} = [${2:element1}, ${3:element2}$0]
+endsnippet
+
+snippet dict
+${1:name} = {${2:key1}: ${3:value1}, ${4:key2}: ${5:value2}$0}
+endsnippet
+
+snippet keyval
+${1:key}: "${2:value}"
+endsnippet
+
+snippet dicti
+${1:dictName}[${2:key}]= "${3:value}"
+endsnippet
+
+snippet iclass
+${1:name} = ${2:ClassName}(${3:init_args})
+endsnippet
+
+snippet class
+class ${1:className}:
+    def __init__(self, ${2:value1}):
+        self.${3:instanceVariable1} = $2
+
+    def ${4:instanceFuncName}(self, ${5:arg1}):
+		${6:returnVar} = ${7:returnVarValue}
+		return $6
+endsnippet
+
+snippet imp
+import ${1:library}
+endsnippet
+
+snippet impf
+from ${1:library} import ${2:module}
+endsnippet
+
+snippet impa
+import ${1:library} as ${2:abbreviation}
+endsnippet
+
+snippet impfa
+from ${1:library} import ${2:module} as ${3:abbreviation}
+endsnippet
+
+snippet AND
+and $0
+endsnippet
+
+snippet OR
+or $0
+endsnippet
+
+snippet NOT
+not$0
+endsnippet

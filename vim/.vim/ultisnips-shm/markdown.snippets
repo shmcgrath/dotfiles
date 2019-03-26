@@ -2,52 +2,51 @@ global !p
 from shm_snippet_helpers import *
 endglobal
 
-snippet inote
+snippet note
 ## `!p snip.rv = GetTodayString()` - ${1:Title}
 $0
 endsnippet
 
-snippet ilink
+snippet link
 [$0](`!v @+`)
 endsnippet
 
-snippet iimg
+snippet img
 ![$0](`!v @+`)
 endsnippet
 
-snippet icode
+snippet code
 \`\`\`${1:Language}
 $0
 \`\`\`
 endsnippet
 
-snippet ih1
+snippet h1
 # ${1:Heading}
 $0
 endsnippet
 
-snippet ih2
+snippet h2
 ## ${1:Heading}
 $0
 endsnippet
 
-snippet ih3
+snippet h3
 ### ${1:Heading}
 $0
 endsnippet
 
-snippet ih4
+snippet h4
 #### ${1:Heading}
 $0
 endsnippet
 
-snippet ih5
+snippet h5
 ##### ${1:Heading}
 $0
 endsnippet
 
-snippet ih6
+snippet h6
 ###### ${1:Heading}
 $0
 endsnippet
-

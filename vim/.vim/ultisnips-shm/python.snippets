@@ -111,6 +111,17 @@ class ${1:className}:
 		return $6
 endsnippet
 
+snippet subclass
+class ${1:className}(${2:baseClass}):
+    def __init__(self, ${3:value1}):
+		super($2, self).__init__()
+        self.$3 = $3
+
+    def ${4:instanceFuncName}(self, ${5:arg1}):
+		${6:returnVar} = ${7:returnVarValue}
+		return $7
+endsnippet
+
 snippet imp
 import ${1:library}
 endsnippet

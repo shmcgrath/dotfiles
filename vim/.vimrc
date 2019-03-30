@@ -59,6 +59,7 @@ Plug 'AndrewRadev/id3.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter' " Shows git status in gutter
 Plug 'arcticicestudio/nord-vim'
+Plug 'axvr/photon.vim'
 Plug 'chrisbra/csv.vim'
 Plug 'chriskempson/base16-vim', { 'tag' : '2d991f14f688a38b7b2bcd397bad5efadd0f80a9' } " Color themes
 Plug 'ciaranm/inkpot'
@@ -109,7 +110,7 @@ set backspace=2     " Should make backspace like most other apps
 " Best incudeded colorscheme is desert
 set termguicolors   " Turn on 24 bit color in terminal
 highlight Comment cterm=italic gui=italic"
-colorscheme paramount
+colorscheme photon
 "jellybeans paramount OceanicNext one palenight vice seoul256 base16-default-dark base16-tomorrow-night nord
 
 if &diff

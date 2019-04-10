@@ -1,3 +1,9 @@
+extends css
+
+global !p
+from shm_snippet_helpers import *
+endglobal
+
 snippet import
 @import '${1:PathToFile}';
 endsnippet
@@ -9,3 +15,5 @@ endsnippet
 snippet color
 \$${1:Name}: $0;
 endsnippet
+
+# vim:ft=snippets:

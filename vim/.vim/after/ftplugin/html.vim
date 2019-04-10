@@ -5,4 +5,3 @@ setlocal shiftwidth=2
 setlocal expandtab
 setlocal foldmethod=syntax
 setlocal colorcolumn=80
-:UltiSnipsAddFiletypes html.jinja.javascript.css

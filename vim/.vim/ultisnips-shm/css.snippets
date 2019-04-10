@@ -1,3 +1,9 @@
+#extends filetype1, filetype2
+
+global !p
+from shm_snippet_helpers import *
+endglobal
+
 snippet cstyle
 ${1:property}: ${2:value};
 endsnippet
@@ -38,6 +44,4 @@ ${1:elementTag1} ${2:elementTag2}\{
 }
 endsnippet
 
-snippet com
-/* $0 */
-endsnippet
+# vim:ft=snippets:

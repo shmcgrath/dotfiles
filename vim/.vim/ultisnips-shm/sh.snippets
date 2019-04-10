@@ -4,8 +4,10 @@ global !p
 from shm_snippet_helpers import *
 endglobal
 
-snippet link
-\`${1:${VISUAL:DisplayName}} <${2:`!v @+`}>\`_
+snippet if "if ... then (if)"
+if ${2:[[ ${1:condition} ]]}; then
+	${0:#statements}
+fi
 endsnippet
 
 # vim:ft=snippets:

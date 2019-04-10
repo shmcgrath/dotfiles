@@ -1,9 +1,11 @@
-snippet com
-// $0
-endsnippet
+#extends filetype1, filetype2
+
+global !p
+from shm_snippet_helpers import *
+endglobal
 
 snippet bcom
-/* $0 */
+/* ${0:${VISUAL}} */
 endsnippet
 
 snippet AND
@@ -32,6 +34,12 @@ switch (${1:variableName})
 }
 endsnippet
 
+snippet case "case"
+case ${1:caseValue}:
+	$0
+	break;
+endsnippet
+
 snippet while
 while (${1:evaluationStatement})
 \{
@@ -39,8 +47,15 @@ while (${1:evaluationStatement})
 }
 endsnippet
 
-snippet for
+snippet for "for loop"
 for (int ${1:i} = ${2:0}; $1 ${3:<} ${4:10}; $1${5:++})
+\{
+	$0
+}
+endsnippet
+
+snippet forr "for loop (reverse)"
+for (int ${1:i} = ${2:10}; $1 ${3:>=} ${4:0}; $1${5:--})
 \{
 	$0
 }
@@ -56,9 +71,19 @@ try
 \{
 	$0
 }
-catch (Exception ex)
+catch (${1:Exception} ${2:ex})
 \{
-	${1:exceptionExpression}
+	${3:exceptionExpression}
+}
+endsnippet
+
+snippet tryfin "try finally block"
+try
+\{
+	$0
+}
+finally
+\{
 }
 endsnippet
 
@@ -75,6 +100,17 @@ snippet if
 if (${1:condition})
 \{
 	${2:statement}
+}
+endsnippet
+
+snippet ife
+if (${1:condition})
+\{
+	${2:statement}
+}
+else
+\{
+	${3:elseStatement}
 }
 endsnippet
 
@@ -133,19 +169,7 @@ Target = $6
 try
 \{
 	UpsertResponse $6Response = (UpsertResponse)service.Execute($6Request);
-	if (response.RecordCreated)
-	\{
-		Trace.WriteLine("$6 created.");
-		Trace.WriteLine("Created $6 Name: " + response.Target.Name);
-		Trace.WriteLine("Created $6 Guid: " + response.Target.Id.ToString());
-		UpdateOrderWithPrimaryItem(foundOrderId, response.Target.Id);
-	}
-	else
-	\{
-		Trace.WriteLine("Existing $6 updated.");
-		Trace.WriteLine("Updated $6 Name: " + response.Target.Name);
-		Trace.WriteLine("Updated $6 Guid: " + response.Target.Id.ToString());
-	}
+	// if (response.RecordCreated) \{ }
 }
 catch (Exception ex)
 \{
@@ -173,11 +197,11 @@ if (!Row.${1:rowName}_IsNull)
 endsnippet
 
 snippet trace
-Trace.WriteLine($0);
+Trace.WriteLine(${0:${VISUAL}});
 endsnippet
 
 snippet plugex
-throw new InvalidPluginExecutionException($0);
+throw new InvalidPluginExecutionException(${0:${VISUAL}});
 endsnippet
 
 snippet class
@@ -201,7 +225,7 @@ public class ${1:className}
 }
 endsnippet
 
-snippet classprop
+snippet propfull
 private ${1:dataType} _${2:propertyName}
 _$2 = $2;
 public $1 `!p snip.rv = t[2].title()`
@@ -217,7 +241,7 @@ OrganizationServiceProxy service;
 
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 cservice = new CrmServiceClient(${1:username}, CrmServiceClient.MakeSecureString(${2:password}), "", ${3:uniqueName}, itOffice365: true);
-service = cService.OrganizationServiceProxy;
+service = cservice.OrganizationServiceProxy;
 endsnippet
 
 snippet namespaces
@@ -255,13 +279,11 @@ snippet exlog
 string elName = "$1: ${2:errorName}";
 string elNo = ex.HResult.ToString();
 string elPackage = Variables.PackageName;
-string elTask = Variables.TaskName;
 string elRecord = ${3:recordId};
 string elMessage = ex.Message;
-string elInnerException = ex.InnerException.ToString();
+string elInnerException = ex.InnerException?.ToString();
 string elAdditionalInformation = "";
-ErrLog el = new ErrLog(elName, elNo, elPackage, elTask, elRecord, elMessage, elInnerException, elAdditionalInformation);
-el.CreateTraceErrLog();
+ErrLog el = new ErrLog(elName, elNo, Variables.PackageName, Variables.TaskName, elRecord, elMessage, elInnerException, elAdditionalInformation);
 el.CreateCRMErrLog(service);
 #endregion
 endsnippet
@@ -277,7 +299,30 @@ string elMessage = "${4:message}";
 string elInnerException = "";
 string elAdditionalInformation = "";
 ErrLog el = new ErrLog(elName, elNo, elPackage, elTask, elRecord, elMessage, elInnerException, elAdditionalInformation);
-el.CreateTraceErrLog();
 el.CreateCRMErrLog(service);
 #endregion
 endsnippet
+
+snippet /sum "XML summary comment"
+/// <summary>
+/// ${0:${VISUAL}}
+/// </summary>
+endsnippet
+
+snippet <p "XML pramameter comment" w
+<param name="${1}">${2}</param>
+endsnippet
+
+snippet <ex "XML exception comment" w
+<exception cref="${1:System.Exception}">${2}</exception>
+endsnippet
+
+snippet <r "XML returns comment" w
+<returns>${0:${VISUAL}}</returns>
+endsnippet
+
+snippet <c "XML code comment" w
+<code>${0:${VISUAL}}</code>
+endsnippet
+
+# vim:ft=snippets:

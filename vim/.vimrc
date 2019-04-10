@@ -67,6 +67,7 @@ Plug 'davidoc/taskpaper.vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'glench/vim-jinja2-syntax'
 Plug 'godlygeek/tabular' " Text filtering and alignment
+Plug 'RRethy/vim-hexokinase' " show colors in vim gutter
 Plug 'joeytwiddle/vim-diff-traffic-lights-colors'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'

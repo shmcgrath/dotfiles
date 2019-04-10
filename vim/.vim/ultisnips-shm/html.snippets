@@ -1,3 +1,5 @@
+#extends filetype1, filetype2
+
 global !p
 from shm_snippet_helpers import *
 endglobal
@@ -15,60 +17,60 @@ snippet lia
 endsnippet
 
 snippet p
-<p>$0</p>
+<p>${0:${VISUAL}}</p>
 endsnippet
 
 snippet h
-<h${1:HeadingSize}>$0</h$1>
+<h${1:HeadingSize}>${0:${VISUAL}}</h$1>
 endsnippet
 
 snippet title
-<title>$0</title>
+<title>${0:${VISUAL}}</title>
 endsnippet
 
 snippet body
-<body>$0</body>
+<body>${0:${VISUAL}}</body>
 endsnippet
 
 snippet head
-<head>$0</head>
+<head>${0:${VISUAL}}</head>
 endsnippet
 
 snippet ul
-<ul>$0</ul>
+<ul>${0:${VISUAL}}</ul>
 endsnippet
 
 snippet ol
-<ol>$0</ol>
+<ol>${0:${VISUAL}}</ol>
 endsnippet
 
 snippet a
-<a href="${1:URL}">$0</a>
+<a href="${1:URL}">${0:${VISUAL}}</a>
 endsnippet
 
 snippet li
-<li>$0</li>
+<li>${0:${VISUAL}}</li>
 endsnippet
 
 snippet main
-<main>$0</main>
+<main>${0:${VISUAL}}</main>
 endsnippet
 
 snippet header
-<header id="${1:header-main}" class="${2:header}">$0</header>
+<header id="${1:header-main}" class="${2:header}">${0:${VISUAL}}</header>
 endsnippet
 
 snippet nav
-<nav>$0</nav>
+<nav>${0:${VISUAL}}</nav>
 endsnippet
 
 snippet footer
-<footer id="${1:footer-main}" class="${2:footer}">$0</footer>
+<footer id="${1:footer-main}" class="${2:footer}">${0:${VISUAL}}</footer>
 endsnippet
 
 snippet details
 <details>
-	<summary>$0</summary>
+	<summary>${0:${VISUAL}}</summary>
 </details>
 endsnippet
 
@@ -90,7 +92,7 @@ endsnippet
 
 snippet script
 <script type="text/javascript">
-$0
+${0:${VISUAL}}
 </script>
 endsnippet
 
@@ -105,7 +107,7 @@ endsnippet
 
 snippet style
 <style type="text/css">
-$0
+${0:${VISUAL}}
 </style>
 endsnippet
 
@@ -118,7 +120,7 @@ snippet favicon
 endsnippet
 
 snippet div
-<div id="${1:id}" class="${2:class}">$0</div>
+<div id="${1:id}" class="${2:class}">${0:${VISUAL}}</div>
 endsnippet
 
 snippet toplink
@@ -138,28 +140,28 @@ class="${1:class}"
 endsnippet
 
 snippet button
-<button class="${1:button}" type="${2:button}" onclick="${3:OnClick}">$0</button>
+<button class="${1:button}" type="${2:button}" onclick="${3:OnClick}">${0:${VISUAL}}</button>
 endsnippet
 
 snippet input
-<input type="text" id="${1:id}" name="${2:name}" ${3:required} minlength="${4:minlength}" maxlength="${5:maxlength}" size="`!p snip.rv = HighPlusDifference(t[4], t[5])`">
+<input type="text" id="${1:id}" name="${2:name}" ${3:required} minlength="${4:minlength}" maxlength="${5:maxlength}" size="`!p snip.rv = high_plus_difference(t[4], t[5])`">
 <!- [More Info Here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input) -->
 endsnippet
 
 snippet label
-<label for="${1:ElementBeingLabeled}">$0</label>
+<label for="${1:ElementBeingLabeled}">${0:${VISUAL}}</label>
 endsnippet
 
 snippet addr
-<address>$0</address>
+<address>${0:${VISUAL}}</address>
 endsnippet
 
 snippet article
-<article>$0</article>
+<article>${0:${VISUAL}}</article>
 endsnippet
 
 snippet span
-<span>$0</span>
+<span>${0:${VISUAL}}</span>
 endsnippet
 
 snippet table
@@ -172,7 +174,7 @@ snippet table
 	</thead>
 	<tbody>
 		<tr>
-			$0
+			${0:${VISUAL}}
 		</tr>
 	</tbody>
 </table>
@@ -181,7 +183,7 @@ endsnippet
 snippet thead
 <thead>
 	<tr>
-		<th scope="${1:row or col}">$0</th>
+		<th scope="${1:row or col}">${0:${VISUAL}}</th>
 	</tr>
 </thead>
 endsnippet
@@ -190,7 +192,7 @@ snippet tfoot
 <tfoot>
 	<tr>
 		<th scope="row">${1:FooterName}</th>
-		<td>$0</td>
+		<td>${0:${VISUAL}}</td>
 	</tr>
 </tfoot>
 endsnippet
@@ -199,31 +201,33 @@ snippet tbody
 <tbody>
 	<tr>
 		<th scope="row">${1:RowHeader}</th>
-		<td>$0</td>
+		<td>${0:${VISUAL}}</td>
 	</tr>
 </tbody>
 endsnippet
 
 snippet tr
-<tr>$0</tr>
+<tr>${0:${VISUAL}}</tr>
 endsnippet
 
 snippet td
-<td>$0<td>
+<td>${0:${VISUAL}}<td>
 endsnippet
 
 snippet thr
-<th scope="${1:row}">$0</th>
+<th scope="${1:row}">${0:${VISUAL}}</th>
 endsnippet
 
 snippet thc
-<th scope="${1:col}">$0</th>
+<th scope="${1:col}">${0:${VISUAL}}</th>
 endsnippet
 
 snippet th
-<th scope="${1:row or col}">$0</th>
+<th scope="${1:row or col}">${0:${VISUAL}}</th>
 endsnippet
 
 snippet com
-<!-- $0 -->
+<!-- ${0:${VISUAL}} -->
 endsnippet
+
+# vim:ft=snippets:

@@ -1,8 +1,37 @@
-snippet ns
-snippet ${1:!"Snippet Trgger"!} "${2:Description}" ${3:i}
-$0endsnippet
+#extends filetype1, filetype2
+
+global !p
+from shm_snippet_helpers import *
+endglobal
+
+snippet ns "Create a new snippet" bs
+`!p snip.rv = "snippet"` ${1:!"Tab_Trgger"!} "${2:Description}" ${3:biwrtsmeA}
+${0:${VISUAL}}
+`!p snip.rv = "endsnippet"`
+${4:# Don't forget to escape \\, \{, \$, \\\`
+# b: beginning of line
+# i: in word expansion
+# w: word boundary
+# r: regular expression
+# t: do not expand tabs
+# s: remove whitespace immediately before the cursor at the end of a line bfore jumping to the next tabstop
+# m: trim all whitespaces from right side of snippet lines
+# e: custom context snippet
+# A: snippet will be triggered automatically}
 endsnippet
 
-snippet var "Insert Snippet Variable" i
+snippet var "Insert snippet variable" i
 \$\{${1:1}:${2:name}}
 endsnippet
+
+snippet vis "${VISUAL}" i
+\$\{VISUAL${1:${2:default}${3:/transform/}}\}
+endsnippet
+
+snippet global "Global snippet" b
+`!p snip.rv = "global"` !p
+${0:${VISUAL}}
+`!p snip.rv = "endglobal"`
+endsnippet
+
+# vim:ft=snippets:

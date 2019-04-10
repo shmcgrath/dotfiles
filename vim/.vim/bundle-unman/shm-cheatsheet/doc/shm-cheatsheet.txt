@@ -1,7 +1,18 @@
 *shm-cheatsheet.txt*    For Vim version 8.0 -- Last Change: 2019-01-30
 *shmvim*
+   _____ __  ____  ___   _    ___              ________               __       __              __ 
+  / ___// / / /  |/  /  | |  / (_)___ ___     / ____/ /_  ___  ____ _/ /______/ /_  ___  ___  / /_
+  \__ \/ /_/ / /|_/ /   | | / / / __ `__ \   / /   / __ \/ _ \/ __ `/ __/ ___/ __ \/ _ \/ _ \/ __/
+ ___/ / __  / /  / /    | |/ / / / / / / /  / /___/ / / /  __/ /_/ / /_(__  ) / / /  __/  __/ /_  
+/____/_/ /_/_/  /_/     |___/_/_/ /_/ /_/   \____/_/ /_/\___/\__,_/\__/____/_/ /_/\___/\___/\__/  
 
-SHM Vim Cheatsheet
+====================================================================
+CONTENTS                                            *shmContents*
+    1. Mappings ............. |shmMappings| 
+    2. Spelling ............. |shmSpelling|
+
+My tips, reminders, notes, and reference for Vim.
+
 - Y will copy from cursor to end of line. Not vi. Custom mapping.
 
 - When a command is noted as CTRL-\[LETTER\], the letter is typed as lowercase unless expressly noted.
@@ -67,11 +78,16 @@ To Sort:
 - create commands to make and source sessions @vim
 - figure out searching in vim in windows
 - create a plugin that handles commenting for adding comments in markdown -- maybe automatically
-- create a mapping to an FN key to toggle spelling
+=================================================================
+SPELLING                                            *shmSpelling*
+- TODO: create a mapping to an FN key to toggle spelling
 - To add a word to your personal dictionary, navigate to the word you want to add and type: zg (undo with zug).
 - To do the opposite and mark a word as incorrect, navigate to the word and type: zw (undo with zuw).
 - To jump between misspelled words, type: ]s and [s
 - To see a list of suggested spelling corrections, navigate to the word you want help with and type: z=
+
+=================================================================
+SESSIONS                                            *shmSessions*
 - [Vim Sessions](https://jvns.ca/blog/2017/09/10/vim-sessions/)
 - [Vim Movements via Thoughtbot](https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally)
 - Vim Diff
@@ -348,3 +364,5 @@ More Ultisnips Information: https://castel.dev/post/lecture-notes-1/
 Vim Registers
 registers can be listed with :reg
 https://www.brianstorti.com/vim-registers/
+
+ vim:ft=help:

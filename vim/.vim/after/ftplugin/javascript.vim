@@ -11,4 +11,3 @@ if executable('eslint')
     setlocal makeprg=eslint\ --format\ compact
     autocmd BufWritePost <buffer> silent make! % | silent redraw!
 endif
-:UltiSnipsAddFiletypes javascript.node

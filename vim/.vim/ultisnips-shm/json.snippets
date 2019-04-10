@@ -4,12 +4,13 @@ global !p
 from shm_snippet_helpers import *
 endglobal
 
-snippet plugset
-" Settings for [${1:PluginName}](${2:PluginURL})$0
+
+snippet kvs "Key-value string" b
+"${1:key}": "${0:value}",
 endsnippet
 
-snippet plugi
-Plug '`!v @+`'$0
+snippet kvn "Key-value number" b
+"${1:key}": ${0:value},
 endsnippet
 
 # vim:ft=snippets:

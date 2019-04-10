@@ -1,9 +1,15 @@
+#extends filetype1, filetype2
+
+global !p
+from shm_snippet_helpers import *
+endglobal
+
 snippet clog
-console.log(${1:LogInformation});
+console.log(${0:${VISUAL}});
 endsnippet
 
 snippet ctable
-console.table($0);
+console.table(${0:${VISUAL}});
 endsnippet
 
 snippet if
@@ -96,12 +102,8 @@ snippet const
 const ${1:NAME} = ${2:value};
 endsnippet
 
-snippet com
-// $0
-endsnippet
-
 snippet bcom
-/* $0 */
+/* ${0:${VISUAL}} */
 endsnippet
 
 snippet switch
@@ -149,3 +151,5 @@ catch(err) \{
 	${2:catchFunctionOrLog}
 }
 endsnippet
+
+# vim:ft=snippets:

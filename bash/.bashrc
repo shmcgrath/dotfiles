@@ -151,10 +151,6 @@ alias myip="curl icanhazip.com/s"				#Get current public IP address
 alias finderShowHidden='defaults write com.apple.finder ShowAllFiles TRUE'
 alias finderHideHidden='defaults write com.apple.finder ShowAllFiles FALSE'
 
-# git{{{2
-alias gan="git add -n"
-alias ga="git add"
-
 # PYTHON{{{2
 alias py2="python2"
 alias py3="python3"

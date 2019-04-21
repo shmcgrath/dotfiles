@@ -5,11 +5,11 @@ from shm_snippet_helpers import *
 endglobal
 
 snippet note "Note header: ## YYYY-MM-DD HH:MM - Title" b
-## `!p snip.rv = getdatetime_twentyfour()` - ${1:Title}
-${0:${VISUAL}}
+## `!p snip.rv = getdatetime_twentyfour()` - ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}
+$0
 endsnippet
 
-snippet link "Link"
+snippet link "Link" i
 [${1:${VISUAL:Text}}](${2:`!v @+`})
 endsnippet
 
@@ -19,10 +19,18 @@ snippet linkref "Reference Link"
 [$2]:${3:`!v @+`} "${4:$3}"
 endsnippet
 
-snippet footnote "Footnote"
+snippet ref "Section Reference in Document"
+[${1:${VISUAL:Text}}][${2:SectionId}]$0
+endsnippet
+
+snippet footnote "Footnote" i
 [^${1:${VISUAL:Footnote}}]$0
 
 [^$1]:${2:Text}
+endsnippet
+
+snippet footnote "Inline footnote" i
+[^${1:${VISUAL:Footnote}}]$0
 endsnippet
 
 snippet img "Image"
@@ -36,44 +44,44 @@ ${0:${VISUAL}}
 endsnippet
 
 snippet h1 "Heading 1" b
-# ${1:${VISUAL:Heading}}
+# ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}
 $0
 endsnippet
 
 snippet h2 "Heading 2" b
-## ${1:${VISUAL:Heading}}
+## ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}
 $0
 endsnippet
 
 snippet h3 "Heading 3" b
-### ${1:${VISUAL:Heading}}
+### ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}
 $0
 endsnippet
 
 snippet h4 "Heading 4" b
-#### ${1:${VISUAL:Heading}}
+#### ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}
 $0
 endsnippet
 
 snippet h5 "Heading 5" b
-##### ${1:${VISUAL:Heading}}
+##### ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}
 $0
 endsnippet
 
 snippet h6 "Heading 6" b
-###### ${1:${VISUAL:Heading}}
+###### ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}
 $0
 endsnippet
 
-snippet i "Italics"
+snippet i "Italics" i
 *${1:${VISUAL}}*$0
 endsnippet
 
-snippet b "Bold"
+snippet b "Bold" i
 **${1:${VISUAL}}**$0
 endsnippet
 
-snippet bi "Bold Italics"
+snippet bi "Bold Italics" i
 ***${1:${VISUAL}}***$0
 endsnippet
 

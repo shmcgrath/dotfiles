@@ -58,6 +58,7 @@ grep -h $grepTerm ~/Dropbox/bash-history/*
 
 # MAKE TERMINAL BETTER{{{2
 
+alias ytdl='youtube-dl'
 alias makemkv='makemkvcon' #alias not rememberable makemkv command
 alias aln='w3m https://www.archlinux.org/news/' #Get archlinux news
 alias pacsyu='aln && sudo pacman -Syu'      # get arch news and syu

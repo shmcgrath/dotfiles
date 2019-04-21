@@ -1,6 +1,15 @@
 import datetime
 import string
 import vim
+import re
+
+def remove_all_whitespace(sentence):
+    sentence = re.sub(r"\s+", "", sentence, flags=re.UNICODE)
+    return sentence
+
+def remove_all_whitespace_and_punctuation(sentence):
+    sentence = re.sub(r"\s+|\.|\,|\?|\!|\:|\;|\-", "", sentence, flags=re.UNICODE)
+    return sentence
 
 def getdatetime_twentyfour():
     today = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')

@@ -20,6 +20,8 @@ tags: $zetTags
 
 # $zetTitle
 
+{{TOC}}
+
 "
 
 cat<<EOF>$fullFileName

@@ -2,6 +2,7 @@ import datetime
 import string
 import vim
 import re
+import uuid
 
 def remove_all_whitespace(sentence):
     sentence = re.sub(r"\s+", "", sentence, flags=re.UNICODE)
@@ -36,6 +37,11 @@ def gettime_twentyfour():
     now = str(now)
     return now
 
+def gettime_twentyfoursecond_stamp():
+    now = datetime.datetime.now().strftime('%H%M%S')
+    now = str(now)
+    return now
+
 def gettimetwelve_():
     now = datetime.datetime.now().strftime('%I:%M%p')
     now = str(now).lower()
@@ -47,10 +53,7 @@ def high_plus_difference(low, high):
     return total
 
 def return_uuid_four():
-    uuid_four = ''
-    if not snip.c:
-        import uuid
-        uuid_four = str(uuid.uuid4())
+    uuid_four = str(uuid.uuid4())
     return uuid_four
 
 def _parse_comments(s):

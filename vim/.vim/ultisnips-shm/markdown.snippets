@@ -24,9 +24,9 @@ snippet ref "Section Reference in Document"
 endsnippet
 
 snippet footnote "Footnote" i
-[^${1:${VISUAL:Footnote}}]$0
+[^${1:`!p snip.rv = gettime_twentyfoursecond_stamp()`}]$0
 
-[^$1]:${2:Text}
+[^$1]:${2:${VISUAL:FootnoteText}}
 endsnippet
 
 snippet footnote "Inline footnote" i
@@ -86,7 +86,7 @@ snippet bi "Bold Italics" i
 endsnippet
 
 snippet toc "Insert table of contents" b
-{{TOC}}
+\{\{TOC:${1:2-3}}}
 endsnippet
 
 # vim:ft=snippets:

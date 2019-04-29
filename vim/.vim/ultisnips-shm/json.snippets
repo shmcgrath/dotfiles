@@ -13,4 +13,8 @@ snippet kvn "Key-value number" b
 "${1:key}": ${0:value},
 endsnippet
 
+snippet rewc "Create a new rewards card"
+"${1:Business Name}": "${2:`!p snip.rv = read_in_first_line_of_file("b64")`}",$0
+endsnippet
+
 # vim:ft=snippets:

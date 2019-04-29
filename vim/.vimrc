@@ -64,15 +64,17 @@ Plug 'chrisbra/csv.vim'
 Plug 'chriskempson/base16-vim', { 'tag' : '2d991f14f688a38b7b2bcd397bad5efadd0f80a9' } " Color themes
 Plug 'ciaranm/inkpot'
 Plug 'davidoc/taskpaper.vim'
+Plug 'dbeniamine/todo.txt-vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'glench/vim-jinja2-syntax'
 Plug 'godlygeek/tabular' " Text filtering and alignment
-Plug 'RRethy/vim-hexokinase' " show colors in vim gutter
 Plug 'joeytwiddle/vim-diff-traffic-lights-colors'
+"Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'justinmk/vim-sneak' " Jump to any location via two characters
+"Plug 'lervag/vimtex'
 Plug 'LnL7/vim-nix'
 Plug 'mbbill/undotree'
 Plug 'mhartington/oceanic-next'
@@ -82,6 +84,7 @@ Plug 'nathanaelkane/vim-indent-guides' " show indent levels; Chose over yggdroot
 Plug 'nathangrigg/vim-beancount'
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'rakr/vim-one'
+Plug 'RRethy/vim-hexokinase' " show colors in vim gutter
 Plug 'shmcgrath/vim-infolines' 
 Plug 'shmcgrath/vim-vice'
 "Plug 'tomasiser/vim-code-dark'
@@ -330,6 +333,9 @@ nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 nnoremap <leader>P "*p
 vnoremap <leader>P "*p
+
+nnoremap X "_d
+vnoremap X "_d
 
 vnoremap Y y$
 nnoremap Y y$

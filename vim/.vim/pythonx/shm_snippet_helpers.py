@@ -3,6 +3,13 @@ import string
 import vim
 import re
 import uuid
+import io
+
+def read_in_first_line_of_file(filename):
+    returntext = ""
+    with open (filename, mode='r') as ioFile: 
+        returntext = ioFile.readline().strip()
+    return returntext
 
 def remove_all_whitespace(sentence):
     sentence = re.sub(r"\s+", "", sentence, flags=re.UNICODE)

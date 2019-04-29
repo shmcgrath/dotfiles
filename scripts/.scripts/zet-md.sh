@@ -20,7 +20,7 @@ tags: $zetTags
 
 # $zetTitle
 
-{{TOC}}
+{{TOC:2-3}}
 
 "
 

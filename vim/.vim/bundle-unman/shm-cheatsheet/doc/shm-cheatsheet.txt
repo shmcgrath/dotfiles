@@ -14,6 +14,7 @@ CONTENTS                                            *shmContents*
 My tips, reminders, notes, and reference for Vim.
 
 - Y will copy from cursor to end of line. Not vi. Custom mapping.
+- map X so that it deletes things to the black hole register (map X "_d, for example). That could be useful.
 
 - When a command is noted as CTRL-\[LETTER\], the letter is typed as lowercase unless expressly noted.
 - If a capital letter is *anywhere* else in a command besides with CTRL, then type it as a capital.
@@ -409,5 +410,10 @@ R - replace till Esc
 set background=dark
 syntax enable
 Ctrl-L - refreshes screen
+
+Completion
+1. Local keyword completion (|i_Ctrl-X_Ctrl-N|)
+2. File path completion     (|i_Ctrl-X_Ctrl-F|)
+3. Omni completion (|i_Ctrl-X_Ctrl-O|)
 
  vim:ft=help:

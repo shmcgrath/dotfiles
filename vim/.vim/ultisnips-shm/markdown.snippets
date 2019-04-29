@@ -89,4 +89,47 @@ snippet toc "Insert table of contents" b
 \{\{TOC:${1:2-3}}}
 endsnippet
 
+global !p
+def get_templates(visual_string):
+	output = ""
+	visual_string = visual_string.strip()
+	template_list = visual_string.split(" ")
+	for template in template_list:
+		template_return = globals()[template]()
+		output = output + template_return
+	return output
+
+def tema():
+	template = "template a contents\n"
+	return template
+
+def temb():
+	template = "template b contents\n"
+	return template
+
+def temc():
+	template = "template c contents\n"
+	return template
+
+def temd():
+	template = "template d contents\n"
+	return template
+endglobal
+
+snippet tempit "moveable templates" 
+`!p snip.rv = get_templates(snip.v.text)`
+endsnippet
+
+snippet tema
+`!p snip.rv = tema()`
+endsnippet
+
+snippet temb
+`!p snip.rv = temb()`
+endsnippet
+
+snippet temc
+`!p snip.rv = temc()`
+endsnippet
+
 # vim:ft=snippets:

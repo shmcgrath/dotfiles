@@ -28,6 +28,10 @@ snippet title
 <title>${0:${VISUAL}}</title>
 endsnippet
 
+snippet img "Description"
+<img src="${1:${VISUAL}}" alt="${2:Image description}" />
+endsnippet
+
 snippet body
 <body>${0:${VISUAL}}</body>
 endsnippet
@@ -44,7 +48,7 @@ snippet ol
 <ol>${0:${VISUAL}}</ol>
 endsnippet
 
-snippet a
+snippet a "insert a link" i
 <a href="${1:URL}">${0:${VISUAL}}</a>
 endsnippet
 

@@ -61,6 +61,8 @@ ranger/.config/ranger/history*
 ranger/.config/ranger/bookmarks*
 # ignore tagged
 ranger/.config/ranger/tagged*
+# ignore plugins
+ranger/.config/ranger/plugins/*
 
 # Ignore uuid files in fonts
 themes/.fonts/**/.uuid

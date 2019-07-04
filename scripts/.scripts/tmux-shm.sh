@@ -10,13 +10,13 @@ if [ $? != 0 ]; then
     if [ -d "$HOME/projects" ]; then
         tmux new-window -n dev -t shm
         tmux send-keys -t shm:2 "cd $HOME/projects" C-m
-        tmux split-window -v -p 50 -t shm:2
+        tmux split-window -v -p 30 -t shm:2
         tmux send-keys -t shm:2.2 "cd $HOME/projects" C-m
     else
         if [ -d "$HOME/Documents/projects" ]; then
             tmux new-window -n dev -t shm
             tmux send-keys -t shm:2 "cd $HOME/Documents/projects/" C-m
-            tmux split-window -h -p 50 -t shm:2
+            tmux split-window -h -p 30 -t shm:2
             tmux send-keys -t shm:2.2 "cd $HOME/Documents/projects/" C-m
         fi
     fi 

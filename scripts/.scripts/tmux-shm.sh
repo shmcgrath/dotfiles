@@ -12,12 +12,23 @@ if [ $? != 0 ]; then
         tmux send-keys -t shm:2 "cd $HOME/projects" C-m
         tmux split-window -v -p 30 -t shm:2
         tmux send-keys -t shm:2.2 "cd $HOME/projects" C-m
+        tmux new-window -n shm-com -t shm
+        tmux send-keys -t shm:3 "cd $HOME/projects/shmcgrath-com && source ./venv/bin/activate" C-m
+        tmux split-window -v -p 20 -t shm:3
+        tmux send-keys -t shm:3.2 "cd $HOME/projects/shmcgrath-com && source ./venv/bin/activate" C-m
+        tmux send-keys -t shm:3.2 "invoke reserve" C-m
+
     else
         if [ -d "$HOME/Documents/projects" ]; then
             tmux new-window -n dev -t shm
             tmux send-keys -t shm:2 "cd $HOME/Documents/projects/" C-m
             tmux split-window -h -p 30 -t shm:2
             tmux send-keys -t shm:2.2 "cd $HOME/Documents/projects/" C-m
+            tmux new-window -n shm-com -t shm
+            tmux send-keys -t shm:3 "cd $HOME/projects/shmcgrath-com && source ./venv/bin/activate" C-m
+            tmux split-window -v -p 20 -t shm:3
+            tmux send-keys -t shm:3.2 "cd $HOME/projects/shmcgrath-com && source ./venv/bin/activate" C-m
+            tmux send-keys -t shm:3.2 "invoke reserve" C-m
         fi
     fi 
     tmux select-window -t shm:1

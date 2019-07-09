@@ -13,7 +13,7 @@ snippet html
 endsnippet
 
 snippet lia
-<li><a href="${1:URL}">${2:Description}</a></li>
+<li><a href="${1:`!v @+`}">${2:${VISUAL}}</a></li>
 endsnippet
 
 snippet p
@@ -56,7 +56,7 @@ snippet ol
 <ol>${0:${VISUAL}}</ol>
 endsnippet
 
-snippet a "insert a link" i
+snippet a "insert a link"
 <a href="${1:URL}">${0:${VISUAL}}</a>
 endsnippet
 

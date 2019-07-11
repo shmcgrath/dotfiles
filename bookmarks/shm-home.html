@@ -40,8 +40,23 @@
       .threeColumnList {
         columns: 3;
       }
+      details[open] {
+        background: whitesmoke;
+      }
+      details[open] summary {
+        color: darkred;
+      }
+      details[open] details:not([open]) summary {
+        color: black;
+      }
       details details {
         margin-left: 1.5rem;
+      }
+      details details[open] {
+        background: gainsboro;
+      }
+      details details[open] summary {
+        color: darkred;
       }
     </style>
   </head>
@@ -84,6 +99,7 @@
         <li><a href="https://docs.microsoft.com/en-us/dotnet/fsharp/">F# Guide</a></li>
         <li><a href="https://docs.python.org/3/">Python 3 Docs</a></li>
         <li><a href="https://flaticons.net/">FlatIcons</a></li>
+        <li><a href="https://html-color-codes.info/color-names/">HTML Color Codes</a></li>
         <li><a href="https://up-for-grabs.net/#/">Up For Grabs</a></li>
         <li><a href="https://www.myfonts.com/WhatTheFont/">WhatTheFont!</a></li>
       </ul>
@@ -214,7 +230,7 @@
         <summary>Cricket</summary>
         <ul class="threeColumnList">
           <li><a href="https://www.cricket.com.au/">Cricket Australia</a></li>
-          <li><a href="https://www.ecb.co.uk/">England and Wales Cricket Board</a></li>
+          <li><a href="https://www.ecb.co.uk/">ECB</a></li>
           <li><a href="https://www.kiaoval.com/">Surrey Cricket Club</a></li>
           <li><a href="https://www.brisbaneheat.com.au/">Brisbane Heat</a></li>
           <li><a href="https://www.cricketireland.ie/">Cricket Ireland</a></li>

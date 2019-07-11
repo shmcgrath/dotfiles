@@ -3,9 +3,6 @@
   <head>
     <title>SHM Home</title>
     <style>
-      .twoColumnList {
-        columns: 2;
-      }
       html {
         font-family: Arial;
         font-size: 12px;
@@ -34,11 +31,17 @@
         margin-left: 1.25rem;
         padding-left: 0;
       }
-      details details {
-        margin-left: 1.5rem;
-      }
       li {
         margin-left: 1.25rem;
+      }
+      .twoColumnList {
+        columns: 2;
+      }
+      .threeColumnList {
+        columns: 3;
+      }
+      details details {
+        margin-left: 1.5rem;
       }
     </style>
   </head>
@@ -46,23 +49,23 @@
   <body>
     <h1>SHM Home</h1>
     <h2>Bookmarks</h2>
-    <ul class="twoColumnList">
+    <ul class="threeColumnList">
       <li><a href="file:///Users/shmcg/Dropbox/dotfiles/bookmarks/shm-private.html">SHM Private</a></li>
       <li><a href="https://pinboard.in/">Pinboard</a></li>
       <li><a href="https://newsblur.com/">NewsBlur</a></li>
+      <li><a href="https://mbasic.facebook.com/">facebook</a></li>
       <li><a href="https://news.ycombinator.com/">Hacker News</a></li>
       <li><a href="https://old.reddit.com/">reddit</a></li>
-      <li><a href="https://mbasic.facebook.com/">facebook</a></li>
-      <li><a href="https://github.com/shmcgrath">GitHub</a></li>
-      <li><a href="https://smile.amazon.com/">Amazon</a></li>
-      <li><a href="https://www.archlinux.org/">Arch Linux</a></li>
+      <li><a href="https://smile.amazon.com/">Amazon Smile</a></li>
       <li><a href="https://www.kcdcevw.com/">KC/DC: East vs. West</a></li>
       <li><a href="https://www.shmcgrath.com/">Sarah H. McGrath</a></li>
+      <li><a href="https://github.com/shmcgrath">GitHub</a></li>
+      <li><a href="https://ss64.com/">SS64 (Man Pages)</a></li>
       <li><a href="http://localhost:8000">Localhost 8000</a></li>
     </ul>
     <details>
       <summary>Catholic</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
         <li><a href="https://masstimes.org/">MassTimes.org</a></li>
         <li><a href="https://stgabespgh.org/">St. Gabriel of the Sorrowful Virgin</a></li>
         <li><a href="http://institute-christ-king.org/pittsburgh-home">Most Precious Blood of Jesus Parish</a></li>
@@ -70,56 +73,92 @@
     </details>
     <details>
       <summary>Development</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
         <li><a href="http://styleguides.io/">styleguides.io</a></li>
         <li><a href="https://caniuse.com/">Can I use...</a></li>
         <li><a href="https://color.adobe.com/">Adobe Color Wheel</a></li>
         <li><a href="https://developer.mozilla.org/en-US/">MDN Documentation</a></li>
+        <li><a href="https://docs.getpelican.com/en/stable/">Pelican Docs</a></li>
         <li><a href="https://docs.microsoft.com/en-us/dotnet/api/">.NET API Browser</a></li>
-        <li><a href="https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference">JS API Client Side Reference</a></li>
-        <li><a href="https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/developer-guide">Developer Guide for Dynamics 365 for Customer Engagement apps</a></li>
+        <li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/">C# Guide</a></li>
+        <li><a href="https://docs.microsoft.com/en-us/dotnet/fsharp/">F# Guide</a></li>
+        <li><a href="https://docs.python.org/3/">Python 3 Docs</a></li>
         <li><a href="https://flaticons.net/">FlatIcons</a></li>
-        <li><a href="https://github.com/demianrasko/Dynamics-365-Workflow-Tools">Dynamics 365 Workflow Tools</a></li>
-        <li><a href="https://github.com/jlattimer/CRMRESTBuilder">CRM Rest Builder</a></li>
-        <li><a href="https://github.com/microsoft/easyrepro">EasyRepo D365 UI Testing</a></li>
-        <li><a href="https://msdn.microsoft.com/en-us">Microsoft Developer Network</a></li>
-        <li><a href="https://msdn.microsoft.com/en-us/library/gg328027.aspx">Tutorials and resources for learning about development for Microsoft Dynamics 365</a></li>
         <li><a href="https://up-for-grabs.net/#/">Up For Grabs</a></li>
         <li><a href="https://www.myfonts.com/WhatTheFont/">WhatTheFont!</a></li>
       </ul>
     </details>
     <details>
       <summary>Dynamics 365 CRM</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
         <li><a href="https://demos.microsoft.com/login#/">Microsoft Demos</a></li>
         <li><a href="https://docs.microsoft.com/en-us/business-applications-release-notes/">Business Application Release Notes</a></li>
+        <li><a href="https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference">JS API Client Side Reference</a></li>
+        <li><a href="https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/developer-guide">Developer Guide for Dynamics 365 for Customer Engagement apps</a></li>
+        <li><a href="https://github.com/demianrasko/Dynamics-365-Workflow-Tools">Dynamics 365 Workflow Tools</a></li>
+        <li><a href="https://github.com/jlattimer/CRMRESTBuilder">CRM Rest Builder</a></li>
+        <li><a href="https://github.com/microsoft/easyrepro">EasyRepo D365 UI Testing</a></li>
         <li><a href="https://learningportal.microsoft.com/LearningPathDetail">MB2-716 Certification Course</a></li>
         <li><a href="https://mbs.microsoft.com/partnersource/northamerica/">Microsoft Partner Source</a></li>
+        <li><a href="https://msdn.microsoft.com/en-us">Microsoft Developer Network</a></li>
+        <li><a href="https://msdn.microsoft.com/en-us/library/gg328027.aspx">Tutorials and resources for learning about development for Microsoft Dynamics 365</a></li>
         <li><a href="https://signup.microsoft.com/Signup?OfferId=bd569279-37f5-4f5c-99d0-425873bb9a4b&dl=DYN365_ENTERPRISE_PLAN1&Culture=en-us&Country=us&ali=1">Dynamics 365 Trial</a></li>
-        <li><a href="https://academy.clickdimensions.com/">ClickDimensions Academy</a></li>
-        <li><a href="https://partners.clickdimensions.com/English/">ClickDimensions Partner Portal</a></li>
-        <li><a href="https://help.scribesoft.com/">Scribe Help</a></li>
-        <li><a href="https://www.scribesoft.com/services/training/">Scribe Training and Certification</a></li>
-        <li><a href="https://chrome.google.com/webstore/detail/level-up-for-dynamics-crm/bjnkkhimoaclnddigpphpgkfgeggokam">Level Up for Dynamics CRM</a></li>
+      </ul>
+      <details>
+        <summary>ClickDimensions</summary>
+        <ul class="threeColumnList">
+          <li><a href="https://academy.clickdimensions.com/">ClickDimensions Academy</a></li>
+          <li><a href="https://partners.clickdimensions.com/English/">ClickDimensions Partner Portal</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>Scribe</summary>
+        <ul class="threeColumnList">
+          <li><a href="https://help.scribesoft.com/">Scribe Help</a></li>
+          <li><a href="https://www.scribesoft.com/services/training/">Scribe Training and Certification</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>Dynamics 365 Browser Extensions</summary>
+        <ul class="threeColumnList">
+          <li><a href="https://chrome.google.com/webstore/detail/level-up-for-dynamics-crm/bjnkkhimoaclnddigpphpgkfgeggokam">Level Up for Dynamics CRM</a></li>
+        </ul>
+      </details>
+    </details>
+    <details>
+      <summary>Education</summary>
+      <ul class="threeColumnList">
+        <li><a href="https://thoughtbot.com/upcase">Upcase by thoughtbot</a></li>
       </ul>
     </details>
     <details>
-      <summary>Firefox</summary>
-      <ul class="twoColumnList">
+      <summary>Firefox and Web Browsers</summary>
+      <ul class="threeColumnList">
         <li><a href="about:config">about:config</a></li>
       </ul>
     </details>
     <details>
       <summary>Forums</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
         <li><a href="https://lobste.rs/">Lobsters</a></li>
         <li><a href="https://www.metafilter.com/">MetaFilter</a></li>
         <li><a href="https://www.somethingawful.com/">Something Awful</a></li>
       </ul>
     </details>
     <details>
+      <summary>Linux and BSD</summary>
+      <ul class="threeColumnList">
+        <li><a href="https://aur.archlinux.org/">AUR</a></li>
+        <li><a href="https://linux.die.net/">Linux Documentation (die.net)</a></li>
+        <li><a href="https://linux.die.net/man/">Linux man pages (die.net)</a></li>
+        <li><a href="https://wiki.archlinux.org/">Arch Wiki</a></li>
+        <li><a href="https://www.archlinux.org/">Arch Linux</a></li>
+        <li><a href="https://www.openbsd.org/">OpenBSD</a></li>
+      </ul>
+    </details>
+    <details>
       <summary>Markdown</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
         <li><a href="https://daringfireball.net/projects/markdown/">Markdown - Daring Fireball</a></li>
         <li><a href="https://github.com/gnab/remark">Remark.js - Markdown Slides</a></li>
         <li><a href="https://rawgit.com/fletcher/MultiMarkdown-6-Syntax-Guide/master/index.html">MultiMarkdown 6 Syntax Guide</a></li>
@@ -127,14 +166,14 @@
     </details>
     <details>
       <summary>Networking</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
         <li><a href="https://canihazip.com/s">Can I Haz IP</a></li>
         <li><a href="https://www.canyouseeme.org">CanYouSeeMe.org</a></li>
       </ul>
     </details>
     <details>
       <summary>News</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
         <li><a href="https://theathletic.com/pittsburgh/">The Athletic PGH</a></li>
         <li><a href="https://www.post-gazette.com/">Post-Gazette</a></li>
         <li><a href="http://phrack.org/index.html">Phrak Magazine</a></li>
@@ -142,23 +181,22 @@
     </details>
     <details>
       <summary>Pittsburgh</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
         <li><a href="http://abstractions.io/">Abstractions Conference</a></li>
         <li><a href="https://pittsburgh.craigslist.org/">craigslist: pittsburgh</a></li>
         <li><a href="https://pittsburghmonster.leaguelab.com/">Sports Monster Pittsubrgh</a></li>
       </ul>
     </details>
     <details>
-      <summary>Reference and Education</summary>
-      <ul class="twoColumnList">
+      <summary>Reference and Search</summary>
+      <ul class="threeColumnList">
         <li><a href="https://github.com/shmcgrath/dotfiles/tree/master/reference/reference">dotfiles/reference</a></li>
-        <li><a href="https://thoughtbot.com/upcase">Upcase by thoughtbot</a></li>
         <li><a href="https://www.discogs.com/search/">Discogs Music Database</a></li>
       </ul>
     </details>
     <details>
       <summary>Sports</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
         <li><a href="https://www.dcunited.com/">DC United</a></li>
         <li><a href="http://www.fulhamfc.com/">Fulham FC</a></li>
         <li><a href="https://www.nhl.com/penguins/">Penguins</a></li>
@@ -173,7 +211,7 @@
       </ul>
       <details>
         <summary>Cricket</summary>
-        <ul class="twoColumnList">
+        <ul class="threeColumnList">
           <li><a href="https://www.cricket.com.au/">Cricket Australia</a></li>
           <li><a href="https://www.ecb.co.uk/">England and Wales Cricket Board</a></li>
           <li><a href="https://www.kiaoval.com/">Surrey Cricket Club</a></li>
@@ -183,7 +221,7 @@
       </details>
       <details>
         <summary>Formula 1</summary>
-        <ul class="twoColumnList">
+        <ul class="threeColumnList">
           <li><a href="https://www.formula1.com/">Formula 1</a></li>
           <li><a href="https://www.mercedes-amg.com/en/experience/amg-motorsport.html">Mercedes AMG</a></li>
           <li><a href="https://www.lewishamilton.com/">Lewis Hamilton</a></li>
@@ -192,7 +230,7 @@
       </details>
       <details>
         <summary>Hockey</summary>
-        <ul class="twoColumnList">
+        <ul class="threeColumnList">
           <li><a href="http://www.wbspenguins.com/">WBS Penguins</a></li>
           <li><a href="https://www.wheelingnailers.com/">Wheeling Nailers</a></li>
           <li><a href="http://niagaraicedogs.net/">Niagra IceDogs</a></li>
@@ -205,7 +243,7 @@
       </details>
       <details>
         <summary>Soccer</summary>
-        <ul class="twoColumnList">
+        <ul class="threeColumnList">
           <li><a href="https://districtultras.bigcartel.com/">District Ultras</a></li>
           <li><a href="https://www.ussoccer.com/">US Soccer</a></li>
           <li><a href="https://www.realoviedo.es/en">Real Oviedo</a></li>
@@ -237,7 +275,7 @@
       </details>
       <details>
         <summary>Leagues</summary>
-        <ul class="twoColumnList">
+        <ul class="threeColumnList">
           <li><a href="https://www.afl.com.au/">AFL</a></li>
           <li><a href="https://www.mlb.com/">MLB</a></li>
           <li><a href="https://www.nba.com">NBA</a></li>
@@ -249,7 +287,7 @@
     </details>
     <details>
       <summary>Streaming</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
         <li><a href="https://f1tv.formula1.com/en/">Formula1 TV</a></li>
         <li><a href="https://www.amazon.com/Amazon-Video/b?ie=UTF8&node=2858778011">Amazon Prime Video</a></li>
         <li><a href="https://www.espn.com/watch/">ESPN+</a></li>
@@ -266,22 +304,25 @@
     </details>
     <details>
       <summary>Travel and Transit</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
         <li><a href="https://www.portauthority.org/">PaT Bus</a></li>
       </ul>
     </details>
     <details>
       <summary>Video Games</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
+        <li><a href="http://www.livingdex.xyz/">Living Dex</a></li>
         <li><a href="https://fortnitemaster.com/">FortniteMaster</a></li>
+        <li><a href="https://minecraft.gamepedia.com/Minecraft_Wiki">Minecraft Wiki</a></li>
         <li><a href="https://old.reddit.com/r/minecraftseeds/" TAGS="">Minecraft Seeds</a></li>
-        <li><a href="https://worldofwarcraft.com/en-us/character/mannoroth/Alillia">Alillia - Character</a></li>
+        <li><a href="https://pokemondb.net/">Pokemon Database</a></li>
         <li><a href="https://www.serebii.net/games/currentevents.shtml">Serebii.net - Events</a></li>
+        <li><a href="https://www.wowhead.com/">Wowhead</a></li>
       </ul>
     </details>
     <details>
       <summary>Vim</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
         <li><a href="http://oscon.tumblr.com/post/27706457604/oscon-instantly-better-vim">OSCON: Instantly Better Vim</a></li>
         <li><a href="http://vimcasts.org/">Vimcasts</a></li>
         <li><a href="https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt">UltiSnips Documentation</a></li>
@@ -291,20 +332,22 @@
     </details>
     <details>
       <summary>Weather</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
         <li><a href="https://preview.weather.gov/edd/">NWS Enhanced Data Display (Travel Hazard Forecast)</a></li>
         <li><a href="https://www.wrh.noaa.gov/wrh/travel/">National Weather Service - Travel Weather</a></li>
       </ul>
     </details>
     <details>
       <summary>Work</summary>
+      <ul class="threeColumnList">
         <li><a href="file:///C:/shm-work.html">Current Work Bookmarks</a></li>
         <li><a href="https://trello.com/">Trello</a></li>
         <li><a href="https://www.gotomeeting.com/">GoToMeeting</a></li>
+      </ul>
     </details>
     <details>
       <summary>Add to Browser</summary>
-      <ul class="twoColumnList">
+      <ul class="threeColumnList">
         <li><a href="javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('https://pinboard.in/add?showtags=yes&url='+encodeURIComponent(q)+'&description='+encodeURIComponent(d)+encodeURIComponent('\nauthor:\npublished date:\narticle name:\nsite:\ntags:')+'&title='+encodeURIComponent(p),'Pinboard','toolbar=no,scrollbars=yes,width=750,height=700'));">Add to Pinboard</a></li>
         <li><a href="javascript:void(open('http://archive.today/?run=1&url='+encodeURIComponent(document.location)))">archive.today</a></li>
       </ul>

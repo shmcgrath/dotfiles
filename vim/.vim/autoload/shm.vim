@@ -6,7 +6,6 @@
 " Preserve: A Vim Function that keeps your state"{{{
 " https://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/
 " Why not instead of let l = line(“.”) let c = col(“.”) use getpos() and setpos()?
-
 function! shm#Preserve(command)
   " Preparation: save last search, and cursor position.
   let _s=@/

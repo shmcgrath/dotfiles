@@ -4,9 +4,11 @@ let g:ale_fixers = {
 \   'json': ['jsonlint'],
 \}
 let g:ale_linters = {
+\   'css': ['stylelint'],
+\   'elm': ['elm-format'],
+\   'html': ['htmlhint', 'eslint'],
 \   'javascript': ['eslint'],
-\   'html': ['eslint'],
-\   'elm': ['elm-format']
+\   'scss': ['stylelint']
 \}
 let g:ale_linter_aliases = {'html': ['html', 'javascript', 'css']}
 let g:ale_sign_column_always = 1

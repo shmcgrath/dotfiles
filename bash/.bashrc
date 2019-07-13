@@ -58,6 +58,7 @@ grep -h $grepTerm ~/Dropbox/bash-history/*
 
 # MAKE TERMINAL BETTER{{{2
 
+alias dropbox='dropbox.py'
 alias b64='base64 -o b64 -i'
 alias ytdl='youtube-dl'
 alias makemkv='makemkvcon' #alias not rememberable makemkv command

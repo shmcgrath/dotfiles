@@ -13,7 +13,7 @@ I use [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html) to manage m
 I ran into a bit of an issue when creating the symlinks on Sierra. I kept getting an error message referencing .DS\_Store files. After some Googling, I found that if you run Stow with an --ignore flag for .DS\_Store, that error will not pop.
 
 ``` bash
-$ stow -v --ignore ".DS_Store" - t ~/
+$ stow -v --ignore ".DS_Store" -t ~/ folder
 
 ```
 

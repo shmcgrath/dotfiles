@@ -57,7 +57,10 @@ grep -h $grepTerm ~/Dropbox/bash-history/*
 }
 
 # MAKE TERMINAL BETTER{{{2
-
+alias pbc="pbcopy"
+alias pbcopy="xclip -selection clipboard"
+alias pbp="pbpaste"
+alias pbpaste="xclip -selection clipboard -o"
 alias dropbox='dropbox.py'
 alias b64='base64 -o b64 -i'
 alias ytdl='youtube-dl'

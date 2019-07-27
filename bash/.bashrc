@@ -67,7 +67,7 @@ alias pacsyu='aln && sudo pacman -Syu'      # get arch news and syu
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
-alias ll='ls -FGlAhp --time-style long-iso'                       # Preferred 'ls' implementation
+alias ll='ls -FGlAhp --time-style=long-iso'                       # Preferred 'ls' implementation
 cdll() { builtin cd "$@"; ll; }             # Always list directory contents upon 'cd'
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias .1='cd ../'                           # Go back 1 directory level

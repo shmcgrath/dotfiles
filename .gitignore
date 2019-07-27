@@ -37,14 +37,18 @@ scripts/.scripts/secrets.py
 vim/.vim/bundle
 # Ignore vim .backup files
 vim/.vim/.backup/**
+!vim/.vim/.backup/.gitkeep
 # Ignore vim .swp files
 vim/.vim/.swp/**
+!vim/.vim/.swp/.gitkeep
 # Ignore vim undoir files
-vim/.vim/undodir/**
+vim/.vim/.undodir/**
+!vim/.vim/.undodir/.gitkeep
 # Ignore vim view directory files
 vim/.vim/view/**
 # Ignore vim sessions directory files 
-vim/.vim/sessions/**
+vim/.vim/.sessions/**
+!vim/.vim/.sessions/.gitkeep
 # Ignore __pycache__
 vim/.vim/pythonx/__pycache__/
 # Ignore .netrwhist

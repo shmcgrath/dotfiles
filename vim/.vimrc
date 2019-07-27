@@ -313,7 +313,7 @@ set directory=$HOME/.vim/.swp//
 " Undo and Redo {{{2
 if has('persistent_undo')
     set undofile
-    set undodir=$HOME/.vim/undodir//
+    set undodir=$HOME/.vim/.undodir//
     set undolevels=1000
     set undoreload=10000
 endif

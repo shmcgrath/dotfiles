@@ -19,7 +19,6 @@
 # ENVIRONMENT CONFIGURATION{{{2
 
 # Change Prompt
-
 export PS1="________________________________________________________________________________\n\D{%a %Y-%m-%d %H:%M:%S}\n\w\n[\u@\h]$ "
 export PS2="continue-> "
 
@@ -57,6 +56,7 @@ grep -h $grepTerm ~/Dropbox/bash-history/*
 }
 
 # MAKE TERMINAL BETTER{{{2
+alias ":q"="exit"
 alias pbc="pbcopy"
 alias pbcopy="xclip -selection clipboard"
 alias pbp="pbpaste"

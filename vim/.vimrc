@@ -114,8 +114,8 @@ set backspace=2     " Should make backspace like most other apps
 " Best incudeded colorscheme is desert
 set termguicolors   " Turn on 24 bit color in terminal
 highlight Comment cterm=italic gui=italic"
-colorscheme photon
-"jellybeans paramount OceanicNext one palenight vice seoul256 base16-default-dark base16-tomorrow-night nord
+colorscheme base16-tomorrow-night
+"photon jellybeans paramount OceanicNext one palenight vice seoul256 base16-default-dark base16-tomorrow-night nord
 
 if &diff
     colorscheme traffic_lights_diff

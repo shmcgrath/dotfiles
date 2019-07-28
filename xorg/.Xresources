@@ -1,0 +1,26 @@
+! xidle
+XIdle*timeout: 600
+#*.borderColor: gold
+#*.borderWidth: 80
+! xterm
+xterm*background: black
+xterm*foreground: lightgray
+! fonts
+Xft.autohint  : 0
+Xft.lcdfilter : lcddefault
+Xft.hintstyle : hintslight
+Xft.hinting   : 1
+Xft.antialias : 1
+Xft.rgba      : rgb
+! xclock
+! digital clock in lower right-hand corner
+XClock*analog      : false
+XClock*twentyfour  : false
+XClock*twelve      : true
+XClock*padding     : 0
+XClock*geometry    : -2-2
+XClock*render      : false
+XClock*height      : 12
+XClock*background  : purple
+XClock*foreground  : gold
+XClock*borderWidth : 2

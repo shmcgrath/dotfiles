@@ -1,0 +1,4 @@
+urls-source "newsblur"
+newsblur-login "schneid3306"
+newsblur-passwordfile "~/.config/newsboat/newsblur-pw.txt"
+cookie-cache "~/.config/newsboat/cookies.txt"

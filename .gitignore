@@ -1,6 +1,9 @@
 # GITIGNORE FOR MY DOTFILES
 # .gitignore for S. H. McGrath's dotfiles
 
+# newsboat ignore cookies.txt
+newsboat/.config/newsboat/cookies.txt
+
 # Ignore private bookmarks
 bookmarks/shm-private.html
 

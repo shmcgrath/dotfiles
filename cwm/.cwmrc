@@ -49,7 +49,7 @@ unbind-key M-Return
 bind-key M-h window-hide
 
 # window-close meta+q (default: ctrl+meta+x)
-unbind key CM-x
+unbind-key CM-x
 bind-key M-q window-close
 
 # window-snap-down-left ctrl+meta+left

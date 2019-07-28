@@ -1,11 +1,6 @@
 # GITIGNORE FOR MY DOTFILES
 # .gitignore for S. H. McGrath's dotfiles
 
-# Ignore .stowrc since initial setup is complete
-# this will allow each system to have a properly configured
-# $HOME on the .stowrc
-stow/.stowrc
-
 # Ignore private bookmarks
 bookmarks/shm-private.html
 

@@ -4,20 +4,20 @@ sticky yes
 # snap windows to edges at 4 pixels distance
 snapdist 4
 # leave a gap for xclock
-gap 0 14 0 0
+gap 0 20 0 0
 
 # set borders
 borderwidth 3
-color activeborder Gold
-color inactiveborder Purple
-color urgencyborder Lime
+color activeborder gold
+color inactiveborder purple
+color urgencyborder lime
 
 # set font for menus
 fontname "fixed:pixelsize=14:style=semicondensed"
-color font Gold
-color selfont Purple
-color menubg Purple
-color menufg Gold
+color font gold
+color selfont purple
+color menubg purple
+color menufg gold
 
 # ignore these windows when tiling/cycling
 ignore xclock
@@ -25,24 +25,41 @@ ignore xclock
 # ==KEYBINDINGS
 # 4 = mod (windows key) S = shift C = control M = meta (alt)
 
-# restart win+shift+R (default ctrl+alt+shift+r)
+# restart mod+shift+R (default ctrl+meta+shift+r)
 unbind-key CMS-r
 bind-key 4S-R restart
 
-# quit win+shift+Q (default ctrl+alt+shift+q)
+# quit mod+shift+Q (default ctrl+meta+shift+q)
 unbind-key CMS-q
 bind-key 4S-Q quit
 
-# terminal win+enter (default: ctrl+alt+return)
+# terminal mod+enter (default: ctrl+meta+return)
 unbind-key CM-Return
 bind-key 4-Return terminal
 
-# lock (xlock) win+l (default ctrl+alt+delete)
+# lock (xlock) mod+l (default ctrl+meta+delete)
 unbind-key CM-Delete
 bind-key 4-l lock
 
-# menu-exec mod+/ (default: alt+?)
+# menu-exec mod+/ (default: meta+?)
 bind-key 4-slash menu-exec
+
+# window-hide meta+h (default: meta+return)
+unbind-key M-Return
+bind-key M-h window-hide
+
+# window-close meta+q (default: ctrl+meta+x)
+unbind key CM-x
+bind-key M-q window-close
+
+# window-snap-down-left ctrl+meta+left
+bind-key CM-Left window-snap-down-left
+
+# window-snap-down-right ctrl+meta+right
+bind-key CM-Right window-snap-down-right
+
+# window-vtile mod+left
+bind-key 4-Left window-vtile
 
 # ==MOUSE BINDINGS
 

@@ -7,6 +7,8 @@ export LC_CTYPE=en_US.UTF-8
 export LESS='-iMR -x4'
 export PAGER=less
 export VISUAL=$EDITOR
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # ==PROMPT
 test -r "$HOME/.prompt" && . "$HOME/.prompt"

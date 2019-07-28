@@ -11,7 +11,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # ==PROMPT
-test -r "$HOME/.prompt" && . "$HOME/.prompt"
+test -r "$HOME/.promptrc" && . "$HOME/.promptrc"
 
 # ==HISTORY
 export HISTIGNORE=".1:.2:.3:cd:ls:ll:pwd"
@@ -21,7 +21,7 @@ export HISTSIZE=20000
 
 # ==ALIASES
 # source common aliases from .aliases
-test -r "$HOME/.aliases" && . "$HOME/.aliases"
+test -r "$HOME/.aliasrc" && . "$HOME/.aliasrc"
 alias la="ls -AF"
 alias ll="ls -AFlh"
 alias mkdir="mkdir -p"

@@ -1,0 +1,29 @@
+# ==ENVIRONMENT
+export CLICOLOR=1
+export EDITOR=$VIM
+export FCEDIT=$EDITOR
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LESS='-iMR -x4'
+export PAGER=less
+export VISUAL=$EDITOR
+
+# ==PROMPT
+test -r "$HOME/.prompt" && . "$HOME/.prompt"
+
+# ==HISTORY
+export HISTIGNORE=".1:.2:.3:cd:ls:ll:pwd"
+export HISTCONTROL="ignoredups:erasedups"
+export HISTFILE=$HOME/.ksh_history
+export HISTSIZE=20000
+
+# ==ALIASES
+# source common aliases from .aliases
+test -r "$HOME/.aliases" && . "$HOME/.aliases"
+alias la="ls -AF"
+alias ll="ls -AFlh"
+alias mkdir="mkdir -p"
+alias pbcopy="xclip -selection clipboard"
+alias pbpaste="xclip -selection clipboard -o"
+alias skrc=". $HOME/.kshrc && echo 'sourcing $HOME/.kshrc'"
+alias su="doas"

@@ -1,0 +1,5 @@
+# ==PROMPT
+export PS1="_______________________\n\D{%a %Y.%m.%d %H:%M:%S} || \w\n\u@\h $ "
+export PS2="continue --> "
+
+# vim:ft=sh:

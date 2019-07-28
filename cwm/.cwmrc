@@ -1,0 +1,53 @@
+# ==OPTIONS
+# automatically add new windows to the current group
+sticky yes
+# snap windows to edges at 4 pixels distance
+snapdist 4
+# leave a gap for xclock
+gap 0 14 0 0
+
+# set borders
+borderwidth 3
+color activeborder Gold
+color inactiveborder Purple
+color urgencyborder Lime
+
+# set font for menus
+fontname "fixed:pixelsize=14:style=semicondensed"
+color font Gold
+color selfont Purple
+color menubg Purple
+color menufg Gold
+
+# ignore these windows when tiling/cycling
+ignore xclock
+
+# ==KEYBINDINGS
+# 4 = mod (windows key) S = shift C = control M = meta (alt)
+
+# restart win+shift+R (default ctrl+alt+shift+r)
+unbind-key CMS-r
+bind-key 4S-R restart
+
+# quit win+shift+Q (default ctrl+alt+shift+q)
+unbind-key CMS-q
+bind-key 4S-Q quit
+
+# terminal win+enter (default: ctrl+alt+return)
+unbind-key CM-Return
+bind-key 4-Return terminal
+
+# lock (xlock) win+l (default ctrl+alt+delete)
+unbind-key CM-Delete
+bind-key 4-l lock
+
+# menu-exec mod+/ (default: alt+?)
+bind-key 4-slash menu-exec
+
+# ==MOUSE BINDINGS
+
+# ==COMMAND MENU
+command firefox /usr/local/bin/firefox
+command xterm xterm
+command keepass /usr/local/bin/keepassxc
+command xcalc xcalc

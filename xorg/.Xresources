@@ -1,7 +1,7 @@
 ! xidle
 XIdle*timeout: 600
-#*.borderColor: gold
-#*.borderWidth: 80
+!*.borderColor: gold
+!*.borderWidth: 80
 ! xterm
 xterm*background: black
 xterm*foreground: lightgray

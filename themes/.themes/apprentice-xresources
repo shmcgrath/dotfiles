@@ -1,4 +1,24 @@
-i! source: https://github.com/romainl/Apprentice
+! source: https://github.com/romainl/Apprentice
+! almost_black = ["#1c1c1c", 234, "black"]
+! darker_grey  = ["#262626", 235, "black"]
+! dark_grey    = ["#303030", 236, "darkgrey"]
+! grey         = ["#444444", 238, "darkgrey"]
+! medium_grey  = ["#585858", 240, "darkgrey"]
+! light_grey   = ["#6c6c6c", 242, "lightgrey"]
+! lighter_grey = ["#bcbcbc", 250, "lightgrey"]
+! white        = ["#ffffff", 231, "white"]
+! purple       = ["#5f5f87", 60, "darkmagenta"]
+! light_purple = ["#8787af", 103, "magenta"]
+! green        = ["#5f875f", 65, "darkgreen"]
+! light_green  = ["#87af87", 108, "green"]
+! aqua         = ["#5f8787", 66, "darkcyan"]
+! light_aqua   = ["#5fafaf", 73, "cyan"]
+! blue         = ["#5f87af", 67, "darkblue"]
+! light_blue   = ["#8fafd7", 110, "blue"]
+! red          = ["#af5f5f", 131, "darkred"]
+! orange       = ["#ff8700", 208, "red"]
+! ocre         = ["#87875f", 101, "darkyellow"]
+! yellow       = ["#ffffaf", 229, "yellow"]
 *.foreground: #BCBCBC
 *.background: #262626
 *.color0:     #1C1C1C

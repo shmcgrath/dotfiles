@@ -1,0 +1,6 @@
+! urxvt
+URxvt*loginShell: true
+URxvt*scrollBar: false
+URxvt*scrollBar_floating: false
+URxvt*scrollBar_right: false
+URxvt.geometry: 80x200

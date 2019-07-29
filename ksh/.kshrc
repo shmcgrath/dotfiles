@@ -1,6 +1,3 @@
-# ==PATH
-export PATH="$HOME/.scripts/:${PATH}"
-
 # ==ENVIRONMENT
 export VISUAL=vim
 export EDITOR=$VISUAL

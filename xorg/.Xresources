@@ -1,13 +1,16 @@
 ! xidle
 XIdle*timeout: 600
 ! xterm
-Xterm*loginShell: true
-Xterm*background: black
-Xterm*foreground: lightgray
-Xterm*scrollBar: false
-Xterm*rightScrollBar: false
-Xterm.termName: xterm-256color
-XTerm*VT100.geometry:80x200
+xterm*bellIsUrgent: true
+xterm*loginShell: true
+xterm*background: black
+xterm*foreground: lightgray
+xterm*scrollBar: false
+xterm*rightScrollBar: false
+xterm.termName: xterm-256color
+xterm*visualBell: true
+xterm*vt100.geometry:80x33
+xterm.vt100.saveLines: 4096
 ! fonts
 Xft.autohint  : 0
 Xft.lcdfilter : lcddefault

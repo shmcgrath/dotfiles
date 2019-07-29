@@ -1,6 +1,8 @@
 ! urxvt
+URxvt*geometry: 80x33
 URxvt*loginShell: true
 URxvt*scrollBar: false
 URxvt*scrollBar_floating: false
 URxvt*scrollBar_right: false
-URxvt.geometry: 80x200
+URxvt*urgentOnBell: true
+URxvt*visualBell: true

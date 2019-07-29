@@ -75,7 +75,6 @@ Plug 'mbbill/undotree'
 "Plug 'mileszs/ack.vim'
 Plug 'nathangrigg/vim-beancount'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'robertmeta/nofrils'
 Plug 'shmcgrath/vim-infolines' 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive' " A vim git wrapper
@@ -106,10 +105,9 @@ set backspace=2 " Should make backspace like most other apps
 "set termguicolors " Turn on 24 bit color in terminal
 "highlight Comment cterm=italic gui=italic"
 set background=dark
-"colorscheme PaperColor
+colorscheme PaperColor
 "colorscheme apprentice
 "colorscheme desert " best out of the box colorscheme
-colorscheme nofrils-dark
 "colorscheme nord
 
 if &diff

@@ -1,4 +1,5 @@
 " Settings for [vim-indent-guidees](https://github.com/nathanaelkane/vim-indent-guides)
+"Plug 'nathanaelkane/vim-indent-guides' " show indent levels; Chose over yggdroot/indentline because of conceallevel
 let g:indent_guides_enable_on_vim_startup = 1
 "let indent_guides_guide_size = 1
 "let g:indent_guides_auto_colors = 0

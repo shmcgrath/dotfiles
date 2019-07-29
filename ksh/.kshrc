@@ -1,12 +1,15 @@
+# ==PATH
+export PATH="$HOME/.scripts/:${PATH}"
+
 # ==ENVIRONMENT
+export VISUAL=vim
+export EDITOR=$VISUAL
 export CLICOLOR=1
-export EDITOR=$VIM
 export FCEDIT=$EDITOR
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LESS='-iMR -x4'
 export PAGER=less
-export VISUAL=$EDITOR
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -24,6 +27,7 @@ export HISTSIZE=20000
 test -r "$HOME/.aliasrc" && . "$HOME/.aliasrc"
 alias la="ls -AF"
 alias ll="ls -AFlh"
+alias ls="ls -F"
 alias mkdir="mkdir -p"
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"

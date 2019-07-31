@@ -46,11 +46,11 @@ bind-key 4-slash menu-exec
 
 # window-hide meta+h (default: meta+return)
 unbind-key M-Return
-bind-key M-h window-hide
+bind-key 4-h window-hide
 
 # window-close meta+q (default: ctrl+meta+x)
 unbind-key CM-x
-bind-key M-q window-close
+bind-key 4-q window-close
 
 # window-snap-down-left ctrl+meta+left
 bind-key CM-Left window-snap-down-left

@@ -1,5 +1,29 @@
+! fonts
+Xft.autohint  : 0
+Xft.lcdfilter : lcddefault
+Xft.hintstyle : hintslight
+Xft.hinting   : 1
+Xft.antialias : 1
+Xft.rgba      : rgb
+! xclock - digital clock in lower right-hand corner
+XClock*analog      : false
+XClock*twentyfour  : false
+XClock*twelve      : true
+XClock*padding     : 0
+XClock*geometry    : -2-2
+XClock*render      : false
+XClock*height      : 12
+XClock*background  : purple
+XClock*foreground  : gold
+XClock*borderWidth : 2
 ! xidle
 XIdle*timeout: 600
+! xlock
+XLock.background: dimgray
+XLock.description: false
+XLock.erasemode: no_fade
+XLock.foreground: black
+XLock.mode: space
 ! xterm
 xterm*bellIsUrgent: true
 xterm*loginShell: true
@@ -11,22 +35,3 @@ xterm.termName: xterm-256color
 xterm*visualBell: true
 xterm*vt100.geometry:80x33
 xterm.vt100.saveLines: 4096
-! fonts
-Xft.autohint  : 0
-Xft.lcdfilter : lcddefault
-Xft.hintstyle : hintslight
-Xft.hinting   : 1
-Xft.antialias : 1
-Xft.rgba      : rgb
-! xclock
-! digital clock in lower right-hand corner
-XClock*analog      : false
-XClock*twentyfour  : false
-XClock*twelve      : true
-XClock*padding     : 0
-XClock*geometry    : -2-2
-XClock*render      : false
-XClock*height      : 12
-XClock*background  : purple
-XClock*foreground  : gold
-XClock*borderWidth : 2

@@ -75,6 +75,7 @@ Plug 'mbbill/undotree'
 "Plug 'mileszs/ack.vim'
 Plug 'nathangrigg/vim-beancount'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'owickstrom/vim-colors-paramount'
 Plug 'shmcgrath/vim-infolines' 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive' " A vim git wrapper

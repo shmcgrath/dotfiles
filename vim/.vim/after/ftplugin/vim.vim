@@ -1,2 +1,2 @@
+setlocal colorcolumn=0
 setlocal foldmethod=marker
-:UltiSnipsAddFiletypes vim.markdown

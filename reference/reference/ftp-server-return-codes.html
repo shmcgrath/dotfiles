@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>List of FTP server return codes - Wikipedia</title>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.3d.styles%7Cext.cite.styles%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediaBadges%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.skinning.interface%7Cskins.vector.styles%7Cwikibase.client.init&amp;only=styles&amp;skin=vector"/>
+<link rel="stylesheet" href="../../css/shm.css">
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.gadget.charinsert-styles&amp;only=styles&amp;skin=vector"/>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.34.0-wmf.15"/>
+<meta name="referrer" content="origin"/>
+<meta name="referrer" content="origin-when-crossorigin"/>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<link rel="alternate" href="android-app://org.wikipedia/http/en.m.wikipedia.org/wiki/List_of_FTP_server_return_codes"/>
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=List_of_FTP_server_return_codes&amp;action=edit"/>
+<link rel="edit" title="Edit this page" href="/w/index.php?title=List_of_FTP_server_return_codes&amp;action=edit"/>
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png"/>
+<link rel="shortcut icon" href="/static/favicon/wikipedia.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd"/>
+<link rel="license" href="//creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="canonical" href="https://en.wikipedia.org/wiki/List_of_FTP_server_return_codes"/>
+<link rel="dns-prefetch" href="//login.wikimedia.org"/>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-List_of_FTP_server_return_codes rootpage-List_of_FTP_server_return_codes skin-vector action-view">
+<div id="mw-page-base" class="noprint"></div>
+<div id="mw-head-base" class="noprint"></div>
+<div id="content" class="mw-body" role="main">
+	<a id="top"></a>
+	<div id="siteNotice" class="mw-body-content"><!-- CentralNotice --></div>
+	<div class="mw-indicators mw-body-content">
+</div>
+
+	<h1 id="firstHeading" class="firstHeading" lang="en">List of FTP server return codes</h1>
+	
+	<div id="bodyContent" class="mw-body-content">
+		<div id="siteSub" class="noprint">From Wikipedia, the free encyclopedia</div>
+		<div id="contentSub"></div>
+		
+		
+		
+		<div id="jump-to-nav"></div>
+		<a class="mw-jump-link" href="#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="#p-search">Jump to search</a>
+		<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-parser-output"><p><b><a href="/wiki/File_Transfer_Protocol" title="File Transfer Protocol">FTP</a> <a href="/wiki/Server_(computing)" title="Server (computing)">server</a> return codes</b> always have three digits, and each digit has a special meaning.<sup id="cite_ref-1" class="reference"><a href="#cite_note-1">&#91;1&#93;</a></sup> The first digit denotes whether the response is good, bad or incomplete:
+</p>
+<table class="wikitable" style="width: 100%">
+
+<tbody><tr>
+<th style="width:50px">Range
+</th>
+<th>Purpose
+</th></tr>
+<tr>
+<td valign="top"><code>1xx</code>
+</td>
+<td>Positive Preliminary reply
+<p>The requested action is being initiated; expect another reply before proceeding with a new command.  (The user-process sending another command before the completion reply would be in violation of protocol; but server-FTP processes should queue any commands that arrive while a preceding command is in progress.)  This type of reply can be used to indicate that the command was accepted and the user-process may now pay attention to the data connections, for implementations where simultaneous monitoring is difficult.  The server-FTP process may send at most, one 1xx reply per command.
+</p>
+</td></tr>
+<tr>
+<td valign="top"><code>2xx</code>
+</td>
+<td>Positive Completion reply
+<p>The requested action has been successfully completed.  A new request may be initiated.
+</p>
+</td></tr>
+<tr>
+<td valign="top"><code>3xx</code>
+</td>
+<td>Positive Intermediate reply
+<p>The command has been accepted, but the requested action is being held in abeyance, pending receipt of further information.  The user should send another command specifying this information.  This reply is used in command sequence groups.
+</p>
+</td></tr>
+<tr>
+<td valign="top"><code>4xx</code>
+</td>
+<td>Transient Negative Completion reply
+<p>The command was not accepted and the requested action did not take place, but the error condition is temporary and the action may be requested again.  The user should return to the beginning of the command sequence, if any. It is difficult to assign a meaning to "transient", particularly when two distinct sites (Server- and User-processes) have to agree on the interpretation. Each reply in the 4xx category might have a slightly different time value, but the intent is that the user-process is encouraged to try again.  A rule of thumb in determining if a reply fits into the 4xx or the 5xx (Permanent Negative) category is that replies are 4xx if the commands can be repeated without any change in command form or in properties of the User or Server (e.g., the command is spelled the same with the same arguments used; the user does not change his file access or user name; the server does not put up a new implementation.)
+</p>
+</td></tr>
+<tr>
+<td valign="top"><code>5xx</code>
+</td>
+<td>Permanent Negative Completion reply
+<p>The command was not accepted and the requested action did not take place.  The User-process is discouraged from repeating the exact request (in the same sequence).  Even some "permanent" error conditions can be corrected, so the human user may want to direct his User-process to reinitiate the command sequence by direct action at some point in the future (e.g., after the spelling has been changed, or the user has altered his directory status.)
+</p>
+</td></tr>
+<tr>
+<td valign="top"><code>6xx</code>
+</td>
+<td>Protected reply
+<p>The <a class="external mw-magiclink-rfc" rel="nofollow" href="https://tools.ietf.org/html/rfc2228">RFC 2228</a> introduced the concept of protected replies to increase security over the FTP communications. The 6xx replies are <a href="/wiki/Base64" title="Base64">Base64</a> encoded protected messages that serves as responses to secure commands. When properly decoded, these replies fall into the above categories.
+</p>
+</td></tr></tbody></table>
+<p>The second digit is a grouping digit and encodes the following information:
+</p>
+<table class="wikitable" style="width: 100%">
+
+<tbody><tr>
+<th style="width:50px">Range
+</th>
+<th>Purpose
+</th></tr>
+<tr>
+<td valign="top"><code>x0x</code>
+</td>
+<td>Syntax
+<p>These replies refer to syntax errors, syntactically correct commands that don't fit any functional category, unimplemented or superfluous commands.
+</p>
+</td></tr>
+<tr>
+<td valign="top"><code>x1x</code>
+</td>
+<td>Information
+<p>These are replies to requests for information, such as status or help.
+</p>
+</td></tr>
+<tr>
+<td valign="top"><code>x2x</code>
+</td>
+<td>Connections
+<p>Replies referring to the control and data connections.
+</p>
+</td></tr>
+<tr>
+<td valign="top"><code>x3x</code>
+</td>
+<td>Authentication and accounting
+<p>Replies for the login process and accounting procedures.
+</p>
+</td></tr>
+<tr>
+<td valign="top"><code>x4x</code>
+</td>
+<td>Unspecified as of <a class="external mw-magiclink-rfc" rel="nofollow" href="https://tools.ietf.org/html/rfc959">RFC 959</a>.
+</td></tr>
+<tr>
+<td valign="top"><code>x5x</code>
+</td>
+<td>File system
+<p>These replies indicate the status of the Server file system vis-a-vis the requested transfer or other file system action.
+</p>
+</td></tr></tbody></table>
+<p>Below is a list of all known return codes that may be issued by an FTP server.
+</p>
+<table class="wikitable" style="width: 100%">
+
+<tbody><tr>
+<th style="width:100px">Code
+</th>
+<th>Explanation
+</th></tr>
+<tr>
+<td><code>100 Series</code>
+</td>
+<td><b>The requested action is being initiated, expect another reply before proceeding with a new command.</b>
+</td></tr>
+<tr>
+<td><code>110</code>
+</td>
+<td>Restart marker replay . In this case, the text is exact and not left to the particular implementation; it must read: <code>MARK yyyy = mmmm</code> where yyyy is User-process data stream marker, and mmmm server's equivalent marker (note the spaces between markers and "=").
+</td></tr>
+<tr>
+<td><code>120</code>
+</td>
+<td>Service ready in nnn minutes.
+</td></tr>
+<tr>
+<td><code>125</code>
+</td>
+<td>Data connection already open; transfer starting.
+</td></tr>
+<tr>
+<td><code>150</code>
+</td>
+<td>File status okay; about to open data connection.
+</td></tr>
+<tr>
+<td><code>200 Series</code>
+</td>
+<td><b>The requested action has been successfully completed.</b>
+</td></tr>
+<tr>
+<td><code>202</code>
+</td>
+<td>Command not implemented, superfluous at this site.
+</td></tr>
+<tr>
+<td><code>211</code>
+</td>
+<td>System status, or system help reply.
+</td></tr>
+<tr>
+<td><code>212</code>
+</td>
+<td>Directory status.
+</td></tr>
+<tr>
+<td><code>213</code>
+</td>
+<td>File status.
+</td></tr>
+<tr>
+<td><code>214</code>
+</td>
+<td>Help message. Explains how to use the server or the meaning of a particular non-standard command. This reply is useful only to the human user.
+</td></tr>
+<tr>
+<td><code>215</code>
+</td>
+<td>NAME system type. Where NAME is an official system name from the <a rel="nofollow" class="external text" href="http://www.iana.org/assignments/operating-system-names">registry</a> kept by <a href="/wiki/Internet_Assigned_Numbers_Authority" title="Internet Assigned Numbers Authority">IANA</a>.
+</td></tr>
+<tr>
+<td><code>220</code>
+</td>
+<td>Service ready for new user.
+</td></tr>
+<tr>
+<td><code>221</code>
+</td>
+<td>Service closing control connection.
+</td></tr>
+<tr>
+<td><code>225</code>
+</td>
+<td>Data connection open; no transfer in progress.
+</td></tr>
+<tr>
+<td><code>226</code>
+</td>
+<td>Closing data connection. Requested file action successful (for example, file transfer or file abort).
+</td></tr>
+<tr>
+<td><code>227</code>
+</td>
+<td>Entering Passive Mode (h1,h2,h3,h4,p1,p2).
+</td></tr>
+<tr>
+<td><code>228</code>
+</td>
+<td>Entering Long Passive Mode (long address, port).
+</td></tr>
+<tr>
+<td><code>229</code>
+</td>
+<td>Entering Extended Passive Mode (|||port|).
+</td></tr>
+<tr>
+<td><code>230</code>
+</td>
+<td>User logged in, proceed. Logged out if appropriate.
+</td></tr>
+<tr>
+<td><code>231</code>
+</td>
+<td>User logged out; service terminated.
+</td></tr>
+<tr>
+<td><code>232</code>
+</td>
+<td>Logout command noted, will complete when transfer done.
+</td></tr>
+<tr>
+<td><code>234</code>
+</td>
+<td>Specifies that the server accepts the authentication mechanism specified by the client, and the exchange of security data is complete. A higher level nonstandard code created by <a href="/wiki/Microsoft" title="Microsoft">Microsoft</a>.
+</td></tr>
+<tr>
+<td><code>250</code>
+</td>
+<td>Requested file action okay, completed.
+</td></tr>
+<tr>
+<td><code>257</code>
+</td>
+<td>"PATHNAME" created.
+</td></tr>
+<tr>
+<td><code>300 Series</code>
+</td>
+<td><b>The command has been accepted, but the requested action is on hold, pending receipt of further information.</b>
+</td></tr>
+<tr>
+<td><code>331</code>
+</td>
+<td>User name okay, need password.
+</td></tr>
+<tr>
+<td><code>332</code>
+</td>
+<td>Need account for login.
+</td></tr>
+<tr>
+<td><code>350</code>
+</td>
+<td>Requested file action pending further information
+</td></tr>
+<tr>
+<td><code>400 Series</code>
+</td>
+<td><b>The command was not accepted and the requested action did not take place, but the error condition is temporary and the action may be requested again.</b>
+</td></tr>
+<tr>
+<td><code>421</code>
+</td>
+<td>Service not available, closing control connection. This may be a reply to any command if the service knows it must shut down.
+</td></tr>
+<tr>
+<td><code>425</code>
+</td>
+<td>Can't open data connection.
+</td></tr>
+<tr>
+<td><code>426</code>
+</td>
+<td>Connection closed; transfer aborted.
+</td></tr>
+<tr>
+<td><code>430</code>
+</td>
+<td>Invalid username or password
+</td></tr>
+<tr>
+<td><code>434</code>
+</td>
+<td>Requested host unavailable.
+</td></tr>
+<tr>
+<td><code>450</code>
+</td>
+<td>Requested file action not taken.
+</td></tr>
+<tr>
+<td><code>451</code>
+</td>
+<td>Requested action aborted. Local error in processing.
+</td></tr>
+<tr>
+<td><code>452</code>
+</td>
+<td>Requested action not taken. Insufficient storage space in system.File unavailable (e.g., file busy).
+</td></tr>
+<tr>
+<td><code>500 Series</code>
+</td>
+<td><b>Syntax error, command unrecognized and the requested action did not take place. This may include errors such as command line too long.</b>
+</td></tr>
+<tr>
+<td><code>501</code>
+</td>
+<td>Syntax error in parameters or arguments.
+</td></tr>
+<tr>
+<td><code>502</code>
+</td>
+<td>Command not implemented.
+</td></tr>
+<tr>
+<td><code>503</code>
+</td>
+<td>Bad sequence of commands.
+</td></tr>
+<tr>
+<td><code>504</code>
+</td>
+<td>Command not implemented for that parameter.
+</td></tr>
+<tr>
+<td><code>530</code>
+</td>
+<td>Not logged in.
+</td></tr>
+<tr>
+<td><code>532</code>
+</td>
+<td>Need account for storing files.
+</td></tr>
+<tr>
+<td><code>534</code>
+</td>
+<td>Could Not Connect to Server - Policy Requires SSL
+</td></tr>
+<tr>
+<td><code>550</code>
+</td>
+<td>Requested action not taken. File unavailable (e.g., file not found, no access).
+</td></tr>
+<tr>
+<td><code>551</code>
+</td>
+<td>Requested action aborted. Page type unknown.
+</td></tr>
+<tr>
+<td><code>552</code>
+</td>
+<td>Requested file action aborted. Exceeded storage allocation (for current directory or dataset).
+</td></tr>
+<tr>
+<td><code>553</code>
+</td>
+<td>Requested action not taken. File name not allowed.
+</td></tr>
+<tr>
+<td><code>600 Series</code>
+</td>
+<td><b>Replies regarding confidentiality and integrity</b>
+</td></tr>
+<tr>
+<td><code>631</code>
+</td>
+<td>Integrity protected reply.
+</td></tr>
+<tr>
+<td><code>632</code>
+</td>
+<td>Confidentiality and integrity protected reply.
+</td></tr>
+<tr>
+<td><code>633</code>
+</td>
+<td>Confidentiality protected reply.
+</td></tr>
+<tr>
+<td><code>10000 Series</code>
+</td>
+<td><b>Common Winsock Error Codes</b><sup id="cite_ref-2" class="reference"><a href="#cite_note-2">&#91;2&#93;</a></sup> <i>(These are not FTP return codes)</i>
+</td></tr>
+<tr>
+<td><code>10054</code>
+</td>
+<td>Connection reset by peer. The connection was forcibly closed by the remote host.
+</td></tr>
+<tr>
+<td><code>10060</code>
+</td>
+<td>Cannot connect to remote server.
+</td></tr>
+<tr>
+<td><code>10061</code>
+</td>
+<td>Cannot connect to remote server. The connection is actively refused by the server.
+</td></tr>
+<tr>
+<td><code>10066</code>
+</td>
+<td>Directory not empty.
+</td></tr>
+<tr>
+<td><code>10068</code>
+</td>
+<td>Too many users, server is full.
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=List_of_FTP_server_return_codes&amp;action=edit&amp;section=1" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li><a href="/wiki/List_of_FTP_commands" title="List of FTP commands">List of FTP commands</a></li>
+<li><a href="/wiki/List_of_HTTP_status_codes" title="List of HTTP status codes">List of HTTP status codes</a></li></ul>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=List_of_FTP_server_return_codes&amp;action=edit&amp;section=2" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="reflist" style="list-style-type: decimal;">
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><b><a href="#cite_ref-1">^</a></b></span> <span class="reference-text"><a class="external mw-magiclink-rfc" rel="nofollow" href="https://tools.ietf.org/html/rfc959">RFC 959</a></span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><b><a href="#cite_ref-2">^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external text" href="https://docs.microsoft.com/en-us/windows/desktop/winsock/windows-sockets-error-codes-2">Windows Socket Error Codes</a>, Microsoft Windows Dev Center</span>
+</li>
+</ol></div></div>
+<div role="navigation" class="navbox" aria-labelledby="Error_messages" style="padding:3px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tbody><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view"><a href="/wiki/Template:Error_messages" title="Template:Error messages"><abbr title="View this template" style=";;background:none transparent;border:none;-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none; padding:0;">v</abbr></a></li><li class="nv-talk"><a href="/wiki/Template_talk:Error_messages" title="Template talk:Error messages"><abbr title="Discuss this template" style=";;background:none transparent;border:none;-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none; padding:0;">t</abbr></a></li><li class="nv-edit"><a class="external text" href="//en.wikipedia.org/w/index.php?title=Template:Error_messages&amp;action=edit"><abbr title="Edit this template" style=";;background:none transparent;border:none;-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none; padding:0;">e</abbr></a></li></ul></div><div id="Error_messages" style="font-size:114%;margin:0 4em"><a href="/wiki/Error_message" title="Error message">Error messages</a></div></th></tr><tr><th scope="row" class="navbox-group" style="width:1%">System failure</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Bomb_(icon)" title="Bomb (icon)">Bomb icon</a></li>
+<li><a href="/wiki/Fatal_system_error" title="Fatal system error">Fatal system error</a></li>
+<li><a href="/wiki/Guru_Meditation" title="Guru Meditation">Guru Meditation</a></li>
+<li><a href="/wiki/Kernel_panic" title="Kernel panic">Kernel panic</a></li>
+<li><a href="/wiki/Linux_kernel_oops" title="Linux kernel oops">Linux kernel oops</a></li>
+<li><a href="/wiki/Xbox_360_technical_problems#&quot;General_Hardware_Failure&quot;_errors" title="Xbox 360 technical problems">Red Ring of Death</a></li>
+<li><a href="/wiki/Macintosh_startup#Sad_Mac" title="Macintosh startup">Sad Mac</a></li>
+<li><a href="/wiki/Screen_of_death" title="Screen of death">Screen of death</a>
+<ul><li><a href="/wiki/Blue_Screen_of_Death" title="Blue Screen of Death">Blue</a></li>
+<li><a href="/wiki/Black_Screen_of_Death" title="Black Screen of Death">Black</a></li></ul></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">Application failure</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Abnormal_end" title="Abnormal end">ABEND</a></li>
+<li><a href="/wiki/Fatal_exception_error" title="Fatal exception error">Fatal exception error</a></li>
+<li><a href="/wiki/Segmentation_fault" title="Segmentation fault">Segmentation fault</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">Device and data errors</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/HTTP_403" title="HTTP 403">HTTP 403</a></li>
+<li><a href="/wiki/HTTP_404" title="HTTP 404">HTTP 404</a></li>
+<li><a href="/wiki/Lp0_on_fire" title="Lp0 on fire">lp0 on fire</a></li>
+<li><a href="/wiki/Not_a_typewriter" title="Not a typewriter">Not a typewriter</a></li>
+<li><a href="/wiki/PC_LOAD_LETTER" title="PC LOAD LETTER">PC LOAD LETTER</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">Other</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Abort,_Retry,_Fail%3F" title="Abort, Retry, Fail?">Abort, Retry, Fail?</a></li>
+<li><a href="/wiki/Bad_command_or_file_name" title="Bad command or file name">Bad command or file name</a></li>
+<li><a href="/wiki/Halt_and_Catch_Fire" title="Halt and Catch Fire">Halt and Catch Fire</a></li>
+<li><a href="/wiki/Hyper_Text_Coffee_Pot_Control_Protocol" title="Hyper Text Coffee Pot Control Protocol">HTTP 418</a></li>
+<li><a href="/wiki/Out_of_memory" title="Out of memory">Out of memory</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">Lists</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/List_of_HTTP_status_codes" title="List of HTTP status codes">List of HTTP status codes</a></li>
+<li><a class="mw-selflink selflink">List of FTP server return codes</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">Related</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Spinning_pinwheel" title="Spinning pinwheel">Spinning pinwheel</a></li>
+<li><a href="/wiki/Windows_wait_cursor" title="Windows wait cursor">Windows wait cursor</a></li></ul>
+</div></td></tr></tbody></table></div>
+<!-- 
+NewPP limit report
+Parsed by mw1244
+Cached time: 20190728055509
+Cache expiry: 2592000
+Dynamic content: false
+Complications: []
+CPU time usage: 0.080 seconds
+Real time usage: 0.104 seconds
+Preprocessor visited node count: 170/1000000
+Preprocessor generated node count: 0/1500000
+Post‐expand include size: 10799/2097152 bytes
+Template argument size: 95/2097152 bytes
+Highest expansion depth: 7/40
+Expensive parser function count: 0/500
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 814/5000000 bytes
+Number of Wikibase entities loaded: 0/400
+Lua time usage: 0.010/10.000 seconds
+Lua memory usage: 786 KB/50 MB
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   44.492      1 -total
+ 50.26%   22.360      1 Template:Error_messages
+ 49.58%   22.057      1 Template:Reflist
+ 39.08%   17.387      1 Template:Navbox
+  6.52%    2.902      1 Template:Main_other
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:4286042-0!canonical and timestamp 20190728055509 and revision id 867840585
+ -->
+</div><noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>
+		
+		<div class="printfooter">Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=List_of_FTP_server_return_codes&amp;oldid=867840585">https://en.wikipedia.org/w/index.php?title=List_of_FTP_server_return_codes&amp;oldid=867840585</a>"</div>
+		
+		<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Computer_errors" title="Category:Computer errors">Computer errors</a></li><li><a href="/wiki/Category:File_Transfer_Protocol" title="Category:File Transfer Protocol">File Transfer Protocol</a></li><li><a href="/wiki/Category:Internet-related_lists" title="Category:Internet-related lists">Internet-related lists</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="/wiki/Category:Pages_using_RFC_magic_links" title="Category:Pages using RFC magic links">Pages using RFC magic links</a></li></ul></div></div>
+		<div class="visualClear"></div>
+		
+	</div>
+</div>
+
+
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-anonuserpage">Not logged in</li><li id="pt-anontalk"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n">Talk</a></li><li id="pt-anoncontribs"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y">Contributions</a></li><li id="pt-createaccount"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=List+of+FTP+server+return+codes" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=List+of+FTP+server+return+codes" title="You&#039;re encouraged to log in; however, it&#039;s not mandatory. [o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+							<li id="ca-nstab-main" class="selected"><span><a href="/wiki/List_of_FTP_server_return_codes" title="View the content page [c]" accesskey="c">Article</a></span></li><li id="ca-talk"><span><a href="/wiki/Talk:List_of_FTP_server_return_codes" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Talk</a></span></li>						</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-variants-label" />
+						<h3 id="p-variants-label">
+							<span>Variants</span>
+						</h3>
+						<ul class="menu">
+													</ul>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+							<li id="ca-view" class="collapsible selected"><span><a href="/wiki/List_of_FTP_server_return_codes">Read</a></span></li><li id="ca-edit" class="collapsible"><span><a href="/w/index.php?title=List_of_FTP_server_return_codes&amp;action=edit" title="Edit this page [e]" accesskey="e">Edit</a></span></li><li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=List_of_FTP_server_return_codes&amp;action=history" title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>						</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-cactions-label" />
+						<h3 id="p-cactions-label"><span>More</span></h3>
+						<ul class="menu">
+													</ul>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+						<form action="/w/index.php" id="searchform">
+							<div id="simpleSearch">
+								<input type="search" name="search" placeholder="Search Wikipedia" title="Search Wikipedia [f]" accesskey="f" id="searchInput"/><input type="hidden" value="Special:Search" name="title"/><input type="submit" name="fulltext" value="Search" title="Search Wikipedia for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/wiki/Main_Page" title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+			<h3 id="p-navigation-label">Navigation</h3>
+			<div class="body">
+								<ul>
+					<li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li><li id="n-contents"><a href="/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li><li id="n-featuredcontent"><a href="/wiki/Portal:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li><li id="n-currentevents"><a href="/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li><li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random article [x]" accesskey="x">Random article</a></li><li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us">Donate to Wikipedia</a></li><li id="n-shoplink"><a href="//shop.wikimedia.org" title="Visit the Wikipedia store">Wikipedia store</a></li>				</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-interaction" aria-labelledby="p-interaction-label">
+			<h3 id="p-interaction-label">Interaction</h3>
+			<div class="body">
+								<ul>
+					<li id="n-help"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li><li id="n-aboutsite"><a href="/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li><li id="n-portal"><a href="/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li><li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li><li id="n-contactpage"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia">Contact page</a></li>				</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Tools</h3>
+			<div class="body">
+								<ul>
+					<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/List_of_FTP_server_return_codes" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/List_of_FTP_server_return_codes" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-upload"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u">Upload file</a></li><li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-permalink"><a href="/w/index.php?title=List_of_FTP_server_return_codes&amp;oldid=867840585" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="/w/index.php?title=List_of_FTP_server_return_codes&amp;action=info" title="More information about this page">Page information</a></li><li id="t-wikibase"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q1442361" title="Link to connected data repository item [g]" accesskey="g">Wikidata item</a></li><li id="t-cite"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=List_of_FTP_server_return_codes&amp;id=867840585" title="Information on how to cite this page">Cite this page</a></li>				</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-coll-print_export" aria-labelledby="p-coll-print_export-label">
+			<h3 id="p-coll-print_export-label">Print/export</h3>
+			<div class="body">
+								<ul>
+					<li id="coll-create_a_book"><a href="/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=List+of+FTP+server+return+codes">Create a book</a></li><li id="coll-download-as-rl"><a href="/w/index.php?title=Special:ElectronPdf&amp;page=List+of+FTP+server+return+codes&amp;action=show-download-screen">Download as PDF</a></li><li id="t-print"><a href="/w/index.php?title=List_of_FTP_server_return_codes&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-lang" aria-labelledby="p-lang-label">
+			<h3 id="p-lang-label">Languages</h3>
+			<div class="body">
+								<ul>
+					<li class="interlanguage-link interwiki-fr"><a href="https://fr.wikipedia.org/wiki/Liste_des_codes_des_r%C3%A9ponses_d%27un_serveur_FTP" title="Liste des codes des réponses d&#039;un serveur FTP – French" lang="fr" hreflang="fr" class="interlanguage-link-target">Français</a></li><li class="interlanguage-link interwiki-ja"><a href="https://ja.wikipedia.org/wiki/FTP%E3%82%B5%E3%83%BC%E3%83%90%E3%83%AA%E3%82%BF%E3%83%BC%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E4%B8%80%E8%A6%A7" title="FTPサーバリターンコードの一覧 – Japanese" lang="ja" hreflang="ja" class="interlanguage-link-target">日本語</a></li><li class="interlanguage-link interwiki-ru"><a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2_%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%BE%D0%B2_FTP" title="Список кодов ответов FTP – Russian" lang="ru" hreflang="ru" class="interlanguage-link-target">Русский</a></li><li class="interlanguage-link interwiki-uk"><a href="https://uk.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BA%D0%BE%D0%B4%D1%96%D0%B2_%D0%B2%D1%96%D0%B4%D0%BF%D0%BE%D0%B2%D1%96%D0%B4%D0%B5%D0%B9_FTP" title="Список кодів відповідей FTP – Ukrainian" lang="uk" hreflang="uk" class="interlanguage-link-target">Українська</a></li>				</ul>
+				<div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q1442361#sitelinks-wikipedia" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>			</div>
+		</div>
+				</div>
+		</div>
+				<div id="footer" role="contentinfo">
+						<ul id="footer-info">
+								<li id="footer-info-lastmod"> This page was last edited on 8 November 2018, at 10:10<span class="anonymous-show">&#160;(UTC)</span>.</li>
+								<li id="footer-info-copyright">Text is available under the <a rel="license" href="//en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="//foundation.wikimedia.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//foundation.wikimedia.org/wiki/Privacy_policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a href="//www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+							</ul>
+						<ul id="footer-places">
+								<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">Privacy policy</a></li>
+								<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+								<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+								<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+								<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+								<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Cookie_statement">Cookie statement</a></li>
+								<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/w/index.php?title=List_of_FTP_server_return_codes&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+							</ul>
+										<ul id="footer-icons" class="noprint">
+										<li id="footer-copyrightico">
+						<a href="https://wikimediafoundation.org/"><img src="/static/images/wikimedia-button.png" srcset="/static/images/wikimedia-button-1.5x.png 1.5x, /static/images/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation"/></a>					</li>
+										<li id="footer-poweredbyico">
+						<a href="https://www.mediawiki.org/"><img src="/static/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/poweredby_mediawiki_132x47.png 1.5x, /static/images/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a>					</li>
+									</ul>
+						<div style="clear: both;"></div>
+		</div>
+		
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+html {
+	font-family: Arial;
+	font-size: 12px;
+}
+h1 {
+	font-size: 1.4rem;
+}
+h2 {
+	font-size: 1.3rem;
+}
+h3 {
+	font-size: 1.2rem;
+}
+h4 {
+	font-size: 1.1rem;
+}
+h5 {
+	font-size: 1.0rem;
+}
+h6 {
+	font-size: 0.9rem;
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	margin-left: 1.25rem;
+	padding-left: 0;
+}
+li {
+	margin-left: 1.25rem;
+}
+table {
+	border-collapse: collapse;
+}
+th {
+	background: powderblue;
+	text-align: left;
+}
+td {
+	padding: 5px;
+	border-bottom: 2px solid black;
+}
+tr:nth-child(even) {
+}
+tr:nth-child(odd) {
+	background: aliceblue;
+}
+.twoColumnList {
+	columns: 2;
+}
+.threeColumnList {
+	columns: 3;
+}
+details[open] {
+	background: whitesmoke;
+}
+details[open] summary {
+	color: darkred;
+}
+details[open] details:not([open]) summary {
+	color: black;
+}
+details details {
+	margin-left: 1.5rem;
+}
+details details[open] {
+	background: gainsboro;
+}
+details details[open] summary {
+	color: darkred;
+}

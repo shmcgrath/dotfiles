@@ -35,3 +35,11 @@ xterm.termName: xterm-256color
 xterm*visualBell: true
 xterm*vt100.geometry:80x33
 xterm.vt100.saveLines: 4096
+! urxvt
+URxvt*geometry: 80x33
+URxvt*loginShell: true
+URxvt*scrollBar: false
+URxvt*scrollBar_floating: false
+URxvt*scrollBar_right: false
+URxvt*urgentOnBell: true
+URxvt*visualBell: true

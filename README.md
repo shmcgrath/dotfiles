@@ -48,3 +48,4 @@ These are some of the links that I found useful when figuring out how to manage 
 - Current iTerm colorscheme: base16 tomorrownight dark 256
 - When bootstraping a new machine, change the $HOME in .stowrc to the actual home path of the machine
 - Make sure to mark stowrc and newsblur-pass as [assume-unchnaged](https://www.git-scm.com/docs/git-update-index)
+- Add .scripts to the windows path

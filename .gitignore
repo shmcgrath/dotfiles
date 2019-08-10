@@ -3,6 +3,7 @@
 
 # newsboat ignore cookies.txt
 newsboat/.config/newsboat/cookies.txt
+newsboat/.config/newsboat/error.log
 
 # Ignore private bookmarks
 bookmarks/shm-private.html

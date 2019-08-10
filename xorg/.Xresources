@@ -43,3 +43,5 @@ URxvt*scrollBar_floating: false
 URxvt*scrollBar_right: false
 URxvt*urgentOnBell: true
 URxvt*visualBell: true
+URxvt*background: black
+URxvt*foreground: lightgray

@@ -1,5 +1,10 @@
 cookie-cache "~/.config/newsboat/cookies.txt"
+bookmark-cmd "~/.config/newsboat/shm-bookmark-cmd.sh"
+datetime-format "%Y-%m-%d %I:%M%p"
+error-log "~/.config/newsboat/error.log"
+urls-source "newsblur"
+
+# Newsblur information
 newsblur-login "schneid3306"
 newsblur-min-items 150
 newsblur-passwordfile "~/.config/newsboat/newsblur-pw.txt"
-urls-source "newsblur"

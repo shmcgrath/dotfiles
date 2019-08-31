@@ -6,7 +6,9 @@ python -m venv venv
 
 cd venv
 
-source ./venv/bin/activate
+bash: source ./venv/bin/activate
+
+ksh: . ./venv/bin/activate
 
 ./venv/bin/activate
 

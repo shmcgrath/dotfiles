@@ -1,4 +1,3 @@
-colorscheme paramount
 let g:markdown_syntax_conceal = 0
 setlocal colorcolumn=0
 setlocal complete+=kspell

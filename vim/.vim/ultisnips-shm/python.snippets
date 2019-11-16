@@ -204,7 +204,7 @@ logging.error(${0:${VISUAL}})
 endsnippet
 
 snippet withopen
-with open (${1:File name or variable}, mode='${2:rwx}') as ${3:ioName}: 
+with open (${1:File name or variable}, mode='${2:rwx}', encoding='utf-8') as ${3:ioName}: 
 	$0
 $3.close()
 endsnippet

@@ -52,6 +52,10 @@ grep -h $grepTerm ~/Dropbox/bash-history/*
 }
 
 # ==ALIASES{{{2
+if [ -f $HOME/.aliasrc ]; then
+	source $HOME/.aliasrc && echo 'sourcing $HOME/.aliasrc'
+fi
+
 alias ll='ls -FGlAhp --time-style=long-iso'                       # Preferred 'ls' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias pbcopy="xclip -selection clipboard"

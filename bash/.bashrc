@@ -61,6 +61,14 @@ alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
 alias sbrc="source ~/.bash_profile && echo 'sourcing $HOME/.bash_profile'" # reloads bash_profile and bashrc
 cdll() { builtin cd "$@"; ll; }             # Always list directory contents upon 'cd'
+
+# ==PASTEBIN{{{2
+# Paste file to https://paste.rs
+function pastebin() {
+	local pastefile=${1:-/dev/stdin}
+	curl --data-binary @${pastefile} https://paste.rs
+}
+
 # FILE AND FOLDER MANAGEMENT{{{2
 
 zipf () { zip -r "$1".zip "$1" ; } # zipf: To create a ZIP archive of a folder

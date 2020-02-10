@@ -4,8 +4,9 @@
 [github]
 	user = shmcgrath
 [core]
+	autocrlf = input
 	editor = vim
-	#whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	whitespace=warn,indent-with-non-tab,trailing-space,cr-at-eol
 [alias]
 	a = add --verbose
 	an = add --dry-run --verbose
@@ -24,6 +25,7 @@
 	lgd = log -p
 	lgm = log --graph --author='Sarah H. McGrath' --date=format:'%Y-%m-%d %H:%M' --format=format:'%C(auto)%h %d%Creset%Cgreen%ad%Creset %aN <%aE>%n%Cblue%s%Creset%+b'
 	lgp = log --date=format:'%Y-%m-%d %H:%M' --pretty=fuller
+	ls = ls-files | less
 	mum = merge upstream/master
 	remote = remote -v
 	rem = remote -v
@@ -47,3 +49,9 @@
 	untracked = cyan
 [diff]
 	tool = vimdiff
+[difftool]
+	prompt = false
+[merge]
+	tool = kdiff3
+[mergetool]
+	prompt = false

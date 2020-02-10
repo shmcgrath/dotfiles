@@ -30,12 +30,15 @@ export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:
 #	from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
 export BLOCKSIZE=1k
 
+# ==HISTORY{{{2
 # History Size
-export HISTIGNORE="ls:ll:cd:pwd"
+export HISTIGNORE="ls:ll:cd:pwd:history"
 export HISTFILESIZE=100000
 export HISTSIZE=100000
 export HISTCONTROL="ignoredups:erasedups"
+export HISTTIMEFORMAT="%F %T " # timestamp to histroy
 shopt -s histappend # append to history, don't overwrite it
+shopt -s cmdhist # store multi-line commands in one histroy entry
 
 # Paths
 function nonzero_return() {

@@ -1,6 +1,8 @@
 [user]
 	name = Sarah H. McGrath
 	email = sarah@shmcgrath.com
+[github]
+	user = shmcgrath
 [core]
 	editor = vim
 	#whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -43,3 +45,5 @@
 	added = yellow
 	changed = green
 	untracked = cyan
+[diff]
+	tool = vimdiff

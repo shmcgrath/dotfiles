@@ -216,6 +216,10 @@ git rm $(git ls-files --deleted)
 git rm --cached <file1> <file2> ...
   commits absence of <file1>, <file2>, etc... from the project
 
+### Moving / Renaming Directories
+
+git mv oldfolder newfolder
+
 ### Ignoring
 
 Option 1:

@@ -1,5 +1,5 @@
 # save all movies to home directory
--o ~/video/youtube-dl/%(title)s.%(uploader)s.%(uploader_id)s.%(channel)s.%(channel_id)s.%(release_date)s.%(id)s.%(ext)s
+-o ~/video/youtube-dl/%(title)s.%(uploader)s.%(uploader_id)s.%(channel)s.%(channel_id)s.%(upload_date)s.%(id)s.%(ext)s
 
 --format best/bestvideo+bestaudio
 

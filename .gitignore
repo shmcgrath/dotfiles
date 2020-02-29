@@ -78,3 +78,8 @@ themes/.fonts/**/.uuid
 # Ignore purchased fonts 
 themes/.fonts/OperatorMono
 base16-shell
+
+# emacs
+emacs/.emacs.d/auto-save-list
+emacs/.emacs.d/elpa
+emacs/.emacs.d/custom.el

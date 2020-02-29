@@ -15,4 +15,4 @@ read authorizationHeader
 echo "Save file name (do not include .mp4 or any extension): "
 read saveName
 fileName=$saveName-$dateTimeRaw
-youtube-dl -f $formatCode "$downloadURL" --add-header="$authorizationHeader" -o "/home/shmcg/Videos/youtube-dl/$fileName.mp4"
+youtube-dl -f $formatCode "$downloadURL" --add-header="$authorizationHeader" -o "/home/shmcg/video/youtube-dl/$fileName.mp4"

@@ -46,6 +46,12 @@
   :config
   (which-key-mode))
 
+;; Lockfiles, undo files, and backup files
+;; do not create lockfiles
+(setq create-lockfiles nil)
+;; set emacs backup directory
+(setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
+
 ;; Disable GUI and visual bell
 (setq tool-bar-mode -1)
 (setq menu-bar-mode -1)

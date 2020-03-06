@@ -64,7 +64,7 @@
 (load-theme 'misterioso)
 
 ;; enable line numbers
-(global-linum-mode 1)
+;;(global-linum-mode 1)
 
 ;; Text prompts
 (setq use-dialog-box nil)

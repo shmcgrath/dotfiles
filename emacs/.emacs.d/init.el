@@ -22,6 +22,8 @@
       calendar-latitude 40.44
       calendar-longitude -79.99
       calendar-location-name "Pittsburgh, PA")
+;; stop encode prompts
+(set-language-environment "utf-8")
 
 (use-package evil
   :ensure t

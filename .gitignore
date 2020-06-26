@@ -25,7 +25,6 @@ hazel/.hazel/actions/timestamp-file/*
 hazel/.hazel/actions/un-nest/*
 hazel/.hazel/actions/unzip/*
 
-
 # personal reference
 */**/fstab
 
@@ -34,7 +33,6 @@ hazel/.hazel/actions/unzip/*
 */**/secrets.py
 # ignore pycache
 **/__pycache__
-
 
 # vim
 # Ignore managed vim-plug plugins

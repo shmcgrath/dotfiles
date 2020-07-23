@@ -1,24 +1,13 @@
 # save all movies to home directory
 -o ~/video/youtube-dl/%(title)s.%(uploader)s.%(uploader_id)s.%(channel)s.%(channel_id)s.%(upload_date)s.%(id)s.%(autonumber)s.%(ext)s
-
---format best/bestvideo+bestaudio
-
-#--yes-playlist
-
---restrict-filenames
-
---no-overwrites
-
---verbose
-
 --console-title
-
-#--newline
-
+--format best/bestvideo+bestaudio
+--no-overwrites
+--restrict-filenames
 #--all-subs
-
-#--sub-format srt
-
-#--convert-subs srt
-
 #--audio-quality 0
+#--convert-subs srt
+#--newline
+#--sub-format srt
+#--verbose
+#--yes-playlist

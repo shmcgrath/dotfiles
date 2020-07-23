@@ -21,7 +21,11 @@ snippet p
 endsnippet
 
 snippet h
-<h${1:HeadingSize}>${0:${VISUAL}}</h$1>
+<h${1:HeadingSize}>${2:${VISUAL:Heading}}</h$1>
+endsnippet
+
+snippet hid
+<h${1:HeadingSize}${4: id="${3:`!p snip.rv = remove_all_whitespace_and_punctuation(t[2])`}"}>${2:${VISUAL:Heading}}</h$1>
 endsnippet
 
 snippet title
@@ -240,6 +244,20 @@ endsnippet
 
 snippet com
 <!-- ${0:${VISUAL}} -->
+endsnippet
+
+snippet dl "Description List / Definition List" t
+<dl>
+	<dt>${1:term}</dt>
+	<dd>${2:description or definition}</dd>
+	$0
+</dl>
+endsnippet
+
+snippet def "Description or Definition"
+	<dt>${1:term}</dt>
+	<dd>${2:description or definition}</dd>
+	$0
 endsnippet
 
 # vim:ft=snippets:

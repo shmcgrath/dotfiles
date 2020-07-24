@@ -110,10 +110,11 @@ md5check() {
 
 # SEARCHING{{{2
 
-alias qfind="find . -name "                 # qfind:    Quickly search for file
-ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the current directory
-ffs () { /usr/bin/find . -name "$@"'*' ; }  # ffs:      Find file whose name starts with a given string
-ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name ends with a given string
+alias qfind="find . -iname "                 # qfind:    Quickly search for file
+ff () { /usr/bin/find . -iname "$@" ; }      # ff:       Find file under the current directory
+ffs () { /usr/bin/find . -iname "$@"'*' ; }  # ffs:      Find file whose name starts with a given string
+ffe () { /usr/bin/find . -iname '*'"$@" ; }  # ffe:      Find file whose name ends with a given string
+ffc () { /usr/bin/find . -iname '*'"$@"'*' ; }  # ffc: Find file whose name contains a given string
 
 #   spotlight: Search for a file using MacOS Spotlight's metadata
 spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }

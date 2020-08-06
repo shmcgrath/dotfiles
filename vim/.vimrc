@@ -306,3 +306,5 @@ nnoremap <silent> <F22> :!start C:\Program Files (x86)\Google\Chrome\Application
 " Document Skeletons {{{2
 " TODO: make this a command instead of a mapping
 nnoremap <leader>skel :-1read $HOME/.vim/skeletons/
+
+let g:UltiSnipsSnippetsDir=$HOME."/.vim/ultisnips-shm"

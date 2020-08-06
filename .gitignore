@@ -25,16 +25,14 @@ hazel/.hazel/actions/timestamp-file/*
 hazel/.hazel/actions/un-nest/*
 hazel/.hazel/actions/unzip/*
 
-
 # personal reference
 */**/fstab
 
 # scripts
 # ignore secrets.py that hold API keys
-scripts/.scripts/secrets.py
+*/**/secrets.py
 # ignore pycache
 **/__pycache__
-
 
 # vim
 # Ignore managed vim-plug plugins
@@ -78,3 +76,9 @@ themes/.fonts/**/.uuid
 # Ignore purchased fonts 
 themes/.fonts/OperatorMono
 base16-shell
+
+# emacs
+emacs/.emacs.d/auto-save-list
+emacs/.emacs.d/backups
+emacs/.emacs.d/elpa
+emacs/.emacs.d/transient

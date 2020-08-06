@@ -50,7 +50,7 @@ function grep_bash_history() {
 	#alias gbl="grep -h logcat ~/Dropbox/bash-history/bash-log-*"
 	args=("$@")
 	grepTerm=${args[0]}
-	grep -h $grepTerm ~/Dropbox/bash-history/*
+	grep -h $grepTerm ~/Dropbox/bash-history/* | less
 }
 
 # ==ALIASES{{{2

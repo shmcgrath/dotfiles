@@ -32,7 +32,7 @@ export BLOCKSIZE=1k
 
 # ==HISTORY{{{2
 # History Size
-export HISTIGNORE="ls:ll:cd:pwd:history"
+export HISTIGNORE="ls:ll:cd:pwd:history:ranger"
 export HISTFILESIZE=100000
 export HISTSIZE=100000
 export HISTCONTROL="ignoredups:erasedups"

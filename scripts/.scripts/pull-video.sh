@@ -3,7 +3,7 @@
 # The Stream Detector URL: https://github.com/rowrawer/stream-detector/
 echo "To find the stream via Developer Tools within a web browser, search for m3u8 in the Network filter bar. For ESPN+, it will be a 302 status."
 echo "Filenames (most recent on top) to select when using The Stream Detector Firefox extension:"
-echo "ESPN+: 'master_desktop_complete'"
+echo "ESPN+: 'master_desktop_complete' and choose the URL that begins with 'vod-'"
 echo "F1: 'clip_2_master' Note: there will be a more recent clip_2_master when changing to a driver onboard"
 echo "Fulham FC: 'UICONFID'"
 read -r -p "URL of the video to download: " downloadURL
@@ -47,6 +47,7 @@ case $needAuth in
 		[yY][eE][sS]|[yY])
 	echo "Auth Header is browser~ssai above the 302 request URL OR"
 	echo "200 GET XHR octect stream; usually under 204 options"
+	echo "Quickest way is to search for 'ssai'"
 	read -r -p "Authorization header (include 'authorization:'): " authorizationHeader
 	youtube-dl -f $formatCode "$downloadURL" --add-header="$authorizationHeader" -o "~/video/youtube-dl/$fileName.%(ext)s"
 	;;

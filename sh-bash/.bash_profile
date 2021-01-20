@@ -3,6 +3,7 @@
 # The original version is saved in .bash_profile.pysave
 # PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 PATH="$HOME/.scripts/:${PATH}"
+PATH="/opt/:${PATH}"
 export PATH
 
 if [ -f $HOME/.bashrc ]; then

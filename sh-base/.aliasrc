@@ -26,6 +26,7 @@ alias hst="history" # show command history
 alias ip?="dig +short myip.opendns.com @resolver1.opendns.com"
 alias j="jobs -1" # show jobs
 alias jc="journalctl"
+alias kvm="sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other" # mounting for shared folders in kali vm
 alias makemkv="makemkvcon" # alias not rememberable makemkv command
 alias mkdir="mkdir -p" # creates intermediate directories
 alias mv="mv -iv" # preferred "mv" implementation

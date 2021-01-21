@@ -20,6 +20,16 @@
 17. stow sh-base, sh-bash, and scripts and restart the system
 18. run kali-shm.sh
 19. open vim and run PlugUpdate
+20. make font size smaller in system
+	- Default Font to 10
+	- Monospace Font to 9
+21. set up flameshot
+	- set to run at startup
+	- set path to be hacking-security/flameshot
+	- set filename to %Y.%m.%d-%H.%M.%S
+	- delete all print screen keybinds
+	- print screen is "/usr/bin/flameshot full -p /home/kali/hacking-security/flameshot/" set up in keyboard
+	- ctrl+print screen is "/usr/bin/flameshot gui -p /home/kali/hacking-security/flameshot/" set up in keyboard
 
 # Kali Notes
 - alias for "sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other" is kvm

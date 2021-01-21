@@ -15,6 +15,6 @@ if [ $? != 0 ]; then
 	tmux send-keys -t red:2.2 "vim oscp.md" C-m
 	tmux new-window -n enumeration -t red
     tmux select-window -t red:2
-    tmux select-pane -t red:2.2
+    tmux select-pane -t red:2.1
 fi
 tmux attach -t red

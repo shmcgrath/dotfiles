@@ -18,7 +18,7 @@
 15. stow the stow folder from dotfiles manually "stow -v --ignore ".DS_Store" -t ~/ stow"
 16. "mv ~/.bashrc ~/.bashrc-default"
 17. stow sh-base, sh-bash, and scripts and restart the system
-18. run kali-setup.sh
+18. run kali-shm.sh
 
 # Kali Notes
 - alias for "sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other" is kvmmount

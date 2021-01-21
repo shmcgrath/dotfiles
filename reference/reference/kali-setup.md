@@ -30,6 +30,7 @@
 	- delete all print screen keybinds
 	- print screen is "/usr/bin/flameshot full -p /home/kali/hacking-security/flameshot/" set up in keyboard
 	- ctrl+print screen is "/usr/bin/flameshot gui -p /home/kali/hacking-security/flameshot/" set up in keyboard
+22. change terminal font to hack
 
 # Kali Notes
 - alias for "sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other" is kvm

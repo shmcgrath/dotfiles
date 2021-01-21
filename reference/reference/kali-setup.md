@@ -19,6 +19,7 @@
 16. "mv ~/.bashrc ~/.bashrc-default"
 17. stow sh-base, sh-bash, and scripts and restart the system
 18. run kali-shm.sh
+19. open vim and run PlugUpdate
 
 # Kali Notes
 - alias for "sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other" is kvm

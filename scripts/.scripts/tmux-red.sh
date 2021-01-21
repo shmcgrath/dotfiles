@@ -6,6 +6,8 @@ if [ $? != 0 ]; then
     tmux send-keys -t red "echo 'to connect to vpn sudo openvpn'" C-m
 	tmux split-window -v -p 50 -t red:1
 	tmux send-keys -t red:1.2 "cd $HOME/bin" C-m
+	tmux split-window -h -p 30 -t red:1.1
+    tmux send-keys -t red "cd $HOME/dotfiles" C-m
     tmux select-pane -t red:1.1
 	tmux new-window -n scratchpad -t red
 	tmux split-window -v -p 50 -t red:2

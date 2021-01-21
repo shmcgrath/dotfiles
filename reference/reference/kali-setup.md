@@ -21,4 +21,4 @@
 18. run kali-shm.sh
 
 # Kali Notes
-- alias for "sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other" is kvmmount
+- alias for "sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other" is kvm

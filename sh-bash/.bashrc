@@ -18,6 +18,15 @@ export EDITOR="$VISUAL"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export NOTES=$HOME/Dropbox/notes
 
+# PATH{{{2
+if [ -d "$HOME/.scripts" ]; then
+	PATH="$HOME/.scripts:${PATH}"
+fi
+
+if [ -d "$HOME/bin" ]; then
+	PATH="$HOME/bin:${PATH}"
+fi
+echo 'PATH: '$PATH
 # ==PROMPT{{{2
 if [ -f $HOME/.promptrc ]; then
 	source $HOME/.promptrc && echo 'sourcing $HOME/.promptrc'

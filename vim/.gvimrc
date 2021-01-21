@@ -14,7 +14,7 @@ elseif has ('gui_macvim') || has('mac') || has('macunix') || has ('osx')
 else
     " Set default font for non-macOS / non-Windows machine
     " set guifont=Source\ Code\ Pro\ Light:h11
-    set guifont=Noto Mono:h9
+    set guifont=Noto\ Mono:h9
 endif
 
 " Window Options {{{1

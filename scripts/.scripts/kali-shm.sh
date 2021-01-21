@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 cd $HOME
 sudo mkdir /mnt/hgfs
 sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other

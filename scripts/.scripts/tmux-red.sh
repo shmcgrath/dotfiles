@@ -4,7 +4,7 @@ if [ $? != 0 ]; then
     tmux new-session -s red -n vpn-tools -d
     tmux send-keys -t red "cd $HOME/hacking-security/vpn" C-m
     tmux send-keys -t red "echo 'to connect to vpn sudo openvpn'" C-m
-	tmux split-window -v -p 50 -t red:2
+	tmux split-window -v -p 50 -t red:1
 	tmux send-keys -t red:1.2 "cd $HOME/bin" C-m
     tmux select-pane -t red:1.1
 	tmux new-window -n scratchpad -t red

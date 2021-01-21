@@ -8,7 +8,7 @@ if [ $? != 0 ]; then
 	tmux split-window -v -p 50 -t red:2
 	tmux send-keys -t red:2.2 "cd $HOME/hacking-security" C-m
 	tmux new-window -n enumeration -t red
-    tmux select-window -t red:22
+    tmux select-window -t red:2
     tmux select-pane -t red:2.2
 fi
 tmux attach -t red

@@ -1,10 +1,12 @@
-# PATH Settings
-# Setting PATH for Python 3.6
-# The original version is saved in .bash_profile.pysave
-# PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-PATH="$HOME/.scripts/:${PATH}"
-PATH="$HOME/bin/:${PATH}"
-export PATH
+if [ -d "$HOME/.scripts" ]; then
+	PATH="$HOME/.scripts:${PATH}"
+	echo 'PATH: $PATH'
+fi
+
+if [ -d "$HOME/bin" ]; then
+	PATH="$HOME/bin:${PATH}"
+	echo 'PATH: $PATH'
+fi
 
 if [ -f $HOME/.bashrc ]; then
     source $HOME/.bashrc && echo 'sourcing $HOME/.bashrc'

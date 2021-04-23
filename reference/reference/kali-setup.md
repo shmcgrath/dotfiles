@@ -13,7 +13,7 @@
 10. restart machine
 11. open qterminal and run "sudo apt update && sudo apt upgrade" again
 12. echo $SHELL and echo $0 to confirm you are in bash. confirm that you can open the terminal and the file explorer
-13. "sudo apt-get install vim-gtk python3-pip flameshot stow"
+13. "sudo apt-get install vim-gtk python3-pip flameshot stow xclip"
 14. pull down dotfiles to system
 15. stow the stow folder from dotfiles manually "stow -v --ignore ".DS_Store" -t ~/ stow"
 16. "mv ~/.bashrc ~/.bashrc-default"

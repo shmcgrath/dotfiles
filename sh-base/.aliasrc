@@ -12,6 +12,7 @@ alias b64="base64 -o b64 -i"
 alias bci="brew cask install" # brew cask install
 alias bcs="brew cask search" # brew cask search
 alias cd..="cd ../" # go back 1 directory level (for fast typers)
+alias chron?="echo 'on arch chron is fcrontab'"
 alias cls="clear" # clear terminal display
 alias cp="cp -iv" # preferred "cp" implementation
 alias disk?="df -h" # shows disk space and percentage used

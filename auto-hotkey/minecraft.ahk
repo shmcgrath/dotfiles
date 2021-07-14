@@ -54,19 +54,11 @@ Return
 			break
 		}
 		
-		if (SwingCount = 150)
-		{
-			Send {8 down}{8 up}
-			Click, down, right
-			Sleep 10000
-			Click, up, right
-			Send {1 down}{1 up}
-		}
-
-		Sleep 1500
-		MouseClick, Left
 		Sleep 500
-		SwingCount++
+		MouseClick, Left
+		Click, Down, Right
+		Sleep 2300
+		Click, Up, Right
 	}
 Return
 
@@ -109,6 +101,19 @@ Return
 		Click, Up, Right
 Return
 
+; ctrl + alt + i starts the loop. This is for ice farm. shift + ctrl + alt + i ends the loop
+^!i::
+		Click, Down, Left
+		Sleep 250
+		Click, Down, Right
+Return
+
++^!i::
+		Click, Up, Left
+		Sleep 250
+		Click, Up, Right
+Return
+
 ; starts long delay for gold farm; ctrl + alt + g
 
 ^!t::
@@ -122,7 +127,15 @@ Return
 		}
 
 		MouseClick, Right
-		Sleep 1000
+		Sleep 10000
+	}
+Return
+
+^!k::
+	BreakLoop = 0
+	Loop
+	{
+		MouseClick, Right
 	}
 Return
 

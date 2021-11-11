@@ -70,13 +70,6 @@ ranger/.config/ranger/tagged*
 # ignore plugins
 ranger/.config/ranger/plugins/*
 
-# Ignore uuid files in fonts
-themes/.fonts/**/.uuid
-
-# Ignore purchased fonts 
-themes/.fonts/OperatorMono
-base16-shell
-
 # emacs
 emacs/.emacs.d/auto-save-list
 emacs/.emacs.d/backups

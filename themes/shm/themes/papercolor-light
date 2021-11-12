@@ -1,0 +1,55 @@
+! PaperColor Theme
+! source: https://old.reddit.com/r/vim/comments/36xzbs/vim_paper_color_theme_inspired_by_googles/crqbfpa/
+
+URxvt.foreground: #4D4D4C
+URxvt.background: #EEEEEE
+
+! black
+URxvt.color0: #EDEDED
+URxvt.color8: #969694
+
+! red
+URxvt.color1: #D7005F
+URxvt.color9: #D7005F
+
+! green
+URxvt.color2: #718C00
+URxvt.color10: #718C00
+
+! yellow / orange
+URxvt.color3: #D75F00
+URxvt.color11: #D75F00
+
+! blue
+URxvt.color4: #4271AE
+URxvt.color12: #4271AE
+
+! magenta
+URxvt.color5: #8959A8
+URxvt.color13: #8959A8
+
+! cyan
+URxvt.color6: #3E999F
+URxvt.color14: #3E999F
+
+! white
+URxvt.color7: #4D4D4C
+URxvt.color15: #F5F5F5
+'color00' : ['#eeeeee', '255'],
+'color01' : ['#af0000', '124'],
+'color02' : ['#008700', '28'],
+'color03' : ['#5f8700', '64'],
+'color04' : ['#0087af', '31'],
+'color05' : ['#878787', '102'],
+'color06' : ['#005f87', '24'],
+'color07' : ['#444444', '238'],
+'color08' : ['#bcbcbc', '250'],
+'color09' : ['#d70000', '160'],
+'color10' : ['#d70087', '162'],
+'color11' : ['#8700af', '91'],
+'color12' : ['#d75f00', '166'],
+'color13' : ['#d75f00', '166'],
+'color14' : ['#005faf', '25'],
+'color15' : ['#005f87', '24'],
+'color16' : ['#0087af', '31'],
+'color17' : ['#008700', '28'],

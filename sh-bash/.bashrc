@@ -1,7 +1,9 @@
 # .bashrc{{{1
 
-# Sections:
-# ==ENVIRONMENT
+# SECTIONS:
+# ==Environment
+# ==Source Bash Functions
+# ==Path
 # ==PROMPT
 # Make Terminal Better (remapping defaults and adding functionality)
 # File and Folder Management
@@ -11,29 +13,32 @@
 # Python
 # Reminders & Notes
 
-# ==ENVIRONMENT{{{2
+# ==Environment{{{2
 # Set Default Editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export NOTES=$HOME/Dropbox/notes
 
-# PATH{{{2
-if [ -d "$HOME/.scripts" ]; then
-	PATH="$HOME/.scripts:${PATH}"
+# ==Source Bash Functions{{{2
+if [ -d "$HOME/.shm/bash_functions" ]; then
+	for functionFile in "$HOME/.shm/bash_functions"/*; do
+		if [ -f "$functionFile" ]; then
+			source "$functionFile"
+		fi
+	done
+else
+	echo ".shm/bash_functions is missing!"
 fi
 
-if [ -d "$HOME/bin" ]; then
-	PATH="$HOME/bin:${PATH}"
-fi
+# ==Path{{{2
+pathCheckSet "$HOME/.shm/scripts"
+pathCheckSet "$HOME/bin"
 echo 'PATH: '$PATH
 # ==PROMPT{{{2
 if [ -f $HOME/.promptrc ]; then
-	source $HOME/.promptrc && echo 'sourcing $HOME/.promptrc'
+	source $HOME/.shm/promptrc && echo 'sourcing $HOME/.shm/promptrc'
 fi
-
-# PROMPT_COMMAND
-export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(hostname) $(pwd) $(history 1)" >> ~/Dropbox/bash-history/bash-log-$(date "+%Y-%m").log; fi'
 
 # Set default blocksize for ls, df, du
 #	from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
@@ -63,15 +68,15 @@ function grep_bash_history() {
 }
 
 # ==ALIASES{{{2
-if [ -f $HOME/.aliasrc ]; then
-	source $HOME/.aliasrc && echo 'sourcing $HOME/.aliasrc'
+if [ -f $HOME/.shm/aliasrc ]; then
+	source $HOME/.shm/aliasrc && echo 'sourcing $HOME/.shm/aliasrc'
 fi
 
 alias ll='ls -FGlAhp --time-style=long-iso'                       # Preferred 'ls' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
-alias sbrc="source ~/.bash_profile && echo 'sourcing $HOME/.bash_profile'" # reloads bash_profile and bashrc
+alias sbrc="source ~/.bashrc && echo 'sourcing $HOME/.bashrc'" # reloads bashrc
 cdll() { builtin cd "$@"; ll; }             # Always list directory contents upon 'cd'
 
 # ==PASTEBIN{{{2

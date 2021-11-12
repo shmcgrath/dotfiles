@@ -1,0 +1,26 @@
+{
+	"DuckDuckGo": {
+		"ddgBang": "",
+		"url": "https://duckduckgo.com/?q={{query}}"
+	},
+	"Basketball Reference": {
+	"ddgBang": "bkref",
+	"url": "https://www.basketball-reference.com/search/search.fcgi?hint=&search={{query}}"
+	},
+	"IMDB": {
+		"ddgBang": "imdb",
+		"url": "http://m.imdb.com/find?q={{query}}"
+    },
+    "YouTube": {
+    	"ddgBang": "",
+    	"url": "https://m.youtube.com/results?q={{query}}"
+    },
+	"Pinboard": {
+    	"ddgBang": "",
+    	"url": "https://m.pinboard.in/search/u:schneid3306?query={{query}}"
+	},
+	"Search Site on Google": {
+		"ddgBang": "g",
+		"url": "https://www.google.com/search?q=site:{{site}}+{{query}}"
+	}
+}

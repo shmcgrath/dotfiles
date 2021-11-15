@@ -1,0 +1,6 @@
+! xlock
+XLock.background: dimgray
+XLock.description: false
+XLock.erasemode: no_fade
+XLock.foreground: black
+XLock.mode: space

@@ -1,0 +1,15 @@
+! general
+Xft.autohint  : 0
+Xft.lcdfilter : lcddefault
+Xft.hintstyle : hintslight
+Xft.hinting   : 1
+Xft.antialias : 1
+Xft.rgba      : rgb
+! xidle
+XIdle*timeout: 600
+! Source Terminal Colors
+#include "$HOME/.shm/themes/dracula-Xresources"
+! Source Specific Program Files
+#include "$HOME/.shm/xres/xLock-Xresources"
+#include "$HOME/.shm/xres/xterm-Xresources"
+#include "$HOME/.shm/xres/xClock-Xresources"

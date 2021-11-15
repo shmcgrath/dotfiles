@@ -1,0 +1,11 @@
+! xclock - digital clock in lower right-hand corner
+XClock*analog      : false
+XClock*twentyfour  : false
+XClock*twelve      : true
+XClock*padding     : 0
+XClock*geometry    : -2-2
+XClock*render      : false
+XClock*height      : 12
+XClock*background  : purple
+XClock*foreground  : gold
+XClock*borderWidth : 2

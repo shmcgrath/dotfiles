@@ -1,0 +1,11 @@
+! xterm
+xterm*bellIsUrgent: true
+xterm*loginShell: true
+xterm*background: black
+xterm*foreground: lightgray
+xterm*scrollBar: false
+xterm*rightScrollBar: false
+xterm.termName: xterm-256color
+xterm*visualBell: true
+xterm*vt100.geometry:80x66
+xterm.vt100.saveLines: 4096

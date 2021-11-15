@@ -62,6 +62,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'davidoc/taskpaper.vim'
 Plug 'dbeniamine/todo.txt-vim'
+Plug 'dracula/vim', { 'as': 'dracula' } "will install the plugin in a directory called 'dracula' instead of just vim
 Plug 'glench/vim-jinja2-syntax'
 Plug 'godlygeek/tabular' " Text filtering and alignment
 Plug 'joeytwiddle/vim-diff-traffic-lights-colors'
@@ -106,7 +107,8 @@ set backspace=2 " Should make backspace like most other apps
 "set termguicolors " Turn on 24 bit color in terminal
 "highlight Comment cterm=italic gui=italic"
 set background=dark
-colorscheme PaperColor
+colorscheme dracula
+"colorscheme PaperColor
 "colorscheme apprentice
 "colorscheme desert " best out of the box colorscheme
 "colorscheme nord

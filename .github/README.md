@@ -19,6 +19,14 @@ $ stow -v --ignore ".DS_Store" -t ~/ folder
 
 You can also create a [.stow-global-ignore file](https://www.gnu.org/software/stow/manual/stow.html#Ignore-Lists) in your home directory and add .DS_Store to that file.
 
+
+When stowing grub, run as sudo with -Rv flags and --target of /
+
+``` bash
+$ sudo stow -Rv -t / grub
+
+```
+
 ## Useful Links for Dotfile Management and Creation
 These are some of the links that I found useful when figuring out how to manage dotfiles and when setting up the programs they configure.
 

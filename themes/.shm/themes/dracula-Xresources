@@ -1,0 +1,37 @@
+! Dracula Xresources palette
+#define dc00 #000000
+#define dc01 #FF5555
+#define dc02 #50FA7B
+#define dc03 #F1FA8C
+#define dc04 #BD93F9
+#define dc05 #FF79C6
+#define dc06 #8BE9FD
+#define dc07 #BFBFBF
+#define dc08 #4D4D4D
+#define dc09 #FF6E67
+#define dc10 #5AF78E
+#define dc11 #F4F99D
+#define dc12 #CAA9FA
+#define dc13 #FF92D0
+#define dc14 #9AEDFE
+#define dc15 #E6E6E6
+#define dc16 #F8F8F2
+#define dc17 #282A36
+*.foreground: dc16
+*.background: dc17
+*.color0:     dc00
+*.color8:     dc08
+*.color1:     dc01
+*.color9:     dc09
+*.color2:     dc02
+*.color10:    dc10
+*.color3:     dc03
+*.color11:    dc11
+*.color4:     dc04
+*.color12:    dc12
+*.color5:     dc05
+*.color13:    dc13
+*.color6:     dc06
+*.color14:    dc14
+*.color7:     dc07
+*.color15:    dc15

@@ -1,0 +1,5 @@
+# Config for the GNU Readline library
+# This will set bash to vi mode
+# https://ss64.com/bash/syntax-inputrc.html
+# https://blog.sanctum.geek.nz/vi-mode-in-bash/
+set editing-mode vi

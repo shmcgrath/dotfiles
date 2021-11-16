@@ -1,2 +1,2 @@
---target=$HOME
 --verbose
+--target=${HOME}

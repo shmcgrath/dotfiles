@@ -73,19 +73,17 @@ for i in groups:
     ])
 
 layouts = [
-    layout.Columns(border_focus_stack=['#d75f5f', '#8f3d3d'], border_width=4),
+    layout.Columns(border_focus_stack=['#8be9fd', '#bd93f9'],
+        border_focus='#6272a4',
+        border_normal='#44475a',
+        margin=4,
+        border_width=2,
+        insert_position=1),
     layout.Max(),
-    # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
     # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    layout.VerticalTile(),
 ]
 
 widget_defaults = dict(
@@ -97,8 +95,11 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
+                widget.Image(
+                    filename='~/.config/qtile/arch.png',
+                ),
                 widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
@@ -110,10 +111,30 @@ screens = [
                     name_transform=lambda name: name.upper(),
                 ),
                 widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M%P'),
+                widget.Clock(format='%Y-%m-%d || %Z %I:%M%P %a'),
+                widget.Clock(format='|| %Z %I:%M%P %a',
+                    timezone='Australia/Brisbane'),
+                #widget.StatusNotifier(),
                 widget.QuickExit(),
             ],
-            24,
+            24, background='#bd93f9',
+        ),
+    ),
+    Screen(
+        bottom=bar.Bar(
+            [
+                widget.Image(
+                    filename='~/.config/qtile/arch.png',
+                ),
+                widget.CurrentLayout(),
+                widget.GroupBox(),
+                widget.Prompt(),
+                widget.WindowName(),
+                widget.Systray(),
+                widget.Clock(format='%Y-%m-%d || %Z %I:%M%P %a'),
+                widget.QuickExit(),
+            ],
+            24, background='#bd93f9',
         ),
     ),
 ]

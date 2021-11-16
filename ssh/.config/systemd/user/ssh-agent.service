@@ -1,5 +1,5 @@
 [Unit]
-Description=SSH Key Agent
+Description=SSH key agent
 
 [Service]
 Type=simple

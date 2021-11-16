@@ -2,7 +2,9 @@
 # Designed for any resolution
 
 # Global Property
-title-text: ""
+title-text: "The Burrow"
+title-font: "Unifont Regular 16"
+title-color: "#ffb86c"
 desktop-image: "background.png"
 desktop-image-scale-method: "stretch"
 desktop-color: "#282a36"
@@ -13,34 +15,40 @@ terminal-width: "100%"
 terminal-height: "100%"
 terminal-border: "0"
 
-# Logo image
-+ image {
-	left = 50%-50
-	top = 50%-50
-    file = "logo.png"
++boot_menu {
+	left=10%
+	width=43%
+	top=33%
+	height=44%
+	item_font="Unifont Regular 16"
+	item_color="#f8f8f2"
+	selected_item_color="#ff79c6"
+	item_height=32
+	item_spacing=24
+	selected_item_pixmap_style="select_*.png"
 }
 
-# Show the boot menu
-+ boot_menu {
-  left = 50%-240
-  top = 60%
-  width = 480
-  height = 30%
-  item_font = "Unifont Regular 16"
-  item_color = "#f6f6f6"
-  selected_item_color = "#f6f6f6"
-  item_height = 32
-  item_spacing = 24
-  selected_item_pixmap_style = "select_*.png"
++progress_bar {
+	left=50%-300
+	top=23%
+	width=600
+	height=34
+	id="__timeout__"
+	text="@TIMEOUT_NOTIFICATION_LONG@"
+	text_color="#ff5555"
+	fg_color="#44475a"
+	bg_color="#282a36"
+	font="Unifont Regular 16"
+	border_color="#ff5555"
 }
 
-# Show a countdown message using the label component
-+ label {
-  top = 82%
-  left = 35%
-  width = 30%
-  align = "center"
-  id = "__timeout__"
-  text = "Booting in %d seconds"
-  color = "#f6f6f6"
++label {
+	left=50%-300
+	width=600
+	top=13%
+	height=34
+	align="center"
+	text="@KEYMAP_SHORT@"
+	font="Unifont Regular 16"
+	color="#bd93f9"
 }

@@ -4,18 +4,18 @@ exec tail -n +3 $0
 # menu entries you want to add after this comment.  Be careful not to change
 # the 'exec tail' line above.
 
-menuentry "OpenBSD" {
+menuentry "OpenBSD" --class openbsd --class bsd --class os {
 	insmod fat
 	search --no-floppy --fs-uuid --set=root FA99-170A
 	chainloader (hd1,gpt1)/efi/boot/bootx64.efi
 }
 
-menuentry "Restart System" {
+menuentry "Restart System" --class restart {
 	echo "System rebooting..."
 	reboot
 }
 
-menuentry "Shutdown System" {
+menuentry "Shutdown System" --class shutdown {
 	echo "System shutting down..."
 	halt
 }

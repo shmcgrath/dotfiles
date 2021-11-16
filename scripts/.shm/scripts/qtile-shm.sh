@@ -5,6 +5,8 @@ case $qtileCmd in
 		1)
 	echo "Restarting qtile..."
 	qtile cmd-obj -o cmd --function restart
+	echo "~/.local/share/qtile/qtile.log latest:"
+	tail "$HOME/.local/share/qtile/qtile.log"
 	exit 0
 	;;
 		2)

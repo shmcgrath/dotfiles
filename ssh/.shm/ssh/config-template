@@ -1,3 +1,5 @@
+IgnoreUnknown AddKeysToAgent,UseKeychain
+
 Include hosts/shm-public
 Include hosts/shm-private
 
@@ -10,3 +12,5 @@ Host host-short-name
 	UseKeychain yes
 # Specifies whether the connection to the authentication agent will be forwarded to the remote machine. Security risk, but useful for github
 	ForwardAgent no
+
+# vim:ft=sshconfig

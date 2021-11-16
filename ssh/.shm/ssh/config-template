@@ -1,10 +1,12 @@
-Include $HOME/.shm/ssh/general-config
-Include $HOME/.ssh/shm-hosts
+Include hosts/shm-public
+Include hosts/shm-private
 
 Host host-short-name
 	HostName server.lan or 192.168.x.x
 	User usr
 	Port 000
 	IdentityFile $HOME/.ssh/id_dsa
+	AddKeysToAgent yes
+	UseKeychain yes
 # Specifies whether the connection to the authentication agent will be forwarded to the remote machine. Security risk, but useful for github
 	ForwardAgent no

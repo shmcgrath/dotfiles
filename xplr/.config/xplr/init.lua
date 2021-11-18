@@ -1,26 +1,18 @@
 -- You need to define the script version for compatibility check.
 -- See https://github.com/sayanarijit/xplr/wiki/Upgrade-Guide.
 --
+
 version = "0.16.4"
 
 local xplr = xplr
 
--- Config
----- General
------- Show hidden
+---- General{{{2
+xplr.config.general.enable_mouse = true
 xplr.config.general.show_hidden = true
-
------- Read only
 xplr.config.general.read_only = false
-
------- Recover mode
 xplr.config.general.enable_recover_mode = false
-
------- Start FIFO
+---xplr.config.general.hide_remaps_in_help_menu = false
 xplr.config.general.start_fifo = nil
-
------- Hide remaps in help menu
-xplr.config.general.hide_remaps_in_help_menu = false
 
 ------ Prompt
 xplr.config.general.prompt.format = "❯ "
@@ -553,231 +545,7 @@ xplr.config.general.table.tree = {
   },
 }
 
----- Node types
------- Directory
-xplr.config.node_types.directory.meta.icon = "ð"
-xplr.config.node_types.directory.style.add_modifiers = { "Bold" }
-xplr.config.node_types.directory.style.sub_modifiers = nil
-xplr.config.node_types.directory.style.bg = nil
-xplr.config.node_types.directory.style.fg = "Cyan"
-
------- File
-xplr.config.node_types.file.meta.icon = "ƒ"
-xplr.config.node_types.file.style.add_modifiers = nil
-xplr.config.node_types.file.style.sub_modifiers = nil
-xplr.config.node_types.file.style.bg = nil
-xplr.config.node_types.file.style.fg = nil
-
------- Symlink
-xplr.config.node_types.symlink.meta.icon = "§"
-xplr.config.node_types.symlink.style.add_modifiers = { "Italic" }
-xplr.config.node_types.symlink.style.sub_modifiers = nil
-xplr.config.node_types.symlink.style.bg = nil
-xplr.config.node_types.symlink.style.fg = "Magenta"
-
------- Mime essence
-xplr.config.node_types.mime_essence = {}
-
------- Extension
-xplr.config.node_types.extension = {}
-
------- Special
-xplr.config.node_types.special = {}
-
--- Layouts
----- Builtin
------- Default
-xplr.config.layouts.builtin.default = {
-  Horizontal = {
-    config = {
-      margin = nil,
-      horizontal_margin = 0,
-      vertical_margin = 0,
-      constraints = {
-        {
-          Percentage = 70,
-        },
-        {
-          Percentage = 30,
-        },
-      },
-    },
-    splits = {
-      {
-        Vertical = {
-          config = {
-            margin = 0,
-            horizontal_margin = nil,
-            vertical_margin = nil,
-            constraints = {
-              {
-                Length = 3,
-              },
-              {
-                Min = 1,
-              },
-              {
-                Length = 3,
-              },
-            },
-          },
-          splits = {
-            "SortAndFilter",
-            "Table",
-            "InputAndLogs",
-          },
-        },
-      },
-      {
-        Vertical = {
-          config = {
-            margin = 0,
-            horizontal_margin = nil,
-            vertical_margin = nil,
-            constraints = {
-              {
-                Percentage = 50,
-              },
-              {
-                Percentage = 50,
-              },
-            },
-          },
-          splits = {
-            "Selection",
-            "HelpMenu",
-          },
-        },
-      },
-    },
-  },
-}
-
------- No help
-xplr.config.layouts.builtin.no_help = {
-  Horizontal = {
-    config = {
-      margin = nil,
-      horizontal_margin = nil,
-      vertical_margin = nil,
-      constraints = {
-        {
-          Percentage = 70,
-        },
-        {
-          Percentage = 30,
-        },
-      },
-    },
-    splits = {
-      {
-        Vertical = {
-          config = {
-            margin = nil,
-            horizontal_margin = nil,
-            vertical_margin = nil,
-            constraints = {
-              {
-                Length = 3,
-              },
-              {
-                Min = 1,
-              },
-              {
-                Length = 3,
-              },
-            },
-          },
-          splits = {
-            "SortAndFilter",
-            "Table",
-            "InputAndLogs",
-          },
-        },
-      },
-      "Selection",
-    },
-  },
-}
-
------- No selection
-xplr.config.layouts.builtin.no_selection = {
-  Horizontal = {
-    config = {
-      margin = nil,
-      horizontal_margin = nil,
-      vertical_margin = nil,
-      constraints = {
-        {
-          Percentage = 70,
-        },
-        {
-          Percentage = 30,
-        },
-      },
-    },
-    splits = {
-      {
-        Vertical = {
-          config = {
-            margin = nil,
-            horizontal_margin = nil,
-            vertical_margin = nil,
-            constraints = {
-              {
-                Length = 3,
-              },
-              {
-                Min = 1,
-              },
-              {
-                Length = 3,
-              },
-            },
-          },
-          splits = {
-            "SortAndFilter",
-            "Table",
-            "InputAndLogs",
-          },
-        },
-      },
-      "HelpMenu",
-    },
-  },
-}
-
------- No help, no selection
-xplr.config.layouts.builtin.no_help_no_selection = {
-  Vertical = {
-    config = {
-      margin = nil,
-      horizontal_margin = nil,
-      vertical_margin = nil,
-      constraints = {
-        {
-          Length = 3,
-        },
-        {
-          Min = 1,
-        },
-        {
-          Length = 3,
-        },
-      },
-    },
-    splits = {
-      "SortAndFilter",
-      "Table",
-      "InputAndLogs",
-    },
-  },
-}
-
----- Custom
-xplr.config.layouts.custom = {}
-
--- Modes
+-- Modes{{{2
 ---- Builtin
 ------ Default
 xplr.config.modes.builtin.default = {
@@ -2190,3 +1958,227 @@ end
 
 ---- Custom
 xplr.fn.custom = {}
+-- Layouts{{{2
+---- Builtin
+------ Default
+xplr.config.layouts.builtin.default = {
+  Horizontal = {
+    config = {
+      margin = nil,
+      horizontal_margin = 0,
+      vertical_margin = 0,
+      constraints = {
+        {
+          Percentage = 70,
+        },
+        {
+          Percentage = 30,
+        },
+      },
+    },
+    splits = {
+      {
+        Vertical = {
+          config = {
+            margin = 0,
+            horizontal_margin = nil,
+            vertical_margin = nil,
+            constraints = {
+              {
+                Length = 3,
+              },
+              {
+                Min = 1,
+              },
+              {
+                Length = 3,
+              },
+            },
+          },
+          splits = {
+            "SortAndFilter",
+            "Table",
+            "InputAndLogs",
+          },
+        },
+      },
+      {
+        Vertical = {
+          config = {
+            margin = 0,
+            horizontal_margin = nil,
+            vertical_margin = nil,
+            constraints = {
+              {
+                Percentage = 50,
+              },
+              {
+                Percentage = 50,
+              },
+            },
+          },
+          splits = {
+            "Selection",
+            "HelpMenu",
+          },
+        },
+      },
+    },
+  },
+}
+
+------ No help
+xplr.config.layouts.builtin.no_help = {
+  Horizontal = {
+    config = {
+      margin = nil,
+      horizontal_margin = nil,
+      vertical_margin = nil,
+      constraints = {
+        {
+          Percentage = 70,
+        },
+        {
+          Percentage = 30,
+        },
+      },
+    },
+    splits = {
+      {
+        Vertical = {
+          config = {
+            margin = nil,
+            horizontal_margin = nil,
+            vertical_margin = nil,
+            constraints = {
+              {
+                Length = 3,
+              },
+              {
+                Min = 1,
+              },
+              {
+                Length = 3,
+              },
+            },
+          },
+          splits = {
+            "SortAndFilter",
+            "Table",
+            "InputAndLogs",
+          },
+        },
+      },
+      "Selection",
+    },
+  },
+}
+
+------ No selection
+xplr.config.layouts.builtin.no_selection = {
+  Horizontal = {
+    config = {
+      margin = nil,
+      horizontal_margin = nil,
+      vertical_margin = nil,
+      constraints = {
+        {
+          Percentage = 70,
+        },
+        {
+          Percentage = 30,
+        },
+      },
+    },
+    splits = {
+      {
+        Vertical = {
+          config = {
+            margin = nil,
+            horizontal_margin = nil,
+            vertical_margin = nil,
+            constraints = {
+              {
+                Length = 3,
+              },
+              {
+                Min = 1,
+              },
+              {
+                Length = 3,
+              },
+            },
+          },
+          splits = {
+            "SortAndFilter",
+            "Table",
+            "InputAndLogs",
+          },
+        },
+      },
+      "HelpMenu",
+    },
+  },
+}
+
+------ No help, no selection
+xplr.config.layouts.builtin.no_help_no_selection = {
+  Vertical = {
+    config = {
+      margin = nil,
+      horizontal_margin = nil,
+      vertical_margin = nil,
+      constraints = {
+        {
+          Length = 3,
+        },
+        {
+          Min = 1,
+        },
+        {
+          Length = 3,
+        },
+      },
+    },
+    splits = {
+      "SortAndFilter",
+      "Table",
+      "InputAndLogs",
+    },
+  },
+}
+
+---- Custom
+xplr.config.layouts.custom = {}
+
+---- Node_types{{{2
+------ Directory{{{3
+xplr.config.node_types.directory.meta.icon = "ð"
+xplr.config.node_types.directory.style.add_modifiers = { "Bold" }
+xplr.config.node_types.directory.style.sub_modifiers = nil
+xplr.config.node_types.directory.style.bg = nil
+xplr.config.node_types.directory.style.fg = "Cyan"
+
+------ File{{{3
+xplr.config.node_types.file.meta.icon = "ƒ"
+xplr.config.node_types.file.style.add_modifiers = nil
+xplr.config.node_types.file.style.sub_modifiers = nil
+xplr.config.node_types.file.style.bg = nil
+xplr.config.node_types.file.style.fg = nil
+
+------ Symlink{{{3
+xplr.config.node_types.symlink.meta.icon = "§"
+xplr.config.node_types.symlink.style.add_modifiers = { "Italic" }
+xplr.config.node_types.symlink.style.sub_modifiers = nil
+xplr.config.node_types.symlink.style.bg = nil
+xplr.config.node_types.symlink.style.fg = "Magenta"
+
+------ Mime essence{{{3
+xplr.config.node_types.mime_essence = {}
+
+------ Extension{{{3
+xplr.config.node_types.extension = {}
+
+------ Special{{{3
+xplr.config.node_types.special = {}
+

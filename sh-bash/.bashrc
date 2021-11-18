@@ -14,11 +14,14 @@
 # Reminders & Notes
 
 # ==Environment{{{2
-# Set Default Editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export NOTES=$HOME/Dropbox/notes
+
+# Set default blocksize for ls, df, du
+# from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
+export BLOCKSIZE=1k
 
 # ==Source Bash Functions{{{2
 if [ -d "$HOME/.shm/bash_functions" ]; then
@@ -35,24 +38,22 @@ fi
 pathCheckSet "$HOME/.shm/scripts"
 pathCheckSet "$HOME/bin"
 echo 'PATH: '$PATH
+
 # ==PROMPT{{{2
-if [ -f $HOME/.promptrc ]; then
+if [ -f $HOME/.shm/promptrc ]; then
 	source $HOME/.shm/promptrc && echo 'sourcing $HOME/.shm/promptrc'
 fi
 
-# Set default blocksize for ls, df, du
-#	from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
-export BLOCKSIZE=1k
 
 # ==HISTORY{{{2
-# History Size
-export HISTIGNORE="ls:ll:cd:pwd:history:ranger"
+export HISTIGNORE="ls:ll:cd:pwd:history:ranger:lf:cls:pacsyu"
 export HISTFILESIZE=100000
 export HISTSIZE=100000
 export HISTCONTROL="ignoredups:erasedups"
 export HISTTIMEFORMAT="%F %T " # timestamp to histroy
 shopt -s histappend # append to history, don't overwrite it
 shopt -s cmdhist # store multi-line commands in one histroy entry
+export PROMPT_COMMAND='history -a; history -r'
 
 # Paths
 function nonzero_return() {
@@ -60,19 +61,12 @@ function nonzero_return() {
 	[ $RETVAL -ne 0 ] && echo "$RETVAL"
 }
 
-function grep_bash_history() {
-	#alias gbl="grep -h logcat ~/Dropbox/bash-history/bash-log-*"
-	args=("$@")
-	grepTerm=${args[0]}
-	grep -h $grepTerm ~/Dropbox/bash-history/* | less
-}
-
 # ==ALIASES{{{2
 if [ -f $HOME/.shm/aliasrc ]; then
 	source $HOME/.shm/aliasrc && echo 'sourcing $HOME/.shm/aliasrc'
 fi
 
-alias ll='ls -FGlAhp --time-style=long-iso'                       # Preferred 'ls' implementation
+alias ll='ls -FGlAhp --time-style=long-iso --color'                       # Preferred 'ls' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"

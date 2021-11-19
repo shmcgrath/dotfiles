@@ -1,37 +1,56 @@
 ! Dracula Xresources palette
-#define dc00 #000000
-#define dc01 #FF5555
-#define dc02 #50FA7B
-#define dc03 #F1FA8C
-#define dc04 #BD93F9
-#define dc05 #FF79C6
-#define dc06 #8BE9FD
-#define dc07 #BFBFBF
-#define dc08 #4D4D4D
-#define dc09 #FF6E67
-#define dc10 #5AF78E
-#define dc11 #F4F99D
-#define dc12 #CAA9FA
-#define dc13 #FF92D0
-#define dc14 #9AEDFE
-#define dc15 #E6E6E6
-#define dc16 #F8F8F2
-#define dc17 #282A36
-*.foreground: dc16
-*.background: dc17
-*.color0:     dc00
-*.color8:     dc08
-*.color1:     dc01
-*.color9:     dc09
-*.color2:     dc02
-*.color10:    dc10
-*.color3:     dc03
-*.color11:    dc11
-*.color4:     dc04
-*.color12:    dc12
-*.color5:     dc05
-*.color13:    dc13
-*.color6:     dc06
-*.color14:    dc14
-*.color7:     dc07
-*.color15:    dc15
+#define black #000000
+#define alt_gray #4D4D4D
+#define drac_red #FF5555
+#define alt_red #FF6E67
+#define drac_green #50FA7B
+#define drac_yellow #F1FA8C
+#define drac_purple #BD93F9
+#define drac_magenta #FF79C6
+#define drac_cyan #8BE9FD
+#define white #BFBFBF
+#define alt_green #5AF78E
+#define alt_yellow #F4F99D
+#define alt_purple #CAA9FA
+#define alt_magenta #FF92D0
+#define alt_cyan #9AEDFE
+#define alt_white #E6E6E6
+#define drac_background #282A36
+#define drac_current_line #44475A
+#define drac_foreground #F8F8F2
+#define drac_comment #6272A4
+
+*.foreground: drac_foreground
+*.background: dracbackground
+
+! black
+*.color0:     black
+*.color8:     alt_gray
+
+! red
+*.color1:     drac_red
+*.color9:     alt_red
+
+! green
+*.color2:     drac_green
+*.color10:    alt_green
+
+! yellow
+*.color3:     drac_yellow
+*.color11:    alt_yellow
+
+! blue (using purple in dracula)
+*.color4:     drac_purple
+*.color12:    alt_purple
+
+! magenta
+*.color5:     drac_magenta
+*.color13:    alt_magenta
+
+! cyan
+*.color6:     drac_cyan
+*.color14:    alt_cyan
+
+! white
+*.color7:     white
+*.color15:    alt_white

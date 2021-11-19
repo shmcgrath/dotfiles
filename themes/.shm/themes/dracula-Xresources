@@ -22,7 +22,7 @@
 #define drac_orange #FFB86C
 
 *.foreground: drac_foreground
-*.background: dracbackground
+*.background: drac_background
 
 ! black
 *.color0:     black
@@ -30,7 +30,8 @@
 
 ! red
 *.color1:     drac_red
-*.color9:     bright_red
+!*.color9:     bright_red
+*.color9:     drac_orange
 
 ! green
 *.color2:     drac_green

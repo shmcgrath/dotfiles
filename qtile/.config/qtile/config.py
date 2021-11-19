@@ -55,12 +55,30 @@ keys = [
     Key([mod], "space", lazy.spawn("rofi -show combi")),
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups_pinned = ['123456', '789']
+groups_all = ''.join(groups_pinned)
+groups = [Group(i) for i in groups_all]
+
+def go_to_group(group):
+    def f(qtile):
+        if group in groups_pinned[0]:
+            qtile.cmd_toscreen(0)
+            qtile.groupMap[group].cmd_toscreen()
+        if group in groups_pinned[1]:
+            qtile.cmd_toscreen(1)
+            qtile.groupMap[group].cmd_toscreen()
+        else:
+            qtile.cmd_toscreen(0)
+            qtile.groupMap[group].cmd_toscreen()
+    return f
+
+
 
 for i in groups:
     keys.extend([
-        # mod1 + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen(),
+        # mod1 + number of group = switch to group
+        #Key([mod], i.name, lazy.group[i.name].toscreen(),
+        Key([mod], i.name, lazy.function(go_to_group(i)),
             desc="Switch to group {}".format(i.name)),
 
         # mod1 + shift + letter of group = switch to & move focused window to group
@@ -101,7 +119,7 @@ screens = [
                     filename='~/.config/qtile/arch.png',
                 ),
                 widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.GroupBox(visible_groups=groups_pinned[0]),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -110,11 +128,29 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.Volume(),
+                #widget.PulseAudio(background="#334567"),
                 widget.Systray(background="#55ffff"),
                 widget.Clock(format='%Y-%m-%d || %Z %I:%M%P %a'),
                 widget.Clock(format='|| %Z %I:%M%P %a',
                     timezone='Australia/Brisbane'),
+                #widget.StatusNotifier(),
+                widget.QuickExit(),
+            ],
+            24, background='#bd93f9',
+        ),
+    ),
+    Screen(
+        bottom=bar.Bar(
+            [
+                widget.Image(
+                    filename='~/.config/qtile/arch.png',
+                ),
+                widget.CurrentLayout(),
+                widget.GroupBox(visible_groups=groups_pinned[1]),
+                widget.Prompt(),
+                widget.WindowName(),
+                widget.Systray(),
+                widget.Clock(format='%Y-%m-%d || %Z %I:%M%P %a'),
                 widget.QuickExit(),
             ],
             24, background='#bd93f9',

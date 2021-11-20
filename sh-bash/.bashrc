@@ -40,7 +40,7 @@ if [ -d "$XDG_CONFIG_HOME/bash_functions" ]; then
 		fi
 	done
 else
-	echo ".shm/bash_functions is missing!"
+	echo "$XDG_CONFIG_HOME/bash_functions is missing!"
 fi
 
 # ==Path{{{2
@@ -49,7 +49,7 @@ pathCheckSet "$HOME/bin"
 echo 'PATH: '$PATH
 
 # ==PROMPT{{{2
-[[ -f "$HOME/.shm/sh-base/promptrc" ]] && source $HOME/.shm/sh-base/promptrc && echo 'sourcing $HOME/.shm/sh-base/promptrc'
+[[ -f "$XDG_CONFIG_HOME/sh-base/promptrc" ]] && source $XDG_CONFIG_HOME/sh-base/promptrc && echo 'sourcing $XDG_CONFIG_HOME/sh-base/promptrc'
 
 
 # ==HISTORY{{{2
@@ -70,7 +70,7 @@ function nonzero_return() {
 }
 
 # ==ALIASES{{{2
-[[ -f "$HOME/.shm/sh-base/aliasrc" ]] && source $HOME/.shm/sh-base/aliasrc && echo 'sourcing $HOME/.shm/sh-base/aliasrc'
+[[ -f "$XDG_CONFIG_HOME/sh-base/aliasrc" ]] && source $XDG_CONFIG_HOME/sh-base/aliasrc && echo 'sourcing $XDG_CONFIG_HOME/sh-base/aliasrc'
 
 alias ll='ls -FGlAhp --time-style=long-iso --color'
 alias ls='ls -x --classify --almost-all --group-directories-first --color' # -x list entries by lines instead of cols
@@ -160,7 +160,7 @@ spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 
 # == Source fzf colors
 
-[[ -f "$HOME/.shm/themes/dracula-fzf" ]] && source $HOME/.shm/themes/dracula-fzf
+[[ -f "$HOME/$XDG_CONFIG_HOME/themes/dracula-fzf" ]] && source $HOME/$XDG_CONFIG_HOME/themes/dracula-fzf
 
 # ==Autostart X at login{{{2
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then

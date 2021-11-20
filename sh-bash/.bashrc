@@ -44,7 +44,7 @@ else
 fi
 
 # ==Path{{{2
-pathCheckSet "$HOME/.shm/scripts"
+pathCheckSet "$HOME/.local/bin/scripts"
 pathCheckSet "$HOME/bin"
 echo 'PATH: '$PATH
 

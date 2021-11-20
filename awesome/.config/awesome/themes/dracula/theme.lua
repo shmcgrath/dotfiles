@@ -58,7 +58,7 @@ theme.border_marked = color_cyan
 theme.menu_submenu_icon = default_themes_path.."default/submenu.png"
 theme.menu_height = dpi(15)
 theme.menu_width  = dpi(100)
--- taglist_[bg|fg]_[focus|urgent|occupied|empty|volatile]{{{2
+-- Taglist{{{2
 theme.taglist_bg_focus = color_orange
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
@@ -68,7 +68,7 @@ theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
 )
--- tasklist_[bg|fg]_[focus|urgent]{{{2
+-- Tasklist{{{2
 -- Titlebar{{{2
 -- Define the image to load
 theme.titlebar_close_button_normal = default_themes_path.."default/titlebar/close_normal.png"
@@ -96,10 +96,10 @@ theme.titlebar_maximized_button_normal_inactive = default_themes_path.."default/
 theme.titlebar_maximized_button_focus_inactive  = default_themes_path.."default/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_active = default_themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = default_themes_path.."default/titlebar/maximized_focus_active.png"
--- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]{{{2
--- mouse_finder_[color|timeout|animate_timeout|radius|factor]{{{2
--- prompt_[fg|bg|fg_cursor|bg_cursor|font]{{{2
--- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]{{{2
+-- Tooltip{{{2
+-- Mouse Finder{{{2
+-- Prompt{{{2
+-- Hotkeys{{{2
 theme.hotkeys_bg = color_background
 theme.hotkeys_fg = color_foreground
 theme.hotkeys_modifiers_fg = color_purple
@@ -111,19 +111,7 @@ theme.hotkeys_group_margin = 10
 -- notification_[bg|fg]
 -- notification_[width|height|margin]
 -- notification_[border_color|border_width|shape|opacity]
-
-return theme
---[[
-
-
--- Variables set for theming the menu:
-
--- You can add as many variables as
--- you wish and access them by using
--- beautiful.variable in your rc.lua
-
-
-
+-- Layout{{{2
 -- You can use your own layout icons like this:
 theme.layout_fairh = default_themes_path.."default/layouts/fairhw.png"
 theme.layout_fairv = default_themes_path.."default/layouts/fairvw.png"
@@ -141,7 +129,7 @@ theme.layout_cornernw = default_themes_path.."default/layouts/cornernww.png"
 theme.layout_cornerne = default_themes_path.."default/layouts/cornernew.png"
 theme.layout_cornersw = default_themes_path.."default/layouts/cornersww.png"
 theme.layout_cornerse = default_themes_path.."default/layouts/cornersew.png"
-
+-- Icons{{{2
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, theme.bg_focus, theme.fg_focus
@@ -150,6 +138,13 @@ theme.awesome_icon = theme_assets.awesome_icon(
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
---]]
+--theme.icon_theme = "/home/shmcg/.icons/Dracula"
+--theme.icon_theme = "Dracula"
+
+return theme
+
+-- You can add as many variables as
+-- you wish and access them by using
+-- beautiful.variable in your rc.lua
 
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80

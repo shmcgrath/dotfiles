@@ -46,15 +46,14 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+--beautiful.init("/home/shmcg/.config/awesome/themes/dracula/theme.lua")
 --default theme dir /usr/share/awesome/themes
 --default icon dir /usr/share/awesome/icons
 local chosen_theme = "dracula"
---beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
-beautiful.init("/home/shmcg/.config/awesome/themes/dracula/theme.lua")
---beautiful.font = "Operator Mono Book Italic 10"
+beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -188,11 +187,61 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist {
-        screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+    --s.mytasklist = awful.widget.tasklist {
+        --screen  = s,
+        --filter  = awful.widget.tasklist.filter.currenttags,
+        --buttons = tasklist_buttons
+    --}
+	s.mytasklist = awful.widget.tasklist {
+    screen   = s,
+    filter   = awful.widget.tasklist.filter.currenttags,
+    buttons  = tasklist_buttons,
+    style    = {
+        border_width = 1,
+        border_color = "#ff555",
+        shape        = gears.shape.rounded_bar,
+    },
+    layout   = {
+        spacing = 10,
+        spacing_widget = {
+            {
+                forced_width = 5,
+                shape        = gears.shape.circle,
+                widget       = wibox.widget.separator
+            },
+            valign = "center",
+            halign = "center",
+            widget = wibox.container.place,
+        },
+        layout  = wibox.layout.flex.horizontal
+    },
+    -- Notice that there is *NO* wibox.wibox prefix, it is a template,
+    -- not a widget instance.
+    widget_template = {
+        {
+            {
+                {
+                    {
+                        id     = "icon_role",
+                        widget = wibox.widget.imagebox,
+                    },
+                    margins = 2,
+                    widget  = wibox.container.margin,
+                },
+                {
+                    id     = "text_role",
+                    widget = wibox.widget.textbox,
+                },
+                layout = wibox.layout.fixed.horizontal,
+            },
+            left  = 5,
+            right = 5,
+            widget = wibox.container.margin
+        },
+        id     = "background_role",
+        widget = wibox.container.background,
     }
+}
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })

@@ -150,3 +150,10 @@ spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 # the above create files that are almost all zeros - if random bytes are desired
 # then use: ~/Dev/Perl/randBytes 1048576 > 10MB.dat
 # bash_profile vs bashrc http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
+
+# ==Autostart X at login
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec startx
+fi
+# ==ZSH as Interactive Shell{{{2
+#exec zsh

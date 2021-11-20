@@ -8,7 +8,9 @@ Xft.rgba      : rgb
 ! xidle
 XIdle*timeout: 600
 ! Source Terminal Colors
-#include "$HOME/.shm/themes/dracula-Xresources"
+#include "/home/shmcg/.shm/themes/dracula-Xresources"
 ! Source Specific Program Files
-#include "$HOME/.shm/xres/xLock-Xresources"
-#include "$HOME/.shm/xres/xterm-Xresources"
+#include "/home/shmcg/.shm/xres/xLock-Xresources"
+#include "/home/shmcg/.shm/xres/xterm-Xresources"
+#include "/home/shmcg/.shm/xres/urxvt-Xresources"
+!#include "/home/shmcg/.shm/xres/ssh-askpass-Xresources"

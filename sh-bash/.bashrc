@@ -16,16 +16,25 @@
 # ==Environment{{{2
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export PAGER="less"
+#export OPENER="xdg-open"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export NOTES=$HOME/Dropbox/notes
+# Other XDG paths
+export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
+export XDG_STATE_HOME=${XDG_STATE_HOME:="$HOME/.local/state"}
+
+
 
 # Set default blocksize for ls, df, du
 # from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
 export BLOCKSIZE=1k
 
 # ==Source Bash Functions{{{2
-if [ -d "$HOME/.shm/bash_functions" ]; then
-	for functionFile in "$HOME/.shm/bash_functions"/*; do
+if [ -d "$XDG_CONFIG_HOME/bash_functions" ]; then
+	for functionFile in "$XDG_CONFIG_HOME/bash_functions"/*; do
 		if [ -f "$functionFile" ]; then
 			source "$functionFile"
 		fi
@@ -40,9 +49,7 @@ pathCheckSet "$HOME/bin"
 echo 'PATH: '$PATH
 
 # ==PROMPT{{{2
-if [ -f $HOME/.shm/promptrc ]; then
-	source $HOME/.shm/promptrc && echo 'sourcing $HOME/.shm/promptrc'
-fi
+[[ -f "$HOME/.shm/sh-base/promptrc" ]] && source $HOME/.shm/sh-base/promptrc && echo 'sourcing $HOME/.shm/sh-base/promptrc'
 
 
 # ==HISTORY{{{2
@@ -54,6 +61,7 @@ export HISTTIMEFORMAT="%F %T " # timestamp to histroy
 shopt -s histappend # append to history, don't overwrite it
 shopt -s cmdhist # store multi-line commands in one histroy entry
 export PROMPT_COMMAND='history -a; history -r'
+export HISTFILE="$XDG_DATA_HOME"/bash/.bash_history
 
 # Paths
 function nonzero_return() {
@@ -62,11 +70,10 @@ function nonzero_return() {
 }
 
 # ==ALIASES{{{2
-if [ -f $HOME/.shm/aliasrc ]; then
-	source $HOME/.shm/aliasrc && echo 'sourcing $HOME/.shm/aliasrc'
-fi
+[[ -f "$HOME/.shm/sh-base/aliasrc" ]] && source $HOME/.shm/sh-base/aliasrc && echo 'sourcing $HOME/.shm/sh-base/aliasrc'
 
-alias ll='ls -FGlAhp --time-style=long-iso --color'                       # Preferred 'ls' implementation
+alias ll='ls -FGlAhp --time-style=long-iso --color'
+alias ls='ls -x --classify --almost-all --group-directories-first --color' # -x list entries by lines instead of cols
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
@@ -151,9 +158,13 @@ spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 # then use: ~/Dev/Perl/randBytes 1048576 > 10MB.dat
 # bash_profile vs bashrc http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
 
-# ==Autostart X at login
+# == Source fzf colors
+
+[[ -f "$HOME/.shm/themes/dracula-fzf" ]] && source $HOME/.shm/themes/dracula-fzf
+
+# ==Autostart X at login{{{2
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec startx
+  exec startx "$XDG_CONFIG_HOME/X11/.xinitrc"
 fi
 # ==ZSH as Interactive Shell{{{2
 #exec zsh

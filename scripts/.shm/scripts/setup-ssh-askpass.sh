@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 if [ -d "$HOME/bin/ssh-askpass" ]; then
 	echo "$HOME/bin/ssh-askpass exists"
 else

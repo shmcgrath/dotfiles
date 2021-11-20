@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo "doas configuration helper"
 echo "more information on the Arch wiki: https://wiki.archlinux.org/title/Doas"
 echo "This should be run as root. su root"

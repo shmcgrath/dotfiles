@@ -32,7 +32,7 @@ local theme = {}
 theme.font = "Operator Mono Book Italic 10"
 
 -- Wallpaper{{{2
-theme.wallpaper = theme_directory.."wallpaper/arch-dracula-center.png"
+theme.wallpaper = theme_directory.."wallpaper/upper_crosstich_dracula.png"
 
 -- General{{{2
 theme.bg_normal = color_selection

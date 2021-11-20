@@ -1,12 +1,19 @@
 from typing import List  # noqa: F401
 
-from libqtile import bar, layout, widget
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
+from os import path
+#from asyncio import subprocess
 
 mod = "mod4"
 terminal = "urxvt"
+
+#qtile_path = path.join(path.expanduser('~'), ".config", "qtile")
+
+#@hook.subscribe.startup_once
+#def autostart():
+    #subprocess.call([path.join(qtile_path, 'autostart.sh')])
 
 keys = [
     # Switch between windows
@@ -58,36 +65,22 @@ keys = [
 groups_pinned = ['123456', '789']
 groups_all = ''.join(groups_pinned)
 groups = [Group(i) for i in groups_all]
-
-def go_to_group(group):
-    def f(qtile):
-        if group in groups_pinned[0]:
-            qtile.cmd_toscreen(0)
-            qtile.groupMap[group].cmd_toscreen()
-        if group in groups_pinned[1]:
-            qtile.cmd_toscreen(1)
-            qtile.groupMap[group].cmd_toscreen()
-        else:
-            qtile.cmd_toscreen(0)
-            qtile.groupMap[group].cmd_toscreen()
-    return f
-
-
+#groups = [Group(i) for i in "1234"]
 
 for i in groups:
     keys.extend([
-        # mod1 + number of group = switch to group
-        #Key([mod], i.name, lazy.group[i.name].toscreen(),
-        Key([mod], i.name, lazy.function(go_to_group(i)),
+        # mod1 + letter of group = switch to group
+        Key([mod], i.name, lazy.group[i.name].toscreen(),
+        #Key([mod], i.name, lazy.function(go_to_group(i)),
             desc="Switch to group {}".format(i.name)),
 
+         # mod1 + shift + letter of group = move focused window to group
+         Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+             desc="move focused window to group {}".format(i.name)),
+        # Or, use below if you prefer to switch to that group.
         # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
-            desc="Switch to & move focused window to group {}".format(i.name)),
-        # Or, use below if you prefer not to switch to that group.
-        # # mod1 + shift + letter of group = move focused window to group
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-        #     desc="move focused window to group {}".format(i.name)),
+        #Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
+            #desc="Switch to & move focused window to group {}".format(i.name)),
     ])
 
 layouts = [
@@ -119,6 +112,7 @@ screens = [
                     filename='~/.config/qtile/arch.png',
                 ),
                 widget.CurrentLayout(),
+                #widget.GroupBox(visible_groups=['1', '2']),
                 widget.GroupBox(visible_groups=groups_pinned[0]),
                 widget.Prompt(),
                 widget.WindowName(),
@@ -133,6 +127,7 @@ screens = [
                 widget.Clock(format='%Y-%m-%d || %Z %I:%M%P %a'),
                 widget.Clock(format='|| %Z %I:%M%P %a',
                     timezone='Australia/Brisbane'),
+                widget.Notify(),
                 #widget.StatusNotifier(),
                 widget.QuickExit(),
             ],
@@ -147,11 +142,11 @@ screens = [
                 ),
                 widget.CurrentLayout(),
                 widget.GroupBox(visible_groups=groups_pinned[1]),
+                #widget.GroupBox(visible_groups=['3', '4']),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d || %Z %I:%M%P %a'),
-                widget.QuickExit(),
             ],
             24, background='#bd93f9',
         ),

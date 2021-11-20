@@ -288,6 +288,12 @@ globalkeys = gears.table.join(
 		end,
         {description = "launch rofi in combi", group = "sarah"}
 	),
+    awful.key({ modkey,           }, "l",
+		function ()
+			awful.spawn(terminal.." -e physlock")
+		end,
+        {description = "lock computer", group = "sarah"}
+	),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,

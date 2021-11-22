@@ -1,16 +1,19 @@
 ! general
-Xft.autohint  : 0
-Xft.lcdfilter : lcddefault
-Xft.hintstyle : hintslight
-Xft.hinting   : 1
-Xft.antialias : 1
-Xft.rgba      : rgb
 ! xidle
 XIdle*timeout: 600
+! Xft settings
+Xft.antialias: true
+Xft.autohint: false
+!Xft.dpi: 96
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb
+!Xft.hintstyle : hintslight
 ! Source Terminal Colors
-#include "$XDG_CONFIG_HOME/themes/dracula-Xresources"
+#include "/home/shmcg/.config/themes/dracula-Xresources"
 ! Source Specific Program Files
-#include "$XDG_CONFIG_HOME/urxvt/urxvt-Xresources"
-#include "$XDG_CONFIG_HOME/X11/xLock-Xresources"
-#include "$XDG_CONFIG_HOME/X11/xterm-Xresources"
-!#include "$XDG_CONFIG_HOME/X11/ssh-askpass-Xresources"
+#include "/home/shmcg/.config/urxvt/urxvt-Xresources"
+#include "/home/shmcg/.config/X11/xLock-Xresources"
+#include "/home/shmcg/.config/X11/xterm-Xresources"
+!#include "~/.config/X11/ssh-askpass-Xresources"

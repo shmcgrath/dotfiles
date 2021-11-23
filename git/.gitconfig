@@ -2,7 +2,7 @@
 	name = Sarah H. McGrath
 	email = sarah@shmcgrath.com
 [github]
-	user = shmcgrath
+	user = shmcg
 [core]
 	autocrlf = input
 	editor = "vim --clean"
@@ -13,7 +13,7 @@
 	an = add --dry-run --verbose
 	br = branch
 	ci = commit
-	clr = rm -r --cached
+	cl = clone
 	co = checkout
 	com = checkout master
 	df = diff
@@ -31,6 +31,7 @@
 	mum = merge upstream/master
 	remote = remote -v
 	rem = remote -v
+	rmc = rm -r --cached
 	st = status -sb
 [color]
 	ui = auto

@@ -1,6 +1,6 @@
 configuration {
-	modi: "run,drun,filebrowser,keys,window";
-	combi-modi: "filebrowser,window,drun,run";
+	modi: "run,drun,filebrowser,keys,window,combi";
+	combi-modi: "window,drun,run,filebrowser";
 	combi-hide-mode-prefix: false;
 /*	theme: "Arc-Dark";*/
 	theme: "dracula";

@@ -17,14 +17,19 @@
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export PAGER="less"
+export TERMINAL="urxvt"
 #export OPENER="xdg-open"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export NOTES=$HOME/Dropbox/notes
 # Other XDG paths
-export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
-export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
-export XDG_STATE_HOME=${XDG_STATE_HOME:="$HOME/.local/state"}
+#export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
+#export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
+#export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
+#export XDG_STATE_HOME=${XDG_STATE_HOME:="$HOME/.local/state"}
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
 
 
 
@@ -57,11 +62,11 @@ export HISTIGNORE="ls:ll:cd:pwd:history:ranger:lf:cls:pacsyu"
 export HISTFILESIZE=100000
 export HISTSIZE=100000
 export HISTCONTROL="ignoredups:erasedups"
-export HISTTIMEFORMAT="%F %T " # timestamp to histroy
+export HISTTIMEFORMAT="%y-%m-%d %T " # timestamp to histroy
 shopt -s histappend # append to history, don't overwrite it
 shopt -s cmdhist # store multi-line commands in one histroy entry
 export PROMPT_COMMAND='history -a; history -r'
-export HISTFILE="$XDG_DATA_HOME"/bash/.bash_history
+export HISTFILE="$XDG_DATA_HOME/bash/.bash_history"
 
 # Paths
 function nonzero_return() {
@@ -160,11 +165,11 @@ spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 
 # == Source fzf colors
 
-[[ -f "$HOME/$XDG_CONFIG_HOME/themes/dracula-fzf" ]] && source $HOME/$XDG_CONFIG_HOME/themes/dracula-fzf
+#[[ -f "$HOME/$XDG_CONFIG_HOME/themes/dracula-fzf" ]] && source $HOME/$XDG_CONFIG_HOME/themes/dracula-fzf
 
 # ==Autostart X at login{{{2
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec startx "$XDG_CONFIG_HOME/X11/.xinitrc"
-fi
+#if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  #exec startx "$XDG_CONFIG_HOME/X11/.xinitrc"
+#fi
 # ==ZSH as Interactive Shell{{{2
 #exec zsh

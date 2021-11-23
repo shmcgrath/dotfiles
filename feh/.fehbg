@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill '/home/shmcg/.shm/wallpaper/arch-dracula.png' 
+feh --no-fehbg --bg-fill '/home/shmcg/.config/wallpaper/upper_crosstich_dracula.png'

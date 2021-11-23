@@ -1,2 +1,13 @@
+# QMK MEH is equal to control + shift + alt
+# QMK HYPER is equal to control + shift + alt + super
+
 super + Return
 	$TERMINAL
+
+control + shift + alt + super + space
+	rofi -show combi &
+
+control + shift + alt + super + x
+	pkill sxhkd && sxhkd &
+
+# vim:ft=config:

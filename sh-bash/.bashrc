@@ -78,7 +78,8 @@ function nonzero_return() {
 [[ -f "$XDG_CONFIG_HOME/sh-base/aliasrc" ]] && source $XDG_CONFIG_HOME/sh-base/aliasrc && echo 'sourcing $XDG_CONFIG_HOME/sh-base/aliasrc'
 
 alias ll='ls -FGlAhp --time-style=long-iso --color'
-alias ls='ls -x --classify --almost-all --group-directories-first --color' # -x list entries by lines instead of cols
+alias ls='ls -x --classify --group-directories-first --color' # -x list entries by lines instead of cols
+alias la='ls -x --classify --almost-all --group-directories-first --color' # -x list entries by lines instead of cols
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"

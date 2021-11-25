@@ -58,7 +58,6 @@ call plug#begin('$HOME/.vim/bundle')
 Plug 'AndrewRadev/id3.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter' " Shows git status in gutter
-Plug 'arcticicestudio/nord-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'davidoc/taskpaper.vim'
 Plug 'dbeniamine/todo.txt-vim'
@@ -75,8 +74,6 @@ Plug 'justinmk/vim-sneak' " Jump to any location via two characters
 Plug 'mbbill/undotree'
 "Plug 'mileszs/ack.vim'
 Plug 'nathangrigg/vim-beancount'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'owickstrom/vim-colors-paramount'
 Plug 'shmcgrath/vim-infolines' 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive' " A vim git wrapper
@@ -87,7 +84,6 @@ Plug 'tpope/vim-surround' " Change surrounding punctuation and markup
 Plug 'w0rp/ale' " Async Lint Engine
 
 " Trial Plugins
-Plug 'romainl/Apprentice'
 
 " Unmanaged plugins - installed from $HOME/.vim/bundle-unman
 Plug $HOME.'/.vim/bundle-unman/shm-cheatsheet'
@@ -108,10 +104,7 @@ set backspace=2 " Should make backspace like most other apps
 "highlight Comment cterm=italic gui=italic"
 set background=dark
 colorscheme dracula
-"colorscheme PaperColor
-"colorscheme apprentice
 "colorscheme desert " best out of the box colorscheme
-"colorscheme nord
 
 if &diff
 	colorscheme traffic_lights_diff

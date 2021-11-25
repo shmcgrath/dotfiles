@@ -64,7 +64,6 @@ Plug 'dbeniamine/todo.txt-vim'
 Plug 'dracula/vim', { 'as': 'dracula' } "will install the plugin in a directory called 'dracula' instead of just vim
 Plug 'glench/vim-jinja2-syntax'
 Plug 'godlygeek/tabular' " Text filtering and alignment
-Plug 'joeytwiddle/vim-diff-traffic-lights-colors'
 "Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -105,10 +104,6 @@ set backspace=2 " Should make backspace like most other apps
 set background=dark
 colorscheme dracula
 "colorscheme desert " best out of the box colorscheme
-
-if &diff
-	colorscheme traffic_lights_diff
-endif
 
 " Terminal Colors {{{3
 " 0 black 1 dark red 2 dark green 3 brown 4 dark blue 5 dark magenta 6 dark cyan 7 light grey 8 dark grey 9 red 10 green 11 yellow 12 blue 13 magenta 14 cyan 15 white

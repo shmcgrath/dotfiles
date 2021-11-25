@@ -22,6 +22,16 @@ else
 			echo -e "\nNot enabling persist option"
 			;;
 		esac
+		read -r -N 1 -p "Enable keepenv feature? Type 1 for yes and 0 for no: " persistBool
+		case $persistBool in
+				1)
+			echo -e "\nEnabling persist option"
+			doasString+=" keepenv"
+			;;
+				*)
+			echo -e "\nNot enabling keepenv option"
+			;;
+		esac
 		read -r -p "Group name that allows doas access? Type 'wheel' to match sudo: " groupName
 		doasString+=" :$groupName"
 		echo $doasString > /tmp/doas.conf

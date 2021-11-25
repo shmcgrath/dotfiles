@@ -39,7 +39,8 @@
 !#define bright_yellow #cb9228
 
 #define turt_blue #61afef
-#define bright_blue #0a7cb6
+!#define bright_blue #0a7cb6
+#define bright_blue #5e90c7
 
 #define turt_magenta #c678dd
 #define bright_magenta #804b92

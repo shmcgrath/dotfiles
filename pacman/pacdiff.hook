@@ -4,7 +4,10 @@ Type = Package
 Target = *
 
 [Action]
-Description = Checking for pacorig, pacnew, and pacsave files...
+Description = Checking for pacorig, pacnew, and pacsave files with pacdiff...
 When = PostTransaction
 Exec = /usr/bin/pacdiff
 Depends = pacman-contrib
+
+# copy to /etc/X11/xorg.conf.d/
+# on change or new system

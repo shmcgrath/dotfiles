@@ -10,3 +10,6 @@ Description = Cleaning pacman cache...
 When = PostTransaction
 Exec = /usr/bin/paccache --remove --verbose --keep 3
 Depends = pacman-contrib
+
+# copy to /etc/X11/xorg.conf.d/
+# on change or new system

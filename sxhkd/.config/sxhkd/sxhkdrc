@@ -11,5 +11,5 @@ control + shift + alt + super + space
 	rofi -show combi &
 
 control + shift + alt + super + l
-	slock
+	systemctl suspend
 # vim:ft=config:

@@ -29,6 +29,8 @@
 	lgp = log --date=format:'%Y-%m-%d %H:%M' --pretty=fuller
 	ls = ls-files | less
 	mum = merge upstream/master
+	pl = pull
+	ps = push
 	remote = remote -v
 	rem = remote -v
 	rmc = rm -r --cached

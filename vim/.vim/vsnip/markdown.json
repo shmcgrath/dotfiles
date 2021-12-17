@@ -1,0 +1,175 @@
+{
+    "toc": {
+        "description": "Insert table of contents",
+        "body": [
+            "\\{\\{TOC:${1:2-3}}}"
+        ],
+        "prefix": [
+            "toc"
+        ]
+    },
+    "tempit": {
+        "description": "moveable templates",
+        "body": [
+            "`!p snip.rv = get_templates(snip.v.text)`"
+        ],
+        "prefix": [
+            "tempit"
+        ]
+    },
+    "link": {
+        "description": "Link",
+        "body": [
+            "[${1:${VISUAL:Text}}](${2:`!v @+`})"
+        ],
+        "prefix": [
+            "link"
+        ]
+    },
+    "bi": {
+        "description": "Bold Italics",
+        "body": [
+            "***${1:$TM_SELECTED_TEXT}***$0"
+        ],
+        "prefix": [
+            "bi"
+        ]
+    },
+    "footnote": {
+        "description": "Inline footnote",
+        "body": [
+            "[^${1:${VISUAL:Footnote}}]$0"
+        ],
+        "prefix": [
+            "footnote"
+        ]
+    },
+    "ref": {
+        "description": "Section Reference in Document",
+        "body": [
+            "[${1:${VISUAL:Text}}][${2:SectionId}]$0"
+        ],
+        "prefix": [
+            "ref"
+        ]
+    },
+    "b": {
+        "description": "Bold",
+        "body": [
+            "**${1:$TM_SELECTED_TEXT}**$0"
+        ],
+        "prefix": [
+            "b"
+        ]
+    },
+    "code": {
+        "description": "Insert code block",
+        "body": [
+            "\\`\\`\\`${1:Language}",
+            "${0:$TM_SELECTED_TEXT}",
+            "\\`\\`\\`"
+        ],
+        "prefix": [
+            "code"
+        ]
+    },
+    "i": {
+        "description": "Italics",
+        "body": [
+            "*${1:$TM_SELECTED_TEXT}*$0"
+        ],
+        "prefix": [
+            "i"
+        ]
+    },
+    "img": {
+        "description": "Image",
+        "body": [
+            "![${1:img alt}](${2:`!v @+`})"
+        ],
+        "prefix": [
+            "img"
+        ]
+    },
+    "note": {
+        "description": "Note header: ## YYYY-MM-DD HH:MM - Title",
+        "body": [
+            "## `!p snip.rv = getdatetime_twentyfour()` - ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}",
+            "$0"
+        ],
+        "prefix": [
+            "note"
+        ]
+    },
+    "linkref": {
+        "description": "Reference Link",
+        "body": [
+            "[${1:${VISUAL:Text}}][${2:id}]$0",
+            "",
+            "[$2]:${3:`!v @+`} \"${4:$3}\""
+        ],
+        "prefix": [
+            "linkref"
+        ]
+    },
+    "h1": {
+        "description": "Heading 1",
+        "body": [
+            "# ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}",
+            "$0"
+        ],
+        "prefix": [
+            "h1"
+        ]
+    },
+    "h2": {
+        "description": "Heading 2",
+        "body": [
+            "## ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}",
+            "$0"
+        ],
+        "prefix": [
+            "h2"
+        ]
+    },
+    "h3": {
+        "description": "Heading 3",
+        "body": [
+            "### ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}",
+            "$0"
+        ],
+        "prefix": [
+            "h3"
+        ]
+    },
+    "h4": {
+        "description": "Heading 4",
+        "body": [
+            "#### ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}",
+            "$0"
+        ],
+        "prefix": [
+            "h4"
+        ]
+    },
+    "h5": {
+        "description": "Heading 5",
+        "body": [
+            "##### ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}",
+            "$0"
+        ],
+        "prefix": [
+            "h5"
+        ]
+    },
+    "h6": {
+        "description": "Heading 6",
+        "body": [
+            "###### ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}",
+            "$0"
+        ],
+        "prefix": [
+            "h6"
+        ]
+    }
+}

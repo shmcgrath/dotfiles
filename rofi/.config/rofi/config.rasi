@@ -2,8 +2,6 @@ configuration {
 	modi: "run,drun,filebrowser,keys,window,combi";
 	combi-modi: "window,drun,run,filebrowser";
 	combi-hide-mode-prefix: false;
-/*	theme: "Arc-Dark";*/
-	theme: "dracula";
 	font: "Operator Mono Book 11";
 	show-icons: true;
 	terminal: "kitty";
@@ -17,6 +15,8 @@ configuration {
       directory:"$HOME";
   }
 }
+
+@theme "dracula"
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/

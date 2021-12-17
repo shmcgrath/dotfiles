@@ -64,9 +64,9 @@ Plug 'dbeniamine/todo.txt-vim'
 Plug 'dracula/vim', { 'as': 'dracula' } "will install the plugin in a directory called 'dracula' instead of just vim
 Plug 'glench/vim-jinja2-syntax'
 Plug 'godlygeek/tabular' " Text filtering and alignment
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 "Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak' " Jump to any location via two characters
 "Plug 'lervag/vimtex'
 "Plug 'LnL7/vim-nix'

@@ -10,12 +10,11 @@ control + shift + alt + super + x
 super + Return
 	$TERMINAL
 
-control + shift + alt + super + space
+super + space
 	rofi -show combi &
 
 control + shift + alt + super + l
 	systemctl suspend
-
 
 # bspwm hotkeys
 

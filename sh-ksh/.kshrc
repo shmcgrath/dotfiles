@@ -1,27 +1,18 @@
 # ==ENVIRONMENT
-export VISUAL=vim
-export EDITOR=$VISUAL
-export CLICOLOR=1
-export FCEDIT=$EDITOR
-export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
-export LESS='-iMR -x4'
-export PAGER=less
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CONFIG_HOME="$HOME/.config"
+#check if dir and files exist then source this all
+for file in $HOME/.config/environment-vars/*; do
+	. $file
+done
 
 # ==PROMPT
-test -r "$HOME/.promptrc" && . "$HOME/.promptrc"
+#test -r "$HOME/.promptrc" && . "$HOME/.promptrc"
 
 # ==HISTORY
-export HISTIGNORE=".1:.2:.3:cd:ls:ll:pwd"
-export HISTCONTROL="ignoredups:erasedups"
-export HISTFILE=$HOME/.ksh_history
-export HISTSIZE=20000
+export HISTFILE="$XDG_DATA_HOME/ksh/.ksh_history"
 
 # ==ALIASES
 # source common aliases from .aliases
-test -r "$HOME/.aliasrc" && . "$HOME/.aliasrc"
+test -r "$XDG_CONFIG_HOME/sh-base/aliasrc" && . "$XDG_CONFIG_HOME/sh-base/aliasrc"
 alias la="ls -AF"
 alias ll="ls -AFlh"
 alias ls="ls -F"

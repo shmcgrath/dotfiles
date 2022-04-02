@@ -4,5 +4,6 @@
 
 PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/usr/games
 PATH="$HOME/.scripts/:${PATH}"
-export PATH HOME TERM
-export ENV=$HOME/.kshrc
+export PATH
+#HOME TERM
+#export ENV=$HOME/.kshrc

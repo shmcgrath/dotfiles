@@ -7,9 +7,28 @@ feh --no-fehbg --bg-fill '/home/shmcg/.config/wallpaper/upper_crosstich_dracula.
 dunst &
 
 # Define Desktops
+desktop_list_01="MAIN HACK DEV MONO"
+desktop_list_02="ALT EML CHAT MEDIA"
+desktop_list_03="IX X XI XII"
+desktop_list_all="$desktop_list_01 $desktop_list_02"
+#bspc monitor DP-1 -d MAIN HACK DEV MONO
+#bspc monitor DP-2 -d ALT EML CHAT MEDIA
 
-bspc monitor DP-1 -d MAIN HACK DEV MONO
-bspc monitor DP-2 -d ALT EML CHAT MEDIA
+if type "xrandr"; then
+	monitor_count=$(xrandr --query | grep -w "connected" | wc -l)
+	monitor_list=$(xrandr --query | grep -w "connected" | cut -d" " -f1)
+	monitor_primary=$(xrandr --query | grep -w "primary" | cut -d" " -f1)
+	if [ $monitor_count -eq 1 ]; then
+		bspc monitor $monitor_list -d $desktop_list_all
+	else
+		for m in $(echo $monitor_list)
+		do
+			echo $m
+		done
+	fi
+else
+	bspc monitor $monitor_list -d $desktop_list_all
+fi
 
 # Global Settings
 

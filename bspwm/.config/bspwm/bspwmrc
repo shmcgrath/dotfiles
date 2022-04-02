@@ -2,7 +2,7 @@
 
 # Autostart
 pgrep -x sxhkd > /dev/null || sxhkd &
-$XDG_CONFIG_HOME/polybar/launch.sh &
+~/.config/polybar/launch.sh &
 feh --no-fehbg --bg-fill '/home/shmcg/.config/wallpaper/upper_crosstich_dracula.png'
 dunst &
 

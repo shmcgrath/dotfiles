@@ -60,3 +60,5 @@
 	tool = kdiff3
 [mergetool]
 	prompt = false
+[init]
+	defaultBranch = main

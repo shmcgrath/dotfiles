@@ -30,5 +30,5 @@ then
 	set_trayer_spaces
 fi
 
-# Output the icon tag for xmobar
+# Replace all of the - with spaces and output string
 echo "${trayerSpaceString//-/ }"

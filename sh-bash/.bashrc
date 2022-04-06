@@ -17,7 +17,7 @@
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export PAGER="less"
-export TERMINAL="urxvt"
+export TERMINAL="alacritty"
 #export OPENER="xdg-open"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export NOTES=$HOME/Dropbox/notes
@@ -51,6 +51,9 @@ fi
 # ==Path{{{2
 pathCheckSet "$HOME/.local/bin/scripts"
 pathCheckSet "$HOME/bin"
+pathCheckSet "$HOME/.cabal/bin"
+pathCheckSet "$HOME/.ghcup/env"
+pathCheckSet "$HOME/.ghcup/bin"
 echo 'PATH: '$PATH
 
 # ==PROMPT{{{2
@@ -172,5 +175,3 @@ spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 #if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   #exec startx "$XDG_CONFIG_HOME/X11/.xinitrc"
 #fi
-# ==ZSH as Interactive Shell{{{2
-#exec zsh

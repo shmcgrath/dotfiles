@@ -7,7 +7,8 @@ else
 	echo "no $HOME/.local/bin folder added to PATH via .xinitrc"
 fi
 
-# rotate right monitor to vertical postition
+# set ultrawide to primary & rotate right monitor to vertical postition
+xrandr --output DP-1 --primary
 xrandr --output DP-2 --rotate left
 
 # check for and merge .Xresrouces
@@ -15,12 +16,11 @@ xrandr --output DP-2 --rotate left
 # instead of replacing, the current contents of the specified properties.
 # -I$HOME This option is passed through to the preprocessor and is used to specify
 # a directory to search for files that are referenced with #include.
-[[ -f "~/.config/X11/.Xresources ]] && xrdb -merge -I$HOME ~/.config/X11/.Xresources
+[[ -f "/home/shmcg/.config/X11/.Xresources" ]] && xrdb -merge -I$HOME /home/shmcg/.config/X11/.Xresources
 
 # set askpass program name
 #export SSH_ASKPASS=ssh-askpass
 
-#qtile start
-exec awesome
+exec xmonad
 
 # vim:ft=cfg:

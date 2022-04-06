@@ -1,6 +1,6 @@
 configuration {
 	modi: "run,drun,filebrowser,keys,window,combi";
-	combi-modi: "window,drun";
+	combi-modi: "window,drun,run";
 	combi-hide-mode-prefix: false;
 	font: "Operator Mono Book 11";
 	show-icons: true;

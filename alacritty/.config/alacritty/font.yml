@@ -1,17 +1,17 @@
 #Font configuration
 font:
-  size: 11.0
+  size: 10.0
   normal:
-    family: Operator Mono
+    family: OperatorMono Nerd Font
     style: Book
   bold:
-    family: Operator Mono
+    family: OperatorMono Nerd Font
     style: Bold
   italic:
-    family: Operator Mono
+    family: OperatorMono Nerd Font
     style: Book Italic
   bold_italic:
-    family: Operator Mono
+    family: OperatorMono Nerd Font
     style: Bold Italic
 
   # Offset is the extra space around each character. `offset.y` can be thought

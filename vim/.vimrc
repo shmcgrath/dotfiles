@@ -72,6 +72,7 @@ Plug 'justinmk/vim-sneak' " Jump to any location via two characters
 "Plug 'LnL7/vim-nix'
 Plug 'mbbill/undotree'
 "Plug 'mileszs/ack.vim'
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'nathangrigg/vim-beancount'
 Plug 'shmcgrath/vim-infolines' 
 Plug 'tpope/vim-commentary'

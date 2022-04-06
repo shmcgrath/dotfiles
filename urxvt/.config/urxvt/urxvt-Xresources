@@ -10,10 +10,10 @@ URxvt*visualBell: true
 URxvt*depth: 32
 !URxvt.background: [95]#282A36
 !URxvt*foreground: lightgray
-URxvt*font: xft:Operator Mono Book:size=10
-URxvt*boldFont: xft:Operator Mono Medium:size=10
-URxvt*italicFont: xft:Operator Mono Book:style=Italic:size=10
-URxvt*boldItalicFont: xft:Operator Mono Medium:style=Italic:size=10
+URxvt*font: xft:OperatorMono Nerd Font:style=Book:size=10
+!URxvt*boldFont: xft:OperatorMono Nerd Font:style=Medium:size=10
+!URxvt*italicFont: xft:OperatorMono Nerd Font:style=Book Italic:size=10
+!URxvt*boldItalicFont: xft:OperatorMono Nerd Font:style=Medium Italic:size=10
 URxvt*letterSpace: -1
 
 ! Copy selected text into CLIPBOARD as well as PRIMARY

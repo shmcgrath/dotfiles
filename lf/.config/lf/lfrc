@@ -1,4 +1,5 @@
 set hidden true
+set icons true
 set ignorecase true
 
 cmd open ${{

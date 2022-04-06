@@ -1,4 +1,5 @@
 #!/bin/sh
+
 # Detects the width of running trayer-srg window (xprop name 'panel')
 # and creates a string of x spaces where x = trayer's program specified
 # size divided by 2.

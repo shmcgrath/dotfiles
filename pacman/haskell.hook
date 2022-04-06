@@ -8,7 +8,7 @@ Target = *
 [Action]
 Description = Updating cabal package list and upgrading ghcup...
 When = PostTransaction
-Exec = ~/.ghcup/bin/cabal update && ~/.ghcup/bin/ghcup upgrade
+Exec = /home/shmcg/.ghcup/bin/cabal update && /home/shmcg/.ghcup/bin/ghcup upgrade
 #Depends = pacman-contrib
 
 # copy to /etc/pacman.d/hooks

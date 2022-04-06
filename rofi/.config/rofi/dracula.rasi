@@ -12,7 +12,7 @@
     drac-red: #ff5555;
     drac-yel: #f1fa8c;
 
-    font: "Operator Mono Book 11";
+    font: "OperatorMono Nerd Font Book 11";
 
     foreground: @drac-fgd;
     background-color: @drac-bgd;

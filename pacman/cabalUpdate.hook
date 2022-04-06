@@ -6,10 +6,10 @@ Type = Package
 Target = *
 
 [Action]
-Description = Cleaning pacman cache...
+Description = Updating cabal package list...
 When = PostTransaction
-Exec = /usr/bin/paccache --remove --verbose --keep 3
-Depends = pacman-contrib
+Exec = ~/.ghcup/bin/cabal update
+#Depends = pacman-contrib
 
 # copy to /etc/pacman.d/hooks
 # on change or new system

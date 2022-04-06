@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = pacman-mirrorlist
+
+[Action]
+Description = Updating /etc/pacman.d/mirrorlist with reflector...
+When = PostTransaction
+Depends = reflector
+Exec = /bin/bash -c 'reflector --verbose --protocol "https" --threads 4 --country US --fastest 25 --sort rate --save /etc/pacman.d/mirrorlist; cat /etc/pacman.d/mirrorlist'
+
+# copy to /etc/pacman.d/hooks
+# on change or new system

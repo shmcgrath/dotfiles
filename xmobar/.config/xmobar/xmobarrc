@@ -16,5 +16,5 @@ Config { font = "xft:Operator Mono Book:size=10:italic:antialias=true,xft:Noto C
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%XMonadLog% } <fc=#ff79c6>%timeBrisbane%</fc> || <fc=#bd93f9>%shmTime%</fc> || %KAGC% { %cpu% | %memory% * %swap% | %enp34s0%%trayerPad%"
+       , template = "%XMonadLog% } <fc=#ff79c6>%timeBrisbane%</fc>  <fc=#bd93f9>%shmTime%</fc>  %KAGC% {  %cpu% | %memory% * %swap% | %enp34s0%%trayerPad%"
        }

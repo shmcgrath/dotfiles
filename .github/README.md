@@ -57,3 +57,4 @@ These are some of the links that I found useful when figuring out how to manage 
 - When bootstraping a new machine, change the $HOME in .stowrc to the actual home path of the machine
 - Make sure to mark stowrc and newsblur-pass as [assume-unchnaged](https://www.git-scm.com/docs/git-update-index)
 - Add .scripts to the windows path
+- Link to the [vim desert theme](https://github.com/vim/colorschemes/blob/64b7b26ac5571f39cc00215a65a01379fb70ebd3/colortemplate/desert.colortemplate)

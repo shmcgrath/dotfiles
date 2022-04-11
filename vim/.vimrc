@@ -61,7 +61,6 @@ Plug 'airblade/vim-gitgutter' " Shows git status in gutter
 Plug 'chrisbra/csv.vim'
 Plug 'davidoc/taskpaper.vim'
 Plug 'dbeniamine/todo.txt-vim'
-Plug 'dracula/vim', { 'as': 'dracula' } "will install the plugin in a directory called 'dracula' instead of just vim
 Plug 'glench/vim-jinja2-syntax'
 Plug 'godlygeek/tabular' " Text filtering and alignment
 Plug 'hrsh7th/vim-vsnip'

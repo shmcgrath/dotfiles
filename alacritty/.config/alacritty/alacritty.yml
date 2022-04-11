@@ -5,7 +5,7 @@
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
 import:
-  - ~/.config/alacritty/dracula-theme.yml
+  - ~/.config/alacritty/desert-theme.yml
   - ~/.config/alacritty/font.yml
 
 # Any items in the `env` entry below will be added as

@@ -7,9 +7,9 @@ trayer \
 	--widthtype request \
 	--SetDockType true \
 	--SetPartialStrut true \
-	--height 17 \
+	--height 21 \
 	--transparent true \
-	--tint 0x44475a \
+	--tint 0x666666 \
 	--alpha 0 \
 	--expand true \
 	--padding 0 \

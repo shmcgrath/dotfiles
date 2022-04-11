@@ -1,12 +1,12 @@
 Config { font = "xft:Operator Mono Book:size=10:italic:antialias=true,xft:Noto Color Emoji:style=regular:size=10:antialias=true:hinting=true"
-       , bgColor = "#44475a"
-       , fgColor = "#f8f8f2"
+       , bgColor = "#666666"
+       , fgColor = "#ffffff"
        , position = Top
        , lowerOnStart = True
        , hideOnStart = False
-       , commands = [ Run Weather "KAGC" ["-t","KAGC: <tempF>°F <windMph>mph <windCardinal> <skyCondition> RH <rh>%","-L","49","-H","80","--normal","#50fa7b","--high","#ff5555","--low","#8be9fd"] 36000
-                    , Run Network "enp34s0" ["-L","0","-H","32","--normal","#50fa7b","--high","#ff5555"] 10
-                    , Run Cpu ["-L","3","-H","50","--normal","#50fa7b","--high","#ff5555"] 10
+       , commands = [ Run Weather "KAGC" ["-t","KAGC: <tempF>°F <windMph>mph <windCardinal> <skyCondition> RH <rh>%","-L","49","-H","80","--normal","#9acd32","--high","#cd5c5c","--low","#6dceeb"] 36000
+                    , Run Network "enp34s0" ["-L","0","-H","32","--normal","#9acd32","--high","#cd5c5c"] 10
+                    , Run Cpu ["-L","3","-H","50","--normal","#9acd32","--high","#cd5c5c"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run Date "%a %b %d %I:%M:%S%P" "shmTime" 10
@@ -16,5 +16,5 @@ Config { font = "xft:Operator Mono Book:size=10:italic:antialias=true,xft:Noto C
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%XMonadLog% } <fc=#ff79c6>%timeBrisbane%</fc>  <fc=#bd93f9>%shmTime%</fc>  %KAGC% {  %cpu% | %memory% * %swap% | %enp34s0%%trayerPad%"
+       , template = "%XMonadLog% } <fc=#eeee00>%timeBrisbane%</fc>  <fc=#6dceeb>%shmTime%</fc>  %KAGC% {  %cpu% | %memory% * %swap% | %enp34s0%%trayerPad%"
        }

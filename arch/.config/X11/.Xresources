@@ -11,7 +11,7 @@ Xft.lcdfilter: lcddefault
 Xft.rgba: rgb
 !Xft.hintstyle : hintslight
 ! Source Terminal Colors
-#include "/home/shmcg/.config/themes/dracula-Xresources"
+#include "/home/shmcg/.config/themes/desert-Xresources"
 ! Source Specific Program Files
 #include "/home/shmcg/.config/urxvt/urxvt-Xresources"
 #include "/home/shmcg/.config/X11/xLock-Xresources"

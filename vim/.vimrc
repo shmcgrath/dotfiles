@@ -100,16 +100,14 @@ set conceallevel=0 " Set conceal level to 0 to not coneceal things"
 set backspace=2 " Should make backspace like most other apps
 
 " Colors and Syntax {{{2
-"set termguicolors " Turn on 24 bit color in terminal
-"highlight Comment cterm=italic gui=italic"
+if exists('+termguicolors')
+  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 set background=dark
-colorscheme dracula
-"colorscheme desert " best out of the box colorscheme
-
-" Terminal Colors {{{3
-" 0 black 1 dark red 2 dark green 3 brown 4 dark blue 5 dark magenta 6 dark cyan 7 light grey 8 dark grey 9 red 10 green 11 yellow 12 blue 13 magenta 14 cyan 15 white
-" copied colors from [nord-vim](https://github.com/arcticicestudio/nord-vim/blob/develop/colors/nord.vim)
-"let g:terminal_ansi_colors = ['#2E3440', '#3B4252', '#434C5E', '#4C566A', '#D8DEE9', '#E5E9F0', '#ECEFF4', '#8FBCBB', '#88C0D0', '#81A1C1', '#5E81AC', '#BF616A', '#D08770', '#EBCB8B', '#A3BE8C', '#B48EAD']
+colorscheme desert " best out of the box colorscheme
+highlight Comment cterm=italic gui=italic
 
 " Spaces, Tabs, and Indent {{{2
 filetype indent on " Allows loading of filetype-specific indent files

@@ -1,20 +1,20 @@
-Config { font = "xft:Operator Mono Book:size=10:italic:antialias=true,xft:Noto Color Emoji:style=regular:size=10:antialias=true:hinting=true"
-       , bgColor = "#666666"
-       , fgColor = "#ffffff"
+Config { font = "xft:Operator Mono Medium:size=10:italic:antialias=true,xft:Noto Color Emoji:style=regular:size=10:antialias=true:hinting=true"
+       , bgColor = "#292929"
+       , fgColor = "#a2a2a2"
        , position = Top
        , lowerOnStart = True
        , hideOnStart = False
-       , commands = [ Run Weather "KAGC" ["-t","KAGC: <tempF>°F <windMph>mph <windCardinal> <skyCondition> RH <rh>%","-L","49","-H","80","--normal","#9acd32","--high","#cd5c5c","--low","#6dceeb"] 36000
-                    , Run Network "enp34s0" ["-L","0","-H","32","--normal","#9acd32","--high","#cd5c5c"] 10
-                    , Run Cpu ["-L","3","-H","50","--normal","#9acd32","--high","#cd5c5c"] 10
+       , commands = [ Run Weather "KAGC" ["-t","KAGC: <tempF>°F <windMph>mph <windCardinal> <skyCondition> RH <rh>%","-L","49","-H","80","--normal","#468459","--high","#a9635d","--low","#5879af"] 36000
+                    , Run Network "enp34s0" ["-L","0","-H","32","--normal","#468459","--high","#a9635d"] 10
+                    , Run Cpu ["-L","3","-H","50","--normal","#468459","--high","#a9635d"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
-                    , Run Date "%a %b %d %I:%M:%S%P" "shmTime" 10
-                    , Run DateZone "%a %b %d %I:%M:%S%P" "en_US" "Australia/Brisbane" "timeBrisbane" 10
+                    , Run Date "%a %d %b %I:%M%P" "shmTime" 10
+                    , Run DateZone "%a %d %b %I:%M%P" "en_US" "Australia/Brisbane" "timeBrisbane" 10
                     , Run XMonadLog
                     , Run Com "/home/shmcg/.local/bin/scripts/xmobar-trayer-padding.sh" [] "trayerPad" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%XMonadLog% } <fc=#eeee00>%timeBrisbane%</fc>  <fc=#6dceeb>%shmTime%</fc>  %KAGC% {  %cpu% | %memory% * %swap% | %enp34s0%%trayerPad%"
+       , template = "%XMonadLog% } <fc=#5879af>%timeBrisbane%</fc>  <fc=#e0ce91>%shmTime%</fc>  %KAGC% {  %cpu% | %memory% * %swap% | %enp34s0%%trayerPad%"
        }

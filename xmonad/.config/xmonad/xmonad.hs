@@ -90,6 +90,7 @@ shmXmobarPP = def
 
 shmStartupHook = do
     spawn "trayer-shm.sh"
+    spawnOnce "feh --no-fehbg --bg-fill ~/.config/wallpaper/paris02.jpg"
     spawnOnce "/usr/bin/dropbox &"
     spawnOnce "dunst &"
     spawnOnce "sxhkd &"
@@ -106,8 +107,8 @@ shmConfig = def {
         , clickJustFocuses   = True
         , borderWidth        = 3
         , modMask            = mod4Mask
-        , normalBorderColor  = "#666666"
-        , focusedBorderColor = "#c2bfa5"
+        , normalBorderColor  = "#4e4e4e"
+        , focusedBorderColor = "#cfcfcf"
         , workspaces         = shmWorkspaces
         , keys               = shmKeys
         --, mouseBindings      = shmMouseBindings

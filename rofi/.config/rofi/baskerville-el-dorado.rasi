@@ -11,15 +11,15 @@
 	bed-cyan: #008592;
 	bed-white: #cfcfcf;
 
-	background: @bed-black;
+	background: @bed-background;
     background-color: @bed-background;
 	normal-background: @background;
-    active-background: @bed-white;
+    active-background: @bed-black;
     urgent-background: @bed-red;
 	selected-background: @bed-blue;
-    alternate-normal-background: @bed-background;
-    alternate-active-background: purple;
-    alternate-urgent-background: orange;
+    alternate-normal-background: @normal-background;
+    alternate-active-background: @active-background;
+    alternate-urgent-background: @urgent-background;
     selected-normal-background: @selected-background;
     selected-active-background: @selected-background;
     selected-urgent-background: @selected-background;
@@ -36,7 +36,7 @@
     selected-urgent-foreground: @foreground;
 
     border-color: @bed-white;
-    separatorcolor: @bed-blue;
+    separatorcolor: @bed-white;
 	spacing: 2;
 
 }
@@ -75,6 +75,10 @@ element-text {
     background-color: inherit;
     text-color:       inherit;
 }
+element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
 element.normal.normal {
     background-color: @normal-background;
     text-color:       @normal-foreground;
@@ -86,10 +90,6 @@ element.normal.urgent {
 element.normal.active {
     background-color: @active-background;
     text-color:       @active-foreground;
-}
-element.selected.normal {
-    background-color: @selected-normal-background;
-    text-color:       @selected-normal-foreground;
 }
 element.selected.urgent {
     background-color: @selected-urgent-background;

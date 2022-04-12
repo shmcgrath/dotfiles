@@ -2,7 +2,7 @@ configuration {
 	modi: "run,drun,filebrowser,keys,window,combi";
 	combi-modi: "window,drun,run";
 	combi-hide-mode-prefix: false;
-	font: "OperatorMono Nerd Font Book 11";
+	font: "FreeSans 12";
 	show-icons: true;
 	terminal: "$TERMINAL";
   timeout {

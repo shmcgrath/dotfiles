@@ -58,6 +58,7 @@ call plug#begin('$HOME/.vim/bundle')
 Plug 'AndrewRadev/id3.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter' " Shows git status in gutter
+Plug 'baskerville/bubblegum'
 Plug 'chrisbra/csv.vim'
 Plug 'davidoc/taskpaper.vim'
 Plug 'dbeniamine/todo.txt-vim'
@@ -105,7 +106,8 @@ if exists('+termguicolors')
   set termguicolors
 endif
 set background=dark
-colorscheme desert " best out of the box colorscheme
+colorscheme bubblegum-256-dark
+"colorscheme desert " best out of the box colorscheme
 highlight Comment cterm=italic gui=italic
 
 " Spaces, Tabs, and Indent {{{2

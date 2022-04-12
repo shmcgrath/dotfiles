@@ -110,6 +110,11 @@ colorscheme bubblegum-256-dark
 "colorscheme desert " best out of the box colorscheme
 highlight Comment cterm=italic gui=italic
 
+if &diff
+    syntax off
+	colorscheme diff-shm
+endif
+
 " Spaces, Tabs, and Indent {{{2
 filetype indent on " Allows loading of filetype-specific indent files
 set noautoindent " Does not automatically indent

@@ -3,7 +3,7 @@
 
 " When using vimdiff or diff mode
 	highlight DiffAdd ctermbg=green ctermfg=black guibg=green  guifg=black
-	highlight DiffText ctermbg=lightblue ctermfg=black guibg=lightblue  guifg=black
+	highlight DiffText ctermbg=yellow ctermfg=gray guibg=yellow  guifg=gray
 	highlight DiffChange ctermbg=yellow ctermfg=black guibg=yellow  guifg=black
 	highlight DiffDelete ctermbg=red ctermfg=black guibg=red  guifg=black
 	highlight DiffRemoved ctermbg=red ctermfg=black guibg=red  guifg=black

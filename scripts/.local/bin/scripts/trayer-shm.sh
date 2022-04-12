@@ -9,7 +9,7 @@ trayer \
 	--SetPartialStrut true \
 	--height 21 \
 	--transparent true \
-	--tint 0x666666 \
+	--tint 0x4e4e4e \
 	--alpha 0 \
 	--expand true \
 	--padding 0 \

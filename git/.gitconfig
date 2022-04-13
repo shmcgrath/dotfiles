@@ -11,14 +11,15 @@
 [alias]
 	a = add --verbose
 	an = add --dry-run --verbose
-	br = branch
+	app = apply --verbose
+	br = branch --verbose --color
 	ci = commit
 	cl = clone
 	co = checkout
 	com = checkout master
-	df = diff
-	dc = diff --cached
-	dw = diff --ignore-all-space
+	df = difftool
+	dc = difftool --cached
+	dw = difftool --ignore-all-space
 	fu = fetch upstream
 	chkig = check-ignore --verbose
 	# show files ignored by git
@@ -28,13 +29,11 @@
 	lgm = log --graph --author='Sarah H. McGrath' --date=format:'%Y-%m-%d %H:%M' --format=format:'%C(auto)%h %d%Creset%Cgreen%ad%Creset %aN <%aE>%n%Cblue%s%Creset%+b'
 	lgp = log --date=format:'%Y-%m-%d %H:%M' --pretty=fuller
 	ls = ls-files | less
-	mum = merge upstream/master
 	pl = pull
 	ps = push
-	remote = remote -v
-	rem = remote -v
+	rem = remote --verbose
 	rmc = rm -r --cached
-	st = status -sb
+	st = status --short --branch --show-stash --verbose
 [color]
 	ui = auto
 	ui = true
@@ -57,8 +56,8 @@
 [difftool]
 	prompt = false
 [merge]
-	tool = kdiff3
+	tool = vimdiff
 [mergetool]
-	prompt = false
+	prompt = true
 [init]
 	defaultBranch = main

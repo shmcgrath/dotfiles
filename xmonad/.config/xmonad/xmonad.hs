@@ -7,6 +7,8 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Prompt
+import XMonad.Prompt.XMonad
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Util.Loggers
@@ -14,6 +16,7 @@ import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 
 import qualified Data.Map
+import qualified XMonad.StackSet
 
 -- A tagging example:
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
@@ -29,6 +32,14 @@ shmDelKeys XConfig{modMask = modm} = Data.Map.fromList
     [((modm              , xK_space),  return())
     ,((modm              , xK_Return), return())
     ,((modm .|. shiftMask, xK_Return), return())
+    ,((modm              , xK_p), return())
+    ,((modm .|. shiftMask, xK_p), return())
+    ,((modm              , xK_q), return())
+    ,((modm .|. shiftMask, xK_q), return())
+    ,((modm              , xK_Tab), return())
+    ,((modm .|. shiftMask, xK_Tab), return())
+    ,((modm              , xK_question), return())
+    ,((modm .|. shiftMask, xK_slash), return())
     ]
 
 shmAddKeys :: XConfig Layout -> Data.Map.Map (KeyMask, KeySym) (X ())
@@ -36,9 +47,31 @@ shmAddKeys conf@(XConfig{modMask = modm}) = Data.Map.fromList
      -- Rotate through the available layout algorithms
     [((modm,               xK_Tab ), sendMessage NextLayout)
     --  Reset the layouts on the current workspace to default
-    , ((modm .|. shiftMask, xK_Tab ), setLayout $ XMonad.layoutHook conf)
+    ,((modm .|. shiftMask, xK_Tab ), setLayout $ XMonad.layoutHook conf)
+    ,((modm              , xK_F12), xmonadPrompt shmXPConfig)
+    ,((modm .|. shiftMask, xK_q), kill)
+    ,((modm .|. shiftMask, xK_m), windows XMonad.StackSet.swapMaster)
     ]
 
+shmXPConfig :: XPConfig
+shmXPConfig = def
+      { font                = "xft:FreeSans:size=12"
+      , bgColor             = "#292929"
+      , fgColor             = "#a2a2a2"
+      , bgHLight            = "#5879af"
+      , fgHLight            = "#a2a2a2"
+      , borderColor         = "#777777"
+      , promptBorderWidth   = 3
+      , position            = CenteredAt { xpCenterY = 0.3, xpWidth = 0.3 }
+      , height              = 24
+      , historySize         = 256
+      , historyFilter       = id
+      , defaultText         = []
+      , autoComplete        = Nothing
+      , showCompletionOnTab = False
+      , complCaseSensitivity = CaseInSensitive
+      , alwaysHighlight     = True
+      }
 
 shmLayout = tiled ||| Mirror tiled ||| Full
   where
@@ -84,7 +117,12 @@ shmManageHook = composeAll
 --shmLogHook = return ()
 
 shmXmobarPP :: PP
-shmXmobarPP = def
+shmXmobarPP = def {
+	  ppSep = xmobarColor "#ff79c6" "" " || "
+	, ppTitleSanitize = xmobarStrip
+	, ppOrder = \(ws:l:t:xs) -> [l,ws]++xs++[t]
+}
+
 
 -- Startup hook
 

@@ -18,11 +18,39 @@ import XMonad.Util.SpawnOnce
 import qualified Data.Map
 import qualified XMonad.StackSet
 
+------------------------------------------------------------------------
+-- General Variables
+shmSans :: String
+shmSans = "xft:FreeSans:regular:size=12:antialias=true:hinting=true"
+
+shmXPConfig :: XPConfig
+shmXPConfig = def
+      { font                = shmSans
+      , bgColor             = "#292929"
+      , fgColor             = "#a2a2a2"
+      , bgHLight            = "#5879af"
+      , fgHLight            = "#a2a2a2"
+      , borderColor         = "#777777"
+      , promptBorderWidth   = 3
+      , position            = CenteredAt { xpCenterY = 0.3, xpWidth = 0.3 }
+      , height              = 24
+      , historySize         = 256
+      , historyFilter       = id
+      , defaultText         = []
+      , autoComplete        = Nothing
+      , showCompletionOnTab = False
+      , complCaseSensitivity = CaseInSensitive
+      , alwaysHighlight     = True
+      }
+
+------------------------------------------------------------------------
+-- Workspaces
 -- A tagging example:
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
 shmWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
+------------------------------------------------------------------------
 -- Key Bindings
 cleanDefKeys x = keys def x `Data.Map.difference` shmDelKeys x
 shmKeys = cleanDefKeys <+> shmAddKeys
@@ -53,26 +81,7 @@ shmAddKeys conf@(XConfig{modMask = modm}) = Data.Map.fromList
     ,((modm .|. shiftMask, xK_m), windows XMonad.StackSet.swapMaster)
     ]
 
-shmXPConfig :: XPConfig
-shmXPConfig = def
-      { font                = "xft:FreeSans:size=12"
-      , bgColor             = "#292929"
-      , fgColor             = "#a2a2a2"
-      , bgHLight            = "#5879af"
-      , fgHLight            = "#a2a2a2"
-      , borderColor         = "#777777"
-      , promptBorderWidth   = 3
-      , position            = CenteredAt { xpCenterY = 0.3, xpWidth = 0.3 }
-      , height              = 24
-      , historySize         = 256
-      , historyFilter       = id
-      , defaultText         = []
-      , autoComplete        = Nothing
-      , showCompletionOnTab = False
-      , complCaseSensitivity = CaseInSensitive
-      , alwaysHighlight     = True
-      }
-
+------------------------------------------------------------------------
 shmLayout = tiled ||| Mirror tiled ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
@@ -87,6 +96,7 @@ shmLayout = tiled ||| Mirror tiled ||| Full
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
 
+------------------------------------------------------------------------
 -- Window rules:
 
 -- Execute arbitrary actions and WindowSet manipulations when managing

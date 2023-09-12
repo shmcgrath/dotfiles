@@ -22,5 +22,6 @@ xrandr --output DP-2 --rotate left
 #export SSH_ASKPASS=ssh-askpass
 
 exec xmonad
+#qtile start
 
 # vim:ft=cfg:

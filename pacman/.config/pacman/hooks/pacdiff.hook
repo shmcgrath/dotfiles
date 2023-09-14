@@ -6,7 +6,7 @@ Target = *
 [Action]
 Description = Checking for pacorig, pacnew, and pacsave files with pacdiff...
 When = PostTransaction
-Exec = /usr/bin/pacdiff
+Exec = /usr/bin/bash -c 'pacfiles=$(pacdiff --output); if [[ -n "$pacfiles" ]]; then echo -e "\e[1m.pac* files found:\e[0m\n$pacfiles\n\e[1mPlease check and merge with pacdiff\e[0m"; fi'
 Depends = pacman-contrib
 
 # copy to /etc/pacman.d/hooks

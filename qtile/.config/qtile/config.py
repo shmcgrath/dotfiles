@@ -5,6 +5,7 @@ from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from libqtile.core.manager import Qtile
 
 from typing import Callable
 
@@ -68,23 +69,56 @@ groups = [
     Group(name="8", screen_affinity=1),
 ]
 
+groupbox1 = widget.GroupBox(visible_groups=['1', '2', '3', '4'])
+groupbox2 = widget.GroupBox(visible_groups=['5', '6', '7', '8'])
+@hook.subscribe.screens_reconfigured
+async def _():
+    if len(qtile.screens) > 1:
+        groupbox1.visible_groups = ['1', '2', '3', '4']
+        groupbox2.visible_groups = ['5', '6', '7', '8']
+    else:
+        groupbox1.visible_groups = ['1', '2', '3', '4', '5', '6', '7', '8']
+    if hasattr(groupbox1, 'bar'):
+        groupbox1.bar.draw()
+
+
+
 def go_to_group(name: str) -> Callable:
     def _inner(qtile: Qtile) -> None:
         if len(qtile.screens) == 1:
-            qtile.groups_map[name].toscreen()
+            qtile.groups_map[name].cmd_toscreen()
             return
 
         if name in '1234':
             qtile.focus_screen(0)
-            qtile.groups_map[name].toscreen()
+            qtile.groups_map[name].cmd_toscreen()
         else:
             qtile.focus_screen(1)
-            qtile.groups_map[name].toscreen()
+            qtile.groups_map[name].cmd_toscreen()
+
+    return _inner
+
+def go_to_group_and_move_window(name: str):
+    def _inner(qtile):
+        if len(qtile.screens) == 1:
+            qtile.current_window.togroup(name, switch_group=True)
+            return
+
+        if name in "1234":
+            qtile.current_window.togroup(name, switch_group=False)
+            qtile.focus_screen(0)
+            qtile.groups_map[name].cmd_toscreen()
+        else:
+            qtile.current_window.togroup(name, switch_group=False)
+            qtile.focus_screen(1)
+            qtile.groups_map[name].cmd_toscreen()
 
     return _inner
 
 for i in groups:
     keys.append(Key([mod], i.name, lazy.function(go_to_group(i.name))))
+    keys.append(Key([mod, "shift"], i.name,
+                    lazy.function(go_to_group_and_move_window(i.name))))
 
 layout_theme = {
         "border_width":2,
@@ -124,9 +158,9 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayout(),
-                widget.GroupBox(),
+                groupbox1,
                 widget.Prompt(),
-                widget.WindowName(),
+                widget.WindowName(max_chars=150),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -137,8 +171,16 @@ screens = [
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
+                widget.Wttr(location={'Pittsburgh, PA': 'Pittsburgh'},
+                            units="u",
+                            format="%l: %t | %c %C"
+                            ),
+                widget.TextBox(""),
+                widget.Clock(format="%a %d %b %I:%M %p"),
+                widget.TextBox("🦘"),
+                widget.Clock(format="%a %d %b %I:%M %p",
+                             timezone='Australia/Brisbane'),
                 widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
             ],
             24,
@@ -153,21 +195,15 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
+                groupbox2,
                 widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                widget.TextBox(""),
+                widget.Clock(format="%a %d %b %I:%M %p"),
+                widget.TextBox("🦘"),
+                widget.Clock(format="%a %d %b %I:%M %p",
+                             timezone='Australia/Brisbane'),
             ],
             24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
             background="#292929",
         ),
     ),

@@ -1,5 +1,5 @@
 configuration {
-	font: "FreeSans 12";
+/*	font: "FreeSans 12";*/
 	modi: "filebrowser,combi,window,drun,run,keys";
 	combi-modi: "window,drun,run";
 	combi-hide-mode-prefix: false;
@@ -117,4 +117,4 @@ configuration {
   }
 }
 
-@theme "~/.config/rofi/baskerville-el-dorado.rasi"
+@theme "~/.config/rofi/test.rasi"

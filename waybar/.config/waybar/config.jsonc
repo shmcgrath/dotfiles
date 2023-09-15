@@ -5,9 +5,9 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window", "sway/mode", "sway/scratchpad", "custom/media"],
+    "modules-left": ["custom/launcher", "hyprland/submap", "hyprland/workspaces", "hyprland/window", "sway/mode", "sway/scratchpad"],
     "modules-center": ["custom/weather#BNE", "clock#aus", "clock#shm", "custom/weather#AGC"],
-    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "tray"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "tray"],
     // Modules configuration
     // "hyprland/workspaces": {
     //     "disable-scroll": true,
@@ -185,6 +185,11 @@
 		"exec": "curl \"wttr.in/BNE?format=%c%t&u\"",
 		"interval": 900,
         "tooltip": false
+	},
+	"hyprland/submap": {
+		"format": "{}",
+		"max-length": 30,
+		"tooltip": false
 	}
 }
 

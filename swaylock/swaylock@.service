@@ -1,0 +1,16 @@
+[Unit]
+Description=Lock Wayland session using swaylock for user %i
+Before=sleep.target
+Before=suspend.target
+
+[Service]
+User=%i
+Environment=WAYLAND_DISPLAY=wayland-1
+ExecStart=/usr/bin/swaylock
+
+[Install]
+WantedBy=sleep.target
+WantedBy=suspend.target
+
+# cp to /etc/systemd/system/
+# on change or new system setup

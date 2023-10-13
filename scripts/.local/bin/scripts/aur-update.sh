@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-aurdir="$HOME/.aur/aur-packages"
+aurdir="$HOME/.aur/aur-pkgbuilds"
 gitstat=""
 for dir in $(ls "$aurdir"); do
     cd $aurdir/$dir

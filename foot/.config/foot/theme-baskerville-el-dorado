@@ -1,0 +1,52 @@
+[cursor]
+# style=block
+# color=<inverse foreground/background>
+# blink=no
+# beam-thickness=1.5
+# underline-thickness=<font underline thickness>
+
+[colors]
+# alpha=1.0
+background=292929
+foreground=a2a2a2
+
+## Normal/regular colors (color palette 0-7)
+regular0=4e4e4e  # black
+regular1=a9635d  # red
+regular2=468459  # green
+regular3=84763d  # yellow
+regular4=5879af  # blue
+regular5=9c6594  # magenta
+regular6=008592  # cyan
+regular7=cfcfcf  # white
+
+## Bright colors (color palette 8-15)
+ bright0=777777   # bright black
+ bright1=ffbbb2   # bright red
+ bright2=9ddeaf   # bright green
+ bright3=e0ce91   # bright yellow
+ bright4=b3d1ff   # bright blue
+ bright5=fabdf0   # bright magenta
+ bright6=79e0ed   # bright cyan
+ bright7=ffffff   # bright white
+
+## dimmed colors (see foot.ini(5) man page)
+# dim0=<not set>
+# ...
+# dim7=<not-set>
+
+## The remaining 256-color palette
+# 16 = <256-color palette #16>
+# ...
+# 255 = <256-color palette #255>
+
+## Misc colors
+# selection-foreground=<inverse foreground/background>
+# selection-background=<inverse foreground/background>
+# jump-labels=<regular0> <regular3>          # black-on-yellow
+# scrollback-indicator=<regular0> <bright4>  # black-on-bright-blue
+# search-box-no-match=<regular0> <regular1>  # black-on-red
+# search-box-match=<regular0> <regular3>     # black-on-yellow
+# urls=<regular3>
+
+# vim: ft=dosini

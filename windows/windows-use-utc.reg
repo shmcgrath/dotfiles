@@ -1,3 +1,8 @@
+; From the [ArchWiki on System time](https://wiki.archlinux.org/title/System_time)
+; When dual booting Windows and Linux, it is recommended that Windows
+; use UTC so the time is correct in both systems.
+; This .reg file makes the necessary changes to the Windows registry
+; to have Windows use UTC.
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation]

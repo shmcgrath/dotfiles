@@ -17,7 +17,7 @@
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export PAGER="less"
-export TERMINAL="alacritty"
+export TERMINAL="ghostty"
 #export OPENER="xdg-open"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export NOTES=$HOME/Dropbox/notes

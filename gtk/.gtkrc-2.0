@@ -2,3 +2,4 @@ gtk-key-theme-name = Default
 gtk-icon-theme-name = "Papirus-Dark"
 gtk-theme-name = "Materia-dark-compact"
 gtk-font-name = "FreeSans 9"
+gtk-cursor-bink = 0

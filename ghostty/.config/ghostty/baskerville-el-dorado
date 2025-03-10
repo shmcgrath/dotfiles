@@ -21,3 +21,4 @@ cursor-color = #a2a2a2
 #cursor-text=
 #selection-background=
 #selection-foreground=
+# vim:ft=ghostty:

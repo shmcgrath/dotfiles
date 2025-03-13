@@ -1,0 +1,3 @@
+[submodule "vim-base/.config/vim-base/bundle-unman/vim-infolines"]
+	path = vim-base/.config/vim-base/bundle-unman/vim-infolines
+	url = https://github.com/shmcgrath/vim-infolines.git

@@ -2,7 +2,27 @@
 
 This is a collection of my dotfiles. I am just starting to build them up in March of 2017. I am currently running an [Arch Linux](https://www.archlinux.org/) pseudo-server and am using an Apple laptop. I sync the dotfiles with [Dropbox.](https://www.dropbox.com/) I use git for version control and keep non-sensitive dotfiles in [this](https://github.com/shmcgrath/dotfiles) public GitHub repo.
 
-I will update this README with more links, tips, and information as I grow my dotfiles. 
+I will update this README with more links, tips, and information as I grow my dotfiles.
+
+## Submodules
+
+This repo has [vim-infolines](https://github.com/shmcgrath/vim-infolines) as a submodule. After cloning a repo with a submodule, the submodules need to be initialized and updated.
+
+``` bash
+git clone --recursive https://github.com/username/repo.git
+```
+
+If the repo containing submodules has already been cloned, update them.
+
+``` bash
+git submodule update --init --recursive
+```
+
+Command to update a submodule:
+``` bash
+git submodule update --remote
+```
+
 
 ## Dotfile Management with GNU Stow and GitHub
 

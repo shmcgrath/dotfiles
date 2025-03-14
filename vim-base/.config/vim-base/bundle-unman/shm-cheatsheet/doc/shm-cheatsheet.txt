@@ -344,6 +344,13 @@ runtimepath is like your shell's PATH: it's where files are searched for, not wh
 neovim - print runtime path
 :lua print(vim.inspect(vim.api.nvim_list_runtime_paths()))
 
+vim print list of directories in runtimepath:
+:echo &runtimepath
+
+vim check for specific directory in runtimepath
+return 1 if exists 0 if it does not
+:echo index(split(&runtimepath, ','), '~/.config/vim-base') != -1
+
 Vim References
 [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/)
 [vimcasts](http://vimcasts.org/)

@@ -27,10 +27,11 @@ require("lazy").setup({
     -- import your plugins
     { import = "plugins" },
   },
-  dev = {
-	  path = "$HOME/.config/vim-base/bundle-unman",
-	  fallback = false,
-  },
+  dev =
+    {
+      path = os.getenv("HOME") .. "/.config/vim-base/bundle-unman/",
+      fallback = false,
+    },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },

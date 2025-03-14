@@ -1,5 +1,9 @@
 source $HOME/.config/vim-base/vimrc-common.vim
 
+" Add vim-base to runtimepath {{{2
+" add shared runtime directory to the runtimepath
+set runtimepath+=$HOME/.config/vim-base/
+
 " runtime config for plugins {{{2
 " settings files for plugins
 runtime! settings/plugins/*.vim
@@ -34,7 +38,7 @@ Plug 'justinmk/vim-sneak' " Jump to any location via two characters
 Plug 'mbbill/undotree'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'nathangrigg/vim-beancount'
-Plug 'shmcgrath/vim-infolines' 
+"Plug 'shmcgrath/vim-infolines' 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive' " A vim git wrapper
 Plug 'tpope/vim-repeat' " Repeats all commands, not just native
@@ -47,7 +51,7 @@ Plug 'w0rp/ale' " Async Lint Engine
 
 " Unmanaged plugins - installed from $HOME/.vim/bundle-unman
 Plug $HOME.'/.config/vim-base/bundle-unman/shm-cheatsheet'
-"Plug $HOME.'/.config/vim-base/bundle-unman/vim-infolines'
+Plug $HOME.'/.config/vim-base/bundle-unman/vim-infolines'
 
 " List ends here. Plugins become visible to vim after this call.
 call plug#end()

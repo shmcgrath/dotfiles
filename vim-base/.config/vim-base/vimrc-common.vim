@@ -29,11 +29,6 @@ else
 	" other settings
 endif
 
-" Add vim-base to runtimepath {{{2
-" add shared runtime directory to the end of the runtimepath
-" so that it loads last
-set runtimepath^=$HOME/.config/vim-base/
-
 " Configure by Hostname {{{2
 if !exists("g:hostname")
 	let g:hostname = hostname()

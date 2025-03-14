@@ -42,6 +42,7 @@ servers:
         - name: "#opnsense"
         - name: "##programming"
         - name: "#python"
+        - name: "#river"
         - name: "#rust"
         - name: "#security"
         - name: "#tmux"

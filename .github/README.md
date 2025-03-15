@@ -95,8 +95,14 @@ Install the following fonts:
 - gtk font picker: gtk2fontsel
 - other gtk settings: lxappearance
 - ttf-ibmplex-mono-nerd
-- ttf-jetbrains-mono-nerd 
 - ttf-0xproto-nerd
-- otf-commit-mono-nerd 
-- ttf-meslo-nerd 
+- otf-commit-mono-nerd
+- ttf-meslo-nerd (use MesloLGS Nerd Font Mono)
 - for other systems download fonts from [nerdfonts.com](https://www.nerdfonts.com/)
+
+## How to choose a nerd font?
+- Pick your font family:
+    - If you are limited to monospaced fonts (because of your terminal, etc) then pick a font with Nerd Font Mono (or NFM).
+    - If you want to have bigger icons (usually around 1.5 normal letters wide) pick a font without Mono i.e. Nerd Font (or NF). Most terminals support this, but ymmv.
+    - If you work in a proportional context (GUI elements or edit a presentation etc) pick a font with Nerd Font Propo (or NFP).
+[This information is from the FiraCode section at this GitHub](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode#tldr)

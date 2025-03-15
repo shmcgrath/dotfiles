@@ -1,0 +1,2 @@
+secrets/* filter=gpg
+tiny-irc/.config/tiny/config.yml filter=gpg

@@ -99,3 +99,6 @@ emacs/.emacs.d/auto-save-list
 emacs/.emacs.d/backups
 emacs/.emacs.d/elpa
 emacs/.emacs.d/transient
+
+# tiny-irc unencrypted
+tiny-irc/.config/tiny/config.yml

@@ -97,3 +97,6 @@ Install the following fonts:
 - ttf-ibmplex-mono-nerd
 - ttf-jetbrains-mono-nerd 
 - ttf-0xproto-nerd
+- otf-commit-mono-nerd 
+- ttf-meslo-nerd 
+- for other systems download fonts from [nerdfonts.com](https://www.nerdfonts.com/)

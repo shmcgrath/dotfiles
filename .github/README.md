@@ -86,7 +86,14 @@ Install the following fonts:
 - ttf-liberation
 - adobe-source-code-pro-fonts
 - noto-fonts-emoji
+- ttf-noto-nerd
+- ttf-nerd-fonts-symbols
+- ttf-nerd-fonts-symbols-common
+- ttf-nerd-fonts-symbols-mono
 - NerdFont in Repo
 - to "install" nerd font from repo, stow it then "fc-cache -f -v"
 - gtk font picker: gtk2fontsel
 - other gtk settings: lxappearance
+- ttf-ibmplex-mono-nerd
+- ttf-jetbrains-mono-nerd 
+- ttf-0xproto-nerd

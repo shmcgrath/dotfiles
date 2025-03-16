@@ -170,17 +170,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>:source $MYGVIMRC<cr>
 "let g:netrw_list_hide=netrw_gitignore#Hide()
 "let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
-" Backup and Swap Files {{{2
-set backupdir=$HOME/.config/vim-base/.backup//
-set directory=$HOME/.config/vim-base/.swp//
-
-" Undo and Redo {{{2
-if has('persistent_undo')
-	set undofile
-	set undodir=$HOME/.config/vim-base/.undodir//
-	set undolevels=1000
-	set undoreload=10000
-endif
 
 " Copy and Paste {{{2
 " If you like Y to work from the cursor to the end of line (which is more logical, but not Vi-compatible) via :help Y

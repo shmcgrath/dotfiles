@@ -80,6 +80,9 @@ These are some of the links that I found useful when figuring out how to manage 
 - [Materia GTK Theme](https://github.com/nana-4/materia-theme)
 - [Papirus Icon Theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme#extras)
 
+## neovim setup
+- I am using [paq-nvim](https://github.com/savq/paq-nvim) as a plugin manager on neovim. I tried lazy.vim, but was unable to get it to work with the pack folder from vim-base.
+
 ## Fonts to Install
 Install the following fonts:
 - gnu-free-fonts
@@ -94,7 +97,6 @@ Install the following fonts:
 - to "install" nerd font from repo, stow it then "fc-cache -f -v"
 - gtk font picker: gtk2fontsel
 - other gtk settings: lxappearance
-- ttf-ibmplex-mono-nerd
 - ttf-0xproto-nerd
 - otf-commit-mono-nerd
 - ttf-meslo-nerd (use MesloLGS Nerd Font Mono)

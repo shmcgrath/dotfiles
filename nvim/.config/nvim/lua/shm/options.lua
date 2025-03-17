@@ -1,1 +1,2 @@
---vim.cmd("source $HOME/.config/vim-base/.vimrc")
+vim.opt.inccommand = "split"
+-- vim.opt.clipboard = "unnamedplus"

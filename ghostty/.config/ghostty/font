@@ -1,4 +1,4 @@
-font-family = 
+font-family = CommitMono Nerd Font Mono
 font-family-bold = 
 font-family-italic = 
 font-family-bold-italic = 
@@ -7,12 +7,8 @@ font-style-bold = default
 font-style-italic = default
 font-style-bold-italic = default
 font-synthetic-style = bold,italic,bold-italic
-font-feature = 
-font-variation = 
-font-variation-bold = 
-font-variation-italic = 
-font-variation-bold-italic = 
-font-codepoint-map = 
+# disable ligatures
+font-feature = -calt, -liga, -dlig
 font-thicken = false
 font-thicken-strength = 255
 # vim:ft=ghostty:

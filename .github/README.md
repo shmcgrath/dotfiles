@@ -102,9 +102,149 @@ Install the following fonts:
 - ttf-meslo-nerd (use MesloLGS Nerd Font Mono)
 - for other systems download fonts from [nerdfonts.com](https://www.nerdfonts.com/)
 
-## How to choose a nerd font?
+### How to choose a nerd font?
 - Pick your font family:
     - If you are limited to monospaced fonts (because of your terminal, etc) then pick a font with Nerd Font Mono (or NFM).
     - If you want to have bigger icons (usually around 1.5 normal letters wide) pick a font without Mono i.e. Nerd Font (or NF). Most terminals support this, but ymmv.
     - If you work in a proportional context (GUI elements or edit a presentation etc) pick a font with Nerd Font Propo (or NFP).
 [This information is from the FiraCode section at this GitHub](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode#tldr)
+## Colors and Themes
+- Baskerville El Dorado Dark
+- [cyberdream](https://github.com/scottmckendry/cyberdream.nvim)
+- [modus themes](https://github.com/miikanissi/modus-themes.nvim)
+## Installed Packages
+### offical repo
+- wezterm: terminal
+- ghostty
+- alacritty
+- libqalculate: cli and gui(?) calculator
+- zola: static site generator
+- keepassxc
+- dunst: notificaitons (mako alternative)
+- alsa-utils
+- htop
+- btop
+- calibre
+- docker
+- docker-compose
+
+#### GUI
+- xfce
+- Hyprland
+
+#### photography
+- digikam
+- darktable
+
+#### social
+- discord
+
+#### xorg
+
+### aur packages
+- aurutils
+- ladybird
+- dropbox
+
+
+- base linux linux-firmware base-devel dosfstools exfatprogs f2fs-tools e2fsprogs ntfs-3g reflector stow qtile xorg xorg-init rofi firefox kitty uxrvt keepassxc man-db man-pages texinfo less sudo
+```
+libqalculate
+zola
+wezterm
+ghostty
+```
+base 3-2
+cadaver 0.26-1
+calcurse 4.8.1-2
+cliphist 1:0.6.1-1
+cmus (try mpd and ncmpcpp)
+dart-sass 1.83.4-1
+eza 0.20.24-1
+fbida 2.14-6
+fcron 3.3.1-2
+feh 3.10.3-1
+firefox 136.0.3-1
+firefox-developer-edition 137.0b10-1
+flameshot 12.1.0-6
+fuzzel 1.11.1-2
+ghostty 1.1.3-1
+gimp 3.0.2-2
+glow 2.1.0-1
+gobject-introspection 1.84.0-1
+gptfdisk 1.0.10-1
+grub 2:2.12.r226.g56ccc5ed-1
+gtk2fontsel 0.1-8
+gucharmap 15.1.1-1
+hexchat 2.16.2-4
+hexyl 0.16.0-1
+htop 3.4.0-1
+hyprland 0.48.0-1
+imv 4.5.0-5
+incron 0.5.12-6
+inetutils 2.5-1
+isync 1.5.0-2
+kdiff3 1.12.2-1
+keepass-plugin-keeagent 0.12.1-4
+keychain 2.8.5-3
+khal 0.11.3-5
+ksh 2020.0.0-3
+libsixel 1.10.5-1
+lxappearance-gtk3 0.6.4-1
+man-pages 6.13-1
+materia-gtk-theme 20210322-3
+mediainfo 25.03-1
+meld 3.22.3-1
+msmtp 1.8.28-1
+neomutt 20250113-1
+newsboat 2.39-1
+notmuch 0.38.3-5
+nsxiv 33-1
+obsidian 1.8.9-2
+opendoas 6.8.2-3
+otf-commit-mono-nerd 3.3.0-1
+pacman-contrib 1.11.0-1
+papirus-icon-theme 20250201-1
+pavucontrol 1:6.1-1
+picocom 3.1-3
+picom 12.5-1
+polkit-kde-agent 6.3.3-1
+python-dbus-next 0.2.3-6
+python-gpgme 1.24.2-1
+qalculate-gtk 5.5.1-1
+qmk 1.1.6-1
+rclone 1.69.1-1
+reflector 2023-3
+remind 5.2.3-1
+ristretto 0.13.4-1
+rofi-pass 2.0.2-4
+rtorrent 0.15.1-4
+rxvt-unicode 9.31-7
+sassc 3.6.2-5
+slock 1.5-3
+stalonetray 0.8.5-2
+stow 2.4.1-1
+sway 1:1.10.1-2
+sxhkd 0.6.2-4
+sxiv 26-2
+testdisk 7.2-2
+thunar-dropbox 0.3.1-1
+tiny 0.13.0-1
+trayer 1.1.8-4
+ttf-0xproto-nerd 3.3.0-1
+ttf-jetbrains-mono-nerd 3.3.0-1
+ttf-noto-nerd 3.3.0-1
+udiskie 2.5.7-1
+ueberzug 18.3.1-4
+vimiv 0.9.1-9
+vivaldi 7.2.3621.71-1
+vlc 3.0.21-16
+vmware-workstation 16.2.1-2
+wezterm 20240203.110809.5046fc22-2
+wikiman 2.13.2-2
+xdg-user-dirs 0.18-2
+xf86-video-vesa 2.6.0-2
+xfdesktop 4.20.1-1
+xfwm4-themes 4.10.0-6
+yazi 25.3.2-1
+zola 0.20.0-1

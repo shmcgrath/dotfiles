@@ -12,3 +12,4 @@ vim.opt.packpath:append(os.getenv("HOME") .. "/.config/vim-base")
 
 -- require [paq plugin manager](https://github.com/savq/paq-nvim/)
 require("shm.paq")
+require("shm.options")

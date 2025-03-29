@@ -14,13 +14,11 @@
 # Reminders & Notes
 
 # ==Environment{{{2
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 export PAGER="less"
-export TERMINAL="ghostty"
 #export OPENER="xdg-open"
-export RANGER_LOAD_DEFAULT_RC=FALSE
-export NOTES=$HOME/Dropbox/notes
+export NOTES=$HOME/Dropbox/shm
 # Other XDG paths
 #export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 #export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
@@ -54,9 +52,6 @@ fi
 # ==Path{{{2
 pathCheckSet "$HOME/.local/bin/scripts"
 pathCheckSet "$HOME/bin"
-pathCheckSet "$HOME/.cabal/bin"
-pathCheckSet "$HOME/.ghcup/env"
-pathCheckSet "$HOME/.ghcup/bin"
 echo 'PATH: '$PATH
 
 # ==PROMPT{{{2
@@ -64,7 +59,27 @@ echo 'PATH: '$PATH
 
 
 # ==HISTORY{{{2
-export HISTIGNORE="ls:ll:cd:pwd:history:ranger:lf:cls:pacsyu"
+HISTIGNORE_LIST=(
+  ".1"
+  ".2"
+  ".3"
+  "cd .."
+  "cd"
+  "cls"
+  "e"
+  "history"
+  "lf"
+  "ll"
+  "ls"
+  "nvim"
+  "pacsyu"
+  "pwd"
+  "ranger"
+  "vim"
+  "y"
+  "yazi"
+)
+export HISTIGNORE="$(IFS=:; echo "${HISTIGNORE_LIST[*]}")"
 export HISTFILESIZE=100000
 export HISTSIZE=100000
 export HISTCONTROL="ignoredups:erasedups"
@@ -89,7 +104,7 @@ alias la='ls -x --classify --almost-all --group-directories-first --color' # -x 
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
-alias sbrc="source ~/.bashrc && echo 'sourcing $HOME/.bashrc'" # reloads bashrc
+alias sbrc="source $HOME/.bashrc && echo 'sourcing $HOME/.bashrc'" # reloads bashrc
 cdll() { builtin cd "$@"; ll; }             # Always list directory contents upon 'cd'
 
 # ==PASTEBIN{{{2

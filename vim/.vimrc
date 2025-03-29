@@ -2,7 +2,12 @@ source $HOME/.config/vim-base/vimrc-common.vim
 
 " Add vim-base to runtimepath {{{2
 " add shared runtime directory to the runtimepath
-set runtimepath+=$HOME/.config/vim-base/
+set runtimepath+=$HOME/.config/vim-base
+set runtimepath+=$HOME/.config/vim-base/after
+
+" Add vim-base to packpath {{{2
+" this is the shared plugin directory with neovim
+set packpath+=~/.config/vim-base
 
 " runtime config for plugins {{{2
 " settings files for plugins
@@ -18,7 +23,7 @@ if empty(glob('$HOME/.vim/autoload/plug.vim'))
 endif
 
 " Plugins will be downloaded under the specified directory.
-call plug#begin('$HOME/.vim/bundle')
+call plug#begin('$HOME/.local/share/vim/plug')
 
 " Declare the list of plugins.
 Plug 'AndrewRadev/id3.vim'
@@ -43,17 +48,12 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive' " A vim git wrapper
 Plug 'tpope/vim-repeat' " Repeats all commands, not just native
 Plug 'tpope/vim-surround' " Change surrounding punctuation and markup
-"Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar'
 "Plug 'vim-scripts/ReplaceWithRegister' " Replace without copying twice - learn
 Plug 'w0rp/ale' " Async Lint Engine
 
 " Trial Plugins
 
-" Unmanaged plugins - installed from $HOME/.vim/bundle-unman
-Plug $HOME.'/.config/vim-base/bundle-unman/shm-cheatsheet'
-Plug $HOME.'/.config/vim-base/bundle-unman/vim-infolines'
-
-" List ends here. Plugins become visible to vim after this call.
 call plug#end()
 
 " General Settings {{{2
@@ -71,3 +71,17 @@ colorscheme bubblegum-256-dark
 highlight Comment cterm=italic gui=italic
 
 let g:UltiSnipsSnippetsDir=$HOME."/.config/vim-base/ultisnips-shm"
+" Undo and Redo {{{2
+if has('persistent_undo')
+	set undodir=$HOME/.local/state/vim/undodir//
+	set undofile
+	set undolevels=1000
+	set undoreload=10000
+else
+	set undofile
+	set undodir=$HOME/.local/state/vim/undo//
+endif
+
+" Backup and Swap Files {{{2
+set backupdir=$HOME/.local/state/vim/backup//
+set directory=$HOME/.local/state/vim/swap//

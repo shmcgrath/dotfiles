@@ -26,8 +26,28 @@ require("telescope").setup({
       end,
     },
   },
+  extensions = {
+    file_browser = {
+      theme = "ivy",
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = false,
+      mappings = {
+        ["i"] = {
+          -- your custom insert mode mappings
+        },
+        ["n"] = {
+          -- your custom normal mode mappings
+        },
+      },
+    },
+  },
 })
+
+require("telescope").load_extension "file_browser"
 
 -- telescope keymaps
 vim.keymap.set('n', '<C-p>f', builtin.find_files, {})
 vim.keymap.set('n', '<C-p>g', builtin.live_grep, {})
+vim.keymap.set("n", "<C-p>b", function()
+	require("telescope").extensions.file_browser.file_browser()
+end)

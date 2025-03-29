@@ -26,6 +26,7 @@ paq({
   { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' },
   { "stevearc/oil.nvim" },
   { "miikanissi/modus-themes.nvim" },
+  { "scottmckendry/cyberdream.nvim" },
   -- telescope and plugins --
   { "nvim-telescope/telescope.nvim" },
   { "nvim-telescope/telescope-file-browser.nvim" },

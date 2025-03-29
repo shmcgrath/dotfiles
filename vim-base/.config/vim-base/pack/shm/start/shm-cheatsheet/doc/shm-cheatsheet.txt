@@ -439,4 +439,11 @@ Completion
 2. File path completion     (|i_Ctrl-X_Ctrl-F|)
 3. Omni completion (|i_Ctrl-X_Ctrl-O|)
 
+Vim remove all empy lines
+:g/^$/d
+
+remove all lines that inlcude only whitespace characters
+:g/^\s*$/d
+
+
  vim:ft=help:

@@ -8,13 +8,13 @@ local config = wezterm.config_builder()
 local cyberdream_colors = require('cyberdream')
 local apply_shm_theme = require('shm-theme')
 
-config.colors = cyberdream_colors
+--config.colors = cyberdream_colors
 apply_shm_theme(config)
 
 -- This is where you actually apply your config choices
 config.font = wezterm.font('CommitMono Nerd Font Mono')
 config.font_size = 13.0
---config.color_scheme = 'Eldorado dark (terminal.sexy)'
+config.color_scheme = 'Eldorado dark (terminal.sexy)'
 --config.color_scheme = 'Eldritch'
 
 

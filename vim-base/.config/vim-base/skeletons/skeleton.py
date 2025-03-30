@@ -9,3 +9,21 @@ __author__ = 'Sarah H. McGrath'
 
 import logging
 from logging.config import fileConfig
+
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim:fenc=utf-8
+# File:
+#
+# @author      : {{+~g:name+}} ({{+~g:email+}})
+# @file        : {{+~expand('%:t')+}}
+# @created     : {{+~strftime("%c")+}}
+# @description : {{++}}
+#
+# @Copyright © {{+~strftime("%Y")+}} {{+~g:name+}} {{+~g:email+}}
+#
+# Distributed under terms of the {{+LICENSE+}} license.
+
+"""
+{{+ Description +}}
+"""

@@ -1,7 +1,7 @@
 daemonize
 ignore-empty-password
 show-failed-attempts
-font=OperatorMono Nerd Font
+font=Commit Mono Nerd Font Mono
 font-size=16
 color=282738
 key-hl-color=4E9A06

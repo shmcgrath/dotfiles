@@ -17,8 +17,10 @@
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export PAGER="less"
-#export OPENER="xdg-open"
-export NOTES=$HOME/Dropbox/shm
+export LESS='-iMR -x4'
+export TERMINAL=wezterm
+export OPENER="xdg-open"
+
 # Other XDG paths
 #export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 #export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
@@ -28,11 +30,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
-
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    export MOZ_ENABLE_WAYLAND=1
-fi
-
 
 # Set default blocksize for ls, df, du
 # from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
@@ -51,7 +48,9 @@ fi
 
 # ==Path{{{2
 pathCheckSet "$HOME/.local/bin/scripts"
+pathCheckSet "$HOME/.local/bin"
 pathCheckSet "$HOME/bin"
+pathCheckSet "$XDG_CONFIG_HOME/fuzzel/scripts"
 echo 'PATH: '$PATH
 
 # ==PROMPT{{{2

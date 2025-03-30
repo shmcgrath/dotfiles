@@ -10,7 +10,7 @@ if [ $? != 0 ]; then
 	tmux send-keys -t shm:2 "neomutt" C-m
 	tmux new-window -n notes -t shm
 	if [ -d "$HOME/Dropbox/obsidian/shm" ]; then
-		tmux send-keys -t shm:3 "cd $HOME/Dropbox/obsidian/shm" C-m
+		tmux send-keys -t shm:3 "cd $HOME/Dropbox/shm" C-m
 	fi
 	tmux new-window -n files -t shm
     if [ -d "$HOME/projects" ]; then

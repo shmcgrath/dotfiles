@@ -112,6 +112,14 @@ Install the following fonts:
 - Baskerville El Dorado Dark
 - [cyberdream](https://github.com/scottmckendry/cyberdream.nvim)
 - [modus themes](https://github.com/miikanissi/modus-themes.nvim)
+
+## User Scripts (Greasemonkey and Violentmonkey)
+- Currently using Violentmonkey
+- Installed Scripts:
+    - [RSS+Atom Feed Subscribe Button Generator](https://greasyfork.org/en/scripts/6261-rss-atom-feed-subscribe-button-generator/code)
+    - [URL Shortener Unshortener](https://greasyfork.org/en/scripts/5359-url-shortener-unshortener)
+    - Force Dark Mode
+    - old reddit
 ## Installed Packages
 ### offical repo
 - wezterm: terminal

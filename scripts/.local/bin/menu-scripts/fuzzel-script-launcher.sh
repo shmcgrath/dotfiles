@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR="$HOME/.config/fuzzel/scripts"
+SCRIPT_DIR="$HOME/.local/bin/menu-scripts"
 
 # List all executable files in the script directory
 scripts=$(find "$SCRIPT_DIR" -maxdepth 1 -type f -executable -printf "%f\n" | sort)

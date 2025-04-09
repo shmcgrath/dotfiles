@@ -1,4 +1,4 @@
-let g:vsnip_snippet_dir=$HOME."/.vim/vsnip"
+let g:vsnip_snippet_dir=$HOME."/.config/vim-base/snippets"
 let g:vsnip_namespace = 'vs'
 " NOTE: You can use other key to expand snippet.
 

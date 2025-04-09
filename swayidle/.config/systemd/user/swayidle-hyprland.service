@@ -9,9 +9,7 @@ Type=simple
 ExecStart=/usr/bin/swayidle -w \
 		timeout 900 'swaylock' \
 		timeout 905 '"hyprctl dispatch dpms off"' \
-			resume '"hyprctl dispatch dpms on"' \
-		timeout 1800 'systemctl suspend' \
-		before-sleep 'swaylock'
+			resume '"hyprctl dispatch dpms on"'
 
 [Install]
 WantedBy=hyprland-session.target

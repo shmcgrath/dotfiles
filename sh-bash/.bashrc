@@ -48,9 +48,10 @@ fi
 
 # ==Path{{{2
 pathCheckSet "$HOME/.local/bin/scripts"
+pathCheckSet "$HOME/.local/bin/menu-scripts"
+pathCheckSet "$HOME/.cargo/bin"
 pathCheckSet "$HOME/.local/bin"
 pathCheckSet "$HOME/bin"
-pathCheckSet "$XDG_CONFIG_HOME/fuzzel/scripts"
 echo 'PATH: '$PATH
 
 # ==PROMPT{{{2
@@ -64,14 +65,18 @@ HISTIGNORE_LIST=(
   ".3"
   "cd .."
   "cd"
+  "cdi"
+  "clear"
   "cls"
   "e"
   "history"
   "lf"
   "ll"
   "ls"
+  "navi"
   "nvim"
   "pacsyu"
+  "paru"
   "pwd"
   "ranger"
   "vim"
@@ -192,3 +197,12 @@ spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 #if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   #exec startx "$XDG_CONFIG_HOME/X11/.xinitrc"
 #fi
+
+# cli tools eval{{{2
+eval "$(zoxide init --cmd cd bash)"
+eval "$(navi widget bash)" #CTRL+G
+eval "$(fzf --bash)"
+# fzf keys
+# CTRL+R: search history
+# CTRL+T: search files
+# ALT+C: directory jumping

@@ -102,3 +102,6 @@ emacs/.emacs.d/transient
 
 # tiny-irc unencrypted
 tiny-irc/.config/tiny/config.yml
+
+# linters and lsp
+.luarc.json

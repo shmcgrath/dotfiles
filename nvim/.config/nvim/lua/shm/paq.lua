@@ -7,7 +7,7 @@ local function install_paq()
       "clone",
       "--depth=1",
       "https://github.com/savq/paq-nvim.git",
-      install_path
+      install_path,
     })
     vim.cmd("packadd paq-nvim")
   end
@@ -23,17 +23,23 @@ local paq = require("paq")
 paq({
   { "savq/paq-nvim" },
   { "kylechui/nvim-surround" },
-  { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' },
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   { "stevearc/oil.nvim" },
-  { "miikanissi/modus-themes.nvim" },
   { "scottmckendry/cyberdream.nvim" },
   -- telescope and plugins --
   { "nvim-telescope/telescope.nvim" },
-  { "nvim-telescope/telescope-file-browser.nvim" },
+  { "nvim-telescope/telescope-ui-select.nvim" },
   -- lsp
-  { "neovim/nvim-lspconfig" },
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
+  -- linter and formatter
+  { "mfussenegger/nvim-lint" },
+  { "stevearc/conform.nvim" },
+  -- dap
+  -- snippets and completion
+  { "Saghen/blink.cmp", build = "cargo build --release" },
+  { "L3MON4D3/LuaSnip" },
+  --{ "saadparwaiz1/cmp_luasnip" }, -- luasnip
   -- dependencies
   { "nvim-lua/plenary.nvim" }, -- telescope
   { "nvim-tree/nvim-web-devicons" },
@@ -57,6 +63,8 @@ local function load_plugin_configs()
   local explicit_order = {
     "mason",
     "mason-lspconfig",
+    "blink-cmp",
+    "LuaSnip",
   }
 
   -- Load explicitly ordered plugins first

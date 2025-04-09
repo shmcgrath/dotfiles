@@ -1,6 +1,6 @@
 require("oil").setup({
   view_options = {
-    show_hidden = false,
+    show_hidden = true,
   },
   use_default_keymaps = false,
   keymaps = {

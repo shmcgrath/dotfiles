@@ -1,0 +1,55 @@
+% macos, osx, apple, finder
+
+# show hidden files in Finder
+defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder
+
+# hide hidden files in Finder
+defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder
+
+# open current directory in Finder
+open -a Finder ./
+
+% macos, osx, apple, terminal
+
+# pipe and append content to file in macOS Documents
+tee -a ~/Documents/term-out.txt
+
+% macos, osx, apple, notificaiotn
+
+# Display a notification with message, title and subtitle
+osascript -e 'display notification "<message>" with title "<title>" subtitle "<subtitle>"'
+
+# Display a notification with message and title
+osascript -e 'display notification "<message>" with title "<title>"'
+
+% macos, osx, apple, power
+
+# Lock screen
+pmset displaysleepnow
+
+# Prevent sleep
+caffeinate -t $((60*<minutes>))
+
+# Prevent sleep for a long time
+caffeinate -t 18000
+
+% macos, osx, apple, ui
+
+# Set dark mode on (dark)
+osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to true'
+
+# Set dark mode off (light)
+osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to false'
+
+% macos, osx, apple, disk
+
+# Eject volume
+diskutil eject '<eject_vol>'
+# Show disk info
+diskutil list
+
+# Show partition info
+diskutil info '<disk_dev>'
+
+$ eject_vol: find /Volumes ! -path /Volumes -maxdepth 1 -type d  -name "*"
+$ disk_dev: find /dev -maxdepth 1 -name "disk*s*"

@@ -1,0 +1,7 @@
+% git, cli
+
+# Initializes a git repository
+git init
+
+# Shallow clone with depth 1 with all branches and submodules
+git clone --depth=1 --no-single-branch --recurse-submodules <repository> <clone_directory>

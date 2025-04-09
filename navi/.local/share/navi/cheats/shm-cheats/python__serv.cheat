@@ -1,0 +1,7 @@
+% python, server, web
+
+# alias for python http server on port 8624
+pyserv
+
+# create a python http server on a port
+python3 -m http.server <port-number>

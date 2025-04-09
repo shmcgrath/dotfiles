@@ -1,0 +1,12 @@
+% python, venv,
+# activate virtual environment in current directory
+source ./venv/bin/activate
+
+# deactivate / end / kill virtual envuronment
+deactivate
+
+# deativate and exit virtual environment
+deactivate && exi
+
+# create virutal environment in current directory
+python3 -m venv venv

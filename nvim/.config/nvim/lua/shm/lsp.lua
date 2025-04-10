@@ -1,7 +1,7 @@
 -- This is where you enable features that only work
 -- if there is a language server active in the file
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup('shm.lsp', {}),
+  group = vim.api.nvim_create_augroup('my.lsp', {}),
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     if client:supports_method('textDocument/implementation') then

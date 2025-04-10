@@ -26,9 +26,7 @@ paq({
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   { "stevearc/oil.nvim" },
   { "scottmckendry/cyberdream.nvim" },
-  -- telescope and plugins --
-  { "nvim-telescope/telescope.nvim" },
-  { "nvim-telescope/telescope-ui-select.nvim" },
+  { "ibhagwan/fzf-lua" },
   -- lsp
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
@@ -41,7 +39,6 @@ paq({
   { "L3MON4D3/LuaSnip" },
   --{ "saadparwaiz1/cmp_luasnip" }, -- luasnip
   -- dependencies
-  { "nvim-lua/plenary.nvim" }, -- telescope
   { "nvim-tree/nvim-web-devicons" },
   -- vim plugins
   { "AndrewRadev/id3.vim" },

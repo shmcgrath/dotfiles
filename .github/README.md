@@ -1,6 +1,6 @@
 # Dotfiles
 
-This is a collection of my dotfiles. I am just starting to build them up in March of 2017. I am currently running an [Arch Linux](https://www.archlinux.org/) pseudo-server and am using an Apple laptop. I sync the dotfiles with [Dropbox.](https://www.dropbox.com/) I use git for version control and keep non-sensitive dotfiles in [this](https://github.com/shmcgrath/dotfiles) public GitHub repo.
+This is a collection of my dotfiles. I am just starting to build them up in March of 2017. I am currently running an [Arch Linux](https://www.archlinux.org/) pseudo-server and am using an Apple laptop.
 
 I will update this README with more links, tips, and information as I grow my dotfiles.
 

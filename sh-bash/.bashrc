@@ -63,6 +63,7 @@ HISTIGNORE_LIST=(
   ".1"
   ".2"
   ".3"
+  "cd -"
   "cd .."
   "cd"
   "cdi"

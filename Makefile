@@ -139,4 +139,4 @@ rust:
 	$(PKGINSTALL) lldb gdb gcc
 
 neovim:
-	$(PKGINSTALL) neovim nodejs npm stylua
+	$(PKGINSTALL) neovim nodejs npm

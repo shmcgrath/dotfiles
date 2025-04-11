@@ -1,3 +1,4 @@
+---@type vim.lsp.Config
 return {
   cmd = { "lua-language-server" },
   filetypes = { "lua" },
@@ -9,13 +10,15 @@ return {
     "stylua.toml",
     "selene.toml",
     "selene.yml",
-    ".git",
   },
   settings = {
     Lua = {
       runtime = {
         version = "LuaJIT",
-      }
+      },
+      signatureHelp = {
+        enabled = true,
+      },
     }
   }
 }

@@ -29,8 +29,8 @@ paq({
   { "ibhagwan/fzf-lua" },
   -- lsp
   { "williamboman/mason.nvim" },
-  { "williamboman/mason-lspconfig.nvim" },
   -- linter and formatter
+  --{ "dense-analysis/ale" },
   { "mfussenegger/nvim-lint" },
   { "stevearc/conform.nvim" },
   -- dap
@@ -59,7 +59,6 @@ local function load_plugin_configs()
   -- Define an explicit load order for specific plugins
   local explicit_order = {
     "mason",
-    "mason-lspconfig",
     "blink-cmp",
     "LuaSnip",
   }

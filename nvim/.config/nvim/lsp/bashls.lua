@@ -1,10 +1,10 @@
+---@type vim.lsp.Config
 return {
   cmd = { "bash-language-server", "start" },
   filetypes = { "bash", "sh" },
-  single_file_support = true,
   root_markers = {
     ".git",
-  }
+  },
   settings = {
     bashIde = {
       -- Glob pattern for finding and parsing shell script files in the workspace.

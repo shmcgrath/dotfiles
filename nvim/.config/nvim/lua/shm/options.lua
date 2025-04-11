@@ -1,4 +1,3 @@
+vim.cmd("colorscheme cyberdream")
 vim.opt.inccommand = "split"
 -- vim.opt.clipboard = "unnamedplus"
---vim.cmd([[colorscheme modus]]) -- modus_operandi, modus_vivendi
-vim.cmd("colorscheme cyberdream")

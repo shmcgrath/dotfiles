@@ -204,3 +204,13 @@ endif
 " TODO: make this a command instead of a mapping
 nnoremap <leader>skel :-1read $HOME/.vim/skeletons/
 
+" Automatically call helptags on save for shm-cheatsheet.txt
+augroup shmCheatsheetHelptags
+  autocmd!
+  autocmd BufWritePost shm-cheatsheet.txt
+        \ if filereadable(expand('%')) |
+        \   let docdir = expand('%:p:h') |
+        \   execute 'helptags ' . fnameescape(docdir) |
+        \   echo 'Updated helptags for ' . docdir |
+        \ endif
+augroup END

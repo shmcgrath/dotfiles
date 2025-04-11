@@ -445,5 +445,27 @@ Vim remove all empy lines
 remove all lines that inlcude only whitespace characters
 :g/^\s*$/d
 
+print LSP client details:
+:lua for _, c in ipairs(vim.lsp.get_clients({bufnr = 0})) do vim.print(c) end
+
+might be worth making a custom function:
+vim.api.nvim_create_user_command("LspInfoPrint", function()
+  local clients = vim.lsp.get_clients({ bufnr = 0 })
+  if #clients == 0 then
+    print("No LSP clients attached to this buffer.")
+    return
+  end
+
+  for _, client in ipairs(clients) do
+    vim.print(client)
+  end
+end, {})
+
+
+To generate HELP after installing a plugin:
+:helptags ALL
+
+This scans all 'runtimepath' entries for any doc/ directories and updates their help tags. It's the easiest way to make sure all plugins have their help properly indexed.
+
 
  vim:ft=help:

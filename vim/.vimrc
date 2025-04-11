@@ -50,7 +50,7 @@ Plug 'tpope/vim-repeat' " Repeats all commands, not just native
 Plug 'tpope/vim-surround' " Change surrounding punctuation and markup
 Plug 'tpope/vim-vinegar'
 "Plug 'vim-scripts/ReplaceWithRegister' " Replace without copying twice - learn
-Plug 'w0rp/ale' " Async Lint Engine
+Plug 'dense-analysis/ale' " Async Lint Engine
 
 " Trial Plugins
 

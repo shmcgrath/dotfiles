@@ -1,0 +1,22 @@
+output "LG Electronics LG ULTRAWIDE 0x0004E78C" {
+	mode 2560x1080@59.978001
+	position 0,0
+	scale 1.000000
+	transform normal
+	adaptive_sync off
+	alias $LG_ULTRA
+}
+
+output "Ancor Communications Inc ASUS VH238 B1LMIZ089401" {
+	mode 1920x1080@60.000000
+	position 2560,0
+	scale 1.000000
+	transform 90
+	adaptive_sync off
+	alias $ASUS_CODE
+}
+
+profile home_01 {
+	output $LG_ULTRA enable
+	output $ASUS_CODE enable
+}

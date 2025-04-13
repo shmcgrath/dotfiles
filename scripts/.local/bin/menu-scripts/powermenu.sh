@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SELECTION="$(printf "Lock\nSuspend\nReboot\nReboot to UEFI\nHard reboot\nShutdown\nHyprland reload\nHyprland exit\nHyprland restart waybar\nsway reload config\nsway exit\nriver exit" | fuzzel --dmenu --lines 11 --prompt "Power Menu > ")"
+SELECTION="$(printf "Lock\nSuspend\nReboot\nReboot to UEFI\nHard reboot\nShutdown\nHyprland reload\nHyprland exit\nHyprland restart waybar\nsway reload config\nsway exit\nriver exit" | fuzzel --dmenu --lines 12 --prompt "Power Menu > ")"
 
 case $SELECTION in
 	*"Lock")

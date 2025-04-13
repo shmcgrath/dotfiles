@@ -21,7 +21,7 @@ declare -A DIR_MAP=(
     [3]="${BASE_DIR}/.local/share/${TARGET_NAME}"
     [4]="${BASE_DIR}/.local/state/${TARGET_NAME}"
     [5]="${BASE_DIR}/.local/bin/${TARGET_NAME}"
-    [6]="${BASE_DIR}/.config/systemd/user/${TARGET_NAME}"
+    [6]="${BASE_DIR}/.config/systemd/user/"
 )
 
 

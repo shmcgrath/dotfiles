@@ -2,6 +2,16 @@
 # See the river(1), riverctl(1), and rivertile(1) man pages for complete
 # documentation.
 
+# Set river specific environment variables
+export XDG_SESSION_TYPE="wayland"
+export XDG_CURRENT_DESKTOP="river"
+
+riverctl spawn "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river"
+riverctl spawn "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+
+# Start systemd services and targets
+systemctl --user start river-session.target
+
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
 # Super+Return to start an instance of foot (https://codeberg.org/dnkl/foot)

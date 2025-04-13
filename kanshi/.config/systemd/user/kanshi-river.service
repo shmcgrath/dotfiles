@@ -1,0 +1,13 @@
+[Unit]
+Description=Dynamic output configuration for Wayland compositors / river wm
+Documentation=https://sr.ht/~emersion/kanshi
+BindsTo=river-session.target
+After=river-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/kanshi
+RemainAfterExit=yes
+
+[Install]
+WantedBy=river-session.target

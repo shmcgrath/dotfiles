@@ -30,18 +30,18 @@ paq({
   -- lsp
   { "williamboman/mason.nvim" },
   -- linter and formatter
-  --{ "dense-analysis/ale" },
   { "mfussenegger/nvim-lint" },
   { "stevearc/conform.nvim" },
   -- dap
   -- snippets and completion
   { "Saghen/blink.cmp", build = "cargo build --release" },
   { "L3MON4D3/LuaSnip" },
-  --{ "saadparwaiz1/cmp_luasnip" }, -- luasnip
   -- dependencies
   { "nvim-tree/nvim-web-devicons" },
   -- vim plugins
   { "AndrewRadev/id3.vim" },
+  { "airblade/vim-gitgutter" },
+  { "dense-analysis/ale" },
   { "justinmk/vim-sneak" },
   { "mbbill/undotree" },
   { "tpope/vim-commentary" },
@@ -50,7 +50,18 @@ paq({
   { "tpope/vim-surround" },
 })
 
--- Function to load all plugin configs dynamically
+-- Functions to load all plugin configs dynamically
+local function load_shared_configs()
+  local plugin_settings_path = vim.fn.expand("$XDG_CONFIG_HOME")
+  if plugin_settings_path == "" then
+    print("Error: no shared_plugin_settings_path")
+  else
+    plugin_settings_path = plugin_settings_path .. "/vim-base/settings/plugins"
+    for _, file in ipairs(vim.fn.glob(plugin_settings_path .. "/*.vim", 0, 1)) do
+      vim.cmd("source " .. file)
+    end
+  end
+end
 
 local function load_plugin_configs()
   local plugin_config_path = vim.fn.stdpath("config") .. "/lua/plugins"
@@ -89,3 +100,4 @@ end
 
 -- Load all plugin configurations automatically
 load_plugin_configs()
+load_shared_configs()

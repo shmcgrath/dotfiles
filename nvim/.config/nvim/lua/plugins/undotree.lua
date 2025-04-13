@@ -1,5 +1,3 @@
-vim.keymap.set("n", "<F5>", ":UndotreeToggle<CR>", { noremap = true, silent = true })
-
 -- set undodir if undotree is installed
 if vim.fn.has("persistent_undo") == 1 then
     local target_path = vim.fn.expand("~/.local/state/nvim/undodir")

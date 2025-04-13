@@ -1,6 +1,5 @@
 " Settings for [undotree](https://github.com/mbbill/undotree)
-nnoremap <silent> <Space>ut :UndotreeToggle<CR>
-nnoremap <F5> :UndotreeToggle<CR>
+nnoremap <silent> <F5> :UndotreeToggle<CR>
 if !exists('g:undotree_SetFocusWhenToggle')
     let g:undotree_SetFocusWhenToggle = 1
 endif

@@ -1,4 +1,5 @@
 ---@type vim.lsp.Config
+-- https://github.com/redhat-developer/yaml-language-server
 return {
   cmd = { "yaml-language-server", "--stdio" },
   filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab" },

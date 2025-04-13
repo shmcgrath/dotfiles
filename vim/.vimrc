@@ -12,6 +12,7 @@ set packpath+=~/.config/vim-base
 " runtime config for plugins {{{2
 " settings files for plugins
 runtime! settings/plugins/*.vim
+runtime! ~/.config/vim-base/settings/plugins/*.vim
 
 " vim-plug {{{2
 " https://github.com/junegunn/vim-plug

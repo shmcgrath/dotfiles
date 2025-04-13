@@ -445,8 +445,15 @@ Vim remove all empy lines
 remove all lines that inlcude only whitespace characters
 :g/^\s*$/d
 
+====================
+
+LSP Docs:
+:h lsp-quickstart
+
 print LSP client details:
 :lua for _, c in ipairs(vim.lsp.get_clients({bufnr = 0})) do vim.print(c) end
+
+from documents: lua =vim.lsp.get_clients()[1].server_capabilities
 
 might be worth making a custom function:
 vim.api.nvim_create_user_command("LspInfoPrint", function()
@@ -460,6 +467,29 @@ vim.api.nvim_create_user_command("LspInfoPrint", function()
     vim.print(client)
   end
 end, {})
+
+More information on LSP/LSP Configs: https://www.andersevenrud.net/neovim.github.io/lsp/
+
+LSP Default Keymaps (:h lsp-defaults):
+
+BUFFER-LOCAL DEFAULTS
+'omnifunc' is set to vim.lsp.omnifunc(), use i_CTRL-X_CTRL-O to trigger completion.
+'tagfunc' is set to vim.lsp.tagfunc(). This enables features like go-to-definition, :tjump, and keymaps like CTRL-], CTRL-W_], CTRL-W_} to utilize the language server.
+'formatexpr' is set to vim.lsp.formatexpr(), so you can format lines via gq if the language server supports it.
+To opt out of this use gw instead of gq, or clear 'formatexpr' on LspAttach.
+K is mapped to vim.lsp.buf.hover() unless 'keywordprg' is customized or a custom keymap for K exists.
+
+GLOBAL DEFAULTS
+grr gra grn gri i_CTRL-S These GLOBAL keymaps are created unconditionally when Nvim starts:
+"grn" is mapped in Normal mode to vim.lsp.buf.rename()
+"gra" is mapped in Normal and Visual mode to vim.lsp.buf.code_action()
+"grr" is mapped in Normal mode to vim.lsp.buf.references()
+"gri" is mapped in Normal mode to vim.lsp.buf.implementation()
+"gO" is mapped in Normal mode to vim.lsp.buf.document_symbol()
+CTRL-S is mapped in Insert mode to vim.lsp.buf.signature_help()
+You can remove GLOBAL keymaps at any time using vim.keymap.del() or :unmap. See also gr-default. 
+
+====================
 
 
 To generate HELP after installing a plugin:

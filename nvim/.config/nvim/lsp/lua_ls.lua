@@ -1,4 +1,5 @@
 ---@type vim.lsp.Config
+-- https://github.com/LuaLS/lua-language-server
 return {
   cmd = { "lua-language-server" },
   filetypes = { "lua" },

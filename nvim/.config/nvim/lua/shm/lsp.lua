@@ -64,14 +64,9 @@ vim.lsp.config("*", {
 -- Enable each language server by filename under the lsp/ folder
 -- more information on ls: https://www.andersevenrud.net/neovim.github.io/lsp/
 vim.lsp.enable({
-  -- https://github.com/bash-lsp/bash-language-server
   "bashls",
-  -- https://github.com/LuaLS/lua-language-server
   "lua_ls",
-  -- install with rust
   "rust_analyzer",
-  -- https://github.com/iamcco/vim-language-server
   "vimls",
-  -- https://github.com/redhat-developer/yaml-language-server
   "yamlls",
 })

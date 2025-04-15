@@ -1,4 +1,4 @@
-set noexpandtab
+setlocal noexpandtab
 setlocal colorcolumn=0
 setlocal complete+=kspell
 setlocal spell

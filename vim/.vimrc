@@ -12,7 +12,7 @@ set packpath+=~/.config/vim-base
 " runtime config for plugins {{{2
 " settings files for plugins
 runtime! settings/plugins/*.vim
-runtime! ~/.config/vim-base/settings/plugins/*.vim
+runtime! $HOME/config/vim-base/settings/plugins/*.vim
 
 " vim-plug {{{2
 " https://github.com/junegunn/vim-plug
@@ -72,17 +72,6 @@ colorscheme bubblegum-256-dark
 highlight Comment cterm=italic gui=italic
 
 let g:UltiSnipsSnippetsDir=$HOME."/.config/vim-base/ultisnips-shm"
-" Undo and Redo {{{2
-if has('persistent_undo')
-	set undodir=$HOME/.local/state/vim/undodir//
-	set undofile
-	set undolevels=1000
-	set undoreload=10000
-else
-	set undofile
-	set undodir=$HOME/.local/state/vim/undo//
-endif
-
 " Backup and Swap Files {{{2
 set backupdir=$HOME/.local/state/vim/backup//
 set directory=$HOME/.local/state/vim/swap//

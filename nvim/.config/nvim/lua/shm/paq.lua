@@ -22,17 +22,17 @@ local paq = require("paq")
 
 paq({
   { "savq/paq-nvim" },
-  { "kylechui/nvim-surround" },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   { "stevearc/oil.nvim" },
   { "scottmckendry/cyberdream.nvim" },
   { "ibhagwan/fzf-lua" },
   -- lsp
   { "williamboman/mason.nvim" },
-  -- linter and formatter
-  { "mfussenegger/nvim-lint" },
-  { "stevearc/conform.nvim" },
-  -- dap
+  { "dense-analysis/ale" },
+  -- debugging / dap
+  { "mfussenegger/nvim-dap" },
+  { "rcarriga/nvim-dap-ui" },
+  { "nvim-neotest/nvim-nio" },
   -- snippets and completion
   { "Saghen/blink.cmp", build = "cargo build --release" },
   { "L3MON4D3/LuaSnip" },
@@ -41,7 +41,6 @@ paq({
   -- vim plugins
   { "AndrewRadev/id3.vim" },
   { "airblade/vim-gitgutter" },
-  { "dense-analysis/ale" },
   { "justinmk/vim-sneak" },
   { "mbbill/undotree" },
   { "tpope/vim-commentary" },
@@ -72,6 +71,8 @@ local function load_plugin_configs()
     "mason",
     "blink-cmp",
     "LuaSnip",
+    "dap",
+    "dap-ui",
   }
 
   -- Load explicitly ordered plugins first

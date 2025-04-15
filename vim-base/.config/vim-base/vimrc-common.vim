@@ -78,6 +78,8 @@ set scrolloff=8 " If able show at least 8 lines at top and bottom
 set splitbelow " Sets split to below instead of above
 set splitright " Sets split to right instead of left
 
+set signcolumn=yes:2 "signcolumn always on with 2 characters
+
 " Invisibles - Show characters representing tabs and end of line" {{{2
 " Use the following symbols for tabstops and EOLs
 ",precedes:←,extends:→

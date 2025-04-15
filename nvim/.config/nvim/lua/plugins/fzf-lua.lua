@@ -13,3 +13,8 @@ require("fzf-lua").setup({
   -- SPECIFIC COMMAND/PICKER OPTIONS, SEE BELOW
   -- files = { ... },
 })
+
+local fzf = require("fzf-lua")
+
+vim.keymap.set("n", "<C-p>f", fzf.files, { desc = "search for files in the current working directory" })
+vim.keymap.set("n", "<C-p>g", fzf.live_grep, { desc = "live grep for files in the current working directory" })

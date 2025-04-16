@@ -202,8 +202,3 @@ spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 # cli tools eval{{{2
 eval "$(zoxide init --cmd cd bash)"
 eval "$(navi widget bash)" #CTRL+G
-eval "$(fzf --bash)"
-# fzf keys
-# CTRL+R: search history
-# CTRL+T: search files
-# ALT+C: directory jumping

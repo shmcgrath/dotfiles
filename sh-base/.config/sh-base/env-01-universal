@@ -1,0 +1,7 @@
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+export TERMINAL=wezterm
+export PAGER="less"
+export LESS='-iMR -x4'
+export OPENER="xdg-open"
+# vim:ft=sh:

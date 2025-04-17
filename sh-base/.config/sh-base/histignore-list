@@ -1,0 +1,61 @@
+:
+::
+:q
+cd
+cd -
+cd ..
+cd ~
+cd..
+cdi
+clear
+cls
+date
+e
+exit
+exit
+eza
+eza -a
+eza -l
+eza -la
+false
+fzf
+git a *
+git a .
+git ci
+git st
+hist
+history
+history
+la
+lf
+ll
+logout
+ls
+ls -A
+ls -a
+ls -l
+man
+man *
+navi
+nvim
+pacman -Syu
+pacsyu
+paru
+paru -Syu
+pwd
+ranger
+reboot
+reset
+shutdown
+time
+tldr
+true
+uptime
+vi
+vifm
+vim
+weather
+whoami
+wikiman
+y
+yazi

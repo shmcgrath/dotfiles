@@ -1,0 +1,47 @@
+# sh-baserc{{{1
+# detect shell{{{2
+if [ -n "$BASH_VERSION" ]; then
+  SHELL_NAME="bash"
+elif [ -n "$ZSH_VERSION" ]; then
+  SHELL_NAME="zsh"
+elif [ -n "$KSH_VERSION" ]; then
+  SHELL_NAME="ksh"
+else
+  SHELL_NAME="sh"
+fi
+
+# source functions{{{2
+if [ -d "$XDG_CONFIG_HOME/sh-base/functions" ]; then
+	for functionFile in "$XDG_CONFIG_HOME/sh-base/functions"/*; do
+		if [ -f "$functionFile" ]; then
+			. "$functionFile"
+		fi
+	done
+else
+	printf "%s\n" "$XDG_CONFIG_HOME/sh-base/functions is missing!"
+fi
+
+#PATH{{{2
+add_paths \
+	"$HOME/.local/bin" \
+	"$HOME/.local/bin/menu-scripts" \
+	"$HOME/.local/bin/scripts"
+
+# source aliases, environment variables, and prompt{{{2
+source_file \
+	"$HOME/.cargo/env" \
+	"$XDG_CONFIG_HOME/sh-base/env-01-universal" \
+	"$XDG_CONFIG_HOME/sh-base/promptrc" \
+	"$XDG_CONFIG_HOME/sh-base/aliasrc"
+
+# History and HISTIGNORE setup (for Bash and Zsh){{{2
+if [ "$SHELL_NAME" = "bash" ] || [ "$SHELL_NAME" = "zsh" ]; then
+	HISTIGNORE_FILE="$XDG_CONFIG_HOME/sh-base/histignore-list"
+
+	if [ -f "$HISTIGNORE_FILE" ]; then
+		HISTIGNORE="$(grep -vE '^\s*#|^\s*$' "$HISTIGNORE_FILE" | paste -sd: -)"
+	export HISTIGNORE
+	fi
+fi
+
+# vim:ft=sh:

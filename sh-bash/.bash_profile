@@ -1,3 +1,17 @@
-[[ "-f $HOME/.bashrc" ]] && source $HOME/.bashrc && echo 'sourcing $HOME/.bashrc'
-[[ "-f $HOME/.cargo/env" ]] && source $HOME/.cargo/env && echo 'sourcing $HOME/.cargo/env'
-[[ "-f $XDG_CONFIG_HOME/sh-base/ssh-agent-auth-socket" ]] && source $XDG_CONFIG_HOME/sh-base/ssh-agent-auth-socket && echo 'sourcing $XDG_CONFIG_HOME/sh-base/ssh-agent-auth-socket'
+# sourcing ~/.profile explicitly loads XDG env vars
+[ -f "$HOME/.profile" ] && . "$HOME/.profile"
+
+if [ -d "$XDG_CONFIG_HOME/sh-base/functions" ]; then
+	for functionFile in "$XDG_CONFIG_HOME/sh-base/functions"/*; do
+		if [ -f "$functionFile" ]; then
+			. "$functionFile"
+		fi
+	done
+else
+	printf "%s\n" "$XDG_CONFIG_HOME/sh-base/functions is missing!"
+fi
+
+source_file \
+	"$HOME/.bashrc" \
+	"$HOME/.cargo/env" \
+	"$XDG_CONFIG_HOME/sh-base/ssh-agent-auth-socket"

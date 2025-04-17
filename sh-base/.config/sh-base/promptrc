@@ -1,11 +1,11 @@
 # ==PROMPT
-export PS1="_______________________\n\D{%a %Y.%m.%d %H:%M:%S} || \w\n\u@\h $ "
+export PS1="_______________________\n\w\n\u@\h $ "
 export PS2="continue --> "
 
 YAZI_TERM=""
 if [ -n "$YAZI_LEVEL" ]; then
-	YAZI_TERM="|  Yazi terminal: "
+	YAZI_TERM="[Yazi] "
 fi
-PS1="$PS1$YAZI_TERM"
+PS1="$YAZI_TERM$PS1"
 
 # vim:ft=sh:

@@ -22,11 +22,14 @@ fzf
 git a *
 git a .
 git ci
+git push
+git pull
 git st
 hist
 history
 history
 la
+lazygit
 lf
 ll
 logout

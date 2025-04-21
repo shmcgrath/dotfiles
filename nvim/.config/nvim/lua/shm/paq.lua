@@ -41,12 +41,15 @@ paq({
   -- vim plugins
   { "AndrewRadev/id3.vim" },
   { "airblade/vim-gitgutter" },
+  { "chrisbra/csv.vim" },
   { "justinmk/vim-sneak" },
   { "mbbill/undotree" },
   { "tpope/vim-commentary" },
   { "tpope/vim-fugitive" },
   { "tpope/vim-repeat" },
   { "tpope/vim-surround" },
+  -- hledger
+  { "ledger/vim-ledger" },
 })
 
 -- Functions to load all plugin configs dynamically

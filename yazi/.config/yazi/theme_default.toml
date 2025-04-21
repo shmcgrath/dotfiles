@@ -91,7 +91,7 @@ progress_error  = { fg = "red", bg = "black" }
 # : Which {{{
 
 [which]
-cols            = 1
+cols            = 3
 mask            = { bg = "black" }
 cand            = { fg = "lightcyan" }
 rest            = { fg = "darkgray" }

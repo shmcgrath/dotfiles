@@ -2,9 +2,11 @@ DOTFILES := $(CURDIR)
 MKDIR := mkdir --parents --verbose
 LN := ln --symbolic --verbose --force
 LNDIR := ln --symbolic --verbose
-PKGINSTALL = sudo pacman --sync --needed
-#PKGINSTALL = doas pacman --noconfirm -S
+PKGMAN := $(shell command -v paru >/dev/null 2>&1 && printf '%s' paru || printf '%s' sudo pacman)
+PKGINSTALL = $(PKGMAN) --sync --needed
+AURINSTALL = paru --sync --needed
 STOW := stow --target=$(HOME)
+CAT := $(shell command -v bat >/dev/null 2>&1 && printf '%s' bat || printf '%s' cat)
 
 #by using ‘sudo -E make’ or ‘sudo -Es’ before running make, would source your env and make it available for sudoer.
 # Stow packages
@@ -16,12 +18,12 @@ MAKE_DIRS = cd $@ && \
 		[ -n "$$dir" ] && $(MKDIR) "$$HOME/$$dir"; \
 	done
 
-.PHONY: all clean $(STOW_PACKAGES) stow aur pacman wayland xorg hyprland shellbase bash navi zoxide bin rust neovim
+.PHONY: all clean $(STOW_PACKAGES) stow aur pacman wayland xorg hyprland shellbase bash navi zoxide bin rust neovim vifm fzf dropbox
 
 all: $(STOW_PACKAGES)
 
 $(STOW_PACKAGES):
-	@echo "==> Setting up $@"
+	@printf "==> Setting up $@"
 	@$(MAKE_DIRS)
 	@$(STOW) $@
 
@@ -30,12 +32,12 @@ pacman:
 
 sudo:
 	$(PKGINSTALL) doas
-	@echo "configure doas"
-	@echo "configure sudo"
-	@echo "doas visudo"
-	@echo "uncomment Defaults targetpw"
-	@echo "uncomment ALL ALL = (ALL:ALL) ALL"
-	@echo "replace the first all with username allowed to sudo"
+	@printf "configure doas"
+	@printf "configure sudo"
+	@printf "doas visudo"
+	@printf "uncomment Defaults targetpw"
+	@printf "uncomment ALL ALL = (ALL:ALL) ALL"
+	@printf "replace the first all with username allowed to sudo"
 
 aur:
 	$(MKDIR) $(XDG_CACHE_HOME)/aur/aur
@@ -50,22 +52,35 @@ aur:
 	cd "$(XDG_CACHE_HOME)/aur/pkgbuilds/paru" && \
 	makepkg --syncdeps --install
 
+dropbox:
+	$(AURINSTALL) dropbox dropbox-cli
+	# Prevent automatic updates
+	#@rm -rf $(HOME)/.dropbox-dist
+	#@install -dm0 $(HOME)/.dropbox-dist
+	# Fix Arch filesystem monitoring problem (inotify fix)
+	@if ! grep -q '^fs.inotify.max_user_watches = 100000' /etc/sysctl.d/99-sysctl.conf 2>/dev/null; then \
+		printf "Adding fs.inotify.max_user_watches setting...\n"; \
+		printf "fs.inotify.max_user_watches = 100000\n" | sudo tee -a /etc/sysctl.d/99-sysctl.conf > /dev/null; \
+		sudo sysctl --system; \
+	else \
+		printf "fs.inotify.max_user_watches is already set.\n"; \
+	fi
 
 stow: stowrc stowignore
 
 stowrc:
-	@echo "==> Linking .stowrc"
+	@printf "==> Linking .stowrc"
 	@if [ -e "$(HOME)/.stowrc" ] && [ ! -L "$(HOME)/.stowrc" ]; then \
-		echo "ERROR: $(HOME)/.stowrc exists and is not a symlink. Refusing to overwrite."; \
+		printf "ERROR: $(HOME)/.stowrc exists and is not a symlink. Refusing to overwrite."; \
 		exit 1; \
 	else \
 		$(LN) $(DOTFILES)/stow/.stowrc $(HOME)/.stowrc
 	fi
 
 stowignore:
-	@echo "==> Linking .stow-global-ignore"
+	@printf "==> Linking .stow-global-ignore"
 	@if [ -e "$(HOME)/.stow-global-ignore" ] && [ ! -L "$(HOME)/.stow-global-ignore" ]; then \
-		echo "ERROR: $(HOME)/.stow-global-ignore exists and is not a symlink. Refusing to overwrite."; \
+		printf "ERROR: $(HOME)/.stow-global-ignore exists and is not a symlink. Refusing to overwrite."; \
 		exit 1; \
 	else \
 		$(LN) $(DOTFILES)/stow/.stow-global-ignore $(HOME)/.stow-global-ignore
@@ -93,13 +108,14 @@ xorg:
 		xclip
 
 hyprland:
-	$(PKGINSTALL)
+	$(PKGINSTALL) \
+		hyprland
 
 shbase:
-	@echo "shell"
+	@printf "shell"
 
 shbash:
-	$(MKDIR) $XDG_DATA_HOME/bash
+	$(MKDIR) $(XDG_DATA_HOME)/bash
 
 zoxide:
 	$(PKGINSTALL) zoxide fzf
@@ -117,26 +133,53 @@ navi:
 bin:
 	$(MKDIR) $(HOME)/.local/bin
 
+vifm:
+	$(MKDIR) $(XDG_CONFIG_HOME)/vifm
+	$(MKDIR) $(XDG_CONFIG_HOME)/vifm/scripts
+	$(MKDIR) $(XDG_CONFIG_HOME)/vifm/colors
+	$(MKDIR) $(HOME)/src
+	@cd "$(HOME)/src" && \
+	if [ -d vifm-sixel-preview/.git ]; then \
+		printf "Updating vifm-sixel-preview..."; \
+		cd vifm-sixel-preview && git pull --ff-only; \
+	else \
+		printf "Cloning vifm-sixel-preview..."; \
+		git clone https://github.com/eylles/vifm-sixel-preview; \
+	fi && \
+	cd "$(HOME)/src/vifm-sixel-preview" && \
+	$(CAT) ./vifm-sixel && \
+	printf "\nInstall vifm-sixel-preview? [y/N] " && \
+	read inst && case "$$inst" in [yY]) \
+		cp --interactive --verbose ./vifm-sixel $(XDG_CONFIG_HOME)/vifm/scripts/vifm-sixel && \
+		chmod +x $(XDG_CONFIG_HOME)/vifm/scripts/vifm-sixel ;; \
+	esac
+	$(STOW) vifm
+
 rust:
 	$(MKDIR) $(HOME)/.cargo/bin
-	@echo "Setting up rust from https://rustup.rs/..."
+	@printf "Setting up rust from https://rustup.rs/..."
 	@curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-	@echo "Installing the latest stable Rust toolchain (rustc, cargo, rustup)"
+	@printf "Installing the latest stable Rust toolchain (rustc, cargo, rustup)"
 	@rustup default stable
-	@echo "Verifying installation..."
+	@printf "Verifying installation..."
 	@rustc --version
 	@cargo --version
-	@echo "Installing the rust linter (clippy) and code formatter (Rustfmt)"
+	@printf "Installing the rust linter (clippy) and code formatter (Rustfmt)"
 	@rustup component add clippy rustfmt
-	@echo "Installing common cargo tools..."
-	@echo "cargo-edit: manage dependencies"
-	@echo "cargo-watch: automatically recompile on file changes"
-	@echo "cargo-outdated: check outdated dependencies"
+	@printf "Installing common cargo tools..."
+	@printf "cargo-edit: manage dependencies"
+	@printf "cargo-watch: automatically recompile on file changes"
+	@printf "cargo-outdated: check outdated dependencies"
 	@cargo install cargo-edit cargo-watch cargo-outdated
-	@echo "install rust-alalyzer lsp"
+	@printf "install rust-alalyzer lsp"
 	@rustup component add rust-analyzer
-	@echo "install lldb and gdb for debugging; gcc for linking"
+	@printf "install lldb and gdb for debugging; gcc for linking"
 	$(PKGINSTALL) lldb gdb gcc
 
 neovim:
 	$(PKGINSTALL) neovim nodejs npm
+
+fzf:
+	$(PKGINSTALL) fzf
+
+hledger: $(PKGINSTALL) hledger miller

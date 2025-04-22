@@ -1,6 +1,20 @@
 #!/usr/bin/env bash
 
-SELECTION="$(printf "Lock\nSuspend\nReboot\nReboot to UEFI\nHard reboot\nShutdown\nHyprland reload\nHyprland exit\nHyprland restart waybar\nsway reload config\nsway exit\nriver exit" | fuzzel --dmenu --lines 12 --prompt "Power Menu > ")"
+PWR_OPTIONS="Lock
+Suspend
+Reboot
+Reboot to UEFI
+Hard reboot
+Shutdown
+river exit
+waybar restart
+Hyprland reload
+Hyprland exit
+Hyprland restart waybar
+sway reload config
+sway exit"
+
+SELECTION=$(printf "%s\n" "$PWR_OPTIONS" | fuzzel --dmenu --lines 12 --prompt "Power Menu > ")
 
 case $SELECTION in
 	*"Lock")
@@ -15,6 +29,10 @@ case $SELECTION in
 		pkexec "echo b > /proc/sysrq-trigger";;
 	*"Shutdown")
 		systemctl poweroff;;
+	*"river exit")
+		riverctl exit;;
+	*"waybar restart")
+		systemctl --user restart waybar;;
 	*"Hyprland reload")
 		hyprctl reload;;
 	*"Hyprland exit")
@@ -25,6 +43,4 @@ case $SELECTION in
 		swaymsg reload;;
 	*"sway exit")
 		swaymsg exit;;
-	*"river exit")
-		riverctl exit;;
 esac

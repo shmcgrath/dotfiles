@@ -2,11 +2,11 @@
 
 SCRIPT_DIR="$HOME/.local/bin/menu-scripts"
 
-# List all executable files in the script directory
-scripts=$(find "$SCRIPT_DIR" -maxdepth 1 -type f -executable -printf "%f\n" | sort)
+# Use POSIX-compatible way to get executable files and strip paths
+SCRIPT_LIST=$(find -L "$SCRIPT_DIR" -maxdepth 1 -type f -executable | while read -r file; do basename "$file"; done | sort)
 
 # Let the user select one with fuzzel
-choice=$(printf "%s\n" "$scripts" | fuzzel --dmenu --prompt="Fuzzel Scripts > ")
+SCRIPT_CHOICE=$(printf "%s\n" "$SCRIPT_LIST" | fuzzel --dmenu --prompt="Fuzzel Scripts > ")
 
 # Execute the selected script
-[ -n "$choice" ] && "$SCRIPT_DIR/$choice"
+[ -n "$SCRIPT_CHOICE" ] && "$SCRIPT_DIR/$SCRIPT_CHOICE"

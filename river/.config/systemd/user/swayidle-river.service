@@ -1,0 +1,17 @@
+# systemctl --user enable --now swayidle-river.service
+[Unit]
+Description=idle manager for Wayland
+Documentation=man:swayidle(1)
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/swayidle -w \
+		timeout 900 'swaylock' \
+		timeout 905 'wlr-randr --output DP-3 --off' \
+		timeout 905 'wlr-randr --output HDMI-A-1 --off' \
+		resume 'wlr-randr --output DP-3 --on; wlr-randr --output HDMI-A-1 --on; kanshi'
+
+
+[Install]
+WantedBy=river-session.target

@@ -8,8 +8,11 @@ PartOf=graphical-session.target
 Type=simple
 ExecStart=/usr/bin/swayidle -w \
 		timeout 900 'swaylock' \
-		timeout 905 '"hyprctl dispatch dpms off"' \
-			resume '"hyprctl dispatch dpms on"'
+		timeout 905 'hyprctl dispatch dpms off' \
+			resume 'hyprctl dispatch dpms on'
+# timeout 905 'wlr-randr --output eDP-1 --off'
+# resume 'wlr-randr --output eDP-1 --on'
+
 
 [Install]
 WantedBy=hyprland-session.target

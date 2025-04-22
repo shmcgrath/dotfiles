@@ -11,6 +11,10 @@ local apply_shm_theme = require('shm-theme')
 --config.colors = cyberdream_colors
 apply_shm_theme(config)
 
+config.window_padding = {
+  bottom=0.5,
+}
+
 -- This is where you actually apply your config choices
 config.font = wezterm.font('CommitMono Nerd Font Mono')
 config.font_size = 13.0

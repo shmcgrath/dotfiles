@@ -1,7 +1,12 @@
 -- my changes to tab bar appearance
 return function(config)
+  config.default_cursor_style = 'SteadyBar'
   config.use_fancy_tab_bar = false
   config.colors = config.colors or {}
+  config.window_padding = {
+    bottom=0.5,
+  }
+
 config.colors = {
   tab_bar = {
     -- The color of the strip that goes along the top of the window

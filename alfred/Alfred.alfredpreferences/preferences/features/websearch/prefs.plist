@@ -30,6 +30,17 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>1449808E-6099-4FAB-BAB3-F36885F337F5</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>nix</string>
+			<key>text</key>
+			<string>Search Nix Packages for '{query}'</string>
+			<key>url</key>
+			<string>https://search.nixos.org/packages?channel=unstable&amp;query={query}</string>
+		</dict>
 		<key>1818C971-C9DA-4101-A33F-99813586DC60</key>
 		<dict>
 			<key>enabled</key>

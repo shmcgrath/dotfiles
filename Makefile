@@ -1,5 +1,5 @@
 DOTFILES := $(CURDIR)
-MKDIR := mkdir --parents --verbose
+MKDIR := mkdir -pv
 LN := ln --symbolic --verbose --force
 LNDIR := ln --symbolic --verbose
 PKGMAN := $(shell command -v paru >/dev/null 2>&1 && printf '%s' paru || printf '%s' sudo pacman)
@@ -7,10 +7,14 @@ PKGINSTALL = $(PKGMAN) --sync --needed
 AURINSTALL = paru --sync --needed
 STOW := stow --target=$(HOME)
 CAT := $(shell command -v bat >/dev/null 2>&1 && printf '%s' bat || printf '%s' cat)
+XDG_DATA_HOME  := $(shell [ -n "$$XDG_DATA_HOME" ] && printf %s "$$XDG_DATA_HOME" || printf %s "$(HOME)/.local/share")
+XDG_CACHE_HOME := $(shell [ -n "$$XDG_CACHE_HOME" ] && printf %s "$$XDG_CACHE_HOME" || printf %s "$(HOME)/.cache")
+XDG_CONFIG_HOME := $(shell [ -n "$$XDG_CONFIG_HOME" ] && printf %s "$$XDG_CONFIG_HOME" || printf %s "$(HOME)/.config")
+XDG_STATE_HOME  := $(shell [ -n "$$XDG_STATE_HOME" ] && printf %s "$$XDG_STATE_HOME" || printf %s "$(HOME)/.local/state")
+
 
 #by using ‘sudo -E make’ or ‘sudo -Es’ before running make, would source your env and make it available for sudoer.
 # Stow packages
-STOW_PACKAGES := nvim vim zsh tmux git
 
 # Find subdirs and make them under $HOME
 MAKE_DIRS = cd $@ && \
@@ -18,14 +22,9 @@ MAKE_DIRS = cd $@ && \
 		[ -n "$$dir" ] && $(MKDIR) "$$HOME/$$dir"; \
 	done
 
-.PHONY: all clean $(STOW_PACKAGES) stow aur pacman wayland xorg hyprland shellbase bash navi zoxide bin rust neovim vifm fzf dropbox
+.PHONY: all clean stow aur pacman wayland xorg hyprland shellbase bash navi zoxide bin rust neovim vifm fzf dropbox xdg-dirs vim vim-base
 
-all: $(STOW_PACKAGES)
-
-$(STOW_PACKAGES):
-	@printf "==> Setting up $@"
-	@$(MAKE_DIRS)
-	@$(STOW) $@
+all: vim neovim vim-base
 
 pacman:
 	$(MKDIR) $(HOME)/.config/pacman
@@ -86,12 +85,35 @@ stowignore:
 		$(LN) $(DOTFILES)/stow/.stow-global-ignore $(HOME)/.stow-global-ignore
 	fi
 
-#vim:
-	#$(MKDIR) $(CONFIG_DIR)/vim
-	#$(STOW) vim
+vim-base:
+	$(STOW) vim-base
+
+vim:
+	$(MAKE) vim-base
+	$(MKDIR) $(XDG_STATE_HOME)/vim
+	$(MKDIR) $(XDG_STATE_HOME)/vim/undodir
+	$(MKDIR) $(XDG_STATE_HOME)/vim/backup
+	$(MKDIR) $(XDG_STATE_HOME)/vim/swap
+	$(MKDIR) $(XDG_DATA_HOME)/vim
+	$(STOW) vim
+
+neovim:
+	$(MAKE) vim-base
+	$(MKDIR) $(XDG_STATE_HOME)/nvim
+	$(MKDIR) $(XDG_STATE_HOME)/nvim/undodir
+	$(MKDIR) $(XDG_STATE_HOME)/nvim/backup
+	$(MKDIR) $(XDG_STATE_HOME)/nvim/swap
+	$(STOW) nvim
+
+nvim:
+	$(MAKE) neovim
 
 clean:
 	$(STOW) -D $(STOW_PACKAGES)
+
+arch-linux:
+	$(PKGINSTALL) neovim nodejs npm
+	$(PKGINSTALL) zoxide fzf
 
 wayland:
 	$(PKGINSTALL) \
@@ -118,12 +140,11 @@ shbash:
 	$(MKDIR) $(XDG_DATA_HOME)/bash
 
 zoxide:
-	$(PKGINSTALL) zoxide fzf
-	@zoxide add $(HOME)/dotfiles
-	@zoxide add $(XDG_CONFIG_HOME)
-	@zoxide add $(HOME)/Downloads
-	@zoxide add $(HOME)/Dropbox
-	@zoxide add $(HOME)/Dropbox/shm
+	zoxide add $(HOME)/dotfiles
+	zoxide add $(XDG_CONFIG_HOME)
+	zoxide add $(HOME)/Downloads
+	zoxide add $(HOME)/Dropbox
+	zoxide add $(HOME)/Dropbox/shm
 
 navi:
 	$(PKGINSTALL) navi fzf
@@ -176,10 +197,15 @@ rust:
 	@printf "install lldb and gdb for debugging; gcc for linking"
 	$(PKGINSTALL) lldb gdb gcc
 
-neovim:
-	$(PKGINSTALL) neovim nodejs npm
 
 fzf:
 	$(PKGINSTALL) fzf
 
-hledger: $(PKGINSTALL) hledger miller
+hledger:
+	$(PKGINSTALL) hledger miller
+
+xdg-dirs:
+	$(MKDIR) "$(HOME)/.local/share"
+	$(MKDIR) "$(HOME)/.cache"
+	$(MKDIR) "$(HOME)/.config"
+	$(MKDIR) "$(HOME)/.local/state"

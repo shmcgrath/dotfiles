@@ -11,8 +11,9 @@
     }) supportedSystems);
   in {
     packages = forEachSystem (system: {
-      default = import ./packages.nix {
+      shm-darwin = import ./packages.nix {
         pkgs = import nixpkgs { inherit system; };
+        inherit system;
       };
     });
   };

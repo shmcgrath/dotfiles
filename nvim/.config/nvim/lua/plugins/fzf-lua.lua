@@ -4,6 +4,11 @@ require("fzf-lua").setup({
   -- each of these options can also be passed as function that return options table
   -- e.g. winopts = function() return { ... } end
   --winopts = { ...  },     -- UI Options
+  winopts = {
+    preview = {
+      default = "bat",
+    },
+  },
   --keymap = { ...  },      -- Neovim keymaps / fzf binds
   --actions = { ...  },     -- Fzf "accept" binds
   --fzf_opts = { ...  },    -- Fzf CLI flags
@@ -12,6 +17,9 @@ require("fzf-lua").setup({
   --previewers = { ...  },  -- Previewers options
   -- SPECIFIC COMMAND/PICKER OPTIONS, SEE BELOW
   -- files = { ... },
+    grep = {
+      rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden --no-ignore",
+  },
 })
 
 local fzf = require("fzf-lua")

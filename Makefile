@@ -1,6 +1,6 @@
 DOTFILES := $(CURDIR)
 MKDIR := mkdir -pv
-LN := ln --symbolic --verbose --force
+LN := ln -svf
 LNDIR := ln --symbolic --verbose
 PKGMAN := $(shell command -v paru >/dev/null 2>&1 && printf '%s' paru || printf '%s' sudo pacman)
 PKGINSTALL = $(PKGMAN) --sync --needed
@@ -209,3 +209,33 @@ xdg-dirs:
 	$(MKDIR) "$(HOME)/.cache"
 	$(MKDIR) "$(HOME)/.config"
 	$(MKDIR) "$(HOME)/.local/state"
+
+nix:
+	$(MKDIR) "$(XDG_CONFIG_HOME)/nix"
+	@printf "==> Linking ~/.config/nix/nix.conf"
+	@if [ -e "$(XDG_CONFIG_HOME)/nix/nix.conf" ] && [ ! -L "$(XDG_CONFIG_HOME)/nix/nix.conf" ]; then \
+		printf "ERROR: %(XDG_CONFIG_HOME)/nix/nix.conf exists and is not a symlink. Refusing to overwrite."; \
+		exit 1; \
+	else \
+		$(LN) $(DOTFILES)/nix/.config/nix/nix.conf $(XDG_CONFIG_HOME)/nix/nix.conf \
+	fi
+	sh <(curl -L https://nixos.org/nix/install)
+
+# macos software installed
+# firefox - sign into sync / arkenfox
+# ghostty
+#keepassxc - change settings to enable browser and ssh access
+# hazel
+# alfred
+# dropbox
+#
+# Systme settings changed
+# hostname
+# mouse
+#
+# xcode tools things
+#
+# turned off natural scrolling
+# turned off rotate
+#
+# uninstall pages, garage band news etc

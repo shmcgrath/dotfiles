@@ -15,12 +15,15 @@ in pkgs.buildEnv {
     bat
     eza
     fd
+    ffmpeg-full
     fzf
     git
+    jq
     shmNeomutt
     neovide
     neovim
     pass
+    poppler
     ripgrep
     stow
     tmux

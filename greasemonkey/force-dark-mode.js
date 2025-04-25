@@ -14,6 +14,8 @@
 // @exclude     *://netflix.com/*
 // @exclude     *://*.netflix.com/*
 // @exclude     *://locahost/*
+// @exclude     *://github.com/*
+// @exclude     *://mail.google.com/*
 // @grant       none
 // @version     1.0
 // @author      Vítor Vasconcellos

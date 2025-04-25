@@ -120,6 +120,8 @@ Install the following fonts:
     - [URL Shortener Unshortener](https://greasyfork.org/en/scripts/5359-url-shortener-unshortener)
     - Force Dark Mode
     - old reddit
+## macOS system tweaks from terminal
+[This article by Paweł Grzybek](https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/) showed me how to find tweaks I want to set via CLI.
 ## Installed Packages
 ### offical repo
 - wezterm: terminal

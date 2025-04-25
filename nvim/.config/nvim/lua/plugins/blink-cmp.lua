@@ -24,7 +24,18 @@ require("blink.cmp").setup({
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
-    fuzzy = { implementation = "prefer_rust_with_warning", },
+    fuzzy = {
+      implementation = "prefer_rust_with_warning",
+      prebuilt_binaries = {
+        -- Whether or not to automatically download a prebuilt binary from github. If this is set to `false`,
+        -- you will need to manually build the fuzzy binary dependencies by running `cargo build --release`
+        -- Disabled by default when `fuzzy.implementation = 'lua'`
+        download = false,
+
+        -- Ignores mismatched version between the built binary and the current git sha, when building locally
+        ignore_version_mismatch = false,
+      },
+    },
 })
 
 require("blink.cmp").opts_extend = { "sources.default" }

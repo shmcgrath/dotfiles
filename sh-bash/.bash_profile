@@ -23,3 +23,4 @@ if [ "$(uname)" = "Linux" ]; then
 		"$HOME/.cargo/env" \
 		"$XDG_CONFIG_HOME/sh-base/ssh-agent-auth-socket"
 fi
+. "$HOME/.cargo/env"

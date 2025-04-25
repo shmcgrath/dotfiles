@@ -46,3 +46,4 @@ export PROMPT_COMMAND='history -a; history -r'
 # == cli tools eval{{{2
 eval "$(zoxide init --cmd cd bash)"
 eval "$(navi widget bash)" #CTRL+G
+. "$HOME/.cargo/env"

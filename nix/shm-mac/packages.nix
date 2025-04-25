@@ -1,10 +1,15 @@
 { pkgs, system }:
 
 let
-  vifmPkg = if system == "x86_64-darwin" then pkgs.vifm else pkgs.vifm-full;
-in
+  shmNotmuch = pkgs.notmuch.override {
+    withEmacs = false;
+  };
 
-pkgs.buildEnv {
+  shmNeomutt = pkgs.neomutt.override {
+    notmuch = shmNotmuch;
+  };
+
+in pkgs.buildEnv {
   name = "shm-darwin";
   paths = with pkgs; [
     bat
@@ -12,14 +17,14 @@ pkgs.buildEnv {
     fd
     fzf
     git
-    neomutt
+    shmNeomutt
     neovide
     neovim
     pass
     ripgrep
     stow
     tmux
-    vifmPkg
+    vifm
     w3m
     yazi
     zoxide

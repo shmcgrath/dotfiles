@@ -1,34 +1,51 @@
-# prompt and vim mode
+# source shbaserc
+if [ -f "$XDG_CONFIG_HOME/sh-base/shbaserc" ]; then
+    . "$XDG_CONFIG_HOME/sh-base/shbaserc"
+else
+	printf 'Warning: %s not found\n' "$XDG_CONFIG_HOME/sh-base/shbaserc"
+fi
+
+# prompt and vim mode{{{2
 # Set vi keybindings
 bindkey -v
 
-# Secondary prompt (for line continuation)
-PS2="continue --> "
+# Base prompt definition — set once
+PROMPT_HEADER=$'_______________________\n'
+PROMPT_MAIN=$'%~\n%n@%m \$ '
 
-# Function to build the full prompt dynamically
-function update_prompt {
-  local datetime=$(date '+%a %Y.%m.%d %H:%M:%S')
-  PROMPT_BASE="%F{white}%n@%m:%~%f %#"
-  PROMPT="_______________________
-$datetime || %~"
-  zle-keymap-select  # apply mode-specific prefix
+# Conditionally prepend [Yazi] if YAZI_LEVEL is set
+YAZI_TERM=""
+if [ -n "$YAZI_LEVEL" ]; then
+  YAZI_TERM="[Yazi] "
+fi
+
+# This will be prepended by the mode (e.g., [I] or [N])
+function set_prompt {
+  PROMPT="${1}${YAZI_TERM}${PROMPT_HEADER} ${PROMPT_MAIN}"
 }
 
-# Show current vi mode in prompt
+# Function to show current vi mode in prompt
 function zle-keymap-select {
+  local mode=""
   case $KEYMAP in
-    vicmd) PROMPT="%F{green}[N]%f $PROMPT\n$PROMPT_BASE" ;;
-    viins) PROMPT="%F{blue}[I]%f $PROMPT\n$PROMPT_BASE" ;;
+    vicmd) mode="%F{green}[N]%f " ;;  # Normal mode
+    viins) mode="%F{blue}[I]%f " ;;   # Insert mode
   esac
+
+  set_prompt "$mode"
   zle reset-prompt
 }
-
-# Hook to update prompt before each display
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd update_prompt
 zle -N zle-keymap-select
 
-#readline equivalent
+# Ensure a prompt is initially set on shell startup
+function precmd_update_prompt {
+  # Default to insert mode on startup
+  set_prompt "%F{blue}[I]%f "
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd precmd_update_prompt
+
+#readline equivalent{{{2
 autoload -Uz up-line-or-search down-line-or-search
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
@@ -50,15 +67,35 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' completions 1
 zstyle ':completion:*' menu select
 
-# Expand ~ to home
+# Expand ~ to home{{{2
 setopt AUTO_PARAM_KEYS  # not quite the same but related
 
-# Show symlinked dirs with @ etc.
+# Show symlinked dirs with @ etc.{{{2
 setopt MARK_DIRS
 
-# History
+# History{{{2
 HISTFILE="$XDG_DATA_HOME/zsh/history"
 HISTSIZE=100000
 SAVEHIST=100000
 
+# Append to the history file, do not overwrite
+setopt APPEND_HISTORY
+
+# Share history between sessions immediately
+setopt SHARE_HISTORY
+
+# Combine multiline commands into one entry
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+
+# Avoid duplicates
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST
+
+# Add timestamp
+setopt EXTENDED_HISTORY
+
+# cli tools eval{{{2
 eval "$(zoxide init --cmd cd zsh)"

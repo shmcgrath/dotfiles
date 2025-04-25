@@ -9,10 +9,8 @@ alias cd..="cd ../" # go back 1 directory level (for fast typers)
 alias cls="clear" # clear terminal display
 alias cp="cp --interactive --verbose" # preferred "cp" implementation
 alias cpy="clipcopy"
-alias disk?="df --human-readable" # shows disk space and percentage used
 alias e=$EDITOR
 alias hist="history" # show command history
-alias ip?="dig +short myip.opendns.com @resolver1.opendns.com"
 alias j="jobs -1" # show jobs
 alias jc="journalctl"
 alias jce="journalctl --pager-end"
@@ -23,8 +21,8 @@ alias ls='ls -x --group-directories-first --color' # -x list entries by lines in
 alias makemkv="makemkvcon" # alias not rememberable makemkv command
 alias mkdir="mkdir --parents --verbose" # creates intermediate directories
 alias mv="mv --interactive --verbose" # preferred "mv" implementation
-alias pacsyu="w3m https://www.archlinux.org/news/ && doas pacman -Syu" # get arch news and syu
 alias pacorph="paru -Qtdq | paru -Rns -"
+alias pacsyu="w3m https://www.archlinux.org/news/ && doas pacman -Syu" # get arch news and syu
 alias parus="paru --bottomup -Ss"
 alias pst="clippaste"
 alias py2="python2"
@@ -33,14 +31,19 @@ alias py="python"
 alias pyserve="python3 -m http.server 8624 && echo 'web server on port 8624'"
 alias reboot="systemctl reboot"
 alias rm="rm --interactive"
-alias rsync?="echo 'rsync --recursive --progress source/ destination/'"
 alias sc="systemctl"
 alias scu="systemctl --user"
 alias shutdown="systemctl poweroff"
-alias shell?="echo $0" # tells what shell is active
 alias tmux="tmux -2" # set 256 colors by default
-alias uninstall?="less $HOME/dotfiles/reference/uninstall-less.md"
+alias wdisk="df --human-readable" # shows disk space and percentage used
 alias weather="curl wttr.in/Pittsburgh?q" # weather in Pittsburgh
+alias wip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias wrsync="echo 'rsync --recursive --progress source/ destination/'"
+alias wshell="echo $0" # tells what shell is active
+alias wuninstall="less $HOME/dotfiles/reference/uninstall-less.md"
 alias ytdl="youtube-dl"
+
+if [[ "$(uname)" == "Darwin" ]]; then
+fi
 
 # vim:ft=sh:

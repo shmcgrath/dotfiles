@@ -17,7 +17,14 @@ export BLOCKSIZE=1k
 # common PATH additions are sourced from shbaserc
 
 # ==Prompt{{{2
-# the prompt is sourced from promptrc by shbaserc
+export PS1="_______________________\n\w\n\u@\h \$ "
+export PS2="continue --> "
+
+YAZI_TERM=""
+if [ -n "$YAZI_LEVEL" ]; then
+	YAZI_TERM="[Yazi] "
+fi
+PS1="$YAZI_TERM$PS1"
 
 # ==Aliases{{{2
 # common aliases are sourced from aliasrc by shbaserc

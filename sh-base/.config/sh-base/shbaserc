@@ -1,14 +1,20 @@
 # sh-baserc{{{1
 # detect shell{{{2
+SHELL_NAME="sh"
+
 if [ -n "$BASH_VERSION" ]; then
   SHELL_NAME="bash"
-elif [ -n "$ZSH_VERSION" ]; then
-  SHELL_NAME="zsh"
-elif [ -n "$KSH_VERSION" ]; then
-  SHELL_NAME="ksh"
 else
-  SHELL_NAME="sh"
+  if [ -n "$ZSH_VERSION" ]; then
+    SHELL_NAME="zsh"
+  else
+    if [ -n "$KSH_VERSION" ]; then
+      SHELL_NAME="ksh"
+    fi
+  fi
 fi
+
+export SHELL_NAME
 
 # source functions{{{2
 if [ -d "$XDG_CONFIG_HOME/sh-base/functions" ]; then
@@ -27,11 +33,10 @@ add_paths \
 	"$HOME/.local/bin/menu-scripts" \
 	"$HOME/.local/bin/scripts"
 
-# source aliases, environment variables, and prompt{{{2
+# source aliases and environment variables{{{2
 source_file \
 	"$HOME/.cargo/env" \
 	"$XDG_CONFIG_HOME/sh-base/env-01-universal" \
-	"$XDG_CONFIG_HOME/sh-base/promptrc" \
 	"$XDG_CONFIG_HOME/sh-base/aliasrc"
 
 # History and HISTIGNORE setup (for Bash and Zsh){{{2

@@ -10,11 +10,11 @@
       value = f system;
     }) supportedSystems);
   in {
-    packages = forEachSystem (system: {
-      shm-darwin = import ./packages.nix {
-        pkgs = import nixpkgs { inherit system; };
-        inherit system;
-      };
+    packages = forEachSystem (system: let
+      pkgs = import nixpkgs { inherit system; };
+    in {
+      shm-darwin = import ./packages.nix { inherit pkgs system; };
+      openssl-dev = pkgs.openssl.dev;
     });
   };
 }

@@ -17,12 +17,15 @@ in pkgs.buildEnv {
     fd
     ffmpeg-full
     fzf
+    gcc
+    gdb
     git
     jq
     shmNeomutt
     neovide
     neovim
     pass
+    pkgconf
     poppler
     ripgrep
     stow
@@ -33,4 +36,3 @@ in pkgs.buildEnv {
     zoxide
   ];
 }
-

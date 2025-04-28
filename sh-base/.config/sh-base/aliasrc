@@ -19,7 +19,7 @@ alias la='ls -x --almost-all --group-directories-first --color' # -x list entrie
 alias ll='ls -FGlAhp --time-style=long-iso --color'
 alias ls='ls -x --group-directories-first --color' # -x list entries by lines instead of cols
 alias makemkv="makemkvcon" # alias not rememberable makemkv command
-alias mkdir="mkdir --parents --verbose" # creates intermediate directories
+alias mkdir="mkdir -pv" # creates intermediate directories
 alias mv="mv --interactive --verbose" # preferred "mv" implementation
 alias pacorph="paru -Qtdq | paru -Rns -"
 alias pacsyu="w3m https://www.archlinux.org/news/ && doas pacman -Syu" # get arch news and syu

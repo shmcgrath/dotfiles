@@ -23,7 +23,7 @@ path_check_set () {
 				;;
 			*)
 				printf "%s\n" "Adding path to PATH."
-				PATH=$PATH:"$1"
+				PATH="$1":$PATH
 				export PATH
 				return 0
 				;;

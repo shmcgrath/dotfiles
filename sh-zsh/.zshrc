@@ -67,6 +67,10 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' completions 1
 zstyle ':completion:*' menu select
 
+setopt globdots
+zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' file-patterns '*' '.*(N)'
+
 # Expand ~ to home{{{2
 setopt AUTO_PARAM_KEYS  # not quite the same but related
 

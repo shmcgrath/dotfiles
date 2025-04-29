@@ -66,7 +66,6 @@ vim.lsp.config("*", {
 vim.lsp.enable({
   "bashls",
   "lua_ls",
-  "rust_analyzer",
   "vimls",
   "yamlls",
 })

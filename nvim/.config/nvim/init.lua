@@ -18,3 +18,6 @@ require("shm.options")
 
 -- require lsp config
 require("shm.lsp")
+
+-- require dap config
+require("shm.dap-load")

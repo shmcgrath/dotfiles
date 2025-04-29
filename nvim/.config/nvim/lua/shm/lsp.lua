@@ -65,6 +65,7 @@ vim.lsp.config("*", {
 -- more information on ls: https://www.andersevenrud.net/neovim.github.io/lsp/
 vim.lsp.enable({
   "bashls",
+  "gopls",
   "lua_ls",
   "vimls",
   "yamlls",

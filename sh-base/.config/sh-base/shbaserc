@@ -30,12 +30,12 @@ fi
 #PATH{{{2
 add_paths \
 	"$HOME/.local/bin" \
+	"$HOME/go/bin" \
 	"$HOME/.local/bin/menu-scripts" \
 	"$HOME/.local/bin/scripts"
 
 # source aliases and environment variables{{{2
 source_file \
-	"$HOME/.cargo/env" \
 	"$XDG_CONFIG_HOME/sh-base/env-01-universal" \
 	"$XDG_CONFIG_HOME/sh-base/aliasrc"
 

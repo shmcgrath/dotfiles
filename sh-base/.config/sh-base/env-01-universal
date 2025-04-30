@@ -4,19 +4,5 @@ export TERMINAL=wezterm
 export PAGER="less"
 export LESS='-iMR -x4'
 export OPENER="xdg-open"
-# set pkgconfig variable
-ARCH=`uname -m`
-if command -v nix >/dev/null 2>&1; then
-  case "$ARCH" in
-    arm64)   SYSTEM=aarch64-darwin ;;
-    x86_64)  SYSTEM=x86_64-darwin ;;
-    *)       SYSTEM=unknown ;;
-  esac
-
-  if [ "$SYSTEM" != unknown ]; then
-    PKG_CONFIG_DIR=`nix eval --raw ~/dotfiles/nix/shm-mac#packages.$SYSTEM.openssl-dev`/lib/pkgconfig
-    export PKG_CONFIG_PATH="$PKG_CONFIG_DIR"
-  fi
-fi
 
 # vim:ft=sh:

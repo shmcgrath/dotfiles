@@ -70,4 +70,5 @@ vim.lsp.enable({
   "lua_ls",
   "vimls",
   "yamlls",
+  "zls",
 })

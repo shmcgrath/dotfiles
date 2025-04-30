@@ -1,4 +1,4 @@
--- ~/.config/nvim/lua/shm/blink-get-binary.lua.lua
+-- ~/.config/nvim/lua/shm/functions/blink-get-binary.lua
 
 local M = {}
 
@@ -75,9 +75,9 @@ function M.run()
 end
 
 vim.api.nvim_create_user_command(
-  "BlinkGetBinarySHM",
+  "ShmBlinkGetBinary",
   function()
-    require("shm.blink-get-binary").run()
+    require("shm.functions.blink-get-binary").run()
   end,
   { desc = "Download and verify blink.cmp platform binary" }
 )

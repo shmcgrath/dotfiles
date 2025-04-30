@@ -34,7 +34,7 @@ paq({
   { "rcarriga/nvim-dap-ui" },
   { "nvim-neotest/nvim-nio" },
   -- snippets and completion
-  { "Saghen/blink.cmp", run = require("shm.blink-get-binary").run  },
+  { "Saghen/blink.cmp", run = require("shm.functions.blink-get-binary").run  },
   { "L3MON4D3/LuaSnip" },
   -- dependencies
   { "nvim-tree/nvim-web-devicons" },

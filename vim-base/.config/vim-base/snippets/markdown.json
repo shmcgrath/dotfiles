@@ -20,7 +20,7 @@
     "link": {
         "description": "Link",
         "body": [
-            "[${1:${VISUAL:Text}}](${2:`!v @+`})"
+            "[${1:$TM_SELECTED_TEXT}](${2:$CLIPBOARD})"
         ],
         "prefix": [
             "link"

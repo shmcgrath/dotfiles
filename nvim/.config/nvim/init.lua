@@ -20,4 +20,8 @@ require("shm.options")
 require("shm.lsp")
 
 -- require dap config
-require("shm.dap-load")
+require("shm.dap-load-configs")
+
+-- require toggle diagnostics
+-- if I get more functions make a functions that requres them all
+require("shm.functions.diagnostics-toggle")

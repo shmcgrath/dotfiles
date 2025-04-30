@@ -1,8 +1,11 @@
 local dap = require("dap")
 
-vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "debugger continue" })
+vim.keymap.set("n", "<F8>", dap.continue, { desc = "debugger continue" })
+vim.keymap.set("n", "<leader>dsi", dap.step_into, { desc = "debugger step_into" })
+vim.keymap.set("n", "<leader>dsv", dap.step_over, { desc = "debugger step_over" })
+vim.keymap.set("n", "<leader>dso", dap.step_out, { desc = "debugger step_out" })
 vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "debugger toggle breakpoint" })
 vim.keymap.set("n", "<leader>dB", dap.set_breakpoint, { desc = "debugger set breakpoint" })
---vim.keymap.set("n", "<Leader>d", dap., { desc = "debugger" })
-
--- vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+vim.keymap.set("n", "<Leader>dlp", function() dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: ")) end, { desc = "debugger log point message" })
+vim.keymap.set("n", "<Leader>dr", function() dap.repl.open() end, { desc = "debugger repl open" })
+vim.keymap.set("n", "<Leader>dl", function() dap.run_last() end, { desc = "debugger run last" })

@@ -1,4 +1,4 @@
----@type vim.lsp.Config
+--@type vim.lsp.Config
 return {
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -7,5 +7,5 @@ return {
     "go.mod",
   },
   settings = {
-  }
+  },
 }

@@ -58,6 +58,7 @@ vim.lsp.config("*", {
   root_markers = { ".git" },
   on_attach = function(client, bufnr)
     print("LSP: " .. client.name)
+    vim.diagnostic.enable(true, { buf = bufnr })
   end,
 })
 

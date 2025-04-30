@@ -1,0 +1,9 @@
+{
+    "error handling": {
+        "prefix": ["iferr"],
+        "description": "Error handling",
+        "body": [
+            "if err != nil {\n\tfmt.Println(\"Error:\", err)\n\treturn\n}"
+        ]
+    }
+}

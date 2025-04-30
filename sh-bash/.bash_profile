@@ -14,12 +14,10 @@ fi
 if [ "$(uname)" = "Darwin" ]; then
 	source_file \
 		"$HOME/.zshrc" \
-		"$HOME/.cargo/env"
 fi
 
 if [ "$(uname)" = "Linux" ]; then
 	source_file \
 		"$HOME/.zshrc" \
-		"$HOME/.cargo/env" \
 		"$XDG_CONFIG_HOME/sh-base/ssh-agent-auth-socket"
 fi

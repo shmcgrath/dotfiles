@@ -36,6 +36,8 @@ in pkgs.buildEnv {
     vifm
     w3m
     yazi
+	zig
+	zls
     zola
     zoxide
   ];

@@ -13,7 +13,7 @@ fi
 
 if [ "$(uname)" = "Darwin" ]; then
 	source_file \
-		"$HOME/.zshrc" \
+		"$HOME/.zshrc"
 fi
 
 if [ "$(uname)" = "Linux" ]; then

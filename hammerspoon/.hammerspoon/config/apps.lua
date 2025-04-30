@@ -6,6 +6,7 @@ local apps = {
   f6 = "QuickGPT",
   f5 = "Obsidian",
   ["return"] = "Ghostty",
+  b = "Firefox",
 }
 
 for key, appName in pairs(apps) do

@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>blacklist</key>
+	<array>
+		<string>Keychain Access</string>
+		<string>SecurityAgent</string>
+		<string>1Password</string>
+		<string>Wallet</string>
+		<string>Passwords</string>
+		<string>KeePassXC</string>
+	</array>
 	<key>clearKeyword</key>
 	<string>clrclip</string>
 	<key>fastAppendBackToClipboard</key>
@@ -11,17 +20,21 @@
 	<key>hotkey</key>
 	<dict>
 		<key>key</key>
-		<integer>42</integer>
+		<integer>8</integer>
 		<key>mod</key>
-		<integer>786432</integer>
+		<integer>1179648</integer>
 		<key>string</key>
-		<string>\</string>
+		<string>C</string>
 	</dict>
 	<key>persistFor</key>
 	<integer>3</integer>
+	<key>persistForImages</key>
+	<integer>1</integer>
 	<key>snippetKeywordEnabled</key>
 	<false/>
 	<key>snippetsAtTop</key>
+	<false/>
+	<key>snippetsWhenSearching</key>
 	<false/>
 	<key>viewerKeyword</key>
 	<string>cb</string>

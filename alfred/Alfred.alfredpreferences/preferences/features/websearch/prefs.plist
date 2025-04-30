@@ -121,6 +121,17 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>40C88F57-DD88-4F2E-BDAF-7E60888F2442</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>gos</string>
+			<key>text</key>
+			<string>Search go symbols for '{query}'</string>
+			<key>url</key>
+			<string>https://pkg.go.dev/search?m=symbol&amp;q={query}</string>
+		</dict>
 		<key>437C4DE0-6E65-4E15-865A-C7B41231AF31</key>
 		<dict>
 			<key>enabled</key>
@@ -133,6 +144,17 @@
 			<string>https://scholar.google.com/scholar?hl=en&amp;q={query}&amp;btnG=&amp;as_sdt=1%2C39&amp;as_sdtp=</string>
 			<key>utf8</key>
 			<true/>
+		</dict>
+		<key>44A3C18F-5849-4C11-B2A6-60AA7B8979A6</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>go</string>
+			<key>text</key>
+			<string>Search go packages for '{query}'</string>
+			<key>url</key>
+			<string>https://pkg.go.dev/search?q={query}</string>
 		</dict>
 		<key>4B8CE9DA-CE6B-4999-85B8-478726023D2E</key>
 		<dict>

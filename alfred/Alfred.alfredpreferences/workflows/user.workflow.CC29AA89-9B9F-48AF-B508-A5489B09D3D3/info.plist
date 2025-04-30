@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>shmcg.alfred.newfile</string>
+	<key>category</key>
+	<string>File Management</string>
+	<key>connections</key>
+	<dict>
+		<key>358DD333-B924-4913-868C-6315E4C6BEEA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>53564F1E-6275-4884-A10F-3E37910DF102</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Sarah H. McGrath</string>
+	<key>description</key>
+	<string>Creates a New File in Finder</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>New File</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>#!/usr/bin/env bash
+
+query=$1
+
+# Get the current active Finder window path
+activeFinderPath=$(osascript -e 'tell application "Finder" to set insertionLocation to insertion location as alias' -e 'return POSIX path of insertionLocation')
+activeFinderPath=$(printf "%s" "$activeFinderPath" | sed 's:/*$::') # Strip trailing slashes
+
+filename="untitled"
+extension="txt"
+
+if [[ -n "$query" ]]; then
+  if [[ "$query" == *.* ]]; then
+    filename="${query%%.*}"
+    extension="${query#*.}"
+  fi
+fi
+
+file="${filename}.${extension}"
+path="${activeFinderPath}/${file}"
+
+touch "$path"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>53564F1E-6275-4884-A10F-3E37910DF102</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>new</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>New File in Finder</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>358DD333-B924-4913-868C-6315E4C6BEEA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>358DD333-B924-4913-868C-6315E4C6BEEA</key>
+		<dict>
+			<key>xpos</key>
+			<real>50</real>
+			<key>ypos</key>
+			<real>155</real>
+		</dict>
+		<key>53564F1E-6275-4884-A10F-3E37910DF102</key>
+		<dict>
+			<key>xpos</key>
+			<real>260</real>
+			<key>ypos</key>
+			<real>155</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>webaddress</key>
+	<string>https://shmcgrath.com</string>
+</dict>
+</plist>

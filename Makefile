@@ -1,4 +1,5 @@
 DOTFILES := $(CURDIR)
+BOOTSTRAP := $(CURDIR)/scripts/bootstrap
 MKDIR := mkdir -pv
 LN := ln -svf
 LNDIR := ln --symbolic --verbose
@@ -11,6 +12,20 @@ XDG_DATA_HOME  := $(shell [ -n "$$XDG_DATA_HOME" ] && printf %s "$$XDG_DATA_HOME
 XDG_CACHE_HOME := $(shell [ -n "$$XDG_CACHE_HOME" ] && printf %s "$$XDG_CACHE_HOME" || printf %s "$(HOME)/.cache")
 XDG_CONFIG_HOME := $(shell [ -n "$$XDG_CONFIG_HOME" ] && printf %s "$$XDG_CONFIG_HOME" || printf %s "$(HOME)/.config")
 XDG_STATE_HOME  := $(shell [ -n "$$XDG_STATE_HOME" ] && printf %s "$$XDG_STATE_HOME" || printf %s "$(HOME)/.local/state")
+
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S),Darwin)
+    OS := macos
+else ifeq ($(UNAME_S),Linux)
+    OS := linux
+else ifeq ($(UNAME_S),OpenBSD)
+    OS := openbsd
+else ifneq (,$(findstring MINGW,$(UNAME_S)))
+    OS := windows
+else
+    OS := unknown
+endif
 
 
 #by using ‘sudo -E make’ or ‘sudo -Es’ before running make, would source your env and make it available for sudoer.
@@ -29,7 +44,8 @@ all: vim neovim vim-base
 pacman:
 	$(MKDIR) $(HOME)/.config/pacman
 
-sudo:
+
+sudoas:
 	$(PKGINSTALL) doas
 	@printf "configure doas"
 	@printf "configure sudo"
@@ -73,7 +89,7 @@ stowrc:
 		printf "ERROR: $(HOME)/.stowrc exists and is not a symlink. Refusing to overwrite."; \
 		exit 1; \
 	else \
-		$(LN) $(DOTFILES)/stow/.stowrc $(HOME)/.stowrc
+		$(LN) $(DOTFILES)/stow/.stowrc $(HOME)/.stowrc; \
 	fi
 
 stowignore:
@@ -82,10 +98,15 @@ stowignore:
 		printf "ERROR: $(HOME)/.stow-global-ignore exists and is not a symlink. Refusing to overwrite."; \
 		exit 1; \
 	else \
-		$(LN) $(DOTFILES)/stow/.stow-global-ignore $(HOME)/.stow-global-ignore
+		$(LN) $(DOTFILES)/stow/.stow-global-ignore $(HOME)/.stow-global-ignore; \
 	fi
 
+git:
+	$(STOW) git
+
 vim-base:
+	@printf "cloning submodule for vim-infolines\n"
+	@git submodule update --init --recursive
 	$(STOW) vim-base
 
 vim:
@@ -135,9 +156,16 @@ hyprland:
 
 shbase:
 	@printf "shell"
+	@$(STOW) sh-base
 
 shbash:
 	$(MKDIR) $(XDG_DATA_HOME)/bash
+	@$(STOW) sh-bash
+
+shzsh:
+	$(MKDIR) $(XDG_DATA_HOME)/zsh
+	@$(STOW) sh-zsh
+
 
 zoxide:
 	zoxide add $(HOME)/dotfiles
@@ -153,6 +181,7 @@ navi:
 
 bin:
 	$(MKDIR) $(HOME)/.local/bin
+	$(STOW) scripts
 
 vifm:
 	$(MKDIR) $(XDG_CONFIG_HOME)/vifm
@@ -180,6 +209,7 @@ rust:
 	$(MKDIR) $(HOME)/.cargo/bin
 	@printf "Setting up rust from https://rustup.rs/..."
 	@curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	@. $(HOME)/.cargo/env
 	@printf "Installing the latest stable Rust toolchain (rustc, cargo, rustup)"
 	@rustup default stable
 	@printf "Verifying installation..."
@@ -194,9 +224,25 @@ rust:
 	@cargo install cargo-edit cargo-watch cargo-outdated
 	@printf "install rust-alalyzer lsp"
 	@rustup component add rust-analyzer
-	@printf "install lldb and gdb for debugging; gcc for linking"
+	@printf "install lldb and gdb for debugging; gcc for linking?\n"
+	@printf "press return to install via pacman/paru or ctl+c to quit\n"
+	@read dummy
 	$(PKGINSTALL) lldb gdb gcc
 
+go-install:
+	@printf "Install go from https://go.dev/dl/"
+	@printf "Exit the shell before calling make go-setup"
+
+go-setup:
+	@go version
+	@printf "Installing go lsp gopls...\n"
+	@go install golang.org/x/tools/gopls@latest
+	@printf "Installing go debugger delve...\n"
+	@go install github.com/go-delve/delve/cmd/dlv@latest
+	@printf "Installing goimports...\n"
+	@go install golang.org/x/tools/cmd/goimports@latest
+	@printf "Installing staticcheck linter...\n"
+	@go install honnef.co/go/tools/cmd/staticcheck@latest
 
 fzf:
 	$(PKGINSTALL) fzf
@@ -210,16 +256,80 @@ xdg-dirs:
 	$(MKDIR) "$(HOME)/.config"
 	$(MKDIR) "$(HOME)/.local/state"
 
-nix:
+nix-install:
 	$(MKDIR) "$(XDG_CONFIG_HOME)/nix"
 	@printf "==> Linking ~/.config/nix/nix.conf"
 	@if [ -e "$(XDG_CONFIG_HOME)/nix/nix.conf" ] && [ ! -L "$(XDG_CONFIG_HOME)/nix/nix.conf" ]; then \
 		printf "ERROR: %(XDG_CONFIG_HOME)/nix/nix.conf exists and is not a symlink. Refusing to overwrite."; \
 		exit 1; \
 	else \
-		$(LN) $(DOTFILES)/nix/.config/nix/nix.conf $(XDG_CONFIG_HOME)/nix/nix.conf \
+		$(LN) $(DOTFILES)/nix/.config/nix/nix.conf $(XDG_CONFIG_HOME)/nix/nix.conf; \
 	fi
-	sh <(curl -L https://nixos.org/nix/install)
+	@printf "==> Installing nix...\n"
+	curl --location https://nixos.org/nix/install -o /tmp/nix-install.sh
+	@printf "\n==> Showing install script contents:\n\n"
+	@$(CAT) /tmp/nix-install.sh
+	@printf "\npress enter to continue...\n"
+	@read dummy
+	@chmod +x /tmp/nix-install.sh
+	/bin/sh /tmp/nix-install.sh
+	@printf "\n nix will not work unless the shell is restarted. enter to exit.\n"
+	@printf "call make nix-profile-install to install the profile.\n"
+	@read dummy
+
+nix-profile-install:
+	nix profile install '$(HOME)/dotfiles/nix/shm-mac#shm-darwin'
+
+nix-up:
+	nix flake update --flake '$(HOME)/dotfiles/nix/shm-mac'
+	nix profile upgrade 'nix/shm-mac'
+
+xcode-dev:
+	xcode-select --install
+
+filevault:
+	fdesetup status
+	sudo fdesetup enable --user "$(USER)"
+	fdesetup status
+
+nerdfont:
+	curl --location --output $(HOME)/Downloads/CommitMono.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CommitMono.zip
+	$(MKDIR) $(HOME)/Downloads/CommitMono
+	unzip -o $(HOME)/Downloads/CommitMono.zip -d $(HOME)/Downloads/CommitMono
+	if [ "$(OS)" = "macos" ]; then \
+		if ls ~/Library/Fonts/CommitMono*Nerd*.*tf >/dev/null 2>&1; then \
+			printf "CommitMono Nerd Font is already installed.\n"; \
+		else \
+			open -a "Font Book" \
+		fi \
+	else \
+		printf "Install step skipped: not on macOS (OS = %s)\n" "$$(OS)"; \
+	fi
+
+macos-nix:
+	$(MAKE) xcode-dev
+	$(MAKE) xdg-dirs
+	$(MAKE) filevault
+	@/bin/bash $(BOOTSTRAP_DIR)/m-enable-touch-id-sudo.sh
+	@/bin/bash $(BOOTSTRAP_DIR)/m-set-defaults-preferences.sh
+	$(MAKE) nerdfont
+	$(MAKE) stow
+	$(MAKE) nix-install
+
+macos:
+	# add my user to the developer group
+	sudo dscl . append /Groups/_developer GroupMembership $(whoami)
+	$(MAKE) git
+	$(MAKE) zoxide
+	$(MAKE) shbase
+	$(MAKE) shzsh
+	$(MAKE) shbash
+	$(MAKE) bin
+	$(MAKE) vim
+	$(MAKE) neovim
+
+
+
 
 # macos software installed
 # firefox - sign into sync / arkenfox
@@ -233,9 +343,81 @@ nix:
 # hostname
 # mouse
 #
-# xcode tools things
+# rename host and restart
+# install xcode tools and check for updates
+# github login and keygen
+# upload key to github
+# do nix
 #
 # turned off natural scrolling
 # turned off rotate
 #
 # uninstall pages, garage band news etc
+# https://www.keka.io/en/
+# https://www.appzapper.com/
+# https://www.7-zip.org/download.html
+# https://www.videolan.org/vlc/
+# https://www.hammerspoon.org/
+# https://obsidian.md/
+# note to exit shell or source the env vars before installing rust and such with nix -- probably easiest to exit
+# make sure to sign into icloud and messages
+# https://www.busymac.com/busycontacts/
+# https://folivora.ai/
+# https://www.publicspace.net/ABetterFinderRename/index.html
+# https://marked2app.com/
+# https://apphousekitchen.com/
+# https://github.com/mhaeuser/Battery-Toolkit/releases
+# https://www.lynapp.com/
+# https://github.com/p0deje/Maccy/releases
+# https://github.com/jordanbaird/Ice/releases/
+# https://sindresorhus.com/quickgpt
+# Dropbox alternative app: https://maestral.app/
+# https://sindresorhus.com/velja
+# https://www.mowglii.com/itsycal/
+# https://github.com/sbarex/SourceCodeSyntaxHighlight
+# https://www.moderncsv.com/
+# https://sindresorhus.com/battery-indicator
+# https://manytricks.com/witch/
+# https://www.popclip.app/
+# https://www.stclairsoft.com/DefaultFolderX/
+# https://cryptomator.org/
+# https://github.com/Mortennn/Dozer/releases/
+# https://github.com/dwarvesf/hidden/releases/
+# https://jacklandrin.github.io/macos%20app/2021/12/01/onlyswitch.html
+# https://github.com/jordanbaird/Ice/releases
+# https://discord.com/download
+#
+# FOR OTHER:
+# https://sindresorhus.com/scratchpad
+#
+# Setup firefox addons including violentmonkey
+# https://www.mozilla.org/en-US/firefox/channel/desktop/#developer
+# https://neovide.dev/
+# https://www.barebones.com/products/bbedit/
+# POSSIBLE USEFULE UTiLITIES fuzzy searching and image resizingpdf and video optimization
+# https://lowtechguys.com/cling/
+# https://lowtechguys.com/clop/
+# https://www.popclip.app/extensions/
+# Popclip Extensions:
+# DuckDuckGo
+# BBEdit
+# TextEdit
+# Alfred
+# Uppercase
+# Lowercase
+# Slugify
+# Obsidian
+# https://daisydiskapp.com/
+# https://www.publicspace.net/ABetterFinderRename/index.html
+#
+# Alfred workflows: https://www.packal.org/
+#
+# APP STORE:
+# duplicate detective
+# gemeni 2
+# https://www.devontechnologies.com/apps/freeware - Xmenu
+# look into wordservice from devontechnologies too
+# https://sindresorhus.com/folder-peek
+# https://www.gimp.org/downloads/
+# https://inkscape.org
+# https://github.com/jordanbaird/Ice/releases

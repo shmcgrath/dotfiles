@@ -4,6 +4,22 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Change hyper+f11 to left_alt",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "f11",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "left_alt" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "caps_lock to left_control is held, escape if tapped",
                         "manipulators": [
                             {
@@ -21,9 +37,9 @@
                     {
                         "manipulators": [
                             {
-                                "description": "Change right_command to command+control+option+shift.",
+                                "description": "Change right_option to command+control+option+shift.",
                                 "from": {
-                                    "key_code": "right_command",
+                                    "key_code": "right_option",
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [

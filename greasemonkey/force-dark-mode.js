@@ -15,6 +15,7 @@
 // @exclude     *://*.netflix.com/*
 // @exclude     *://locahost/*
 // @exclude     *://github.com/*
+// @exclude     *://raw.githubusercontent.com/*
 // @exclude     *://mail.google.com/*
 // @grant       none
 // @version     1.0

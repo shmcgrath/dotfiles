@@ -21,18 +21,22 @@ in pkgs.buildEnv {
     gdb
     git
     jq
+    minify
     shmNeomutt
-    neovide
     neovim
+    p7zip
+    pandoc
     pass
     pkgconf
     poppler
+    restish
     ripgrep
     stow
     tmux
     vifm
     w3m
     yazi
+    zola
     zoxide
   ];
 }

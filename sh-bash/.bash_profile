@@ -1,5 +1,6 @@
 # sourcing ~/.profile explicitly loads XDG env vars
 [ -f "$HOME/.profile" ] && . "$HOME/.profile"
+[ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
 
 if [ -d "$XDG_CONFIG_HOME/sh-base/functions" ]; then
 	for functionFile in "$XDG_CONFIG_HOME/sh-base/functions"/*; do

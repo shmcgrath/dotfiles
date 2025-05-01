@@ -15,9 +15,6 @@ alias j="jobs -1" # show jobs
 alias jc="journalctl"
 alias jce="journalctl --pager-end"
 alias kvm="doas mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other" # mounting for shared folders in kali vm
-alias la='ls -x --almost-all --group-directories-first --color' # -x list entries by lines instead of cols
-alias ll='ls -FGlAhp --time-style=long-iso --color'
-alias ls='ls -x --group-directories-first --color' # -x list entries by lines instead of cols
 alias makemkv="makemkvcon" # alias not rememberable makemkv command
 alias mkdir="mkdir -pv" # creates intermediate directories
 alias mv="mv --interactive --verbose" # preferred "mv" implementation
@@ -44,6 +41,12 @@ alias wuninstall="less $HOME/dotfiles/reference/uninstall-less.md"
 alias ytdl="youtube-dl"
 
 if [[ "$(uname)" == "Darwin" ]]; then
+	printf "macos"
+else
+	printf "not macos"
+	alias la='ls -x --almost-all --group-directories-first --color' # -x list entries by lines instead of cols
+	alias ll='ls -FGlAhp --time-style=long-iso --color'
+	alias ls='ls -x --group-directories-first --color' # -x list entries by lines instead of cols
 fi
 
 # vim:ft=sh:

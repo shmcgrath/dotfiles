@@ -12,7 +12,9 @@ let
 in pkgs.buildEnv {
   name = "shm-darwin";
   paths = with pkgs; [
+	bash
     bat
+	calcurse
     eza
     fd
     ffmpeg-full
@@ -21,6 +23,7 @@ in pkgs.buildEnv {
     gdb
     git
     jq
+	khard
     minify
     shmNeomutt
     neovim
@@ -32,6 +35,7 @@ in pkgs.buildEnv {
     restish
     ripgrep
     stow
+	todo-txt-cli
     tmux
     vifm
     w3m

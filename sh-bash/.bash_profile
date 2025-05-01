@@ -11,13 +11,7 @@ else
 	printf "%s\n" "$XDG_CONFIG_HOME/sh-base/functions is missing!"
 fi
 
-if [ "$(uname)" = "Darwin" ]; then
-	source_file \
-		"$HOME/.zshrc"
-fi
-
 if [ "$(uname)" = "Linux" ]; then
 	source_file \
-		"$HOME/.zshrc" \
 		"$XDG_CONFIG_HOME/sh-base/ssh-agent-auth-socket"
 fi

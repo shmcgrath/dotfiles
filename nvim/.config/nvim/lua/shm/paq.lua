@@ -35,7 +35,6 @@ paq({
   { "nvim-neotest/nvim-nio" },
   -- snippets and completion
   { "Saghen/blink.cmp", run = require("shm.functions.blink-get-binary").run  },
-  { "L3MON4D3/LuaSnip" },
   -- dependencies
   { "nvim-tree/nvim-web-devicons" },
   -- vim plugins
@@ -50,6 +49,9 @@ paq({
   { "tpope/vim-surround" },
   -- hledger
   { "ledger/vim-ledger" },
+  -- golang
+  --{ "olexsmir/gopher.nvim" },
+  --{ "yanskun/gotests.nvim" },
 })
 
 -- Functions to load all plugin configs dynamically
@@ -73,7 +75,6 @@ local function load_plugin_configs()
   local explicit_order = {
     "mason",
     "blink-cmp",
-    "LuaSnip",
     "dap",
     "dap-ui",
   }

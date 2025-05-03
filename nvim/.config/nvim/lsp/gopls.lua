@@ -7,5 +7,11 @@ return {
     "go.mod",
   },
   settings = {
+    gopls = {
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      },
+    },
   },
 }

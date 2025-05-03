@@ -480,6 +480,9 @@ To opt out of this use gw instead of gq, or clear 'formatexpr' on LspAttach.
 K is mapped to vim.lsp.buf.hover() unless 'keywordprg' is customized or a custom keymap for K exists.
 
 GLOBAL DEFAULTS
+
+LSP KEYBINDS AND POSSIBLE KEYBINDS
+
 grr gra grn gri i_CTRL-S These GLOBAL keymaps are created unconditionally when Nvim starts:
 "grn" is mapped in Normal mode to vim.lsp.buf.rename()
 "gra" is mapped in Normal and Visual mode to vim.lsp.buf.code_action()
@@ -488,6 +491,15 @@ grr gra grn gri i_CTRL-S These GLOBAL keymaps are created unconditionally when N
 "gO" is mapped in Normal mode to vim.lsp.buf.document_symbol()
 CTRL-S is mapped in Insert mode to vim.lsp.buf.signature_help()
 You can remove GLOBAL keymaps at any time using vim.keymap.del() or :unmap. See also gr-default.
+[d and ]d move between diagnostics in the current buffer ([D jumps to the first diagnostic, ]D jumps to the last)
+
+POSSIBLE KEYBINDS
+vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
+vim.keymap.set("n", "gc", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+vim.keymap.set("n", "gK", vim.lsp.buf.implementation, keyopts)
 
 ====================
 
@@ -509,5 +521,12 @@ Use `\0`, `\1`, etc., for more control
 
 - `\0` — entire match (same as `&`)
 - `\1`, `\2`, etc. — capture groups from parentheses in the pattern
+
+====================
+
+LSP Documentation Hover
+According to :help vim.lsp.buf.hover(), you should be able to jump into the floating window by calling the function twice in a row (or pressing K twice in your case).
+
+To exit, C-w, w
 
  vim:ft=help:

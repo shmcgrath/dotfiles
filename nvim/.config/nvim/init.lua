@@ -25,3 +25,6 @@ require("shm.dap-load-configs")
 -- require toggle diagnostics
 -- if I get more functions make a functions that requres them all
 require("shm.functions.diagnostics-toggle")
+
+-- functions to edit global and current lang snippet files
+require("shm.functions.open-snippet-files")

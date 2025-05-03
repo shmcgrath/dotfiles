@@ -2,6 +2,8 @@ vim.cmd("colorscheme cyberdream")
 vim.opt.inccommand = "split"
 -- vim.opt.clipboard = "unnamedplus"
 
+vim.opt.winborder = "rounded"
+
 vim.diagnostic.config({
   virtual_text = false,
   virtual_lines = false,

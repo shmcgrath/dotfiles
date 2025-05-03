@@ -33,9 +33,17 @@ require("blink.cmp").setup({
   },
   -- Default list of enabled providers defined so that you can extend it
   -- elsewhere in your config, without redefining it, due to `opts_extend`
-  snippets = { preset = "luasnip" },
+  snippets = { },
   sources = {
     default = { "lsp", "path", "snippets", "buffer" },
+    providers = {
+      snippets = {
+        module = "blink.cmp.sources.snippets",
+        opts = {
+          search_paths = { os.getenv("XDG_CONFIG_HOME") .. "/vim-base/snippets" }, 
+        },
+      },
+    },
   },
   fuzzy = {
     implementation = "prefer_rust_with_warning",

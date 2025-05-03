@@ -75,6 +75,7 @@ vim.keymap.set("n", "<C-p>d", fzf.diagnostics_document, { desc = "search through
 vim.keymap.set("n", "<C-p>f", fzf.files, { desc = "search for files in the current working directory" })
 vim.keymap.set("n", "<C-p>g", fzf.live_grep, { desc = "live grep for files in the current working directory" })
 vim.keymap.set("n", "<C-p>k", fzf.keymaps, { desc = "search through neovim keymaps" })
+vim.keymap.set("n", "<C-p>o", fzf.oldfiles, { desc = "search through recently opened/edited files" })
 vim.keymap.set("n", "<C-p>z", fzf.builtin, { desc = "search through fzf-lua builtin pickers" })
 
 vim.keymap.set("n", "<C-p>c", function()

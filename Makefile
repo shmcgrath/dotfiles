@@ -421,3 +421,4 @@ macos:
 # https://www.gimp.org/downloads/
 # https://inkscape.org
 # https://github.com/jordanbaird/Ice/releases
+# https://skim-app.sourceforge.io/

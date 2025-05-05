@@ -1,5 +1,5 @@
 DOTFILES := $(CURDIR)
-BOOTSTRAP := $(CURDIR)/scripts/bootstrap
+BOOTSTRAP_DIR := $(CURDIR)/scripts/bootstrap
 MKDIR := mkdir -pv
 LN := ln -svf
 LNDIR := ln --symbolic --verbose
@@ -306,7 +306,7 @@ nerdfont:
 		printf "Install step skipped: not on macOS (OS = %s)\n" "$$(OS)"; \
 	fi
 
-macos-nix:
+macos-base:
 	$(MAKE) xcode-dev
 	$(MAKE) xdg-dirs
 	$(MAKE) filevault
@@ -314,11 +314,14 @@ macos-nix:
 	@/bin/bash $(BOOTSTRAP_DIR)/m-set-defaults-preferences.sh
 	$(MAKE) nerdfont
 	$(MAKE) stow
-	$(MAKE) nix-install
-
-macos:
 	# add my user to the developer group
 	sudo dscl . append /Groups/_developer GroupMembership $(whoami)
+
+macos-nix:
+	$(MAKE) macos-base
+	$(MAKE) nix-install
+
+macos-cli:
 	$(MAKE) git
 	$(MAKE) zoxide
 	$(MAKE) shbase
@@ -328,8 +331,12 @@ macos:
 	$(MAKE) vim
 	$(MAKE) neovim
 
+homebrew-install:
+	@/bin/bash $(HOME)/dotfiles/homebrew/homebrew-install.sh
 
-
+macos-homebrew:
+	$(MAKE) macos-base
+	$(MAKE) homebrew-install
 
 # macos software installed
 # firefox - sign into sync / arkenfox
@@ -422,3 +429,4 @@ macos:
 # https://inkscape.org
 # https://github.com/jordanbaird/Ice/releases
 # https://skim-app.sourceforge.io/
+# https://neovide.dev/

@@ -8,10 +8,10 @@ return {
   },
   settings = {
     gopls = {
-      usePlaceholders = true,
       analyses = {
         unusedparams = true,
       },
+      usePlaceholders = true,
     },
   },
 }

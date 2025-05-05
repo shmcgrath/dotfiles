@@ -31,8 +31,6 @@ require("blink.cmp").setup({
       border = "rounded",
     },
   },
-  -- Default list of enabled providers defined so that you can extend it
-  -- elsewhere in your config, without redefining it, due to `opts_extend`
   snippets = { },
   sources = {
     default = { "lsp", "path", "snippets", "buffer" },
@@ -48,12 +46,7 @@ require("blink.cmp").setup({
   fuzzy = {
     implementation = "prefer_rust_with_warning",
     prebuilt_binaries = {
-      -- Whether or not to automatically download a prebuilt binary from github. If this is set to `false`,
-      -- you will need to manually build the fuzzy binary dependencies by running `cargo build --release`
-      -- Disabled by default when `fuzzy.implementation = 'lua'`
       download = false,
-
-      -- Ignores mismatched version between the built binary and the current git sha, when building locally
       ignore_version_mismatch = false,
     },
   },

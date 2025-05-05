@@ -29,6 +29,7 @@ paq({
   -- lsp
   { "williamboman/mason.nvim" },
   { "dense-analysis/ale" },
+  { "rmagatti/goto-preview" },
   -- debugging / dap
   { "mfussenegger/nvim-dap" },
   { "rcarriga/nvim-dap-ui" },

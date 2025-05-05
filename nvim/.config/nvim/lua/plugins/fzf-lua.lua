@@ -66,7 +66,8 @@ require("fzf-lua").setup({
 })
 
 -- set fzf-lua as the backend for vim.ui.select
-vim.ui.select = require("fzf-lua").fzf_select
+-- this may be breaking nvim-dap
+-- vim.ui.select = require("fzf-lua").fzf_select
 
 local fzf = require("fzf-lua")
 

@@ -338,6 +338,11 @@ macos-homebrew:
 	$(MAKE) macos-base
 	$(MAKE) homebrew-install
 
+todo-txt-install:
+	$(MKDIR) $(HOME)/.todo
+	$(MKDIR) $(HOME)/.todo/actions
+	$(STOW) todo-txt
+
 # macos software installed
 # firefox - sign into sync / arkenfox
 # ghostty

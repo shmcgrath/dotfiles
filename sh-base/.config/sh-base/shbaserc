@@ -28,8 +28,8 @@ else
 fi
 
 #PATH{{{2
+add_paths --prepend "$HOME/.local/bin"
 add_paths \
-	"$HOME/.local/bin" \
 	"$HOME/go/bin" \
 	"$HOME/.local/bin/menu-scripts" \
 	"$HOME/.local/bin/scripts"

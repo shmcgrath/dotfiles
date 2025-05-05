@@ -3,7 +3,6 @@ add_paths "$HOME/.brew/bin"
 export HOMEBREW_PREFIX="$HOME/.brew"
 export HOMEBREW_REPOSITORY="$HOME/.brew/.homebrew"
 export HOMEBREW_CELLAR="$HOME/.brew/Cellar"
-#export TERMINFO_DIRS="$HOME/.local/share/terminfo:/usr/share/terminfo"
-#export TERMINFO="$HOME/.local/share/terminfo"
+export HOMEBREW_NO_ANALYTICS=1
 
 # vim:ft=sh:

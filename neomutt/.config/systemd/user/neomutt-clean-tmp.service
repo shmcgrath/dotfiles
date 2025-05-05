@@ -1,0 +1,7 @@
+[Unit]
+Description=Clean NeoMutt temp files older than 7 days
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/scripts/neomutt-clean-tmp
+

@@ -1,5 +1,6 @@
 vim.cmd("colorscheme cyberdream")
 vim.opt.inccommand = "split"
+vim.g.have_nerd_font = true -- from kickstart.nvim
 -- vim.opt.clipboard = "unnamedplus"
 
 vim.opt.winborder = "rounded"

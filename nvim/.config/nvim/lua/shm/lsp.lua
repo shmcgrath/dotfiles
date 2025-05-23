@@ -17,7 +17,6 @@ end
 vim.lsp.config("*", {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
-    print("LSP: " .. client.name)
     vim.notify("LSP: " .. client.name, vim.log.levels.INFO)
   end,
   root_markers = { ".git" },

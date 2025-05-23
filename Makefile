@@ -435,3 +435,4 @@ todo-txt-install:
 # https://github.com/jordanbaird/Ice/releases
 # https://skim-app.sourceforge.io/
 # https://neovide.dev/
+# https://sqlitebrowser.org/dl/

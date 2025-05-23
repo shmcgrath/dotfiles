@@ -1,6 +1,4 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-capabilities = vim.tbl_deep_extend("force", capabilities, {
+capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), {
   textDocument = {
     foldingRange = {
       dynamicRegistration = false,
@@ -12,15 +10,17 @@ capabilities = vim.tbl_deep_extend("force", capabilities, {
   },
 })
 
-capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
+if next(capabilities) == nil then
+  capabilities = vim.empty_dict()
+end
 
 vim.lsp.config("*", {
   capabilities = capabilities,
-  root_markers = { ".git" },
   on_attach = function(client, bufnr)
     print("LSP: " .. client.name)
-    vim.diagnostic.enable(true, { buf = bufnr })
+    vim.notify("LSP: " .. client.name, vim.log.levels.INFO)
   end,
+  root_markers = { ".git" },
 })
 
 -- Enable each language server by filename under the lsp/ folder

@@ -42,7 +42,6 @@ paq({
   { "AndrewRadev/id3.vim" },
   { "airblade/vim-gitgutter" },
   { "chrisbra/csv.vim" },
-  { "cohama/lexima.vim"},
   { "justinmk/vim-sneak" },
   { "mbbill/undotree" },
   { "tpope/vim-commentary" },

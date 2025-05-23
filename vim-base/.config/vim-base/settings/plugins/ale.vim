@@ -19,7 +19,7 @@ let g:ale_echo_msg_format = '[%severity%] [%linter%] %code: %%s'
 
 if has('nvim')
 	let g:ale_use_neovim_diagnostics_api = 1
-	"let g:ale_disable_lsp = 1
+	let g:ale_disable_lsp = 1
 else
 endif
 

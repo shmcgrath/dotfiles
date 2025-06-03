@@ -2,6 +2,9 @@
 // @name        Force Dark Mode
 // @namespace   Violentmonkey Scripts
 // @match       *://*.*.*/*
+// @exclude     http://127.0.0.1:1111/*
+// @exclude     *.127.0.0.1:*/*
+// @exclude     *127.0.0.1:*/*
 // @exclude     *://spotify.com/*
 // @exclude     *://*.spotify.com/*
 // @exclude     *://linear.app/*
@@ -17,6 +20,32 @@
 // @exclude     *://github.com/*
 // @exclude     *://raw.githubusercontent.com/*
 // @exclude     *://mail.google.com/*
+// @exclude     *://*.github.com/*
+// @exclude     *://*.iconizer.net/*
+// @exclude     *://*.codepen.io/*
+// @exclude     *://mychart.ahn.org/*
+// @exclude     *://*.x.com/*
+// @exclude     *://*.ziglang.org/*
+// @exclude     *://*.exercism.org/*
+// @exclude     *://*.sr.ht/*
+// @exclude     *://*.dotfyle.com/*
+// @exclude     *://*.pa.gov/*
+// @exclude     *://*.vikunja.io/*
+// @exclude     *://*.erikwastaken.dev/*
+// @exclude     *://*.gohugo.io/*
+// @exclude     *://*.tmtheme-editor.glitch.me/*
+// @exclude     *://*.flaticon.com/*
+// @exclude     *://*.svgrepo.com/*
+// @exclude     *://*.heroicons.com/*
+// @exclude     *://*.toggles.dev/*
+// @exclude     *://*.erieinsurance.com/*
+// @exclude     *://*.carmax.com/*
+// @exclude     *://*.carvana.com/*
+// @exclude     *://*.chase.com/*
+// @exclude     *://*.americanexpress.com/*
+// @exclude     *://*.discover.com/*
+// @exclude     *://*.citi.com/*
+// @exclude     *://*.pnc.com/*
 // @grant       none
 // @version     1.0
 // @author      Vítor Vasconcellos

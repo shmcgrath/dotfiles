@@ -1,0 +1,25 @@
+{
+    "layer": "top",
+    "height": 30,
+    "spacing": 4,
+	"output": ["HDMI-A-1"],
+    "modules-left": ["niri/workspaces", "niri/window"],
+    "modules-center": [],
+    "modules-right": [],
+	"niri/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"active": "",
+			"default": ""
+		}
+	},
+	"niri/window": {
+		"format": "{}",
+		"rewrite": {
+			"(.*) — Mozilla Firefox": " $1",
+			"(.*) - Mozilla Firefox": " $1",
+			"Mozilla Firefox": " Firefox",
+			"(.*) - zsh": "> [$1]"
+		}
+	}
+}

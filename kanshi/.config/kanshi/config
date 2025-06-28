@@ -19,4 +19,6 @@ output "Ancor Communications Inc ASUS VH238 B1LMIZ089401" {
 profile home_01 {
 	output $LG_ULTRA enable
 	output $ASUS_CODE enable
+
+	exec /usr/bin/systemctl --user restart waybar@LG_ULTRA.service && /usr/bin/systemctl --user restart waybar@ASUS_CODE.service
 }

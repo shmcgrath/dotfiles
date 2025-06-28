@@ -1,13 +1,11 @@
 {
     "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
-    "modules-left": ["river/mode", "river/tags", "river/window",],
+	"output": ["DP-3"],
+    "modules-left": ["niri/workspaces", "niri/window"],
     "modules-center": ["custom/weather#BNE", "clock#aus", "clock#shm", "custom/weather#AGC"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "battery#bat2", "tray"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "memory", "cpu", "temperature#cpu", "temperature#gpu", "backlight", "keyboard-state", "battery", "battery#bat2", "tray"],
     // Modules configuration
     // "hyprland/workspaces": {
     //     "disable-scroll": true,
@@ -68,32 +66,35 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
-        "spacing": 10
+        "spacing": 10,
+		"show-passive-items": true
     },
     "clock#shm": {
 		"format": "🏠 {:%a %d %b %I:%M %p}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
     },
     "clock#aus": {
         "timezone": "Australia/Brisbane",
 		"format": "🦘 {:%a %d %b %I:%M %p}"
     },
+    "memory": {
+        "format": "{}% "
+    },
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
     },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "temperature#cpu": {
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureC}°C "
+    },
+    "temperature#gpu": {
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp2_input",
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureC}°C "
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -157,14 +158,6 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-  "custom/launcher": {
-    "format": "🌢",
-    "on-click": "rofi -show combi -m -1",
-//    "on-click": "wofi --show drun -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css",
-    "on-click-right": "rofi -show run"
-
-//    "on-click-right": "wofi --show run -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css"
-  },
 	"custom/weather#AGC": {
 		"format": " AGC {}",
 		"exec": "curl \"wttr.in/AGC?format=%c%t+%h+%m%s&u\"",
@@ -177,11 +170,6 @@
 		"interval": 900,
         "tooltip": false
 	},
-	"hyprland/submap": {
-		"format": "{}",
-		"max-length": 30,
-		"tooltip": false
-	},
 	"river/mode": {
 		"format": "mode: {}"
 	},
@@ -190,6 +178,21 @@
 	},
 	"river/window": {
 		"format": "{}"
+	},
+	"niri/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"active": "",
+			"default": ""
+		}
+	},
+	"niri/window": {
+		"format": "{}",
+		"rewrite": {
+			"(.*) — Mozilla Firefox": " $1",
+			"(.*) - Mozilla Firefox": " $1",
+			"Mozilla Firefox": " Firefox",
+			"(.*) - zsh": "> [$1]"
+		}
 	}
 }
-

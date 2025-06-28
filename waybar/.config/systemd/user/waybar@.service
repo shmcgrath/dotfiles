@@ -1,14 +1,14 @@
 # ~/.config/systemd/user/waybar.service or /etc/systemd/user/waybar.service
 [Unit]
-Description=Highly customizable Wayland bar for Sway and Wlroots based compositors.
+Description=Waybar instance for %i
 Documentation=https://github.com/Alexays/Waybar/wiki/
-PartOf=river-session.target
+PartOf=graphical-session.target
 After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/waybar
+ExecStart=/usr/bin/waybar -c %h/.config/waybar/config-%i.jsonc -s %h/.config/waybar/style.css
 Restart=on-failure
 
 [Install]
-WantedBy=river-session.target
+WantedBy=graphical-session.target

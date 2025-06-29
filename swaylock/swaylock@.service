@@ -12,5 +12,5 @@ ExecStart=/usr/bin/swaylock
 WantedBy=sleep.target
 WantedBy=suspend.target
 
-# cp to /etc/systemd/system/
-# on change or new system setup
+# cp to /etc/systemd/system/swaylock@.service on change or new system setup
+# systemctl enable --now swaylock@shmcg.service

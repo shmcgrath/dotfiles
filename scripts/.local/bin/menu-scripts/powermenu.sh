@@ -15,7 +15,7 @@ case $SELECTION in
 	*"Lock")
 		swaylock;;
 	*"Suspend")
-		systemctl suspend;;
+		swaylock && systemctl suspend;;
 	*"Reboot")
 		systemctl reboot;;
 	*"Reboot to UEFI")

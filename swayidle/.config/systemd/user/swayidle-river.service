@@ -9,6 +9,7 @@ Type=simple
 ExecStart=/usr/bin/swayidle -w \
 		timeout 900 'swaylock' \
 		resume 'kanshi' \
+		timeout 1710 '/home/shmcg/.local/bin/swayidle-ssh-check.sh' \
 		timeout 1800 'systemctl suspend' \
 		before-sleep 'swaylock'
 

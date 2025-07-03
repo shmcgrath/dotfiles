@@ -3,9 +3,16 @@
     "height": 30,
     "spacing": 4,
 	"output": ["HDMI-A-1"],
-    "modules-left": ["niri/workspaces", "niri/window"],
+    "modules-left": ["river/tags", "river/window"],
     "modules-center": [],
     "modules-right": [],
+	"river/tags": {
+		"num-tags": 7
+	},
+	"river/window": {
+		"format": "{}",
+		"tooltip": false
+	},
 	"niri/workspaces": {
 		"format": "{icon}",
 		"format-icons": {

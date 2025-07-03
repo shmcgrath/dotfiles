@@ -3,7 +3,7 @@
     "height": 30, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
 	"output": ["DP-3"],
-    "modules-left": ["niri/workspaces", "niri/window"],
+    "modules-left": ["river/tags", "river/window"],
     "modules-center": ["custom/weather#BNE", "clock#aus", "clock#shm", "custom/weather#AGC"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "network", "memory", "cpu", "temperature#cpu", "temperature#gpu", "backlight", "keyboard-state", "battery", "battery#bat2", "tray"],
     // Modules configuration
@@ -70,12 +70,33 @@
 		"show-passive-items": true
     },
     "clock#shm": {
-		"format": "🏠 {:%a %d %b %I:%M %p}",
+		"format": " {:%a %d %b %I:%M %p}",
         "tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "year",
+			"mode-mon-col": 3,
+			"weeks-pos": "right",
+			"on-scroll": 1,
+			"format": {
+			  "months": "<span color='#ffead3'><b>{}</b></span>",
+			  "days": "<span color='#ecc6d9'><b>{}</b></span>",
+			  "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+			  "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+			  "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+			  }
+		},
     },
     "clock#aus": {
-        "timezone": "Australia/Brisbane",
-		"format": "🦘 {:%a %d %b %I:%M %p}"
+		"format": "󱕘 {:%a %d %b %I:%M %p (%Z)}",
+		"tooltip-format": "{tz_list}",
+		"timezones": [
+			"Australia/Brisbane",
+			"Etc/UTC",
+			"Europe/London",
+			"Europe/Paris",
+			"Australia/Melbourne",
+		]
+		
     },
     "memory": {
         "format": "{}% "
@@ -174,25 +195,10 @@
 		"format": "mode: {}"
 	},
 	"river/tags": {
-		"num-tags": 5
+		"num-tags": 7
 	},
 	"river/window": {
-		"format": "{}"
-	},
-	"niri/workspaces": {
-		"format": "{icon}",
-		"format-icons": {
-			"active": "",
-			"default": ""
-		}
-	},
-	"niri/window": {
 		"format": "{}",
-		"rewrite": {
-			"(.*) — Mozilla Firefox": " $1",
-			"(.*) - Mozilla Firefox": " $1",
-			"Mozilla Firefox": " Firefox",
-			"(.*) - zsh": "> [$1]"
-		}
-	}
+		"tooltip": false
+	},
 }

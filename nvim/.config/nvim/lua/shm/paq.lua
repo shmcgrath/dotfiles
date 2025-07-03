@@ -48,6 +48,7 @@ paq({
   { "tpope/vim-fugitive" },
   { "tpope/vim-repeat" },
   { "tpope/vim-surround" },
+  { "rrethy/vim-hexokinase", build = "make hexokinase" },
   -- hledger
   { "ledger/vim-ledger" },
   -- golang

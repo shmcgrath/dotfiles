@@ -74,11 +74,17 @@ local fzf = require("fzf-lua")
 vim.keymap.set("n", "<C-p>b", fzf.lgrep_curbuf, { desc = "fzf-lua to grep through current buffer" })
 vim.keymap.set("n", "<C-p>d", fzf.diagnostics_document, { desc = "search through diagnostics_document" })
 vim.keymap.set("n", "<C-p>f", fzf.files, { desc = "search for files in the current working directory" })
-vim.keymap.set("n", "<C-p>g", fzf.live_grep, { desc = "live grep for files in the current working directory" })
+vim.keymap.set("n", "<C-p>g", fzf.live_grep, { desc = "live grep in the current working directory" })
 vim.keymap.set("n", "<C-p>k", fzf.keymaps, { desc = "search through neovim keymaps" })
 vim.keymap.set("n", "<C-p>o", fzf.oldfiles, { desc = "search through recently opened/edited files" })
 vim.keymap.set("n", "<C-p>z", fzf.builtin, { desc = "search through fzf-lua builtin pickers" })
 
 vim.keymap.set("n", "<C-p>c", function()
   fzf.files({ cwd=vim.fn.expand("$HOME/dotfiles") })
-end, { desc = "search for files in the current working directory" })
+end, { desc = "search for files in dotfiles" })
+
+vim.keymap.set("n", "<C-p>n", function()
+  fzf.live_grep({
+    search_paths= { vim.fn.expand("$HOME/Dropbox/shm") },
+  })
+end, { desc = "live grep in notes" })

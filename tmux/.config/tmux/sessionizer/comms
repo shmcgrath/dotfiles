@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+tmux has-session -t comms 2>/dev/null
+if [ $? != 0 ]; then
+    tmux new-session -s comms -n mail -d
+	tmux send-keys -t comms:1 "neomutt" C-m
+
+	tmux new-window -n irc -t comms
+	tmux send-keys -t comms:2 "tiny" C-m
+
+	tmux new-window -n rss -t comms
+	tmux send-keys -t comms:3 "newsboat" C-m
+
+    tmux select-window -t comms:1
+fi
+
+# vim: filetype=sh

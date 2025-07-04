@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+tmux has-session -t shm 2>/dev/null
+if [ $? != 0 ]; then
+    tmux new-session -s shm -n notes -d
+	if [ -d "$HOME/Dropbox/shm" ]; then
+		tmux send-keys -t shm:1 "cd $HOME/Dropbox/shm" C-m
+		tmux send-keys -t shm:1 "e" C-m
+	fi
+
+	tmux new-window -n dev -t shm
+    if [ -d "$HOME/projects" ]; then
+        tmux send-keys -t shm:2 "cd $HOME/projects" C-m
+    else
+        if [ -d "$HOME/Documents/projects" ]; then
+            tmux send-keys -t shm:2 "cd $HOME/Documents/projects/" C-m
+        fi
+    fi
+
+	tmux new-window -n test -t shm
+    if [ -d "$HOME/projects" ]; then
+        tmux send-keys -t shm:3 "cd $HOME/projects" C-m
+    else
+        if [ -d "$HOME/Documents/projects" ]; then
+            tmux send-keys -t shm:3 "cd $HOME/Documents/projects/" C-m
+        fi
+    fi
+
+	tmux new-window -n files -t shm
+    tmux select-window -t shm:1
+fi
+
+# vim: filetype=sh

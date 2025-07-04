@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+tmux has-session -t red 2>/dev/null
+if [ $? != 0 ]; then
+    tmux new-session -s red -n notes -d
+	tmux split-window -v -p 50 -t red:1
+	tmux send-keys -t red:1.1 "cd $HOME/Dropbox/shm" C-m
+	tmux send-keys -t red:1.2 "cd $HOME/hacking-security" C-m
+	tmux send-keys -t red:1.2 "$EDITOR oscp.md" C-m
+    tmux select-pane -t red:1.1
+	tmux new-window -n vpn-tools -t red
+    tmux send-keys -t red:2.1 "cd $HOME/hacking-security/vpn" C-m
+    tmux send-keys -t red:2.1 "printf 'to connect to vpn sudo openvpn'" C-m
+	tmux split-window -v -p 50 -t red:2
+	tmux send-keys -t red:2.2 "cd $HOME/bin" C-m
+	tmux split-window -h -p 30 -t red:2.1
+    tmux select-pane -t red:2.1
+	tmux new-window -n enumeration -t red
+    tmux select-window -t red:1
+fi
+
+# vim: filetype=sh

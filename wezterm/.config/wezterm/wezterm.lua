@@ -21,6 +21,7 @@ config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
 config.window_decorations = "RESIZE"
 config.tab_max_width = 155
+config.window_background_opacity = 0.95
 config.window_padding =
 {
   left = 0,

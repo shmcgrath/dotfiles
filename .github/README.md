@@ -266,3 +266,4 @@ zola 0.20.0-1
 
 ## Todo
 - [Wezterm Tab Bar](https://blog.dm4.tw/wezterm-tab-width-fill-tab-bar-eng)
+- Opacity in tmux/neovim?

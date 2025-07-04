@@ -189,14 +189,15 @@ vnoremap <leader>p "+p
 nnoremap <leader>P "*p
 vnoremap <leader>P "*p
 
+" Delete without impacting registers
 nnoremap X "_d
 vnoremap X "_d
 
 vnoremap Y y$
 nnoremap Y y$
 
-if (g:osEnv == "windows")
 " Markdown Rendering and HTML Previw {{{2
+if (g:osEnv == "windows")
 	nnoremap <silent> <F24> :!start C:\Program Files\Firefox Developer Edition\firefox.exe %<CR>
 	nnoremap <silent> <F23> :!start C:\Program Files\Mozilla Firefox\firefox.exe %<CR>
 	nnoremap <silent> <F22> :!start C:\Program Files (x86)\Google\Chrome\Application\chrome.exe %<CR>

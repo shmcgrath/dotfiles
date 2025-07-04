@@ -263,3 +263,6 @@ xfdesktop 4.20.1-1
 xfwm4-themes 4.10.0-6
 yazi 25.3.2-1
 zola 0.20.0-1
+
+## Todo
+- [Wezterm Tab Bar](https://blog.dm4.tw/wezterm-tab-width-fill-tab-bar-eng)

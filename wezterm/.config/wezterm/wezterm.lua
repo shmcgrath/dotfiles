@@ -18,7 +18,9 @@ config.command_palette_fg_color = "#7b8496"
 
 -- Apply cyberdream and my changes to tab bar appearance
 config.use_fancy_tab_bar = false
-config.window_padding = 
+config.show_new_tab_button_in_tab_bar = false
+config.tab_max_width = 155
+config.window_padding =
 {
   bottom = 0
 }
@@ -105,6 +107,10 @@ config.keys = {
     { key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },
     { key = 'U', mods = 'SHIFT|CTRL', action = act.CharSelect{ copy_on_select = true, copy_to =  'ClipboardAndPrimarySelection' } },
     { key = 'u', mods = 'SHIFT|CTRL', action = act.CharSelect{ copy_on_select = true, copy_to =  'ClipboardAndPrimarySelection' } },
+    { key = '<', mods = 'SHIFT|CTRL', action = act.MoveTabRelative(-1) },
+    { key = '>', mods = 'SHIFT|CTRL', action = act.MoveTabRelative(1) },
+    { key = ',', mods = 'SHIFT|CTRL', action = act.MoveTabRelative(-1) },
+    { key = '.', mods = 'SHIFT|CTRL', action = act.MoveTabRelative(1) },
     { key = 'Insert', mods = 'SHIFT', action = act.PasteFrom 'PrimarySelection' },
     { key = 'Insert', mods = 'CTRL', action = act.CopyTo 'PrimarySelection' },
     { key = 'Copy', mods = 'NONE', action = act.CopyTo 'Clipboard' },

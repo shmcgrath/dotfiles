@@ -9,6 +9,9 @@ config.default_cursor_style = 'SteadyBar'
 
 config.font = wezterm.font('CommitMono Nerd Font Mono')
 config.font_size = 13.0
+config.window_decorations = "RESIZE"
+config.max_fps = 144
+config.animation_fps = 30
 
 -- Command Palette
 -- NIGHTLY config.command_palette_font = wezterm.font 'CommitMono Nerd Font Mono'
@@ -19,7 +22,6 @@ config.command_palette_fg_color = "#7b8496"
 -- Apply cyberdream and my changes to tab bar appearance
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
-config.window_decorations = "RESIZE"
 config.tab_max_width = 155
 config.window_background_opacity = 0.95
 config.window_padding =

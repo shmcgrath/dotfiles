@@ -19,10 +19,14 @@ config.command_palette_fg_color = "#7b8496"
 -- Apply cyberdream and my changes to tab bar appearance
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
+config.window_decorations = "RESIZE"
 config.tab_max_width = 155
 config.window_padding =
 {
-  bottom = 0
+  left = 0,
+  right = 0,
+  top = 0,
+  bottom = 0,
 }
 config.colors = {
   -- Cyberdream by https://github.com/scottmckendry/cyberdream.nvim

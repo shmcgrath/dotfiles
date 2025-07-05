@@ -267,3 +267,12 @@ zola 0.20.0-1
 ## Todo
 - [Wezterm Tab Bar](https://blog.dm4.tw/wezterm-tab-width-fill-tab-bar-eng)
 - Opacity in tmux/neovim?
+- [Set up delta?](https://github.com/scottmckendry/cyberdream.nvim/tree/main/extras/textmate#bat)
+- [Eza Theme](https://github.com/eza-community/eza-themes/blob/main/themes/catppuccin.yml)
+- [LS_COLORS](https://github.com/sharkdp/vivid?tab=readme-ov-file)
+- how to use blink-cmp with visual/clipboard stuff?
+- [dircolors - nord](https://github.com/nordtheme/dircolors)
+- real vim plugin for pairing characters
+- fd
+- Brewfile
+- [Aerospace Config](https://nikitabobko.github.io/AeroSpace/guide.html)

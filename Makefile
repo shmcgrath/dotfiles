@@ -192,6 +192,7 @@ vifm:
 	$(MKDIR) $(XDG_CONFIG_HOME)/vifm
 	$(MKDIR) $(XDG_CONFIG_HOME)/vifm/scripts
 	$(MKDIR) $(XDG_CONFIG_HOME)/vifm/colors
+	$(MKDIR) $(XDG_DATA_HOME)/Trash/files
 	$(MKDIR) $(HOME)/src
 	@cd "$(HOME)/src" && \
 	if [ -d vifm-sixel-preview/.git ]; then \

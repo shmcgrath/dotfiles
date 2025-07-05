@@ -52,9 +52,9 @@ highlight clear
 highlight Win cterm=none ctermfg=default ctermbg=none
 
 
-highlight TopLine cterm=none ctermfg=lightwhite ctermbg=green
+highlight TopLine cterm=none ctermfg=lightwhite ctermbg=purple
 highlight TopLineSel cterm=bold,italic ctermfg=yellow ctermbg=default
-highlight StatusLine cterm=bold ctermfg=white ctermbg=green
+highlight StatusLine cterm=bold ctermfg=white ctermbg=purple
 highlight Border cterm=none ctermfg=black ctermbg=black
 
 highlight Selected cterm=bold ctermfg=magenta ctermbg=default

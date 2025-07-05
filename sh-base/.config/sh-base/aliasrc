@@ -10,6 +10,7 @@ alias cls="clear" # clear terminal display
 alias cp="cp --interactive --verbose" # preferred "cp" implementation
 alias cpy="clipcopy"
 alias e=$EDITOR
+alias eza="eza --icons=always"
 alias hist="history" # show command history
 alias j="jobs -1" # show jobs
 alias jc="journalctl"
@@ -41,9 +42,9 @@ alias wuninstall="less $HOME/dotfiles/reference/uninstall-less.md"
 alias ytdl="youtube-dl"
 
 if [[ "$(uname)" == "Darwin" ]]; then
-	printf "\naliasrc check: macos"
+	printf "\naliasrc check: macos\n"
 else
-	printf "\n aliasrc check: not macos"
+	printf "\naliasrc check: not macos\n"
 	alias la='ls -x --almost-all --group-directories-first --color' # -x list entries by lines instead of cols
 	alias ll='ls -FGlAhp --time-style=long-iso --color'
 	alias ls='ls -x --group-directories-first --color' # -x list entries by lines instead of cols

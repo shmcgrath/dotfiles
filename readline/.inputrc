@@ -35,3 +35,6 @@ $if mode=vi
 	"\e[A": history-search-backward
 	"\e[B": history-search-forward
 $endif
+
+# tmux-sessionizer keybind
+"\C-f": "tmux-sessionizer.sh\n"

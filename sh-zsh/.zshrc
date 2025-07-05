@@ -101,5 +101,8 @@ setopt HIST_EXPIRE_DUPS_FIRST
 # Add timestamp
 setopt EXTENDED_HISTORY
 
+# keybinds{{{2
+bindkey -s ^f "tmux-sessionizer.sh\n"
 # cli tools eval{{{2
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(navi widget zsh)" #CTRL+G

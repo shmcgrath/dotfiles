@@ -54,7 +54,7 @@ else
 
     dirs=$(find ~/projects ~/ -mindepth 1 -maxdepth 1 -type d)
 	actions=$(printf "action:reload-config")
-	selected=$(printf "%s\n%s\n%s\n" "$actions" "$session_entries" "$dirs" | awk 'NF' | fzf)
+	selected=$(printf "%s\n%s\n%s\n" "$session_entries" "$actions" "$dirs" | awk 'NF' | fzf)
 fi
 
 if [[ -z $selected ]]; then

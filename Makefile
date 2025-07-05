@@ -37,7 +37,7 @@ MAKE_DIRS = cd $@ && \
 		[ -n "$$dir" ] && $(MKDIR) "$$HOME/$$dir"; \
 	done
 
-.PHONY: all clean stow aur pacman wayland xorg hyprland shellbase bash navi zoxide bin rust neovim vifm fzf dropbox xdg-dirs vim vim-base
+.PHONY: all clean stow aur pacman wayland xorg hyprland shellbase bash navi zoxide bin rust neovim vifm fzf dropbox xdg-dirs vim vim-base bat tmux
 
 all: vim neovim vim-base
 
@@ -146,6 +146,11 @@ wayland:
 		wl-clipboard \
 		cliphist #unsure
 
+tmux:
+	$(MKDIR) $(XDG_CONFIG_HOME)/tmux
+	$(MKDIR) $(XDG_CONFIG_HOME)/tmux/sessionizer
+	@$(STOW) tmux
+
 xorg:
 	$(PKGINSTALL) \
 		xclip
@@ -200,7 +205,7 @@ vifm:
 	$(CAT) ./vifm-sixel && \
 	printf "\nInstall vifm-sixel-preview? [y/N] " && \
 	read inst && case "$$inst" in [yY]) \
-		cp --interactive --verbose ./vifm-sixel $(XDG_CONFIG_HOME)/vifm/scripts/vifm-sixel && \
+		cp -i -v ./vifm-sixel $(XDG_CONFIG_HOME)/vifm/scripts/vifm-sixel && \
 		chmod +x $(XDG_CONFIG_HOME)/vifm/scripts/vifm-sixel ;; \
 	esac
 	$(STOW) vifm
@@ -246,6 +251,11 @@ go-setup:
 
 fzf:
 	$(PKGINSTALL) fzf
+
+bat:
+	$(MKDIR) "$(XDG_CONFIG_HOME)/bat/themes"
+	$(STOW) bat
+	bat cache --build
 
 hledger:
 	$(PKGINSTALL) hledger miller

@@ -13,6 +13,11 @@ source $HOME/.bashrc
 # concatonates all files in a directory into a single with file names included
 for f in *; do echo "==> $f <=="; cat "$f"; echo; done >> <filename>
 
+% misc, zsh, shell
+
+# source ~/.zshrc
+source $HOME/.zshrc
+
 % misc, htop, linux, process
 
 # show process with current users

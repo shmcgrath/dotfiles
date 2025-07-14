@@ -38,7 +38,7 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
 	current_sessions=$(tmux list-sessions | cut -d: -f1)
-	presets=$(find "$XDG_CONFIG_HOME/tmux/sessionizer" -type f -exec basename {} \;)
+	presets=$(find -L "$XDG_CONFIG_HOME/tmux/sessionizer" -type f -exec basename {} \;)
 
 	session_entries=""
 

@@ -21,7 +21,6 @@ alias mkdir="mkdir -pv" # creates intermediate directories
 alias mv="mv --interactive --verbose" # preferred "mv" implementation
 alias pacorph="paru -Qtdq | paru -Rns -"
 alias pacsyu="w3m https://www.archlinux.org/news/ && doas pacman -Syu" # get arch news and syu
-alias parus="paru --bottomup -Ss"
 alias pst="clippaste"
 alias py2="python2"
 alias py3="python3"

@@ -2,21 +2,24 @@
 # See the river(1), riverctl(1), and rivertile(1) man pages for complete
 # documentation.
 
-kanshi &
-
+# Startup
 # Start systemd services and targets
 systemctl --user start river-session.target
-
-# Set river specific environment variables
-#export XDG_SESSION_TYPE="wayland"
-#export XDG_CURRENT_DESKTOP="river"
 
 systemctl --user import-environment PATH WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 dbus-update-activation-environment --systemd PATH WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
 systemctl --user restart xdg-desktop-portal
 
-# startup
+kanshi &
 
+# dunst
+systemctl --user start dunst.service
+
+# dropbox
+# wallpaper
+#exec-once = swaybg -m fill -i ~/.config/wallpaper/paris02.jpg
+#exec-once = systemctl --user start hyprpolkitagent
+#exec = import-gtk-settings.sh
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
@@ -68,12 +71,8 @@ riverctl map normal $mainMod+Shift Comma send-to-output previous
 #riverctl map normal $mainMod Return zoom
 
 # $mainMod+H and $mainMod+L to decrease/increase the main ratio of rivertile(1)
-riverctl map normal $mainMod H send-layout-cmd rivertile "main-ratio -0.05"
-riverctl map normal $mainMod L send-layout-cmd rivertile "main-ratio +0.05"
-
-# $mainMod+Shift+H and $mainMod+Shift+L to increment/decrement the main count of rivertile(1)
-riverctl map normal $mainMod+Alt H send-layout-cmd rivertile "main-count +1"
-riverctl map normal $mainMod+Alt L send-layout-cmd rivertile "main-count -1"
+riverctl map normal $mainMod+Control s send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map normal $mainMod+Control w send-layout-cmd rivertile "main-ratio +0.05"
 
 # $hyprMod+Alt+{H,J,K,L} to move views
 riverctl map normal $hyperMod H move left 100
@@ -82,22 +81,22 @@ riverctl map normal $hyperMod K move up 100
 riverctl map normal $hyperMod L move right 100
 
 # $mainMod+Alt+Control+{H,J,K,L} to snap views to screen edges
-riverctl map normal $mainMod+Alt+Control H snap left
-riverctl map normal $mainMod+Alt+Control J snap down
-riverctl map normal $mainMod+Alt+Control K snap up
-riverctl map normal $mainMod+Alt+Control L snap right
+riverctl map normal $hyperMod+Shift H snap left
+riverctl map normal $hyperMod+Shift J snap down
+riverctl map normal $hyperMod+Shift K snap up
+riverctl map normal $hyperMod+Shift L snap right
 
 # $mainMod+Alt+Shift+{H,J,K,L} to resize views
-riverctl map normal $mainMod+Alt+Shift H resize horizontal -100
-riverctl map normal $mainMod+Alt+Shift J resize vertical 100
-riverctl map normal $mainMod+Alt+Shift K resize vertical -100
-riverctl map normal $mainMod+Alt+Shift L resize horizontal 100
+riverctl map normal $hyperMod+Control H resize horizontal -100
+riverctl map normal $hyperMod+Control J resize vertical 100
+riverctl map normal $hyperMod+Control K resize vertical -100
+riverctl map normal $hyperMod+Control L resize horizontal 100
 
 # $mainMod + Left Mouse Button to move views
-riverctl map-pointer normal $mainMod BTN_LEFT move-view
+riverctl map-pointer normal $hyperMod BTN_LEFT move-view
 
 # $mainMod + Right Mouse Button to resize views
-riverctl map-pointer normal $mainMod BTN_RIGHT resize-view
+riverctl map-pointer normal $hyperMod BTN_RIGHT resize-view
 
 for i in $(seq 1 9)
 do
@@ -109,11 +108,11 @@ do
     # $mainMod+Shift+[1-9] to tag focused view with tag [0-8]
     riverctl map normal $mainMod+Shift $i set-view-tags $tags
 
-    # $mainMod+Control+[1-9] to toggle focus of tag [0-8]
-    riverctl map normal $mainMod+Control $i toggle-focused-tags $tags
-
     # $mainMod+Shift+Control+[1-9] to toggle tag [0-8] of focused view
-    riverctl map normal $mainMod+Shift+Control $i toggle-view-tags $tags
+    riverctl map normal $mainMod+Control $i toggle-view-tags $tags
+
+    # $mainMod+Control+[1-9] to toggle focus of tag [0-8]
+    riverctl map normal $mainMod+Alt $i toggle-focused-tags $tags
 done
 
 # $mainMod+0 to focus all tags
@@ -128,21 +127,31 @@ riverctl map normal $hyperMod End toggle-float
 # $mainMod+F to toggle fullscreen
 riverctl map normal $hyperMod Home toggle-fullscreen
 
-# $mainMod+{Up,Right,Down,Left} to change layout orientation
-riverctl map normal $mainMod Up    send-layout-cmd rivertile "main-location top"
-riverctl map normal $mainMod Right send-layout-cmd rivertile "main-location right"
-riverctl map normal $mainMod Down  send-layout-cmd rivertile "main-location bottom"
-riverctl map normal $mainMod Left  send-layout-cmd rivertile "main-location left"
+# Scratchpad
+# The scratchpad will live on an unused tag. Which tags are used depends on your
+# config, but rivers default uses the first 9 tags.
+scratch_tag=$((1 << 20 ))
+
+# Toggle the scratchpad with Super+P
+riverctl map normal $mainMod F toggle-focused-tags ${scratch_tag}
+
+# Send windows to the scratchpad with Super+Shift+P
+riverctl map normal $mainMod+Shift F set-view-tags ${scratch_tag}
+
+# Set spawn tagmask to ensure new windows don't have the scratchpad tag unless
+# explicitly set.
+all_but_scratch_tag=$(( ((1 << 32) - 1) ^ $scratch_tag ))
+riverctl spawn-tagmask ${all_but_scratch_tag}
 
 # Declare a passthrough mode. This mode has only a single mapping to return to
 # normal mode. This makes it useful for testing a nested wayland compositor
 riverctl declare-mode passthrough
 
 # $mainMod+F11 to enter passthrough mode
-riverctl map normal $mainMod F11 enter-mode passthrough
+riverctl map normal $hyperMod F11 enter-mode passthrough
 
 # $mainMod+F11 to return to normal mode
-riverctl map passthrough $mainMod F11 enter-mode normal
+riverctl map passthrough $hyperMod F11 enter-mode normal
 
 # Various media key mapping examples for both normal and locked mode which do
 # not have a modifier
@@ -168,15 +177,17 @@ do
 done
 
 # Set background and border color
-riverctl background-color 0x002b36
-riverctl border-color-focused 0x93a1a1
-riverctl border-color-unfocused 0x586e75
+riverctl background-color 0x1e2124
+riverctl border-color-focused 0x7b8496
+riverctl border-color-unfocused 0x3c4048
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
 
 # Make all views with an app-id that starts with "float" and title "foo" start floating.
-riverctl rule-add -app-id 'float*' -title 'foo' float
+riverctl rule-add -app-id 'org.pulseaudio.pavucontrol' -title 'Volume Control' float
+riverctl rule-add -app-id 'thunar' -title 'Rename*' float
+riverctl rule-add -app-id 'Gtk2fontsel' -title '*' float
 
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd
@@ -184,4 +195,4 @@ riverctl rule-add -app-id "bar" csd
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-rivertile -view-padding 6 -outer-padding 6 &
+rivertile -view-padding 2 -outer-padding 4 &

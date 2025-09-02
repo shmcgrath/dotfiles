@@ -1,5 +1,6 @@
 [Unit]
 Description=User services for river
+Documentation=man:systemd.special
 Requires=basic.target
 BindsTo=graphical-session.target
 After=graphical-session-pre.target

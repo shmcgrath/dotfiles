@@ -87,19 +87,17 @@ These are some of the links that I found useful when figuring out how to manage 
 Install the following fonts:
 - gnu-free-fonts
 - ttf-liberation
-- adobe-source-code-pro-fonts
+- ttf-dejavu
 - noto-fonts-emoji
-- ttf-noto-nerd
+- otf-commit-mono-nerd
 - ttf-nerd-fonts-symbols
 - ttf-nerd-fonts-symbols-common
 - ttf-nerd-fonts-symbols-mono
+- adwaita-fonts
 - NerdFont in Repo
 - to "install" nerd font from repo, stow it then "fc-cache -f -v"
 - gtk font picker: gtk2fontsel
 - other gtk settings: lxappearance
-- ttf-0xproto-nerd
-- otf-commit-mono-nerd
-- ttf-meslo-nerd (use MesloLGS Nerd Font Mono)
 - for other systems download fonts from [nerdfonts.com](https://www.nerdfonts.com/)
 
 ### How to choose a nerd font?
@@ -111,8 +109,7 @@ Install the following fonts:
 ## Colors and Themes
 - Baskerville El Dorado Dark
 - [cyberdream](https://github.com/scottmckendry/cyberdream.nvim)
-- [modus themes](https://github.com/miikanissi/modus-themes.nvim)
-
+- adwaita gtk
 ## User Scripts (Greasemonkey and Violentmonkey)
 - Currently using Violentmonkey
 - Installed Scripts:

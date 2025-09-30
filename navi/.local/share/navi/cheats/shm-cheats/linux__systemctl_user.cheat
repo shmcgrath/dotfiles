@@ -29,12 +29,18 @@ systemctl --user status <service>
 
 # List running services
 systemctl --user list-units --type=service --state=running
+#
+# List failed services
+systemctl --user list-units --state=failed
 
 # List enabled services
 systemctl --user list-unit-files --type=service --state=enabled
 
 # List disabled services
 systemctl --user list-unit-files --type=service --state=disabled
+
+# Show environment variables available to systemd
+systemctl --user show-environment
 
 $ service_inactive: systemctl --user list-units --type=service --state=inactive | awk '{print $1}' | grep .service | sed 's/.service$//'
 $ service_active: systemctl --user list-units --type=service --state=active | awk '{print $1}' | grep .service | sed 's/.service$//'

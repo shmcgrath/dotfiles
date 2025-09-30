@@ -1,0 +1,20 @@
+% riverwm, linux, wayland
+# change main location to the top
+riverctl send-layout-cmd rivertile "main-location top"
+
+# change main location to the right
+riverctl send-layout-cmd rivertile "main-location right"
+
+# change main location to the bottom
+riverctl send-layout-cmd rivertile "main-location bottom"
+
+# change main location to the left
+riverctl send-layout-cmd rivertile "main-location left"
+
+# Set the number of views in the main area of the layout to 1
+riverctl send-layout-cmd rivertile "main-count 1"
+# Increment the number of views in the main area of the layout by 1
+riverctl send-layout-cmd rivertile "main-count +1"
+# Decrement the number of views in the main area of the layout by 1
+riverctl send-layout-cmd rivertile "main-count -1"
+

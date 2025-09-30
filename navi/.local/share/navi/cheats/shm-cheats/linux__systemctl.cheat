@@ -30,6 +30,9 @@ systemctl status <service>
 # List running services
 systemctl list-units --type=service --state=running
 
+# List failed services
+systemctl list-units --state=failed
+
 # List enabled services
 systemctl list-unit-files --type=service --state=enabled
 

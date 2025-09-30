@@ -11,22 +11,7 @@
 	},
 	"river/window": {
 		"format": "{}",
-		"tooltip": false
-	},
-	"niri/workspaces": {
-		"format": "{icon}",
-		"format-icons": {
-			"active": "",
-			"default": ""
-		}
-	},
-	"niri/window": {
-		"format": "{}",
-		"rewrite": {
-			"(.*) — Mozilla Firefox": " $1",
-			"(.*) - Mozilla Firefox": " $1",
-			"Mozilla Firefox": " Firefox",
-			"(.*) - zsh": "> [$1]"
-		}
+		"max-length": 43,
+		"tooltip": true
 	}
 }

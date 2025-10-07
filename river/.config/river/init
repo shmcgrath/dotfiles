@@ -38,6 +38,7 @@ riverctl map normal $mainMod+Control Return spawn ghostty
 riverctl map normal $mainMod Space spawn $menu
 riverctl map normal $hyperMod Pause spawn $HOME/.local/bin/menu-scripts/powermenu.sh
 riverctl map normal $hyperMod f spawn $HOME/.local/bin/menu-scripts/fuzzel-script-launcher.sh
+riverctl map normal $mainMod+Shift Print spawn $HOME/.local/bin/menu-scripts/screenshot.sh
 
 # $mainMod+Q to close the focused view
 riverctl map normal $hyperMod Q close
@@ -74,23 +75,23 @@ riverctl map normal $mainMod+Shift Comma send-to-output previous
 riverctl map normal $mainMod+Control s send-layout-cmd rivertile "main-ratio -0.05"
 riverctl map normal $mainMod+Control w send-layout-cmd rivertile "main-ratio +0.05"
 
-# $hyprMod+Alt+{H,J,K,L} to move views
-riverctl map normal $hyperMod H move left 100
-riverctl map normal $hyperMod J move down 100
-riverctl map normal $hyperMod K move up 100
-riverctl map normal $hyperMod L move right 100
+# $hyprMod+{H,J,K,L} to move views
+# riverctl map normal $hyperMod H move left 100
+# riverctl map normal $hyperMod J move down 100
+# riverctl map normal $hyperMod K move up 100
+# riverctl map normal $hyperMod L move right 100
 
 # $mainMod+Alt+Control+{H,J,K,L} to snap views to screen edges
-riverctl map normal $hyperMod+Shift H snap left
-riverctl map normal $hyperMod+Shift J snap down
-riverctl map normal $hyperMod+Shift K snap up
-riverctl map normal $hyperMod+Shift L snap right
+# riverctl map normal $hyperMod+Shift H snap left
+# riverctl map normal $hyperMod+Shift J snap down
+# riverctl map normal $hyperMod+Shift K snap up
+# riverctl map normal $hyperMod+Shift L snap right
 
 # $mainMod+Alt+Shift+{H,J,K,L} to resize views
-riverctl map normal $hyperMod+Control H resize horizontal -100
-riverctl map normal $hyperMod+Control J resize vertical 100
-riverctl map normal $hyperMod+Control K resize vertical -100
-riverctl map normal $hyperMod+Control L resize horizontal 100
+# riverctl map normal $hyperMod+Control H resize horizontal -100
+# riverctl map normal $hyperMod+Control J resize vertical 100
+# riverctl map normal $hyperMod+Control K resize vertical -100
+# riverctl map normal $hyperMod+Control L resize horizontal 100
 
 # $mainMod + Left Mouse Button to move views
 riverctl map-pointer normal $hyperMod BTN_LEFT move-view

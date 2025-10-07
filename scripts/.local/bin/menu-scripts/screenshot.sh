@@ -4,7 +4,7 @@ OPTIONS="Selection to File
 Selection to Clipboard
 All Windows"
 
-SELECTION=$(printf "%s\n" "$PWR_OPTIONS" | fuzzel --dmenu --lines 12 --prompt "Screenshot > ")
+SELECTION=$(printf "%s\n" "$OPTIONS" | fuzzel --dmenu --lines 12 --prompt "Screenshot > ")
 
 case $SELECTION in
 	*"Selection to File")

@@ -8,7 +8,7 @@ Monitor to Clipboard
 All Windows to File
 All Windows to Clipboard"
 
-SELECTION=$(printf "%s\n" "$OPTIONS" | fuzzel --dmenu --lines 12 --prompt "Screenshot > " --select="Selection to Satty")
+SELECTION=$(printf "%s\n" "$OPTIONS" | fuzzel --dmenu --minimal-lines --prompt "Screenshot > " --select="Selection to Satty")
 
 case $SELECTION in
 	*"Selection to File")

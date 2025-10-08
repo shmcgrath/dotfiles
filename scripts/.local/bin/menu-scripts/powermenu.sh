@@ -9,7 +9,7 @@ Shutdown
 river exit
 waybar restart"
 
-SELECTION=$(printf "%s\n" "$PWR_OPTIONS" | fuzzel --dmenu --lines 12 --prompt "Power Menu > " --select="Suspend")
+SELECTION=$(printf "%s\n" "$PWR_OPTIONS" | fuzzel --dmenu --minimal-lines --prompt "Power Menu > " --select="Suspend")
 
 case $SELECTION in
 	*"Lock")

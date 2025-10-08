@@ -6,7 +6,7 @@
 # Start systemd services and targets
 systemctl --user start river-session.target
 
-systemctl --user import-environment PATH WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+systemctl --user import-environment PATH WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
 dbus-update-activation-environment --systemd PATH WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
 systemctl --user restart xdg-desktop-portal
 
@@ -38,7 +38,7 @@ riverctl map normal $mainMod+Control Return spawn ghostty
 riverctl map normal $mainMod Space spawn $menu
 riverctl map normal $hyperMod Pause spawn $HOME/.local/bin/menu-scripts/powermenu.sh
 riverctl map normal $hyperMod f spawn $HOME/.local/bin/menu-scripts/fuzzel-script-launcher.sh
-riverctl map normal $mainMod+Shift Print spawn $HOME/.local/bin/menu-scripts/screenshot.sh
+riverctl map normal None Print spawn $HOME/.local/bin/menu-scripts/screenshot.sh
 
 # $mainMod+Q to close the focused view
 riverctl map normal $hyperMod Q close
@@ -189,6 +189,7 @@ riverctl set-repeat 50 300
 riverctl rule-add -app-id 'org.pulseaudio.pavucontrol' -title 'Volume Control' float
 riverctl rule-add -app-id 'thunar' -title 'Rename*' float
 riverctl rule-add -app-id 'Gtk2fontsel' -title '*' float
+riverctl rule-add -app-id 'firefox' -title 'Library' float
 
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd

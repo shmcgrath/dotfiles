@@ -18,3 +18,8 @@ riverctl send-layout-cmd rivertile "main-count +1"
 # Decrement the number of views in the main area of the layout by 1
 riverctl send-layout-cmd rivertile "main-count -1"
 
+# Get app-id or window name of an application
+lswt
+
+# Get keypress names
+wev

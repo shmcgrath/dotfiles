@@ -5,8 +5,10 @@ Selection to Clipboard
 Selection to Satty
 Monitor to File
 Monitor to Clipboard
+Monitor to Satty
 All Windows to File
-All Windows to Clipboard"
+All Windows to Clipboard
+All Windows to Satty"
 
 SELECTION=$(printf "%s\n" "$OPTIONS" | fuzzel --dmenu --minimal-lines --prompt "Screenshot > " --select="Selection to Satty")
 
@@ -21,8 +23,12 @@ case $SELECTION in
 		grim -g "$(slurp -o)";;
 	*"Monitor to Clipboard")
 		grim -g "$(slurp -o)" - | wl-copy;;
+	*"Monitor to Satty")
+		grim -g "$(slurp -o)" - | satty --filename - --output-filename ~/Pictures/satty/$(date '+%Y%m%d-%H%M%S').png;;
 	*"All Windows to File")
 		grim;;
 	*"All Windows to Clipboard")
 		grim - | wl-copy;;
+	*"All Windows to Satty")
+		grim - | satty --filename - --output-filename ~/Pictures/satty/$(date '+%Y%m%d-%H%M%S').png;;
 esac

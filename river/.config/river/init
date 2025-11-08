@@ -38,7 +38,8 @@ riverctl map normal $mainMod+Control Return spawn ghostty
 riverctl map normal $mainMod Space spawn $menu
 riverctl map normal $hyperMod Pause spawn $HOME/.local/bin/menu-scripts/powermenu.sh
 riverctl map normal $hyperMod f spawn $HOME/.local/bin/menu-scripts/fuzzel-script-launcher.sh
-riverctl map normal None Print spawn $HOME/.local/bin/menu-scripts/screenshot.sh
+riverctl map normal None Print spawn 'grim -g "$(slurp)"'
+riverctl map normal Shift Print spawn $HOME/.local/bin/menu-scripts/screenshot.sh
 
 # $mainMod+Q to close the focused view
 riverctl map normal $hyperMod Q close

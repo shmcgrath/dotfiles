@@ -28,6 +28,7 @@ vim.lsp.enable({
   "bashls",
   "gopls",
   "lua_ls",
+  "solargraph",
   "vimls",
   "yamlls",
   "zls",

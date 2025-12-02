@@ -141,3 +141,7 @@ tags
 pyvenv.cfg
 .venv
 pip-selfcheck.json
+
+# Ruby
+/.bundle/
+/vendor/bundle

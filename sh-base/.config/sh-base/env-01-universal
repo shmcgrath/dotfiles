@@ -5,5 +5,6 @@ export PAGER="less"
 export LESS='-iMR -x4'
 export LESSHISTFILE="$XDG_DATA_HOME"/less/lesshst
 export OPENER="xdg-open"
+export GEM_HOME="$(gem env user_gemhome)"
 
 # vim:ft=sh:

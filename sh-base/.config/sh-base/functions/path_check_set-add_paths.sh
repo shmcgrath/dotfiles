@@ -14,7 +14,7 @@ validate_path() {
 	fi
 
 	if [ ! -d "$1" ]; then
-		printf "%s\n" "[E03] Directory does not exist."
+		printf "%s\n" "[E03] Directory \"$1\" does not exist."
 		return 1
 	fi
 }
@@ -25,7 +25,7 @@ prepend_path() {
 
 	case ":$PATH:" in
 		":$1:"*)
-			printf "%s\n" "[E04] Path already first in PATH. Skipping: $1"
+			printf "%s\n" "[E04] Directory already first in PATH. Skipping: $1"
 			;;
 		*)
 			printf "%s\n" "Prepending to PATH: $1"
@@ -41,7 +41,7 @@ append_path() {
 
 	case ":$PATH:" in
 		*:"$1":*)
-			printf "%s\n" "[E05] Path already in PATH. Skipping: $1"
+			printf "%s\n" "[E05] Directory already in PATH. Skipping: $1"
 			;;
 		*)
 			printf "%s\n" "Appending to PATH: $1"

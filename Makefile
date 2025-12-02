@@ -261,6 +261,10 @@ bat:
 hledger:
 	$(PKGINSTALL) hledger miller
 
+ruby:
+	$(PKGINSTALL) ruby ruby-stdlib ruby-lsp
+	gem install rubocop solargraph
+
 xdg-dirs:
 	$(MKDIR) "$(HOME)/.local/share"
 	$(MKDIR) "$(HOME)/.cache"

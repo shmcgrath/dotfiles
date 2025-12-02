@@ -24,7 +24,7 @@ prepend_path() {
 	validate_path "$1" || return 1
 
 	case ":$PATH:" in
-		"$1"[:]*)
+		":$1:"*)
 			printf "%s\n" "[E04] Path already first in PATH. Skipping: $1"
 			;;
 		*)

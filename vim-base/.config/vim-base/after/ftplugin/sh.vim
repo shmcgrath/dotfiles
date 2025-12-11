@@ -1,6 +1,5 @@
 setlocal shiftwidth=4
 setlocal softtabstop=4
 setlocal tabstop=4
-let b:ale_linters = {
-\   'sh': ['bashls'],
-\}
+let b:ale_fixers = ['shfmt',]
+let b:ale_linters = ['bashls', 'shellcheck']

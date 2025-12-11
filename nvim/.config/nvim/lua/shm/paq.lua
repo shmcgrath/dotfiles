@@ -54,6 +54,8 @@ paq({
   -- golang
   --{ "olexsmir/gopher.nvim" },
   --{ "yanskun/gotests.nvim" },
+  -- typst
+  { "chomosuke/typst-preview.nvim" },
 })
 
 -- Functions to load all plugin configs dynamically

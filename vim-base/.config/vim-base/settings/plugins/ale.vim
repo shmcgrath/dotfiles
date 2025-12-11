@@ -10,6 +10,7 @@ let g:ale_lint_on_save = 0
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 0
 let g:ale_linters_explicit = 1
+let g:ale_virtualtext_cursor=0
 
 " Error Message Formatting
 let g:ale_echo_msg_error_str = 'E'
@@ -23,5 +24,5 @@ if has('nvim')
 else
 endif
 
-nnoremap <F6> :ALEFix<CR>
-nnoremap <F7> :ALELint<CR>
+nnoremap <F6> :ALELint<CR>
+nnoremap <F7> :ALEFix<CR>

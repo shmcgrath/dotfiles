@@ -24,12 +24,13 @@ vim.lsp.config("*", {
 
 -- Enable each language server by filename under the lsp/ folder
 -- more information on ls: https://www.andersevenrud.net/neovim.github.io/lsp/
+-- https://github.com/neovim/nvim-lspconfig
 vim.lsp.enable({
   "bashls",
   "gopls",
   "lua_ls",
-  "solargraph",
+  "sqlls",
+  "tinymist",
+  "tombi",
   "vimls",
-  "yamlls",
-  "zls",
 })

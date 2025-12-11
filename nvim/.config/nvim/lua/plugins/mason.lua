@@ -17,9 +17,15 @@ mason.setup({
 local tooling = {
   -- LSPs
   "lua-language-server",
+  "tombi",
+  "vim-language-server",
   -- DAPs
   -- Linters & Formatters
+  "checkmake",
+  "sqlfluff",
+  "sqlls",
   "stylua",
+  "typstyle",
 }
 
 -- install tooling listed above

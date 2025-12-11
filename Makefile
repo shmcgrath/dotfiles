@@ -261,10 +261,6 @@ bat:
 hledger:
 	$(PKGINSTALL) hledger miller
 
-ruby:
-	$(PKGINSTALL) ruby ruby-stdlib ruby-lsp
-	gem install rubocop solargraph
-
 xdg-dirs:
 	$(MKDIR) "$(HOME)/.local/share"
 	$(MKDIR) "$(HOME)/.cache"
@@ -357,6 +353,12 @@ todo-txt-install:
 	$(MKDIR) $(HOME)/.todo
 	$(MKDIR) $(HOME)/.todo/actions
 	$(STOW) todo-txt
+
+shell-scripting:
+	$(PKGINSTALL) shfmt shellcheck
+
+typst:
+	$(PKGINSTALL) typst tinymist
 
 # macos software installed
 # firefox - sign into sync / arkenfox

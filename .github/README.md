@@ -273,3 +273,4 @@ zola 0.20.0-1
 - fd
 - Brewfile
 - [Aerospace Config](https://nikitabobko.github.io/AeroSpace/guide.html)
+- [update snippets to a different UUID from v4?](https://andyatkinson.com/avoid-uuid-version-4-primary-keys)

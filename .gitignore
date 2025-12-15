@@ -8,6 +8,9 @@ newsboat/.config/newsboat/error.log
 # Ignore private bookmarks
 bookmarks/shm-private.html
 
+#Ignore christmas card list
+*/**/christmas-card-list.csv
+
 # Ignore ssh config and known_hosts
 ssh/config
 ssh/known_hosts

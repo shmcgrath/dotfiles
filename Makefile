@@ -13,7 +13,7 @@ XDG_CACHE_HOME := $(shell [ -n "$$XDG_CACHE_HOME" ] && printf %s "$$XDG_CACHE_HO
 XDG_CONFIG_HOME := $(shell [ -n "$$XDG_CONFIG_HOME" ] && printf %s "$$XDG_CONFIG_HOME" || printf %s "$(HOME)/.config")
 XDG_STATE_HOME  := $(shell [ -n "$$XDG_STATE_HOME" ] && printf %s "$$XDG_STATE_HOME" || printf %s "$(HOME)/.local/state")
 
-UNAME_S := $(shell uname --kernel-name)
+UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Darwin)
     OS := macos

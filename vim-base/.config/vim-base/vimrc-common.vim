@@ -42,7 +42,7 @@ let maplocalleader = "\\"
 "set nocompatible " Be Vim not Vi
 set nolazyredraw " Turn off lazy redraw
 filetype plugin on " Enable plugins
-set conceallevel=0 " Set conceal level to 0 to not coneceal things
+set conceallevel=0 " Set conceal level to 0 to not conceal things
 set spellfile=$HOME/.config/vim-base/spell/en.utf-8.add
 set spelllang=en_us
 nnoremap <silent> <F11> :set spell!<CR>

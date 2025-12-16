@@ -22,8 +22,10 @@ local tooling = {
   -- DAPs
   -- Linters & Formatters
   "checkmake",
+  "htmlhint",
   "sqlfluff",
   "sqlls",
+  "stylelint",
   "stylua",
   "typstyle",
 }

@@ -22,10 +22,11 @@ local paq = require("paq")
 
 paq({
   { "savq/paq-nvim" },
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  { "stevearc/oil.nvim" },
-  { "scottmckendry/cyberdream.nvim" },
+  { "brenoprata10/nvim-highlight-colors" },
   { "ibhagwan/fzf-lua" },
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  { "scottmckendry/cyberdream.nvim" },
+  { "stevearc/oil.nvim" },
   -- lsp
   { "williamboman/mason.nvim" },
   { "dense-analysis/ale" },
@@ -48,7 +49,6 @@ paq({
   { "tpope/vim-fugitive" },
   { "tpope/vim-repeat" },
   { "tpope/vim-surround" },
-  { "rrethy/vim-hexokinase", build = "make hexokinase" },
   -- hledger
   { "ledger/vim-ledger" },
   -- golang

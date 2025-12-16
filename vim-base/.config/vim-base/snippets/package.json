@@ -2,12 +2,12 @@
 	"name": "snippets-shm",
 	"contributes": {
 		"snippets": [
-			{ "language": [ "all", "plaintext", "markdown", "tex", "html", "global" ],
-			   "path": "./global.json" },
 			{ "language": [ "markdown" ], "path": "./markdown.json" },
 			{ "language": [ "go" ], "path": "./go.json" },
 			{ "language": [ "html" ], "path": "./html.json" },
-			{ "language": [ "help" ], "path": "./help.json" }
+			{ "language": [ "help" ], "path": "./help.json" },
+			{ "language": [ "all", "plaintext", "markdown", "tex", "html", "global" ],
+			   "path": "./global.json" }
 		]
 	}
 }

@@ -148,8 +148,6 @@ set laststatus=2 " Last window will always have a status line
 
 " Source and Edit Vim {{{2
 " TODO: make this a command instead of a mapping
-" Source vimrc and gvimrc file
-nnoremap <leader>sv :source $MYVIMRC<cr>:source $MYGVIMRC<cr>
 
 " Navigation {{{2
 " Shortcut to :find - file find

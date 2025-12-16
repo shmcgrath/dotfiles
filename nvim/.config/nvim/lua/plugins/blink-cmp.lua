@@ -53,3 +53,5 @@ require("blink.cmp").setup({
     },
   },
 })
+
+-- if there is an init_db issue, delete ~/.local/state/nvim/blink/cmp

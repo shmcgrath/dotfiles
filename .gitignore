@@ -10,6 +10,9 @@ bookmarks/shm-private.html
 
 #Ignore christmas card list
 */**/christmas-card-list.csv
+*/**/christmas-card-list.pdf
+*/**/avery-6585-labels.pdf
+*/**/labels.pdf
 
 # Ignore ssh config and known_hosts
 ssh/config

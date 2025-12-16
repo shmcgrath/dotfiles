@@ -1,5 +1,5 @@
 // to make a pdf of labels to be printed on Avery 6585 labels
-// in a terminal "typst compile avery-6585-labels.typ -f pdf"
+// in a terminal "typst compile avery-6585-labels.typ ~/Documents/labels.pdf --format pdf"
 // make usre "christmas-card-list" is in the folder you are running it from
 // Avery 6585 Label
 #let label_width = 2.625in

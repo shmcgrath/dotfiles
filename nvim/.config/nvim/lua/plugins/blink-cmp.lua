@@ -40,6 +40,8 @@ require("blink.cmp").setup({
       snippets = {
         module = "blink.cmp.sources.snippets",
         opts = {
+          -- Set to '+' to use the system clipboard, or '"' to use the unnamed register
+          clipboard_register = '+',
           search_paths = { os.getenv("XDG_CONFIG_HOME") .. "/vim-base/snippets" }, 
         },
       },

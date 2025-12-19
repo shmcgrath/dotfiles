@@ -29,11 +29,11 @@ fi
 
 #PATH{{{2
 add_paths --prepend "$HOME/.local/bin"
+add_paths --prepend "$HOME/.brew/bin"
 add_paths \
 	"$HOME/go/bin" \
 	"$HOME/.local/bin/menu-scripts" \
 	"$HOME/.local/bin/scripts" \
-	"$(gem env user_gemhome)/bin"
 
 # source aliases and environment variables{{{2
 source_file \

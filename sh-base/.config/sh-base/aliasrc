@@ -32,6 +32,7 @@ alias sc="systemctl"
 alias scu="systemctl --user"
 alias shutdown="systemctl poweroff"
 alias tmux="tmux -2" # set 256 colors by default
+alias v="vifm"
 alias wdisk="df --human-readable" # shows disk space and percentage used
 alias weather="curl wttr.in/Pittsburgh?q" # weather in Pittsburgh
 alias wip="dig +short myip.opendns.com @resolver1.opendns.com"

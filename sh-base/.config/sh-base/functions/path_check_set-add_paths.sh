@@ -23,17 +23,33 @@ validate_path() {
 prepend_path() {
 	validate_path "$1" || return 1
 
-	case ":$PATH:" in
-		":$1:"*)
-			printf "%s\n" "[E04] Directory already first in PATH. Skipping: $1"
-			;;
-		*)
-			printf "%s\n" "Prepending to PATH: $1"
-			PATH="$1:$PATH"
-			export PATH
-			;;
-	esac
+	new_path=""
+
+	# Split PATH on ':' and rebuild excluding$$1
+	OLD_IFS=$IFS
+	IFS=:
+	for p in $PATH; do
+		if [ "$p" != "$1" ] && [ -n "$p" ]; then
+			if [ -z "$new_path" ]; then
+				new_path="$p"
+			else
+				new_path="$new_path:$p"
+			fi
+		fi
+	done
+	IFS=$OLD_IFS
+
+	# Prepend 1
+	if [ -z "$new_path" ]; then
+		PATH="$1"
+	else
+		PATH="$1:$new_path"
+	fi
+	export PATH
+
+	printf "%s\n" "Prepending to PATH: $1"
 }
+
 
 # Append a directory to PATH if it's not already in it
 append_path() {

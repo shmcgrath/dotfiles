@@ -29,7 +29,6 @@ fi
 
 #PATH{{{2
 add_paths --prepend "$HOME/.local/bin"
-add_paths --prepend "$HOME/.brew/bin"
 add_paths \
 	"$HOME/go/bin" \
 	"$HOME/.local/bin/menu-scripts" \

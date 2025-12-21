@@ -274,3 +274,9 @@ zola 0.20.0-1
 - Brewfile
 - [Aerospace Config](https://nikitabobko.github.io/AeroSpace/guide.html)
 - [update snippets to a different UUID from v4?](https://andyatkinson.com/avoid-uuid-version-4-primary-keys)
+- learn about editorconfig
+## Software to Learn/Research
+- poppler
+- [websocat](https://github.com/vi/websocat)
+- [restish](https://github.com/rest-sh/restish)
+- lazygit

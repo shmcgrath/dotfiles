@@ -1,4 +1,4 @@
-add_paths "$HOME/.brew/bin" 
+add_paths --prepend "$HOME/.brew/bin" 
 
 export HOMEBREW_PREFIX="$HOME/.brew"
 export HOMEBREW_REPOSITORY="$HOME/.brew/.homebrew"

@@ -13,15 +13,9 @@ bindkey -v
 PROMPT_HEADER=$'_______________________\n'
 PROMPT_MAIN=$'%~\n%n@%m \$ '
 
-# Conditionally prepend [Yazi] if YAZI_LEVEL is set
-YAZI_TERM=""
-if [ -n "$YAZI_LEVEL" ]; then
-  YAZI_TERM="[Yazi] "
-fi
-
 # This will be prepended by the mode (e.g., [I] or [N])
 function set_prompt {
-  PROMPT="${1}${YAZI_TERM}${PROMPT_HEADER} ${PROMPT_MAIN}"
+  PROMPT="${1}${PROMPT_HEADER} ${PROMPT_MAIN}"
 }
 
 # Function to show current vi mode in prompt

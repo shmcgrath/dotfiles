@@ -37,7 +37,7 @@ MAKE_DIRS = cd $@ && \
 		[ -n "$$dir" ] && $(MKDIR) "$$HOME/$$dir"; \
 	done
 
-.PHONY: all clean stow aur pacman wayland xorg hyprland shellbase bash navi zoxide bin rust neovim vifm fzf dropbox xdg-dirs vim vim-base bat tmux
+.PHONY: all clean stow aur pacman wayland xorg shellbase bash navi zoxide bin rust neovim vifm fzf dropbox xdg-dirs vim vim-base bat tmux
 
 all: vim neovim vim-base
 
@@ -138,6 +138,7 @@ arch-linux:
 
 wayland:
 	$(PKGINSTALL) \
+		river \
 		wlr-randr \
 		fuzzel \
 		dunst \
@@ -154,10 +155,6 @@ tmux:
 xorg:
 	$(PKGINSTALL) \
 		xclip
-
-hyprland:
-	$(PKGINSTALL) \
-		hyprland
 
 shbase:
 	@printf "shell"
@@ -267,34 +264,6 @@ xdg-dirs:
 	$(MKDIR) "$(HOME)/.config"
 	$(MKDIR) "$(HOME)/.local/state"
 
-nix-install:
-	$(MKDIR) "$(XDG_CONFIG_HOME)/nix"
-	@printf "==> Linking ~/.config/nix/nix.conf"
-	@if [ -e "$(XDG_CONFIG_HOME)/nix/nix.conf" ] && [ ! -L "$(XDG_CONFIG_HOME)/nix/nix.conf" ]; then \
-		printf "ERROR: %(XDG_CONFIG_HOME)/nix/nix.conf exists and is not a symlink. Refusing to overwrite."; \
-		exit 1; \
-	else \
-		$(LN) $(DOTFILES)/nix/.config/nix/nix.conf $(XDG_CONFIG_HOME)/nix/nix.conf; \
-	fi
-	@printf "==> Installing nix...\n"
-	curl --location https://nixos.org/nix/install -o /tmp/nix-install.sh
-	@printf "\n==> Showing install script contents:\n\n"
-	@$(CAT) /tmp/nix-install.sh
-	@printf "\npress enter to continue...\n"
-	@read dummy
-	@chmod +x /tmp/nix-install.sh
-	/bin/sh /tmp/nix-install.sh
-	@printf "\n nix will not work unless the shell is restarted. enter to exit.\n"
-	@printf "call make nix-profile-install to install the profile.\n"
-	@read dummy
-
-nix-profile-install:
-	nix profile install '$(HOME)/dotfiles/nix/shm-mac#shm-darwin'
-
-nix-up:
-	nix flake update --flake '$(HOME)/dotfiles/nix/shm-mac'
-	nix profile upgrade 'nix/shm-mac'
-
 xcode-dev:
 	xcode-select --install
 
@@ -327,10 +296,7 @@ macos-base:
 	$(MAKE) stow
 	# add my user to the developer group
 	sudo dscl . append /Groups/_developer GroupMembership $(whoami)
-
-macos-nix:
-	$(MAKE) macos-base
-	$(MAKE) nix-install
+	# defaults write -g ApplePressAndHoldEnabled -bool false
 
 macos-cli:
 	$(MAKE) git
@@ -348,11 +314,6 @@ homebrew-install:
 macos-homebrew:
 	$(MAKE) macos-base
 	$(MAKE) homebrew-install
-
-todo-txt-install:
-	$(MKDIR) $(HOME)/.todo
-	$(MKDIR) $(HOME)/.todo/actions
-	$(STOW) todo-txt
 
 shell-scripting:
 	$(PKGINSTALL) shfmt shellcheck

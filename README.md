@@ -262,6 +262,7 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- Fix sessionizer-tmux
 - [Wezterm Tab Bar](https://blog.dm4.tw/wezterm-tab-width-fill-tab-bar-eng)
 - Opacity in tmux/neovim?
 - [Set up delta?](https://github.com/scottmckendry/cyberdream.nvim/tree/main/extras/textmate#bat)

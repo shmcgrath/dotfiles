@@ -297,6 +297,7 @@ macos-base:
 	# add my user to the developer group
 	sudo dscl . append /Groups/_developer GroupMembership $(whoami)
 	# defaults write -g ApplePressAndHoldEnabled -bool false
+	@/bin/bash $(BOOTSTRAP_DIR)/m-list-apps.sh
 
 macos-cli:
 	$(MAKE) git
@@ -315,10 +316,8 @@ macos-homebrew:
 	$(MAKE) macos-base
 	$(MAKE) homebrew-install
 
-brew:
-	brew update
-	brew upgrade
-	brew cleanup
+brew-maint:
+	@/bin/bash $(HOME)/dotfiles/homebrew/homebrew-maintenance.sh
 
 shell-scripting:
 	$(PKGINSTALL) shfmt shellcheck
@@ -327,9 +326,7 @@ typst:
 	$(PKGINSTALL) typst tinymist
 
 # macos software installed
-# firefox - sign into sync / arkenfox
 # ghostty
-#keepassxc - change settings to enable browser and ssh access
 # hazel
 # alfred
 # dropbox
@@ -357,7 +354,6 @@ typst:
 # note to exit shell or source the env vars before installing rust and such with nix -- probably easiest to exit
 # make sure to sign into icloud and messages
 # https://www.busymac.com/busycontacts/
-# https://folivora.ai/
 # https://www.publicspace.net/ABetterFinderRename/index.html
 # https://marked2app.com/
 # https://apphousekitchen.com/
@@ -376,8 +372,6 @@ typst:
 # https://www.popclip.app/
 # https://www.stclairsoft.com/DefaultFolderX/
 # https://cryptomator.org/
-# https://github.com/Mortennn/Dozer/releases/
-# https://github.com/dwarvesf/hidden/releases/
 # https://jacklandrin.github.io/macos%20app/2021/12/01/onlyswitch.html
 # https://github.com/jordanbaird/Ice/releases
 # https://discord.com/download
@@ -408,14 +402,8 @@ typst:
 # Alfred workflows: https://www.packal.org/
 #
 # APP STORE:
-# duplicate detective
-# gemeni 2
-# https://www.devontechnologies.com/apps/freeware - Xmenu
-# look into wordservice from devontechnologies too
-# https://sindresorhus.com/folder-peek
 # https://www.gimp.org/downloads/
 # https://inkscape.org
 # https://github.com/jordanbaird/Ice/releases
 # https://skim-app.sourceforge.io/
-# https://neovide.dev/
 # https://sqlitebrowser.org/dl/

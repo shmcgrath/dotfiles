@@ -280,3 +280,4 @@ zola 0.20.0-1
 - [websocat](https://github.com/vi/websocat)
 - [restish](https://github.com/rest-sh/restish)
 - lazygit
+- [trash-cli](https://github.com/andreafrancia/trash-cli)

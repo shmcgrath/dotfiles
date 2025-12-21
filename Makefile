@@ -315,6 +315,11 @@ macos-homebrew:
 	$(MAKE) macos-base
 	$(MAKE) homebrew-install
 
+brew:
+	brew update
+	brew upgrade
+	brew cleanup
+
 shell-scripting:
 	$(PKGINSTALL) shfmt shellcheck
 

@@ -33,6 +33,7 @@
 	ps = push
 	rem = remote --verbose
 	rmc = rm -r --cached
+	rs = restore --staged
 	st = status --short --branch --show-stash --verbose
 [color]
 	ui = auto

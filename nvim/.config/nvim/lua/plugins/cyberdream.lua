@@ -17,8 +17,11 @@ require("cyberdream").setup({
     cache = false,
     -- Disable or enable colorscheme extensions
     extensions = {
-        telescope = true,
-        notify = true,
+        blinkcmp = true,
+        dapui = true,
+        fzflua = true,
         mini = true,
+        notify = true,
+        treesitter = true,
     },
 })

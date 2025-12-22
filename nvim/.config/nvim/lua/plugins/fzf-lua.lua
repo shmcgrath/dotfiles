@@ -3,7 +3,7 @@ require("fzf-lua").setup({
   -- fzf_bin = ...,
   -- each of these options can also be passed as function that return options table
   -- e.g. winopts = function() return { ... } end
-  --winopts = { ...  },     -- UI Options
+  fzf_colors = true,
   winopts = {
     height = 0.85,            -- window height
     width = 0.80,            -- window width
@@ -14,7 +14,6 @@ require("fzf-lua").setup({
     fullscreen = false,           -- start fullscreen?
     treesitter = {
       enabled = true,
-      fzf_colors = { ["hl"] = "-1:reverse", ["hl+"] = "-1:reverse" }
     },
     preview = {
       default = 'bat',           -- override the default previewer?

@@ -49,6 +49,8 @@ paq({
   { "tpope/vim-fugitive" },
   { "tpope/vim-repeat" },
   { "tpope/vim-surround" },
+  --org
+  { "nvim-orgmode/orgmode" },
   -- hledger
   { "ledger/vim-ledger" },
   -- golang

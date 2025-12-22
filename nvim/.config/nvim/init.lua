@@ -29,6 +29,9 @@ require("shm.functions.diagnostics-toggle")
 -- functions to edit global and current lang snippet files
 require("shm.functions.open-snippet-files")
 
+-- load treesitter highlighting on all filetypes that are installed
+require("shm.treesitter-cmd")
+
 if vim.g.neovide then
     require("shm.neovide")
 end

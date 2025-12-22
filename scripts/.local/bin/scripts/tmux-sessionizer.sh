@@ -2,6 +2,8 @@
 
 # Based off of ThePrimeagen's tmux-sessionizer https://github.com/ThePrimeagen/tmux-sessionizer
 
+sessionizer_dir="$XDG_CONFIG_HOME/tmux/sessionizer"
+
 switch_to() {
     if [[ -z $TMUX ]]; then
         tmux attach-session -t $1
@@ -20,17 +22,17 @@ load_session_config() {
 		return
 	fi
 
-	if [ -f "$XDG_CONFIG_HOME/tmux/sessionizer/$1" ]; then
-		if [ -x "$XDG_CONFIG_HOME/tmux/sessionizer/$1" ]; then
-			"$XDG_CONFIG_HOME/tmux/sessionizer/$1"
+	if [ -f "${sessionizer_dir}/$1" ]; then
+		if [ -x "${sessionizer_dir}/$1" ]; then
+			"${sessionizer_dir}/$1"
 		else
-			tmux source-file "$XDG_CONFIG_HOME/tmux/sessionizer/$1"
+			tmux source-file "${sessionizer_dir}/$1"
 		fi
 		return
 	fi
 
-    if [ -f "$XDG_CONFIG_HOME/tmux/sessionizer/default" ]; then
-        tmux send-keys -t $1 "source $XDG_CONFIG_HOME/tmux/sessionizer/default" C-m
+    if [ -f "${sessionizer_dir}/default" ]; then
+        tmux send-keys -t $1 "source ${sessionizer_dir}/default" C-m
     fi
 }
 
@@ -38,7 +40,7 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
 	current_sessions=$(tmux list-sessions | cut -d: -f1)
-	presets=$(find -L "$XDG_CONFIG_HOME/tmux/sessionizer" -type f -exec basename {} \;)
+	presets=$(find -L "${sessionizer_dir}" -type f -exec basename {} \;)
 
 	session_entries=""
 
@@ -61,16 +63,25 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+case "$selected" in
+    tmux:*|preset:*)
+        selected_name="${selected#*:}"
+        ;;
+    *)
+        selected_name="$(basename "$selected")"
+        ;;
+esac
+
+selected_name="${selected_name//./_}"
 tmux_running=$(pgrep tmux)
 
 # action: reload config
 if [[ $selected == action:reload-config ]]; then
 	if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+		printf "\n%s" "No tmux server running, cannot reload config."
+	else
 		tmux source-file "$XDG_CONFIG_HOME/tmux/tmux.conf"
 		tmux display-message "tmux config reloaded"
-	else
-		printf "No tmux server running, cannot reload config."
 	fi
 	exit 0
 fi

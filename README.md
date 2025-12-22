@@ -273,9 +273,11 @@ zola 0.20.0-1
 - real vim plugin for pairing characters
 - fd
 - Brewfile
-- [Aerospace Config](https://nikitabobko.github.io/AeroSpace/guide.html)
 - [update snippets to a different UUID from v4?](https://andyatkinson.com/avoid-uuid-version-4-primary-keys)
 - learn about editorconfig
+- learn vim marks
+- treesitter folding vs what i have already in vimrc: https://github.com/nvim-treesitter/nvim-treesitter
+- get rid of
 ## Software to Learn/Research
 - poppler
 - [websocat](https://github.com/vi/websocat)

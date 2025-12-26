@@ -274,18 +274,18 @@ filevault:
 	sudo fdesetup enable --user "$(USER)"
 	fdesetup status
 
-nerdfont:
-	curl --location --output $(HOME)/Downloads/CommitMono.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CommitMono.zip
-	$(MKDIR) $(HOME)/Downloads/CommitMono
-	unzip -o $(HOME)/Downloads/CommitMono.zip -d $(HOME)/Downloads/CommitMono
+nerdfont: ## Install CommitMono NerdFont on macOS
 	if [ "$(OS)" = "macos" ]; then \
 		if ls ~/Library/Fonts/CommitMono*Nerd*.*tf >/dev/null 2>&1; then \
 			printf "CommitMono Nerd Font is already installed.\n"; \
 		else \
+			curl --location --output $(HOME)/Downloads/CommitMono.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CommitMono.zip
+			$(MKDIR) $(HOME)/Downloads/CommitMono
+			unzip -o $(HOME)/Downloads/CommitMono.zip -d $(HOME)/Downloads/CommitMono
 			open -a "Font Book" \
 		fi \
 	else \
-		printf "Install step skipped: not on macOS (OS = %s)\n" "$$(OS)"; \
+		printf "nerdfont download and install skipped, not on macOS (OS = %s)\n" "$$(OS)"; \
 	fi
 
 macos-base:

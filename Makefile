@@ -43,6 +43,8 @@ all: vim neovim vim-base
 
 pacman:
 	$(MKDIR) $(HOME)/.config/pacman
+# do i do a -si for pacman config or do i copy the pacman.conf
+# or do i run a diff of pacman.conf and what is in my dotfiles?
 
 
 sudoas:

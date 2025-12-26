@@ -279,6 +279,7 @@ zola 0.20.0-1
 - treesitter folding vs what i have already in vimrc: https://github.com/nvim-treesitter/nvim-treesitter
 - migrate from paru to [yay](https://github.com/Jguer/yay) 
     - how to get the news checked before or back to w3?
+- pass and GPG/PGP keys and/or keepass-cli to get secrets
 ## Software to Learn/Research
 - poppler
 - [websocat](https://github.com/vi/websocat)

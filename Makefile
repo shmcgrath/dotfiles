@@ -69,7 +69,7 @@ aur:
 	cd "$(XDG_CACHE_HOME)/aur/pkgbuilds/paru" && \
 	makepkg --syncdeps --install
 
-dropbox:
+dropbox: ## Install dropbox on arch via AUR and update related configs
 	$(AURINSTALL) dropbox dropbox-cli
 	# Prevent automatic updates
 	#@rm -rf $(HOME)/.dropbox-dist
@@ -326,6 +326,11 @@ shell-scripting:
 
 typst:
 	$(PKGINSTALL) typst tinymist
+
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+		| sort  \
+		| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 # macos software installed
 # ghostty

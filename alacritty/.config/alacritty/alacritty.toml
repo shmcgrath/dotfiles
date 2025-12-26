@@ -1,7 +1,0 @@
-
-[window]
-dynamic_title = true
-
-[general]
-live_config_reload = true
-import = ["/home/shmcg/.config/alacritty/baskerville-el-dorado.toml", "/home/shmcg/.config/alacritty/font.toml"]

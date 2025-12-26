@@ -1,5 +1,6 @@
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+export SUDO_EDITOR="$VISUAL"
 export TERMINAL=wezterm
 export PAGER="less"
 export LESS='-iMR -x4'

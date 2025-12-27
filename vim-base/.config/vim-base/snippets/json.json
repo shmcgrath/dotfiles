@@ -1,9 +1,0 @@
-{
-	"new snippet": {
-		"prefix": ["newsnip"],
-		"body": [
-			"${1}\": {\n\t\"prefix\": [\"${2}\"],\n\t\"body\": [\n\t\t\"${3}\"\n\t],\n\t\"description\": \"${4}\"\n},"
-		],
-        "description": "new snippet"
-    }
-}

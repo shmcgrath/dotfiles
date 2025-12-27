@@ -1,0 +1,37 @@
+{
+	"single import": {
+		"prefix": ["im"],
+		"body": [
+			"import \"${1:package}\""
+		],
+		"description": "import statement"
+	},
+	"multiple imports": {
+		"prefix": ["ims"],
+		"body": [
+			"import (\n\t\"${1:package}\"\n)"
+		],
+		"description": "import block"
+	},
+	"import with alias": {
+		"prefix": ["ima"],
+		"body": [
+			"import ${1:alias} \"${2:package}\""
+		],
+		"description": "import with an alias"
+	}
+    "error handling": {
+        "prefix": ["iferr"],
+        "description": "Error handling",
+        "body": [
+            "if err != nil {\n\tfmt.Println(\"Error:\", err)\n\treturn\n}"
+        ]
+    },
+    "test": {
+    	"prefix": ["test"],
+    	"body": [
+    		"func Test$1(t *testing.T) {\n\t$0\n}"
+    	],
+    	"description": "generic test function in go"
+    }
+}

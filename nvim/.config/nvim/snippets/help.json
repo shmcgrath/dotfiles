@@ -1,0 +1,32 @@
+{
+  "Section Marker": {
+    "prefix": "sec",
+    "body": [
+      "==============================================================================",
+      "${1:SECTION}${2: *filename-section-name*}",
+      "",
+      "$0"
+    ],
+    "description": "Section marker"
+  },
+  "Subsection Marker": {
+    "prefix": "ssec",
+    "body": [
+      "${1:Subsection}${2: *filename-subsection-name*}",
+      "${3:-------------------------}",
+      "",
+      "$0"
+    ],
+    "description": "Sub section marker"
+  },
+  "Subsubsection Marker": {
+    "prefix": "sssec",
+    "body": [
+      "${1:SubSubsection}:${2: *filename-subsubsection-name*}",
+      "",
+      "$0"
+    ],
+    "description": "Subsub Section marker"
+  }
+}
+

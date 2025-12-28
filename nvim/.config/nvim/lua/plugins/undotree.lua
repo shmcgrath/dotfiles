@@ -22,6 +22,6 @@ end
 vim.api.nvim_create_autocmd("VimEnter", {
     once = true,
     callback = function()
-        print("Undo dir: " .. vim.o.undodir)
+        vim.notify("Undo dir: " .. vim.o.undodir, vim.log.levels.INFO)
     end,
 })

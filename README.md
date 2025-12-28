@@ -4,25 +4,6 @@ This is a collection of my dotfiles. I am just starting to build them up in Marc
 
 I will update this README with more links, tips, and information as I grow my dotfiles.
 
-## Submodules
-
-This repo has [vim-infolines](https://github.com/shmcgrath/vim-infolines) as a submodule. After cloning a repo with a submodule, the submodules need to be initialized and updated.
-
-``` bash
-git clone --recursive https://github.com/username/repo.git
-```
-
-If the repo containing submodules has already been cloned, update them.
-
-``` bash
-git submodule update --init --recursive
-```
-
-Command to update a submodule:
-``` bash
-git submodule update --remote
-```
-
 ## Dotfile Management with GNU Stow and GitHub
 
 I use [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html) to manage my dotfiles. This allows me to easily create symlinks on any \*nix-based system I am using. I chose Stow because it is easily and universally available on \*nix machines. I do use Windows boxes, but I don't see myself needing the majority of my dotfiles on those machines. One tool I found when looking for Windows alternatives is [stow-lite](https://github.com/ericsubach/stow-lite) but I have not used it yet. I also chose stow because I would be able to use it to manage config files that are not in ~/. In the future, I can use stow to deploy centralized config files across my system(s). 
@@ -262,6 +243,9 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- move from paru to yay - lib update delay?
+- clean up references and make them easier to read/into md make cheatsheets
+    - css for cheatsheets of my own?
 - Fix sessionizer-tmux
 - [Wezterm Tab Bar](https://blog.dm4.tw/wezterm-tab-width-fill-tab-bar-eng)
 - Opacity in tmux/neovim?
@@ -280,6 +264,24 @@ zola 0.20.0-1
 - migrate from paru to [yay](https://github.com/Jguer/yay) 
     - how to get the news checked before or back to w3?
 - pass and GPG/PGP keys and/or keepass-cli to get secrets
+- [set satty keybinds](https://github.com/Satty-org/Satty/issues/296)
+- customize vifm and openers
+    - https://old.reddit.com/r/vifm/comments/190u5zg/useful_command_to_create_files_and_directories/
+### Neovim
+- learn more about localleader and neovim mappings
+- decide gitsigns.nvim vs [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
+- learn and configure [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- learn and configure [vim-fugitive](https://github.com/tpope/vim-fugitive)
+- [take what I want from unimpared](https://github.com/tpope/vim-unimpaired/blob/master/doc/unimpaired.txt)
+- tpope commentary vs [comment.nvim](https://github.com/numToStr/Comment.nvim)
+- [nvim-notify - looks cool, probably an unnecessary thing with messages](https://github.com/rcarriga/nvim-notify)
+- [csvview.nvim: an option for csv handling in neovim](https://github.com/hat0uma/csvview.nvim)
+- Possible ALE replacements?
+    - [nvim-lint](https://github.com/mfussenegger/nvim-lint)
+    - [conform.nvim](https://github.com/stevearc/conform.nvim)
+#### Neovim 0.12
+- [moving to builtin plugin manager neovim](https://bower.sh/nvim-builtin-plugin-mgr)
+    - this includes some functions for the new treesitter
 ## Software to Learn/Research
 - poppler
 - [websocat](https://github.com/vi/websocat)

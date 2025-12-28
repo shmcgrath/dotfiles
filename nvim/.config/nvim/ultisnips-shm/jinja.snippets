@@ -1,0 +1,65 @@
+extends html
+
+global !p
+from shm_snippet_helpers import *
+endglobal
+
+snippet block "block" b
+\{% block ${1:${VISUAL:BlockName}} %}
+		$0
+\{% endblock $1 %}
+endsnippet
+
+snippet var "variable"
+\{\{ ${1:${VISUAL:VariableName}} }}
+endsnippet
+
+snippet if "if" b
+\{% if ${1:${VISUAL:VarableName}} %}
+$0
+\{% endif %}
+endsnippet
+
+snippet if "if/elif/else" b
+\{% if ${1:${VISUAL:VarableName}} %}
+	$2
+\{% elif %}
+	$3
+\{% else %}
+	$4
+\{% endif %}
+endsnippet
+
+snippet include
+\{% include "${1:${VISUAL:IncludePath}}" %}
+endsnippet
+
+snippet for "for" b
+\{% for ${1:SingularName} in ${2:PluralName} %}
+	${3:For Logic}
+\{% else %}
+	${4:Else Logic}
+\{% endfor %}
+endsnippet
+
+snippet raw "escaped block" b
+\{% raw %}
+		$0
+\{% endraw %}
+endsnippet
+
+snippet extends "extends" b
+\{% extends "${1:${VISUAL:template}}" %}
+endsnippet
+
+snippet include "include" b
+\{% include "${1:${VISUAL:template}}" %}
+endsnippet
+
+snippet macro "macro" b
+\{% macro ${1:name}(${2:args}) %}
+	$3
+\{% endmacro %}
+endsnippet
+
+# vim:ft=snippets:

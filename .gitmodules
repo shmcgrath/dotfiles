@@ -1,3 +1,0 @@
-[submodule "vim-base/.config/vim-base/pack/shm/start/vim-infolines"]
-	path = vim-base/.config/vim-base/pack/shm/start/vim-infolines
-	url = git@github.com:shmcgrath/vim-infolines.git

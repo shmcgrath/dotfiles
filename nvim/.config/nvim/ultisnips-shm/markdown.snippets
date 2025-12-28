@@ -1,0 +1,135 @@
+extends html
+
+global !p
+from shm_snippet_helpers import *
+endglobal
+
+snippet note "Note header: ## YYYY-MM-DD HH:MM - Title" b
+## `!p snip.rv = getdatetime_twentyfour()` - ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}
+$0
+endsnippet
+
+snippet link "Link"
+[${1:${VISUAL:Text}}](${2:`!v @+`})
+endsnippet
+
+snippet linkref "Reference Link"
+[${1:${VISUAL:Text}}][${2:id}]$0
+
+[$2]:${3:`!v @+`} "${4:$3}"
+endsnippet
+
+snippet ref "Section Reference in Document"
+[${1:${VISUAL:Text}}][${2:SectionId}]$0
+endsnippet
+
+snippet footnote "Footnote" i
+[^${1:`!p snip.rv = gettime_twentyfoursecond_stamp()`}]$0
+
+^[$1]:${2:${VISUAL:FootnoteText}}
+endsnippet
+
+snippet footnote "Inline footnote" i
+[^${1:${VISUAL:Footnote}}]$0
+endsnippet
+
+snippet img "Image"
+![${1:img alt}](${2:`!v @+`})
+endsnippet
+
+snippet code "Insert code block" b
+\`\`\`${1:Language}
+${0:${VISUAL}}
+\`\`\`
+endsnippet
+
+snippet h1 "Heading 1" b
+# ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}
+$0
+endsnippet
+
+snippet h2 "Heading 2" b
+## ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}
+$0
+endsnippet
+
+snippet h3 "Heading 3" b
+### ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}
+$0
+endsnippet
+
+snippet h4 "Heading 4" b
+#### ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}
+$0
+endsnippet
+
+snippet h5 "Heading 5" b
+##### ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}
+$0
+endsnippet
+
+snippet h6 "Heading 6" b
+###### ${1:${VISUAL:Heading}}${3:[${2:`!p snip.rv = remove_all_whitespace_and_punctuation(t[1])`}]}
+$0
+endsnippet
+
+snippet i "Italics" i
+*${1:${VISUAL}}*$0
+endsnippet
+
+snippet b "Bold" i
+**${1:${VISUAL}}**$0
+endsnippet
+
+snippet bi "Bold Italics" i
+***${1:${VISUAL}}***$0
+endsnippet
+
+snippet toc "Insert table of contents" b
+\{\{TOC:${1:2-3}}}
+endsnippet
+
+global !p
+def get_templates(visual_string):
+	output = ""
+	visual_string = visual_string.strip()
+	template_list = visual_string.split(" ")
+	for template in template_list:
+		template_return = globals()[template]()
+		output = output + template_return
+	return output
+
+def tema():
+	template = "template a contents\n"
+	return template
+
+def temb():
+	template = "template b contents\n"
+	return template
+
+def temc():
+	template = "template c contents\n"
+	return template
+
+def temd():
+	template = "template d contents\n"
+	return template
+endglobal
+
+snippet tempit "moveable templates" 
+`!p snip.rv = get_templates(snip.v.text)`
+endsnippet
+
+snippet tema
+`!p snip.rv = tema()`
+endsnippet
+
+snippet temb
+`!p snip.rv = temb()`
+endsnippet
+
+snippet temc
+`!p snip.rv = temc()`
+endsnippet
+
+# vim:ft=snippets:

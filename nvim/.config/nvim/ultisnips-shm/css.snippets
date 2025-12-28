@@ -1,0 +1,47 @@
+#extends filetype1, filetype2
+
+global !p
+from shm_snippet_helpers import *
+endglobal
+
+snippet cstyle
+${1:property}: ${2:value};
+endsnippet
+
+snippet cclass
+.${1:class}\{
+	$0
+}
+endsnippet
+
+snippet cid
+#${1:id}\{
+	$0
+}
+endsnippet
+
+snippet cele
+${1:elementTag}\{
+	$0
+}
+endsnippet
+
+snippet catt
+${1:elementTag}[${2:attribute}]\{
+	$0
+}
+endsnippet
+
+snippet cchild
+${1:elementTag1} > ${2:elementTag2}\{
+	$0
+}
+endsnippet
+
+snippet cdesc
+${1:elementTag1} ${2:elementTag2}\{
+	$0
+}
+endsnippet
+
+# vim:ft=snippets:

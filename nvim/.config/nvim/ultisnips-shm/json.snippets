@@ -1,0 +1,20 @@
+#extends filetype1, filetype2
+
+global !p
+from shm_snippet_helpers import *
+endglobal
+
+
+snippet kvs "Key-value string" b
+"${1:key}": "${0:value}",
+endsnippet
+
+snippet kvn "Key-value number" b
+"${1:key}": ${0:value},
+endsnippet
+
+snippet rewc "Create a new rewards card"
+"${1:Business Name}": "${2:`!p snip.rv = read_in_first_line_of_file("b64")`}",$0
+endsnippet
+
+# vim:ft=snippets:

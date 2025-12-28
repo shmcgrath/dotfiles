@@ -22,6 +22,9 @@ local paq = require("paq")
 
 paq({
   { "savq/paq-nvim" },
+  -- dependencies
+  { "nvim-tree/nvim-web-devicons" },
+  -- nvim
   { "brenoprata10/nvim-highlight-colors" },
   { "ibhagwan/fzf-lua" },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -36,17 +39,16 @@ paq({
   { "rcarriga/nvim-dap-ui" },
   { "nvim-neotest/nvim-nio" },
   -- snippets and completion
-  { "Saghen/blink.cmp", run = require("shm.functions.blink-get-binary").run  },
-  -- dependencies
-  { "nvim-tree/nvim-web-devicons" },
+  { "Saghen/blink.cmp", build = require("shm.functions.blink-get-binary").run },
+  -- git
+  { "tpope/vim-fugitive" },
+  { "lewis6991/gitsigns.nvim" },
   -- vim plugins
-  { "AndrewRadev/id3.vim" },
-  { "airblade/vim-gitgutter" },
+  { "AndrewRadev/id3.vim" }, -- edit mp3 metadata with id3
   { "chrisbra/csv.vim" },
   { "justinmk/vim-sneak" },
   { "mbbill/undotree" },
   { "tpope/vim-commentary" },
-  { "tpope/vim-fugitive" },
   { "tpope/vim-repeat" },
   { "tpope/vim-surround" },
   --org
@@ -58,20 +60,9 @@ paq({
   --{ "yanskun/gotests.nvim" },
   -- typst
   { "chomosuke/typst-preview.nvim" },
+  -- need a csv plugin
+  -- { "chrisbra/csv.vim" },
 })
-
--- Functions to load all plugin configs dynamically
-local function load_shared_configs()
-  local plugin_settings_path = vim.fn.expand("$XDG_CONFIG_HOME")
-  if plugin_settings_path == "" then
-    print("Error: no shared_plugin_settings_path")
-  else
-    plugin_settings_path = plugin_settings_path .. "/vim-base/settings/plugins"
-    for _, file in ipairs(vim.fn.glob(plugin_settings_path .. "/*.vim", 0, 1)) do
-      vim.cmd("source " .. file)
-    end
-  end
-end
 
 local function load_plugin_configs()
   local plugin_config_path = vim.fn.stdpath("config") .. "/lua/plugins"
@@ -111,4 +102,3 @@ end
 
 -- Load all plugin configurations automatically
 load_plugin_configs()
-load_shared_configs()

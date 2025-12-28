@@ -74,12 +74,4 @@ function M.run()
   end
 end
 
-vim.api.nvim_create_user_command(
-  "ShmBlinkGetBinary",
-  function()
-    require("shm.functions.blink-get-binary").run()
-  end,
-  { desc = "Download and verify blink.cmp platform binary" }
-)
-
 return M

@@ -1,20 +1,16 @@
--- source the common .vimrc settings and paths
-vim.cmd("source $HOME/.config/vim-base/vimrc-common.vim")
+-- leader mappings
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+-- require nvim options
+require("shm.options")
 
 -- set backup and swap directories
-vim.opt.backupdir=os.getenv("HOME") .. "/.local/state/nvim/backup//"
-vim.opt.directory=os.getenv("HOME") .. "/.local/state/nvim/swap//"
-
--- set runtimepath and packpath
-vim.opt.runtimepath:append(os.getenv("HOME") .. "/.config/vim-base")
-vim.opt.runtimepath:append(os.getenv("HOME") .. "/.config/vim-base/after")
-vim.opt.packpath:append(os.getenv("HOME") .. "/.config/vim-base")
+vim.o.backupdir=os.getenv("HOME") .. "/.local/state/nvim/backup//"
+vim.o.directory=os.getenv("HOME") .. "/.local/state/nvim/swap//"
 
 -- require [paq plugin manager](https://github.com/savq/paq-nvim/)
 require("shm.paq")
-
--- require nvim specific options
-require("shm.options")
 
 -- require lsp config
 require("shm.lsp")
@@ -22,15 +18,18 @@ require("shm.lsp")
 -- require dap config
 require("shm.dap-load-configs")
 
--- require toggle diagnostics
--- if I get more functions make a functions that requres them all
-require("shm.functions.diagnostics-toggle")
+-- require keymaps that are not tied to plugins
+require("shm.keymaps")
 
--- functions to edit global and current lang snippet files
-require("shm.functions.open-snippet-files")
+-- require commands for custom functions
+-- all commands are prefixed with Shm
+require("shm.shm-commands")
 
--- load treesitter highlighting on all filetypes that are installed
-require("shm.treesitter-cmd")
+-- require statusline
+require("shm.statusline").setup()
+
+-- require tabline
+require("shm.tabline").setup()
 
 if vim.g.neovide then
     require("shm.neovide")

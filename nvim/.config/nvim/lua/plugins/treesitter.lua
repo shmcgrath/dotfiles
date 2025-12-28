@@ -47,3 +47,15 @@ treesitter.install({
   "yaml",
   "zsh",
 })
+
+local treesitterStartGroup = vim.api.nvim_create_augroup("UserTreesitterStart", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  group = treesitterStartGroup,
+  callback = function(args)
+    if vim.bo[args.buf].buftype ~= "" then
+      return
+    end
+
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})

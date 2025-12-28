@@ -61,13 +61,4 @@ function M.open_global()
   open_file_in_tab(filepath, "global")
 end
 
--- Commands
-vim.api.nvim_create_user_command("ShmSnippetOpenFiletype", function()
-  require("shm.functions.open-snippet-files").open_current()
-end, { desc = "Open snippet file for current filetype in new tab" })
-
-vim.api.nvim_create_user_command("ShmSnippetOpenGlobal", function()
-  require("shm.functions.open-snippet-files").open_global()
-end, { desc = "Open global.json snippet file in new tab" })
-
 return M

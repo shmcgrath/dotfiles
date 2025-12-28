@@ -1,0 +1,230 @@
+#extends filetype1, filetype2
+
+global !p
+from shm_snippet_helpers import *
+endglobal
+
+snippet func
+def ${1:functionName}(${2:variables passed}):
+	"""${5:$1 docstring}"""
+	${3:returnVar} = ${4:returnVarValue}
+	$0
+	return $3
+endsnippet
+
+snippet bcom
+"""
+${0:${VISUAL}}
+"""
+endsnippet
+
+snippet trycatch
+try:
+	${1:try}
+except Error as e:
+	${2:catch}
+finally:
+	${3:cleanup}
+endsnippet
+
+snippet main
+def main():
+	"""${1:Main entry point for the script.}"""
+	fileConfig('logging_config.ini')
+	logging.getLogger(__name__).addHandler(logging.NullHandler())
+	logger = logging.getLogger()
+	logger = logging.getLogger('`!p snip.rv = snip.basename`')
+	$0
+
+if __name__ == '__main__':
+	sys.exit(main())
+endsnippet
+
+snippet if "If" b
+if ${1:condition}:
+	${2:statements}
+endsnippet
+
+snippet else "Else" b
+else:
+	${1:bodyOfElse}
+endsnippet
+
+snippet elif "Elif" b
+elif ${1:condition}:
+	${2:statements}
+endsnippet
+
+snippet ife "If / else" b
+if ${1:condition}:
+	${2:statements}
+else:
+	${3:bodyOfElse}
+endsnippet
+
+snippet ifel "If / elif" b
+if ${1:condition}:
+	${2:statements}
+elif ${3:condition}:
+	${4:statements}
+endsnippet
+
+snippet ifele "If / elif / else" b
+if ${1:condition}:
+	${2:statements}
+elif ${3:condition}:
+	${4:statements}
+else:
+	${5:bodyOfElse}
+endsnippet
+
+snippet for
+for ${1:value} in ${2:iterable or list}:
+	${3:body}
+	#continue
+	#break
+endsnippet
+
+snippet while
+while ${1:conditional}:
+	${2:body}
+	#continue
+	#break
+endsnippet
+
+snippet print
+print(${0:${VISUAL}})
+endsnippet
+
+snippet int
+${1:name} = ${2:value}
+endsnippet
+
+snippet str
+${1:name} = "${2:value}"
+endsnippet
+
+snippet tuple
+${1:name} = (${2:element1}, ${3:element2}$0)
+endsnippet
+
+snippet list
+${1:name} = [${2:element1}, ${3:element2}$0]
+endsnippet
+
+snippet dict
+${1:name} = {${2:key1}: ${3:value1}, ${4:key2}: ${5:value2}$0}
+endsnippet
+
+snippet kvs "Key-value string"
+${1:key}: "${2:value}"
+endsnippet
+
+snippet kvn "Key-value number"
+${1:key}: ${2:value}
+endsnippet
+
+snippet dicti
+${1:dictName}[${2:key}]= ${3:"value"}
+endsnippet
+
+snippet iclass
+${1:name} = ${2:ClassName}(${3:init_args})
+endsnippet
+
+snippet class
+class ${1:ClassName}:
+	"""${7:$1 docstring}"""
+    def __init__(self, ${2:value1}):
+        self.$2 = $2
+
+    def ${3:instanceFuncName}(self, ${4:arg1}):
+		${5:returnVar} = ${6:returnVarValue}
+		return $6
+endsnippet
+
+snippet subclass
+class ${1:className}(${2:baseClass}):
+	"""${8:$1 docstring}"""
+    def __init__(self, ${3:value1}):
+		super($2, self).__init__()
+        self.$3 = $3
+
+    def ${4:instanceFuncName}(self, ${5:arg1}):
+		${6:returnVar} = ${7:returnVarValue}
+		return $7
+endsnippet
+
+snippet imp
+import ${1:library}
+endsnippet
+
+snippet impf
+from ${1:library} import ${2:module}
+endsnippet
+
+snippet impa
+import ${1:library} as ${2:abbreviation}
+endsnippet
+
+snippet impfa
+from ${1:library} import ${2:module} as ${3:abbreviation}
+endsnippet
+
+snippet AND
+and $0
+endsnippet
+
+snippet OR
+or $0
+endsnippet
+
+snippet NOT
+not $0
+endsnippet
+
+snippet dlog
+logging.debug(${0:${VISUAL}})
+endsnippet
+
+snippet ilog
+logging.info(${0:${VISUAL}})
+endsnippet
+
+snippet wlog
+logging.warning(${0:${VISUAL}})
+endsnippet
+
+snippet elog
+logging.error(${0:${VISUAL}})
+endsnippet
+
+snippet clog
+logging.error(${0:${VISUAL}})
+endsnippet
+
+snippet withopen
+with open (${1:File name or variable}, mode='${2:rwx}', encoding='utf-8') as ${3:ioName}: 
+	$0
+$3.close()
+endsnippet
+
+snippet open
+open (${1:File name or variable}, mode='${2:rwx}') as ${3:ioName}
+$0
+$3.close()
+endsnippet
+
+snippet write "Writes to output file"
+${1:ioName}.write(${0:${VISUAL}})
+endsnippet
+
+snippet home "get home directory"
+home = str(Path.home())
+endsnippet
+
+snippet str
+str(${0:${VISUAL}})
+endsnippet
+
+# vim:ft=snippets:

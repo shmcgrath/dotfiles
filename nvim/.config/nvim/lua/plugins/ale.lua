@@ -22,14 +22,14 @@ if vim.fn.has("nvim") == 1 then
 	vim.g.ale_disable_lsp = 1
 end
 
-vim.keymap.set("n", "<F6>", "<cmd>ALELint<CR>", {
+vim.keymap.set("n", "<F6>", ":ALELint<CR>", {
 	noremap = true,
-	silent = true,
+	silent = false,
 	desc = "ALELint",
 })
 
-vim.keymap.set("n", "<F7>", "<cmd>ALEFix<CR>", {
+vim.keymap.set("n", "<F7>", ":ALEFix<CR>", {
 	noremap = true,
-	silent = true,
+	silent = false,
 	desc = "ALEFix",
 })

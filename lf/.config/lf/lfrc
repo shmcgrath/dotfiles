@@ -1,0 +1,57 @@
+set hidden true
+set ignorecase true
+set icons true
+
+# unbind defaults
+clearmaps
+
+# keymaps
+map k up
+map <c-u> half-up
+map <c-b> page-up
+map <c-f> page-down
+map j down
+map <c-d> half-down
+map <c-y> scroll-up
+map <c-e> scroll-down
+map h updir
+map l open
+map ] jump-next
+map [ jump-prev
+map gg top
+map G bottom
+map H high
+map M middle
+map L low
+map v invert
+map u unselect
+map y copy
+map x cut
+map p paste
+map c clear
+map f find
+map F find-back
+map ; find-next
+map , find-prev
+map / search
+map ? search-back
+map n search-next
+map N search-prev
+map m mark-save
+map "'" mark-load
+map '"' mark-remove
+map <a-t> tag-toggle
+
+map V visual
+
+# visual mappings
+vmap V visual-accept
+vmap <esc> visual-discard
+vmap o visual-change
+
+# figure out better binds for these?
+# not default binds
+map t toggle
+
+# commands
+cmd q quit

@@ -1,0 +1,823 @@
+# Nerd Fonts or a compatible font needs to be used to see the icons.
+# case insensitive not supported in lf
+# so every filetype/extension needs any casing individually
+
+# File Types {{{2
+# lf defaults in () at end
+# vifm types not in lf:
+# ? :?:
+#  ::../:: parent dir
+ln  # LINK  (l)
+or  # ORPHAN (l)
+tw  # STICKY_OTHER_WRITABLE (t)
+ow  # OTHER_WRITABLE (d)
+st 󱧊 # STICKY 󱧋 (t)
+di  # DIR (d)
+pi p # FIFO (p)
+so s # SOCK (s)
+bd b # BLK (b)
+cd c # CHR (c)
+su u # SETUID (u)
+sg g # SETGID (g)
+ex  # EXEC  (e)
+fi  # FILE  ()
+
+# Directories {{{2
+
+# 󱂵 home {{{3
+shmcg/ 󱂵
+.brew/ 
+.cache/ 󰃨
+.config/ 
+.ssh/ 󰣀
+.terminfo/ 
+'Calibre Library'/ 󰂺 #󱓷
+Desktop/ 
+Development/ 
+Documents/ 󰪶
+Downloads/ 
+Dropbox/ 
+Games/ 󱎓
+Google Drive/ 󰉎 #󰊶
+Library/ 󱉟
+Movies/  #
+Music/  #󰲑
+Pictures/ 
+Public/ 
+Templates/ 
+Videos/  #
+projects/ 
+src/ 󰳐 #
+
+#  dotfiles {{{3
+dotfiles/ 
+arch/ 󰣇
+bookmarks/ 
+emacs/ 
+homebrew/ 
+hyprland/ 
+mouse-configs/ 
+neomutt/ 󰩃
+nvim/ 
+openbsd/ 
+pacman/ 󰣇
+readline/ 
+reference/ 󱉟
+river/ 
+scripts/ 󰯃 #󰯂
+slackware/  #
+ssh/ 󰣀
+stow/ 
+tmux/ 
+vim/ 
+typst-templates/ 
+windows/ 
+X11/ 
+youtube-dl/ 
+
+# Other Directories {{{3
+.Trash/ 
+.trash/ 
+.git/ 
+.github/ 
+Trash/ 
+trash/ 
+git/ 
+gitrepos/ 
+
+# File Extensions {{{2
+#  Archive/Compressed {{{3
+*.7z 
+*.ace 
+*.alz 
+*.apk 
+*.arc 
+*.arj 
+*.br 
+*.bz 
+*.bz2 
+*.cab 
+*.cpio 
+*.deb 
+*.dwm 
+*.dz 
+*.ear 
+*.esd 
+*.gz 
+*.gzip 
+*.jar 
+*.lh 
+*.lha 
+*.lrz 
+*.lz 
+*.lz4 
+*.lzh 
+*.lzma 
+*.lzo 
+*.rar 
+*.rpm 
+*.rz 
+*.sar 
+*.swm 
+*.sz 
+*.t7z 
+*.tar 
+*.taz 
+*.tbz 
+*.tbz2 
+*.tgz 
+*.tlz 
+*.txz 
+*.tz 
+*.tzo 
+*.tzst 
+*.war 
+*.wim 
+*.xbps 
+*.xz 
+*.z 
+*.zip 
+*.zoo 
+*.zst 
+*.zstd 
+#  Images & Photos  {{{3
+# images {{{4
+*.asf 
+*.avif 
+*.bmp 
+*.cgm 
+*.dl 
+*.emf 
+*.flc 
+*.fli 
+*.gif 
+*.gl 
+*.heic 
+*.heif 
+*.icns 
+*.ico 
+*.jpeg 
+*.jpg 
+*.jxl 
+*.m2v 
+*.m4v 
+*.mjpeg 
+*.mjpg 
+*.mng 
+*.mp4v 
+*.mpg 
+*.nuv 
+*.ogm 
+*.ogv 
+*.ogx 
+*.pbm 
+*.pcx 
+*.pgm 
+*.png 
+*.ppm 
+*.ps 
+*.pxn 
+*.qt 
+*.rm 
+*.rmvb 
+*.svg 
+*.svgz 
+*.tga 
+*.tif 
+*.tiff 
+*.vob 
+*.webp 
+*.wmv 
+*.xbm 
+*.xcf 
+*.xmb 
+*.xpm 
+*.xspf 
+*.xwd 
+*.yuv 
+# raw images from cameras {{{4
+*.3fr 󰈯
+*.ari 󰈯
+*.arw 󰈯
+*.bay 󰈯
+*.braw 󰈯
+*.cap 󰈯
+*.cr2 󰈯
+*.cr3 󰈯
+*.crw 󰈯
+*.data 󰈯
+*.dcr 󰈯
+*.dcs 󰈯
+*.dng 󰈯
+*.drf 󰈯
+*.eip 󰈯
+*.erf 󰈯
+*.fff 󰈯
+*.gpr 󰈯
+*.iiq 󰈯
+*.k25 󰈯
+*.kdc 󰈯
+*.mdc 󰈯
+*.mef 󰈯
+*.mos 󰈯
+*.mrw 󰈯
+*.nef 󰈯
+*.nrw 󰈯
+*.obm 󰈯
+*.orf 󰈯
+*.pef 󰈯
+*.ptx 󰈯
+*.pxn 󰈯
+*.r3d 󰈯
+*.raf 󰈯
+*.raw 󰈯
+*.rw2 󰈯
+*.rwl 󰈯
+*.rwz 󰈯
+*.sr2 󰈯
+*.srf 󰈯
+*.srw 󰈯
+*.x3f 󰈯
+#  Audio/Music {{{3
+*.aac 
+*.ac3 
+*.aif 
+*.aiff 
+*.alac 
+*.anx 
+*.asf 
+*.au 
+*.aup 
+*.axa 
+*.cue 
+*.flac 
+*.m2a 
+*.m4a 
+*.m4b 
+*.mid 
+*.midi 
+*.mka 
+*.mp3 
+*.mpc 
+*.oga 
+*.ogg 
+*.ogx 
+*.opus 
+*.ra 
+*.ram 
+*.rm 
+*.spx 
+*.wav 
+*.wma 
+# playlist
+*.xspf 
+#  Video {{{3
+*.3gp 
+*.av1 
+*.avi 
+*.flv 
+*.m2ts 
+*.m4v 
+*.mkv 
+*.mov 
+*.mp4 
+*.mpeg 
+*.mpg 
+*.mts 
+*.nuv 
+*.qt 
+*.webm 
+# 󰶽 Captions/Subtitles 󰶽 {{{3
+*.ass 󰅞
+*.dfxp 󰅞
+*.idx 󰅞
+*.lrc 󰅞
+*.sbv 󰅞
+*.srt 󰅞
+*.ssa 󰅞
+*.sub 󰅞
+*.ttml 󰅞
+*.vtt 󰅞
+#  Vim & Neovim  {{{3
+*.vim 
+*.viminfo 
+*.vimrc 
+*vimrc 
+*.gvimrc 
+*_vimrc 
+*_gvimrc 
+# .*vimrc.* 
+*/.config/nvim/init.lua 
+*init.vim 
+#  tmux {{{3
+*.tmux.conf 
+*tmux.conf 
+# 󰏆 Microsoft Office {{{3
+*.adoc 
+*.doc 
+*.docx 
+*.ppt 
+*.pptx 
+*.xls 
+*.xlsmx 
+*.xlsx 
+#  Visual Studio & VS Code 󰨞 {{{3
+*.code-snippets 󰨞
+*.code-workspace 󰨞
+*.vscodeignore 󰨞
+*.vsix 󰨞
+*devcontainer.json 󰨞
+.devcontainer/ 󰨞
+.vscode/ 󰨞
+*.sln 
+*.suo 
+#  OpenOffice/LibreOffice {{{3
+*.odt 
+*.fodt 
+*.ods 
+*.fods 
+*.odp 
+*.fodp 
+*.odg 
+*.fodg 
+*.odf 
+#  Apple iWork 󰀶 {{{3
+*.keynote 
+*.numbers 
+*.pages 
+# Adobe {{{3
+*.ai 
+*.psb 
+*.psd 
+# Sublime Text {{{3
+*.sublime-build 
+*.sublime-completions 
+*.sublime-keymap 
+*.sublime-menu 
+*.sublime-project 
+*.sublime-settings 
+*.sublime-snippet 
+*.sublime-theme 
+*.sublime-workspace 
+#  Books & Finished Documents {{{3
+*.cbr 
+*.cbz 
+*.epub 
+*.mobi 
+*.azw3 
+*.fb2 
+*.djvu 
+*.pdf 
+# 󰈙 Documents {{{3
+*.csv 
+*.psv 󰻫
+*.tsv 󰈙
+*.ndjson 󰈙
+*lock 
+*.lock 
+*bak 󰈙
+*old 󰈙
+*orig 󰈙
+*.swp 󰾴
+*swp 󰾴
+# 󰇮 Email {{{3
+*.urlview 󰇮
+*.msmtprc 󰇮
+*.offlineimaprc 󰇮
+*mbsyncrc 󰇮
+#  git & Version Control {{{3
+*.cvs 
+*.diff 
+*.gitattributes 
+*.gitconfig 
+*.gitignore 
+*.gitkeep 
+*.gitmodules 
+*gitlab-ci.yml 
+#  Shell {{{3
+*.awk 
+*.bash 
+*.csh 
+*.fish 
+*.ksh 
+*.ps1 
+*.sh 
+*.zsh 
+*.profile 
+#  bash {{{3
+*.bash_aliases 
+*.bash_history 
+*.bash_logout 
+*.bash_profile 
+*.bashprofile 
+*.bashrc 
+#  zsh {{{3
+*.zlogin 
+*.zlogout 
+*.zprofile 
+*.zshenv 
+*.zshrc 
+#  Data & Databases {{{3
+*.db 
+*.db3 
+*.dump 
+*.sql 
+*.sqlite 
+*.sqlite3 
+#  Disk & Install Images {{{3
+*.dmg 
+*.img 
+*.img.gz 
+*.img.xz 
+*.iso 
+#  Microsoft Windows {{{3
+*.bat 
+*.dll 
+*.exe 
+*.msi 
+lnk 
+reg 
+# Programming Languages & Markup {{{3
+#  Python {{{4
+*.py 
+*.pyc 
+*.pyd 
+*.pyo 
+*init.py 
+*pipfile 
+*pipfile.lock 
+*poetry.lock 
+*pyproject.toml 
+*requirements.in 
+*requirements.txt 
+#  Ruby {{{4
+*.gem 
+*.gemspec 
+*.haml 
+*.html.erb 
+*.rake 
+*.rb 
+*Gemfile 
+*Rakefile 
+*config.ru 
+*gemfile 
+*rakefile 
+*rubydoc 
+Rakefile 
+#  JavaScript Ecosystem  {{{4
+*.js 
+*.mjs 
+*angular.min.js 
+*backbone.min.js 
+*jquery.min.js 
+*materialize.min.js 
+*mootools.min.js 
+*require.min.js 
+# TypeScript {{{5
+*.ts 
+*.cjs 
+*.cts 
+*.mts 
+*tsconfig.json 
+#  Node.js  {{{5
+.npm/ 
+node_modules/ 
+*.node-version 
+*.npmignore 
+*.npmrc 
+*.nvmrc 
+*node_modules 
+*package-lock.json 
+*package.json 
+*pnpm-lock.yaml 
+*pnpm-workspace.yaml 
+*webpack.config.js 
+#  React {{{5
+*React.jsx 
+*.tsx 
+*.jsx 
+#  Vue {{{5
+*.vue 
+#  Yarn  {{{5
+*.yarn-integrity 
+*.yarn.lock 
+*.yarnrc 
+#  Coffee {{{5
+*.coffee 
+#  Grunt and  Gulp {{{5
+*Gruntfile.coffee 
+*Gruntfile.js 
+*Gruntfile.ls 
+*gruntfile.coffee 
+*gruntfile.js 
+*gruntfile.ls 
+*Gulpfile.coffee 
+*Gulpfile.js 
+*Gulpfile.ls 
+*gulpfile.coffee 
+*gulpfile.js 
+*gulpfile.ls 
+#  Elm {{{4
+*.elm 
+#  HTML and Web {{{4
+*.htm 
+*.html 
+*.xhtml 
+*.xml 
+*.xul 
+*robots.txt 󰚩
+*.rss 
+*.atom 
+*.htaccess 
+*.htpasswd 
+# ASP (Active Server Pages)
+*.asp 
+*favicon.ico 
+# Templating Handlebars/Mustache {{{4
+*.hbs 
+*.mustache 
+*.slim 
+*.ejs 
+#  CSS {{{4
+*.css 
+*.less 
+*.sass 
+*.scss 󰟬
+*.styl 
+*materialize.min.css 
+#  Markup  {{{4
+*.markdown 
+*.md 
+*.mdx 
+*.rmd 
+# readme 
+*README.rst 
+*README.md 
+*README.markdown 
+*README 
+*README.txt 
+#  Text & Longform Writing {{{4
+*.typ 
+*.tex 󰙩
+# 󰟓 Go {{{4
+go/ 
+*.go 
+*go.mod 
+*go.sum 
+#  Standard Ml (OCaml) {{{4
+*.ml λ
+*.mli λ
+# 󰛥 Swift & XCode {{{4
+*.swift 
+*.xcplayground 
+#  Elixir {{{4
+*.eex 
+*.ex 
+*.exs 
+*.heex 
+*.leex 
+*mix.lock 
+#  F-Sharp {{{4
+'*.f#' 
+*.fs 
+*.fsi 
+*.fsscript 
+*.fsx 
+#  C {{{4
+*.c 
+#  C++ {{{4
+*.c++ 
+*.cc 
+*.cp 
+*.cpp 
+*.cxx 
+#  Objective C / Objective C++ {{{4
+*.m 
+*.mm 
+#  C/C++/Objective C Header {{{4
+*.h 
+*.hh 
+*.hpp 
+*.hxx 
+#  C/C++ Miscellaneous {{{4
+# C/C++ Static library
+*.a 
+# C/C++ Compiled Object File
+*.o 
+# C/C++ Shared Library
+*.so 
+#  C# 󰌛 {{{4
+*.cs 
+#  Java {{{4
+*.class 
+*.groovy 
+*.jar 
+*.java 
+*pom.xml 
+#  Gradle for Java {{{4
+*build.gradle 
+*build.gradle.kts 
+*build.gradle.properties 
+*gradle-wrapper.properties 
+*gradle/ 
+*gradlew 
+*gradlew.bat 
+*settings.gradle 
+#  Kotlin {{{4
+*.kt 
+*.kts 
+#  Clojure {{{4
+*.clj 
+*.cljc 
+#  Clojure Script {{{4
+*.cljs 
+*.edn 
+#  Dart {{{4
+*.dart 
+#  Rust {{{4
+.cargo/ 
+*.rlib 
+*.rs 
+*Cargo.lock 
+*Cargo.toml 
+#  Julia {{{4
+*.jl 
+#  Haskell {{{4
+*.hs 
+*.lhs 
+#  Lua {{{4
+*.lua 
+#  Erlang {{{4
+*.erl 
+*.hrl 
+#  PHP {{{4
+*.php 
+*.twig 
+#  D {{{4
+*.d 
+#  Assembly {{{4
+*.asm 
+*.s 
+#  Nix {{{4
+*.nix 
+#  Pearl {{{4
+*.pl 
+*.pm 
+*.t 
+# 󰟔 R {{{4
+*.r 󰟔
+*.rproj 󰗆
+#  Scala {{{4
+*.scala 
+# 󰡪 Solidity {{{4
+*.sol 󰡪
+#  Emacs Lisp (ELisp) {{{4
+*.el 
+*.elc 
+*.eln 
+#  Executables & Binaries {{{3
+*.efi 
+*.elf 
+*.rom 
+*a.out 
+# 󰘦 Data Serialization Formats {{{3
+*.json 
+*.toml 
+*.yaml 
+*.yml 
+#  License {{{3
+*LICENSE 
+*LICENSE.md 
+*LICENSE.txt 
+*license 
+#  Copyright {{{3
+*COPYING 
+*COPYRIGHT 
+*copyright 
+#  Docker  {{{3
+docker/ 
+*Docker-compose.yaml 󰡨
+*Docker-compose.yml 󰡨
+*Dockerfile 󰡨
+*compose.yaml 󰡨
+*compose.yml 󰡨
+*docker-compose.yaml 󰡨
+*docker-compose.yml 󰡨
+*dockerfile 󰡨
+#  Make {{{3
+*.mk 
+*Makefile 
+*Makefile.ac 
+*Makefile.in 
+*makefile 
+#  CMake {{{3
+*CMakeLists.txt 
+*cmakelists.txt 
+*.cmake 
+# 󰣀 SSH & Cryptography  {{{3
+*.cer 󰿃
+*.crt 󰿃
+*.csr 󰿃
+*.der 󰿃
+*.key 󱆄
+*.p12 󰿃
+*.pem 
+*.pfx 󰿃
+*.pub 󱆄
+*authorized_keys 
+*known_hosts 
+#  Checksums {{{3
+*.md5 
+*.sha512 
+*.sum 
+#  Fonts 󰛖 {{{3
+*.eot 
+*.otf 
+*.ttf 
+*.woff 
+*.woff2 
+# 󱀇 hledger & ledger & Beancount {{{3
+*.LEDGER 󱀇
+*.JOURNAL 󱀇
+*.BEANCOUNT 󱀇
+#  X11/Xorg {{{3
+*.Xauthority 
+*.Xdefaults 
+*.Xresources 
+*.xinitrc 
+*.xinputrc 
+#  Cloud Storage {{{3
+*Dropbox 
+*dropbox 
+#  Graphics Rendering {{{3
+*.gl 
+*.dl 
+#  Config Files {{{3
+*.cfg 
+*.conf 
+*.direnv 
+*.direnvrc 
+*.dmrc 
+*.editorconfig 
+*.env 
+*.env.example 
+*.hyper.js 
+*.ini 
+*.inputrc 
+*.jack-settings 󱡬
+*.mime.types 
+*.nvidia-settings-rc 
+*.pam_environment 
+*.rc 
+*.recently-used 
+*.selected_editor 
+*.snclirc 
+*.tool-versions 
+*Jenkinsfile 
+*bspwmrc 
+*cfg 
+*conf 
+*config.ac 
+*config.m4 
+*config.mk 
+*configure 
+*fasd 
+*ini 
+*mimeapps.list 
+*skhdrc 
+*sxhkdrc 
+*user-dirs.dirs 
+*vifmrc 
+*yabairc 
+# Heroku
+*Procfile 
+*procfile 
+# Vagrant (vm config)
+*Vagrantfile 
+# Puppet Manifest
+*.pp 
+# 󰡯 Miscellaneous File Extensions {{{3
+*.DS_Store 
+*.ds_store 
+*.fehbg 
+*.fifo |
+*.hidden 󰘓
+*.log 
+*.map 
+*.ncmpcpp 
+*.pro 
+*.webmanifest 
+*log 
+*playlists 
+# file patterns (patterns not supported in lf) {{{3
+# .*jquery.*\.js$ 
+# .*angular.*\.js$ 
+# .*backbone.*\.js$ 
+# .*require.*\.js$ 
+# .*materialize.*\.js$ 
+# .*materialize.*\.css$ 
+# .*mootools.*\.js$ 
+# Vagrantfile$ 
+# .github/workflows/*.yml 
+#}}} }}}
+# vim:ft=conf

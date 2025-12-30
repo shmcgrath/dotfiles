@@ -13,7 +13,14 @@ elseif executable('vim')
     set vicmd=vim
 endif
 
+
+if has('apple')
+	echo 'has mac'
+endif
+
 set dotfiles "show hidden files
+
+"set sort=+dir,+iname,-mode
 
 " This makes vifm perform file operations on its own instead of relying on
 " standard utilities like `cp`.  While using `cp` and alike is a more universal
@@ -21,12 +28,7 @@ set dotfiles "show hidden files
 " doesn't support progress measuring.
 set syscalls
 
-" Trash Directory
-" The default is to move files that are deleted with dd or :d to
-" the trash directory.  If you change this you will not be able to move
-" files by deleting them and then using p to put the file in the new location.
-" I recommend not changing this until you are familiar with vifm.
-" This probably shouldn't be an option.
+" default set trashdir='~/.local/share/Trash/files/'
 set trash
 
 " What should be saved automatically on restarting vifm.  Drop "savedirs"
@@ -120,10 +122,12 @@ colorscheme shm Default-256 Default
 
 " :mark mark /full/directory/path [filename]
 
-mark b ~/.local/bin/
 mark D ~/Dropbox/
+mark b ~/.local/bin/
 mark d ~/dotfiles/
 mark h ~/
+mark n ~/Dropbox/shm/
+mark p ~/Pictures/
 
 " ------------------------------------------------------------------------------
 " Commands{{{2
@@ -146,12 +150,12 @@ mark h ~/
 "  see `:help vifm-macros` and `:help vifm-filename-modifiers` for more
 
 command! df df -h %m 2> /dev/null
-command! diff vim -d %f %F
+command! diff nvim -d %f %F
 command! zip zip -r %c.zip %f
 command! run !! ./%f
 command! make !!make %a
 command! mkcd :mkdir %a | cd %a
-command! vgrep vim "+grep %a"
+command! vgrep nvim "+grep %a"
 command! reload :write | restart full
 
 " ------------------------------------------------------------------------------
@@ -192,6 +196,15 @@ source $XDG_CONFIG_HOME/vifm/filetypes
 " ------------------------------------------------------------------------------
 " Sample keyboard mappings{{{2
 " ------------------------------------------------------------------------------
+" stops l from opening files
+"nnoremap <silent> l :cd %c<CR>
+nnoremap <silent> l : if filetype('.', 1) == 'dir'
+                   \| execute 'normal! l'
+                   \| endif<cr>
+
+" tab and space have the same function
+" stop space from switching panes
+nnoremap <space> <nop>
 
 " Start shell in current directory
 nnoremap s :shell<cr>
@@ -256,29 +269,30 @@ nnoremap A cw
 
 " Open console in current directory
 if $DISPLAY != '' && executable('xterm')
-    nnoremap ,t :!xterm &<cr>
+    nnoremap <space>t :!xterm &<cr>
 elseif $TERMINAL != ''
-    nnoremap ,t :!$TERMINAL &<cr>
+    nnoremap <space>t :!$TERMINAL &<cr>
 endif
 
 " Open editor to edit vifmrc and apply settings after returning to vifm
-nnoremap ,c :write | edit $MYVIFMRC | restart full<cr>
+nnoremap <space>c :write | edit $MYVIFMRC | restart full<cr>
 
 " Open gvim to edit vifmrc
 if $DISPLAY != '' && executable('gvim')
-    nnoremap ,C :!gvim --remote-tab-silent $MYVIFMRC &<cr>
+    nnoremap <space>C :!gvim --remote-tab-silent $MYVIFMRC &<cr>
 endif
 
 " Toggle wrap setting on ,w key
-nnoremap ,w :set wrap!<cr>
+nnoremap <space>w :set wrap!<cr>
 
-" Example of standard two-panel file managers mappings
-nnoremap <f3> :!less %f<cr>
-nnoremap <f4> :edit<cr>
-nnoremap <f5> :copy<cr>
-nnoremap <f6> :move<cr>
-nnoremap <f7> :mkdir<space>
-nnoremap <f8> :delete<cr>
+" edit file or directory
+nnoremap o :edit<cr>
+" copy file to directory open on other pane
+nnoremap <a-c> :copy<cr>
+" move file to directory open on other pane
+nnoremap <a-m> :move<cr>
+" delete file
+nnoremap <a-d> :delete<cr>
 
 " Midnight commander alike mappings
 " Open current directory in the other pane
@@ -288,7 +302,7 @@ nnoremap <a-o> :sync %c<cr>
 " Swap panes (uncomment if you don't need builtin behaviour of Ctrl-U)
 " nnoremap <c-u> <c-w>x
 
-"nnoremap - cd..
+nnoremap - :cd ..<cr>
 
 " ------------------------------------------------------------------------------
 " Panel configuration examples{{{2
@@ -296,6 +310,9 @@ nnoremap <a-o> :sync %c<cr>
 
 " Customize view columns a bit (enable ellipsis for truncated file names)
 " set viewcolumns=-{name}..,6{}.
+"set viewcolumns=-80%{name}
+""set viewcolumns=-80%{name},10%{ext},{mtime}
+""set viewcolumns=-80%{name},10%{ext}
 
 " Show vertical border
 " set fillchars=vborder:│

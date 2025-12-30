@@ -83,6 +83,8 @@ You can also use ' (apostrophe) instead of ` (backtick)
 :vimgrap/<C-r>// %
 seach for the last pattern in your search history
 
+:sort u 
+sorts selection by unique items deleting duplicates
 To Sort:
 - make session vim shortcut command
 - work on taskpaper vim folding

@@ -5,3 +5,9 @@ require("nvim-highlight-colors").setup({
   virtual_symbol_suffix = "",
   virtual_symbol_position = "eol",
 })
+
+vim.keymap.set("n", "<F4>", "<cmd>HighlightColors Toggle<CR>", {
+	noremap = true,
+	silent = true,
+	desc = "Toggle Undotree",
+})

@@ -5,7 +5,7 @@
 	user = shmcg
 [core]
 	autocrlf = input
-	editor = "vim --clean"
+	editor = "nvim --clean"
 	excludesfile = ~/.config/git/.gitignore_global
 	whitespace=warn,indent-with-non-tab,trailing-space,cr-at-eol
 [alias]

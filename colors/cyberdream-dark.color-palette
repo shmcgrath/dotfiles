@@ -1,0 +1,117 @@
+{
+  "colors" : [
+    {
+      "components" : [
+        0.008,
+        0.0091,
+        0.0103
+      ],
+      "name" : "bg"
+    },
+    {
+      "components" : [
+        0.013,
+        0.0152,
+        0.0176
+      ],
+      "name" : "bg_alt"
+    },
+    {
+      "components" : [
+        0.0452,
+        0.0513,
+        0.0648
+      ],
+      "name" : "bg_highlight"
+    },
+    {
+      "components" : [
+        1,
+        1,
+        1
+      ],
+      "name" : "fg"
+    },
+    {
+      "components" : [
+        0.1981,
+        0.2307,
+        0.305
+      ],
+      "name" : "gray"
+    },
+    {
+      "components" : [
+        0.1119,
+        0.3564,
+        1
+      ],
+      "name" : "blue"
+    },
+    {
+      "components" : [
+        0.1119,
+        1,
+        0.15
+      ],
+      "name" : "green"
+    },
+    {
+      "components" : [
+        0.1119,
+        0.8796,
+        1
+      ],
+      "name" : "cyan"
+    },
+    {
+      "components" : [
+        1,
+        0.1559,
+        0.1119
+      ],
+      "name" : "red"
+    },
+    {
+      "components" : [
+        0.8796,
+        1,
+        0.1119
+      ],
+      "name" : "yellow"
+    },
+    {
+      "components" : [
+        1,
+        0.1119,
+        0.8796
+      ],
+      "name" : "magenta"
+    },
+    {
+      "components" : [
+        1,
+        0.1119,
+        0.3515
+      ],
+      "name" : "pink"
+    },
+    {
+      "components" : [
+        1,
+        0.5089,
+        0.1119
+      ],
+      "name" : "orange"
+    },
+    {
+      "components" : [
+        0.5089,
+        0.1119,
+        1
+      ],
+      "name" : "purple"
+    }
+  ],
+  "name" : "Cyberdream Dark"
+}

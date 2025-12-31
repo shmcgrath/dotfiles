@@ -4,7 +4,6 @@ MKDIR := mkdir -pv
 LN := ln -svf
 LNDIR := ln --symbolic --verbose
 PKGMAN := $(shell command -v paru >/dev/null 2>&1 && printf '%s' paru || printf '%s' sudo pacman)
-PKGINSTALL = $(PKGMAN) --sync --needed
 AURINSTALL = paru --sync --needed
 STOW := stow --target=$(HOME)
 CAT := $(shell command -v bat >/dev/null 2>&1 && printf '%s' bat || printf '%s' cat)
@@ -17,8 +16,10 @@ UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Darwin)
     OS := macos
+	PKGINSTALL := brew install
 else ifeq ($(UNAME_S),Linux)
     OS := linux
+	PKGINSTALL := $(PKGMAN) --sync --needed
 else ifeq ($(UNAME_S),OpenBSD)
     OS := openbsd
 else ifneq (,$(findstring MINGW,$(UNAME_S)))
@@ -37,7 +38,7 @@ MAKE_DIRS = cd $@ && \
 		[ -n "$$dir" ] && $(MKDIR) "$$HOME/$$dir"; \
 	done
 
-.PHONY: all clean stow aur pacman wayland xorg shellbase bash navi zoxide bin rust neovim vifm fzf dropbox xdg-dirs vim vim-base bat tmux
+.PHONY: all clean stow aur pacman wayland xorg shellbase bash navi zoxide bin rust neovim vifm fzf dropbox xdg-dirs vim vim-base bat tmux lf
 
 all: vim neovim vim-base
 
@@ -192,6 +193,7 @@ vifm:
 	$(MKDIR) $(XDG_CONFIG_HOME)/vifm/scripts
 	$(MKDIR) $(XDG_CONFIG_HOME)/vifm/colors
 	$(MKDIR) $(XDG_DATA_HOME)/Trash/files
+	$(MKDIR) $(XDG_DATA_HOME)/Trash/info
 	$(MKDIR) $(HOME)/src
 	@cd "$(HOME)/src" && \
 	if [ -d vifm-sixel-preview/.git ]; then \
@@ -209,6 +211,15 @@ vifm:
 		chmod +x $(XDG_CONFIG_HOME)/vifm/scripts/vifm-sixel ;; \
 	esac
 	$(STOW) vifm
+
+lf:
+	#$(PKGINSTALL) lf ouch fzf zoxide
+	$(MKDIR) $(XDG_CONFIG_HOME)/lf
+	$(MKDIR) $(XDG_DATA_HOME)/Trash/files
+	$(MKDIR) $(XDG_DATA_HOME)/Trash/info
+	$(MKDIR) $(XDG_DATA_HOME)/lf
+	install -m 644 $(DOTFILES)/lf/.config/lf/marks-shm $(XDG_DATA_HOME)/lf/marks
+	$(STOW) --ignore=generate-lf-icons.sh --ignore=icons-gen --ignore=instructions-colors --ignore=marks-shm lf
 
 rust:
 	$(MKDIR) $(HOME)/.cargo/bin

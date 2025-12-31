@@ -1,21 +1,36 @@
 set hidden true
 set ignorecase true
 set icons true
+set incsearch true
+set drawbox true
+set ratios 2:3:4
+set scrolloff 8
+
+set shell bash
+set shellopts "-eu"
+set ifs "\n"
+
+# warning on startup if lf is running as a nested instance
+&[ "$LF_LEVEL" -eq 1 ] || lf -remote "send $id echoerr \"Warning: You're in a nested lf instance!\""
 
 # unbind defaults
 clearmaps
 
 # keymaps
 map k up
+map <up> up
 map <c-u> half-up
 map <c-b> page-up
 map <c-f> page-down
 map j down
+map <down> down
 map <c-d> half-down
 map <c-y> scroll-up
 map <c-e> scroll-down
 map h updir
+map <left> updir
 map l open
+map <right> open
 map ] jump-next
 map [ jump-prev
 map gg top
@@ -23,16 +38,12 @@ map G bottom
 map H high
 map M middle
 map L low
-map v invert
-map u unselect
+map <a-v> invert
+map <a-u> unselect
 map y copy
 map x cut
-map p paste
+map p :paste; clear
 map c clear
-map f find
-map F find-back
-map ; find-next
-map , find-prev
 map / search
 map ? search-back
 map n search-next
@@ -41,17 +52,190 @@ map m mark-save
 map "'" mark-load
 map '"' mark-remove
 map <a-t> tag-toggle
+map <c-p>k :maps
 
 map V visual
 
 # visual mappings
-vmap V visual-accept
+vmap v visual-accept
 vmap <esc> visual-discard
-vmap o visual-change
+vmap t visual-change
+vmap y :visual-accept; copy
+vmap x :visual-accept; cut
 
 # figure out better binds for these?
 # not default binds
-map t toggle
+nmap t toggle
+
+map <f-2> rename
+map a rename
+map i :rename; cmd-delete-home
+map A :rename; cmd-end
+map I :rename; cmd-home
 
 # commands
-cmd q quit
+cmd Q quit
+cmd q %lf -remote "send $id :cd \"$OLDPWD\"; quit"
+cmd mkdir %mkdir "$@"
+cmd touch %touch "$@"
+
+cmd trash ${{
+	clear
+	printf "%s\n" "$fx"
+	printf "Move to trash? [y/N] "
+	read -r -n1 ans
+	echo
+	if [[ $ans = [yY] ]]; then
+		if command -v trash >/dev/null 2>&1; then
+			# macos trash command
+			trash $fx
+		elif command -v trash-put >/dev/null 2>&1; then
+			# trash-cli command for free-desktop
+			trash-put $fx
+		else
+			printf "%s\n" "No trash command found!" >&2
+		fi
+		lf -remote "send $id reload"
+	else
+		lf -remote "send $id clear"
+	fi
+}}
+cmd delete trash
+map dd trash
+vmap dd :visual-accept; trash
+
+cmd trash-no-confirm ${{
+	clear
+	if command -v trash >/dev/null 2>&1; then
+		# macos trash command
+		trash $fx
+	elif command -v trash-put >/dev/null 2>&1; then
+		# trash-cli command for free-desktop
+		trash-put $fx
+	else
+		printf "%s\n" "No trash command found!" >&2
+	fi
+	lf -remote "send $id reload"
+}}
+map dD trash-no-confirm
+vmap dD :visual-accept; trash-no-confirm
+
+# edit and reload config
+cmd edit-config ${{
+    $EDITOR ~/.config/lf/lfrc
+    lf -remote "send $id source ~/.config/lf/lfrc"
+}}
+
+# You can't use environment variables directly in mappings and internal commands.
+# In order to utilize environment variables, lf -remote must be called.
+# It is possible to wrap this in a utility command which uses eval to expand
+# the environment variables and then invoke lf -remote to send the result back to lf:
+# This makes it possible to use environment variables in settings:
+# eval set previewer "$XDG_CONFIG_HOME/lf/previewer"
+# Environment variables can also be used in commands:
+# eval cd "$HOME/Documents"
+# Command substitution works too:
+# eval echo "$(date)"
+# from wiki: https://github.com/gokcehan/lf/wiki/Tips#use-environment-variables-in-command-or-mapping
+cmd eval &{{
+    cmd="send $id"
+    for arg; do
+        cmd="$cmd $(eval "printf '%s' \"$arg\"" | sed 's/\\/\\\\/g;s/ /\\ /g;s/"/\\"/g')"
+    done
+    lf -remote "$cmd"
+}}
+
+cmd copy-current-path ${{
+	if command -v pbcopy >/dev/null 2>&1; then
+		printf '%s\n' "$f" | pbcopy
+	elif command -v wl-copy >/dev/null 2>&1; then
+		printf '%s\n' "$f" | wl-copy
+	elif command -v xclip >/dev/null 2>&1; then
+		printf '%s\n' "$f" | xclip -i -selection clipboard
+	else
+		echo "No copy command found!" >&2
+	fi
+}}
+
+cmd toggle-preview %{{
+    if [ "$lf_preview" = true ]; then
+        lf -remote "send $id :set preview false; set ratios 2:5"
+    else
+        lf -remote "send $id :set preview true; set ratios 2:3:4"
+    fi
+}}
+map w toggle-preview
+
+cmd follow-link %{{
+  lf -remote "send $id select \"$(readlink -- "$f" | sed 's/\\/\\\\/g;s/"/\\"/g')\""
+}}
+map gL follow-link
+
+cmd zoxide-cd %{{
+    result="$(zoxide query --exclude "$PWD" "$@" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id cd \"$result\""
+}}
+map zc push :zoxide-cd<space>
+
+cmd zoxide-interactive ${{
+    result="$(zoxide query -i | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id cd \"$result\""
+}}
+map zi zoxide-interactive
+
+cmd fzf_search ${{
+    cmd="rg --column --line-number --no-heading --color=always --smart-case"
+    fzf --ansi --disabled --layout=reverse --header="Search in files" --delimiter=: \
+        --bind="start:reload([ -n {q} ] && $cmd -- {q} || true)" \
+        --bind="change:reload([ -n {q} ] && $cmd -- {q} || true)" \
+        --bind='enter:become(lf -remote "send $id select \"$(printf "%s" {1} | sed '\''s/\\/\\\\/g;s/"/\\"/g'\'')\"")' \
+        --preview='bat --color=always --highlight-line={2} -- {1}'
+        #--preview-window='+{2}-/2' \
+        # Alternatively you can even use the same previewer you've configured for lf
+        #--preview='~/.config/lf/cleaner; ~/.config/lf/previewer {1} "$FZF_PREVIEW_COLUMNS" "$FZF_PREVIEW_LINES" "$FZF_PREVIEW_LEFT" "$FZF_PREVIEW_TOP"'
+}}
+map <c-p>f :fzf_search
+
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+map u :extract; reload
+
+# compress current file or selected files with zip
+cmd zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
+    rm -rf $1
+}}
+
+cmd open-in-finder &{{
+    open -R "$f"
+}}
+
+### define a custom 'open' command
+cmd open-file ${{
+  case $(file --mime-type $f -b) in
+  text/*|*/json) $EDITOR "$f";;
+  *) for f in $fx; do $OPENER "$f" > /dev/null 2> /dev/null & done;;
+  esac
+}}
+
+
+map oF open-in-finder
+#map oo &mimeopen $f
+#map oO $mimeopen --ask $f
+map e $$EDITOR "$f"
+map of open-file
+
+# previews and sandboxing them on arch
+# https://wiki.archlinux.org/title/Lf

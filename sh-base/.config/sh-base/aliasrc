@@ -16,6 +16,7 @@ alias j="jobs -1" # show jobs
 alias jc="journalctl"
 alias jce="journalctl --pager-end"
 alias kvm="doas mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other" # mounting for shared folders in kali vm
+alias lf=lfcd
 alias makemkv="makemkvcon" # alias not rememberable makemkv command
 alias mkdir="mkdir -pv" # creates intermediate directories
 alias mv="mv --interactive --verbose" # preferred "mv" implementation
@@ -41,7 +42,7 @@ alias wshell="echo $0" # tells what shell is active
 alias wuninstall="less $HOME/dotfiles/reference/uninstall-less.md"
 alias ytdl="youtube-dl"
 
-if [[ "$(uname)" == "Darwin" ]]; then
+if [ "$(uname)" = "Darwin" ]; then
 	printf "\naliasrc check: macos\n"
 else
 	printf "\naliasrc check: not macos\n"

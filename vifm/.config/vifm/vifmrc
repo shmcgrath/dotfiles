@@ -124,7 +124,7 @@ colorscheme shm Default-256 Default
 
 mark D ~/Dropbox/
 mark b ~/.local/bin/
-mark d ~/dotfiles/
+mark c ~/dotfiles/
 mark h ~/
 mark n ~/Dropbox/shm/
 mark p ~/Pictures/
@@ -286,7 +286,7 @@ endif
 nnoremap <space>w :set wrap!<cr>
 
 " edit file or directory
-nnoremap o :edit<cr>
+nnoremap e :edit<cr>
 " copy file to directory open on other pane
 nnoremap <a-c> :copy<cr>
 " move file to directory open on other pane

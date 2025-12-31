@@ -6,8 +6,8 @@ vim.g.maplocalleader = "\\"
 require("shm.options")
 
 -- set backup and swap directories
-vim.o.backupdir=os.getenv("HOME") .. "/.local/state/nvim/backup//"
-vim.o.directory=os.getenv("HOME") .. "/.local/state/nvim/swap//"
+vim.o.backupdir=os.getenv("HOME") .. "/.local/state/nvim/backup"
+vim.o.directory=os.getenv("HOME") .. "/.local/state/nvim/swap"
 
 -- require [paq plugin manager](https://github.com/savq/paq-nvim/)
 require("shm.paq")

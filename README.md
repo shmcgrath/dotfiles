@@ -103,6 +103,8 @@ Install the following fonts:
 
 - [macos-defaults.com](https://macos-defaults.com/) lists out commands and values
 
+- To resolve the "permission denied" error when trying to access the Trash in Terminal on macOS, ensure that the Terminal app has Full Disk Access. You can do this by going to System Preferences > Security & Privacy > Privacy tab, unlocking the settings, and adding Terminal to the Full Disk Access list.
+
 ### Reference Dotfiles for macOS defaults
 - mathiasbynens](https://github.com/mathiasbynens/dotfiles/blob/master/.macos)
 ## Installed Packages
@@ -243,6 +245,9 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- set up sudoedit / sudo -e in lf?
+- set up fzf color scheme
+- set up a lf for windows -> see pwsh examples
 - install and config zathura on macbook
 - learn [direnv](https://direnv.net/)
 - move from paru to yay - lib update delay?
@@ -1353,7 +1358,7 @@ Following TextMate scoping conventions for consistent highlighting across editor
 
 ### Cyberdream Yazi
 [manager]
-# tmTheme files can be found here: https://github.com/scottmckendry/cyberdream.nvim/tree/main/extras/textmate 
+ tmTheme files can be found here: https://github.com/scottmckendry/cyberdream.nvim/tree/main/extras/textmate 
 syntect_theme = "../bat/themes/cyberdream.tmTheme"
 border_style = { fg = "#3c4048" }
 cwd = { fg = "#5ef1ff" }

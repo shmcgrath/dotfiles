@@ -8,7 +8,7 @@
 		<title>Reference</title>
 		<meta name="author" content="Sarah H. McGrath"/>
 		<!-- Style Sheets -->
-		<link rel="stylesheet" href="../../css/shm.css">
+		<link rel="stylesheet" href="../css/shm.css">
 		<!-- Scripts -->
 	</head>
 	<body>
@@ -22,6 +22,7 @@
 				<li><a href="#Pythonvenv">Python venv</a></li>
 				<li><a href="#OpenBSD">Open BSD</a></li>
 				<li><a href="#gitCheatsheet">git Cheatsheet</a></li>
+				<li><a href="#morseCode">Morse Code</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -672,6 +673,544 @@ git stage --interactive
 
 git reset HEAD <file1> <file2> ...
   remove the specified files from the next commit)
+	<p><a href="#navigationul">Return to Navigation</a></p>
+	<h2 id="morseCode">Morse Code</h2>
+	<h3>Spoken Morse Code</h3>
+	<p>Morse code is often spoken or written with dah for dashes, dit for dots located at the end of a character, and di for dots located at the beginning or internally within the character.</p>
+	<h3>Morse Code Table</h3>
+<table class="dotdash">
+<tr> <th>Letter</th> <th>Morse</th> </tr>
+<tr> <td>A</td> <td>.-</td> </tr>
+<tr> <td>B</td> <td>-...</td> </tr>
+<tr> <td>C</td> <td>-.-.</td> </tr>
+<tr> <td>D</td> <td>-..</td> </tr>
+<tr> <td>E</td> <td>.</td> </tr>
+<tr> <td>F</td> <td>..-.</td> </tr>
+<tr> <td>G</td> <td>--.</td> </tr>
+<tr> <td>H</td> <td>....</td> </tr>
+<tr> <td>I</td> <td>..</td> </tr>
+<tr> <td>J</td> <td>.---</td> </tr>
+<tr> <td>K</td> <td>-.-</td> </tr>
+<tr> <td>L</td> <td>.-..</td> </tr>
+<tr> <td>M</td> <td>--</td> </tr>
+<tr> <td>N</td> <td>-.</td> </tr>
+<tr> <td>O</td> <td>---</td> </tr>
+<tr> <td>P</td> <td>.--.</td> </tr>
+<tr> <td>Q</td> <td>--.-</td> </tr>
+<tr> <td>R</td> <td>.-.</td> </tr>
+<tr> <td>S</td> <td>...</td> </tr>
+<tr> <td>T</td> <td>-</td> </tr>
+<tr> <td>U</td> <td>..-</td> </tr>
+<tr> <td>V</td> <td>...-</td> </tr>
+<tr> <td>W</td> <td>.--</td> </tr>
+<tr> <td>X</td> <td>-..-</td> </tr>
+<tr> <td>Y</td> <td>-.--</td> </tr>
+<tr> <td>Z</td> <td>--..</td> </tr>
+</table>
+<table class="dotdash">
+<tr> <th>Digit</th> <th>Morse</th> </tr>
+<tr> <td>0</td> <td>-----</td> </tr>
+<tr> <td>1</td> <td>.----</td> </tr>
+<tr> <td>2</td> <td>..---</td> </tr>
+<tr> <td>3</td> <td>...--</td> </tr>
+<tr> <td>4</td> <td>....-</td> </tr>
+<tr> <td>5</td> <td>.....</td> </tr>
+<tr> <td>6</td> <td>-....</td> </tr>
+<tr> <td>7</td> <td>--...</td> </tr>
+<tr> <td>8</td> <td>---..</td> </tr>
+<tr> <td>9</td> <td>----.</td> </tr>
+</table>
+
+<p>Cut numbers are a way of representing digits using shorter letters. T, A, and N for 0, 1, and 9 are most commonly used.</p>
+<table>
+	<tr><th>Cut Numbers</th><th>Morse</th></tr>
+<tr> <td>0 (also T)</td> <td>-</td> </tr>
+<tr> <td>1 (also A)</td> <td>.-</td> </tr>
+<tr> <td>2 (also U)</td> <td>..-</td> </tr>
+<tr> <td>3 (also V)</td> <td>...-</td> </tr>
+<tr> <td>4</td> <td>....-</td> </tr>
+<tr> <td>5 (also E)</td> <td>.</td> </tr>
+<tr> <td>6</td> <td>-....</td> </tr>
+<tr> <td>7 (also B)</td> <td>-...</td> </tr>
+<tr> <td>8 (also D)</td> <td>-..</td> </tr>
+<tr> <td>9 (also N)</td> <td>-.</td> </tr>
+</table>
+<table class="dotdash" id="punctuation">
+<tr>
+<th>Punctuation Mark</th>
+<th>Morse</th>
+</tr>
+<tr>
+<td><span class="morse tile" data-morse="........">Error</span> (also <span class="morse tile" data-morse="........">&lt;HH&gt;</span>)</td>
+<td>........</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-morse=".-...">&amp;</span> Ampersand</td>
+<td>.-...</td>
+</tr>
+<tr>
+<td>'</span> Apostrophe</td>
+<td>.----.</td>
+</tr>
+<tr>
+<td>@</span> At sign</td>
+<td>.--.-.</td>
+</tr>
+<tr>
+<td>)</span> Bracket, close (parenthesis)</td>
+<td>-.--.-</td>
+</tr>
+<tr>
+<td>(</span> Bracket, open (parenthesis)</td>
+<td>-.--.</td>
+</tr>
+<tr>
+<td>:</span> Colon</td>
+<td>---...</td>
+</tr>
+<tr>
+<td>,</span> Comma</td>
+<td>--..--</td>
+</tr>
+<tr>
+<td>=</span> Equals sign</td>
+<td>-...-</td>
+</tr>
+<tr>
+<td>!</span>
+<div class="inlineThing">
+<span class="thingWithTooltip">
+<span aria-describedby="dwnjjqrlbulwrtei">Exclamation mark</span>
+<div id="dwnjjqrlbulwrtei" role="tooltip">
+<span>Not in ITU-R recommendation</span>
+<span class="disabledReasonPlaceholder"></span>
+</div>
+</span>
+<span class="icon-info" data-tooltipid="dwnjjqrlbulwrtei"></span>
+</div></td>
+<td>-.-.--</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text=".">.</span> Full-stop (period)</td>
+<td>.-.-.-</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="-">-</span> Hyphen</td>
+<td>-....-</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-morse="-..-">&times;</span> Multiplication sign (also x</span>)</td>
+<td>-..-</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="0/0">%</span> Percentage (literally 0/0</span>)</td>
+<td>-----<br>-..-.<br>-----</td>
+</tr>
+<tr>
+<td>+</span> Plus sign</td>
+<td>.-.-.</td>
+</tr>
+<tr>
+<td>"</span> Quotation marks</td>
+<td>.-..-.</td>
+</tr>
+<tr>
+<td>?</span> Question mark (query)</td>
+<td>..--..</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="/">/</span> Slash</td>
+<td>-..-.</td>
+</tr>
+</table>
+<table class="dotdash" id="accents">
+<tr>
+<th>Accented Letter</th>
+<th>Morse</th>
+</tr>
+<tr>
+<td>À</span> <span class="morse tile">Å</td>
+<td>.--.-</td>
+</tr>
+<tr>
+<td>Ä</span> <span class="morse tile">Ą</span> <span class="morse tile">Æ</td>
+<td>.-.-</td>
+</tr>
+<tr>
+<td>Ć</span> <span class="morse tile">Ĉ</span> <span class="morse tile">Ç</td>
+<td>-.-..</td>
+</tr>
+<td><span class="morse tile" data-morse="----">Ch</span> Ĥ</span> <span class="morse tile">Š</td>
+<td>----</td>
+<tr>
+<td>
+<div class="inlineThing">
+<span class="thingWithTooltip">
+<span aria-describedby="ifhpnwahbhtwslny">Đ</span></span>
+<div id="ifhpnwahbhtwslny" role="tooltip">
+<span>Crossed D or dyet</span>
+<span class="disabledReasonPlaceholder"></span>
+</div>
+</span>
+<span class="icon-info" data-tooltipid="ifhpnwahbhtwslny"></span>
+</div>
+<div class="inlineThing">
+<span class="thingWithTooltip">
+<span aria-describedby="pchddoaypxfvafxe">É</span></span>
+<div id="pchddoaypxfvafxe" role="tooltip">
+<span>Included in ITU-R</span>
+<span class="disabledReasonPlaceholder"></span>
+</div>
+</span>
+<span class="icon-info" data-tooltipid="pchddoaypxfvafxe"></span>
+</div>
+Ę</span>
+</td>
+<td>..-..</td>
+</tr>
+<tr>
+<td>
+<div>
+<span class="thingWithTooltip">
+<span aria-describedby="wxykrdfsxkpgatgb">Ð</span></span>
+<div id="wxykrdfsxkpgatgb" role="tooltip">
+<span>Eth, known as ðæt in Old English</span>
+<span class="disabledReasonPlaceholder"></span>
+</div>
+</span>
+<span class="icon-info" data-tooltipid="wxykrdfsxkpgatgb"></span>
+</div>
+</td>
+<td>..--.</td>
+</tr>
+<tr>
+<td>È</span> <span class="morse tile">Ł</td>
+<td>.-..-</td>
+</tr>
+<tr>
+<td>Ĝ</td>
+<td>--.-.</td>
+</tr>
+<tr>
+<td>Ĵ</td>
+<td>.---.</td>
+</tr>
+<tr>
+<td>Ń</span> <span class="morse tile">Ñ</td>
+<td>--.--</td>
+</tr>
+<tr>
+<td>Ó</span> <span class="morse tile">Ö</span> <span class="morse tile">Ø</td>
+<td>---.</td>
+</tr>
+<tr>
+<td>Ś</td>
+<td>...-...</td>
+</tr>
+<tr>
+<td>Ŝ</td>
+<td>...-.</td>
+</tr>
+<tr>
+<td>Þ</td>
+<td>.--..</td>
+</tr>
+<tr>
+<td>Ü</span> <span class="morse tile">Ŭ</td>
+<td>..--</td>
+</tr>
+<tr>
+<td>Ź</td>
+<td>--..-.</td>
+</tr>
+<tr>
+<td>Ż</td>
+<td>--..-</td>
+</tr>
+</table>
+<table class="dotdash">
+<tr>
+<th>
+<div>
+<span class="thingWithTooltip">
+<span aria-describedby="myfnvdzogmwpefzc">Prosign</span>
+<div id="myfnvdzogmwpefzc" role="tooltip">
+<span>Prosigns are combinations of two or three letters sent together with no space in between. They are indicated here with the angled brackets.</span>
+<span class="disabledReasonPlaceholder"></span>
+</div>
+</span>
+<span class="icon-info" data-tooltipid="myfnvdzogmwpefzc"></span>
+</div>
+</th>
+<th>Morse</th>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="<AA>">&lt;AA&gt;</span> New line</td>
+<td>.-.-</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="<AR>">&lt;AR&gt;</span> End of message (also +</span>)</td>
+<td>.-.-.</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="<AS>">&lt;AS&gt;</span> Wait (also &amp;</span>)</td>
+<td>.-...</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="<BK>">&lt;BK&gt;</span> Break</td>
+<td>-...-.-</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="<BT>">&lt;BT&gt;</span> New paragraph (also =</span>)</td>
+<td>-...-</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="<CL>">&lt;CL&gt;</span> Going off the air ("clear")</td>
+<td>-.-..-..</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="<CT>">&lt;CT&gt;</span> Start copying</td>
+<td>-.-.-</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="<DO>">&lt;DO&gt;</span> Change to wabun code</td>
+<td>-..---</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="<KA>">&lt;KA&gt;</span> Starting signal</td>
+<td>-.-.-</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="<KN>">&lt;KN&gt;</span> Invite a specific station to transmit</td>
+<td>-.--.</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="<SK>">&lt;SK&gt;</span> End of transmission (also <span class="morse tile embed" data-text="<VA>">&lt;VA&gt;</span>)</td>
+<td>...-.-</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="<SN>">&lt;SN&gt;</span> Understood (also <span class="morse tile embed" data-text="<SN>">&lt;VE&gt;</span>)</td>
+<td>...-.</td>
+</tr>
+<tr>
+<td><span class="morse tile" data-text="<SOS>">&lt;SOS&gt;</span> Distress message</td>
+<td>...---...</td>
+</tr>
+</table>
+<table>
+<tr>
+<th>Abbreviation</th>
+<th>Other Phrases</th>
+</tr>
+<tr>
+<td>73</td>
+<td>Best regards</td>
+</tr>
+<tr>
+<td>88</td>
+<td>Love and kisses</td>
+</tr>
+<tr>
+<td>BCNU</td>
+<td>Be seeing you</td>
+</tr>
+<tr>
+<td>CQ</td>
+<td>Call to all stations</td>
+</tr>
+<tr>
+<td>CS</td>
+<td>Call sign (request)</td>
+</tr>
+<tr>
+<td>CUL</td>
+<td>See you later</td>
+</tr>
+<tr>
+<td>DE</td>
+<td>From (or "this is")</td>
+</tr>
+<tr>
+<td>ES</td>
+<td>And</td>
+</tr>
+<tr>
+<td>K</td>
+<td>Over (invitation to transmit)</td>
+</tr>
+<tr>
+<td>OM</td>
+<td>Old man</td>
+</tr>
+<tr>
+<td>R</td>
+<td>Received / Roger</td>
+</tr>
+<tr>
+<td>RST</td>
+<td>Signal report</td>
+</tr>
+<tr>
+<td>UR</td>
+<td>You are</td>
+</tr>
+</table>
+<table>
+<tr>
+<th>
+<div>
+<span class="thingWithTooltip">
+<span aria-describedby="kacysxxmhuvlajzk">Q Code</span>
+<div id="kacysxxmhuvlajzk" role="tooltip">
+<span>Q codes are sent with the normal spacing</span>
+<span class="disabledReasonPlaceholder"></span>
+</div>
+</span>
+<span class="icon-info" data-tooltipid="kacysxxmhuvlajzk"></span>
+</div>
+</th>
+<th>Meaning</th>
+</tr>
+<tr>
+<td>QRL</td>
+<td>The frequency is in use</td>
+</tr>
+<tr>
+<td>QRM</td>
+<td>Your transmission is being interfered with (1-5)</td>
+</tr>
+<tr>
+<td>QRN</td>
+<td>I am troubled by static (1-5)</td>
+</tr>
+<tr>
+<td>QRO</td>
+<td>Increase transmitter power</td>
+</tr>
+<tr>
+<td>QRP</td>
+<td>Decrease transmitter power</td>
+</tr>
+<tr>
+<td>QRQ</td>
+<td>Send faster (...words per minute)</td>
+</tr>
+<tr>
+<td>QRS</td>
+<td>Send more slowly (...words per minute)</td>
+</tr>
+<tr>
+<td>QRT</td>
+<td>Stop sending</td>
+</tr>
+<tr>
+<td>QRU</td>
+<td>I have nothing for you</td>
+</tr>
+<tr>
+<td>QRV</td>
+<td>I am ready to copy</td>
+</tr>
+<tr>
+<td>QRX</td>
+<td>Wait</td>
+</tr>
+<tr>
+<td>QRZ</td>
+<td>You are being called by...</td>
+</tr>
+<tr>
+<td>QSB</td>
+<td>Your signals are fading</td>
+</tr>
+<tr>
+<td>QSL</td>
+<td>I acknowledge receipt</td>
+</tr>
+<tr>
+<td>QTH</td>
+<td>My location is...</td>
+</tr>
+</table>
+<table>
+<tr>
+<th>
+<div>
+<span class="thingWithTooltip">
+<span aria-describedby="hchgaudemjiucooq">Q Code</span>
+<div id="hchgaudemjiucooq" role="tooltip">
+<span>Q codes are sent with the normal spacing</span>
+<span class="disabledReasonPlaceholder"></span>
+</div>
+</span>
+<span class="icon-info" data-tooltipid="hchgaudemjiucooq"></span>
+</div>
+</th>
+<th>Meaning</th>
+</tr>
+<tr>
+<td>QRL?</td>
+<td>Is the frequency in use?</td>
+</tr>
+<tr>
+<td>QRM?</td>
+<td>Is my transmission being interfered with?</td>
+</tr>
+<tr>
+<td>QRN?</td>
+<td>Are you troubled by static?</td>
+</tr>
+<tr>
+<td>QRO?</td>
+<td>Shall I increase transmitter power?</td>
+</tr>
+<tr>
+<td>QRP?</td>
+<td>Shall I decrease transmitter power?</td>
+</tr>
+<tr>
+<td>QRQ?</td>
+<td>Shall I send faster?</td>
+</tr>
+<tr>
+<td>QRS?</td>
+<td>Shall I send more slowly?</td>
+</tr>
+<tr>
+<td>QRT?</td>
+<td>Shall I stop sending?</td>
+</tr>
+<tr>
+<td>QRU?</td>
+<td>Have you anything for me?</td>
+</tr>
+<tr>
+<td>QRV?</td>
+<td>Are you ready to copy?</td>
+</tr>
+<tr>
+<td>QRX?</td>
+<td>Should I wait?</td>
+</tr>
+<tr>
+<td>QRZ?</td>
+<td>Who is calling me?</td>
+</tr>
+<tr>
+<td>QSB?</td>
+<td>Are my signals fading?</td>
+</tr>
+<tr>
+<td>QSL?</td>
+<td>Do you acknowledge?</td>
+</tr>
+<tr>
+<td>QTH?</td>
+<td>What is your location?</td>
+</tr>
+</table>
+</div>
+</div>
 	<p><a href="#navigationul">Return to Navigation</a></p>
 	</main>
 	<footer>

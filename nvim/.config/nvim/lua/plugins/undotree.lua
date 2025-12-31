@@ -11,13 +11,14 @@ vim.g.undotree_DiffpanelHeight = 8
 vim.g.undotree_ShortIndicators = 1
 vim.g.undotree_HighlightChangedText = 1
 
-if vim.fn.has("persistent_undo") == 1 then
-    vim.o.undodir = vim.fn.expand("$HOME/.local/state/nvim/undodir//")
-    vim.o.undolevels = 1000
-    vim.o.undoreload = 10000
-else
-    vim.o.undodir = vim.fn.expand("$HOME/.local/state/nvim/undo//")
-end
+vim.o.undofile = true
+vim.o.undodir = vim.fn.expand("$HOME/.local/state/nvim/undodir")
+vim.o.undolevels = 1000
+vim.o.undoreload = 10000
+
+-- this was the else of a persistent_undo check in vim
+-- vim.o.undodir = vim.fn.expand("$HOME/.local/state/nvim/undo//")
+-- vim.notify("persistent_undo not set", vim.log.levels.WARN)
 
 vim.api.nvim_create_autocmd("VimEnter", {
     once = true,

@@ -40,3 +40,7 @@ export PROMPT_COMMAND='history -a; history -r'
 # == cli tools eval{{{2
 eval "$(zoxide init --cmd cd bash)"
 eval "$(navi widget bash)" #CTRL+G
+lfcd () {
+    # `command` is needed in case `lfcd` is aliased to `lf`
+    cd "$(command lf -print-last-dir "$@")"
+}

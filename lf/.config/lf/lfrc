@@ -1,3 +1,6 @@
+# warning on startup if lf is running as a nested instance
+&[ "$LF_LEVEL" -eq 1 ] || lf -remote "send $id echoerr \"Warning: You're in a nested lf instance!\""
+
 set hidden true
 set ignorecase true
 set icons true
@@ -9,9 +12,6 @@ set scrolloff 8
 set shell bash
 set shellopts "-eu"
 set ifs "\n"
-
-# warning on startup if lf is running as a nested instance
-&[ "$LF_LEVEL" -eq 1 ] || lf -remote "send $id echoerr \"Warning: You're in a nested lf instance!\""
 
 # unbind defaults
 clearmaps
@@ -184,7 +184,7 @@ cmd zoxide-interactive ${{
 map zi zoxide-interactive
 
 cmd fzf_search ${{
-    cmd="rg --column --line-number --no-heading --color=always --smart-case"
+    cmd="rg --column --line-number --no-heading --color=always --smart-case --hidden"
     fzf --ansi --disabled --layout=reverse --header="Search in files" --delimiter=: \
         --bind="start:reload([ -n {q} ] && $cmd -- {q} || true)" \
         --bind="change:reload([ -n {q} ] && $cmd -- {q} || true)" \
@@ -231,10 +231,10 @@ cmd open-file ${{
 }}
 
 
+map e $$EDITOR "$f"
 map oF open-in-finder
 #map oo &mimeopen $f
 #map oO $mimeopen --ask $f
-map e $$EDITOR "$f"
 map of open-file
 
 # previews and sandboxing them on arch

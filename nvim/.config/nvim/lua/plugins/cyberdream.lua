@@ -19,7 +19,7 @@ require("cyberdream").setup({
     extensions = {
         blinkcmp = true,
         dapui = true,
-        fzflua = true,
+        fzflua = false,
         mini = true,
         notify = true,
         treesitter = true,

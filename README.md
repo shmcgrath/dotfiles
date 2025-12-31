@@ -298,6 +298,7 @@ zola 0.20.0-1
 - [restish](https://github.com/rest-sh/restish)
 - lazygit
 - [trash-cli](https://github.com/andreafrancia/trash-cli)
+- [espanso text expander](https://github.com/espanso/espanso)
 
 ## Color Palette
 I use [Cyberdream](https://github.com/scottmckendry/cyberdream.nvim) wherever possible. I may work on a utility to convert [Dracula](https://draculatheme.com/spec) or [Catppuccin](https://catppuccin.com/) themes to Cyberdream. For now, I am using the tables below if I have to search and replace.

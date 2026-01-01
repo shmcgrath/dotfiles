@@ -137,6 +137,7 @@ clean:
 
 arch-linux:
 	$(PKGINSTALL) neovim nodejs npm
+	$(PKGINSTALL) lf ouch fzf zoxide trash-cli
 	$(PKGINSTALL) zoxide fzf
 
 wayland:
@@ -213,7 +214,6 @@ vifm:
 	$(STOW) vifm
 
 lf:
-	#$(PKGINSTALL) lf ouch fzf zoxide
 	$(MKDIR) $(XDG_CONFIG_HOME)/lf
 	$(MKDIR) $(XDG_DATA_HOME)/Trash/files
 	$(MKDIR) $(XDG_DATA_HOME)/Trash/info

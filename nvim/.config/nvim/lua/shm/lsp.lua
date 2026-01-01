@@ -1,4 +1,4 @@
-capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), {
+local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), {
   textDocument = {
     foldingRange = {
       dynamicRegistration = false,
@@ -34,3 +34,31 @@ vim.lsp.enable({
   "tombi",
   "vimls",
 })
+
+vim.diagnostic.config({
+  virtual_text = false,
+  virtual_lines = false,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "🆇",
+      [vim.diagnostic.severity.WARN] = "⚠",
+      [vim.diagnostic.severity.INFO] = "ℹ",
+      [vim.diagnostic.severity.HINT] = "",
+    },
+  },
+  severity_sort = true,
+  underline = true,
+  update_in_insert = false,
+})
+
+vim.keymap.set("n", "<C-w>d", function()
+  vim.diagnostic.open_float(nil, {
+    focusable = false,
+    border = "rounded",
+    source = true,
+    header = "Diagnostics",
+    prefix = "● ",
+    scope = "cursor",
+    close_events = { "CursorMoved", "BufLeave", "WinLeave", "InsertEnter" },
+  })
+end, { noremap = true, silent = true, desc = "Show enhanced diagnostics float" })

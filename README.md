@@ -298,6 +298,7 @@ zola 0.20.0-1
 - [restish](https://github.com/rest-sh/restish)
 - lazygit
 - [trash-cli](https://github.com/andreafrancia/trash-cli)
+- [delta](https://github.com/dandavison/delta)
 - [espanso text expander](https://github.com/espanso/espanso)
 
 ## Color Palette

@@ -182,6 +182,10 @@ cmd zoxide-interactive ${{
     lf -remote "send $id cd \"$result\""
 }}
 map zi zoxide-interactive
+map zxd cd ~/.local/share #XDG_DATA_HOME
+map zxa cd ~/.cache	#XDG_CACHE_HOME
+map zxc cd ~/.config #XDG_CONFIG_HOME
+map zxs cd ~/.local/state #XDG_STATE_HOME
 
 cmd fzf_search ${{
     cmd="rg --column --line-number --no-heading --color=always --smart-case --hidden"

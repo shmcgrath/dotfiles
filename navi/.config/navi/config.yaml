@@ -3,7 +3,7 @@
 
 style:
   tag:
-    color: cyan # text color. possible values: https://bit.ly/3gloNNI
+    color: magenta
     width_percentage: 20 # column width relative to the terminal window
     min_width: 20 # minimum column width as number of characters
   comment:
@@ -16,7 +16,7 @@ style:
 
 
 finder:
-  command: fzf # equivalent to the --finder option
+  command: fzf
   # overrides: --tac # equivalent to the --fzf-overrides option
   # overrides_var: --tac # equivalent to the --fzf-overrides-var option
 
@@ -25,7 +25,6 @@ finder:
     #- $XDG_CONFIG_HOME/navi/shm-cheats
 #     - /path/to/some/dir # on unix-like os
 #     - F:\\path\\to\\dir # on Windows
-# path: /path/to/some/dir # (DEPRECATED) equivalent to the --path option
 
 # search:
 #   tags: git,!checkout # equivalent to the --tag-rules option

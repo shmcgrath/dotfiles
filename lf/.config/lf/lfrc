@@ -29,8 +29,15 @@ map <c-y> scroll-up
 map <c-e> scroll-down
 map h updir
 map <left> updir
-map l open
-map <right> open
+cmd diropen %{{
+    if [ -d "$f" ]; then
+        lf -remote "send $id open"
+    else
+        printf "Not a directory"
+    fi
+}}
+map l diropen
+map <right> diropen
 map ] jump-next
 map [ jump-prev
 map gg top

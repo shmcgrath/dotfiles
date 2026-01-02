@@ -74,9 +74,8 @@ map A :rename; cmd-end
 map I :rename; cmd-home
 
 # commands
-cmd Q quit
-cmd q %lf -remote "send $id :cd \"$OLDPWD\"; quit"
-cmd mkdir %mkdir "$@"
+cmd q quit
+cmd mkdir %mkdir -p "$@"
 cmd touch %touch "$@"
 
 cmd trash ${{

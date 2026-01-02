@@ -100,7 +100,3 @@ bindkey -s ^f "tmux-sessionizer.sh\n"
 # cli tools eval{{{2
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(navi widget zsh)" #CTRL+G
-lfcd () {
-    # `command` is needed in case `lfcd` is aliased to `lf`
-    cd "$(command lf -print-last-dir "$@")"
-}

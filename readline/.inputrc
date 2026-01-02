@@ -37,4 +37,4 @@ $if mode=vi
 $endif
 
 # tmux-sessionizer keybind
-"\C-f": "tmux-sessionizer.sh\n"
+"\C-t": "tmux-sessionizer.sh\n"

@@ -39,6 +39,9 @@ source_file \
 	"$XDG_CONFIG_HOME/sh-base/env-01-universal" \
 	"$XDG_CONFIG_HOME/sh-base/aliasrc"
 
+# source fzf_defaults{{{2
+source_file "$HOME/dotfiles/fzf/FZF_DEFAULT_OPTS"
+
 # History and HISTIGNORE setup (for Bash and Zsh){{{2
 if [ "$SHELL_NAME" = "bash" ] || [ "$SHELL_NAME" = "zsh" ]; then
 	HISTIGNORE_FILE="$XDG_CONFIG_HOME/sh-base/histignore-list"

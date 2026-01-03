@@ -19,6 +19,7 @@ alias j="jobs -1" # show jobs
 alias jc="journalctl"
 alias jce="journalctl --pager-end"
 alias kvm="doas mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other" # mounting for shared folders in kali vm
+alias lg="lazygit"
 alias makemkv="makemkvcon" # alias not rememberable makemkv command
 alias mkdir="mkdir -pv" # creates intermediate directories
 alias mv="mv --interactive --verbose" # preferred "mv" implementation

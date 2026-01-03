@@ -76,6 +76,7 @@ paru:
 		cd "$(XDG_CACHE_HOME)/aur/pkgbuilds/paru"; \
 	fi; \
 	makepkg --syncdeps --install
+	stow paru
 
 yay:
 	$(MKDIR) $(XDG_CONFIG_HOME)/yay
@@ -89,8 +90,9 @@ yay:
 		cd "$(XDG_CACHE_HOME)/aur/pkgbuilds/yay"; \
 	fi; \
 	makepkg --syncdeps --install
+	stow yay
 
-yay-initialize: ## on first use, development packages upgrade
+yay-init: ## on first use, development packages upgrade
 	yay -Y --gendb
 	yay -Syu --devel
 

@@ -3,16 +3,17 @@
 
 style:
   tag:
-    color: magenta
-    width_percentage: 20 # column width relative to the terminal window
-    min_width: 20 # minimum column width as number of characters
+    color: green
+    width_percentage: 15 # column width relative to the terminal window
+    min_width: 15 # minimum column width as number of characters
   comment:
     color: blue
-    width_percentage: 20
-    min_width: 20
+    width_percentage: 50
+    min_width: 50
   snippet:
     color: white
-    width_percentage: 60
+    width_percentage: 35
+    min_width: 35
 
 
 finder:
@@ -22,7 +23,6 @@ finder:
 
 #cheats:
   #paths:
-    #- $XDG_CONFIG_HOME/navi/shm-cheats
 #     - /path/to/some/dir # on unix-like os
 #     - F:\\path\\to\\dir # on Windows
 

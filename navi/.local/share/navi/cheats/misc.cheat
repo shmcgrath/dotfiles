@@ -17,6 +17,9 @@ source $HOME/.bashrc
 # concatonates all files in a directory into a single with file names included
 for f in *; do echo "==> $f <=="; cat "$f"; echo; done >> <filename>
 
+# test if italics are working in terminal emulator
+echo -e "\e[3mThis should be italic\e[0m"
+
 % misc, zsh, shell
 
 # source ~/.zshrc

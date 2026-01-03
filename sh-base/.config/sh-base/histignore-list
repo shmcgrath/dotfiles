@@ -19,7 +19,7 @@ eza -l
 eza -la
 false
 fzf
-git a *
+git a \*
 git a .
 git ci
 git push
@@ -31,6 +31,7 @@ history
 la
 lazygit
 lf
+lf *
 ll
 logout
 ls
@@ -60,5 +61,6 @@ vim
 weather
 whoami
 wikiman
+wikiman *
 y
 yazi

@@ -63,12 +63,36 @@ aur:
 	$(MKDIR) $(XDG_CACHE_HOME)/aur/build/sources
 	$(MKDIR) $(XDG_CACHE_HOME)/aur/build/srcpackages
 	$(MKDIR) $(XDG_CACHE_HOME)/aur/build/makepkglogs
+
+paru:
 	$(MKDIR) $(XDG_CONFIG_HOME)/paru
-	$(PKGINSTALL) base-devel
-	@cd "$(XDG_CACHE_HOME)/aur/pkgbuilds" && \
-	git clone https://aur.archlinux.org/paru.git && \
-	cd "$(XDG_CACHE_HOME)/aur/pkgbuilds/paru" && \
+	sudo pacman --sync --needed base-devel
+	@if [ -d "$(XDG_CACHE_HOME)/aur/pkgbuilds/paru" ]; then \
+		cd "$(XDG_CACHE_HOME)/aur/pkgbuilds/paru" && \
+		git pull; \
+	else \
+		cd "$(XDG_CACHE_HOME)/aur/pkgbuilds" && \
+		git clone https://aur.archlinux.org/paru.git && \
+		cd "$(XDG_CACHE_HOME)/aur/pkgbuilds/paru"; \
+	fi; \
 	makepkg --syncdeps --install
+
+yay:
+	$(MKDIR) $(XDG_CONFIG_HOME)/yay
+	sudo pacman --sync --needed base-devel
+	@if [ -d "$(XDG_CACHE_HOME)/aur/pkgbuilds/yay" ]; then \
+		cd "$(XDG_CACHE_HOME)/aur/pkgbuilds/yay" && \
+		git pull; \
+	else \
+		cd "$(XDG_CACHE_HOME)/aur/pkgbuilds" && \
+		git clone https://aur.archlinux.org/yay.git && \
+		cd "$(XDG_CACHE_HOME)/aur/pkgbuilds/yay"; \
+	fi; \
+	makepkg --syncdeps --install
+
+yay-initialize: ## on first use, development packages upgrade
+	yay -Y --gendb
+	yay -Syu --devel
 
 dropbox: ## Install dropbox on arch via AUR and update related configs
 	$(AURINSTALL) dropbox dropbox-cli

@@ -23,6 +23,7 @@ alias makemkv="makemkvcon" # alias not rememberable makemkv command
 alias mkdir="mkdir -pv" # creates intermediate directories
 alias mv="mv --interactive --verbose" # preferred "mv" implementation
 alias pacorph="paru -Qtdq | paru -Rns -"
+alias pacnews="w3m https://www.archlinux.org/news/" # get arch news
 alias pacsyu="w3m https://www.archlinux.org/news/ && doas pacman -Syu" # get arch news and syu
 alias pst="clippaste"
 alias py2="python2"

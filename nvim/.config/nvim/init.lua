@@ -31,6 +31,9 @@ require("shm.statusline").setup()
 -- require tabline
 require("shm.tabline").setup()
 
+-- require manpager for manpager settings
+require("shm.manpager")
+
 if vim.g.neovide then
     require("shm.neovide")
 end

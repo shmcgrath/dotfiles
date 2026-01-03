@@ -43,8 +43,8 @@ alias weather="curl wttr.in/Pittsburgh?q" # weather in Pittsburgh
 alias wip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias wrsync="echo 'rsync --recursive --progress source/ destination/'"
 alias wshell="echo $0" # tells what shell is active
-alias wuninstall="less $HOME/dotfiles/reference/uninstall-less.md"
-alias yay="yay --show --news && yay" # get arch news and syu
+alias wuninstall="bat $HOME/dotfiles/reference/uninstall-less.md"
+alias yayu="yay --show --news && yay" # get arch news and syu with yay
 alias ytdl="youtube-dl"
 
 if [ "$(uname)" = "Darwin" ]; then

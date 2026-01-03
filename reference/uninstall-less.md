@@ -1,4 +1,4 @@
-Pacman Uninstall Information
+# Pacman Uninstall Information
 
 sudo pacman -Runs package-name
 
@@ -17,4 +17,4 @@ This operation is recursive and analogous to a backwards --sync operation,
 and it helps keep a clean system without orphans.
 If you want to omit condition (B), pass this option twice.
 
-man pacman for more information
+_man pacman for more information_

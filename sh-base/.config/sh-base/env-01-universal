@@ -12,5 +12,5 @@ else
 	printf "\nenvcheck check: not macos\n"
 	export OPENER="xdg-open"
 fi
-
+export MANPAGER='nvim +Man!'
 # vim:ft=sh:

@@ -902,9 +902,12 @@ icon=
 
 # 󱀇 hledger & ledger & Beancount {{{3
 icon=󱀇
-*.LEDGER
-*.JOURNAL
 *.BEANCOUNT
+*.JOURNAL
+*.LEDGER
+*.beancount
+*.journal
+*.ledger
 
 #  X11/Xorg {{{3
 icon=

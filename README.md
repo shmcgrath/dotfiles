@@ -294,6 +294,7 @@ zola 0.20.0-1
 - [moving to builtin plugin manager neovim](https://bower.sh/nvim-builtin-plugin-mgr)
     - this includes some functions for the new treesitter
 ## Software to Learn/Research
+- mpv vs vlc
 - poppler
 - [websocat](https://github.com/vi/websocat)
 - [restish](https://github.com/rest-sh/restish)

@@ -245,6 +245,7 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- lf https://github.com/atanunq/viu for image viewing?
 - see if on-quit of lf can do what lfcd does
 - set up sudoedit / sudo -e in lf?
 - set up fzf color scheme

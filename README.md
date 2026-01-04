@@ -304,7 +304,7 @@ zola 0.20.0-1
 - [trash-cli](https://github.com/andreafrancia/trash-cli)
 - [delta](https://github.com/dandavison/delta)
 - [espanso text expander](https://github.com/espanso/espanso)
-
+- userChrome.css for Firefox? https://github.com/ericmurphyxyz/userchrome.css
 ## Color Palette
 I use [Cyberdream](https://github.com/scottmckendry/cyberdream.nvim) wherever possible. I may work on a utility to convert [Dracula](https://draculatheme.com/spec) or [Catppuccin](https://catppuccin.com/) themes to Cyberdream. For now, I am using the tables below if I have to search and replace.
 

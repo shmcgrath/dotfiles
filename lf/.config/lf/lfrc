@@ -245,5 +245,18 @@ map oF open-in-finder
 #map oO $mimeopen --ask $f
 map of open-file
 
+cmd chmod ${{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+
+  lf -remote 'send reload'
+}}
+
+
 # previews and sandboxing them on arch
 # https://wiki.archlinux.org/title/Lf

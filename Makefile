@@ -205,6 +205,8 @@ zoxide:
 	zoxide add $(HOME)/Downloads
 	zoxide add $(HOME)/Dropbox
 	zoxide add $(HOME)/Dropbox/shm
+	zoxide add $(HOME)/src
+	zoxide add $(HOME)/projects
 
 navi:
 	$(PKGINSTALL) navi fzf
@@ -368,6 +370,17 @@ help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| sort  \
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+wikiman:
+	$(MKDIR) $(HOME)/projects
+	@if [ -d "$(HOME)/projects/wikiman" ]; then \
+		cd "$(HOME)/projects/wikiman" && \
+		git pull; \
+	else \
+		cd "$(HOME)/projects" && \
+		git github.com/shmcgrath/wikiman; \
+	fi; \
+	@printf "%s\n" "wikiman downloaded. use wikiman makefile to install docs and wikiman"
 
 # macos software installed
 # ghostty

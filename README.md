@@ -245,6 +245,8 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- Remove wikiman ctrl+f and move tmux to that so fzf can use its keybinds? rename wikiman to wm or something in alias and add that to ignorelist
+- standalone tldr search? ! not working in wikiman?
 - https://github.com/yokoffing/BetterFox --> resetup firefox? user.js and what it entails
 - lf https://github.com/atanunq/viu for image viewing?
 - see if on-quit of lf can do what lfcd does

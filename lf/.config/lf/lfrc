@@ -257,6 +257,13 @@ cmd chmod ${{
   lf -remote 'send reload'
 }}
 
+# shows size of directory and all sub directories
+# --summarize (-s): only show the total for the folder, not each subdirectory.
+# --human-readable (-h): shows sizes in KB, MB, GB instead of bytes.
+cmd directory-size %{{
+	du -sh "$f"
+}}
+
 
 # previews and sandboxing them on arch
 # https://wiki.archlinux.org/title/Lf

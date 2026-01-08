@@ -36,5 +36,10 @@ $if mode=vi
 	"\e[B": history-search-forward
 $endif
 
+# magic space history expansion
+$if Bash
+    Space: magic-space
+$endif
+
 # tmux-sessionizer keybind
 "\C-t": "tmux-sessionizer.sh\n"

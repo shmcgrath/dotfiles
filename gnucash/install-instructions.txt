@@ -1,0 +1,10 @@
+css is from: https://github.com/ggio/gnucash-dark-everforest
+copy these files to GTK CONFIG HOME:
+    GnuCash 3.0 and later. Note the base directories on Windows and macOS for this differ from the base directories for GNC_DATA_HOME. 
+
+    Linux
+        USER_CONFIG_HOME/gtk-3.0
+    Windows
+        %LOCALAPPDATA%\gtk-3.0
+    macOS
+        HOME/Library/Application Support/GnuCash/config/gtk-3.0

@@ -65,6 +65,8 @@ setopt globdots
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' file-patterns '*' '.*(N)'
 
+bindkey " " magic-space # do history expansion on space
+
 # Expand ~ to home{{{2
 setopt AUTO_PARAM_KEYS  # not quite the same but related
 

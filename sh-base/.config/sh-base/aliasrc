@@ -13,7 +13,7 @@ alias cd..="cd ../" # go back 1 directory level (for fast typers)
 alias cls="clear" # clear terminal display
 alias cp="cp --interactive --verbose" # preferred "cp" implementation
 alias cpy="clipcopy"
-alias e=$EDITOR
+alias e="$EDITOR"
 alias eza="eza --icons=always"
 alias hist="history" # show command history
 alias j="jobs -1" # show jobs

@@ -12,6 +12,11 @@ for i in {0..255}; do tput setaf $i; echo -n "$i "; done
 # source ~/.bashrc
 source $HOME/.bashrc
 
+% misc, bash, shell, readline
+
+# list funciton names and bindings
+bind -P
+
 % misc, bash, shell, one-liner
 
 # concatonates all files in a directory into a single with file names included

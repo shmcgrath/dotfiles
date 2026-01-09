@@ -27,11 +27,19 @@ export PS2="continue --> "
 export HISTFILE="$XDG_DATA_HOME/bash/.bash_history"
 export HISTFILESIZE=100000
 export HISTSIZE=100000
-export HISTCONTROL="ignoredups:erasedups"
+export HISTCONTROL="ignoredups:ignorespace:erasedups"
 export HISTTIMEFORMAT="%y-%m-%d %T " # timestamp to histroy
 shopt -s histappend # append to history, don't overwrite it
 shopt -s cmdhist # store multi-line commands in one histroy entry
 export PROMPT_COMMAND='history -a; history -r'
+HISTIGNORE_FILE="$XDG_CONFIG_HOME/sh-base/histignore-list"
+
+if [ -f "$HISTIGNORE_FILE" ]; then
+	HISTIGNORE="$(grep -vE '^\s*#|^\s*$' "$HISTIGNORE_FILE" | paste -sd: -)"
+	export HISTIGNORE
+else
+	printf "%s\n" "histignore-list not found"
+fi
 
 # == Source fzf colors{{{2
 

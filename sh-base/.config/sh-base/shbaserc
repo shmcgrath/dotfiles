@@ -42,14 +42,4 @@ source_file \
 # source fzf_defaults{{{2
 source_file "$HOME/dotfiles/fzf/fzfrc"
 
-# History and HISTIGNORE setup (for Bash and Zsh){{{2
-if [ "$SHELL_NAME" = "bash" ] || [ "$SHELL_NAME" = "zsh" ]; then
-	HISTIGNORE_FILE="$XDG_CONFIG_HOME/sh-base/histignore-list"
-
-	if [ -f "$HISTIGNORE_FILE" ]; then
-		HISTIGNORE="$(grep -vE '^\s*#|^\s*$' "$HISTIGNORE_FILE" | paste -sd: -)"
-	export HISTIGNORE
-	fi
-fi
-
 # vim:ft=sh:

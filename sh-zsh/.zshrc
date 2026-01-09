@@ -78,6 +78,9 @@ HISTFILE="$XDG_DATA_HOME/zsh/history"
 HISTSIZE=100000
 SAVEHIST=100000
 
+# Ignore commands with a preceeding space
+setopt HIST_IGNORE_SPACE
+
 # Append to the history file, do not overwrite
 setopt APPEND_HISTORY
 
@@ -96,6 +99,15 @@ setopt HIST_EXPIRE_DUPS_FIRST
 
 # Add timestamp
 setopt EXTENDED_HISTORY
+
+HISTIGNORE_FILE="$XDG_CONFIG_HOME/sh-base/histignore-list"
+
+if [ -f "$HISTIGNORE_FILE" ]; then
+	HISTORY_IGNORE="$(grep -vE '^\s*#|^\s*$' "$HISTIGNORE_FILE" | paste -sd: -)"
+	export HISTORY_IGNORE
+else
+	printf "%s\n" "histignore-list not found"
+fi
 
 # keybinds{{{2
 bindkey -s ^k "tmux-sessionizer.sh\n"

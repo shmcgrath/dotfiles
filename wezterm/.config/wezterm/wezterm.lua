@@ -5,6 +5,19 @@ local act = wezterm.action
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+local function terminfo_exists(name)
+  local handle = io.popen("infocmp " .. name .. " 2>/dev/null")
+  local result = handle:read("*a")
+  handle:close()
+  return result ~= ""
+end
+
+if terminfo_exists("wezterm") then
+  config.term = "wezterm"
+else
+  config.term = "xterm-256color"
+end
+
 config.default_cursor_style = 'SteadyBar'
 
 config.font = wezterm.font('CommitMono Nerd Font Mono')

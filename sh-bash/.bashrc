@@ -39,9 +39,10 @@ export PROMPT_COMMAND='history -a; history -r'
 
 # == cli tools eval{{{2
 eval "$(zoxide init --cmd cd bash)" # cd is zoxide and cdi is fzf search of zoxide database
-
 eval "$(navi widget bash)" #CTRL+G
 eval "$(wikiman -W bash)" #CTRL+F
+# uncomment the line below to disable CTRL+T and ALT+C
+# FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND= eval "$(fzf --bash)"
 eval "$(fzf --bash)" #ALT+C CTRL+R CTRL+T
 # ALT+C fzf_cd
 # CTRL+R fzf_history

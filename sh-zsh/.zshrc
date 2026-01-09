@@ -103,7 +103,10 @@ bindkey -s ^k "tmux-sessionizer.sh\n"
 eval "$(zoxide init --cmd cd zsh)" # cd is zoxide and cdi is fzf search of zoxide database
 eval "$(navi widget zsh)" #CTRL+G
 eval "$(wikiman -W zsh)" #CTRL+F
-eval "$(fzf --zsh)" #ALT+C CTRL+R CTRL+T
-# ALT+C fzf_cd
-# CTRL+R fzf_history
-# CTRL+T fzf_select
+# uncomment the line below to disable CTRL+T and ALT+C
+# FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND= source <(fzf --zsh)
+source <(fzf --zsh) #ALT+C CTRL+R CTRL+T
+# ALT+C default: fzf_cd
+# CTRL+R default: fzf_history
+# CTRL+T default: fzf_select
+# note ** <tab> makes it so fzf is used to fill in so i can use cd **

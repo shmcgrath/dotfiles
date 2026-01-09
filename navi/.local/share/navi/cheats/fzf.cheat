@@ -1,0 +1,19 @@
+% fzf
+
+# <TAB> to execute: fzf to change directories
+cd **
+
+# <TAB> to execute: fzf to show all defined environment variables
+export **
+
+# <TAB> to execute: fzf to choose an environment variable to unset
+unset **
+
+# <TAB> to execute: fzf to remove an alias
+unalias **
+
+# <TAB> to execute: fzf to ssh
+ssh **
+
+# <TAB> to execute: fzf to find a process to kill
+kill -9 **

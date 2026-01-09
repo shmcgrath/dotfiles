@@ -38,6 +38,11 @@ export PROMPT_COMMAND='history -a; history -r'
 #[[ -f "$HOME/$XDG_CONFIG_HOME/themes/dracula-fzf" ]] && source $HOME/$XDG_CONFIG_HOME/themes/dracula-fzf
 
 # == cli tools eval{{{2
-eval "$(zoxide init --cmd cd bash)"
+eval "$(zoxide init --cmd cd bash)" # cd is zoxide and cdi is fzf search of zoxide database
+
 eval "$(navi widget bash)" #CTRL+G
 eval "$(wikiman -W bash)" #CTRL+F
+eval "$(fzf --bash)" #ALT+C CTRL+R CTRL+T
+# ALT+C fzf_cd
+# CTRL+R fzf_history
+# CTRL+T fzf_select

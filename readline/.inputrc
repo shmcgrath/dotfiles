@@ -42,4 +42,4 @@ $if Bash
 $endif
 
 # tmux-sessionizer keybind
-"\C-t": "tmux-sessionizer.sh\n"
+"\C-k": "tmux-sessionizer.sh\n"

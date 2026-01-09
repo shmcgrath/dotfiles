@@ -98,8 +98,12 @@ setopt HIST_EXPIRE_DUPS_FIRST
 setopt EXTENDED_HISTORY
 
 # keybinds{{{2
-bindkey -s ^t "tmux-sessionizer.sh\n"
+bindkey -s ^k "tmux-sessionizer.sh\n"
 # cli tools eval{{{2
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init --cmd cd zsh)" # cd is zoxide and cdi is fzf search of zoxide database
 eval "$(navi widget zsh)" #CTRL+G
 eval "$(wikiman -W zsh)" #CTRL+F
+eval "$(fzf --zsh)" #ALT+C CTRL+R CTRL+T
+# ALT+C fzf_cd
+# CTRL+R fzf_history
+# CTRL+T fzf_select

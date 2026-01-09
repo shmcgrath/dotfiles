@@ -25,6 +25,18 @@ echo -e "\e[3mThis should be italic\e[0m"
 # source ~/.zshrc
 source $HOME/.zshrc
 
+# list keymap names
+bindkey -l
+
+# list keymap for emacs mode
+bindkey -M emacs
+
+# list keymap for vi insert mode
+bindkey -M viins
+
+# list keymap for vi command mode
+bindkey -M vicmd
+
 % misc, htop, linux, process
 
 # show process with current users

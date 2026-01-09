@@ -32,6 +32,7 @@ shmcg/ 󱂵
 .config/ 
 .ssh/ 󰣀
 .terminfo/ 
+terminfo/ 
 'Calibre Library'/ 󰂺 #󱓷
 Desktop/ 
 Development/ 

@@ -40,12 +40,12 @@ autoload -Uz add-zsh-hook
 add-zsh-hook precmd precmd_update_prompt
 
 #readline equivalent{{{2
-autoload -Uz up-line-or-search down-line-or-search
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
+autoload -Uz history-beginning-search-backward history-beginning-search-forward
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
-bindkey -M vicmd 'k' up-line-or-history
-bindkey -M vicmd 'j' down-line-or-history
+bindkey -M vicmd 'k' history-beginning-search-backward
+bindkey -M vicmd 'j' history-beginning-search-forward
 
 # command autocomplete
 autoload -Uz compinit

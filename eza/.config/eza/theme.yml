@@ -107,5 +107,5 @@ filenames:
 
 extensions:
   # Custom extension-based overrides
-  rs: {filename: {foreground: Red}, icon: {glyph: }}
-  rlib: {filename: {foreground: Red}, icon: {glyph: }}
+  rs: {icon: {glyph: }}
+  rlib: {icon: {glyph: }}

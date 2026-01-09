@@ -531,4 +531,8 @@ According to :help vim.lsp.buf.hover(), you should be able to jump into the floa
 
 To exit, C-w, w
 
+====================
+
+One more tip that you can press <C-u> in insert mode to get rid of the added comment symbol.
+
  vim:ft=help:

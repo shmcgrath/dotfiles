@@ -245,6 +245,7 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- fabian dotfiles look at how handles aliases
 - [dotfile management](https://mywiki.wooledge.org/DotFiles)
 - [lsd](https://github.com/lsd-rs) vs eza
 - glow config

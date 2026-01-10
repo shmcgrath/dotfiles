@@ -36,7 +36,6 @@ ls -A
 ls -a
 ls -l
 man
-man *
 navi
 nvim
 pacman -Syu

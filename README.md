@@ -292,6 +292,13 @@ export FZF_DEFAULT_OPTS_FILE=""
 - customize vifm and openers
     - https://old.reddit.com/r/vifm/comments/190u5zg/useful_command_to_create_files_and_directories/
 - make dircolors theme: https://github.com/dracula/dircolors
+Also, the quality of life improvements like `alias ..='cd ..'`, or mapping `l` such that it either opens a pager or lists a dir, depending on the argument. I'd never come up with those, and they're beyond useful.
+
+I imagine it's something like:
+
+    l() { if [ -d "$1" ] ; then ls -alFh -- "$1" ; else "${PAGER:-pager}" -- "$1" ; fi }
+
+in the .bashrc
 ### Neovim
 - oerride nvim-web-devicons - especially file for the one in ls 
 - learn more about localleader and neovim mappings

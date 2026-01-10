@@ -1,7 +1,21 @@
+% misc, shell
+
+# compare two files
+cmp
+
+# see how much RAM is free in human readable format
+free -h
+
 % misc, disk
 
 # disk space and percentage used
-df --human-readable
+df -H
+
+# see all processes
+ps aux
+
+# grep through open processes
+ps aux | grep 
 
 % misc, shell, terminal, color, 256-color, one-liner
 # shows all 256 colors and what they are assigned to in the shell
@@ -46,6 +60,8 @@ bindkey -M vicmd
 
 # show process with current users
 htop -u <user>
+
+# show process with current users
 ps -u <user> ux
 
 # kill process

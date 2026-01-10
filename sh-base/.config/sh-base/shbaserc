@@ -36,6 +36,7 @@ alias py3="python3"
 alias py="python"
 alias pyserve="python3 -m http.server 8624 && echo 'web server on port 8624'"
 alias rm="rm -i"
+alias tldr="tldr --list | fzf | xargs tldr"
 alias tmux="tmux -2" # set 256 colors by default
 alias vf="vifm"
 alias weather="curl wttr.in/Pittsburgh?q" # weather in Pittsburgh
@@ -48,6 +49,8 @@ alias ytdl="youtube-dl"
 # OS-SPECIFIC ALIASES AND ENV VARS{{{2
 if [ "$(uname -s)" = "Darwin" ]; then
 	export OPENER="open"
+	export TEALDEER_CONFIG_DIR="$XDG_CONFIG_HOME/tealdeer"
+	alias fman='man -k . | fzf --prompt="man > " | sed '\''s/([0-9a-zA-Z]*)//'\'' | awk "{print \$1}" | xargs -r man'
 	alias la="ls -AxG"
 	alias ll='ls -lAhFG'
 	alias ls="ls -xG"
@@ -62,6 +65,7 @@ else
 		alias yayu="yay --show --news && yay" # get arch news and syu with yay
 	fi
 	alias calc="qalc"
+	alias fman='man -k . | fzf --prompt="man > " | awk "{print $1}" | xargs -r -I [] man "[]"'
 	alias jce="journalctl --pager-end"
 	alias la='ls -x --almost-all --group-directories-first --color' # -x list entries by lines instead of cols
 	alias ll='ls -l --classify --no-group --almost-all --human-readable --indicator-style=slash --time-style=long-iso --color'

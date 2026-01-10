@@ -256,7 +256,7 @@ lf:
 	$(MKDIR) $(XDG_DATA_HOME)/Trash/info
 	$(MKDIR) $(XDG_DATA_HOME)/lf
 	install -m 644 $(DOTFILES)/lf/.config/lf/marks-shm $(XDG_DATA_HOME)/lf/marks
-	$(STOW) --ignore=generate-lf-icons.sh --ignore=icons-gen --ignore=instructions-colors --ignore=marks-shm lf
+	$(STOW) lf
 
 rust:
 	$(MKDIR) $(HOME)/.cargo/bin

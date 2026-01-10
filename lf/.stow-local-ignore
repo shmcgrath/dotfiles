@@ -1,0 +1,9 @@
+# Ignore bootstrap directory
+.DS_Store
+^\.DS_Store$
+^/\.config/lf/generate-lf-icons.sh
+^/\.config/lf/icons-gen
+^/\.config/lf/instructions-colors.md
+^/\.config/lf/marks-shm
+
+# vim:ft=conf:

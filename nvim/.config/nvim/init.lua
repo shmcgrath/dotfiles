@@ -34,6 +34,18 @@ require("shm.tabline").setup()
 -- require manpager for manpager settings
 require("shm.manpager")
 
+-- setup Thesaurusfunc so mthesaur.txt can be used with commas
+require("shm.thesaurus")
+
+vim.cmd([[
+function! Thesaurusfunc(findstart, base) abort
+  return luaeval('require("shm.thesaurus").Thesaurusfunc(_A[1], _A[2])', [a:findstart, a:base])
+endfunction
+]])
+
+vim.o.thesaurusfunc = "Thesaurusfunc"
+
+
 if vim.g.neovide then
     require("shm.neovide")
 end

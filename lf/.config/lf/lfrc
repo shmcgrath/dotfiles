@@ -55,7 +55,7 @@ map n search-next
 map N search-prev
 map m mark-save
 map "'" mark-load
-map '"' mark-remove
+map dm mark-remove
 map <a-t> tag-toggle
 map <c-p>k :maps
 

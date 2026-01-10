@@ -58,7 +58,6 @@ if [ "$(uname -s)" = "Darwin" ]; then
 else
 	if [ -r /etc/os-release ] && grep -q '^ID=arch$' /etc/os-release; then
 		export OPENER="xdg-open"
-		printf '%s\n' "Arch Linux"
 		alias pacnews="w3m https://www.archlinux.org/news/" # get arch news
 		alias pacorph="paru -Qtdq | paru -Rns -"
 		alias pacsyu="pacnews && doas pacman -Syu" # get arch news and syu

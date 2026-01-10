@@ -1,0 +1,7 @@
+[user]
+	name = 
+	email =
+[github]
+	user = 
+
+# vim:ft=gitconfig:

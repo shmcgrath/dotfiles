@@ -245,6 +245,8 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- [dotfile management](https://mywiki.wooledge.org/DotFiles)
+- [lsd](https://github.com/lsd-rs) vs eza
 - glow config
 - remove comments from newline in nvim: https://superuser.com/questions/271023/can-i-disable-continuation-of-comments-to-the-next-line-in-vim
     - https://github.com/LazyVim/LazyVim/discussions/2184
@@ -252,6 +254,7 @@ zola 0.20.0-1
 - look into formatting that is not ALE?
 - copy diagnostic to clipboard?
 - customize fzf
+    - https://github.com/junegunn/fzf/blob/master/ADVANCED.md
     - https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings
     - josean's dotfiles
 - Remove wikiman ctrl+f and move tmux to that so fzf can use its keybinds? rename wikiman to wm or something in alias and add that to ignorelist
@@ -259,7 +262,10 @@ zola 0.20.0-1
 - https://github.com/yokoffing/BetterFox --> resetup firefox? user.js and what it entails
 - lf https://github.com/atanunq/viu for image viewing?
 - see if on-quit of lf can do what lfcd does
+- more lf configs including ruler
+- vivid setup https://github.com/sharkdp/vivid
 - set up sudoedit / sudo -e in lf?
+- fd and set it up instead of find
 - set up fzf color scheme
 - set up a lf for windows -> see pwsh examples
 - install and config zathura on macbook
@@ -297,6 +303,8 @@ I imagine it's something like:
     l() { if [ -d "$1" ] ; then ls -alFh -- "$1" ; else "${PAGER:-pager}" -- "$1" ; fi }
 
 in the .bashrc
+- custom actions to file manager: https://www.youtube.com/watch?v=i28UNDO8Q7E&pp=ygUYZGlzdHJvdHViZSBmaWxlIGV4cGxvcmVy
+- thunar vs pcmanfm
 ### Neovim
 - oerride nvim-web-devicons - especially file for the one in ls 
 - learn more about localleader and neovim mappings
@@ -314,6 +322,7 @@ in the .bashrc
 - [moving to builtin plugin manager neovim](https://bower.sh/nvim-builtin-plugin-mgr)
     - this includes some functions for the new treesitter
 ## Software to Learn/Research
+- [modern unix tools](https://github.com/johnalanwoods/maintained-modern-unix)
 - mpv vs vlc
 - poppler
 - [websocat](https://github.com/vi/websocat)
@@ -323,6 +332,8 @@ in the .bashrc
 - [delta](https://github.com/dandavison/delta)
 - [espanso text expander](https://github.com/espanso/espanso)
 - userChrome.css for Firefox? https://github.com/ericmurphyxyz/userchrome.css
+- [curlie](https://github.com/rs/curlie) vs httpie
+- [gowall](https://github.com/Achno/gowall)
 ## Color Palette
 I use [Cyberdream](https://github.com/scottmckendry/cyberdream.nvim) wherever possible. I may work on a utility to convert [Dracula](https://draculatheme.com/spec) or [Catppuccin](https://catppuccin.com/) themes to Cyberdream. For now, I am using the tables below if I have to search and replace.
 

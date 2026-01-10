@@ -53,3 +53,8 @@ diskutil info '<disk_dev>'
 
 $ eject_vol: find /Volumes ! -path /Volumes -maxdepth 1 -type d  -name "*"
 $ disk_dev: find /dev -maxdepth 1 -name "disk*s*"
+
+% macos, osx, apple, dns
+
+# flush DNS settings on macOS
+sudo killall -HUP mDNSResponder

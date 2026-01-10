@@ -245,6 +245,7 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- glow config
 - remove comments from newline in nvim: https://superuser.com/questions/271023/can-i-disable-continuation-of-comments-to-the-next-line-in-vim
     - https://github.com/LazyVim/LazyVim/discussions/2184
 - make autocmd file for nvim?
@@ -254,6 +255,7 @@ zola 0.20.0-1
     - https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings
     - josean's dotfiles
 - FZF_DEFAULT_OPTS_FILE: look into and set this up
+export FZF_DEFAULT_OPTS_FILE=""
 - Remove wikiman ctrl+f and move tmux to that so fzf can use its keybinds? rename wikiman to wm or something in alias and add that to ignorelist
 - standalone tldr search? ! not working in wikiman?
 - https://github.com/yokoffing/BetterFox --> resetup firefox? user.js and what it entails

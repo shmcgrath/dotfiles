@@ -5,30 +5,23 @@
 # to use terminal background: bg:-1
 # to use terminal foreground: fg:-1
 
-export FZF_DEFAULT_OPTS='
-  --color=fg:#ffffff,fg+:#ffffff,bg:#16181a,bg+:#1e2124
-  --color=hl:#5ea1ff,hl+:#5ef1ff,info:#f1ff5e,marker:#ff6e5e
-  --color=prompt:#bd5eff,spinner:#ff5ef1,pointer:#ff5ef1,header:#5eff6c
-  --color=border:#3c4048,label:#7b8496,query:#d9d9d9
-  --border="block" --border-label="" --preview-window="border-bold" --prompt="> "
-  --marker=">" --pointer="◆" --separator="─" --scrollbar="│"
-  --layout="reverse" --cycle
-  --info="right" --padding="1" --height=55% --tmux=95%,55%'
-
-export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window up:3:wrap --border-label=History"
-
-show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
-
-_fzf_comprun() {
-  local command=$1
-  shift
-
-  case "$command" in
-    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo \${}'" "$@" ;;
-    ssh)          fzf --preview 'dig {}' "$@" ;;
-    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
-  esac
-}
+--color=fg:#ffffff,fg+:#ffffff,bg:#16181a,bg+:#1e2124
+--color=hl:#5ea1ff,hl+:#5ef1ff,info:#f1ff5e,marker:#ff6e5e
+--color=prompt:#bd5eff,spinner:#ff5ef1,pointer:#ff5ef1,header:#5eff6c
+--color=border:#3c4048,label:#7b8496,query:#d9d9d9
+--border="block"
+--border-label=""
+--preview-window="border-bold"
+--prompt="> "
+--marker=">"
+--pointer="◆"
+--separator="─"
+--scrollbar="│"
+--layout="reverse"
+--info="right"
+--padding="1"
+--height=55%
+--tmux=95%,55%
+--cycle
 
 # vim:ft=sh:

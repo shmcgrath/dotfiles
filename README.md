@@ -254,8 +254,6 @@ zola 0.20.0-1
 - customize fzf
     - https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings
     - josean's dotfiles
-- FZF_DEFAULT_OPTS_FILE: look into and set this up
-export FZF_DEFAULT_OPTS_FILE=""
 - Remove wikiman ctrl+f and move tmux to that so fzf can use its keybinds? rename wikiman to wm or something in alias and add that to ignorelist
 - standalone tldr search? ! not working in wikiman?
 - https://github.com/yokoffing/BetterFox --> resetup firefox? user.js and what it entails

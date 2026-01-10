@@ -5,39 +5,40 @@ else
 	printf 'Warning: %s not found\n' "$XDG_CONFIG_HOME/sh-base/shbaserc"
 fi
 
-# prompt and vim mode{{{2
+# prompt{{{2
+# Base prompt definition — set once
+PROMPT_HEADER=$'_______________________\n'
+PROMPT_MAIN=$'%~\n%n@%m \❯ '
+PROMPT="${PROMPT_HEADER}${PROMPT_MAIN}"
+
+
+# vim mode and cursor settings{{{2
 # Set vi keybindings
 bindkey -v
 
-# Base prompt definition — set once
-PROMPT_HEADER=$'_______________________\n'
-PROMPT_MAIN=$'%~\n%n@%m \$ '
-
-# This will be prepended by the mode (e.g., [I] or [N])
-function set_prompt {
-  PROMPT="${1}${PROMPT_HEADER} ${PROMPT_MAIN}"
-}
-
-# Function to show current vi mode in prompt
-function zle-keymap-select {
-  local mode=""
+# Change cursor shape for different vi modes
+zle-keymap-select() {
   case $KEYMAP in
-    vicmd) mode="%F{green}[N]%f " ;;  # Normal mode
-    viins) mode="%F{blue}[I]%f " ;;   # Insert mode
+    vicmd) 
+      printf '\e[2 q'   # Normal mode: steady block
+      ;;
+    viins|main|'') 
+      printf '\e[6 q'   # Insert mode: steady beam
+      ;;
   esac
-
-  set_prompt "$mode"
-  zle reset-prompt
 }
+
 zle -N zle-keymap-select
 
-# Ensure a prompt is initially set on shell startup
-function precmd_update_prompt {
-  # Default to insert mode on startup
-  set_prompt "%F{blue}[I]%f "
+# set cursor on start as part of precmd_functions
+_fix_cursor() {
+  case $KEYMAP in
+    vicmd) printf '\e[2 q' ;;
+    viins|main|'') printf '\e[6 q' ;;
+  esac
 }
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd precmd_update_prompt
+
+precmd_functions+=(_fix_cursor)
 
 #readline equivalent{{{2
 autoload -Uz history-beginning-search-backward history-beginning-search-forward

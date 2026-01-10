@@ -1,6 +1,5 @@
 # sourcing ~/.profile explicitly loads XDG env vars
 [ -f "$HOME/.profile" ] && . "$HOME/.profile"
-[ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
 
 if [ -d "$XDG_CONFIG_HOME/sh-base/functions" ]; then
 	for functionFile in "$XDG_CONFIG_HOME/sh-base/functions"/*; do
@@ -13,6 +12,11 @@ else
 fi
 
 if [ "$(uname)" = "Linux" ]; then
-	source_file \
-		"$XDG_CONFIG_HOME/sh-base/ssh-agent-auth-socket"
+	export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
+
+if [ "$(uname)" = "Darwin" ]; then
+	[ -f "$XDG_CONFIG_HOME/homebrew/brew-env" ] && . "$XDG_CONFIG_HOME/homebrew/brew-env"
+fi
+
+[ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"

@@ -11,15 +11,12 @@ else
 	printf "%s\n" "$XDG_CONFIG_HOME/sh-base/functions is missing!"
 fi
 
-if [ "$(uname)" = "Darwin" ]; then
-	source_file \
-		"$XDG_CONFIG_HOME/homebrew/brew-env" \
-		"$HOME/.zshrc"
+if [ "$(uname)" = "Linux" ]; then
+	export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
 
-if [ "$(uname)" = "Linux" ]; then
-	source_file \
-		"$HOME/.zshrc" \
-		"$HOME/.cargo/env" \
-		"$XDG_CONFIG_HOME/sh-base/ssh-agent-auth-socket"
+if [ "$(uname)" = "Darwin" ]; then
+	[ -f "$XDG_CONFIG_HOME/homebrew/brew-env" ] && . "$XDG_CONFIG_HOME/homebrew/brew-env"
 fi
+
+[ -f "$HOME/.zshrc" ] && . "$HOME/.zshrc"

@@ -1,8 +1,18 @@
-add_paths --prepend "$HOME/.brew/bin" 
-
 export HOMEBREW_PREFIX="$HOME/.brew"
 export HOMEBREW_REPOSITORY="$HOME/.brew/.homebrew"
 export HOMEBREW_CELLAR="$HOME/.brew/Cellar"
 export HOMEBREW_NO_ANALYTICS=1
+
+if [ -d "$HOMEBREW_PREFIX/bin" ]; then
+	PATH="$(printf '%s\n' "$HOMEBREW_PREFIX/bin:$PATH" \
+	  | awk -v RS=: '
+		  !seen[$0]++ {
+			  printf "%s%s", (out?":":""), $0
+			  out=1
+		  }
+	  ')"
+
+	export PATH
+fi
 
 # vim:ft=sh:

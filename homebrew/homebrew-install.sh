@@ -30,6 +30,9 @@ ln -sf "$HOMEBREW_REPO/bin/brew" "$BREW_PREFIX/bin/brew"
 ln -sf "$HOME/dotfiles/homebrew/.config/homebrew/brew-env" "$HOME/.config/homebrew/brew-env"
 
 printf "\nHomebrew installed to %s and configured to avoid system paths." "$BREW_PREFIX"
-printf "\nOpen a new zsh shell and run brew update to confirm installation."
-printf "\nTurn off analytics: 'brew analytics off'. Confirm with 'brew analytics'"
-printf "\nTo install from a Bewfile run brew bundle --file=$HOME/dotfiles/homebrew/Brewfile"
+exec $0
+printf "\n%s" "ran exec $0, and running brew update to confirm installation."
+brew update
+printf "\n%s\n" "turning off analytics and installing from Brewfile..."
+brew analytics off && brew analytics
+brew bundle --file="$HOME/dotfiles/homebrew/Brewfile"

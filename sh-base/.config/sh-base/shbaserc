@@ -1,45 +1,94 @@
 # sh-baserc{{{1
-# detect shell{{{2
-SHELL_NAME="sh"
 
-if [ -n "$BASH_VERSION" ]; then
-  SHELL_NAME="bash"
+# ENVIRONMENT VARIABLES{{{2
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+export SUDO_EDITOR="$VISUAL"
+export TERMINAL=wezterm
+export PAGER="less"
+export LESS='-iMR -x4'
+export LESSHISTFILE="$XDG_DATA_HOME"/less/lesshst
+export MANPAGER='nvim +Man!'
+
+# ALIASES{{{2
+alias ":q"="exit" # always typing :q to exit shells, making it useful
+alias ..="cd .."
+alias .1="cd ../" # go back 1 directory levels
+alias .2="cd ../../" # go back 2 directory levels
+alias .3="cd ../../../" # go back 3 directory levels
+alias b64="base64 -o b64 -i"
+alias bac="bat --plain --paging=never --wrap=never"
+alias bag="bat --style=header-filename,rule,numbers,grid,changes"
+alias ban="bat --style=header-filename,rule,numbers,grid"
+alias cd..="cd ../" # go back 1 directory level (for fast typers)
+alias cp="cp --interactive --verbose" # preferred "cp" implementation
+alias cpy="clipcopy"
+alias e="$EDITOR"
+alias eza="eza --icons=always"
+alias kvm="doas mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other" # mounting for shared folders in kali vm
+alias lg="lazygit"
+alias makemkv="makemkvcon" # alias not rememberable makemkv command
+alias mkdir="mkdir -pv" # creates intermediate directories
+alias mv="mv --iv" # preferred "mv" implementation
+alias pst="clippaste"
+alias py2="python2"
+alias py3="python3"
+alias py="python"
+alias pyserve="python3 -m http.server 8624 && echo 'web server on port 8624'"
+alias rm="rm -i"
+alias tmux="tmux -2" # set 256 colors by default
+alias vf="vifm"
+alias weather="curl wttr.in/Pittsburgh?q" # weather in Pittsburgh
+alias wip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias wrsync="echo 'rsync --recursive --progress source/ destination/'"
+alias wshell="echo $0" # tells what shell is active
+alias wuninstall="bat $HOME/dotfiles/reference/uninstall-less.md"
+alias ytdl="youtube-dl"
+
+# OS-SPECIFIC ALIASES AND ENV VARS{{{2
+if [ "$(uname -s)" = "Darwin" ]; then
+	export OPENER="open"
+	alias la="ls -AxG"
+	alias ll='ls -lAhFG'
+	alias ls="ls -xG"
+	alias wdisk="df -h"
 else
-  if [ -n "$ZSH_VERSION" ]; then
-    SHELL_NAME="zsh"
-  else
-    if [ -n "$KSH_VERSION" ]; then
-      SHELL_NAME="ksh"
-    fi
-  fi
+	if [ -r /etc/os-release ] && grep -q '^ID=arch$' /etc/os-release; then
+		export OPENER="xdg-open"
+		printf '%s\n' "Arch Linux"
+		alias pacnews="w3m https://www.archlinux.org/news/" # get arch news
+		alias pacorph="paru -Qtdq | paru -Rns -"
+		alias pacsyu="pacnews && doas pacman -Syu" # get arch news and syu
+		alias yayu="yay --show --news && yay" # get arch news and syu with yay
+	fi
+	alias calc="qalc"
+	alias jce="journalctl --pager-end"
+	alias la='ls -x --almost-all --group-directories-first --color' # -x list entries by lines instead of cols
+	alias ll='ls -l --classify --no-group --almost-all --human-readable --indicator-style=slash --time-style=long-iso --color'
+	alias ls='ls -x --group-directories-first --color' # -x list entries by lines instead of cols
+	alias wdisk="df --human-readable" # shows disk space and percentage used
 fi
 
-export SHELL_NAME
+# PATH{{{2
+if [ -d "$HOME/.local/bin" ]; then
+	PATH="$(printf '%s\n' "$HOME/.local/bin:$PATH" \
+		| awk -v RS=: '
+			!seen[$0]++ {
+			printf "%s%s", (out?":":""), $0
+			out=1
+		}
+	')"
 
-# source functions{{{2
-if [ -d "$XDG_CONFIG_HOME/sh-base/functions" ]; then
-	for functionFile in "$XDG_CONFIG_HOME/sh-base/functions"/*; do
-		if [ -f "$functionFile" ]; then
-			. "$functionFile"
-		fi
-	done
-else
-	printf "%s\n" "$XDG_CONFIG_HOME/sh-base/functions is missing!"
+	export PATH
 fi
 
-#PATH{{{2
-add_paths --prepend "$HOME/.local/bin"
-add_paths \
-	"$HOME/go/bin" \
-	"$HOME/.local/bin/menu-scripts" \
-	"$HOME/.local/bin/scripts"
+[ -d "$HOME/.local/bin/menu-scripts" ] && case ":$PATH:" in *":$HOME/.local/bin/menu-scripts:"*) ;; *) PATH="$PATH:$HOME/.local/bin/menu-scripts"; export PATH ;; esac
 
-# source aliases and environment variables{{{2
-source_file \
-	"$XDG_CONFIG_HOME/sh-base/env-01-universal" \
-	"$XDG_CONFIG_HOME/sh-base/aliasrc"
+[ -d "$HOME/.local/bin/scripts" ] && case ":$PATH:" in *":$HOME/.local/bin/scripts:"*) ;; *) PATH="$PATH:$HOME/.local/bin/scripts"; export PATH ;; esac
 
-# source fzf_defaults{{{2
-source_file "$HOME/dotfiles/fzf/fzfrc"
+[ -d "$HOME/go/bin" ] && case ":$PATH:" in *":$HOME/go/bin:"*) ;; *) PATH="$PATH:$HOME/go/bin"; export PATH ;; esac
 
+# SOURCE FZF_DEFAULTS{{{2
+[ -f "$XDG_CONFIG_HOME/fzf/fzfrc" ] && . "$XDG_CONFIG_HOME/fzf/fzfrc"
+#}}}
 # vim:ft=sh:

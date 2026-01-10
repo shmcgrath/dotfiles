@@ -1,0 +1,4 @@
+# Ignore bootstrap directory
+^/bootstrap(/|$)
+
+# vim:ft=conf:

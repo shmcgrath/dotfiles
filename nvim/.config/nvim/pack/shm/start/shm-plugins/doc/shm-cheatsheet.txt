@@ -8,8 +8,9 @@
 
 ====================================================================
 CONTENTS                                            *shmContents*
-    1. Mappings ............. |shmMappings|
-    2. Spelling ............. |shmSpelling|
+    1. Mappings  ............. |shmMappings|
+    2. Spelling  ............. |shmSpelling|
+    3. Thesaurus ............. |shmThesaurus|
 
 My tips, reminders, notes, and reference for Vim.
 
@@ -101,6 +102,14 @@ SPELLING                                            *shmSpelling*
 - To do the opposite and mark a word as incorrect, navigate to the word and type: zw (undo with zuw).
 - To jump between misspelled words, type: ]s and [s
 - To see a list of suggested spelling corrections, navigate to the word you want help with and type: z=
+
+=================================================================
+THESAURUS                                           *shmThesaurus
+
+To activate the thesaurus, <C-x><C-t> in normal mode.
+
+The dotfiles Makefile make thesaurus will install the thesaurus
+from Project Gutenberg.
 
 =================================================================
 SESSIONS                                            *shmSessions*

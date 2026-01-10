@@ -306,6 +306,7 @@ I imagine it's something like:
 in the .bashrc
 - custom actions to file manager: https://www.youtube.com/watch?v=i28UNDO8Q7E&pp=ygUYZGlzdHJvdHViZSBmaWxlIGV4cGxvcmVy
 - thunar vs pcmanfm
+- customize mimeapps and lf opener and vifm opener see if you can make icons work for lf, vifm, and eza/lsd same for colors
 ### Neovim
 - oerride nvim-web-devicons - especially file for the one in ls 
 - learn more about localleader and neovim mappings

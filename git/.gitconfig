@@ -2,7 +2,7 @@
 	name = Sarah H. McGrath
 	email = sarah@shmcgrath.com
 [github]
-	user = shmcg
+	user = shmcgrath
 [core]
 	autocrlf = input
 	editor = "nvim --clean"

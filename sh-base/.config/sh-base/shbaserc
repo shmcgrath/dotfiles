@@ -86,8 +86,6 @@ fi
 
 [ -d "$HOME/.local/bin/menu-scripts" ] && case ":$PATH:" in *":$HOME/.local/bin/menu-scripts:"*) ;; *) PATH="$PATH:$HOME/.local/bin/menu-scripts"; export PATH ;; esac
 
-[ -d "$HOME/.local/bin/scripts" ] && case ":$PATH:" in *":$HOME/.local/bin/scripts:"*) ;; *) PATH="$PATH:$HOME/.local/bin/scripts"; export PATH ;; esac
-
 [ -d "$HOME/go/bin" ] && case ":$PATH:" in *":$HOME/go/bin:"*) ;; *) PATH="$PATH:$HOME/go/bin"; export PATH ;; esac
 
 # SOURCE FZF_DEFAULTS{{{2

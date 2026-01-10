@@ -12,7 +12,7 @@ export FZF_DEFAULT_OPTS='
   --color=border:#3c4048,label:#7b8496,query:#d9d9d9
   --border="block" --border-label="" --preview-window="border-bold" --prompt="> "
   --marker=">" --pointer="◆" --separator="─" --scrollbar="│"
-  --layout="reverse"
+  --layout="reverse" --cycle
   --info="right" --padding="1" --height=55% --tmux=95%,55%'
 
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window up:3:wrap --border-label=History"

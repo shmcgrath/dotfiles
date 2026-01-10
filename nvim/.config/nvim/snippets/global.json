@@ -76,5 +76,12 @@
 			"$LINE_COMMENT FIXME: ${1}"
 		],
 		"description": "add a FIXME comment"
+	},
+	"vim ft": {
+		"prefix": ["ftvim"],
+		"body": [
+			"# vim:ft=${1:sh|config}:$0"
+		],
+		"description": "set the vim filetype"
 	}
 }

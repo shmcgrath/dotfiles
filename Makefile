@@ -38,7 +38,7 @@ MAKE_DIRS = cd $@ && \
 		[ -n "$$dir" ] && $(MKDIR) "$$HOME/$$dir"; \
 	done
 
-.PHONY: all clean stow aur pacman wayland xorg shellbase bash navi zoxide bin rust neovim vifm fzf dropbox xdg-dirs vim vim-base bat tmux lf
+.PHONY: all clean stow aur pacman wayland xorg shellbase bash navi zoxide bin rust neovim vifm fzf dropbox xdg-dirs vim vim-base bat tmux lf wezterm
 
 all: vim neovim vim-base
 
@@ -331,14 +331,14 @@ macos-base:
 	$(MAKE) xcode-dev
 	$(MAKE) xdg-dirs
 	$(MAKE) filevault
-	@/bin/bash $(BOOTSTRAP_DIR)/m-enable-touch-id-sudo.sh
-	@/bin/bash $(BOOTSTRAP_DIR)/m-set-defaults-preferences.sh
+	@$ $(BOOTSTRAP_DIR)/m-enable-touch-id-sudo.sh
+	@$ $(BOOTSTRAP_DIR)/m-set-defaults-preferences.sh
 	$(MAKE) nerdfont
 	$(MAKE) stow
 	# add my user to the developer group
 	sudo dscl . append /Groups/_developer GroupMembership $(whoami)
 	# defaults write -g ApplePressAndHoldEnabled -bool false
-	@/bin/bash $(BOOTSTRAP_DIR)/m-list-apps.sh
+	@$ $(BOOTSTRAP_DIR)/m-list-apps.sh
 
 macos-cli:
 	$(MAKE) git
@@ -351,14 +351,16 @@ macos-cli:
 	$(MAKE) neovim
 
 homebrew-install:
-	@/bin/bash $(HOME)/dotfiles/homebrew/homebrew-install.sh
+	@$ $(HOME)/dotfiles/homebrew/homebrew-install.sh
 
 macos-homebrew:
 	$(MAKE) macos-base
 	$(MAKE) homebrew-install
+	@$ $(BOOTSTRAP_DIR)/m-enable-touch-id-sudo.sh
+	@$ $(BOOTSTRAP_DIR)/m-chsh-bash.sh
 
 brew-maint:
-	@/bin/bash $(HOME)/dotfiles/homebrew/homebrew-maintenance.sh
+	@$ $(HOME)/dotfiles/homebrew/homebrew-maintenance.sh
 
 shell-scripting:
 	$(PKGINSTALL) shfmt shellcheck
@@ -382,8 +384,19 @@ wikiman:
 	fi; \
 	@printf "%s\n" "wikiman downloaded. use wikiman makefile to install docs and wikiman"
 
+wezterm:
+	curl -o "/tmp/wezterm.terminfo" "https://raw.githubusercontent.com/wezterm/wezterm/main/termwiz/data/wezterm.terminfo"
+	if [ "$(OS)" = "macos" ]; then \
+		$(MKDIR) $(HOME)/.terminfo; \
+		tic -x -o $(HOME)/.terminfo "/tmp/wezterm.terminfo"; \
+	else \
+		$(MKDIR) $(XDG_DATA_HOME)/terminfo; \
+		tic -x -o $(XDG_DATA_HOME)/terminfo "/tmp/wezterm.terminfo"; \
+	fi
+	rm "/tmp/wezterm.terminfo"
+	infocmp wezterm | head
+
 # macos software installed
-# ghostty
 # hazel
 # alfred
 # dropbox

@@ -111,3 +111,7 @@ tiny-irc/.config/tiny/config.yml
 
 # linters and lsp
 .luarc.json
+
+# gitconfig_private
+gitconfig_private
+!gitconfig_private_template

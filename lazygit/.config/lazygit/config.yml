@@ -1,0 +1,39 @@
+gui:
+    authorColors: {}
+    customIcons:
+        filenames: {}
+        extensions: {}
+    sidePanelWidth: 0.36
+    language: auto
+    timeFormat: 02 Jan 06
+    shortTimeFormat: 3:04PM
+    theme:
+      activeBorderColor:
+        - "#5ea1ff"
+        - bold
+      inactiveBorderColor:
+        - "#7b8496"
+      searchingActiveBorderColor:
+        - "#ff5ef1"
+        - bold
+      optionsTextColor:
+        - "#7b8496"
+      selectedLineBgColor:
+        - "#3c4048"
+      cherryPickedCommitFgColor:
+        - "#ff5ea0"
+        - reverse
+      cherryPickedCommitBgColor:
+        - "#3c4048"
+      markedBaseCommitFgColor:
+        - "##f1ff5e"
+        - reverse
+      markedBaseCommitBgColor:
+        - "#3c4048"
+      unstagedChangesColor:
+        - "#ffbd5e"
+      defaultFgColor:
+        - "#ffffff"
+    nerdFontsVersion: "3"
+    showFileIcons: true
+    border: double

@@ -23,5 +23,6 @@
 --height=55%
 --tmux=95%,55%
 --cycle
+--multi
 
 # vim:ft=sh:

@@ -1,4 +1,10 @@
 # .bashrc{{{1
+# disable control flow in interactive terminals
+if [ -t 0 ]; then
+    # Disable Ctrl-S / Ctrl-Q flow control
+    stty -ixon
+fi
+
 # source shbaserc
 if [ -f "$XDG_CONFIG_HOME/sh-base/shbaserc" ]; then
     . "$XDG_CONFIG_HOME/sh-base/shbaserc"

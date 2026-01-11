@@ -1,0 +1,16 @@
+set selection-clipboard clipboard
+
+# use filename as window title
+set window-title-basename true
+
+# invert colors
+map i recolor
+
+# scrolling
+map d scroll half-down
+map u scroll half-up
+
+# multiple pages
+#map D toggle_page_mode
+
+# vim:ft=config:

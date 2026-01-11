@@ -3,7 +3,7 @@
 local M = {}
 
 -- path to Moby Thesaurus
-local thesaurus_file = vim.fn.expand("~/.local/share/doc/thesaurus/mthesaur.txt")
+local thesaurus_file = vim.fn.expand("~/.local/share/doc/words/mthesaur.txt")
 
 -- cache
 local thesaurus = nil

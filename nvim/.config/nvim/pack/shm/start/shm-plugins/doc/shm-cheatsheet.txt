@@ -8,9 +8,8 @@
 
 ====================================================================
 CONTENTS                                            *shmContents*
-    1. Mappings  ............. |shmMappings|
-    2. Spelling  ............. |shmSpelling|
-    3. Thesaurus ............. |shmThesaurus|
+    1. Mappings  ................................... |shmMappings|
+    2. Spelling, Thesaurus, and Dictionary ......... |shmSpelling|
 
 My tips, reminders, notes, and reference for Vim.
 
@@ -95,21 +94,20 @@ To Sort:
 - create commands to make and source sessions @vim
 - figure out searching in vim in windows
 - create a plugin that handles commenting for adding comments in markdown -- maybe automatically
+
 =================================================================
-SPELLING                                            *shmSpelling*
+SPELLING, THESAURUS, and DICTIONARY                  *shmSpelling*
 - TODO: create a mapping to an FN key to toggle spelling
 - To add a word to your personal dictionary, navigate to the word you want to add and type: zg (undo with zug).
 - To do the opposite and mark a word as incorrect, navigate to the word and type: zw (undo with zuw).
 - To jump between misspelled words, type: ]s and [s
 - To see a list of suggested spelling corrections, navigate to the word you want help with and type: z=
 
-=================================================================
-THESAURUS                                           *shmThesaurus
-
 To activate the thesaurus, <C-x><C-t> in normal mode.
-
 The dotfiles Makefile make thesaurus will install the thesaurus
 from Project Gutenberg.
+
+To activate dictionary spelling, <C-x><C-k> in normal mode.
 
 =================================================================
 SESSIONS                                            *shmSessions*

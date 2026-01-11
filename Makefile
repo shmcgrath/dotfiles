@@ -155,14 +155,8 @@ neovim:
 	$(MKDIR) $(XDG_STATE_HOME)/nvim/swap
 	$(STOW) nvim
 
-thesaurus: # download the mthesaur.txt from project gutenberg
-	$(MKDIR) $(XDG_DATA_HOME)/doc/thesaurus
-	curl --location --fail --show-error \
-		--output "$(XDG_DATA_HOME)/doc/thesaurus/mthesaur.txt" \
-		"https://www.gutenberg.org/files/3202/files/mthesaur.txt"
-	@printf "%s\n" "using perl to change CRLF to unix only lines"
-	perl -pi -e 's/\r$$//' "$(XDG_DATA_HOME)/doc/thesaurus/mthesaur.txt"
-	@file $(XDG_DATA_HOME)/docs/thesaurus/mthesaur.txt
+get-dicts: # run the script to get word lists and thesaurus
+	@$ $(BOOTSTRAP_DIR)/get-dictionaries-thesaurus.sh
 
 nvim:
 	$(MAKE) neovim

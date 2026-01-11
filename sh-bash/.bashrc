@@ -12,17 +12,6 @@ else
 	printf 'Warning: %s not found\n' "$XDG_CONFIG_HOME/sh-base/shbaserc"
 fi
 
-# source functions
-if [ -d "$XDG_CONFIG_HOME/sh-base/functions" ]; then
-	for functionFile in "$XDG_CONFIG_HOME/sh-base/functions"/*; do
-		if [ -f "$functionFile" ]; then
-			. "$functionFile"
-		fi
-	done
-else
-	printf "%s\n" "$XDG_CONFIG_HOME/sh-base/functions is missing!"
-fi
-
 # Set default blocksize for ls, df, du
 # from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
 export BLOCKSIZE=1k

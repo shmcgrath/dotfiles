@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set --errexit --nounset --pipefail
+set -euo pipefail
 
 DOTFILES_DIR="$HOME/dotfiles"
 
@@ -12,7 +12,7 @@ TARGET_NAME="$1"
 BASE_DIR="${DOTFILES_DIR}/${TARGET_NAME}"
 
 makedir() {
-    mkdir --parents --verbose "$1"
+    mkdir -pv "$1"
 }
 
 declare -A DIR_MAP=(

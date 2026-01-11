@@ -1,0 +1,4 @@
+% kali, vm, virtual machine, hacking
+
+# mounting for shared folders in kali vm
+doas mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other

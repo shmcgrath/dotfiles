@@ -1,0 +1,73 @@
+% journalctl, logs, linux
+
+# Show the entire journal
+journalctl --no-pager
+
+# Show newest entries first
+journalctl --reverse
+
+# Show logs for the current boot
+journalctl --boot --no-pager
+
+# Show logs for the previous boot
+journalctl --boot=-1 --no-pager
+
+# Follow logs in real time
+journalctl --follow
+
+# Show logs for a specific unit
+journalctl --unit=<unit>
+
+# Show logs for multiple units
+journalctl --unit=<unit> --unit=<unit>
+
+# Show logs since a specific date/time
+journalctl --since="2026-01-01 08:00:00"
+
+# Show logs until a specific date/time
+journalctl --until="2026-01-01 12:00:00"
+
+# Show logs for a specific priority (0=emerg, 1=alert, 2=crit, 3=err, 4=warning, 5=notice, 6=info, 7=debug)
+journalctl --priority=<priority>
+
+# Show only error messages
+journalctl --priority=err
+
+# Filter logs by process ID
+journalctl _PID=<pid>
+
+# Filter logs by executable name
+journalctl _COMM=<executable_name>
+
+# Filter logs by user ID
+journalctl _UID=<uid>
+
+# Show logs with pager starting at the end (most recent logs)
+journalctl --pager-end
+
+# Limit output to N lines
+journalctl --lines=50
+
+# Combine with grep for search
+journalctl --no-pager | grep <pattern>
+
+# Show logs for the kernel only
+journalctl --dmesg
+
+# Show logs for a specific systemd unit in real time
+journalctl --unit=<unit> --follow
+
+# Show all boots available
+journalctl --list-boots
+
+
+# Most recent boot ID
+$ boot_current: journalctl --list-boots | head --lines=1 | awk '{print $1}'
+
+# Units with errors
+$ failed_units: systemctl list-units --state=failed | awk '{print $1}'
+
+# Units currently running
+$ running_units: systemctl list-units --type=service --state=running | awk '{print $1}'
+
+$ unit: systemctl list-units --type=service --all | awk '{print $1}'

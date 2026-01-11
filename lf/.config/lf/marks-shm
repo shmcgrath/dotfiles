@@ -1,6 +1,13 @@
-D:~/Dropbox/
+A:~/.cache/
+C:~/.config/
+D:~/.local/share/
+S:~/.local/state/
 b:~/.local/bin/
-c:~/dotfiles
+c:~/dotfiles/
+d:~/Dropbox/
+f:~/Documents/hledger/
 h:~/
+l:~/Downloads/
 n:~/Dropbox/shm/
+o:~/Documents/
 p:~/Pictures/

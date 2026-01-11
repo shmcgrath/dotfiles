@@ -78,7 +78,7 @@
 		"description": "add a FIXME comment"
 	},
 	"vim ft": {
-		"prefix": ["ftvim"],
+		"prefix": ["vimff"],
 		"body": [
 			"# vim:ft=${1:sh|config}:$0"
 		],

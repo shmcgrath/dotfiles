@@ -245,6 +245,11 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- clarify vim.bo vs vim.opt_local
+    - https://github.com/neovim/neovim/pull/27708
+    - https://github.com/neovim/neovim/issues/27671
+    - https://github.com/neovim/neovim/pull/30733
+    - https://github.com/neovim/neovim/issues/14670
 - write entire color processing script vivid > lf colors > vidir vim syntax
 - fabian dotfiles look at how handles aliases and look at other shell and fzf
 - do fd/find -f recursive and such in lf for renaming?

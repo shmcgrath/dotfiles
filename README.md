@@ -245,6 +245,7 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- write entire color processing script vivid > lf colors > vidir vim syntax
 - fabian dotfiles look at how handles aliases and look at other shell and fzf
 - do fd/find -f recursive and such in lf for renaming?
 - [dotfile management](https://mywiki.wooledge.org/DotFiles)

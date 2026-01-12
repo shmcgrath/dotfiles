@@ -588,10 +588,11 @@ icon=
 *gulpfile.js
 *gulpfile.ls
 
-# Perl {{{4
+#  Perl {{{4
 icon=
 *.pl
 *.pm
+*.t
 #  Elm {{{4
 icon=
 *.elm

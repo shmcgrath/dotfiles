@@ -518,9 +518,10 @@ node_modules/ 
 *gulpfile.coffee 
 *gulpfile.js 
 *gulpfile.ls 
-# Perl {{{4
+#  Perl {{{4
 *.pl 
 *.pm 
+*.t 
 #  Elm {{{4
 *.elm 
 #  HTML and Web {{{4

@@ -2,12 +2,18 @@
 &[ "$LF_LEVEL" -eq 1 ] || lf -remote "send $id echoerr \"Warning: You're in a nested lf instance!\""
 
 set hidden true
-set ignorecase true
 set icons true
+set info size
+
+set rulerfile true
+
+set ignorecase true
 set incsearch true
 set drawbox true
 set ratios 2:3:4
 set scrolloff 8
+
+set timefmt "2006-01-02 03:04pm"
 
 set shell bash
 set shellopts "-eu"
@@ -49,12 +55,14 @@ map y copy
 map x cut
 map p :paste; clear
 map c clear
+map <esc> clear
 map / search
 map ? search-back
 map n search-next
 map N search-prev
 map m mark-save
 map "'" mark-load
+map "`" mark-load
 map dm mark-remove
 map <a-t> tag-toggle
 map <c-p>k :maps
@@ -186,10 +194,6 @@ cmd zoxide-interactive ${{
     lf -remote "send $id cd \"$result\""
 }}
 map zi zoxide-interactive
-map zxd cd ~/.local/share #XDG_DATA_HOME
-map zxa cd ~/.cache	#XDG_CACHE_HOME
-map zxc cd ~/.config #XDG_CONFIG_HOME
-map zxs cd ~/.local/state #XDG_STATE_HOME
 
 cmd fzf_search ${{
     cmd="rg --column --line-number --no-heading --color=always --smart-case --hidden"

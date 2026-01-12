@@ -1,3 +1,4 @@
+..
 builtin cd --*
 cd
 cd *
@@ -16,19 +17,19 @@ eza -l
 eza -la
 false
 fzf
-git a \*
 git a .
+git a \*
 git ci
-git push
 git pull
+git push
 git st
 history
 kill -9*
 la
 lazygit
-lg
 lf
 lf *
+lg
 ll
 logout
 ls
@@ -53,6 +54,7 @@ true
 uptime
 vf
 vi
+vidir
 vifm
 vim
 weather

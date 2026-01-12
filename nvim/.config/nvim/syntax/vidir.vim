@@ -1,3 +1,4 @@
+"   Adapted from the original for my personal use
 "   What: ls colors for vidir file listings
 "  Where: $VIMRUNTIME/syntax/vidir.vim
 " Author: Magnus Woldrich <m@japh.se>
@@ -58,8 +59,8 @@ function! <SID>MakeStyle(gui, fg, bg)
   return l:style
 endfunction
 
-function! <SID>MakeSyntax(ls_color)
-  let [l:glob, l:gui, l:fg, l:bg] = split(a:ls_color, '|')
+function! <SID>MakeSyntax(vidir_color)
+  let [l:glob, l:gui, l:fg, l:bg] = split(a:vidir_color, '|')
 
 	if l:glob ==# 'rs'
 	  return
@@ -80,18 +81,18 @@ function! <SID>MakeSyntax(ls_color)
 		return
 	endif
 
-	if hlexists('ls_' . l:ext)
+	if hlexists('vidir_' . l:ext)
 		return
 	endi
 
-	execute 'silent! hi ls_' . l:ext . <SID>MakeStyle(l:gui, l:fg, l:bg)
-	execute 'silent! syn match ls_' . l:ext . ' display "' . l:regex . '"'
+	execute 'silent! hi vidir_' . l:ext . <SID>MakeStyle(l:gui, l:fg, l:bg)
+	execute 'silent! syn match vidir_' . l:ext . ' display "' . l:regex . '"'
 endfunction
 
 
-let s:ls_colors = readfile($HOME . '/lscolors.txt')
+let s:vidir_colors = readfile(stdpath('config') . '/syntax/vidir-colors')
 
-for line in s:ls_colors
+for line in s:vidir_colors
   call <SID>MakeSyntax(line)
 endfor
 

@@ -80,12 +80,6 @@ vmap x :visual-accept; cut
 # not default binds
 nmap t toggle
 
-map <f-2> rename
-map a rename
-map i :rename; cmd-delete-home
-map A :rename; cmd-end
-map I :rename; cmd-home
-
 # commands
 cmd q quit
 cmd mkdir %mkdir -p "$@"
@@ -202,9 +196,6 @@ cmd fzf_search ${{
         --bind="change:reload([ -n {q} ] && $cmd -- {q} || true)" \
         --bind='enter:become(lf -remote "send $id select \"$(printf "%s" {1} | sed '\''s/\\/\\\\/g;s/"/\\"/g'\'')\"")' \
         --preview='bat --color=always --highlight-line={2} -- {1}'
-        #--preview-window='+{2}-/2' \
-        # Alternatively you can even use the same previewer you've configured for lf
-        #--preview='~/.config/lf/cleaner; ~/.config/lf/previewer {1} "$FZF_PREVIEW_COLUMNS" "$FZF_PREVIEW_LINES" "$FZF_PREVIEW_LEFT" "$FZF_PREVIEW_TOP"'
 }}
 map <c-p>f :fzf_search
 
@@ -248,6 +239,15 @@ map oF open-in-finder
 #map oo &mimeopen $f
 #map oO $mimeopen --ask $f
 map of open-file
+
+map <f-2> rename
+map ra rename
+map rr rename
+map ri :rename; cmd-delete-home
+map rA :rename; cmd-end
+map rI :rename; cmd-home
+cmd bulk-rename $vidir -- $PWD
+map rb bulk-rename
 
 cmd chmod ${{
   printf "Mode Bits: "

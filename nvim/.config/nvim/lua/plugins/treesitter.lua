@@ -30,6 +30,7 @@ treesitter.install({
   "markdown",
   "markdown_inline",
   "muttrc",
+  "perl",
   "printf",
   "python",
   "query",

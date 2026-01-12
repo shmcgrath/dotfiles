@@ -246,6 +246,7 @@ zola 0.20.0-1
 
 ## Todo
 - fabian dotfiles look at how handles aliases and look at other shell and fzf
+- do fd/find -f recursive and such in lf for renaming?
 - [dotfile management](https://mywiki.wooledge.org/DotFiles)
 - [lsd](https://github.com/lsd-rs) vs eza
 - glow config

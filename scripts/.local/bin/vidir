@@ -31,7 +31,7 @@ my(@files, @directories, @sorted);
 
 for my $item(@ARGV) {
   if($item eq '-') {
-    push(@files, map { chomp; $_ } <STDIN>);
+    push(@files, map { chomp; $_ =~ m{^/} ? $_ : "./$_"  } <STDIN>);
     close STDIN or die "Cant close STDIN: $!\n";
     open(STDIN, '/dev/tty') or die "Cant reopen STDIN: $!\n";
     next;

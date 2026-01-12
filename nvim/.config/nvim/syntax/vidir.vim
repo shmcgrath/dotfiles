@@ -73,10 +73,10 @@ function! <SID>MakeSyntax(vidir_color)
 		let l:ext = substitute(l:ext, '[.~]', '_', 'g')
 	elseif l:glob == 'di'
 		let l:ext = 'DI'
-		let l:regex = '\v.+[/].+[/]$'
+		let l:regex = '\v.+[/]\zs.+[/]$'
 	elseif l:glob == 'ln'
 		let l:ext = 'LN'
-		let l:regex = '\v.+\@$'
+		let l:regex = '\v.+[/]\zs.+\@$'
 	else
 		return
 	endif

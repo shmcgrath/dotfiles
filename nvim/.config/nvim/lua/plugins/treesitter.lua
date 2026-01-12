@@ -57,6 +57,10 @@ vim.api.nvim_create_autocmd("FileType", {
       return
     end
 
-    pcall(vim.treesitter.start, args.buf)
+    -- defer tree-sitter until after ftplugins run
+    vim.schedule(function()
+      pcall(vim.treesitter.start, args.buf)
+    end)
+
   end,
 })

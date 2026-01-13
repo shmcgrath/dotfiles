@@ -1,6 +1,6 @@
 " what: ftplugin/vidir.vim
-"  who: by Raimondi
-" when: 2018-12-30
+"  who: by Raimondi - updated by Sarah H. McGrath for personal use
+" when: 2018-12-30 - 2025-01-13
 
 " Only do this when not done yet for this buffer
 if exists("b:did_ftplugin")
@@ -10,6 +10,8 @@ endif
 " Disable list mode for clean alignment
 setlocal nolist
 
+setlocal noswapfile
+setlocal buftype=acwrite
 
 " Don't load another filetype plugin for this buffer
 let b:did_ftplugin = 1
@@ -18,8 +20,22 @@ let b:did_ftplugin = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-" Restore things when changing filetype.
-let b:undo_ftplugin = "setl ofu< | augroup vidir | exec 'au! CursorMoved,CursorMovedI <buffer>'|augroup END"
+" Print warning on buffer start
+echohl WarningMsg
+  echom 'Vidir: do not change the leading numbers or the whitespace around them'
+echohl Normal
+
+" Snapshot immutable prefixes by INDEX VALUE (not line number)
+" Map: index -> exact prefix (digits + whitespace)
+let b:vidir_prefixes = {}
+
+for lnum in range(1, line('$'))
+  let line = getline(lnum)
+  let m = matchlist(line, '^\s*\(\d\+\)\(\s\+\)')
+  if !empty(m)
+    let b:vidir_prefixes[m[1]] = m[1] . m[2]
+  endif
+endfor
 
 " do not allow the cursor to move back into the line numbers
 function! s:on_cursor_moved()
@@ -45,34 +61,59 @@ function! s:on_cursor_moved()
   endif
 endfunction
 
-" do not allow non-numeric changes to the file index column
-function! s:on_text_changed()
-  " Only check the number column (digits at the start of the line)
+" Validate structure ON COMMIT
+function! s:validate_vidir()
   for lnum in range(1, line('$'))
-    let l:line = getline(lnum)
-    if l:line =~ '^\d\+\s\+\S'
-      " Number + at least one space + filename: good
+    let line = getline(lnum)
+    let m = matchlist(line, '^\s*\(\d\+\)\(\s\+\)')
+    if empty(m)
       continue
-    elseif l:line =~ '^\s*$'
-      " empty line: ignore
-      continue
-    else
-      " Something changed the number or whitespace
-      silent undo
-      echohl WarningMsg
-      echom 'Vidir: do not change the leading numbers or the whitespace around them'
+    endif
+
+    let idx = m[1]
+    let prefix = m[1] . m[2]
+
+    if !has_key(b:vidir_prefixes, idx)
+      echohl ErrorMsg
+      echom 'Vidir: unknown index ' . idx . ' on line ' . lnum
       echohl Normal
-      return
+      return 1
+    endif
+
+    if prefix !=# b:vidir_prefixes[idx]
+      echohl ErrorMsg
+      echom 'Vidir: index column modified for ' . idx
+      echohl Normal
+      return 1
     endif
   endfor
-endfunct
+
+  return 0
+endfunction
+
+" Intercept :write as vidir "apply"
+function! s:vidir_write()
+  if s:validate_vidir()
+    echoerr 'Vidir: write aborted'
+    return
+  endif
+
+  " Allow the write to proceed exactly once
+  setlocal buftype=
+  write
+  setlocal buftype=acwrite
+endfunction
+
 
 augroup vidir
   autocmd!
   autocmd CursorMoved,CursorMovedI <buffer> call s:on_cursor_moved()
-  autocmd TextChanged,TextChangedI <buffer> call s:on_text_changed()
+  autocmd BufWriteCmd <buffer> call s:vidir_write()
 augroup END
 
+
+" Restore things when changing filetype.
+let b:undo_ftplugin = "setl ofu< | augroup vidir | exec 'au! CursorMoved,CursorMovedI <buffer>'|augroup END"
 "reset &cpo back to users setting
 let &cpo = s:save_cpo
 

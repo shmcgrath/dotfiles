@@ -319,6 +319,12 @@ in the .bashrc
 alias f="find . -type f -not -path '*/.git/*'"
 alias ff="find . -type f -not -path '*/.git/*' | vidir -"
 
+to vimrc:
+" === Custom commands ===
+  command! MakeDir !mkdir -p %:h
+  command! WlCopy w !wl-copy
+  command! XCopy w !xclip -sel cli
+
 ### Neovim
 - oerride nvim-web-devicons - especially file for the one in ls 
 - learn more about localleader and neovim mappings

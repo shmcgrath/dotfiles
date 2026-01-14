@@ -9,5 +9,5 @@ require("nvim-highlight-colors").setup({
 vim.keymap.set("n", "<F4>", "<cmd>HighlightColors Toggle<CR>", {
 	noremap = true,
 	silent = true,
-	desc = "Toggle Undotree",
+	desc = "Toggle Highlight Colors",
 })

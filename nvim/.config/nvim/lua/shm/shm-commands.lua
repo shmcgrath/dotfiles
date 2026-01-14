@@ -30,3 +30,11 @@ vim.api.nvim_create_user_command("ShmTestReloadTabline", function()
   package.loaded["shm.tabline"] = nil
   require("shm.tabline").setup()
 end, { desc = "reload tabline for testing" })
+
+-- align-markdown-table visually selected
+vim.api.nvim_create_user_command("ShmAlignMDTable", function(opts)
+  require("shm.functions.align-markdown-table").align_visual_range(opts.line1, opts.line2)
+end, {
+  range = true,
+  desc = "Align a markdown table that is visually selected"
+})

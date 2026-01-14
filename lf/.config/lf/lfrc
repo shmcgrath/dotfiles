@@ -241,15 +241,14 @@ map oF open-in-finder
 map of open-file
 
 map <f-2> rename
-map ra rename
-map rr rename
-map ri :rename; cmd-delete-home
-map rA :rename; cmd-end
-map rI :rename; cmd-home
+map a rename
+map i :rename; cmd-delete-home
+map A :rename; cmd-end
+map I :rename; cmd-home
 cmd bulk-rename-pwd $vidir
-map rb bulk-rename-pwd
+map b bulk-rename-pwd
 cmd bulk-rename-children $fd -t f | vidir -
-map rB bulk-rename-children
+map B bulk-rename-children
 
 
 cmd chmod ${{

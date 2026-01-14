@@ -19,14 +19,14 @@ core:
   regular_file:
     foreground: white
   reset_to_normal:
-    foreground: orange
+    foreground: yellow
   directory:
     foreground: blue
   symlink:
     foreground: cyan
   multi_hard_link: {}
   fifo:
-    foreground: yellow
+    foreground: orange
     background: black
   socket:
     foreground: pink
@@ -37,11 +37,11 @@ core:
     background: black
     font-style: bold
   block_device:
-    foreground: yellow
+    foreground: orange
     background: black
     font-style: bold
   character_device:
-    foreground: yellow
+    foreground: orange
     background: black
     font-style: bold
   broken_symlink:
@@ -56,7 +56,7 @@ core:
     background: red
   setgid:
     foreground: black
-    background: yellow
+    background: orange
   file_with_capability: {}
   sticky_other_writable:
     foreground: black
@@ -71,34 +71,34 @@ core:
     foreground: green
 text:
   special:
-    foreground: orange
+    foreground: yellow
   todo:
-    foreground: orange
+    foreground: yellow
     font-style: bold
   licenses:
-    foreground: orange
+    foreground: yellow
   configuration:
-    foreground: orange
+    foreground: yellow
   other:
-    foreground: orange
+    foreground: yellow
 markup:
-  foreground: orange
+  foreground: yellow
 programming:
-  foreground: orange
+  foreground: purple
 media:
   image:
     foreground: pink
   audio:
     foreground: cyan
   video:
-    foreground: orange
+    foreground: magenta
     font-style: bold
   fonts:
-    foreground: orange
+    foreground: yellow
   3d:
     foreground: pink
 office:
-  foreground: orange
+  foreground: magenta
 archives:
   foreground: red
   font-style: bold

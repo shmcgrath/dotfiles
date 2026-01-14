@@ -7,3 +7,7 @@ To split items (colon separated) onto individual lines:
 
 To add spacing instead of =:
 :%s/=/   /gcc
+
+OR
+
+run color-gen-lf.pl

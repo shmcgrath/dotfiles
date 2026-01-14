@@ -113,6 +113,9 @@ fi
 
 [ -d "$HOME/go/bin" ] && case ":$PATH:" in *":$HOME/go/bin:"*) ;; *) PATH="$PATH:$HOME/go/bin"; export PATH ;; esac
 
+# SOURCE PERL {{{2
+[ -f "$HOME/perl5/perl-sh" ] && . "$HOME/perl5/perl-sh"
+
 # SOURCE FZF_DEFAULTS{{{2
 [ -f "$XDG_CONFIG_HOME/fzf/fzf.sh" ] && . "$XDG_CONFIG_HOME/fzf/fzf.sh"
 #}}}

@@ -62,45 +62,45 @@ core:
     foreground: black
     background: green
   other_writable:
-    foreground: purple
+    foreground: white
     background: green
   sticky:
     foreground: white
-    background: purple
+    background: yellow
   executable_file:
     foreground: green
 text:
   special:
-    foreground: yellow
+    foreground: purple
   todo:
-    foreground: yellow
+    foreground: purple
     font-style: bold
   licenses:
-    foreground: yellow
+    foreground: purple
   configuration:
-    foreground: yellow
+    foreground: purple
   other:
-    foreground: yellow
+    foreground: purple
 markup:
-  foreground: yellow
+  foreground: purple
 programming:
   foreground: purple
 media:
   image:
     foreground: pink
   audio:
-    foreground: cyan
-  video:
     foreground: magenta
+  video:
+    foreground: pink
     font-style: bold
   fonts:
-    foreground: yellow
+    foreground: magenta
   3d:
     foreground: pink
 office:
-  foreground: magenta
+  foreground: green
 archives:
-  foreground: red
+  foreground: yellow
   font-style: bold
 executable:
   foreground: green

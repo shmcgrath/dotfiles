@@ -98,7 +98,7 @@ config.colors = {
   },
   indexed = {
     [16] = "#ffbd5e",
-    [17] = "#ff6e5e",
+    [17] = "#ff5ea0",
     [205] = "#ff5ea0",
     [207] = "#ff5ef1",
     [235] = "#1e2124",

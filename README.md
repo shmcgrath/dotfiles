@@ -245,6 +245,8 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- start colors off and toggle on with f4
+- SET UP A SEARCH FOR A FILE IN lf WHERE IT NAVIGATES TO THAT DIRECTORY
 - clarify vim.bo vs vim.opt_local
     - https://github.com/neovim/neovim/pull/27708
     - https://github.com/neovim/neovim/issues/27671

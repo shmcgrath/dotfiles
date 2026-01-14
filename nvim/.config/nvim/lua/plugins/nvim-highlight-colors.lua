@@ -11,3 +11,5 @@ vim.keymap.set("n", "<F4>", "<cmd>HighlightColors Toggle<CR>", {
 	silent = true,
 	desc = "Toggle Highlight Colors",
 })
+
+require("nvim-highlight-colors").turnOff()

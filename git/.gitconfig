@@ -12,6 +12,7 @@
 	br = branch --verbose --color
 	ci = commit
 	cl = clone
+	cln = clone
 	co = checkout
 	com = checkout master
 	df = difftool

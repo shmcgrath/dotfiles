@@ -21,7 +21,8 @@ journalText="---
 title: $journalTitle
 date: $dateFormatted $timeFormatted
 tags: $journalTags
-...
+
+---
 
 # $journalTitle
 

@@ -245,6 +245,10 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- pomodoro timers?
+- https://github.com/SylvanFranklin/omni-preview.nvm
+- https://github.com/SylvanFranklin/awesome-typst
+- https://github.com/AndrewRadev/id3.vim
 - icons for keepass in lf
 - https://github.com/artempyanykh/marksman/
 - start colors off and toggle on with f4
@@ -309,6 +313,7 @@ zola 0.20.0-1
     - https://old.reddit.com/r/vifm/comments/190u5zg/useful_command_to_create_files_and_directories/
 - make dircolors theme: https://github.com/dracula/dircolors
 Also, the quality of life improvements like `alias ..='cd ..'`, or mapping `l` such that it either opens a pager or lists a dir, depending on the argument. I'd never come up with those, and they're beyond useful.
+- https://github.com/stevearc/conform.nvim
 
 I imagine it's something like:
 

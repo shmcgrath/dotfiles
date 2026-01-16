@@ -21,6 +21,9 @@ ps aux | grep
 # shows all 256 colors and what they are assigned to in the shell
 for i in {0..255}; do tput setaf $i; echo -n "$i "; done
 
+# shows 0-15 ANSI colors
+for i in {0..15}; do printf "\033[48;5;%sm %3s \033[0m\n" "$i" "$i"; done
+
 % misc, bash, shell
 
 # source ~/.bashrc

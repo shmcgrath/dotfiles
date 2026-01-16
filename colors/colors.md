@@ -11,7 +11,7 @@ Notes:
 | bg_alt    | [#1e2124](https://www.color-hex.com/color/1e2124) | [#eaeaea](https://www.color-hex.com/color/eaeaea) |
 | bg_hi     | [#3c4048](https://www.color-hex.com/color/3c4048) | [#acacac](https://www.color-hex.com/color/acacac) |
 | fg        | [#ffffff](https://www.color-hex.com/color/ffffff) | [#16181a](https://www.color-hex.com/color/16181a) |
-| gray      | [#7b8496](https://www.color-hex.com/color/7b8496) | [#7b8496](https://www.color-hex.com/color/7b8496) |
+| grey      | [#7b8496](https://www.color-hex.com/color/7b8496) | [#7b8496](https://www.color-hex.com/color/7b8496) |
 | blue      | [#5ea1ff](https://www.color-hex.com/color/5ea1ff) | [#0057d1](https://www.color-hex.com/color/0057d1) |
 | green     | [#5eff6c](https://www.color-hex.com/color/5eff6c) | [#008b0c](https://www.color-hex.com/color/008b0c) |
 | cyan      | [#5ef1ff](https://www.color-hex.com/color/5ef1ff) | [#008c99](https://www.color-hex.com/color/008c99) |
@@ -22,50 +22,59 @@ Notes:
 | orange    | [#ffbd5e](https://www.color-hex.com/color/ffbd5e) | [#d17c00](https://www.color-hex.com/color/d17c00) |
 | purple    | [#bd5eff](https://www.color-hex.com/color/bd5eff) | [#a018ff](https://www.color-hex.com/color/a018ff) |
 
-## Dark Cyberdream Translation
-| Color                   | ANSI | Cyberdream | Dracula  | Catppuccin | Mocha   |
-|-------------------------|------|------------|----------|------------|---------|
-| background              |      | #16181a    | #282a36  | Base       | #1e1e2e |
-| background alt          |      | #1e2124    | #282a36  | Base       | #1e1e2e |
-| background highlight    |      | #3c4048    | #44475a  | Surface 2  | #585b70 |
-| foreground              |      | #ffffff    | #f8f8f2  | Text       | #cdd6f4 |
-| black                   | 0    | #16181a    | #21222c  |            | #45475a |
-| bright black            | 8    | #3c4048    | #6272a4  | Surface 2  | #585b70 |
-| red                     | 1    | #ff6e5e    | #ff5555  |            | #f38ba8 |
-| bright red              | 9    | #ff6e5e    | #ff6e6e  |            | #f38ba8 |
-| green                   | 2    | #5eff6c    | #50fa7b  | Green      | #a6e3a1 |
-| bright green            | 10   | #5eff6c    | #69ff94  | Green      | #a6e3a1 |
-| yellow                  | 3    | #f1ff5e    | #f1fa8c  | Yellow     | #f9e2af |
-| bright yellow           | 11   | #f1ff5e    | #ffffa5  | Yellow     | #f9e2af |
-| blue                    | 4    | #5ea1ff    | #bd93f9  |            | #89b4fa |
-| bright blue             | 12   | #5ea1ff    | #d6acff  |            | #89b4fa |
-
-| magenta                 | 5    | #bd5eff    | #ff79c6  |            | #f5c2e7 |
-| bright magenta          | 13   | #bd5eff    | #ff92df  |            | #f5c2e7 |
-| cd-magenta              |      | #ff5ef1    |          |            |         |
-| cd-purple               |      | #bd5eff    |          |            |         |
-
-| cyan                    | 6    | #5ef1ff    | #8be9fd  |            | #94e2d5 |
-| bright cyan             | 14   | #5ef1ff    | #a4ffff  |            | #94e2d5 |
-| white                   | 7    | #ffffff    | #f8f8f2  |            | #bac2de |
-| bright white            | 15   | #ffffff    | #ffffff  |            | #a6adc8 |
-| index 16                |      | #ffbd5e    |          | Peach      | #fab387 |
-| index 17                |      | #ff5ea0    |          | Rosewater  | #f5e0dc |
-| cd-pink                 |      | #ff5ea0    |          |            |         |
-| cd-gray                 |      | #7b8496    |          |            |         |
-| cd-orange               |      | #ffbd5e    |          |            |         |
-
-| cursor                  |      | #ffffff    | #f8f8f2  | Rosewater  | #f5e0dc |
-| cursor text             |      | —          | #282a36  | Crust      | #11111b  |
-| cursor bg               |      | #16181a    | —        | Crust      | #11111b |
-| selection background    |      | #3c4048    | #44475a  |            | #353749 |
-| selection_background    |      | #3c4048    | #44475a  |            | #f5e0dc |
-| active_tab_foreground   |      | #ffbd5e    | #f8f8f2  |            | #cba6f7 |
-| inactive_tab_background |      | #16181a    | #6272a4  |            | #181825 |
-| cursor_bg cursor_border |      | #ffffff    | #f8f8f2  |            | #f5e0dc |
-| cursor_fg               |      | #16181a    | #282a36  |            | #11111b |
-| selection_fg            |      | #ffffff    | #000000  |            | #cdd6f4 |
-| split                   |      | #16181a    | #6272a4  |            | #6c7086 |
+| ## Dark Cyberdream Translation |        |              |            |                     |           |
+| ------------------------------ | ------ | ------------ | ---------- | ------------------- | --------- |
+| -------------------------      | ------ | ------------ | ---------- | ------------        | --------- |
+| background                     |        | #16181a      | #282a36    | Base                | #1e1e2e   |
+| background alt                 |        | #1e2124      | #282a36    | Base                | #1e1e2e   |
+| background highlight           |        | #3c4048      | #44475a    | Surface 2 Overlay 0 | #585b70   |
+| foreground                     |        | #ffffff      | #f8f8f2    | Text                | #cdd6f4   |
+| black                          | 0      | #16181a      | #21222c    | Surface 1           | #45475a   |
+| bright black                   | 8      | #3c4048      | #6272a4    | Surface 2           | #585b70   |
+| red                            | 1      | #ff6e5e      | #ff5555    | Red Maroon          | #f38ba8   |
+| bright red                     | 9      | #ff6e5e      | #ff6e6e    | Red Maroon          | #f38ba8   |
+| green                          | 2      | #5eff6c      | #50fa7b    | Green               | #a6e3a1   |
+| bright green                   | 10     | #5eff6c      | #69ff94    | Green               | #a6e3a1   |
+| yellow                         | 3      | #f1ff5e      | #f1fa8c    | Yellow              | #f9e2af   |
+| bright yellow                  | 11     | #f1ff5e      | #ffffa5    | Yellow              | #f9e2af   |
+| blue                           | 4      | #5ea1ff      | #bd93f9    | Blue                | #89b4fa   |
+| bright blue                    | 12     | #5ea1ff      | #d6acff    | Blue                | #89b4fa   |
+| magenta                        | 5      | #bd5eff      | #ff79c6    |                     | #f5c2e7   |
+| bright magenta                 | 13     | #bd5eff      | #ff92df    |                     | #f5c2e7   |
+| cd-magenta                     |        | #ff5ef1      |            | Pink                |           |
+| cd-purple                      |        | #bd5eff      |            | Lavender Mauve      |           |
+| cyan                           | 6      | #5ef1ff      | #8be9fd    | Teal Sky Sapphire   | #94e2d5   |
+| bright cyan                    | 14     | #5ef1ff      | #a4ffff    | Teal Sky Sapphire   | #94e2d5   |
+| white                          | 7      | #ffffff      | #f8f8f2    | Subtext 1           | #bac2de   |
+| bright white                   | 15     | #ffffff      | #ffffff    | Subtext 0           | #a6adc8   |
+| index 16                       |        | #ffbd5e      |            | Peach               |           |
+| index 17                       |        | #ff5ea0      |            | Rosewater           | #f5e0dc   |
+| cd-pink                        |        | #ff5ea0      |            | Flamingo Pink       |           |
+|                                |        |              |            |                     |           |
+| cd-gray                        |        | #7b8496      |            | Overlay 2 Overlay 1 | #9399b2   |
+| cd-orange                      |        | #ffbd5e      |            | Peach               | ##fab387  |
+| cursor                         |        | #ffffff      | #f8f8f2    | Rosewater           | #f5e0dc   |
+| cursor text                    |        | —            | #282a36    | Crust               | #11111b   |
+| cursor bg                      |        | #16181a      | —          | Crust               | #11111b   |
+| selection background           |        | #3c4048      | #44475a    |                     | #353749   |
+| selection_background           |        | #3c4048      | #44475a    |                     | #f5e0dc   |
+| active_tab_foreground          |        | #ffbd5e      | #f8f8f2    |                     | #cba6f7   |
+| inactive_tab_background        |        | #16181a      | #6272a4    |                     | #181825   |
+| cursor_bg cursor_border        |        | #ffffff      | #f8f8f2    |                     | #f5e0dc   |
+| cursor_fg                      |        | #16181a      | #282a36    |                     | #11111b   |
+| selection_fg                   |        | #ffffff      | #000000    |                     | #cdd6f4   |
+| split                          |        | #16181a      | #6272a4    |                     | #6c7086   |
+|                                |        |              |            |                     |           |
+TICKET: catpuccin mauve should be purple
+catppuccin maroon should be red
+overlay 2 = grey
+overlay 1 = grey
+overlay 0 = bg_highlight
+surface2 = bg_highlight
+surface1 = bg_alt
+surface0 = > bgalt per tmux
+mantle = background ? -> bg_alt per tmux
+crust = background ? -> bg_alt per tmux
 
 - background:
     - cursor_text_color
@@ -74,36 +83,64 @@ Notes:
     - inactive_tab_foreground
 
 ## Catppuccin Themes
-| Color Function | Color Name | Latte   | Frappé  | Macchiato | Mocha   |
-| -------------- | ---------- | ------- | ------- | --------- | ------- |
-|                | Rosewater  | #dc8a78 | #f2d5cf | #f4dbd6   | #f5e0dc |
-|                | Flamingo   | #dd7878 | #eebebe | #f0c6c6   | #f2cdcd |
-|                | Pink       | #ea76cb | #f4b8e4 | #f5bde6   | #f5c2e7 |
-|                | Mauve      | #8839ef | #ca9ee6 | #c6a0f6   | #cba6f7 |
-|                | Red        | #d20f39 | #e78284 | #ed8796   | #f38ba8 |
-|                | Maroon     | #e64553 | #ea999c | #ee99a0   | #eba0ac |
-|                | Peach      | #fe640b | #ef9f76 | #f5a97f   | #fab387 |
-|                | Yellow     | #df8e1d | #e5c890 | #eed49f   | #f9e2af |
-|                | Green      | #40a02b | #a6d189 | #a6da95   | #a6e3a1 |
-|                | Teal       | #179299 | #81c8be | #8bd5ca   | #94e2d5 |
-|                | Sky        | #04a5e5 | #99d1db | #91d7e3   | #89dceb |
-|                | Sapphire   | #209fb5 | #85c1dc | #7dc4e4   | #74c7ec |
-|                | Blue       | #1e66f5 | #8caaee | #8aadf4   | #89b4fa |
-|                | Lavender   | #7287fd | #babbf1 | #b7bdf8   | #b4befe |
-|                | Text       | #4c4f69 | #c6d0f5 | #cad3f5   | #cdd6f4 |
-|                | Subtext 1  | #5c5f77 | #b5bfe2 | #b8c0e0   | #bac2de |
-|                | Subtext 0  | #6c6f85 | #a5adce | #a5adcb   | #a6adc8 |
-|                | Overlay 2  | #7c7f93 | #949cbb | #939ab7   | #9399b2 |
-|                | Overlay 1  | #8c8fa1 | #838ba7 | #8087a2   | #7f849c |
-|                | Overlay 0  | #9ca0b0 | #737994 | #6e738d   | #6c7086 |
-|                | Surface 2  | #acb0be | #626880 | #5b6078   | #585b70 |
-|                | Surface 1  | #bcc0cc | #51576d | #494d64   | #45475a |
-|                | Surface 0  | #ccd0da | #414559 | #363a4f   | #313244 |
-| Background     | Base       | #eff1f5 | #303446 | #24273a   | #1e1e2e |
-|                | Mantle     | #e6e9ef | #292c3c | #1e2030   | #181825 |
-|                | Crust      | #dce0e8 | #232634 | #181926   | #11111b |
 
+| Cyberdream Color | Dark Hex | Color Name | Latte   | Frappé  | Macchiato | Mocha   |
+| ---------------- | -------- | ---------- | ------- | ------- | --------- | ------- |
+| Pink             | #ff5ea0  | Rosewater  | #dc8a78 | #f2d5cf | #f4dbd6   | #f5e0dc |
+| Pink             | #ff5ea0  | Flamingo   | #dd7878 | #eebebe | #f0c6c6   | #f2cdcd |
+| Magenta          | #ff5ef1  | Pink       | #ea76cb | #f4b8e4 | #f5bde6   | #f5c2e7 |
+| Purple           | #bd5eff  | Mauve      | #8839ef | #ca9ee6 | #c6a0f6   | #cba6f7 |
+| Red              | #ff6e5e  | Red        | #d20f39 | #e78284 | #ed8796   | #f38ba8 |
+| Red              | #ff6e5e  | Maroon     | #e64553 | #ea999c | #ee99a0   | #eba0ac |
+| Orange           | #ffbd5e  | Peach      | #fe640b | #ef9f76 | #f5a97f   | #fab387 |
+| Yellow           | #f1ff5e  | Yellow     | #df8e1d | #e5c890 | #eed49f   | #f9e2af |
+| Green            | #5eff6c  | Green      | #40a02b | #a6d189 | #a6da95   | #a6e3a1 |
+| Cyan             | #5ef1ff  | Teal       | #179299 | #81c8be | #8bd5ca   | #94e2d5 |
+| Cyan             | #5ef1ff  | Sky        | #04a5e5 | #99d1db | #91d7e3   | #89dceb |
+| Cyan             | #5ef1ff  | Sapphire   | #209fb5 | #85c1dc | #7dc4e4   | #74c7ec |
+| Blue             | #5ea1ff  | Blue       | #1e66f5 | #8caaee | #8aadf4   | #89b4fa |
+| Purple           | #bd5eff  | Lavender   | #7287fd | #babbf1 | #b7bdf8   | #b4befe |
+| fg               | #ffffff  | Text       | #4c4f69 | #c6d0f5 | #cad3f5   | #cdd6f4 |
+| grey             | #7b8496  | Subtext 1  | #5c5f77 | #b5bfe2 | #b8c0e0   | #bac2de |
+| grey             | #7b8496  | Subtext 0  | #6c6f85 | #a5adce | #a5adcb   | #a6adc8 |
+| grey             | #7b8496  | Overlay 2  | #7c7f93 | #949cbb | #939ab7   | #9399b2 |
+| grey             | #7b8496  | Overlay 1  | #8c8fa1 | #838ba7 | #8087a2   | #7f849c |
+| bg_highlight     | #3c4048  | Overlay 0  | #9ca0b0 | #737994 | #6e738d   | #6c7086 |
+| bg_highlight     | #3c4048  | Surface 2  | #acb0be | #626880 | #5b6078   | #585b70 |
+| bg alt           | #1e2124  | Surface 1  | #bcc0cc | #51576d | #494d64   | #45475a |
+| bg alt           | #1e2124  | Surface 0  | #ccd0da | #414559 | #363a4f   | #313244 |
+| bg               | #16181a  | Base       | #eff1f5 | #303446 | #24273a   | #1e1e2e |
+| bg               | #16181a  | Mantle     | #e6e9ef | #292c3c | #1e2030   | #181825 |
+| bg               | #16181a  | Crust      | #dce0e8 | #232634 | #181926   | #11111b |
 
+| Cyberdream Color | Dark Hex | Color Name | Mocha   |
+| ---------------- | -------- | ---------- | ------- |
+| Pink             | #ff5ea0  | Rosewater  | #f5e0dc |
+| Pink             | #ff5ea0  | Flamingo   | #f2cdcd |
+| Magenta          | #ff5ef1  | Pink       | #f5c2e7 |
+| Purple           | #bd5eff  | Mauve      | #cba6f7 |
+| Red              | #ff6e5e  | Red        | #f38ba8 |
+| Red              | #ff6e5e  | Maroon     | #eba0ac |
+| Orange           | #ffbd5e  | Peach      | #fab387 |
+| Yellow           | #f1ff5e  | Yellow     | #f9e2af |
+| Green            | #5eff6c  | Green      | #a6e3a1 |
+| Cyan             | #5ef1ff  | Teal       | #94e2d5 |
+| Cyan             | #5ef1ff  | Sky        | #89dceb |
+| Cyan             | #5ef1ff  | Sapphire   | #74c7ec |
+| Blue             | #5ea1ff  | Blue       | #89b4fa |
+| Purple           | #bd5eff  | Lavender   | #b4befe |
+| fg               | #ffffff  | Text       | #cdd6f4 |
+| grey             | #7b8496  | Subtext 1  | #bac2de |
+| grey             | #7b8496  | Subtext 0  | #a6adc8 |
+| grey             | #7b8496  | Overlay 2  | #9399b2 |
+| grey             | #7b8496  | Overlay 1  | #7f849c |
+| bg_highlight     | #3c4048  | Overlay 0  | #6c7086 |
+| bg_highlight     | #3c4048  | Surface 2  | #585b70 |
+| bg alt           | #1e2124  | Surface 1  | #45475a |
+| bg alt           | #1e2124  | Surface 0  | #313244 |
+| bg               | #16181a  | Base       | #1e1e2e |
+| bg               | #16181a  | Mantle     | #181825 |
+| bg               | #16181a  | Crust      | #11111b |
 
 ## base16 dark
 

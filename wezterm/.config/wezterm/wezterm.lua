@@ -1,5 +1,6 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
+-- act is used for keybinds
 local act = wezterm.action
 
 wezterm.on("gui-startup", function(cmd)

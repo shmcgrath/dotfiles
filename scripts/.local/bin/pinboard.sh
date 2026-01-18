@@ -13,7 +13,7 @@ EXTENED="Unexpected Journeys : Chapter 6 Words By Sean Cole Illustration by Phil
 TAGS="socer fulhamfc"
 
 BASE_URL="https://api.pinboard.in/v1"
-AUTH_TOKEN="schneid3306:E8DF1A41C886A7CE8906"
+AUTH_TOKEN=""
 
 ARTICLE_DETAILS=$(curl -s ${URL} | grep -C0 -Eo '(<title>.*</title>)|(<link rel="canonical".*href=".*".*>)|(<(meta|span) (class|name)=[[:punct:]]author)|(<meta name="description" content=".*)|(<meta (name|property)="[[:alpha:]]*[\.:]*(author|date|description|.*keywords|site_name|tag|tags|title|.*time|url)" content=".*".*>)' | sed )
 

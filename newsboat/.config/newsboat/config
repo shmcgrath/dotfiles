@@ -5,6 +5,6 @@ error-log "~/.config/newsboat/error.log"
 urls-source "newsblur"
 
 # Newsblur information
-newsblur-login "schneid3306"
+newsblur-login ""
 newsblur-min-items 150
 newsblur-passwordfile "~/.config/newsboat/newsblur-pw.txt"

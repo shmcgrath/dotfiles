@@ -375,17 +375,17 @@ ToDo
 
 Ultisnips and Vim Lists
 [12:47:35] novum:	nu. `!v [''][execute('normal! "+p')]` or `!v @+`
-[12:47:39] schneid3306:	I also tried a python function that defines a string makes the string = vim.command('normal "+p') and then returns it
-[12:48:14] schneid3306:	awesome novum will give it a go. thanks.
+[12:47:39] bean24:	I also tried a python function that defines a string makes the string = vim.command('normal "+p') and then returns it
+[12:48:14] bean24:	awesome novum will give it a go. thanks.
 [12:50:09] novum:	I would think that vim.command('normal! "+p') would work.
 [12:50:17] novum:	in python interpolation
-[12:51:27] schneid3306:	novum, Oddly, it didn't. But the !v @+ worked like a charm.
-[12:53:35] schneid3306:	novum, what does '[''] do in your 1st example? i know what the rest of it does. want to know for future reference.
-[12:53:47] schneid3306:	'['']'**
+[12:51:27] bean24:	novum, Oddly, it didn't. But the !v @+ worked like a charm.
+[12:53:35] bean24:	novum, what does '[''] do in your 1st example? i know what the rest of it does. want to know for future reference.
+[12:53:47] bean24:	'['']'**
 [12:54:04] novum:	execute() returns 0. you don't want to insert 0 into the document I presume, so I find [''][execute('..')] works ok
 [12:54:43] novum:	can use same technique in nnoremap <expr> <leader>taco [''][execute('..')] for example
 [12:55:19] novum:	it's after the execute is evaluated, you basically have  [''][0]  if that helps clarify
-[12:55:38] schneid3306:	yes! okay. so basically put register 0?
+[12:55:38] bean24:	yes! okay. so basically put register 0?
 [12:55:54] novum:	no, just access the list [''] at index 0
 [12:55:58] m_ben:	I have never seen this syntax with the []. where can I read about it?
 [12:56:08] novum:	it's just a list

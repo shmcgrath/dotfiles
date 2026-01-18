@@ -312,6 +312,22 @@ zola 0.20.0-1
 - customize vifm and openers
     - https://old.reddit.com/r/vifm/comments/190u5zg/useful_command_to_create_files_and_directories/
 - make dircolors theme: https://github.com/dracula/dircolors
+
+in the .bashrc
+- custom actions to file manager: https://www.youtube.com/watch?v=i28UNDO8Q7E&pp=ygUYZGlzdHJvdHViZSBmaWxlIGV4cGxvcmVy
+- thunar vs pcmanfm
+- customize mimeapps and lf opener and vifm opener see if you can make icons work for lf, vifm, and eza/lsd same for colors
+- implement with vidir and fzf etc:
+alias f="find . -type f -not -path '*/.git/*'"
+alias ff="find . -type f -not -path '*/.git/*' | vidir -"
+
+### Neovim
+- plain text dict and thesarus lookup especcialy dict in neovim, see blink docs
+to vimrc:
+" === Custom commands ===
+  command! MakeDir !mkdir -p %:h
+  command! WlCopy w !wl-copy
+  command! XCopy w !xclip -sel cli
 Also, the quality of life improvements like `alias ..='cd ..'`, or mapping `l` such that it either opens a pager or lists a dir, depending on the argument. I'd never come up with those, and they're beyond useful.
 - https://github.com/stevearc/conform.nvim
 
@@ -319,22 +335,7 @@ I imagine it's something like:
 
     l() { if [ -d "$1" ] ; then ls -alFh -- "$1" ; else "${PAGER:-pager}" -- "$1" ; fi }
 
-in the .bashrc
-- custom actions to file manager: https://www.youtube.com/watch?v=i28UNDO8Q7E&pp=ygUYZGlzdHJvdHViZSBmaWxlIGV4cGxvcmVy
-- thunar vs pcmanfm
-- customize mimeapps and lf opener and vifm opener see if you can make icons work for lf, vifm, and eza/lsd same for colors
-- plain text dict and thesarus lookup especcialy dict in neovim, see blink docs
-- implement with vidir and fzf etc:
-alias f="find . -type f -not -path '*/.git/*'"
-alias ff="find . -type f -not -path '*/.git/*' | vidir -"
-
-to vimrc:
-" === Custom commands ===
-  command! MakeDir !mkdir -p %:h
-  command! WlCopy w !wl-copy
-  command! XCopy w !xclip -sel cli
-
-### Neovim
+- https://github.com/garymjr/nvim-snippets
 - oerride nvim-web-devicons - especially file for the one in ls 
 - learn more about localleader and neovim mappings
 - decide gitsigns.nvim vs [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
@@ -347,9 +348,32 @@ to vimrc:
 - Possible ALE replacements?
     - [nvim-lint](https://github.com/mfussenegger/nvim-lint)
     - [conform.nvim](https://github.com/stevearc/conform.nvim)
+
+vim.keymap.set("n", "<A-j>", ":move .+1<CR>==", { silent = true })
+vim.keymap.set("n", "<A-k>", ":move .-2<CR>==", { silent = true })
+vim.keymap.set("v", "<A-j>", ":move '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv", { silent = true })
+
+### Neovim LSP
+recommendation: don't put the same on_attach for each server, you can use :h LspAttach instead
+
+the actual problem with your code is that :h vim.lsp.enable does not take the config as a 2nd parameter. you have to pass that config into :h vim.lsp.config before enabling.
+
+also strongly recommend reading :h lsp-config
+
+
+https://vi.stackexchange.com/questions/46749/correct-way-to-utilize-on-attach-in-the-new-vim-lsp-config-setup-in-neovim-v0-11
+
+https://neovim.io/doc/user/lsp.html
+
+THIS ONE PROBABLY BEST: https://stephenvantran.com/posts/2025-10-29-setup-neovim-lsp-011/
+
+https://old.reddit.com/r/neovim/comments/1bljfoi/lspattach_autocommand_vs_on_attach_for_setting/
 #### Neovim 0.12
 - [moving to builtin plugin manager neovim](https://bower.sh/nvim-builtin-plugin-mgr)
     - this includes some functions for the new treesitter
+
+OMNI BORDER COLOR: https://github.com/neovim/neovim/pull/25541
 ## Software to Learn/Research
 - [modern unix tools](https://github.com/johnalanwoods/maintained-modern-unix)
 - mpv vs vlc

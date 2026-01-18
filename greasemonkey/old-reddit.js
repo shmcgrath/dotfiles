@@ -3,7 +3,7 @@
 // @namespace    https://www.reddit.com
 // @version      1.5
 // @description  redirect to old reddit
-// @author       schneid3306
+// @author       shm
 // @match        https://*.reddit.com/*
 // @exclude      https://*.reddit.com/poll/*
 // @exclude      https://*.reddit.com/gallery/*

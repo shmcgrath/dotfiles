@@ -14,7 +14,7 @@ return {
   },
   settings = {
     Lua = {
-      workspace = { checkThirdParty = false, library = vim.api.nvim_get_runtime_file("", true) }, 
+      workspace = { checkThirdParty = false, library = vim.api.nvim_get_runtime_file("", true) },
       runtime = {
         version = "LuaJIT",
       },
@@ -25,6 +25,10 @@ return {
       signatureHelp = {
         enabled = true,
       },
-    }
-  }
+      hint = {
+        enable = true,
+        arrayIndex = "Disable",
+      },
+    },
+  },
 }

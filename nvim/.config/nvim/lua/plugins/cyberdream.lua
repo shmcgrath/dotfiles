@@ -23,5 +23,6 @@ require("cyberdream").setup({
         mini = true,
         notify = true,
         treesitter = true,
+        whichkey = true,
     },
 })

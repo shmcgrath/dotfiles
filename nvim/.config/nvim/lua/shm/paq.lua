@@ -30,6 +30,7 @@ paq({
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   { "scottmckendry/cyberdream.nvim" },
   { "stevearc/oil.nvim" },
+  { "folke/which-key.nvim" },
   -- lsp
   { "williamboman/mason.nvim" },
   { "dense-analysis/ale" },

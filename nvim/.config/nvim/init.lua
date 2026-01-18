@@ -13,8 +13,8 @@ vim.o.directory=os.getenv("HOME") .. "/.local/state/nvim/swap"
 require("shm.paq")
 
 -- require lsp and completion config
-require("shm.lsp")
 require("shm.completion")
+require("shm.lsp")
 
 -- require dap config
 require("shm.dap-load-configs")

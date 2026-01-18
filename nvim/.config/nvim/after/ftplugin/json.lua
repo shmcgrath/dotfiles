@@ -1,1 +1,1 @@
-vim.cmd("let b:ale_fixers = ['jsonlint']")
+vim.cmd("let b:ale_linters = ['jsonlint']")

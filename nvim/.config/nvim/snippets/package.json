@@ -13,7 +13,10 @@
 			   "path": "./global.json" },
 			{ "language": [ "shellscript", "shell", "sh", "zsh", "bash" ],
 			   "path": "./shell.json" },
-			{ "language": [ "shelldoc" ], "path": "./shelldoc.json" }
+			{ "language": [ "shelldoc" ], "path": "./shelldoc.json" },
+			{ "language": [ "perl" ], "path": "./perl.json" },
+			{ "language": [ "make" ], "path": "./make.json" },
+			{ "language": [ "org" ], "path": "./org.json" }
 		]
 	}
 }

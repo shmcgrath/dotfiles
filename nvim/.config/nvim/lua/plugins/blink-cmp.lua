@@ -13,24 +13,69 @@ require("blink.cmp").setup({
   -- C-k: Toggle signature help (if signature.enabled = true)
   --
   -- See :h blink-cmp-config-keymap for defining your own keymap
-  keymap = { preset = "default" },
-  appearance = { nerd_font_variant = "mono" },
+  keymap = {
+    preset = "none",
+    ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+    ['<C-e>'] = { 'cancel', 'fallback' },
+    ['<C-y>'] = { 'select_and_accept', 'fallback' },
+
+    ['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
+    ['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
+
+    ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+    ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+
+    ['<Tab>'] = { 'snippet_forward', 'fallback' },
+    ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+
+    ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
+  },
+  appearance = {
+    nerd_font_variant = "mono",
+    kind_icons = {
+      Text         = '󰉿',
+      Method       = '󰆧',
+      Function     = '󰊕',
+      Constructor  = '',
+      Field        = '󰜢',
+      Variable     = '󰀫',
+      Class        = '󰠱',
+      Interface    = '',
+      Module       = '',
+      Property     = '󰜢',
+      Unit         = '󰑭',
+      Value        = '󰎠',
+      Enum         = '',
+      Keyword      = '󰌋',
+      Snippet      = '',
+      Color        = '󰏘',
+      File         = '󰈙',
+      Reference    = '󰈇',
+      Folder       = '󰉋',
+      EnumMember   = '',
+      Constant     = '󰏿',
+      Struct       = '󰙅',
+      Event        = '',
+      Operator     = '󰆕',
+      TypeParameter= '󰊄',
+    },
+  },
   -- (Default) Only show the documentation popup when manually triggered
   completion = {
-    menu = { border = "rounded" },
+    menu = { border = "bold" },
     documentation = {
       auto_show = true,
       window = {
         max_width = 80,
         max_height = 20,
-        border = "rounded",
+        border = "bold",
       },
     },
   },
   signature = {
     enabled = true,
     window = {
-      border = "rounded",
+      border = "bold",
     },
   },
   snippets = {},

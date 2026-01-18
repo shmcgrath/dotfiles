@@ -3,5 +3,9 @@
 		"prefix": ["printf"],
 		"body": ["printf \"%s\n\" \"$1\"$0"],
 		"description": "preferred implementation of printf"
-	}
+	},
+	"if" : {
+		"body": "if ${2:[[ ${1:condition} ]]}; then\n\t${0:#statements}\nfi",
+		"description": "if ... then (if)"
+   }
 }

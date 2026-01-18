@@ -1,3 +1,36 @@
+-- h: lsp-attach
+-- h: lsp-config
+local completion = require("shm.completion")
+
+vim.lsp.protocol.SymbolKind = {
+  '󰈙', -- File
+  '󰏗', -- Module
+  '󰌗', -- Namespace
+  '󰏖', -- Package
+  '󰠱', -- Class
+  '󰆧', -- Method
+  '󰜢', -- Property
+  '󰜢', -- Field
+  '', -- Constructor
+  '', -- Enum
+  '', -- Interface
+  '󰊕', -- Function
+  '󰀫', -- Variable
+  '󰏿', -- Constant
+  '󰀬', -- String
+  '󰎠', -- Number
+  '󰨙', -- Boolean
+  '󰅪', -- Array
+  '󰅩', -- Object
+  '󰌋', -- Key
+  '󰟢', -- Null
+  '', -- EnumMember
+  '󰙅', -- Struct
+  '', -- Event
+  '󰆕', -- Operator
+  '󰊄', -- TypeParameter
+}
+
 local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), {
   textDocument = {
     foldingRange = {
@@ -18,6 +51,7 @@ vim.lsp.config("*", {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     vim.notify("LSP: " .. client.name, vim.log.levels.INFO)
+    completion.on_attach_completion(client, bufnr)
   end,
   root_markers = { ".git" },
 })
@@ -54,7 +88,7 @@ vim.diagnostic.config({
 vim.keymap.set("n", "<C-w>d", function()
   vim.diagnostic.open_float(nil, {
     focusable = false,
-    border = "rounded",
+    border = "double",
     source = true,
     header = "Diagnostics",
     prefix = "● ",

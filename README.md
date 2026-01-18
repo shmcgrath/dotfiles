@@ -264,7 +264,6 @@ zola 0.20.0-1
 - [dotfile management](https://mywiki.wooledge.org/DotFiles)
 - [lsd](https://github.com/lsd-rs) vs eza
 - glow config
-- remove comments from newline in nvim: https://superuser.com/questions/271023/can-i-disable-continuation-of-comments-to-the-next-line-in-vim
     - https://github.com/LazyVim/LazyVim/discussions/2184
 - make autocmd file for nvim?
 - look into formatting that is not ALE?
@@ -322,6 +321,9 @@ alias f="find . -type f -not -path '*/.git/*'"
 alias ff="find . -type f -not -path '*/.git/*' | vidir -"
 
 ### Neovim
+- snippet for keys and commands nvim - skels?
+- function  to copy diagnostic under cursor
+- remove comments from newline in nvim: https://superuser.com/questions/271023/can-i-disable-continuation-of-comments-to-the-next-line-in-vim
 - plain text dict and thesarus lookup especcialy dict in neovim, see blink docs
 to vimrc:
 " === Custom commands ===

@@ -14,6 +14,7 @@ require("shm.paq")
 
 -- require lsp and completion config
 require("shm.completion")
+-- require lsp config
 require("shm.lsp")
 
 -- require dap config

@@ -1,5 +1,7 @@
 -- h: lsp-attach
 -- h: lsp-config
+local completion = require("shm.completion")
+
 vim.lsp.protocol.SymbolKind = {
   '󰈙', -- File
   '󰏗', -- Module
@@ -49,6 +51,7 @@ vim.lsp.config("*", {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     vim.notify("LSP: " .. client.name, vim.log.levels.INFO)
+    completion.on_attach_completion(client, bufnr)
   end,
   root_markers = { ".git" },
 })

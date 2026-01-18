@@ -80,10 +80,11 @@ vim.keymap.set("n", "<C-p>h", fzf.helptags, { desc = "fzf-lua search helptags" }
 vim.keymap.set("n", "<C-p>k", fzf.keymaps, { desc = "fzf-lua search through neovim keymaps" })
 vim.keymap.set("n", "<C-p>m", fzf.marks, { desc = "fzf-lua search through marks" })
 vim.keymap.set("n", "<C-p>o", fzf.oldfiles, { desc = "fzf-lua search through recently opened/edited files" })
+vim.keymap.set("n", "<C-p>p", fzf.resume, { desc = "fzf-lua resume previous search" })
 vim.keymap.set("n", "<C-p>r", fzf.command_history, { desc = "fzf-lua to search through command history" })
 vim.keymap.set("n", "<C-p>R", fzf.commands, { desc = "fzf-lua to search through neovim commands" })
-vim.keymap.set("n", "<C-p>s", fzf.undotree, { desc = "fzf-lua misspelled words in buffer" })
-vim.keymap.set("n", "<C-p>u", fzf.undotree, { desc = "fzf search through undotree history" })
+vim.keymap.set("n", "<C-p>s", fzf.spellcheck, { desc = "fzf-lua misspelled words in buffer" })
+vim.keymap.set("n", "<C-p>u", fzf.undotree, { desc = "fzf-lua search through undotree history" })
 vim.keymap.set("n", "<C-p>z", fzf.builtin, { desc = "search through fzf-lua builtin pickers" })
 
 vim.keymap.set("n", "<C-p>c", function()

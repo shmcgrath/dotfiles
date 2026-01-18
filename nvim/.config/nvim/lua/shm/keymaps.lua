@@ -78,3 +78,9 @@ vim.keymap.set("v", "Y", "y$", {
   noremap = true,
   desc = ""
 })
+
+-- Poweful <esc> from MariaSolOs Config
+vim.keymap.set({ 'i', 's', 'n' }, '<esc>', function()
+    vim.cmd 'noh'
+    return '<esc>'
+end, { desc = 'Escape, clear hlsearch', expr = true })

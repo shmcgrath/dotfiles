@@ -195,4 +195,12 @@ vim.g.have_nerd_font = true -- from kickstart.nvim
 
 -- vim.o.clipboard = "unnamedplus"
 
-vim.o.winborder = "rounded"
+vim.o.winborder = "double"
+
+-- set the menu for completion
+-- cyberdream does not have enough contrast
+vim.api.nvim_set_hl(0, "Pmenu", { fg = "#7b8496", bg = "#1e2124" })
+vim.api.nvim_set_hl(0, "PmenuSel", { fg = "#f1ff5e", bg = "#3c4048" })
+vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#3c4048" })
+vim.api.nvim_set_hl(0, "PmenuThumb", {  bg = "#7b8496" })
+

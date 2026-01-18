@@ -21,9 +21,9 @@ require("blink.cmp").setup({
     documentation = {
       auto_show = true,
       window = {
-      max_width = 80,
-      max_height = 20,
-      border = "rounded",
+        max_width = 80,
+        max_height = 20,
+        border = "rounded",
       },
     },
   },
@@ -33,7 +33,7 @@ require("blink.cmp").setup({
       border = "rounded",
     },
   },
-  snippets = { },
+  snippets = {},
   sources = {
     default = { "lsp", "path", "snippets", "buffer" },
     providers = {
@@ -41,8 +41,12 @@ require("blink.cmp").setup({
         module = "blink.cmp.sources.snippets",
         opts = {
           -- Set to '+' to use the system clipboard, or '"' to use the unnamed register
-          clipboard_register = '+',
+          clipboard_register = "+",
           search_paths = { vim.fn.stdpath("config") .. "/snippets" },
+          extended_filetypes = {
+            lua = { "luadoc", "lua-nvim" },
+            sh = { "shelldoc" },
+          },
         },
       },
     },

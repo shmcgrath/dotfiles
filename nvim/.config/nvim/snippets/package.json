@@ -10,7 +10,10 @@
 			{ "language": [ "html" ], "path": "./html.json" },
 			{ "language": [ "help" ], "path": "./help.json" },
 			{ "language": [ "all", "global", "markdown", "tex", "html", "plaintext", "text" ],
-			   "path": "./global.json" }
+			   "path": "./global.json" },
+			{ "language": [ "shellscript", "shell", "sh", "zsh", "bash" ],
+			   "path": "./shell.json" },
+			{ "language": [ "shelldoc" ], "path": "./shelldoc.json" }
 		]
 	}
 }

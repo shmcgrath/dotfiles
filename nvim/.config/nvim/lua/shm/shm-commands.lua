@@ -1,6 +1,6 @@
 -- Commands for my custom functions
 -- diagnostics-toggle
-vim.api.nvim_create_user_command("ShmDiagnosticsToggle", function()
+vim.api.nvim_create_user_command("ShmToggleDiagnostics", function()
   require("shm.functions.diagnostics-toggle").toggle()
 end, { desc = "toggle diagnostics on and off" })
 
@@ -33,3 +33,12 @@ end, {
   range = true,
   desc = "Align a markdown table that is visually selected"
 })
+
+-- toggle diagnostics virtual lines
+vim.api.nvim_create_user_command("ShmToggleVirtualLines", function()
+  if #vim.diagnostic.get() > 0 then
+    vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines })
+  else
+    print("Diagnostics not enabled.")
+  end
+end, { desc = "Toggle diagnostic virtual lines" })

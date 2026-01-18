@@ -357,6 +357,10 @@ vim.keymap.set("n", "<A-k>", ":move .-2<CR>==", { silent = true })
 vim.keymap.set("v", "<A-j>", ":move '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv", { silent = true })
 
+combine some pickers -> spell and lsp? help and keys? :lua FzfLua.combine({ pickers = "oldfiles;git_files" })
+-- or using the `FzfLua` vim command:
+:FzfLua combine pickers=oldfiles;git_files
+
 ### Neovim LSP
 recommendation: don't put the same on_attach for each server, you can use :h LspAttach instead
 

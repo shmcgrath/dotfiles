@@ -47,3 +47,23 @@ vim.api.nvim_create_user_command("ShmToggleVirtualLines", function()
     print("Diagnostics not enabled.")
   end
 end, { desc = "Toggle diagnostic virtual lines" })
+
+-- Document Skeletons
+local skeleton_path = vim.fn.stdpath("config") .. "/skeletons/"
+
+vim.api.nvim_create_user_command("ShmSkeleton", function(opts)
+  local file = opts.args
+  if file ~= "" then
+    vim.cmd(":-1read " .. skeleton_path .. file)
+  end
+end, {
+  desc = "Insert a skeleton file at the top of the buffer",
+  nargs = 1,
+  complete = function(arglead)
+    local matches = vim.fn.getcompletion(skeleton_path .. arglead, "file")
+    return vim.tbl_map(function(item)
+      return vim.fn.fnamemodify(item, ":t")
+    end, matches)
+  end,
+})
+

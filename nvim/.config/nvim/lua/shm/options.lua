@@ -161,19 +161,6 @@ vim.cmd("let g:netrw_winsize=25")
 --vim.cmd("let g:netrw_list_hide=netrw_gitignore#Hide()")
 --vim.cmd("let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'")
 
--- Document Skeletons {{{3
-vim.api.nvim_create_user_command("ShmSkeleton", function(opts)
-  local skeleton_path = vim.fn.stdpath("config") .. "/skeleton/"
-  local file = opts.args
-  if file ~= "" then
-    vim.cmd(":-1read " .. skeleton_path .. file)
-  end
-end, {
-  desc = "Insert a skeleton file at the top of the buffer",
-  nargs = 1,
-  complete = "file", -- lets Neovim complete files
-})
-
 -- Automatically call helptags on save for shm-cheatsheet.txt {{{3
 vim.api.nvim_create_augroup("shmCheatsheetHelptags", { clear = true })
 

@@ -5,5 +5,12 @@
 			"require(\"$1\").setup({\n\t$0\n})"
 		],
 	"description": "require for a neovim plugin"
+	},
+	"add new plugin": {
+		"prefix": ["packadd"],
+		"body": [
+			"vim.pack.add({ { src= \"${1:$CLIPBOARD}\" }, })$0"
+		],
+		"description": "add a new plugin with built in neovim package manager"
 	}
 }

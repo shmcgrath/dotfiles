@@ -273,7 +273,7 @@ zola 0.20.0-1
     - https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings
     - josean's dotfiles
 - Remove wikiman ctrl+f and move tmux to that so fzf can use its keybinds? rename wikiman to wm or something in alias and add that to ignorelist
-- standalone tldr search? ! not working in wikiman?
+- wikiman replacement for the arch wiki docs search using just fzf?
 - https://github.com/yokoffing/BetterFox --> resetup firefox? user.js and what it entails
 - lf https://github.com/atanunq/viu for image viewing?
 - see if on-quit of lf can do what lfcd does
@@ -321,6 +321,7 @@ alias f="find . -type f -not -path '*/.git/*'"
 alias ff="find . -type f -not -path '*/.git/*' | vidir -"
 
 ### Neovim
+Maria icon implementation also look at her fzf-lua and lsp and settings
 - snippet for keys and commands nvim - skels?
 - function  to copy diagnostic under cursor
 - remove comments from newline in nvim: https://superuser.com/questions/271023/can-i-disable-continuation-of-comments-to-the-next-line-in-vim

@@ -39,7 +39,6 @@ paq({
   { "rcarriga/nvim-dap-ui" },
   { "nvim-neotest/nvim-nio" },
   -- snippets and completion
-  { "Saghen/blink.cmp", build = require("shm.functions.blink-get-binary").run },
   -- git
   { "tpope/vim-fugitive" },
   { "lewis6991/gitsigns.nvim" },
@@ -71,7 +70,6 @@ local function load_plugin_configs()
   -- Define an explicit load order for specific plugins
   local explicit_order = {
     "mason",
-    "blink-cmp",
     "dap",
     "dap-ui",
   }

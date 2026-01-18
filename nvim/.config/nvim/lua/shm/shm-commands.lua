@@ -4,11 +4,6 @@ vim.api.nvim_create_user_command("ShmDiagnosticsToggle", function()
   require("shm.functions.diagnostics-toggle").toggle()
 end, { desc = "toggle diagnostics on and off" })
 
--- blink-get-binary
-vim.api.nvim_create_user_command("ShmBlinkGetBinary", function()
-	require("shm.functions.blink-get-binary").run()
-end, { desc = "Download and verify blink.cmp platform binary" })
-
 -- summarize-tabs
 vim.api.nvim_create_user_command("ShmSummarizeTabs", function()
   require("shm.functions.summarize-tabs").summarize()

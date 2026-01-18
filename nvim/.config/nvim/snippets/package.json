@@ -4,9 +4,12 @@
 		"snippets": [
 			{ "language": [ "markdown" ], "path": "./markdown.json" },
 			{ "language": [ "go" ], "path": "./go.json" },
+			{ "language": [ "lua" ], "path": "./lua.json" },
+			{ "language": [ "luadoc" ], "path": "./luadoc.json" },
+			{ "language": [ "lua-nvim" ], "path": "./lua-nvim.json" },
 			{ "language": [ "html" ], "path": "./html.json" },
 			{ "language": [ "help" ], "path": "./help.json" },
-			{ "language": [ "all", "plaintext", "markdown", "tex", "html", "global" ],
+			{ "language": [ "all", "global", "markdown", "tex", "html", "plaintext", "text" ],
 			   "path": "./global.json" }
 		]
 	}

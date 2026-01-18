@@ -1,0 +1,9 @@
+{
+	"require-plugin": {
+		"prefix": ["reqplug"],
+		"body": [
+			"require(\"$1\").setup({\n\t$0\n})"
+		],
+	"description": "require for a neovim plugin"
+	}
+}

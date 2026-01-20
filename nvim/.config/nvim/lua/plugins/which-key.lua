@@ -1,6 +1,6 @@
 require("which-key").setup({
   preset = "modern",
-  delay = 1500,
+  delay = 500,
   notify = true,
   triggers = {
     { "<auto>", mode = "nxso" },

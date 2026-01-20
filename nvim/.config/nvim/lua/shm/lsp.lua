@@ -1,32 +1,34 @@
 -- h: lsp-attach h: lsp-config
 
+local symbol_kinds = require("shm.icons").symbol_kinds
+
 vim.lsp.protocol.SymbolKind = {
-  '󰈙', -- File
-  '󰏗', -- Module
-  '󰌗', -- Namespace
-  '󰏖', -- Package
-  '󰠱', -- Class
-  '󰆧', -- Method
-  '󰜢', -- Property
-  '󰜢', -- Field
-  '', -- Constructor
-  '', -- Enum
-  '', -- Interface
-  '󰊕', -- Function
-  '󰀫', -- Variable
-  '󰏿', -- Constant
-  '󰀬', -- String
-  '󰎠', -- Number
-  '󰨙', -- Boolean
-  '󰅪', -- Array
-  '󰅩', -- Object
-  '󰌋', -- Key
-  '󰟢', -- Null
-  '', -- EnumMember
-  '󰙅', -- Struct
-  '', -- Event
-  '󰆕', -- Operator
-  '󰊄', -- TypeParameter
+  symbol_kinds.File,
+  symbol_kinds.Module,
+  symbol_kinds.Namespace,
+  symbol_kinds.Package,
+  symbol_kinds.Class,
+  symbol_kinds.Method,
+  symbol_kinds.Property,
+  symbol_kinds.Field,
+  symbol_kinds.Constructor,
+  symbol_kinds.Enum,
+  symbol_kinds.Interface,
+  symbol_kinds.Function,
+  symbol_kinds.Variable,
+  symbol_kinds.Constant,
+  symbol_kinds.String,
+  symbol_kinds.Number,
+  symbol_kinds.Boolean,
+  symbol_kinds.Array,
+  symbol_kinds.Object,
+  symbol_kinds.Key,
+  symbol_kinds.Null,
+  symbol_kinds.EnumMember,
+  symbol_kinds.Struct,
+  symbol_kinds.Event,
+  symbol_kinds.Operator,
+  symbol_kinds.TypeParameter,
 }
 
 local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), {
@@ -66,15 +68,36 @@ vim.lsp.enable({
   "vimls",
 })
 
+local diag_icons = require("shm.icons").diagnostics
+vim.fn.sign_define("DiagnosticSignError", {
+  text = diag_icons.ERROR,
+  texthl = "DiagnosticSignError",
+})
+
+vim.fn.sign_define("DiagnosticSignWarn", {
+  text = diag_icons.WARN,
+  texthl = "DiagnosticSignWarn",
+})
+
+vim.fn.sign_define("DiagnosticSignInfo", {
+  text = diag_icons.INFO,
+  texthl = "DiagnosticSignInfo",
+})
+
+vim.fn.sign_define("DiagnosticSignHint", {
+  text = diag_icons.HINT,
+  texthl = "DiagnosticSignHint",
+})
+
 vim.diagnostic.config({
   virtual_text = false,
   virtual_lines = false,
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = "🆇",
-      [vim.diagnostic.severity.WARN] = "⚠",
-      [vim.diagnostic.severity.INFO] = "ℹ",
-      [vim.diagnostic.severity.HINT] = "",
+      [vim.diagnostic.severity.ERROR] = diag_icons.ERROR,
+      [vim.diagnostic.severity.WARN] = diag_icons.WARN,
+      [vim.diagnostic.severity.INFO] = diag_icons.INFO,
+      [vim.diagnostic.severity.HINT] = diag_icons.HINT,
     },
   },
   severity_sort = true,
@@ -88,7 +111,9 @@ vim.keymap.set("n", "<C-w>d", function()
     border = "double",
     source = true,
     header = "Diagnostics",
-    prefix = "● ",
+    prefix = function(diag)
+      return string.format("%s ", diag_icons[vim.diagnostic.severity[diag.severity]])
+    end,
     scope = "cursor",
     close_events = { "CursorMoved", "BufLeave", "WinLeave", "InsertEnter" },
   })

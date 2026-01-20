@@ -38,6 +38,9 @@ require("shm.manpager")
 -- setup Thesaurusfunc so mthesaur.txt can be used with commas
 require("shm.thesaurus")
 
+-- setup spelling and dictionary
+require("shm.spell-dictionary")
+
 vim.cmd([[
 function! Thesaurusfunc(findstart, base) abort
   return luaeval('require("shm.thesaurus").Thesaurusfunc(_A[1], _A[2])', [a:findstart, a:base])

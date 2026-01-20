@@ -321,6 +321,7 @@ alias f="find . -type f -not -path '*/.git/*'"
 alias ff="find . -type f -not -path '*/.git/*' | vidir -"
 
 ### Neovim
+- hydra mode in which-key
 - set up a way to generate symbols on open of a workspace?
 https://github.com/axieax/urlview.nvim - not sure on this?
 - ctags and neovim

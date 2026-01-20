@@ -32,16 +32,8 @@ vim.o.lazyredraw = false -- Turn off lazy redraw
 vim.cmd("filetype plugin on") -- Enable plugins
 vim.o.conceallevel = 0 -- Set conceal level to 0 to not conceal things
 
--- spellcheck and dictionary {{{3
-vim.o.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
-vim.o.spelllang = en_us
-vim.opt.dictionary:append("/usr/share/dict/words")
-vim.opt.dictionary:append(os.getenv("HOME") .. "/.local/share/doc/words/google-10000-english-usa.txt")
-
-
 -- colors and syntax {{{3
 vim.o.background = "dark"
-vim.cmd("colorscheme cyberdream")
 
 if vim.opt.diff:get() then
   vim.cmd("syntax off")

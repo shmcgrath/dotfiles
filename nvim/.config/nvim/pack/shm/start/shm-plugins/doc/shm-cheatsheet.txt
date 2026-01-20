@@ -10,9 +10,11 @@
 CONTENTS                                            *shmContents*
     1. Mappings  ................................... |shmMappings|
     2. Spelling, Thesaurus, and Dictionary ......... |shmSpelling|
+    3. Sessions  ................................... |shmSessions|
 
 My tips, reminders, notes, and reference for Vim.
 
+- commentary bindings including gcc and gcu
 - Y will copy from cursor to end of line. Not vi. Custom mapping.
 - map X so that it deletes things to the black hole register (map X "_d, for example). That could be useful.
 

@@ -321,6 +321,10 @@ alias f="find . -type f -not -path '*/.git/*'"
 alias ff="find . -type f -not -path '*/.git/*' | vidir -"
 
 ### Neovim
+- set up a way to generate symbols on open of a workspace?
+https://github.com/axieax/urlview.nvim - not sure on this?
+- ctags and neovim
+- get learn fugitive and other plugins you have installed
 Maria icon implementation also look at her fzf-lua and lsp and settings
     - lsp
     - bufferline / statusline

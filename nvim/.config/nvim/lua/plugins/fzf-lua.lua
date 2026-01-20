@@ -70,9 +70,9 @@ require("fzf-lua").setup({
 
 local fzf = require("fzf-lua")
 
-vim.keymap.set("n", "<C-p>b", fzf.lgrep_curbuf, { desc = "fzf-lua to grep through current buffer" })
 vim.keymap.set("n", "<C-p>d", fzf.diagnostics_document, { desc = "fzf-lua search through diagnostics_document" })
 vim.keymap.set("n", "<C-p>f", fzf.global, { desc = "fzf-lua search for files in the current working directory, buffers, and symbols" })
+vim.keymap.set("n", "<C-p>gb", fzf.lgrep_curbuf, { desc = "fzf-lua to grep through current buffer" })
 vim.keymap.set("n", "<C-p>gl", fzf.live_grep, { desc = "fzf-lua live grep in the current working directory" })
 vim.keymap.set("n", "<C-p>gr", fzf.live_grep_resume, { desc = "fzf-lua live grep continue last search" })
 vim.keymap.set("n", "<C-p>gw", fzf.grep_cword, { desc = "fzf-lua search word under cursor with grep" })
@@ -81,8 +81,8 @@ vim.keymap.set("n", "<C-p>k", fzf.keymaps, { desc = "fzf-lua search through neov
 vim.keymap.set("n", "<C-p>m", fzf.marks, { desc = "fzf-lua search through marks" })
 vim.keymap.set("n", "<C-p>o", fzf.oldfiles, { desc = "fzf-lua search through recently opened/edited files" })
 vim.keymap.set("n", "<C-p>p", fzf.resume, { desc = "fzf-lua resume previous search" })
-vim.keymap.set("n", "<C-p>qo", fzf.quickfix, { desc = "open quickfix in fzf-lua" })
 vim.keymap.set("n", "<C-p>ql", fzf.lgrep_quickfix, { desc = "fzf-lua live greap files in quickfix" })
+vim.keymap.set("n", "<C-p>qo", fzf.quickfix, { desc = "open quickfix in fzf-lua" })
 vim.keymap.set("n", "<C-p>r", fzf.command_history, { desc = "fzf-lua to search through command history" })
 vim.keymap.set("n", "<C-p>R", fzf.commands, { desc = "fzf-lua to search through neovim commands" })
 vim.keymap.set("n", "<C-p>s", fzf.spellcheck, { desc = "fzf-lua misspelled words in buffer" })

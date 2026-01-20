@@ -20,9 +20,22 @@ require("cyberdream").setup({
         blinkcmp = true,
         dapui = true,
         fzflua = false,
+        gitsigns = true,
         mini = true,
         notify = true,
         treesitter = true,
         whichkey = true,
     },
 })
+
+-- highlight overrides
+-- with cursorline, it is hard to see gitsigns blame
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", {
+      fg="#16181a",
+    })
+  end,
+})
+
+vim.cmd("colorscheme cyberdream")

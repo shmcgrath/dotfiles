@@ -1,21 +1,15 @@
-vim.keymap.set("n", "<F11>", "<cmd>set spell!<CR>", {
-	noremap = true,
-	silent = true,
-	desc = "toggle spellcheck",
-})
-
 vim.keymap.set("n", "<leader>lb", ":ls<CR>:b ", {
-	noremap = true,
-	silent = false,
-	desc = "list buffers and pick one to edit",
+  noremap = true,
+  silent = false,
+  desc = "list buffers and pick one to edit",
 })
 
 vim.keymap.set("n", "<leader>_$", function()
-    require("shm.functions.preserve").preserve("%s/\\s\\+$//e")
+  require("shm.functions.preserve").preserve("%s/\\s\\+$//e")
 end, {
-	noremap = true,
-	silent = true,
-	desc = "strip trailing whitespace while preserving state"
+  noremap = true,
+  silent = true,
+  desc = "strip trailing whitespace while preserving state",
 })
 
 -- Copy and Paste
@@ -25,62 +19,38 @@ end, {
 -- In Windows * and + are the same
 -- Copy line to system clipboard
 
-vim.keymap.set("n", "<leader>y", '"+y', {
+vim.keymap.set({ "n", "v" }, "<leader>y", "\"+y", {
   noremap = true,
-  desc = ""
-})
-vim.keymap.set("v", "<leader>y", '"+y', {
-  noremap = true,
-  desc = ""
-})
-vim.keymap.set("n", "<leader>Y", '"*y', {
-  noremap = true,
-  desc = ""
-})
-vim.keymap.set("v", "<leader>Y", '"*y', {
-  noremap = true,
-  desc = ""
+  desc = "copy to + register (CLIPBOARD)",
 })
 
--- Paste from system clipboard
-vim.keymap.set("n", "<leader>p", '"+p', {
+vim.keymap.set({ "n", "v" }, "<leader>Y", "\"*y", {
   noremap = true,
-  desc = ""
-})
-vim.keymap.set("v", "<leader>p", '"+p', {
-  noremap = true,
-  desc = ""
-})
-vim.keymap.set("n", "<leader>P", '"*p', {
-  noremap = true,
-  desc = ""
-})
-vim.keymap.set("v", "<leader>P", '"*p', {
-  noremap = true,
-  desc = ""
+  desc = "copy to * register (PRIMARY)",
 })
 
--- Delete without affecting registers
-vim.keymap.set("n", "X", '"_d', {
+vim.keymap.set({ "n", "v" }, "<leader>p", "\"+p", {
   noremap = true,
-  desc = ""
-})
-vim.keymap.set("v", "X", '"_d', {
-  noremap = true,
-  desc = ""
+  desc = "paste from + register (CLIPBOARD)",
 })
 
-vim.keymap.set("n", "Y", "y$", {
+vim.keymap.set({ "n", "v" }, "<leader>P", "\"*p", {
   noremap = true,
-  desc = ""
+  desc = "paste from * register (PRIMARY)",
 })
-vim.keymap.set("v", "Y", "y$", {
+
+vim.keymap.set({ "n", "v" }, "X", "\"_d", {
   noremap = true,
-  desc = ""
+  desc = "delete without effecting registers",
+})
+
+vim.keymap.set({ "n", "v" }, "Y", "y$", {
+  noremap = true,
+  desc = "yank to end of line",
 })
 
 -- Poweful <esc> from MariaSolOs Config
-vim.keymap.set({ 'i', 's', 'n' }, '<esc>', function()
-    vim.cmd 'noh'
-    return '<esc>'
-end, { desc = 'Escape, clear hlsearch', expr = true })
+vim.keymap.set({ "i", "s", "n" }, "<esc>", function()
+  vim.cmd("noh")
+  return "<esc>"
+end, { desc = "Escape, clear hlsearch", expr = true })

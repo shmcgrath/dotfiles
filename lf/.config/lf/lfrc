@@ -189,7 +189,7 @@ cmd zoxide-interactive ${{
 }}
 map zi zoxide-interactive
 
-cmd fzf_search ${{
+cmd fzf-grep ${{
     cmd="rg --column --line-number --no-heading --color=always --smart-case --hidden"
     fzf --ansi --disabled --layout=reverse --header="Search in files" --delimiter=: \
         --bind="start:reload([ -n {q} ] && $cmd -- {q} || true)" \
@@ -197,7 +197,13 @@ cmd fzf_search ${{
         --bind='enter:become(lf -remote "send $id select \"$(printf "%s" {1} | sed '\''s/\\/\\\\/g;s/"/\\"/g'\'')\"")' \
         --preview='bat --color=always --highlight-line={2} -- {1}'
 }}
-map <c-p>f :fzf_search
+map <c-p>g :fzf-grep
+
+cmd fzf-edit ${{
+	$EDITOR $(fd --type file --hidden --exclude .git | fzf \
+		--preview="bat {}")
+}}
+map <c-p>f :fzf-edit
 
 cmd extract ${{
     set -f
@@ -247,9 +253,15 @@ map A :rename; cmd-end
 map I :rename; cmd-home
 cmd bulk-rename-pwd $vidir
 map b bulk-rename-pwd
-cmd bulk-rename-children $fd -t f | vidir -
-map B bulk-rename-children
 
+cmd bulk-rename-children ${{
+
+	fd --type file | vidir -
+
+	lf -remote 'send reload'
+}}
+
+map B bulk-rename-children
 
 cmd chmod ${{
   printf "Mode Bits: "

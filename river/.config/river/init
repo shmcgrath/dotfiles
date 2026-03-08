@@ -15,6 +15,9 @@ kanshi &
 # dunst
 systemctl --user start dunst.service
 
+# clipboard wl to clip
+systemctl --usr restart wl-to-xclip
+
 # dropbox
 # wallpaper
 #exec-once = swaybg -m fill -i ~/.config/wallpaper/paris02.jpg

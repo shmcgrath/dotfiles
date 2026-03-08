@@ -5,8 +5,6 @@ set hidden true
 set icons true
 set info size
 
-set rulerfile true
-
 set ignorecase true
 set incsearch true
 set drawbox true

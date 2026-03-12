@@ -1,0 +1,6 @@
+[Unit]
+Description=WoW WTF (Settings) Folder Backup
+
+[Service]
+Type=oneshot
+ExecStart=/home/shmcg/.local/bin/backup-wow-wtf.sh

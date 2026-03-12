@@ -102,12 +102,12 @@ dropbox: ## Install dropbox on arch via AUR and update related configs
 	@rm -rf $(HOME)/.dropbox-dist
 	@install -dm0 $(HOME)/.dropbox-dist
 	@printf "%s\n" "Fix Arch filesystem monitoring problem (inotify fix)"
-	@if ! grep -q '^fs.inotify.max_user_watches = 100000' /etc/sysctl.d/99-sysctl.conf 2>/dev/null; then \
+	@if ! grep -q '^fs.inotify.max_user_watches=3000000' /etc/sysctl.d/99-sysctl.conf 2>/dev/null; then \
 		printf "Adding fs.inotify.max_user_watches setting...\n"; \
-		printf "fs.inotify.max_user_watches = 100000\n" | sudo tee -a /etc/sysctl.d/99-sysctl.conf > /dev/null; \
+		echo "fs.inotify.max_user_watches=3000000" | sudo tee -a /etc/sysctl.d/99-sysctl.conf > /dev/null; \
 		sudo sysctl --system; \
 	else \
-		printf "%s\n" "fs.inotify.max_user_watches is already set to 10000"; \
+		printf "%s\n" "fs.inotify.max_user_watches is already set to 3000000"; \
 	fi
 	printf "%s\n" "enable and start dropbox systemd service"
 	stow dropbox

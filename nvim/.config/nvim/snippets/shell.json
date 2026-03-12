@@ -1,7 +1,7 @@
 {
 	"printf": {
 		"prefix": ["printf"],
-		"body": ["printf \"%s\n\" \"$1\"$0"],
+		"body": ["printf \"%s\\n\" \"$1\"$0"],
 		"description": "preferred implementation of printf"
 	},
 	"if" : {

@@ -399,6 +399,12 @@ wezterm:
 	rm "/tmp/wezterm.terminfo"
 	infocmp wezterm | head
 
+discord:
+	@printf "%s\n" 'Add "SKIP_HOST_UPDATE": true, to ~/.config/discord/settings.json'
+	@printf "%s\n" 'it has been added to the clipboard'
+	@echo '"SKIP_HOST_UPDATE": true,' | wl-copy
+	
+
 # macos software installed
 # hazel
 # alfred

@@ -407,6 +407,9 @@ discord:
 	@printf "%s\n" 'Add "SKIP_HOST_UPDATE": true, to ~/.config/discord/settings.json'
 	@printf "%s\n" 'it has been added to the clipboard'
 	@echo '"SKIP_HOST_UPDATE": true,' | wl-copy
+
+wow:
+	@printf "%s\n" "Link to the troubleshooting setup for battle.net on Lutris: https://github.com/lutris/docs/blob/master/Battle.Net.md"
 	
 
 # macos software installed

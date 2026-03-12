@@ -98,17 +98,21 @@ yay-init: ## on first use, development packages upgrade
 
 dropbox: ## Install dropbox on arch via AUR and update related configs
 	$(AURINSTALL) dropbox dropbox-cli
-	# Prevent automatic updates
-	#@rm -rf $(HOME)/.dropbox-dist
-	#@install -dm0 $(HOME)/.dropbox-dist
-	# Fix Arch filesystem monitoring problem (inotify fix)
+	@printf "%s\n" "Prevent automatic updates"
+	@rm -rf $(HOME)/.dropbox-dist
+	@install -dm0 $(HOME)/.dropbox-dist
+	@printf "%s\n" "Fix Arch filesystem monitoring problem (inotify fix)"
 	@if ! grep -q '^fs.inotify.max_user_watches = 100000' /etc/sysctl.d/99-sysctl.conf 2>/dev/null; then \
 		printf "Adding fs.inotify.max_user_watches setting...\n"; \
 		printf "fs.inotify.max_user_watches = 100000\n" | sudo tee -a /etc/sysctl.d/99-sysctl.conf > /dev/null; \
 		sudo sysctl --system; \
 	else \
-		printf "fs.inotify.max_user_watches is already set.\n"; \
+		printf "%s\n" "fs.inotify.max_user_watches is already set to 10000"; \
 	fi
+	printf "%s\n" "enable and start dropbox systemd service"
+	stow dropbox
+	systemctl --user daemon-reload
+	systemctl --user enable --now dropbox
 
 stow: stowrc stowignore
 

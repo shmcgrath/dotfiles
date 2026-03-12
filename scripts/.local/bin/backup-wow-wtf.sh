@@ -2,7 +2,7 @@
 
 # === Configuration ===
 WTF_FOLDER="$HOME/Games/battlenet/drive_c/Program Files (x86)/World of Warcraft/_retail_/WTF"
-DEST_FOLDER="$HOME/Dropbox/wow-wtf"
+DEST_FOLDER="$HOME/wow-wtf"
 DATE=$(date +%Y-%m-%d)
 BACKUP_NAME="${DATE}-wow-wtf.zip"
 

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# to create an updated icons file run the command then add " > icons"
+
 input_file="${1:-icons-gen}"
 current_icon=
 print_literal=false
@@ -38,3 +40,4 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 	fi
 
 done <"$input_file"
+

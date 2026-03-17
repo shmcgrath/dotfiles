@@ -22,7 +22,7 @@ declare -A DIR_MAP=(
     [4]="${BASE_DIR}/.local/state/${TARGET_NAME}"
     [5]="${BASE_DIR}/.local/bin/${TARGET_NAME}"
     [6]="${BASE_DIR}/.config/systemd/user/"
-    [7]="${BASE_DIR}/etc"
+    [7]="${BASE_DIR}/etc/${TARGET_NAME}"
 )
 
 

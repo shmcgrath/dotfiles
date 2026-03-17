@@ -23,6 +23,7 @@ declare -A DIR_MAP=(
     [5]="${BASE_DIR}/.local/bin/${TARGET_NAME}"
     [6]="${BASE_DIR}/.config/systemd/user/"
     [7]="${BASE_DIR}/etc/${TARGET_NAME}"
+    [8]="${BASE_DIR}/.local/share/applications"
 )
 
 
@@ -35,11 +36,11 @@ echo "  4:  .local/state (XDG_STATE_HOME)"
 echo "  5:  .local/bin"
 echo "  6:  .config/systemd/user"
 echo "  7:  etc/ (for systemwide configuration)"
+echo "  8:  .local/share/applications (for a .desktop override)"
 echo "all:  make all subdirectories"
 echo "exit: make no directories and exit"
 
 read -r -p "Selection: " SELECTION
-
 
 
 if [[ "$SELECTION" == "exit" ]]; then
@@ -47,7 +48,7 @@ if [[ "$SELECTION" == "exit" ]]; then
     exit 0
 elif [[ "$SELECTION" == "all" ]]; then
 	makedir "$BASE_DIR"
-    CHOICES=(1 2 3 4 5 6 7)
+    CHOICES=(1 2 3 4 5 6 7 8)
 else
 	makedir "$BASE_DIR"
     IFS=', ' read -r -a CHOICES <<< "$SELECTION"

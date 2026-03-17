@@ -1,0 +1,12 @@
+% gaming games lutris wow warcraft copy paste windows registry wine
+
+# open regedit for a particular wine prefix
+WINEPREFIX=~/Games/battlenet wine regedit
+
+# add a registry key for dx11 to not use primary selection it can cause issues with copy/paste in WoW
+WINEPREFIX=~/Games/battlenet wine reg add "HKEY_CURRENT_USER\Software\Wine\X11 Driver" /v UsePrimarySelection /t REG_SZ /d N /f
+
+# basic wine configuration
+WINEPREFIX=<wineprfx> winecfg
+
+$ wineprfx: ls | grep 'gz$'

@@ -1,0 +1,8 @@
+# Ignore bootstrap directory
+.DS_Store
+^\.DS_Store$
+^/pacman.conf
+^/reflector.conf
+^/hooks/*
+
+# vim:ft=conf:

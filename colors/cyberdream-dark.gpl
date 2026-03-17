@@ -1,0 +1,18 @@
+GIMP Palette
+Name: cyberdream-dark.gpl
+Columns: 1
+#
+22	24	26	bg -> Almost black
+30	33	36	bg_alt -> Almost black
+60	64	72	bg_highlight -> Charcoal grey
+255	255	255	fg -> White
+123	132	150	gray/grey -> Steel
+94	161	255	blue -> Dark sky blue
+94	255	108	green -> Lighter green
+94	241	255	cyan -> Robin's egg
+255	110	94	red -> Pale red
+241	255	94	yellow -> Canary
+255	94	241	magenta -> Light magenta
+255	94	160	pink -> Medium pink
+255	189	94	orange -> Butterscotch
+189	94	255	purple -> Bright lavender

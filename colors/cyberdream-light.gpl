@@ -1,0 +1,18 @@
+GIMP Palette
+Name: cyberdream-light.gpl
+Columns: 1
+#
+255	255	255	bg White
+234	234	234	bg-alt Pale grey
+172	172	172	bg-highlight Silver
+22	24	26	fg Almost black
+123	132	150	gray/grey Steel
+0	87	209	blue Cerulean blue
+0	139	12	green Emerald green
+0	140	153	cyan Deep aqua
+209	21	0	red Orangey red
+153	123	0	yellow Yellowish brown
+209	0	191	magenta Purple pink
+244	0	100	pink Cerise
+209	124	0	orange Dirty orange
+160	24	255	purple Vivid purple

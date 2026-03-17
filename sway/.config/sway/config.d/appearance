@@ -1,0 +1,17 @@
+default_border pixel 2
+gaps inner 2
+gaps outer 4
+#default_layout splith
+
+client.focused          #7b8496 #7b8496 #ffffff #7b8496 #7b8496
+client.unfocused        #3c4048 #3c4048 #aaaaaa #3c4048 #3c4048
+client.focused_inactive #3c4048 #3c4048 #aaaaaa #3c4048 #3c4048
+client.urgent           #ff6e5e #ff6e5e #ffffff #ff6e5e #ff6e5e
+client.placeholder      #1e2124 #1e2124 #ffffff #1e2124 #1e2124
+output * bg #1e2124 solid_color
+
+# Set background and border color
+#riverctl border-color-focused 0x7b8496
+#riverctl border-color-unfocused 0x3c4048
+
+# vim:ft=swayconfig:

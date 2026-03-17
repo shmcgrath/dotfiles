@@ -6,8 +6,12 @@ Reboot
 Reboot to UEFI
 Hard reboot
 Shutdown
+sway -> reload config
+sway -> restart
+sway -> exit
 river exit
-waybar restart"
+waybar restart
+kanshi"
 
 SELECTION=$(printf "%s\n" "$PWR_OPTIONS" | fuzzel --dmenu --minimal-lines --prompt "Power Menu > " --select="Suspend")
 
@@ -24,8 +28,16 @@ case $SELECTION in
 		pkexec "echo b > /proc/sysrq-trigger";;
 	*"Shutdown")
 		systemctl poweroff;;
+	*"sway -> reload config")
+		swaymsg reload;;
+	*"sway -> restart")
+		swaymsg restart;;
+	*"sway -> exit")
+		swaymsg exit;;
 	*"river exit")
 		riverctl exit;;
 	*"waybar restart")
 		systemctl --user restart waybar@*;;
+	*"kanshi")
+		kanshi &;;
 esac

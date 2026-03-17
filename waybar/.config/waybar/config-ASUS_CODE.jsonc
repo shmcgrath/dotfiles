@@ -3,15 +3,41 @@
     "height": 30,
     "spacing": 4,
 	"output": ["HDMI-A-1"],
-    "modules-left": ["river/tags", "river/window"],
+    "modules-left": ["sway/scratchpad", "sway/workspaces", "sway/window"],
     "modules-center": [],
     "modules-right": [],
-	"river/tags": {
-		"num-tags": 7
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": false,
+		"format": "{name}: {icon}",
+		"format-icons": {
+			"1": "",
+			"2": "",
+			"3": "",
+			"4": "",
+			"5": "",
+			"urgent": "",
+			"focused": "",
+			"default": "",
+			"high-priority-named": ["1", "2"]
+		},
+		"persistent-workspaces": {
+			"06": [],
+			"07": [],
+			"08": [],
+			"09": [],
+			"10": [],
+		}
 	},
-	"river/window": {
-		"format": "{}",
-		"max-length": 43,
-		"tooltip": true
+	"sway/window": {
+		"format": "{title}",
+		"max-length": 50,
+		"all-outputs" : false,
+		"offscreen-css" : true,
+		"offscreen-css-text": "(inactive)",
+		"rewrite": {
+			"(.*) - Mozilla Firefox": " $1",
+			"(.*) - fish": "> [$1]"
+		}
 	}
 }

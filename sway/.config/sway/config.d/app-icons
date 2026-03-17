@@ -1,0 +1,6 @@
+for_window [app_id="(?i)firefox"] title_format "<span foreground='#FF6611'><tt></tt></span> %title"
+
+# Tag xwayland windows with [X]
+for_window [shell="xwayland"] title_format "<span>[X]</span>"
+
+# vim:ft=swayconfig:

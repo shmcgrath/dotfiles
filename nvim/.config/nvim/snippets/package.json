@@ -16,7 +16,8 @@
 			{ "language": [ "shelldoc" ], "path": "./shelldoc.json" },
 			{ "language": [ "perl" ], "path": "./perl.json" },
 			{ "language": [ "make" ], "path": "./make.json" },
-			{ "language": [ "org" ], "path": "./org.json" }
+			{ "language": [ "org" ], "path": "./org.json" },
+			{ "language": [ "swayconfig" ], "path": "./swayconfig.json" }
 		]
 	}
 }

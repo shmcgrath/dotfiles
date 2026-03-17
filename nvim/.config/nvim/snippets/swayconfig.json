@@ -1,0 +1,7 @@
+{
+	"for_window": {
+		"prefix": ["for_window", "window rule", "win rule"],
+		"body": ["for_window [app_id=\"$1\" title=\"$2\"] floating ${3:enable}$0"],
+		"description": "window rules for sway"
+	}
+}

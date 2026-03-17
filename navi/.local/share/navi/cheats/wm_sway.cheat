@@ -1,0 +1,13 @@
+% swaywm, linux, wayland
+
+# Get app-id, window name, class, and title of an application
+swaymsg --type get_tree | jq -r '.. | objects | select((.type? == "con" or .type? == "floating_con") and (.app_id != null or .window != null)) | "name=\"\(.name // "NULL")\" app_id=\"\(.app_id // "NULL")\" class=\"\(.window_properties.class // "NULL")\" title=\"\(.window_properties.title // "NULL")\""'
+
+# Get app-id, window name, class, and title of an application including NULL
+swaymsg --type get_tree | jq -r '.. | objects | "app_id=\"\(.app_id // "NULL")\" name=\"\(.name // "NULL")\" class=\"\(.window_properties.class // "NULL")\" title=\"\(.window_properties.title // "NULL")\""'
+
+# Get app-id or window name of an application
+lswt
+
+# Get keypress names
+wev

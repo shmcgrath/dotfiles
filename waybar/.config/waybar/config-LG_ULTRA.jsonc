@@ -3,8 +3,8 @@
     "height": 30, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
 	"output": ["DP-3"],
-    "modules-left": ["river/tags", "river/window"],
-    "modules-center": ["custom/weather#BNE", "clock#aus", "clock#shm", "custom/weather#AGC"],
+    "modules-left": ["sway/scratchpad", "sway/workspaces", "sway/window", "sway/mode"],
+    "modules-center": ["clock#shm", "clock#aus"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "network", "systemd-failed-units", "cpu", "memory", "tray"],
     "idle_inhibitor": {
         "format": "{icon}",
@@ -110,12 +110,31 @@
 		"interval": 10,
 		"format": " {load1}"
 	},
-	"river/tags": {
-		"num-tags": 7
+	"sway/mode": {
+		"format": " {}",
+		"max-length": 50
 	},
-	"river/window": {
-		"format": "{}",
-		"max-length": 43,
-		"tooltip": true
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": false,
+		"format": "{name}: {icon}",
+		"format-icons": {
+			"1": "",
+			"2": "",
+			"3": "",
+			"4": "",
+			"5": "",
+			"urgent": "",
+			"focused": "",
+			"default": "",
+			"high-priority-named": ["1", "2"]
+		},
+		"persistent-workspaces": {
+			"01": [],
+			"02": [],
+			"03": [],
+			"04": [],
+			"05": [],
+		}
 	}
 }

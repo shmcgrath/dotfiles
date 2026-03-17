@@ -1,6 +1,7 @@
 A:~/.cache/
 C:~/.config/
 D:~/.local/share/
+G:~/Games/
 S:~/.local/state/
 b:~/.local/bin/
 c:~/dotfiles/
@@ -11,3 +12,4 @@ l:~/Downloads/
 n:~/Dropbox/shm/
 o:~/Documents/
 p:~/Pictures/
+w:/home/shmcg/Games/battlenet/drive_c/Program Files (x86)/World of Warcraft/_retail_

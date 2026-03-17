@@ -202,4 +202,7 @@ pacman-key --refresh-keys
 pacman -S archlinux-keyring
 pacman -Syu
 
+# get list of explicitly installed pacakages and their source
+pacman -Qqe | while read -r pkg; do printf '%s - %s\n' "$pkg" "$(pacman -Qi "$pkg" | sed --quiet 's/^Packager[[:space:]]*:[[:space:]]*//p')" ; done
+
 $ pkg_name_installed: sudo pacman -Qe

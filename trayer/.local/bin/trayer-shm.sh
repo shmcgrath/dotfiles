@@ -13,6 +13,6 @@ trayer \
 	--alpha 255 \
 	--expand true \
 	--padding 0 \
-	--monitor "primary" \
+	--monitor "HDMI-A-1" \
 	--iconspacing 3 \
 	&

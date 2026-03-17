@@ -493,3 +493,4 @@ wow:
 # https://github.com/jordanbaird/Ice/releases
 # https://skim-app.sourceforge.io/
 # https://sqlitebrowser.org/dl/
+# #gpicker linux color picker

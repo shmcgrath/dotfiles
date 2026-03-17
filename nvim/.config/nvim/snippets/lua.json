@@ -1,5 +1,5 @@
 {
-	"require-plugin": {
+	"elif": {
 		"prefix": ["elif"],
 		"body": ["elseif ${1:true} then", "\t$0"],
 		"description": "else if statement"

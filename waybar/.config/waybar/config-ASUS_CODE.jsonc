@@ -11,11 +11,6 @@
 		"all-outputs": false,
 		"format": "{name}: {icon}",
 		"format-icons": {
-			"1": "",
-			"2": "",
-			"3": "",
-			"4": "",
-			"5": "",
 			"urgent": "",
 			"focused": "",
 			"default": "",
@@ -31,12 +26,14 @@
 	},
 	"sway/window": {
 		"format": "{title}",
-		"max-length": 50,
+		"max-length": 55,
 		"all-outputs" : false,
 		"offscreen-css" : true,
 		"offscreen-css-text": "(inactive)",
 		"rewrite": {
-			"(.*) - Mozilla Firefox": " $1",
+			"(.*) — Mozilla Firefox$": "󰈹 $1",
+			"(.*) – Mozilla Firefox$": "󰈹 $1",
+			"(.*) - Mozilla Firefox$": "󰈹 $1",
 			"(.*) - fish": "> [$1]"
 		}
 	}

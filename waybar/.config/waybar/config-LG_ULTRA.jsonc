@@ -136,5 +136,18 @@
 			"04": [],
 			"05": [],
 		}
+	},
+	"sway/window": {
+		"format": "{title}",
+		"max-length": 500,
+		"all-outputs" : false,
+		"offscreen-css" : true,
+		"offscreen-css-text": "(inactive)",
+		"rewrite": {
+			"(.*) — Mozilla Firefox$": "󰈹 $1",
+			"(.*) – Mozilla Firefox$": "󰈹 $1",
+			"(.*) - Mozilla Firefox$": "󰈹 $1",
+			"(.*) - fish": "> [$1]"
+		}
 	}
 }

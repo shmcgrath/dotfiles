@@ -15,16 +15,22 @@ for_window [title="File Operation Progress"] floating enable, border pixel 1, st
 
 # Firefox
 for_window [app_id="firefox" title="Picture-in-Picture"] floating enable, resize set 400 400
-for_window [app_id="firefox" title="Library"] floating enable
+for_window [app_id="firefox" title="Library$"] floating enable
 for_window [app_id="firefox" title="^Enter name of file to save to.*"] floating enable, resize set width 1030 height 710
 for_window [app_id="firefox" title = "Sharing Indicator$"] floating enable
 for_window [app_id="firefox" title = ".*Kee - Mozilla Firefox"] floating enable
-for_window [app_id="firefox" title = "Choose User Profile$" ] floating enable
+for_window [app_id="firefox" title = "(?i)Choose User Profile$" ] floating enable
+for_window [app_id="^firefox.*" title="^About Mozilla Firefox$"] floating enable
+for_window [app_id="^firefox.*" title="You’ve launched an older version of Firefox"] floating enable
+#for_window [app_id="^firefox.*" title="^Page Info -.*"]                              focus, floating enable
 
 # Misc
 for_window [app_id="org.pulseaudio.pavucontrol" title="Volume Control"] floating enable
 for_window [app_id="Gtk2fontsel"] floating enable
 for_window [app_id="gpick"] floating enable, resize set width 1030 height 710
+for_window [app_id="lxqt-policykit-agent"] focus, floating enable
+for_window [app_id="^qt[5-6]ct$"]                                                    focus, floating enable
+for_window [app_id="qalculate-gtk"], floating enable
 
 # Application Default Workspaces
 for_window [app_id="org.keepassxc.KeePassXC" title="(?i)KeePassXC$"] move to workspace 10

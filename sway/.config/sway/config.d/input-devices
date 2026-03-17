@@ -1,0 +1,13 @@
+# Input Configuration
+# Read `man 5 sway-input` for more information about this section.
+
+
+# river keyboard rate
+# riverctl set-repeat 50 300
+
+#   input type:keyboard {
+#       xkb_layout "eu"
+#   }
+
+
+# vim:ft=swayconfig:

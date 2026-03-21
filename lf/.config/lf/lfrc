@@ -206,12 +206,35 @@ map <c-p>f :fzf-edit
 cmd extract ${{
     set -f
     case $f in
-        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
-        *.tar.gz|*.tgz) tar xzvf $f;;
-        *.tar.xz|*.txz) tar xJvf $f;;
-        *.zip) unzip $f;;
-        *.rar) unrar x $f;;
-        *.7z) 7z x $f;;
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2)
+            d="${f%.tar.bz2}"
+            d="${d%.tar.bz}"
+            d="${d%.tbz2}"
+            d="${d%.tbz}"
+            mkdir -- "$d" && tar --extract --bzip2 --verbose --file="$f" --directory="$d"
+            ;;
+        *.tar.gz|*.tgz)
+            d="${f%.tar.gz}"
+            d="${d%.tgz}"
+            mkdir -- "$d" && tar --extract --gzip --verbose --file="$f" --directory="$d"
+            ;;
+        *.tar.xz|*.txz)
+            d="${f%.tar.xz}"
+            d="${d%.txz}"
+            mkdir -- "$d" && tar --extract --xz --verbose --file="$f" --directory="$d"
+            ;;
+        *.zip)
+            d="${f%.zip}"
+            mkdir -- "$d" && unzip -- "$f" -d "$d"
+            ;;
+        *.rar)
+            d="${f%.rar}"
+            mkdir -- "$d" && unrar x -- "$f" "$d/"
+            ;;
+        *.7z)
+            d="${f%.7z}"
+            mkdir -- "$d" && 7z x "-o$d" -- "$f"
+            ;;
     esac
 }}
 map u :extract; reload

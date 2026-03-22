@@ -117,3 +117,7 @@ tiny-irc/.config/tiny/config.yml
 # gitconfig_private
 gitconfig_private
 !gitconfig_private_template
+
+# emacs private
+private.el
+!private.el_template

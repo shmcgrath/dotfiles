@@ -408,6 +408,10 @@ discord:
 	@printf "%s\n" 'it has been added to the clipboard'
 	@echo '"SKIP_HOST_UPDATE": true,' | wl-copy
 
+emacs:
+	@$(MKDIR) $(XDG_STATE_HOME)/emacs/backup
+	@$(MKDIR) $(HOME)/.emacs.d
+
 wow:
 	@printf "%s\n" "Link to the troubleshooting setup for battle.net on Lutris: https://github.com/lutris/docs/blob/master/Battle.Net.md"
 	

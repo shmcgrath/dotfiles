@@ -1,0 +1,6 @@
+# Ignore template
+.DS_Store
+^\.DS_Store$
+^/\.emacs.d/private.el_template
+
+# vim:ft=conf:

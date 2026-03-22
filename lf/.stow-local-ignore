@@ -1,4 +1,3 @@
-# Ignore bootstrap directory
 .DS_Store
 ^\.DS_Store$
 ^/\.config/lf/generate-lf-icons.sh

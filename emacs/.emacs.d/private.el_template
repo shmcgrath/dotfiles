@@ -1,0 +1,6 @@
+;; set user information
+(setq user-full-name ""
+      user-mail-address ""
+      calendar-latitude
+      calendar-longitude
+      calendar-location-name "")

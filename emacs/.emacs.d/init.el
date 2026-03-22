@@ -86,12 +86,6 @@
   :config
   (which-key-mode))
 
-;; set user information
-(setq user-full-name "Sarah H. McGrath"
-      user-mail-address "sarah@shmcgrath.com"
-      calendar-latitude 40.44
-      calendar-longitude -79.99
-      calendar-location-name "Pittsburgh, PA")
 ;; stop encode prompts
 (set-language-environment "utf-8")
 
@@ -99,7 +93,7 @@
 ;; do not create lockfiles
 (setq create-lockfiles nil)
 ;; set emacs backup directory
-(setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
+(setq backup-directory-alist `(("." . "~/.local/state/emacs/backup")))
 
 ;; Disable GUI and visual bell
 (tool-bar-mode -1)
@@ -135,3 +129,5 @@
 ;; Store custom variables in an external file so init.el can be kept in source control
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file 'noerror)
+
+load("~/.emacs.d/private.el")

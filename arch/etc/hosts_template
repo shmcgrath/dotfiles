@@ -1,0 +1,6 @@
+# Static table lookup for hostnames.
+# See hosts(5) for details.
+127.0.0.1	localhost {{hostname}}.{{local-network-name}} {{hostname}}
+::1		localhost
+# added for battle.net via lutris
+127.0.1.1	{{hostname}}.{{local-network-name}}

@@ -76,6 +76,10 @@ exists yay && {
 	alias yayu="yay --show --news && yay" # get arch news and syu with yay
 }
 
+exists amdgpu_top && {
+	alias amdgpu_top="amdgpu_top --dark" # launch in dark mode
+}
+
 # OS-SPECIFIC ALIASES AND ENV VARS{{{2
 if [ "$(uname -s)" = "Darwin" ]; then
 	export OPENER="open"

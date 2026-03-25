@@ -3,8 +3,8 @@
     "height": 30, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
 	"output": ["DP-3"],
-    "modules-left": ["sway/scratchpad", "sway/workspaces", "sway/window", "sway/mode"],
-    "modules-center": ["clock#shm", "clock#aus"],
+    "modules-left": ["sway/scratchpad", "sway/workspaces", "sway/window"],
+    "modules-center": ["clock#shm", "sway/mode", "clock#aus"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "network", "systemd-failed-units", "cpu", "memory", "tray"],
     "idle_inhibitor": {
         "format": "{icon}",
@@ -114,20 +114,21 @@
 		"format": " {}",
 		"max-length": 50
 	},
+	"sway/scratchpad": {
+		"format": "{icon} {count}",
+		"show-empty": false,
+		"format-icons": ["", ""],
+		"tooltip": true,
+		"tooltip-format": "{app}: {title}"
+	},
 	"sway/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": false,
-		"format": "{name}: {icon}",
+		"format": "{name}",
 		"format-icons": {
-			"1": "",
-			"2": "",
-			"3": "",
-			"4": "",
-			"5": "",
 			"urgent": "",
 			"focused": "",
-			"default": "",
-			"high-priority-named": ["1", "2"]
+			"default": ""
 		},
 		"persistent-workspaces": {
 			"01": [],
@@ -139,15 +140,15 @@
 	},
 	"sway/window": {
 		"format": "{title}",
-		"max-length": 500,
-		"all-outputs" : false,
+		"max-length": 240,
+		"all-outputs" : true,
 		"offscreen-css" : true,
 		"offscreen-css-text": "(inactive)",
 		"rewrite": {
 			"(.*) — Mozilla Firefox$": "󰈹 $1",
 			"(.*) – Mozilla Firefox$": "󰈹 $1",
 			"(.*) - Mozilla Firefox$": "󰈹 $1",
-			"(.*) - fish": "> [$1]"
+			"(.*) - fish": " [$1]"
 		}
 	}
 }

@@ -13,8 +13,8 @@ window#waybar {
 }
 
 .module {
-	background-color: #282828;
-  border-radius: 16px;
+	background-color: #16181a;
+	border-radius: 16px;
 	box-shadow: inset 0 -2px;
 }
 
@@ -22,53 +22,68 @@ label.module {
 	/* padding and margin: top right bottom left */
 	padding: 4px 8px 4px 8px;
 	margin: 4px 4px 4px 4px;
-	color: #f4d9e1;
+	color: #5ef1ff;
 }
 
 box.module {
 }
 
 #window {
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-top: 4px;
-    margin-bottom: 4px;
+	padding-left: 16px;
+	padding-right: 16px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	color: #bd5eff;
 }
 
 window#waybar.empty #window {
-    background-color: transparent;
+	background-color: transparent;
 }
 
-#tags {
+#scratchpad,
+#workspaces {
 	margin: 4px 4px 4px 4px;
 	padding: 2px 8px 2px 8px;
-	color: #f4d9e1;
+	color: #7b8496;
 }
 
-#tags button {
-	padding: 0px;
+#workspaces button {
+	padding: 1px;
 	border-radius: 16px;
 	margin: 4px 2px 4px 2px;
 }
 
-#tags button.occupied {
-	color: #5eff6c;
-}
-
-#tags button.focused {
-	color: #f4d9e1;
+#workspaces button.focused {
+	color: #7b8496;
 	font-weight: bold;
 	font-style: italic;
 	background-color: #5ea1ff;
 }
 
-#tags button.urgent {
+#workspaces button.urgent {
 	background-color: #ff6e5e;
+}
+
+#workspaces button.visible {
+	color: #5eff6c;
+}
+
+#workspaces button.current_output {
+	color: #f1ff5e;
+}
+
+#workspaces button.empty,
+#workspaces button.persistent {
+	color: #7b8496;
+}
+
+#mode {
+	color: #f1ff5e;
 }
 
 #custom-power {
 	color: #24283b;
-	background-color: #db4b4b;
+	background-color: #ff6e5e;
 	border-radius: 4px;
 	margin-right: 8px;
 	margin-top: 4px;
@@ -78,99 +93,99 @@ window#waybar.empty #window {
 }
 
 #tray {
-    background: #282828;
-    margin: 4px 4px 4px 4px;
-    padding: 0px 4px;
+	background: #282828;
+	margin: 4px 4px 4px 4px;
+	padding: 0px 4px;
 }
 
 #clock,
 #custom-weather {
-    color: #e6b9c6;
+	color: #ff5ef1;
 }
 
 #battery {
-    color: #9ece6a;
+	color: #5eff6c;
 }
 
 #battery.charging {
-    color: #9ece6a;
+	color: #5eff6c;
 }
 
 #battery.warning:not(.charging) {
-    background-color: #f7768e;
-    color: #24283b;
-    border-radius: 4px 4px 4px 4px;
+	background-color: #f7768e;
+	color: #24283b;
+	border-radius: 4px 4px 4px 4px;
 }
 
 #backlight {
-    background-color: #24283b;
-    color: #db4b4b;
-    border-radius: 0px 0px 0px 0px;
-    margin: 4px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding: 0px 0px;
+	background-color: #24283b;
+	color: #db4b4b;
+	border-radius: 0px 0px 0px 0px;
+	margin: 4px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 0px 0px;
 }
 
 #network {
-    border-radius: 8px;
+	border-radius: 8px;
 }
 
 #pulseaudio {
-    border-radius: 8px;
-    margin-left: 0px;
+	border-radius: 8px;
+	margin-left: 0px;
 }
 
 #pulseaudio.muted {
-    background: transparent;
-    color: #928374;
-    border-radius: 8px;
-    margin-left: 0px;
+	background: transparent;
+	color: #928374;
+	border-radius: 8px;
+	margin-left: 0px;
 }
 
 #custom-randwall {
-    border-radius: 8px;
-    margin-right: 0px;
+	border-radius: 8px;
+	margin-right: 0px;
 }
 
 #custom-playerctl {
 	background: #282828;
 	padding-left: 16px;
-  padding-right: 16px;
-  /*border-left: solid 1px #282738;*/
-  /*border-right: solid 1px #282738;*/
-  margin-top: 4px;
-  margin-bottom: 4px;
-  margin-left: 0px;
-  font-weight: normal;
-  font-style: normal;
-  font-size: 16px;
+	padding-right: 16px;
+	/*border-left: solid 1px #282738;*/
+	/*border-right: solid 1px #282738;*/
+	margin-top: 4px;
+	margin-bottom: 4px;
+	margin-left: 0px;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 16px;
 }
 
 #custom-playerlabel {
-    background: transparent;
-    padding-left: 8px;
-    padding-right: 16px;
-    /*border-left: solid 1px #282738;*/
-    /*border-right: solid 1px #282738;*/
-    margin-top: 4px;
-    margin-bottom: 4px;
-    font-weight: normal;
-    font-style: normal;
+	background: transparent;
+	padding-left: 8px;
+	padding-right: 16px;
+	/*border-left: solid 1px #282738;*/
+	/*border-right: solid 1px #282738;*/
+	margin-top: 4px;
+	margin-bottom: 4px;
+	font-weight: normal;
+	font-style: normal;
 }
 
 #custom-wf-recorder {
-    padding: 0 20px;
-    color: #e5809e;
-    background-color: #1E1E2E;
+	padding: 0 20px;
+	color: #e5809e;
+	background-color: #1E1E2E;
 }
 
 #temperature.critical {
-    color: red;
-    font-weight: bold;
-		font-style: italic;
+	color: red;
+	font-weight: bold;
+	font-style: italic;
 }
 
 #idle_inhibitor {
-    padding: 4px 2px 4px 2px;
+	padding: 4px 2px 4px 2px;
 }

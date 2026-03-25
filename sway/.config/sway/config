@@ -187,6 +187,9 @@ mode "media-control" {
 	bindsym XF86AudioForward exec playerctl position 10+
 	bindsym XF86AudioRewind exec playerctl position 10-
 	bindsym XF86AudioLowerVolume exec playerctl volume 0.05-
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 bindsym $hyperMod+m mode "media-control"
 

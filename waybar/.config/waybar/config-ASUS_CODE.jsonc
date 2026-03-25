@@ -9,12 +9,11 @@
 	"sway/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": false,
-		"format": "{name}: {icon}",
+		"format": "{name}",
 		"format-icons": {
 			"urgent": "",
 			"focused": "",
-			"default": "",
-			"high-priority-named": ["1", "2"]
+			"default": ""
 		},
 		"persistent-workspaces": {
 			"06": [],
@@ -26,8 +25,8 @@
 	},
 	"sway/window": {
 		"format": "{title}",
-		"max-length": 55,
-		"all-outputs" : false,
+		"max-length": 255,
+		"all-outputs" : true,
 		"offscreen-css" : true,
 		"offscreen-css-text": "(inactive)",
 		"rewrite": {

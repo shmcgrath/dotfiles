@@ -52,8 +52,8 @@ for_window [class="(?i)^steam$" title="Sign in to Steam"] move to workspace 04, 
 for_window [class="(?i)^steam$" title="Steam"] move to workspace 04
 
 # Game Launchers and Support - 04
-for_window [title="Battle.net"] move to workspace 04, fullscreen enable
-for_window [app_id="net.lutris.Lutris" title="Lutris"] move to workspace 04
+for_window [title="Battle.net"] move to workspace 04
+for_window [app_id="net.lutris.Lutris" title="Lutris"] move to workspace 04, layout tabbed
 for_window [class="tsmapplication.exe" title="^TradeSkillMaster Application.*"] move to workspace 04
 for_window [title="^TSMApplication.*"] floating enable
 

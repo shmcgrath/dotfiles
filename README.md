@@ -245,6 +245,7 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- [Keep an eye on built in autocompletion](https://neovim.io/doc/user/insert/#ins-autocompletion)
 - look into wpctl
 - set up systemd timer for reflector 1x a week
 - To install fonts on Linux for all users, log in as root, create a directory under /usr/share/fonts/, copy the font files into that directory, and then run fc-cache -f /usr/share/fonts/. For a single user, you can place the font files in the ~/.fonts directory and log out and back in to see the changes.
@@ -299,6 +300,7 @@ zola 0.20.0-1
 - [LS_COLORS](https://github.com/sharkdp/vivid?tab=readme-ov-file)
 - how to use blink-cmp with visual/clipboard stuff?
 - [dircolors - nord](https://github.com/nordtheme/dircolors)
+- [look into ft definitions like this](https://old.reddit.com/r/neovim/comments/1rxwqmx/looking_for_a_plugin_that_corrects_the_filetype/)
 - real vim plugin for pairing characters
 - fd
 - Brewfile

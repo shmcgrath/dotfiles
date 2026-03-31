@@ -1,4 +1,4 @@
-% brew, cask, package management
+% homebrew, brew, cask, package management
 
 # update brew
 brew update
@@ -86,6 +86,9 @@ brew link --force <installed>
 
 # health check
 brew doctor
+
+# remove brew cache, used to fix  FormulaUnavailableError: No available formula with the name "formula.jws.json"
+rm -rf $(brew --cache)
 
 # fix permissions
 sudo chown -R $(whoami):admin /usr/local

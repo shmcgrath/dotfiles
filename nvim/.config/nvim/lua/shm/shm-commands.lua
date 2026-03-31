@@ -73,10 +73,6 @@ vim.api.nvim_create_user_command("ShmPackUpdate", function()
   vim.notify("type :write to update plugins, :quit to not")
 end, { desc = "Update all plugins" })
 
-vim.api.nvim_create_user_command("ShmPackDelete", function()
-  vim.pack.update()
-end, { desc = "Delete any uninstalled plugins" })
-
 vim.api.nvim_create_user_command("ShmPackCheckHealth", function()
   vim.cmd("checkhealth vim.pack")
 end, { desc = "Run :checkhealth vim.pack" })

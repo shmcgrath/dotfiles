@@ -7,6 +7,7 @@ CONTENTS                                            *shmContents*
     1. Mappings  ................................... |shmMappings|
     2. Spelling, Thesaurus, and Dictionary ......... |shmSpelling|
     3. Sessions  ................................... |shmSessions|
+    3. Commenting  ................................. |shmCommenting|
 
 My tips, reminders, notes, and reference for Vim.
 
@@ -539,5 +540,88 @@ To exit, C-w, w
 ====================
 
 One more tip that you can press <C-u> in insert mode to get rid of the added comment symbol.
+
+==============================================================================
+3. Commenting							*shmCommenting*
+
+Nvim supports commenting and uncommenting of lines based on 'commentstring'.
+
+Acting on a single line behaves as follows:
+- If the line matches 'commentstring', the comment markers are removed (e.g.
+  `/*foo*/` is transformed to `foo`).
+- Otherwise the comment markers are added to the current line (e.g. `foo` is
+  transformed to `/*foo*/`). Blank lines are ignored.
+
+Acting on multiple lines behaves as follows:
+- If each affected non-blank line matches 'commentstring', then all comment
+  markers are removed.
+- Otherwise all affected lines are converted to comments; blank lines are
+  transformed to empty comments (e.g. `/**/`). Comment markers are aligned to
+  the least indented line.
+
+Matching 'commentstring' does not account for whitespace in comment markers.
+Removing comment markers is first attempted exactly, with fallback to using
+markers trimmed from whitespace.
+
+If the filetype of the buffer is associated with a language for which a
+|treesitter| parser is installed, then |vim.filetype.get_option()| is called
+to look up the value of 'commentstring' corresponding to the cursor position.
+(This can be different from the buffer's 'commentstring' in case of
+|treesitter-language-injections|.)
+
+The following |default-mappings| are defined:
+
+							*gc* *gc-default*
+gc{motion}		Comment or uncomment lines covered by {motion}.
+
+							*gcc* *gcc-default*
+gcc			Comment or uncomment [count] lines starting at cursor.
+
+							*v_gc* *v_gc-default*
+{Visual}gc		Comment or uncomment the selected line(s).
+
+							*o_gc* *o_gc-default*
+gc			Text object for the largest contiguous block of
+			non-blank commented lines around the cursor (e.g.
+			`gcgc` uncomments a comment block; `dgc` deletes it).
+			Works only in Operator-pending mode.
+
+[Reddit thread on commentstring](https://old.reddit.com/r/neovim/comments/1s25o3s/weekly_101_questions_thread/)
+
+What is the proper way to set the comment character for certain files? For example, when editing Foot's config file (foot.ini), neovim uses ; for the comments, which I understand is the standard for ini files. However, Foot expects #.
+
+I don't think setting commentstring=# %s for ìni` globally is a good idea.
+
+    permalinkembedsavereportreply
+
+[–]EstudiandoAjedrez 6 points 6 days ago 
+
+You should use commentstring. It is a buffer option, so you can set a :h FileType autocmd on pattern ini, and if the file is called foot.ini or it's located in the foot config directory, you can set the commentstring to that particular buffer with vim.bo.commentstring = '# %s'.
+
+    permalinkembedsaveparentreportreply
+
+[–]vim-help-bot 1 point 6 days ago 
+
+Help pages for:
+
+    FileType in autocmd.txt
+
+`:(h|help) <query>` | about | mistake? | donate | Reply 'rescan' to check the comment again | Reply 'stop' to stop getting replies to your comments
+
+    permalinkembedsaveparentreportreply
+
+[–]xour 1 point 6 days ago 
+
+I couldn't make it work with FileType, I ended up doing this that works (not sure if it is correct, though):
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "foot.ini" }, 
+  callback = function()
+    vim.bo.commentstring = "# %s"
+    vim.bo.comments = ":#"
+  end,
+})
+
+
 
  vim:ft=help:

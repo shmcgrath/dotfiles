@@ -1,0 +1,7 @@
+% vi, vim, neovim
+
+# clear treesitter cache
+rm -rf ~/.local/share/nvim/site/parser && rm -rf ~/.local/share/nvim/site/parser-info && rm -rf ~/.local/share/nvim/site/queries
+
+# blink.cmp: if there is an init_db issue, delete this folder
+rm -rf ~/.local/state/nvim/blink/cmp

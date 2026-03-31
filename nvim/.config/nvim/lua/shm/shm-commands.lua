@@ -67,3 +67,29 @@ end, {
   end,
 })
 
+-- vim.pack
+vim.api.nvim_create_user_command("ShmPackUpdate", function()
+  vim.pack.update()
+  vim.notify("type :write to update plugins, :quit to not")
+end, { desc = "Update all plugins" })
+
+vim.api.nvim_create_user_command("ShmPackDelete", function()
+  vim.pack.update()
+end, { desc = "Delete any uninstalled plugins" })
+
+vim.api.nvim_create_user_command("ShmPackCheckHealth", function()
+  vim.cmd("checkhealth vim.pack")
+end, { desc = "Run :checkhealth vim.pack" })
+
+-- treesitter toggles
+vim.api.nvim_create_user_command("ShmTSStart", function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.treesitter.start(bufnr)
+  vim.notify("Treesitter started for buffer " .. bufnr)
+end, { desc = "Toggle Tree-sitter highlighting for current buffer" })
+
+vim.api.nvim_create_user_command("ShmTSStop", function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.treesitter.stop(bufnr)
+  vim.notify("Treesitter stopped for buffer " .. bufnr)
+end, { desc = "Toggle Tree-sitter highlighting for current buffer" })

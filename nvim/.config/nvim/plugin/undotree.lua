@@ -1,3 +1,8 @@
+vim.pack.add({
+  {
+    src = "https://github.com/mbbill/undotree",
+  },
+})
 -- Settings for [undotree](https://github.com/mbbill/undotree)
 vim.keymap.set("n", "<F5>", "<cmd>UndotreeToggle<CR>", {
 	noremap = true,

@@ -1,3 +1,10 @@
+vim.pack.add({
+  {
+    src = "https://github.com/lewis6991/gitsigns.nvim",
+  },
+})
+
+
 local icons_misc = require("shm.icons").misc
 
 require("gitsigns").setup({

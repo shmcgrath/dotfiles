@@ -1,3 +1,9 @@
+vim.pack.add({
+  {
+    src = "https://github.com/ibhagwan/fzf-lua",
+  },
+})
+
 require("fzf-lua").setup({
   -- MISC GLOBAL SETUP OPTIONS, SEE BELOW
   -- fzf_bin = ...,

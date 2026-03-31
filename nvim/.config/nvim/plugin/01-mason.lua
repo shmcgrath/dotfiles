@@ -1,3 +1,9 @@
+vim.pack.add({
+  {
+    src = "https://github.com/williamboman/mason.nvim",
+  },
+})
+
 local mason = require("mason")
 local mason_registry = require("mason-registry")
 

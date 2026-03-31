@@ -1,3 +1,8 @@
+vim.pack.add({
+  {
+    src = "https://github.com/",
+  },
+})
 require("snippets").setup({
   create_autocmd = true,
   create_cmp_source = false,

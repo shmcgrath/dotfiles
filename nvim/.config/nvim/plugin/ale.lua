@@ -1,3 +1,9 @@
+vim.pack.add({
+  {
+    src = "https://github.com/dense-analysis/ale",
+  },
+})
+
 -- Settings for [ale](https://github.com/dense-analysis/ale)
 vim.g.ale_fixers = {
     ["*"] = { "remove_trailing_lines", "trim_whitespace" },

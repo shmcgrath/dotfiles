@@ -1,3 +1,9 @@
+vim.pack.add({
+  {
+    src = "https://github.com/rmagatti/goto-preview",
+  },
+})
+
 require('goto-preview').setup {
   width = 120, -- Width of the floating window
   height = 15, -- Height of the floating window

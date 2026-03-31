@@ -1,3 +1,9 @@
+vim.pack.add({
+  {
+    src = "https://github.com/airblade/vim-gitgutter",
+  },
+})
+
 -- Settings for [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 vim.g.gitgutter_sign_added = "++"
 vim.g.gitgutter_sign_modified = "~~"

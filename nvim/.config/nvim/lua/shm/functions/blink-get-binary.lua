@@ -35,7 +35,7 @@ function M.run()
   local binary_url = base_url .. "/" .. filename
   local sha_url = binary_url .. ".sha256"
 
-  local target_dir = vim.fn.stdpath("data") .. "/site/pack/paqs/start/blink.cmp/target/release"
+  local target_dir = vim.fn.stdpath("data") .. "/site/pack/core/opt/blink.cmp/target/release"
   local binary_path = target_dir .. "/libblink_cmp_fuzzy" .. ext
   local sha_path = binary_path .. ".sha256"
 

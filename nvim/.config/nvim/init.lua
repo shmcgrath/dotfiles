@@ -9,15 +9,12 @@ require("shm.options")
 vim.o.backupdir=os.getenv("HOME") .. "/.local/state/nvim/backup"
 vim.o.directory=os.getenv("HOME") .. "/.local/state/nvim/swap"
 
--- require [paq plugin manager](https://github.com/savq/paq-nvim/)
-require("shm.paq")
+-- plugins are now using built in vim.pack.add
+-- the plugin/ directory is automatically sourced
 
 -- require lsp and completion config
 require("shm.completion")
 require("shm.lsp")
-
--- require dap config
-require("shm.dap-load-configs")
 
 -- require keymaps that are not tied to plugins
 require("shm.keymaps")
@@ -48,7 +45,6 @@ endfunction
 ]])
 
 vim.o.thesaurusfunc = "Thesaurusfunc"
-
 
 if vim.g.neovide then
     require("shm.neovide")

@@ -9,7 +9,7 @@
 	"add new plugin": {
 		"prefix": ["packadd"],
 		"body": [
-			"vim.pack.add({ { src= \"${1:$CLIPBOARD}\" }, })$0"
+			"vim.pack.add({\n\t{\n\t\tsrc= \"${1:$CLIPBOARD}\",\n\t},\n})$0"
 		],
 		"description": "add a new plugin with built in neovim package manager"
 	}

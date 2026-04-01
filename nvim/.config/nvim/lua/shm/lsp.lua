@@ -118,3 +118,19 @@ vim.keymap.set("n", "<C-w>d", function()
     close_events = { "CursorMoved", "BufLeave", "WinLeave", "InsertEnter" },
   })
 end, { noremap = true, silent = true, desc = "Show enhanced diagnostics float" })
+
+vim.keymap.set("n", "<leader>dy", function()
+  local line = vim.api.nvim_win_get_cursor(0)[1] - 1
+  local diagnostics = vim.diagnostic.get(0, { lnum = line })
+
+  if #diagnostics == 0 then
+    vim.notify("No diagnostics under cursor", vim.log.levels.INFO)
+    return
+  end
+
+  local d = diagnostics[1]
+  local text = string.format("[%s] %s", vim.diagnostic.severity[d.severity], d.message)
+
+  vim.fn.setreg("+", text)
+  vim.notify("Copied diagnostic: " .. text, vim.log.levels.INFO)
+end, { noremap = true, silent = true, desc = "Copy diagnostic under cursor" })

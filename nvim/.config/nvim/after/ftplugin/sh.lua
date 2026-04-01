@@ -1,5 +1,11 @@
-vim.opt_local.shiftwidth = 4
-vim.opt_local.softtabstop = 4
-vim.opt_local.tabstop = 4
-vim.cmd("let b:ale_fixers = ['shfmt',]")
-vim.cmd("let b:ale_linters = ['bashls', 'shellcheck']")
+vim.cmd([[
+  setlocal shiftwidth=4
+  setlocal softtabstop=4
+  setlocal tabstop=4
+]])
+
+require("conform").formatters_by_ft.sh = { "shfmt" }
+
+require("lint").linters_by_ft = {
+  sh = { "shellcheck", "bashls", },
+}

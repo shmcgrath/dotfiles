@@ -1,16 +1,77 @@
 {
 	"require-plugin": {
-		"prefix": ["reqplug"],
+		"prefix": ["reqplug", "setupplugin", "plugsetup", "plugreq"],
 		"body": [
-			"require(\"$1\").setup({\n\t$0\n})"
+			"require(\"${1:$TM_FILENAME_BASE}\").setup({\n\t$0\n})"
 		],
 	"description": "require for a neovim plugin"
 	},
 	"add new plugin": {
-		"prefix": ["packadd"],
+		"prefix": ["packadd", "vimpackadd"],
 		"body": [
 			"vim.pack.add({\n\t{\n\t\tsrc= \"${1:$CLIPBOARD}\",\n\t},\n})$0"
 		],
 		"description": "add a new plugin with built in neovim package manager"
+	},
+	"ftplugin set linter and fixer": {
+		"prefix": ["setlinterfixer", "setfixerlinter", "setconformlint"],
+		"body": [
+			"require(\"conform\").formatters_by_ft.${1:$TM_FILENAME_BASE} = { \"${2:formatter}\" }",
+			"",
+			"require(\"lint\").linters_by_ft = {\n\t$1 = { \"${3:linter}\", },\n}$0"
+		],
+		"description": "set conform fixer and nvim-lint linter for this filetype"
+	},
+	"ftplugin set linter": {
+		"prefix": ["setlinter", "linterset", "lintset"],
+		"body": [
+			"require(\"lint\").linters_by_ft = {\n\t${1:$TM_FILENAME_BASE} = { \"${2:linter}\", },\n}$0"
+		],
+		"description": "set nvim-lint linter for this filetype"
+	},
+	"ftplugin configure linter": {
+		"prefix": ["configurelinter", "linterconfig", "lintconfig"],
+		"body": [
+			"require(\"lint\").linters.${1:linter}.args = vim.list_extend({",
+			"\t\"${2:parameter}\",",
+			"\t\"${3:value}\",",
+			"}, vim.deepcopy(require(\"lint\").linters.$1.args or {}))$0"
+		],
+		"description": "add arguments to nvim-lint"
+	},
+	"ftplugin set fixer": {
+		"prefix": ["setfixer", "fixerset", "conformset"],
+		"body": [
+			"require(\"conform\").formatters_by_ft.${1:$TM_FILENAME_BASE} = { \"${2:formatter}\" }$0"
+		],
+		"description": "set conform fixer for this filetype"
+	},
+	"ftplugin configure fixer": {
+		"prefix": ["configfixer", "fixerconfig", "conformconfig"],
+		"body": [
+			"-- this should be before the formatters_by_ft declaration",
+			"require(\"conform\").formatters.${1:formatter} = {",
+			"\tappend_args = { \"${2:argument}\", ${3:\"value\"} },",
+			"}$0"
+		],
+		"description": "add additional arguments or configurations for a conform fixer"
+	},
+	"ftplugin setlocal commands": {
+		"prefix": ["setlocalftplugin", "vimcmdftplugin"],
+		"body": [
+			"vim.cmd([[",
+			"\tsetlocal foldmethod=${1:syntax}",
+			"\tsetlocal expandtab",
+			"\tsetlocal shiftwidth=${2:4}",
+			"\tsetlocal softtabstop=$2",
+			"\tsetlocal tabstop=$2",
+			"\tsetlocal colorcolumn=${3:80}",
+			"\tsetlocal textwidth=${4:79}",
+			"\tsetlocal complete+=kspell",
+			"\tsetlocal spell",
+			"\tsetlocal spelllang=en_us",
+			"]])$0"
+		],
+		"description": "skeleton for ftplugin setlocal options"
 	}
 }

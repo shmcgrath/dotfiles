@@ -1,2 +1,5 @@
-vim.cmd("let b:ale_fixers = ['tombi']")
-vim.cmd("let b:ale_linters = ['tombi']")
+require("conform").formatters_by_ft.toml = { "tombi" }
+
+require("lint").linters_by_ft = {
+  toml = { "tombi", },
+}

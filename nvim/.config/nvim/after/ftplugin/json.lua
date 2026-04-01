@@ -1,1 +1,3 @@
-vim.cmd("let b:ale_linters = ['jsonlint']")
+require("lint").linters_by_ft = {
+  json = { "jsonlint", },
+}

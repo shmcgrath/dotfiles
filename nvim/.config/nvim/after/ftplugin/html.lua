@@ -9,15 +9,19 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufRead" }, {
   end,
 })
 
-vim.opt_local.colorcolumn = "80"
-vim.opt_local.foldmethod = "syntax"
-vim.opt_local.shiftwidth = 2
-vim.opt_local.softtabstop = 2
-vim.opt_local.tabstop = 2
+vim.cmd([[
+  setlocal foldmethod=syntax
+  setlocal shiftwidth=2
+  setlocal softtabstop=2
+  setlocal tabstop=2
+  setlocal colorcolumn=80
+]])
 
-vim.cmd("let b:ale_linters = ['htmlhint']")
+require("lint").linters_by_ft = {
+  html = { "htmlhint", },
+}
 
-if vim.g.ale_html_htmlhint_options == nil then
-  vim.g.ale_html_htmlhint_options = "--config " .. vim.fn.expand("~/.config/htmlhint/htmlhint.conf")
-end
-
+require("lint").linters.htmlhint.args = vim.list_extend({
+  "--config",
+  vim.fn.expand("~/.config/htmlhint/htmlhint.conf"),
+}, vim.deepcopy(require("lint").linters.htmlhint.args or {}))

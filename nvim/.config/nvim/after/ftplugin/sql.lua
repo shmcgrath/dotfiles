@@ -1,2 +1,5 @@
-vim.cmd("let b:ale_fixers = ['sqlfluff']")
-vim.cmd("let b:ale_linters = ['sqlfluff']")
+require("conform").formatters_by_ft.sql = { "sqlfluff" }
+
+require("lint").linters_by_ft = {
+  sql = { "sqlfluff", },
+}

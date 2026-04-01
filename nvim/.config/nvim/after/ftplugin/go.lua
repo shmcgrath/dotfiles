@@ -1,10 +1,15 @@
-vim.opt_local.expandtab = false
-vim.opt_local.shiftwidth = 4
-vim.opt_local.softtabstop = 4
-vim.opt_local.tabstop = 4
-vim.opt_local.textwidth = 90
-vim.opt_local.colorcolumn= "90"
+vim.cmd([[
+  setlocal noexpandtab
+  setlocal shiftwidth=4
+  setlocal softtabstop=4
+  setlocal tabstop=4
+  setlocal colorcolumn=90
+  setlocal textwidth=90
+]])
 
-vim.cmd("let b:ale_fixers = ['goimports', 'gofmt']")
-vim.cmd("let b:ale_linters = ['gobuild', 'govet']")
--- let b:ale_linters = ['gobuild', 'staticcheck']
+require("conform").formatters_by_ft.go = { "goimports", "gofmt" }
+
+require("lint").linters_by_ft = {
+  go = { "gobuild", "govet", },
+  -- go = { "gobuild", "govet", "staticcheck" },
+}

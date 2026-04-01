@@ -1,1 +1,1 @@
-vim.cmd("let b:ale_fixers = ['typstyle']")
+require("conform").formatters_by_ft.typst = { "typstyle" }

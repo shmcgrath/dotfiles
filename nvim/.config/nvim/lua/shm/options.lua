@@ -91,6 +91,7 @@ vim.o.incsearch = true -- Search as characters are entered
 vim.o.ignorecase = true -- Ignores case while searching
 vim.o.smartcase = true -- If search contains upper case it is case sensitive
 vim.o.hlsearch = true -- Highlight search result matches
+vim.cmd("packadd nohlsearch") -- Automatically execute :nohlsearch after 'updatetime' or getting into Insert mode; built in plugin
 vim.o.wildmenu = true -- Visual autocomplete for command menu
 --set path+=** -- Search down into subfolders with :find TODO
 

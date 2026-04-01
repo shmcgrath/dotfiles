@@ -1,1 +1,3 @@
-vim.cmd("let b:ale_linters = ['checkmake']")
+require("lint").linters_by_ft = {
+  make = { "checkmake", },
+}

@@ -1,2 +1,4 @@
-vim.opt_local.colorcolumn = ""
-vim.opt_local.foldmethod = "marker"
+vim.cmd([[
+  setlocal foldmethod=marker
+  setlocal colorcolumn=
+]])

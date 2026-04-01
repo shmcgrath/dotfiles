@@ -1,6 +1,8 @@
-vim.opt_local.colorcolumn = "80"
-vim.opt_local.shiftwidth = 4
-vim.opt_local.softtabstop = 4
-vim.opt_local.tabstop = 4
-vim.opt_local.textwidth = 79
-vim.opt_local.expandtab = true
+vim.cmd([[
+  setlocal expandtab
+  setlocal shiftwidth=4
+  setlocal softtabstop=4
+  setlocal tabstop=4
+  setlocal colorcolumn=80
+  setlocal textwidth=79
+]])

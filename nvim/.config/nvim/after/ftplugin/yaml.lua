@@ -1,2 +1,5 @@
-vim.cmd("let b:ale_fixers = ['yq']")
-vim.cmd("let b:ale_linters = ['yq']")
+require("conform").formatters_by_ft.yaml = { "yq" }
+
+require("lint").linters_by_ft = {
+  yaml = { "yq", },
+}

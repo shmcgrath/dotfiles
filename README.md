@@ -245,6 +245,15 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- yt-dlp
+- radio setup:
+    - https://old.reddit.com/r/penguins/comments/6b48jq/stream_penguins_radio_with_vlc_sync_with_video/
+    - https://github.com/breadcat/dotfiles/blob/main/.local/bin/radio
+- cmus config https://www.increasinglyadequate.com/cmus.html
+    - https://www.thelinuxvault.net/blog/how-to-listen-to-music-from-the-console-using-the-cmus-player-on-linux/
+    - https://github.com/nordic16/cmus-cheat-sheet
+- mpv on arch, maybe macos
+- vimlike binds everywher? https://github.com/erikw/vim-keybindings-everywhere-the-ultimate-list?tab=readme-ov-file
 - set up matrix login and client
 - set up glow
 - [Keep an eye on built in autocompletion](https://neovim.io/doc/user/insert/#ins-autocompletion)

@@ -1,1 +1,69 @@
 colorscheme cyberdream
+
+set set_term_title=true
+set show_remaining_time=true
+set smart_artist_sort=true
+
+set auto_expand_albums_follow=true
+
+set output_plugin=alsa
+set dsp.alsa.device=default
+set mixer.alsa.device=default
+set mixer.alsa.channel=Master
+
+set format_current= %a: %l: %02n
+set format_playlist= %-18a  %-18l  %t%=  %04y 
+set format_playlist_va= %-18a %-18l  %t%=  %04y 
+set format_trackwin= . %t%=  %04y
+set format_trackwin_album=%l
+set format_trackwin_va= . %t%=  %04y
+set format_treewin= %l
+set format_treewin_artist= %a
+
+set show_hidden=false
+set set_term_title=false
+set format_statusline= %{status} %t%= %1{follow} %{?show_playback_position?%{position} %{?duration?/ %{duration} }?%{?duration?%{duration} }} 
+set format_title=cmus 
+
+set lib_sort=artist album discnumber  title filename
+set play_sorted=false
+set repeat=true
+set follow=false
+bind -f common h seek -5
+bind -f common l seek +5
+bind -f common j win-down
+bind -f common k win-up
+bind -f common g win-top
+bind -f common G win-bottom
+
+# Reproducción
+bind -f common space player-pause
+bind -f common n player-next
+bind -f common p player-prev
+bind -f common r player-repeat
+bind -f common z player-prev-album
+bind -f common x player-next-album
+bind -f common v player-stop
+bind -f common c player-pause
+
+# Volumen
+bind -f common - vol -10%
+bind -f common = vol +10%
+
+# Vistas
+bind -f common 1 view tree
+bind -f common 2 view sorted
+bind -f common 3 view playlist
+bind -f common 4 view queue
+bind -f common 5 view browser
+bind -f common 6 view filters
+bind -f common 7 view settings
+
+# Otros
+bind -f common / search-start
+bind -f common ? search-b-start
+bind -f common q quit -i
+
+# Agregar música
+bind -f browser y win-add
+

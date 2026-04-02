@@ -414,6 +414,11 @@ emacs:
 
 wow:
 	@printf "%s\n" "Link to the troubleshooting setup for battle.net on Lutris: https://github.com/lutris/docs/blob/master/Battle.Net.md"
+
+mpv:
+	@printf "%s\n" "download mpv: https://github.com/mpv-player/mpv/releases/latest"
+	@printf "%s\n" "linking mpv to ~/.local/bin"
+	ln -s /Applications/mpv.app/Contents/MacOS/mpv /Users/shmcg/.local/bin/mpv
 	
 
 # macos software installed

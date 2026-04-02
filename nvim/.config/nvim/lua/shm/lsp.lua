@@ -50,6 +50,7 @@ end
 vim.lsp.config("*", {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
+    vim.lsp.document_color.enable(false, { bufnr = bufnr })
     vim.notify("LSP: " .. client.name, vim.log.levels.INFO)
   end,
   root_markers = { ".git" },

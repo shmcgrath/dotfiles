@@ -61,7 +61,7 @@ config.colors = {
   -- Cyberdream Dark Palette:
   -- #16181a bg 0
   -- #1e2124 bg_alt 235
-  -- #3c4048 bg_highlight 237
+  -- #3c4048 bg_highlight (8) 237
   -- #ffffff fg 7
   -- #7b8496 grey 247
   -- #5ea1ff blue 4

@@ -1,6 +1,12 @@
 # warning on startup if lf is running as a nested instance
 &[ "$LF_LEVEL" -eq 1 ] || lf -remote "send $id echoerr \"Warning: You're in a nested lf instance!\""
 
+# previews and sandboxing them on arch
+# https://wiki.archlinux.org/title/Lf
+set preview true
+#set previewer ~/.config/lf/previewer-text
+set previewer ~/.config/lf/previewer
+
 set hidden true
 set icons true
 set info size
@@ -88,7 +94,6 @@ cmd trash ${{
 	printf "%s\n" "$fx"
 	printf "Move to trash? [y/N] "
 	read -r -n1 ans
-	echo
 	if [[ $ans = [yY] ]]; then
 		if command -v trash >/dev/null 2>&1; then
 			# macos trash command
@@ -157,7 +162,7 @@ cmd copy-current-path ${{
 	elif command -v xclip >/dev/null 2>&1; then
 		printf '%s\n' "$f" | xclip -i -selection clipboard
 	else
-		echo "No copy command found!" >&2
+		printf "No copy command found!" >&2
 	fi
 }}
 
@@ -266,6 +271,7 @@ map oF open-in-finder
 #map oo &mimeopen $f
 #map oO $mimeopen --ask $f
 map of open-file
+map <enter> open-file
 
 map <f-2> rename
 map a rename
@@ -285,14 +291,19 @@ cmd bulk-rename-children ${{
 map B bulk-rename-children
 
 cmd chmod ${{
-  printf "Mode Bits: "
-  read ans
+  mode="$1"
 
-  for file in "$fx"
+  if [ -z "$mode" ]; then
+    printf "chmod mode (e.g. +x, -x, 755): "
+    read -r mode
+  fi
+
+  for file in $fx
   do
-    chmod $ans $file
+    chmod "$mode" "$file"
   done
 
+  #lf -remote "send $id reload"
   lf -remote 'send reload'
 }}
 
@@ -303,6 +314,26 @@ cmd directory-size %{{
 	du -sh "$f"
 }}
 
+cmd mimetype %{{
+	file --mime-type $f -b
+}}
 
-# previews and sandboxing them on arch
-# https://wiki.archlinux.org/title/Lf
+cmd mediainfo ${{
+	clear
+	if command -v mediainfo >/dev/null 2>&1; then
+		lf -remote "tty" >/dev/tty 2>&1
+		mediainfo $f | less
+	else
+		printf "%s\n" "mediainfo not found!" >&2
+	fi
+}}
+
+cmd exiftool ${{
+	clear
+	if command -v exiftool >/dev/null 2>&1; then
+		lf -remote "tty" >/dev/tty 2>&1
+		exiftool $f | less
+	else
+		printf "%s\n" "exiftool not found!" >&2
+	fi
+}}

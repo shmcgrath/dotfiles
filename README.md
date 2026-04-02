@@ -245,6 +245,8 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- set up matrix login and client
+- set up glow
 - [Keep an eye on built in autocompletion](https://neovim.io/doc/user/insert/#ins-autocompletion)
 - systemd or cron job to clear out logs for neovim
 - look into wpctl

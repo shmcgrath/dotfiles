@@ -129,7 +129,15 @@ handle_extension() {
 		dff|dsf|wv|wvc)
 			try mediainfo "${FILE_PATH}" ||
 			try exiftool "${FILE_PATH}"
-			exist $?
+			exit $?
+			;;
+		[1-8])
+			try man "${FILE_PATH}" | col -b
+			exit $?
+			;;
+		csv)
+			try cat "${FILE_PATH}" | sed s/,/\\n/g
+			exit $?
 			;;
 	esac
 }

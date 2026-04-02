@@ -3,8 +3,8 @@
 
 # previews and sandboxing them on arch
 # https://wiki.archlinux.org/title/Lf
+# set vars by os https://github.com/gokcehan/lf/wiki/Tips#configuration-dependent-on-os
 set preview true
-#set previewer ~/.config/lf/previewer-text
 set previewer ~/.config/lf/previewer
 
 set hidden true
@@ -83,6 +83,11 @@ vmap x :visual-accept; cut
 # figure out better binds for these?
 # not default binds
 nmap t toggle
+nmap <space> :toggle; down
+nmap <c-space> :up; toggle
+
+# repeat the last command typed on the command line
+map . :read; cmd-history-prev; cmd-enter
 
 # commands
 cmd q quit
@@ -94,6 +99,7 @@ cmd trash ${{
 	printf "%s\n" "$fx"
 	printf "Move to trash? [y/N] "
 	read -r -n1 ans
+	echo
 	if [[ $ans = [yY] ]]; then
 		if command -v trash >/dev/null 2>&1; then
 			# macos trash command
@@ -173,7 +179,7 @@ cmd toggle-preview %{{
         lf -remote "send $id :set preview true; set ratios 2:3:4"
     fi
 }}
-map w toggle-preview
+map gw toggle-preview
 
 cmd follow-link %{{
   lf -remote "send $id select \"$(readlink -- "$f" | sed 's/\\/\\\\/g;s/"/\\"/g')\""
@@ -337,3 +343,12 @@ cmd exiftool ${{
 		printf "%s\n" "exiftool not found!" >&2
 	fi
 }}
+
+cmd pager ${{
+    if [ -f "$f" ]; then
+        $PAGER "$f"
+    elif [ -d "$f" ]; then
+        tree -a --condense "$f" | $PAGER
+    fi
+}}
+map <tab> pager

@@ -541,6 +541,9 @@ To exit, C-w, w
 
 One more tip that you can press <C-u> in insert mode to get rid of the added comment symbol.
 
+In command line/command mode (:) press C-f to use vim keys. Also, q: from
+normal mode gets to the same place.
+
 ==============================================================================
 3. Commenting							*shmCommenting*
 

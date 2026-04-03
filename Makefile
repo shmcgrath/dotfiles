@@ -2,7 +2,7 @@ DOTFILES := $(CURDIR)
 BOOTSTRAP_DIR := $(CURDIR)/scripts/bootstrap
 MKDIR := mkdir -pv
 LN := ln -svf
-LNDIR := ln --symbolic --verbose
+LNDIR := ln -sv
 PKGMAN := $(shell command -v paru >/dev/null 2>&1 && printf '%s' paru || printf '%s' sudo pacman)
 AURINSTALL = paru --sync --needed
 STOW := stow --target=$(HOME)

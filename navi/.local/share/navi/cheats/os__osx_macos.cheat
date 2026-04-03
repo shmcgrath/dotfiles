@@ -6,6 +6,12 @@ defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder
 # hide hidden files in Finder
 defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder
 
+# get list of defaults domains
+defaults domains | tr ',' '\n'
+
+# gets list of all set defaults; this can be done on a new machine and diff'd after settings are set
+defaults read
+
 # open current directory in Finder
 open -a Finder ./
 

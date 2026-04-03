@@ -99,7 +99,7 @@ Install the following fonts:
     - Force Dark Mode
     - old reddit
 ## macOS system tweaks from terminal
-- [This article by Paweł Grzybek](https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/) showed me how to find tweaks I want to set via CLI.
+- [This article by Paweł Grzybek](https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/) showed me how to find changes I want to set via CLI.
 
 - [macos-defaults.com](https://macos-defaults.com/) lists out commands and values
 

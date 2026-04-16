@@ -352,3 +352,16 @@ cmd pager ${{
     fi
 }}
 map <tab> pager
+
+cmd copy-file ${{
+	if command -v wl-copy >/dev/null 2>&1; then
+		mime="$(file --mime-type -b "$f")"
+		wl-copy --type "$mime" < "$f"
+	elif command -v osascript >/dev/null 2>&1; then
+		osascript -e 'set the clipboard to (POSIX file "'"$f"'")'
+	elif command -v xclip >/dev/null 2>&1; then
+		printf 'file://%s\n' "$(realpath "$f")" | xclip -in -selection clipboard -target text/uri-list
+	else
+		printf 'No clipboard method available\n' >&2
+	fi
+}}

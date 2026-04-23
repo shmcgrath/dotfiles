@@ -5,7 +5,45 @@
 	"output": ["HDMI-A-1"],
     "modules-left": ["sway/scratchpad", "sway/workspaces", "sway/window"],
     "modules-center": [],
-    "modules-right": [],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory"],
+    "memory": {
+        "format": " {}%"
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+    "network": {
+		"format": "{ifname}",
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": " {ipaddr}/{cidr}",
+        "format-disconnected": "⚠ No Network",
+        "tooltip-format": "{ifname} via {gwaddr}",
+		"tooltip-format-disconnected": "No network or network disconnected.",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+		"max-length": 50
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟{icon}",
+        "format-source": " {volume}%",
+        "format-source-muted": " {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+		"tooltip-format": "{desc}\nInput: {format_source}",
+        "format-icons": {
+            "headphone": "",
+			"hdmi": "󰡁",
+            "hands-free": "󱠰",
+            "headset": "󰋎",
+            "headset-muted": "󰋐",
+            "phone": "",
+			"phone-muted": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
 	"sway/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": false,

@@ -365,3 +365,13 @@ cmd copy-file ${{
 		printf 'No clipboard method available\n' >&2
 	fi
 }}
+
+cmd img-convert-to-png ${{
+    for f in $fx; do
+        if [ -f "$f" ]; then
+            out="${f%.*}.png"
+            printf 'Converting %s -> %s\n' "$f" "$out"
+            sips --setProperty format png "$f" --out "$out" >/dev/null
+        fi
+    done
+}}

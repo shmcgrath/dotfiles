@@ -367,28 +367,39 @@ cmd copy-file ${{
 }}
 
 cmd img-convert-to-png ${{
+	for f in $fx; do
+		[ -f "$f" ] || continue
+		out="${f%.*}.png"
+		printf 'Converting %s -> %s\n' "$f" "$out"
+		vips copy "$f" "$out"
+	done
+}}
+
+cmd img-convert ${{
+    printf 'Enter output format (png/jpg/webp): '
+    read -r fmt
+
     for f in $fx; do
-        if [ -f "$f" ]; then
-            out="${f%.*}.png"
-            printf 'Converting %s -> %s\n' "$f" "$out"
-            sips --setProperty format png "$f" --out "$out" >/dev/null
-        fi
+        [ -f "$f" ] || continue
+
+        base="${f%.*}"
+        out="${base}.${fmt}"
+
+        printf 'Converting %s -> %s\n' "$f" "$out"
+        vips copy "$f" "$out"
     done
 }}
 
 cmd img-shrink-by-50 ${{
-	for f in $fx; do
-		[ -f "$f" ] || continue
+    for f in $fx; do
+        [ -f "$f" ] || continue
 
-		case "${f##*.}" in
-			png|PNG)
-				width=$(sips -g pixelWidth "$f" | awk '/pixelWidth/ {print int($2/2)}')
-				out="${f%.*}_half.png"
+        ext="${f##*.}"
+        base="${f%.*}"
+        out="${base}_half.${ext}"
 
-				printf 'Resizing %s -> %s\n' "$f" "$out"
+        printf 'Resizing %s -> %s\n' "$f" "$out"
 
-				sips --resampleWidth "$width" "$f" --out "$out" >/dev/null
-				;;
-		esac
-	done
+        vips resize "$f" "$out" 0.5
+    done
 }}

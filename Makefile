@@ -170,7 +170,7 @@ clean:
 
 arch-linux:
 	$(PKGINSTALL) neovim nodejs npm
-	$(PKGINSTALL) lf ouch fzf zoxide trash-cli chafa mediainfo pdftotext mupdf-tools odt2txt
+	$(PKGINSTALL) lf ouch fzf zoxide trash-cli chafa mediainfo pdftotext mupdf-tools odt2txt vips libheif
 	$(PKGINSTALL) zoxide fzf
 
 wayland:

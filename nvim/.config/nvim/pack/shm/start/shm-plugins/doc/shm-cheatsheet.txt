@@ -46,6 +46,8 @@ Vim’s list feature can be used to reveal hidden characters, such as tabstops a
 - toggle list feature by typing "set: list!"
 - help: listchars
 
+- <c-6> to go to last open buffer
+
 Clipboard
 - The <C-r>{reg} command lets us paste a register from Insert mode (and it works in commandline mode too!)
 " the default register

@@ -76,6 +76,7 @@ require("fzf-lua").setup({
 
 local fzf = require("fzf-lua")
 
+vim.keymap.set("n", "<C-p>b", fzf.buffers, { desc = "fzf-lua search through open buffers" })
 vim.keymap.set("n", "<C-p>d", fzf.diagnostics_document, { desc = "fzf-lua search through diagnostics_document" })
 vim.keymap.set("n", "<C-p>f", fzf.global, { desc = "fzf-lua search for files in the current working directory, buffers, and symbols" })
 vim.keymap.set("n", "<C-p>gb", fzf.lgrep_curbuf, { desc = "fzf-lua to grep through current buffer" })

@@ -54,3 +54,20 @@ vim.keymap.set({ "i", "s", "n" }, "<esc>", function()
   vim.cmd("noh")
   return "<esc>"
 end, { desc = "Escape, clear hlsearch", expr = true })
+
+-- Toggle Boolean under cursor
+vim.keymap.set("n", "<leader>t", function()
+  require("shm.functions.toggle-boolean").toggle("forward")
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Cycle toggle boolean under cursor forward",
+})
+
+vim.keymap.set("n", "<leader>T", function()
+  require("shm.functions.toggle-boolean").toggle("backward")
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Cycle toggle boolean under cursor backward",
+})

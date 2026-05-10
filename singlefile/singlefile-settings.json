@@ -80,7 +80,7 @@
       "removeAlternativeMedias": true,
       "saveCreatedBookmarks": false,
       "passReferrerOnError": false,
-      "replaceBookmarkURL": true,
+      "replaceBookmarkURL": false,
       "allowedBookmarkFolders": [
         ""
       ],

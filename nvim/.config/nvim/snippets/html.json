@@ -16,7 +16,7 @@
     "lia": {
         "prefix": "lia",
         "body": [
-            "<li><a href=\"${1:`!v @+`}\">${2:$TM_SELECTED_TEXT}</a></li>"
+            "<li><a href=\"${1:$CLIPBOARD}\" data-tags=\"${3}\">${2:$TM_SELECTED_TEXT}</a></li>$0"
         ],
         "description": ""
     },

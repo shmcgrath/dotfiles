@@ -2,8 +2,19 @@
 
 set -euo pipefail
 
+PENDING_FILE="$HOME/Dropbox/single-file-urls-pending.txt"
+DATE="$(date +"%Y-%m-%d-%H%M%S")"
+ARCHIVE_FILE="$HOME/Dropbox/single-file-urls-imported-$DATE.txt"
+
+
+if [ ! -f "$PENDING_FILE" ]; then
+	printf 'Pending file does not exist: %s\n' "$PENDING_FILE"
+	exit 1
+fi
+
 single-file \
-	--output-directory "$HOME/.local/share/single-file/" \
+	--urls-file "$PENDING_FILE" \
+	--output-directory "$HOME/Dropbox/web-archive/" \
 	--output-json false \
 	--remove-hidden-elements true \
 	--remove-unused-styles true \
@@ -74,8 +85,15 @@ single-file \
     --infobar-position-top "16px" \
     --infobar-position-right "16px" \
     --infobar-position-bottom "" \
-    --infobar-position-left "" \
-	--urls-file "$HOME/.local/share/single-file/urls-to-save.txt"
+    --infobar-position-left ""
+
+mv -- "$PENDING_FILE" "$ARCHIVE_FILE"
+
+printf 'Archived:\n%s\n\n' "$ARCHIVE_FILE"
+
+touch -- "$PENDING_FILE"
+
+printf 'Created new pending file:\n%s\n' "$PENDING_FILE"
 
 # DO I WANT USER SCRIPT Y OR NO MAY CHANGE
 # LOOK INTO CRAWL LINKS

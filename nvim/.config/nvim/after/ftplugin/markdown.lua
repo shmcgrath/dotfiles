@@ -3,6 +3,8 @@ vim.g.markdown_syntax_conceal = 0
 vim.cmd([[
   setlocal foldmethod=expr
   setlocal foldexpr=MarkdownFold()
+  setlocal foldlevel=2
+  setlocal foldlevelstart=2
   setlocal shiftwidth=4
   setlocal softtabstop=4
   setlocal tabstop=4

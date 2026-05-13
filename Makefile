@@ -5,6 +5,7 @@ LN := ln -svf
 LNDIR := ln -sv
 PKGMAN := $(shell command -v paru >/dev/null 2>&1 && printf '%s' paru || printf '%s' sudo pacman)
 AURINSTALL = paru --sync --needed
+BREWINSTALL = brew install
 STOW := stow --target=$(HOME)
 CAT := $(shell command -v bat >/dev/null 2>&1 && printf '%s' bat || printf '%s' cat)
 XDG_DATA_HOME  := $(shell [ -n "$$XDG_DATA_HOME" ] && printf %s "$$XDG_DATA_HOME" || printf %s "$(HOME)/.local/share")
@@ -17,9 +18,11 @@ UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
     OS := macos
 	PKGINSTALL := brew install
+	TYPST_LOCAL_DIR := $(HOME)/Library/Application Support/typst/packages/local
 else ifeq ($(UNAME_S),Linux)
     OS := linux
 	PKGINSTALL := $(PKGMAN) --sync --needed
+	TYPST_LOCAL_DIR := $(XDG_DATA_HOME)/typst/packages/local
 else ifeq ($(UNAME_S),OpenBSD)
     OS := openbsd
 else ifneq (,$(findstring MINGW,$(UNAME_S)))
@@ -158,6 +161,9 @@ neovim:
 	$(MKDIR) $(XDG_STATE_HOME)/nvim/backup
 	$(MKDIR) $(XDG_STATE_HOME)/nvim/swap
 	$(STOW) nvim
+	$(PKGINSTALL) tree-sitter tree-sitter-cli lua-language-server tombi sqlfluff stylua typstyle bash-language-server yaml-language-server
+	$(AURINSTALL) checkmake htmlhint sql-language-server stylelint
+	$(BREWINSTALL) checkmake htmlhint sql-language-server stylelint
 
 get-dicts: # run the script to get word lists and thesaurus
 	@$ $(BOOTSTRAP_DIR)/get-dictionaries-thesaurus.sh
@@ -374,6 +380,8 @@ shell-scripting:
 
 typst:
 	$(PKGINSTALL) typst tinymist
+	$(MKDIR) "$(TYPST_LOCAL_DIR)"
+	$(LN) "$(abspath $(DOTFILES)/typst-templates/shm)" "$(TYPST_LOCAL_DIR)/shm"
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
@@ -419,7 +427,7 @@ mpv:
 	@printf "%s\n" "download mpv: https://github.com/mpv-player/mpv/releases/latest"
 	@printf "%s\n" "linking mpv to ~/.local/bin"
 	ln -s /Applications/mpv.app/Contents/MacOS/mpv /Users/shmcg/.local/bin/mpv
-	
+
 
 # macos software installed
 # hazel

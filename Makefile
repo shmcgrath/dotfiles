@@ -428,6 +428,10 @@ mpv:
 	@printf "%s\n" "linking mpv to ~/.local/bin"
 	ln -s /Applications/mpv.app/Contents/MacOS/mpv /Users/shmcg/.local/bin/mpv
 
+singlefle:
+	@printf "%s\n" "download single-file-cli from github:"
+	@printf "%s\n" "https://github.com/gildas-lormeau/single-file-cli"
+	@printf "%s\n" "move the binary to ~/.local/bin and chmod +x"
 
 # macos software installed
 # hazel

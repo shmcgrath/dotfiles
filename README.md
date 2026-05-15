@@ -62,7 +62,7 @@ These are some of the links that I found useful when figuring out how to manage 
 - [Papirus Icon Theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme#extras)
 
 ## neovim setup
-- I am using [paq-nvim](https://github.com/savq/paq-nvim) as a plugin manager on neovim. I tried lazy.vim, but was unable to get it to work with the pack folder from vim-base.
+- I am using [built-in vim.pack](https://echasnovski.com/blog/2026-03-13-a-guide-to-vim-pack.html) as a plugin manager on neovim. I tried lazy.vim, but was unable to get it to work with the pack folder from vim-base.
 
 ## Fonts to Install
 Install the following fonts:

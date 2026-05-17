@@ -7,6 +7,8 @@ vim.cmd([[
   setlocal textwidth=100
 ]])
 
+vim.bo.formatprg = "stylua --config-path ~/.config/stylua/stylua.toml -"
+
 require("conform").formatters.stylua = {
   append_args = { "--config-path", vim.fn.expand("~/.config/stylua/stylua.toml") },
 }

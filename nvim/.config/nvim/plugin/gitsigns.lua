@@ -6,8 +6,9 @@ vim.pack.add({
 
 
 local icons_misc = require("shm.icons").misc
+local gitsigns = require("gitsigns")
 
-require("gitsigns").setup({
+gitsigns.setup({
   signs = {
     add = { text = "+" },
     change = { text = "~" },

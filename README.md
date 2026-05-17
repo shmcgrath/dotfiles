@@ -336,6 +336,7 @@ in the .bashrc
 - implement with vidir and fzf etc:
 alias f="find . -type f -not -path '*/.git/*'"
 alias ff="find . -type f -not -path '*/.git/*' | vidir -"
+- [explore diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
 
 ### Neovim
 - https://blog.viktomas.com/graph/neovim-native-built-in-lsp-autocomplete/
@@ -393,6 +394,8 @@ combine some pickers -> spell and lsp? help and keys? :lua FzfLua.combine({ pick
 :FzfLua combine pickers=oldfiles;git_files
 
 ### Neovim LSP
+https://github.com/LuaLS/lua-language-server/wiki/Configuration-File
+
 recommendation: don't put the same on_attach for each server, you can use :h LspAttach instead
 
 the actual problem with your code is that :h vim.lsp.enable does not take the config as a 2nd parameter. you have to pass that config into :h vim.lsp.config before enabling.

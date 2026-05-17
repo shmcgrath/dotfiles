@@ -56,3 +56,59 @@ require("gitsigns").setup({
     col = 1,
   },
 })
+
+vim.keymap.set("n", "<leader>gb", function()
+  gitsigns.blame_line()
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Gitsigns show git blame for current line",
+})
+
+vim.keymap.set("n", "<leader>gd", function()
+  gitsigns.diffthis()
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Gitsigns diffthis file to HEAD",
+})
+
+vim.keymap.set("n", "<leader>gh", function()
+  gitsigns.next_hunk()
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Gitsigns go to next hunk",
+})
+
+vim.keymap.set("n", "<leader>gs", function()
+  gitsigns.stage_hunk()
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Gitsigns stage hunk",
+})
+
+vim.keymap.set("n", "<leader>gS", function()
+  gitsigns.undo_stage_hunk()
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Gitsigns unstage hunk",
+})
+
+vim.keymap.set("n", "<leader>gq", function()
+  gitsigns.setqflist("all")
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Gitsigns set quickfix list for all files in working directory",
+})
+
+vim.keymap.set("n", "<leader>gl", function()
+  gitsigns.setlocllist()
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Gitsigns set local list for all files in working directory",
+})

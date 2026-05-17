@@ -627,6 +627,10 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
+Ex Command 	Effect
+:ri/:right 	Right-Align Text
+:ce/:center Center-Align Text
+:le/:left 	Left-Align Text
 
 
  vim:ft=help:

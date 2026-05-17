@@ -17,7 +17,7 @@
 	cln = clone
 	co = checkout
 	com = checkout master
-	df = difftool
+	dt = difftool
 	dc = difftool --cached
 	dw = difftool --ignore-all-space
 	fu = fetch upstream

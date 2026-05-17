@@ -64,9 +64,14 @@ require("fzf-lua").setup({
   --hls = { ...  },         -- Highlights
   --previewers = { ...  },  -- Previewers options
   -- SPECIFIC COMMAND/PICKER OPTIONS, SEE BELOW
-  -- files = { ... },
-    grep = {
-      rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden --no-ignore",
+  --files = { ... },
+  git = {
+    diff = {
+      preview = "git diff --color=always {ref} {file}",
+    },
+  },
+  grep = {
+    rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden --no-ignore",
   },
 })
 

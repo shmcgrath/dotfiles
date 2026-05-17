@@ -9,6 +9,7 @@
 [alias]
 	a = add --verbose
 	an = add --dry-run --verbose
+	ai = add --patch
 	app = apply --verbose
 	br = branch --verbose --color
 	ci = commit

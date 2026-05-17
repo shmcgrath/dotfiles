@@ -74,7 +74,15 @@ end, {
   desc = "Gitsigns diffthis file to HEAD",
 })
 
-vim.keymap.set("n", "<leader>gh", function()
+vim.keymap.set("n", "[h", function()
+  gitsigns.prev_hunk()
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Gitsigns go to previous hunk",
+})
+
+vim.keymap.set("n", "]h", function()
   gitsigns.next_hunk()
 end, {
   noremap = true,
@@ -111,5 +119,13 @@ vim.keymap.set("n", "<leader>gl", function()
 end, {
   noremap = true,
   silent = true,
-  desc = "Gitsigns set local list for all files in working directory",
+  desc = "Gitsigns set local list for current file",
+})
+
+vim.keymap.set("n", "<leader>gp", function()
+  gitsigns.preview_hunk()
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Gitsigns preview hunk",
 })

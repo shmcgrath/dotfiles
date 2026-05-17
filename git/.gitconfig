@@ -4,6 +4,7 @@
 	autocrlf = input
 	editor = "nvim --clean"
 	excludesfile = ~/.config/git/.gitignore_global
+	pager = "less -FX"
 	whitespace=warn,indent-with-non-tab,trailing-space,cr-at-eol
 [alias]
 	a = add --verbose
@@ -60,3 +61,5 @@
 	prompt = true
 [init]
 	defaultBranch = main
+[pager]
+	diff = "less -FX"

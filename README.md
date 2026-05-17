@@ -402,6 +402,7 @@ the actual problem with your code is that :h vim.lsp.enable does not take the co
 
 also strongly recommend reading :h lsp-config
 
+Check this for javacript? https://oxc.rs/
 
 https://vi.stackexchange.com/questions/46749/correct-way-to-utilize-on-attach-in-the-new-vim-lsp-config-setup-in-neovim-v0-11
 

@@ -344,6 +344,7 @@ alias ff="find . -type f -not -path '*/.git/*' | vidir -"
 - [explore diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
 
 ### Neovim
+- see if native autocomplete and snippets can be done? mini-snips or just an lsp?
 - https://blog.viktomas.com/graph/neovim-native-built-in-lsp-autocomplete/
 - hydra mode in which-key
 - set up a way to generate symbols on open of a workspace?

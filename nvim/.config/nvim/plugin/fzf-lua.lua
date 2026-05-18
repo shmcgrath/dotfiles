@@ -85,7 +85,7 @@ vim.keymap.set("n", "<C-p>b", fzf.buffers, { desc = "fzf-lua search through open
 vim.keymap.set("n", "<C-p>d", fzf.diagnostics_document, { desc = "fzf-lua search through diagnostics_document" })
 vim.keymap.set("n", "<C-p>f", fzf.global, { desc = "fzf-lua search for files in the current working directory, buffers, and symbols" })
 vim.keymap.set("n", "<C-p>gb", fzf.lgrep_curbuf, { desc = "fzf-lua to grep through current buffer" })
-vim.keymap.set("n", "<C-p>gl", fzf.live_grep, { desc = "fzf-lua live grep in the current working directory" })
+vim.keymap.set("n", "<C-p>gd", fzf.live_grep, { desc = "fzf-lua live grep in the current working directory" })
 vim.keymap.set("n", "<C-p>gr", function()
   require("fzf-lua").live_grep({ resume = true })
 end, { desc = "fzf-lua live grep continue last search" })

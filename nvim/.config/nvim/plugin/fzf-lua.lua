@@ -17,7 +17,7 @@ require("fzf-lua").setup({
     col = 0.50,            -- window col position (0=left, 1=right)
     border = "rounded",
     backdrop = 60,
-    fullscreen = false,           -- start fullscreen?
+    fullscreen = false,
     treesitter = {
       enabled = true,
     },

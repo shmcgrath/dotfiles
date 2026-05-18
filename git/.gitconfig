@@ -29,8 +29,6 @@
 	lgm = log --graph --author='Sarah H. McGrath' --date=format:'%Y-%m-%d %H:%M' --format=format:'%C(auto)%h %d%Creset%Cgreen%ad%Creset %aN <%aE>%n%Cblue%s%Creset%+b'
 	lgp = log --date=format:'%Y-%m-%d %H:%M' --pretty=fuller
 	ls = ls-files | less
-	pl = pull
-	ps = push
 	rem = remote --verbose
 	rmc = rm -r --cached
 	rs = restore --staged

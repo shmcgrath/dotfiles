@@ -73,5 +73,12 @@
 			"]])$0"
 		],
 		"description": "skeleton for ftplugin setlocal options"
+	},
+	"formatprg": {
+		"prefix": ["formatprg"],
+		"body": [
+			"vim.bo.formatprg = \"$0\""
+		],
+		"description": "set formatprg which acts as a fixer"
 	}
 }

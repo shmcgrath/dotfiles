@@ -264,7 +264,8 @@ zola 0.20.0-1
 - set up systemd timer for reflector 1x a week
 - To install fonts on Linux for all users, log in as root, create a directory under /usr/share/fonts/, copy the font files into that directory, and then run fc-cache -f /usr/share/fonts/. For a single user, you can place the font files in the ~/.fonts directory and log out and back in to see the changes.
 - pomodoro timers?
-- https://github.com/SylvanFranklin/omni-preview.nvm
+- go linters and formatters - gofmt and goimport are not same
+- https://github.com/SylvanFranklin/omni-preview.nvim
 - https://github.com/SylvanFranklin/awesome-typst
 - https://github.com/AndrewRadev/id3.vim
 - icons for keepass in lf
@@ -286,6 +287,8 @@ zola 0.20.0-1
 - make autocmd file for nvim?
 - look into formatting that is not ALE?
 - copy diagnostic to clipboard?
+- set up perltidy envvar and where .perltidyrc lives
+- look into taplo vs tombi
 - customize fzf
     - https://github.com/junegunn/fzf/blob/master/ADVANCED.md
     - https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings

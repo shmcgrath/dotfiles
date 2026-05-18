@@ -114,14 +114,6 @@ end, {
   desc = "Gitsigns set quickfix list for all files in working directory",
 })
 
-vim.keymap.set("n", "<leader>gl", function()
-  gitsigns.setlocllist()
-end, {
-  noremap = true,
-  silent = true,
-  desc = "Gitsigns set local list for current file",
-})
-
 vim.keymap.set("n", "<leader>gp", function()
   gitsigns.preview_hunk()
 end, {

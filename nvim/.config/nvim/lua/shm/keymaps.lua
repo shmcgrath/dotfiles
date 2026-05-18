@@ -71,3 +71,11 @@ end, {
   silent = true,
   desc = "Cycle toggle boolean under cursor backward",
 })
+
+vim.keymap.set("n", "<leader>lg", function()
+  require("shm.functions.open-lazy-git").open_lazy_git()
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Open lazygit in new tab",
+})

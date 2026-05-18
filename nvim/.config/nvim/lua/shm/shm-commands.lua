@@ -98,3 +98,8 @@ vim.api.nvim_create_user_command("ShmTSStop", function()
   vim.treesitter.stop(bufnr)
   vim.notify("Treesitter stopped for buffer " .. bufnr)
 end, { desc = "Toggle Tree-sitter highlighting for current buffer" })
+
+-- open LazyGit in new tab
+vim.api.nvim_create_user_command("ShmOpenLazyGit", function()
+  require("shm.functions.open-lazy-git").open_lazy_git()
+end, { desc = "Open LazyGit in new tab" })

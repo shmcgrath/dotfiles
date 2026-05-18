@@ -98,7 +98,6 @@ To Sort:
 
 =================================================================
 SPELLING, THESAURUS, and DICTIONARY                  *shmSpelling*
-- TODO: create a mapping to an FN key to toggle spelling
 - To add a word to your personal dictionary, navigate to the word you want to add and type: zg (undo with zug).
 - To do the opposite and mark a word as incorrect, navigate to the word and type: zw (undo with zuw).
 - To jump between misspelled words, type: ]s and [s

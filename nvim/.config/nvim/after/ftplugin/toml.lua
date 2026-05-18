@@ -1,4 +1,4 @@
-require("conform").formatters_by_ft.toml = { "tombi" }
+vim.bo.formatprg = "tombi format -"
 
 require("lint").linters_by_ft = {
   toml = { "tombi", },

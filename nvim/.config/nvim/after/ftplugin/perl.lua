@@ -6,6 +6,7 @@ vim.cmd([[
 ]])
 
 require("conform").formatters_by_ft.perl = { "perltidy" }
+vim.bo.formatprg = "perltidy --standard-output"
 
 require("lint").linters_by_ft = {
   perl = { "perlcritic", },

@@ -6,7 +6,7 @@ vim.cmd([[
   setlocal colorcolumn=101
 ]])
 
-require("conform").formatters_by_ft.javascript = { "eslint" }
+vim.bo.formatprg = "eslint --fix-dry-run --stdin --stdin-filename %"
 
 require("lint").linters_by_ft = {
   javascript = { "eslint", },

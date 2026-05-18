@@ -245,6 +245,8 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- ydotool, ahk_x11 xdotool for autohotkey replacement for videogames
+    - google org.freedesktop.portal.GlobalShortcuts
 - yt-dlp
 - radio setup:
     - https://old.reddit.com/r/penguins/comments/6b48jq/stream_penguins_radio_with_vlc_sync_with_video/

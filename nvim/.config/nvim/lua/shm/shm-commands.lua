@@ -103,3 +103,8 @@ end, { desc = "Stop Tree-sitter highlighting for current buffer" })
 vim.api.nvim_create_user_command("ShmOpenLazyGit", function()
   require("shm.functions.open-lazy-git").open_lazy_git()
 end, { desc = "Open LazyGit in new tab" })
+
+-- trim whitespace and newlines
+vim.api.nvim_create_user_command("ShmTrimWhitespace", function()
+  require("shm.functions.trim-whitespace-newlines").trim_whitespace_newlines()
+end, { desc = "trim whitespace and remove new lines at end of file" })

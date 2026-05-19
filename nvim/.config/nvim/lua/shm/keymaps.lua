@@ -79,3 +79,53 @@ end, {
   silent = true,
   desc = "Open lazygit in new tab",
 })
+
+vim.keymap.set("n", "<leader>fb", function()
+  local view = vim.fn.winsaveview()
+
+  vim.cmd("normal! gggqG")
+
+  require("shm.functions.trim-whitespace-newlines").trim_whitespace_newlines()
+
+  vim.fn.winrestview(view)
+end, {
+  noremap = true,
+  silent = true,
+  desc = "format buffer with formatexpr then formatprg and call custom trim_whitespace_newlines function",
+})
+
+vim.keymap.set("n", "<leader>fw", function()
+  local view = vim.fn.winsaveview()
+
+  require("shm.functions.trim-whitespace-newlines").trim_whitespace_newlines()
+
+  vim.fn.winrestview(view)
+end, {
+  noremap = true,
+  silent = true,
+  desc = "trim whitespace and newlines in buffer",
+})
+
+vim.keymap.set("n", "<leader>fl", function()
+  local view = vim.fn.winsaveview()
+
+  vim.cmd("normal! ggq")
+
+  vim.fn.winrestview(view)
+end, {
+  noremap = true,
+  silent = true,
+  desc = "format line with formatexpr then formatprg",
+})
+
+vim.keymap.set("n", "<leader>fi", function()
+  local view = vim.fn.winsaveview()
+
+  vim.cmd("normal! gg=G")
+
+  vim.fn.winrestview(view)
+end, {
+  noremap = true,
+  silent = true,
+  desc = "fix indentation for whole buffer",
+})

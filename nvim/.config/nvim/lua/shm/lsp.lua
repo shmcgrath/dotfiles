@@ -37,6 +37,11 @@ local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_c
       dynamicRegistration = false,
       lineFoldingOnly = true,
     },
+    completion = {
+      completionItem = {
+        snippetSupport = true,
+      },
+    },
   },
   semanticTokens = {
     multilineTokenSupport = true,
@@ -51,6 +56,7 @@ vim.lsp.config("*", {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     vim.lsp.document_color.enable(false, { bufnr = bufnr })
+    vim.lsp.completion.enable(true, client.id, bufnr)
     vim.notify("LSP: " .. client.name, vim.log.levels.INFO)
   end,
   root_markers = { ".git" },

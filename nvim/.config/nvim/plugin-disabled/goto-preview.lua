@@ -4,7 +4,7 @@ vim.pack.add({
   },
 })
 
-require('goto-preview').setup {
+require("goto-preview").setup({
   width = 120, -- Width of the floating window
   height = 15, -- Height of the floating window
   border = {"↖", "─" ,"┐", "│", "┘", "─", "└", "│"}, -- Border characters of the floating window
@@ -27,5 +27,4 @@ require('goto-preview').setup {
   preview_window_title = { enable = true, position = "left" }, -- Whether to set the preview window title as the filename
   zindex = 1, -- Starting zindex for the stack of floating windows
   vim_ui_input = true, -- Whether to override vim.ui.input with a goto-preview floating window
- 
-}
+})

@@ -1,6 +1,6 @@
 *shm-cheatsheet.txt*    For Vim version 8.0 -- Last Change: 2019-01-30
 *shmvim*
-Sarah' Vim Cheatsheet
+Sarah's Vim Cheatsheet
 
 ====================================================================
 CONTENTS                                            *shmContents*
@@ -10,6 +10,9 @@ CONTENTS                                            *shmContents*
     3. Commenting  ................................. |shmCommenting|
 
 My tips, reminders, notes, and reference for Vim.
+
+for visual selection snippets, visually select, and then do c (change) and
+then TM_SELECTED_TEXT will be what was visually selected before the change
 
 - commentary bindings including gcc and gcu
 - Y will copy from cursor to end of line. Not vi. Custom mapping.

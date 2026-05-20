@@ -4,7 +4,7 @@
 -- h: completefunc
 -- roadmap for snippet API: https://github.com/neovim/neovim/issues/25696
 -- h: completeopt
-vim.opt.completeopt = { "fuzzy", "noselect", "menuone", "popup" }
+vim.opt.completeopt = { "fuzzy", "noselect", "menuone", "popup", "preview" }
 
 -- Make completion menu appear whenever you type something
 -- from h: lsp-attach
@@ -39,6 +39,7 @@ vim.lsp.protocol.CompletionItemKind = {
   symbol_kinds.TypeParameter,
 }
 
+--[[
 local chars = {}
 for i = 32, 126 do
   table.insert(chars, string.char(i))
@@ -50,7 +51,7 @@ local function on_attach_completion(client, bufnr)
       vim.notify("Completion enabled for " .. client.name, vim.log.levels.INFO)
     end)
     client.server_capabilities.completionProvider.triggerCharacters = chars
-    vim.opt.completeopt = { "fuzzy", "menuone", "noselect", "popup" }
+    vim.opt.completeopt = { "fuzzy", "menuone", "noselect", "popup", "preview" }
     vim.lsp.completion.enable(true, client.id, bufnr, {
       autotrigger = true,
       convert = function(item)
@@ -63,4 +64,5 @@ end
 return {
   on_attach_completion = on_attach_completion,
 }
+]]--
 -- h: ins-completion lsp-completion autocomplete

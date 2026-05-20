@@ -344,7 +344,9 @@ alias ff="find . -type f -not -path '*/.git/*' | vidir -"
 - [explore diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
 
 ### Neovim
+- setup [goto-preview](https://github.com/rmagatti/goto-preview)
 - see if native autocomplete and snippets can be done? mini-snips or just an lsp?
+    - [CURRENT_YEAR etc LSP and VS Code snippets differ](https://github.com/nvim-mini/mini.nvim/issues/1751) this seems to be the big hurdle and something where I may never get away from blink or similar. I am not in the mood for separate snippet functionality now
 - https://blog.viktomas.com/graph/neovim-native-built-in-lsp-autocomplete/
 - hydra mode in which-key
 - set up a way to generate symbols on open of a workspace?

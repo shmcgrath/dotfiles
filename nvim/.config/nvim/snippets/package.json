@@ -2,7 +2,7 @@
 	"name": "snippets-shm",
 	"contributes": {
 		"snippets": [
-			{ "language": [ "markdown" ], "path": "./markdown.json" },
+			{ "language": [ "all", "global", "markdown" ], "path": "./markdown.json" },
 			{ "language": [ "go" ], "path": "./go.json" },
 			{ "language": [ "lua" ], "path": "./lua.json" },
 			{ "language": [ "luadoc" ], "path": "./luadoc.json" },

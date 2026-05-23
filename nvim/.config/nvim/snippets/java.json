@@ -2,7 +2,7 @@
 	"bcom": {
 		"prefix": ["bcom"],
 		"body": [
-			"/* ${TM_SELECTED_TEXT} */"
+			"/* $TM_SELECTED_TEXT */"
 		],
 		"description": "Block comment"
 	}

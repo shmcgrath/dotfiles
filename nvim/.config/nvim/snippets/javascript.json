@@ -2,7 +2,7 @@
 	"clog": {
 		"prefix": ["clog"],
 		"body": [
-			"console.log(${1:${TM_SELECTED_TEXT}});"
+			"console.log(${1:$TM_SELECTED_TEXT});"
 		],
 		"description": "console.log"
 	},
@@ -10,7 +10,7 @@
 	"ctable": {
 		"prefix": ["ctable"],
 		"body": [
-			"console.table(${1:${TM_SELECTED_TEXT}});"
+			"console.table(${1:$TM_SELECTED_TEXT});"
 		],
 		"description": "console.table"
 	},
@@ -162,7 +162,7 @@
 	"bcom": {
 		"prefix": ["bcom"],
 		"body": [
-			"/* ${1:${TM_SELECTED_TEXT}} */"
+			"/* ${1:$TM_SELECTED_TEXT} */"
 		],
 		"description": "block comment"
 	},

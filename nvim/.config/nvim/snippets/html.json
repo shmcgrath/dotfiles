@@ -16,14 +16,14 @@
 	"h": {
 		"prefix": ["h"],
 		"body": [
-			"<h${1:HeadingSize}>${2:${TM_SELECTED_TEXT:Heading}}</h${1}>"
+			"<h${1:HeadingSize}>${2:Heading}</h${1}>"
 		],
 		"description": "Heading"
 	},
 	"hid": {
 		"prefix": ["hid"],
 		"body": [
-			"<h${1:HeadingSize} id=\"${2:heading-id}\">${3:${TM_SELECTED_TEXT:Heading}}</h${1}>"
+			"<h${1:HeadingSize} id=\"${2:heading-id}\">${3:Heading}</h${1}>"
 		],
 		"description": "Heading with id"
 	},

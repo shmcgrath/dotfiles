@@ -2,7 +2,7 @@
 	"block": {
 		"prefix": ["block"],
 		"body": [
-			"{% block ${1:${TM_SELECTED_TEXT:BlockName}} %}",
+			"{% block ${1:BlockName} %}",
 			"\t$0",
 			"{% endblock $1 %}"
 		],
@@ -11,14 +11,14 @@
 	"var": {
 		"prefix": ["var"],
 		"body": [
-			"{{ ${1:${TM_SELECTED_TEXT:VariableName}} }}"
+			"{{ ${1:VariableName} }}"
 		],
 		"description": "variable"
 	},
 	"if": {
 		"prefix": ["if"],
 		"body": [
-			"{% if ${1:${TM_SELECTED_TEXT:VariableName}} %}",
+			"{% if ${1:VariableName} %}",
 			"\t$0",
 			"{% endif %}"
 		],
@@ -27,7 +27,7 @@
 	"if-elif-else": {
 		"prefix": ["ifelse", "elif"],
 		"body": [
-			"{% if ${1:${TM_SELECTED_TEXT:VariableName}} %}",
+			"{% if ${1:VariableName} %}",
 			"\t${2}",
 			"{% elif ${3:condition} %}",
 			"\t${4}",
@@ -40,7 +40,7 @@
 	"include": {
 		"prefix": ["include"],
 		"body": [
-			"{% include \"${1:${TM_SELECTED_TEXT:templateIncludePath}}\" %}"
+			"{% include \"${1:templateIncludePath}\" %}"
 		],
 		"description": "include"
 	},
@@ -67,7 +67,7 @@
 	"extends": {
 		"prefix": ["extends"],
 		"body": [
-			"{% extends \"${1:${TM_SELECTED_TEXT:template}}\" %}"
+			"{% extends \"${1:template}\" %}"
 		],
 		"description": "extends"
 	},

@@ -2,28 +2,28 @@
 	"i": {
 		"prefix": ["i"],
 		"body": [
-			"*${1:${TM_SELECTED_TEXT}}*$0"
+			"*${1:$TM_SELECTED_TEXT}*$0"
 		],
 		"description": "Italics"
 	},
 	"b": {
 		"prefix": ["b"],
 		"body": [
-			"**${1:${TM_SELECTED_TEXT}}**$0"
+			"**${1:$TM_SELECTED_TEXT}**$0"
 		],
 		"description": "Bold"
 	},
 	"bi": {
 		"prefix": ["bi"],
 		"body": [
-			"***${1:${TM_SELECTED_TEXT}}***$0"
+			"***${1:$TM_SELECTED_TEXT}***$0"
 		],
 		"description": "Bold italics"
 	},
 	"h1": {
 		"prefix": ["h1"],
 		"body": [
-			"# ${1:${TM_SELECTED_TEXT:Heading}}${3:[${2:unique_id}]}",
+			"# ${1:$TM_SELECTED_TEXT}${3:[${2:unique_id}]}",
 			"$0"
 		],
 		"description": "Heading 1"
@@ -31,7 +31,7 @@
 	"h2": {
 		"prefix": ["h2"],
 		"body": [
-			"## ${1:${TM_SELECTED_TEXT:Heading}}${3:[${2:unique_id}]}",
+			"## ${1:$TM_SELECTED_TEXT}${3:[${2:unique_id}]}",
 			"$0"
 		],
 		"description": "Heading 2"
@@ -39,7 +39,7 @@
 	"h3": {
 		"prefix": ["h3"],
 		"body": [
-			"### ${1:${TM_SELECTED_TEXT:Heading}}${3:[${2:unique_id}]}",
+			"### ${1:$TM_SELECTED_TEXT}${3:[${2:unique_id}]}",
 			"$0"
 		],
 		"description": "Heading 3"
@@ -47,7 +47,7 @@
 	"h4": {
 		"prefix": ["h4"],
 		"body": [
-			"#### ${1:${TM_SELECTED_TEXT:Heading}}${3:[${2:unique_id}]}",
+			"#### ${1:$TM_SELECTED_TEXT}${3:[${2:unique_id}]}",
 			"$0"
 		],
 		"description": "Heading 4"
@@ -55,7 +55,7 @@
 	"h5": {
 		"prefix": ["h5"],
 		"body": [
-			"##### ${1:${TM_SELECTED_TEXT:Heading}}${3:[${2:unique_id}]}",
+			"##### ${1:$TM_SELECTED_TEXT}${3:[${2:unique_id}]}",
 			"$0"
 		],
 		"description": "Heading 5"
@@ -63,7 +63,7 @@
 	"h6": {
 		"prefix": ["h6"],
 		"body": [
-			"###### ${1:${TM_SELECTED_TEXT:Heading}}${3:[${2:unique_id}]}",
+			"###### ${1:$TM_SELECTED_TEXT}${3:[${2:unique_id}]}",
 			"$0"
 		],
 		"description": "Heading 6"
@@ -71,23 +71,23 @@
 	"ref": {
 		"prefix": ["ref"],
 		"body": [
-			"[${1:${TM_SELECTED_TEXT:Text}}][${2:SectionId}]$0"
+			"[${1:$TM_SELECTED_TEXT}][${2:SectionId}]$0"
 		],
 		"description": "Section reference"
 	},
 	"link": {
 		"prefix": ["link"],
 		"body": [
-			"[${1:${TM_SELECTED_TEXT:Text}}](${2:${CLIPBOARD}})"
+			"[${1:$TM_SELECTED_TEXT}](${2:$CLIPBOARD})"
 		],
 		"description": "Markdown link"
 	},
 	"linkref": {
 		"prefix": ["linkref"],
 		"body": [
-			"[${1:${TM_SELECTED_TEXT:Text}}][${2:id}]$0",
+			"[${1:$TM_SELECTED_TEXT}][${2:id}]$0",
 			"",
-			"[${2:id}]: ${3:${CLIPBOARD}} \"${4:${3}}\""
+			"[${2:id}]: ${3:$CLIPBOARD} \"${4:${3}}\""
 		],
 		"description": "Reference-style link"
     },
@@ -101,17 +101,17 @@
 	"code": {
 		"prefix": ["code"],
 		"body": [
-			"```$1",
-			"${TM_SELECTED_TEXT}",
-			"```",
-			"$0"
+			"```{$1:language}",
+			"${2:$TM_SELECTED_TEXT}",
+			"$0",
+			"```"
 		],
 		"description": "Code block"
 	},
 	"img": {
 		"prefix": ["img"],
 		"body": [
-			"![${1:img alt}](${2:${CLIPBOARD}})"
+			"![${1:img alt}](${2:$CLIPBOARD})"
 		],
 		"description": "Image"
 	},
@@ -120,21 +120,21 @@
 		"body": [
 			"[^${1:footnote-id}]$0",
 			"",
-			"[^${1}]: ${2:${TM_SELECTED_TEXT:FootnoteText}}"
+			"[^${1}]: ${2:$TM_SELECTED_TEXT}"
 		],
 		"description": "Footnote"
 	},
 	"footnote_inline": {
 		"prefix": ["footnotei"],
 		"body": [
-			"[^${1:${TM_SELECTED_TEXT:Footnote}}]$0"
+			"[^${1:$TM_SELECTED_TEXT}]$0"
 		],
 		"description": "Inline footnote"
 	},
 	"note header": {
 		"prefix": ["note-head"],
 		"body": [
-			"## ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE} - ${1:${TM_SELECTED_TEXT:Heading}}",
+			"## $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE - ${1:${TM_SELECTED_TEXT}",
 			"$0"
 		],
 		"description": "Note header"

@@ -15,7 +15,7 @@
 		"prefix": ["bcom"],
 		"body": [
 			"\"\"\"",
-			"${1:${TM_SELECTED_TEXT}}",
+			"${1:$TM_SELECTED_TEXT}",
 			"\"\"\""
 		],
 		"description": "Block comment / multiline string"
@@ -138,7 +138,7 @@
 	"print": {
 		"prefix": ["print"],
 		"body": [
-			"print(${1:${TM_SELECTED_TEXT}})"
+			"print(${1:$TM_SELECTED_TEXT})"
 		],
 		"description": "Print"
 	},
@@ -307,7 +307,7 @@
 	"dlog": {
 		"prefix": ["dlog"],
 		"body": [
-			"logging.debug(${1:${TM_SELECTED_TEXT}})"
+			"logging.debug(${1:$TM_SELECTED_TEXT})"
 		],
 		"description": "Debug log"
 	},
@@ -315,7 +315,7 @@
 	"ilog": {
 		"prefix": ["ilog"],
 		"body": [
-			"logging.info(${1:${TM_SELECTED_TEXT}})"
+			"logging.info(${1:$TM_SELECTED_TEXT})"
 		],
 		"description": "Info log"
 	},
@@ -323,7 +323,7 @@
 	"wlog": {
 		"prefix": ["wlog"],
 		"body": [
-			"logging.warning(${1:${TM_SELECTED_TEXT}})"
+			"logging.warning(${1:$TM_SELECTED_TEXT})"
 		],
 		"description": "Warning log"
 	},
@@ -331,7 +331,7 @@
 	"elog": {
 		"prefix": ["elog"],
 		"body": [
-			"logging.error(${1:${TM_SELECTED_TEXT}})"
+			"logging.error(${1:$TM_SELECTED_TEXT})"
 		],
 		"description": "Error log"
 	},
@@ -339,7 +339,7 @@
 	"clog": {
 		"prefix": ["clog"],
 		"body": [
-			"logging.critical(${1:${TM_SELECTED_TEXT}})"
+			"logging.critical(${1:$TM_SELECTED_TEXT})"
 		],
 		"description": "Critical log"
 	},
@@ -366,7 +366,7 @@
 	"write": {
 		"prefix": ["write"],
 		"body": [
-			"${1:ioName}.write(${2:${TM_SELECTED_TEXT}})"
+			"${1:ioName}.write(${2:$TM_SELECTED_TEXT})"
 		],
 		"description": "Write to file"
 	},
@@ -382,7 +382,7 @@
 	"strcast": {
 		"prefix": ["strcast"],
 		"body": [
-			"str(${1:${TM_SELECTED_TEXT}})"
+			"str(${1:$TM_SELECTED_TEXT})"
 		],
 		"description": "String cast"
 	}

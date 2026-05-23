@@ -78,8 +78,6 @@ require("blink.cmp").setup({
           clipboard_register = "+",
           search_paths = { vim.fn.stdpath("config") .. "/snippets" },
           extended_filetypes = {
-            lua = { "luadoc", "lua-nvim" },
-            sh = { "shelldoc" },
           },
         },
       },

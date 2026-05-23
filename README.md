@@ -344,6 +344,8 @@ alias ff="find . -type f -not -path '*/.git/*' | vidir -"
 - [explore diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
 
 ### Neovim
+- set up html skeleton better - match my website when done?
+- the markdown snippets - might be worth moving to luasnip? heading is not slugified in this
 - setup [goto-preview](https://github.com/rmagatti/goto-preview)
 - see if native autocomplete and snippets can be done? mini-snips or just an lsp?
     - [CURRENT_YEAR etc LSP and VS Code snippets differ](https://github.com/nvim-mini/mini.nvim/issues/1751) this seems to be the big hurdle and something where I may never get away from blink or similar. I am not in the mood for separate snippet functionality now

@@ -19,7 +19,7 @@
     ],
     "description": "Sub section marker"
   },
-  "Subsubsection Marker": {
+  "Sub-subsection Marker": {
     "prefix": "sssec",
     "body": [
       "${1:SubSubsection}:${2: *filename-subsubsection-name*}",

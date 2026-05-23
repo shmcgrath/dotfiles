@@ -1,0 +1,83 @@
+{
+	"block": {
+		"prefix": ["block"],
+		"body": [
+			"{% block ${1:${TM_SELECTED_TEXT:BlockName}} %}",
+			"\t$0",
+			"{% endblock $1 %}"
+		],
+		"description": "block"
+	},
+	"var": {
+		"prefix": ["var"],
+		"body": [
+			"{{ ${1:${TM_SELECTED_TEXT:VariableName}} }}"
+		],
+		"description": "variable"
+	},
+	"if": {
+		"prefix": ["if"],
+		"body": [
+			"{% if ${1:${TM_SELECTED_TEXT:VariableName}} %}",
+			"\t$0",
+			"{% endif %}"
+		],
+		"description": "if"
+	},
+	"if-elif-else": {
+		"prefix": ["ifelse", "elif"],
+		"body": [
+			"{% if ${1:${TM_SELECTED_TEXT:VariableName}} %}",
+			"\t${2}",
+			"{% elif ${3:condition} %}",
+			"\t${4}",
+			"{% else %}",
+			"\t${5}",
+			"{% endif %}"
+		],
+		"description": "if / elif / else"
+	},
+	"include": {
+		"prefix": ["include"],
+		"body": [
+			"{% include \"${1:${TM_SELECTED_TEXT:templateIncludePath}}\" %}"
+		],
+		"description": "include"
+	},
+	"for": {
+		"prefix": ["for"],
+		"body": [
+			"{% for ${1:iSingularName} in ${2:PluralName} %}",
+			"\t${3:For Logic}",
+			"{% else %}",
+			"\t${4:Else Logic}",
+			"{% endfor %}"
+		],
+		"description": "for"
+	},
+	"raw": {
+		"prefix": ["raw"],
+		"body": [
+			"{% raw %}",
+			"\t$0",
+			"{% endraw %}"
+		],
+		"description": "escaped block"
+	},
+	"extends": {
+		"prefix": ["extends"],
+		"body": [
+			"{% extends \"${1:${TM_SELECTED_TEXT:template}}\" %}"
+		],
+		"description": "extends"
+	},
+	"macro": {
+		"prefix": ["macro"],
+		"body": [
+			"{% macro ${1:name}(${2:args}) %}",
+			"\t${3}",
+			"{% endmacro %}"
+		],
+		"description": "macro"
+	}
+}

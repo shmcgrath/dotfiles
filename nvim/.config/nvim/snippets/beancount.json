@@ -1,0 +1,11 @@
+{
+	"t": {
+		"prefix": ["t"],
+		"body": [
+			"${1:${CURRENT_YEAR}}-${2:${CURRENT_MONTH}}-${3:${CURRENT_DATE}} ${4:*} ${5:Payee}",
+			"\t${6:Expenses}\t\t$${7:0.00}",
+			"\t${8:Assets:Checking}$0"
+		],
+		"description": "Transaction"
+	}
+}

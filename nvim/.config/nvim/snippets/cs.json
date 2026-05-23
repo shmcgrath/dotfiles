@@ -1,0 +1,288 @@
+{
+	"bcom": {
+		"prefix": ["bcom"],
+		"body": [
+			"/* ${TM_SELECTED_TEXT} */"
+		],
+		"description": "Block comment"
+	},
+	"AND": {
+		"prefix": ["AND"],
+		"body": ["&& $0"],
+		"description": "Logical AND"
+	},
+	"OR": {
+		"prefix": ["OR"],
+		"body": ["|| $0"],
+		"description": "Logical OR"
+	},
+	"NOT": {
+		"prefix": ["NOT"],
+		"body": ["!$0"],
+		"description": "Logical NOT"
+	},
+	"switch": {
+		"prefix": ["switch"],
+		"body": [
+			"switch (${1:variableName})",
+			"{",
+			"\tcase ${2:case1}:",
+			"\t\t${3:case1Actions}",
+			"\t\tbreak;",
+			"\tcase ${4:case2}:",
+			"\t\t${5:case2Actions}",
+			"\t\tbreak;",
+			"\tdefault:",
+			"\t\tbreak;",
+			"}"
+		],
+		"description": "switch statement"
+	},
+	"case": {
+		"prefix": ["case"],
+		"body": [
+			"case ${1:caseValue}:",
+			"\t$0",
+			"\tbreak;"
+		],
+		"description": "case block"
+	},
+	"while": {
+		"prefix": ["while"],
+		"body": [
+			"while (${1:evaluationStatement})",
+			"{",
+			"\t$0",
+			"}"
+		],
+		"description": "while loop"
+	},
+	"for": {
+		"prefix": ["for"],
+		"body": [
+			"for (int ${1:i} = ${2:0}; ${1:i} ${3:<} ${4:10}; ${1:i}${5:++})",
+			"{",
+			"\t$0",
+			"}"
+		],
+		"description": "for loop"
+	},
+	"forr": {
+		"prefix": ["forr"],
+		"body": [
+			"for (int ${1:i} = ${2:10}; ${1:i} ${3:>=} ${4:0}; ${1:i}${5:--})",
+			"{",
+			"\t$0",
+			"}"
+		],
+		"description": "reverse for loop"
+	},
+	"foreach": {
+		"prefix": ["foreach"],
+		"body": [
+			"foreach (${1:dataType} ${2:item} in ${3:collection})",
+			"{",
+			"\t$0",
+			"}"
+		],
+		"description": "foreach loop"
+	},
+	"trycatch": {
+		"prefix": ["trycatch"],
+		"body": [
+			"try",
+			"{",
+			"\t$0",
+			"}",
+			"catch (${1:Exception} ${2:ex})",
+			"{",
+			"\t${3:exceptionExpression}",
+			"}"
+		],
+		"description": "try/catch"
+	},
+	"tryfin": {
+		"prefix": ["tryfin"],
+		"body": [
+			"try",
+			"{",
+			"\t$0",
+			"}",
+			"finally",
+			"{",
+			"}"
+		],
+		"description": "try/finally"
+	},
+	"func": {
+		"prefix": ["func"],
+		"body": [
+			"${1:public|private} ${2:dataType|void} ${3:methodName}()",
+			"{",
+			"\t$0",
+			"// return",
+			"// void does not return a value; dataType does",
+			"}"
+		],
+		"description": "method template"
+	},
+	"if": {
+		"prefix": ["if"],
+		"body": [
+			"if (${1:condition})",
+			"{",
+			"\t${2:statement}",
+			"}"
+		],
+		"description": "if statement"
+	},
+	"ife": {
+		"prefix": ["ifelse"],
+		"body": [
+			"if (${1:condition})",
+			"{",
+			"\t${2:statement}",
+			"}",
+			"else",
+			"{",
+			"\t${3:elseStatement}",
+			"}"
+		],
+		"description": "if/else"
+	},
+	"else": {
+		"prefix": ["else"],
+		"body": [
+			"else",
+			"{",
+			"\t${1:else statement}",
+			"}"
+		],
+		"description": "else block"
+	},
+	"elif": {
+		"prefix": ["elif"],
+		"body": [
+			"else if (${1:condition})",
+			"{",
+			"\t${2:statement}",
+			"}"
+		],
+		"description": "else if"
+	},
+	"string": {
+		"prefix": ["str"],
+		"body": ["string ${1:name} = \"${2:string}\";"],
+		"description": "string variable"
+	},
+	"int": {
+		"prefix": ["int"],
+		"body": ["int ${1:name} = ${2:0};"],
+		"description": "int variable"
+	},
+	"bool": {
+		"prefix": ["bool"],
+		"body": ["bool ${1:name} = ${2:true};"],
+		"description": "bool variable"
+	},
+	"guid": {
+		"prefix": ["guid"],
+		"body": [
+			"Guid ${1:name} = Guid.Empty;",
+			"Guid $1 = new Guid(${2:variable or String});",
+			"Guid $1 = $2.Id"
+		],
+		"description": "Guid patterns (manual choice needed)"
+	},
+	"trace": {
+		"prefix": ["trace"],
+		"body": [
+			"Trace.WriteLine(${1:${TM_SELECTED_TEXT}});"
+		],
+		"description": "Trace.WriteLine"
+	},
+	"plugex": {
+		"prefix": ["plugex"],
+		"body": [
+			"throw new InvalidPluginExecutionException(${1:${TM_SELECTED_TEXT}});"
+		],
+		"description": "Throw plugin execution exception"
+	},
+	"class": {
+		"prefix": ["class"],
+		"body": [
+			"public class ${1:ClassName}",
+			"{",
+			"\t#region $1 properties",
+			"",
+			"\tprivate ${2:string} _${3:propertyName};",
+			"",
+			"\tpublic $2 ${4:PropertyName}",
+			"\t{",
+			"\t\tget { return _$3; }",
+			"\t\tset { _$3 = value; }",
+			"\t}",
+			"",
+			"\tpublic $1(string $3)",
+			"\t{",
+			"\t\t_$3 = $3;",
+			"\t}",
+			"",
+			"\t$0",
+			"\t#endregion",
+			"}"
+		],
+		"description": "C# class with property + constructor"
+	},
+	"propfull": {
+		"prefix": ["propfull"],
+		"body": [
+			"private ${1:dataType} _${2:propertyName};",
+			"_$2 = $2;";
+			"",
+			"public $1 ${3:PropertyName}",
+			"{",
+			"\tget { return _$2; }",
+			"\tset { _$2 = value; }",
+			"}"
+		],
+		"description": "Full property with backing field"
+	},
+	"xcs": {
+		"prefix": ["xcs"],
+		"body": [
+			"/// <summary>",
+			"/// ${1:${TM_SELECTED_TEXT}}",
+			"/// </summary>"
+		],
+		"description": "XML summary comment"
+	},
+	"xcp": {
+		"prefix": ["xcp"],
+		"body": [
+			"<param name=\"${1:name}\">${2:description}</param>"
+		],
+		"description": "XML parameter comment"
+	},
+	"xcex": {
+		"prefix": ["xcex"],
+		"body": [
+			"<exception cref=\"${1:System.Exception}\">${2:description}</exception>"
+		],
+		"description": "XML exception comment"
+	},
+	"xcr": {
+		"prefix": ["xcr"],
+		"body": [
+			"<returns>${1:${TM_SELECTED_TEXT}}</returns>"
+		],
+		"description": "XML returns comment"
+	},
+	"xcc": {
+		"prefix": ["xcc"],
+		"body": [
+			"<code>${1:${TM_SELECTED_TEXT}}</code>"
+		],
+		"description": "XML code comment"
+	}
+}

@@ -1,0 +1,165 @@
+{
+	"altkey": {
+		"prefix": ["altkey"],
+		"body": [
+			"KeyAttributeCollection ${1:name} = new KeyAttributeCollection();",
+			"$1.Add(\"${2:fieldName}\", ${3:value});",
+			"$1.Add(\"${4:fieldName}\", ${5:value});"
+		],
+		"description": "KeyAttributeCollection helper"
+	},
+
+	"optval": {
+		"prefix": ["optval"],
+		"body": [
+			"new OptionSetValue(${1:value})"
+		],
+		"description": "OptionSetValue"
+	},
+
+	"entityref": {
+		"prefix": ["entityref"],
+		"body": [
+			"EntityReference ${1:name} = new EntityReference(\"${2:crmEntityName}\", ${3:guid});"
+		],
+		"description": "EntityReference"
+	},
+
+	"entity": {
+		"prefix": ["entity"],
+		"body": [
+			"Entity ${1:name} = new Entity(\"${2:crmEntityName}\", ${3:guid});"
+		],
+		"description": "Entity initialization"
+	},
+
+	"ifrow": {
+		"prefix": ["ifrow"],
+		"body": [
+			"if (!Row.${1:rowName}_IsNull)",
+			"{",
+			"\t${2:upsertEntity}[\"${3:crmFieldName}\"] = Row.$1;",
+			"}"
+		],
+		"description": "Data row null check assignment"
+	},
+
+	"newservice": {
+		"prefix": ["newservice"],
+		"body": [
+			"CrmServiceClient cservice;",
+			"OrganizationServiceProxy service;",
+			"",
+			"ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;",
+			"cservice = new CrmServiceClient(${1:username}, CrmServiceClient.MakeSecureString(${2:password}), \"\", ${3:uniqueName}, itOffice365: true);",
+			"service = cservice.OrganizationServiceProxy;"
+		],
+		"description": "CRM service initialization"
+	},
+
+	"namespaces": {
+		"prefix": ["namespaces"],
+		"body": [
+			"#region Namespaces",
+			"using System;",
+			"using System.Diagnostics;",
+			"using Microsoft.Xrm.Sdk.Client;",
+			"using System.Net;",
+			"using Microsoft.Xrm.Tooling.Connector;",
+			"using Microsoft.Xrm.Sdk.Query;",
+			"using Microsoft.Xrm.Sdk;",
+			"using Microsoft.Xrm.Sdk.Messages;",
+			"using OrgInternalSDK;",
+			"#endregion"
+		],
+		"description": "CRM namespaces"
+	},
+
+	"retrieve": {
+		"prefix": ["retrieve"],
+		"body": [
+			"RetrieveRequest retrieve${1:entityName} = new RetrieveRequest();",
+			"$1.ColumnSet = new ColumnSet(\"name\");",
+			"$1.Target = new EntityReference(${2:retrieveEntity}, ${3:altKey});",
+			"",
+			"try",
+			"{",
+			"\tRetrieveResponse response$1 = (RetrieveResponse)service.Execute(retrieve$1);",
+			"\tif (response$1.Entity != null)",
+			"\t{",
+			"\t\t$0",
+			"\t}",
+			"}",
+			"catch (Exception ex)",
+			"{",
+			"\t${4:catchExpression}",
+			"}"
+		],
+		"description": "RetrieveRequest pattern"
+	},
+
+	"exlog": {
+		"prefix": ["exlog"],
+		"body": [
+			"#region ${1:ERR-00} Error Log",
+			"string elName = \"${1}: ${2:errorName}\";",
+			"string elNo = ex.HResult.ToString();",
+			"string elPackage = Variables.PackageName;",
+			"string elRecord = ${3:recordId};",
+			"string elMessage = ex.Message;",
+			"string elInnerException = ex.InnerException?.ToString();",
+			"string elAdditionalInformation = \"\";",
+			"ErrLog el = new ErrLog(elName, elNo, Variables.PackageName, Variables.TaskName, elRecord, elMessage, elInnerException, elAdditionalInformation);",
+			"el.CreateCRMErrLog(service);",
+			"#endregion"
+		],
+		"description": "CRM error logging (exception-based)"
+	},
+
+	"erlog": {
+		"prefix": ["erlog"],
+		"body": [
+			"#region ${1:ERR-00} Error Log",
+			"string elName = \"${1}: ${2:errorName}\";",
+			"string elNo = \"${1}\";",
+			"string elPackage = Variables.PackageName;",
+			"string elTask = Variables.TaskName;",
+			"string elRecord = ${3:recordId};",
+			"string elMessage = \"${4:message}\";",
+			"string elInnerException = \"\";",
+			"string elAdditionalInformation = \"\";",
+			"ErrLog el = new ErrLog(elName, elNo, elPackage, elTask, elRecord, elMessage, elInnerException, elAdditionalInformation);",
+			"el.CreateCRMErrLog(service);",
+			"#endregion"
+		],
+		"description": "CRM error logging (manual)"
+	},
+
+	"upsert": {
+		"prefix": ["upsert"],
+		"body": [
+			"KeyAttributeCollection ${1:keyName} = new KeyAttributeCollection();",
+			"$1.Add(\"${2:fieldName}\", ${3:value});",
+			"$1.Add(\"${4:fieldName}\", ${5:value});",
+			"",
+			"Entity ${6:entity} = new Entity(\"${7:crmEntity}\", $1);",
+			"${6}[\"${8:crmFieldNameToUpdate}\"] = ${9:valueToPutInCRMField};",
+			"",
+			"UpsertRequest ${6}Request = new UpsertRequest()",
+			"{",
+			"\tTarget = ${6}",
+			"};",
+			"",
+			"try",
+			"{",
+			"\tUpsertResponse ${6}Response = (UpsertResponse)service.Execute(${6}Request);",
+			"\t// if (response.RecordCreated) { }",
+			"}",
+			"catch (Exception ex)",
+			"{",
+			"\t${10:catchExpression}",
+			"}"
+		],
+		"description": "CRM UpsertRequest pattern"
+	}
+}

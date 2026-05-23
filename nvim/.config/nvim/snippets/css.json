@@ -1,0 +1,96 @@
+{
+	"import": {
+		"prefix": ["import"],
+		"body": [
+			"@import '${1:PathToFile}';"
+		],
+		"description": "CSS import"
+	},
+	"hsl": {
+		"prefix": ["hsl"],
+		"body": [
+			"hsl(${1:Hue}, ${2:Saturation}%, ${3:Luminosity}%);"
+		],
+		"description": "HSL color"
+	},
+	"define variable": {
+		"prefix": ["var"],
+		"body": [
+			"--${1:variable}: $0;"
+		],
+		"description": "CSS custom property / variable"
+	},
+	"cvar-use": {
+		"prefix": ["var-use"],
+		"body": [
+			"${1:property}: var(--${2:variable});"
+		],
+		"description": "CSS property using a custom property"
+	},
+	"property": {
+		"prefix": ["cstyle"],
+		"body": [
+			"${1:property}: ${2:value};"
+		],
+		"description": "CSS property: value pair"
+	},
+	"class": {
+		"prefix": ["class"],
+		"body": [
+			".${1:class} {",
+			"\t$0",
+			"}"
+		],
+		"description": "CSS class selector"
+	},
+
+	"id": {
+		"prefix": ["id"],
+		"body": [
+			"#${1:id} {",
+			"\t$0",
+			"}"
+		],
+		"description": "CSS id selector"
+	},
+
+	"element": {
+		"prefix": ["ele"],
+		"body": [
+			"${1:elementTag} {",
+			"\t$0",
+			"}"
+		],
+		"description": "CSS element selector"
+	},
+
+	"attribute": {
+		"prefix": ["attr"],
+		"body": [
+			"${1:elementTag}[${2:attribute}] {",
+			"\t$0",
+			"}"
+		],
+		"description": "CSS attribute selector"
+	},
+
+	"child": {
+		"prefix": ["child"],
+		"body": [
+			"${1:elementTag1} > ${2:elementTag2} {",
+			"\t$0",
+			"}"
+		],
+		"description": "CSS child selector"
+	},
+
+	"desc": {
+		"prefix": ["desc"],
+		"body": [
+			"${1:elementTag1} ${2:elementTag2} {",
+			"\t$0",
+			"}"
+		],
+		"description": "CSS descendant selector"
+	}
+}

@@ -6,18 +6,24 @@
 			{ "language": [ "go" ], "path": "./go.json" },
 			{ "language": [ "lua" ], "path": "./lua.json" },
 			{ "language": [ "luadoc" ], "path": "./luadoc.json" },
-			{ "language": [ "lua-nvim" ], "path": "./lua-nvim.json" },
-			{ "language": [ "html" ], "path": "./html.json" },
+			{ "language": [ "lua" ], "path": "./lua-nvim.json" },
+			{ "language": [ "html", "jinja" ], "path": "./html.json" },
+			{ "language": [ "jinja" ], "path": "./jinja.json" },
 			{ "language": [ "help" ], "path": "./help.json" },
 			{ "language": [ "all", "global", "markdown", "tex", "html", "plaintext", "text" ],
 			   "path": "./global.json" },
 			{ "language": [ "shellscript", "shell", "sh", "zsh", "bash", "make" ],
 			   "path": "./shell.json" },
-			{ "language": [ "shelldoc" ], "path": "./shelldoc.json" },
+			{ "language": [ "sh", "shelldoc" ], "path": "./shelldoc.json" },
 			{ "language": [ "perl" ], "path": "./perl.json" },
 			{ "language": [ "make" ], "path": "./make.json" },
 			{ "language": [ "org" ], "path": "./org.json" },
-			{ "language": [ "swayconfig" ], "path": "./swayconfig.json" }
+			{ "language": [ "swayconfig" ], "path": "./swayconfig.json" },
+			{ "language": [ "java" ], "path": "./java.json" },
+			{ "language": [ "ledger", "hledger", "beancount" ], "path": "./ledger.json" },
+			{ "language": [ "beancount" ], "path": "./beancount.json" },
+			{ "language": [ "cs" ], "path": "./cs.json" },
+			{ "language": [ "css" ], "path": "./css.json" }
 		]
 	}
 }

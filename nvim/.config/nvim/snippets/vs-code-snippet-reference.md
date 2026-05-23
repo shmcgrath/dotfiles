@@ -1,5 +1,12 @@
 # VS Code Snippet References
 
+## My Personal Conventions
+- Prefixes for common things:
+    - AND
+    - OR
+    - NOT
+    - bcom
+
 ## Expanded Snippet Variables
 
 ### General

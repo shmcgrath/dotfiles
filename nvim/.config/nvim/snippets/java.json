@@ -1,0 +1,9 @@
+{
+	"bcom": {
+		"prefix": ["bcom"],
+		"body": [
+			"/* ${TM_SELECTED_TEXT} */"
+		],
+		"description": "Block comment"
+	}
+}

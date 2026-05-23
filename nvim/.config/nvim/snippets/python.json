@@ -1,0 +1,389 @@
+{
+	"func": {
+		"prefix": ["func"],
+		"body": [
+			"def ${1:functionName}(${2:variables_passed}):",
+			"\t\"\"\"${5:${1} docstring}\"\"\"",
+			"\t${3:returnVar} = ${4:returnVarValue}",
+			"\t$0",
+			"\treturn ${3}"
+		],
+		"description": "Function definition"
+	},
+
+	"bcom": {
+		"prefix": ["bcom"],
+		"body": [
+			"\"\"\"",
+			"${1:${TM_SELECTED_TEXT}}",
+			"\"\"\""
+		],
+		"description": "Block comment / multiline string"
+	},
+
+	"trycatch": {
+		"prefix": ["trycatch"],
+		"body": [
+			"try:",
+			"\t${1:try}",
+			"except Error as e:",
+			"\t${2:catch}",
+			"finally:",
+			"\t${3:cleanup}"
+		],
+		"description": "Try/except/finally"
+	},
+
+	"main": {
+		"prefix": ["main"],
+		"body": [
+			"def main():",
+			"\t\"\"\"${1:Main entry point for the script.}\"\"\"",
+			"\tfileConfig('logging_config.ini')",
+			"\tlogging.getLogger(__name__).addHandler(logging.NullHandler())",
+			"\tlogger = logging.getLogger()",
+			"\tlogger = logging.getLogger('${2:module_name}')",
+			"\t$0",
+			"",
+			"if __name__ == '__main__':",
+			"\tsys.exit(main())"
+		],
+		"description": "Main entry point"
+	},
+
+	"if": {
+		"prefix": ["if"],
+		"body": [
+			"if ${1:condition}:",
+			"\t${2:statements}"
+		],
+		"description": "If statement"
+	},
+
+	"else": {
+		"prefix": ["else"],
+		"body": [
+			"else:",
+			"\t${1:bodyOfElse}"
+		],
+		"description": "Else statement"
+	},
+
+	"elif": {
+		"prefix": ["elif"],
+		"body": [
+			"elif ${1:condition}:",
+			"\t${2:statements}"
+		],
+		"description": "Elif statement"
+	},
+
+	"ife": {
+		"prefix": ["ife"],
+		"body": [
+			"if ${1:condition}:",
+			"\t${2:statements}",
+			"else:",
+			"\t${3:bodyOfElse}"
+		],
+		"description": "If/else statement"
+	},
+
+	"ifel": {
+		"prefix": ["ifel", "elif"],
+		"body": [
+			"if ${1:condition}:",
+			"\t${2:statements}",
+			"elif ${3:condition}:",
+			"\t${4:statements}"
+		],
+		"description": "If/elif statement"
+	},
+
+	"ifele": {
+		"prefix": ["ifele"],
+		"body": [
+			"if ${1:condition}:",
+			"\t${2:statements}",
+			"elif ${3:condition}:",
+			"\t${4:statements}",
+			"else:",
+			"\t${5:bodyOfElse}"
+		],
+		"description": "If/elif/else statement"
+	},
+
+	"for": {
+		"prefix": ["for"],
+		"body": [
+			"for ${1:value} in ${2:iterable_or_list}:",
+			"\t${3:body}",
+			"\t# continue",
+			"\t# break"
+		],
+		"description": "For loop"
+	},
+
+	"while": {
+		"prefix": ["while"],
+		"body": [
+			"while ${1:conditional}:",
+			"\t${2:body}",
+			"\t# continue",
+			"\t# break"
+		],
+		"description": "While loop"
+	},
+
+	"print": {
+		"prefix": ["print"],
+		"body": [
+			"print(${1:${TM_SELECTED_TEXT}})"
+		],
+		"description": "Print"
+	},
+
+	"int": {
+		"prefix": ["int"],
+		"body": [
+			"${1:name} = ${2:value}"
+		],
+		"description": "Integer assignment"
+	},
+
+	"strassign": {
+		"prefix": ["str"],
+		"body": [
+			"${1:name} = \"${2:value}\""
+		],
+		"description": "String assignment"
+	},
+
+	"tuple": {
+		"prefix": ["tuple"],
+		"body": [
+			"${1:name} = (${2:element1}, ${3:element2}$0)"
+		],
+		"description": "Tuple assignment"
+	},
+
+	"list": {
+		"prefix": ["list"],
+		"body": [
+			"${1:name} = [${2:element1}, ${3:element2}$0]"
+		],
+		"description": "List assignment"
+	},
+
+	"dict": {
+		"prefix": ["dict"],
+		"body": [
+			"${1:name} = {${2:key1}: ${3:value1}, ${4:key2}: ${5:value2}$0}"
+		],
+		"description": "Dictionary assignment"
+	},
+
+	"kvs": {
+		"prefix": ["kvs"],
+		"body": [
+			"${1:key}: \"${2:value}\""
+		],
+		"description": "Key-value string"
+	},
+
+	"kvn": {
+		"prefix": ["kvn"],
+		"body": [
+			"${1:key}: ${2:value}"
+		],
+		"description": "Key-value number"
+	},
+
+	"dictionary item": {
+		"prefix": ["dicti"],
+		"body": [
+			"${1:dictName}[${2:key}] = ${3:\"value\"}"
+		],
+		"description": "Dictionary item assignment"
+	},
+
+	"iclass": {
+		"prefix": ["iclass"],
+		"body": [
+			"${1:name} = ${2:ClassName}(${3:init_args})"
+		],
+		"description": "Instantiate class"
+	},
+
+	"class": {
+		"prefix": ["class"],
+		"body": [
+			"class ${1:ClassName}:",
+			"\t\"\"\"${7:${1} docstring}\"\"\"",
+			"",
+			"\tdef __init__(self, ${2:value1}):",
+			"\t\tself.${2} = ${2}",
+			"",
+			"\tdef ${3:instanceFuncName}(self, ${4:arg1}):",
+			"\t\t${5:returnVar} = ${6:returnVarValue}",
+			"\t\treturn ${5}"
+		],
+		"description": "Class definition"
+	},
+
+	"subclass": {
+		"prefix": ["subclass"],
+		"body": [
+			"class ${1:className}(${2:baseClass}):",
+			"\t\"\"\"${8:${1} docstring}\"\"\"",
+			"",
+			"\tdef __init__(self, ${3:value1}):",
+			"\t\tsuper(${2}, self).__init__()",
+			"\t\tself.${3} = ${3}",
+			"",
+			"\tdef ${4:instanceFuncName}(self, ${5:arg1}):",
+			"\t\t${6:returnVar} = ${7:returnVarValue}",
+			"\t\treturn ${6}"
+		],
+		"description": "Subclass definition"
+	},
+
+	"imp": {
+		"prefix": ["imp"],
+		"body": [
+			"import ${1:library}"
+		],
+		"description": "Import module"
+	},
+
+	"impf": {
+		"prefix": ["impf"],
+		"body": [
+			"from ${1:library} import ${2:module}"
+		],
+		"description": "Import from module"
+	},
+
+	"impa": {
+		"prefix": ["impa"],
+		"body": [
+			"import ${1:library} as ${2:abbreviation}"
+		],
+		"description": "Import module as alias"
+	},
+
+	"impfa": {
+		"prefix": ["impfa"],
+		"body": [
+			"from ${1:library} import ${2:module} as ${3:abbreviation}"
+		],
+		"description": "Import module as alias"
+	},
+
+	"AND": {
+		"prefix": ["AND"],
+		"body": [
+			"and $0"
+		],
+		"description": "Logical AND"
+	},
+
+	"OR": {
+		"prefix": ["OR"],
+		"body": [
+			"or $0"
+		],
+		"description": "Logical OR"
+	},
+
+	"NOT": {
+		"prefix": ["NOT"],
+		"body": [
+			"not $0"
+		],
+		"description": "Logical NOT"
+	},
+
+	"dlog": {
+		"prefix": ["dlog"],
+		"body": [
+			"logging.debug(${1:${TM_SELECTED_TEXT}})"
+		],
+		"description": "Debug log"
+	},
+
+	"ilog": {
+		"prefix": ["ilog"],
+		"body": [
+			"logging.info(${1:${TM_SELECTED_TEXT}})"
+		],
+		"description": "Info log"
+	},
+
+	"wlog": {
+		"prefix": ["wlog"],
+		"body": [
+			"logging.warning(${1:${TM_SELECTED_TEXT}})"
+		],
+		"description": "Warning log"
+	},
+
+	"elog": {
+		"prefix": ["elog"],
+		"body": [
+			"logging.error(${1:${TM_SELECTED_TEXT}})"
+		],
+		"description": "Error log"
+	},
+
+	"clog": {
+		"prefix": ["clog"],
+		"body": [
+			"logging.critical(${1:${TM_SELECTED_TEXT}})"
+		],
+		"description": "Critical log"
+	},
+
+	"withopen": {
+		"prefix": ["withopen"],
+		"body": [
+			"with open(${1:file_name_or_variable}, mode='${2:rwx}', encoding='utf-8') as ${3:ioName}:",
+			"\t$0",
+		],
+		"description": "With open"
+	},
+
+	"open": {
+		"prefix": ["open"],
+		"body": [
+			"${3:ioName} = open(${1:file_name_or_variable}, mode='${2:rwx}')",
+			"$0",
+			"${3}.close()"
+		],
+		"description": "Open file"
+	},
+
+	"write": {
+		"prefix": ["write"],
+		"body": [
+			"${1:ioName}.write(${2:${TM_SELECTED_TEXT}})"
+		],
+		"description": "Write to file"
+	},
+
+	"home": {
+		"prefix": ["home"],
+		"body": [
+			"home = str(Path.home())"
+		],
+		"description": "Get home directory"
+	},
+
+	"strcast": {
+		"prefix": ["strcast"],
+		"body": [
+			"str(${1:${TM_SELECTED_TEXT}})"
+		],
+		"description": "String cast"
+	}
+}

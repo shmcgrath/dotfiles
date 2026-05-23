@@ -1,11 +1,18 @@
 {
 	"printf": {
 		"prefix": ["printf"],
-		"body": ["printf \"%s\\n\" \"$1\"$0"],
+		"body": [
+			"printf \"%s\\n\" \"$1\"$0"
+		],
 		"description": "preferred implementation of printf"
 	},
-	"if" : {
-		"body": "if ${2:[[ ${1:condition} ]]}; then\n\t${0:#statements}\nfi",
+	"if": {
+		"prefix": ["if"],
+		"body": [
+			"if ${2:[[ ${1:condition} ]]}; then",
+			"\t${0:#statements}",
+			"fi"
+		],
 		"description": "if ... then (if)"
-   }
+	}
 }

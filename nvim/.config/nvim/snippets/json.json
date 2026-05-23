@@ -1,9 +1,16 @@
 {
-	"new snippet": {
-		"prefix": ["newsnip"],
+	"kvs": {
+		"prefix": ["kvs"],
 		"body": [
-			"${1}\": {\n\t\"prefix\": [\"${2}\"],\n\t\"body\": [\n\t\t\"${3}\"\n\t],\n\t\"description\": \"${4}\"\n},"
+			"\"${1:key}\": \"${0:value}\","
 		],
-        "description": "new snippet"
-    }
+		"description": "Key-value string"
+	},
+	"kvn": {
+		"prefix": ["kvn"],
+		"body": [
+			"\"${1:key}\": ${0:value},"
+		],
+		"description": "Key-value number"
+	}
 }

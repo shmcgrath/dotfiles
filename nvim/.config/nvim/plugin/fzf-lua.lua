@@ -80,6 +80,7 @@ require("fzf-lua").setup({
 -- vim.ui.select = require("fzf-lua").fzf_select
 
 local fzf = require("fzf-lua")
+fzf.register_ui_select()
 
 vim.keymap.set("n", "<C-p>d", fzf.diagnostics_document, { desc = "fzf-lua search through diagnostics_document" })
 vim.keymap.set("n", "<C-p>f", fzf.global, { desc = "fzf-lua search for files in the current working directory, buffers, and symbols" })

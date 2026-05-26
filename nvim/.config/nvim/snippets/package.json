@@ -2,6 +2,8 @@
 	"name": "snippets-shm",
 	"contributes": {
 		"snippets": [
+			{ "language": [ "all", "global", "markdown", "tex", "html", "plaintext", "text" ],
+			   "path": "./global.json" },
 			{ "language": [ "all", "global", "markdown" ], "path": "./markdown.json" },
 			{ "language": [ "go" ], "path": "./go.json" },
 			{ "language": [ "lua" ], "path": "./lua.json" },
@@ -10,8 +12,6 @@
 			{ "language": [ "html", "jinja" ], "path": "./html.json" },
 			{ "language": [ "jinja" ], "path": "./jinja.json" },
 			{ "language": [ "help" ], "path": "./help.json" },
-			{ "language": [ "all", "global", "markdown", "tex", "html", "plaintext", "text" ],
-			   "path": "./global.json" },
 			{ "language": [ "shellscript", "shell", "sh", "zsh", "bash", "make" ],
 			   "path": "./shell.json" },
 			{ "language": [ "sh", "shelldoc" ], "path": "./shelldoc.json" },

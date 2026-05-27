@@ -51,6 +51,25 @@ These are some of the links that I found useful when figuring out how to manage 
 - [A Good Vimrc](https://dougblack.io/words/a-good-vimrc.html)
 - [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com)
 - [Best of My Vimrc](http://sts10.github.io/blog/2016/02/12/best-of-my-vimrc/)
+### XDG Spec Information
+
+|  | Unix | macOS | Windows |
+| --- | --- | --- | --- |
+| XDG\_DATA\_HOME | ~/.local/share | ~/Library/Application Support | LocalAppData   %LOCALAPPDATA% |
+| XDG\_DATA\_DIRS | /usr/local/share   /usr/share | /Library/Application Support~/.local/share | RoamingAppData   ProgramData   %APPADATA%   %ProgramData% |
+| XDG\_CONFIG\_HOME | ~/.config | ~/Library/Application Support | LocalAppData   %LOCALAPPDATA% |
+| XDG\_CONFIG\_DIRS | /etc/xdg | ~/Library/Preferences   /Library/Application Support   /Library/Preferences   ~/.config | ProgramData   RoamingAppData   %ProgramData%   %APPDATA% |
+| XDG\_STATE\_HOME | ~/.local/state | ~/Library/Application Support | LocalAppData   %LOCALAPPDATA% |
+| XDG\_CACHE\_HOME | ~/.cache | ~/Library/Caches | LocalAppData\\cache   %LOCALAPPDATA%\\cache |
+| XDG\_RUNTIME\_DIR | /run/user/$UID | ~/Library/Application Support | LocalAppData   %LOCALAPPDATA% |
+| XDG\_BIN\_HOME | ~/.local/bin | ~/.local/bin | UserProgramFiles   %LOCALAPPDATA%\\Programs |
+
+- Table from [Cleaning up my $HOME with XDG Base Directory Specification](https://evgeniipendragon.com/posts/cleaning-up-my-home-with-xdg-base-directory-specification/)
+
+>As usual, you are in control and can modify your system’s behavior. If you do not like the “Projects” folder, simply delete it! The xdg-user-dirs utility will not try to create it again, and instead adjust the default location for this directory to your home directory. If you want more control, you can influence exactly what goes where by editing your ~/.config/user-dirs.dirs configuration file.
+>
+>If you are a system administrator or distribution vendor and want to set default locations for the default XDG directories, you can edit the /etc/xdg/user-dirs.defaults file to set global defaults that affect all users on the system (users can still adjust the settings however they like though).[^[
+Hello old new “Projects” directory!](https://blog.tenstral.net/2026/04/hello-projects-directory.html)]
 
 ## My Config Notes:
 - Current iTerm colorscheme: base16 tomorrownight dark 256
@@ -245,6 +264,7 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- more xdg stuff? - at least pull this table into my notes so i have it
 - ydotool, ahk_x11 xdotool for autohotkey replacement for videogames
     - google org.freedesktop.portal.GlobalShortcuts
 - yt-dlp

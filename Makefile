@@ -433,6 +433,12 @@ singlefle:
 	@printf "%s\n" "https://github.com/gildas-lormeau/single-file-cli"
 	@printf "%s\n" "move the binary to ~/.local/bin and chmod +x"
 
+swaylock:
+	@printf "%s\n" "installing swaylock@.service"
+	install -m 644 $(DOTFILES)/swaylock/swaylock@.service /etc/systemd/system/swaylock@.service
+	stow swaylock
+	@printf "%s\n" "refresh systemd daemons and enable the service"
+
 # macos software installed
 # hazel
 # alfred

@@ -403,3 +403,9 @@ cmd img-shrink-by-50 ${{
         vips resize "$f" "$out" 0.5
     done
 }}
+
+cmd lazygit ${{ \
+    git rev-parse --is-inside-work-tree >/dev/null 2>&1 || exit
+    lazygit
+    lf -remote "send $id redraw"
+}}

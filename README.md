@@ -264,6 +264,7 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- move irc certs to .local or something
 - add date modification function to lf
     - used when converting old documents into plain text so that i can have proper-ish dating on them
 - more xdg stuff? - at least pull this table into my notes so i have it

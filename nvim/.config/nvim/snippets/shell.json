@@ -2,7 +2,7 @@
 	"printf": {
 		"prefix": ["printf"],
 		"body": [
-			"printf \"\\n%s\" \"$1\"$0"
+			"printf \"%s\\n\" \"$1\"$0"
 		],
 		"description": "preferred implementation of printf"
 	},

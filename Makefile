@@ -219,7 +219,7 @@ zoxide:
 	zoxide add $(HOME)/Dropbox
 	zoxide add $(HOME)/Dropbox/shm
 	zoxide add $(HOME)/src
-	zoxide add $(HOME)/projects
+	zoxide add $(HOME)/Projects
 
 navi:
 	$(PKGINSTALL) navi fzf

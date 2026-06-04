@@ -1,5 +1,5 @@
 DOTFILES := $(CURDIR)
-BOOTSTRAP_DIR := $(CURDIR)/scripts/bootstrap
+BOOTSTRAP_DIR := $(CURDIR)/bootstrap
 MKDIR := mkdir -pv
 LN := ln -svf
 LNDIR := ln -sv

@@ -15,6 +15,16 @@ makedir() {
     mkdir -pv "$1"
 }
 
+create_stow_ignore() {
+    cat > "${BASE_DIR}/.stow-local-ignore" <<EOF
+.DS_Store
+^\.DS_Store$
+^/\.config/${TARGET_NAME}/
+
+# vim:ft=conf:
+EOF
+}
+
 declare -A DIR_MAP=(
     [1]="${BASE_DIR}/.config/${TARGET_NAME}"
     [2]="${BASE_DIR}/.cache/${TARGET_NAME}"
@@ -38,6 +48,7 @@ echo "  6:  .config/systemd/user"
 echo "  7:  etc/ (for systemwide configuration)"
 echo "  8:  .local/share/applications (for a .desktop override)"
 echo "all:  make all subdirectories"
+echo "sli"
 echo "exit: make no directories and exit"
 
 read -r -p "Selection: " SELECTION
@@ -49,6 +60,11 @@ if [[ "$SELECTION" == "exit" ]]; then
 elif [[ "$SELECTION" == "all" ]]; then
 	makedir "$BASE_DIR"
     CHOICES=(1 2 3 4 5 6 7 8)
+	create_stow_ignore
+elif [[ "$SELECTION" == "sli" ]]; then
+	makedir "$BASE_DIR"
+	create_stow_ignore
+	exit 0
 else
 	makedir "$BASE_DIR"
     IFS=', ' read -r -a CHOICES <<< "$SELECTION"

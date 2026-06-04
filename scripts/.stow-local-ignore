@@ -1,6 +1,0 @@
-^\.DS_Store$
-.DS_Store
-# Ignore bootstrap directory
-^/bootstrap(/|$)
-
-# vim:ft=conf:

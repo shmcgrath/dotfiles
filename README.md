@@ -265,6 +265,7 @@ zola 0.20.0-1
 
 ## Todo
 - [lazygit breaking binds](https://github.com/jesseduffield/lazygit/releases/tag/v0.62.0)
+- add a z command for marks you dont want overwrittedn? in lf
 - make a script that prepends urls to the singlefile download list
 - move irc certs to .local or something
 - add date modification function to lf

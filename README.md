@@ -264,6 +264,7 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- [lazygit breaking binds](https://github.com/jesseduffield/lazygit/releases/tag/v0.62.0)
 - make a script that prepends urls to the singlefile download list
 - move irc certs to .local or something
 - add date modification function to lf

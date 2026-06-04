@@ -3,12 +3,15 @@ C:~/.config/
 D:~/.local/share/
 G:~/Games/
 S:~/.local/state/
+a:~/Dropbox/web-archive
 b:~/.local/bin/
 c:~/dotfiles/
 d:~/Dropbox/
 f:~/Documents/hledger/
 h:~/
+i:~/.local/share/irc-logs
 l:~/Downloads/
+m:/home/shmcg/.local/share/mail
 n:~/Dropbox/shm/
 o:~/Documents/
 p:~/Pictures/

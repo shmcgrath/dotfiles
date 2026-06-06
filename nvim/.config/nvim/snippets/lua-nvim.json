@@ -7,7 +7,7 @@
 	"description": "require for a neovim plugin"
 	},
 	"add new plugin": {
-		"prefix": ["packadd", "vimpackadd"],
+		"prefix": ["packadd", "vimpackadd", "plugin-add"],
 		"body": [
 			"vim.pack.add({\n\t{\n\t\tsrc= \"${1:$CLIPBOARD}\",\n\t},\n})$0"
 		],

@@ -26,9 +26,9 @@
   ;; Adjust font size of titles level 1 (default 1.3)
   (setq dracula-height-title-1 1.25)
   ;; Adjust font size of titles level 2 (default 1.1)
-  (setq dracula-height-title-1 1.15)
+  (setq dracula-height-title-2 1.15)
   ;; Adjust font size of titles level 3 (default 1.0)
-  (setq dracula-height-title-1 1.05)
+  (setq dracula-height-title-3 1.05)
   ;; Adjust font size of document titles (default 1.44)
   (setq dracula-height-doc-title 1.4)
   ;; Use less pink and bold on the mode-line and minibuffer (default nil)
@@ -130,4 +130,4 @@
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file 'noerror)
 
-load("~/.emacs.d/private.el")
+(load-file "~/.emacs.d/private.el")

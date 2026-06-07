@@ -60,8 +60,8 @@
   :config
   (general-create-definer shm/leader-keys
     :keymaps '(normal insert visual emacs)
-    :prefix "C-SPC"
-    :global-prefix "C-SPC")
+    :prefix "SPC"
+    :global-prefix "SPC")
   (shm/leader-keys
    "lb" '(counsel-switch-buffer :which-key "list and switch buffers with counsel")
    "smc" '(set-mark-command :which-key "C-SPC runs the command set-mark-command so restore lost keybind")

@@ -107,8 +107,13 @@ ranger/.config/ranger/plugins/*
 # emacs
 emacs/.emacs.d/auto-save-list
 emacs/.emacs.d/backups
+emacs/.emacs.d/custom.el
 emacs/.emacs.d/elpa
 emacs/.emacs.d/transient
+
+# emacs private
+private.el
+!private.el_template
 
 # tiny-irc unencrypted
 tiny-irc/.config/tiny/config.yml
@@ -119,7 +124,3 @@ tiny-irc/.config/tiny/config.yml
 # gitconfig_private
 gitconfig_private
 !gitconfig_private_template
-
-# emacs private
-private.el
-!private.el_template

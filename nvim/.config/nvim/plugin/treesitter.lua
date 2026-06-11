@@ -52,6 +52,7 @@ treesitter.install({
   "sql",
   "ssh_config",
   "tmux",
+  "todotxt",
   "toml",
   "typst",
   "vim",

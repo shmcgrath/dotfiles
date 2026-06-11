@@ -1,0 +1,9 @@
+{
+  "todo.txt item": {
+    "prefix": ["todo", "new"],
+    "body": [
+      "(${1:A}) ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${2:task} +${3:project} @${4:context} ${5:due:}$0"
+    ],
+    "description": "Create a todo.txt item with priority, date, project, context, and due date"
+  }
+}

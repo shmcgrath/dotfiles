@@ -26,6 +26,7 @@
 			{ "language": [ "css" ], "path": "./css.json" },
 			{ "language": [ "mail" ], "path": "./mail.json" },
 			{ "language": [ "mail" ], "path": "./mail_private.json" },
+			{ "language": [ "todotxt" ], "path": "./todotxt.json" }
 		]
 	}
 }

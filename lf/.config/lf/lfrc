@@ -409,3 +409,7 @@ cmd lazygit ${{ \
     lazygit
     lf -remote "send $id redraw"
 }}
+
+cmd stat ${{
+	stat -- "$f" | less
+}}

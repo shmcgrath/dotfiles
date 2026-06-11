@@ -23,7 +23,9 @@
 			{ "language": [ "ledger", "hledger", "beancount" ], "path": "./ledger.json" },
 			{ "language": [ "beancount" ], "path": "./beancount.json" },
 			{ "language": [ "cs" ], "path": "./cs.json" },
-			{ "language": [ "css" ], "path": "./css.json" }
+			{ "language": [ "css" ], "path": "./css.json" },
+			{ "language": [ "mail" ], "path": "./mail.json" },
+			{ "language": [ "mail" ], "path": "./mail_private.json" },
 		]
 	}
 }

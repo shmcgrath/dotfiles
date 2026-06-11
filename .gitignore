@@ -93,6 +93,8 @@ nvim/.local/state/nvim/sessions/**
 nvim/.config/nvim/spell/en.utf-8.add.spl
 # Ignore vim.pack lockfile
 nvim/.config/nvim/nvim-pack-lock.json
+# Ignore mail_private snippets
+nvim/.config/nvim/snippets/mail_private.json
 
 # ranger
 # ignore history

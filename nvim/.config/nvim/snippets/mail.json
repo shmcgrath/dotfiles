@@ -1,0 +1,9 @@
+{
+	"signature": {
+		"prefix": ["signature"],
+		"body": [
+			"- Sarah"
+		],
+		"description": "default signature snippet"
+	}
+}

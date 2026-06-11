@@ -62,3 +62,7 @@
 	defaultBranch = main
 [pager]
 	diff = "less -FX"
+[sendemail]
+    sendmailCmd = /usr/bin/msmtp
+	confirm = always
+	validate = true

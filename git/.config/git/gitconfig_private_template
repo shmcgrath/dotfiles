@@ -3,5 +3,7 @@
 	email =
 [github]
 	user = 
+[sendemail]
+	bcc = 
 
 # vim:ft=gitconfig:

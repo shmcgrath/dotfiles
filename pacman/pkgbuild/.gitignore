@@ -1,0 +1,21 @@
+# Arch build artifacts
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+
+# Built binaries (architecture-specific or downloaded release blobs)
+*-x86_64
+*-x86_64-*
+*-aarch64
+*-amd64
+*-arm64
+
+# Downloaded upstream release files
+LICENSE-*
+README-*
+
+# Man pages pulled from releases
+*.1
+
+# Optional: AUR build dirs if you ever run makepkg in repo
+pkg/
+src/

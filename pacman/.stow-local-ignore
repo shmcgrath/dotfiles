@@ -4,5 +4,6 @@
 ^/pacman.conf
 ^/reflector.conf
 ^/hooks/*
+^/pkgbuild/*
 
 # vim:ft=conf:

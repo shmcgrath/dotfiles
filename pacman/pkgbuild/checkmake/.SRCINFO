@@ -1,0 +1,22 @@
+pkgbase = checkmake-bin
+	pkgdesc = Linter/analyzer for Makefiles
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/checkmake/checkmake
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = checkmake
+	conflicts = checkmake
+	source = LICENSE-0.3.2::https://raw.githubusercontent.com/checkmake/checkmake/v0.3.2/LICENSE
+	source = README-0.3.2.md::https://raw.githubusercontent.com/checkmake/checkmake/v0.3.2/README.md
+	sha256sums = 01090018cb293e1a5cb260fba2222468a39f1bf9a8b4c37375d1355f776ef7f9
+	sha256sums = da7303e05064c979412ab954e9e7cc9e193d731664f0edec74d814b237c59909
+	sha256sums = ffada33396a129e0ba9feb67cf37251a1de18b3ec101a1ce01189ac17541c751
+	source_x86_64 = checkmake-x86_64-0.3.2::https://github.com/checkmake/checkmake/releases/download/v0.3.2/checkmake-v0.3.2.linux.amd64
+	sha256sums_x86_64 = e2effb876913f3ee2caef0ba35f6202c5e8a3cd55a077d8d2b9ce2034257b6af
+	source_aarch64 = checkmake-aarch64-0.3.2::https://github.com/checkmake/checkmake/releases/download/v0.3.2/checkmake-v0.3.2.linux.arm64
+	sha256sums_aarch64 = 409167c4abb99407bd232c3bbd351b8a39df57997feafde5a08bddffb0f2dcb4
+
+pkgname = checkmake-bin

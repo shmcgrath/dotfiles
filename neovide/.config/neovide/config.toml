@@ -1,1 +1,1 @@
-neovim-bin = "$HOME/.brew/bin/nvim" 
+neovim-bin = "~/.brew/bin/nvim" 

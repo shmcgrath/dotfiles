@@ -19,12 +19,12 @@
 			"import ${1:alias} \"${2:package}\""
 		],
 		"description": "import with an alias"
-	}
+	},
     "error handling": {
         "prefix": ["iferr"],
         "description": "Error handling",
         "body": [
-            "if err != nil {\n\tfmt.Println(\"Error:\", err)\n\treturn\n}"
+            "if err != nil {\n\tlog.Println(err)\n\treturn\n}"
         ]
     },
     "test": {

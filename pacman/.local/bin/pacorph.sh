@@ -4,72 +4,81 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-# Choose privilege escalation tool
 if command -v doas >/dev/null 2>&1; then
 	PRIVESC="doas"
 else
 	PRIVESC="sudo"
 fi
 
-# Choose package manager wrapper or pacman
 if command -v paru >/dev/null 2>&1; then
 	PKGMAN="paru"
 else
 	PKGMAN="pacman"
 fi
 
-mapfile -t ORPHANS < <($PKGMAN --query --quiet --deps --unrequired)
+mapfile -t ORPHANS < <("$PKGMAN" --query --quiet --deps --unrequired)
 
 if [ "${#ORPHANS[@]}" -eq 0 ]; then
 	printf 'No orphaned packages found.\n'
 	exit 0
 fi
 
+declare -a MARK_EXPLICIT=()
+declare -a REMOVE=()
+
 for pkg in "${ORPHANS[@]}"; do
-	printf '\n============================================================\n'
-	printf 'Package: %s\n' "$pkg"
-	$PKGMAN --query --info "$pkg"
-	printf '============================================================\n\n'
+	printf "\n============================================================\n"
+	printf "Package: %s\n" "$pkg"
+	"$PKGMAN" --query --info "$pkg"
+	printf "============================================================\n"
 
 	while true; do
-		printf '\nMark %s as explicitly installed instead of removing? [y/N]: ' "$pkg"
-		read -r explicit
-		case "$explicit" in
-			y|Y|yes|YES)
-				$PRIVESC $PKGMAN --asexplicit "$pkg"
-				printf '%s marked as explicitly installed.\n' "$pkg"
-				break 2  # skip removal prompt
-				;;
-			n|N|no|NO|'')
-				# continue to removal prompt
-				break
-				;;
-			*)
-				printf 'Invalid input. Use y or n.\n'
-				;;
-		esac
-	done
-
-	while true; do
-		printf '\nRemove %s with: %s %s --remove --recursive --nosave %s ? [y/N/q]: ' "$pkg" "$PRIVESC" "$PKGMAN" "$pkg"
+		printf "\n$pkg: [e]xplicit, [r]emove, [s]kip, [q]uit: "
 		read -r answer
 
 		case "$answer" in
-			y|Y|yes|YES)
-				$PRIVESC $PKGMAN --remove --recursive --nosave "$pkg"
+			e|E)
+				MARK_EXPLICIT+=("$pkg")
 				break
 				;;
-			n|N|no|NO|'')
-				printf 'Skipping %s\n' "$pkg"
+			r|R)
+				REMOVE+=("$pkg")
 				break
 				;;
-			q|Q|quit|QUIT)
-				printf 'Quitting.\n'
-				exit 0
+			s|S|'')
+				break
+				;;
+			q|Q)
+				goto_summary=true
+				break 2
 				;;
 			*)
-				printf 'Invalid input. Use y, n, or q.\n'
+				printf 'Invalid input.\n'
 				;;
 		esac
 	done
 done
+
+printf '\nPackages to mark explicit:\n'
+printf '  %s\n' "${MARK_EXPLICIT[@]:-<none>}"
+
+printf '\nPackages to remove:\n'
+printf '  %s\n' "${REMOVE[@]:-<none>}"
+
+printf '\nProceed? [y/N]: '
+read -r confirm
+
+case "$confirm" in
+	y|Y|yes|YES)
+		if [ "${#MARK_EXPLICIT[@]}" -gt 0 ]; then
+			"$PRIVESC" "$PKGMAN" --asexplicit "${MARK_EXPLICIT[@]}"
+		fi
+
+		if [ "${#REMOVE[@]}" -gt 0 ]; then
+			"$PRIVESC" "$PKGMAN" --remove --unneeded --nosave --recursive "${REMOVE[@]}"
+		fi
+		;;
+	*)
+		printf 'Aborted.\n'
+		;;
+esac

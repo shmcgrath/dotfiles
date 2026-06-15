@@ -4,6 +4,8 @@
 # @created     : {{+~strftime("%c")+}}
 ######################################################################
 
+.DEFAULT_GOAL := build
+
 TARGET ?= a.out
 SRC_DIRS ?= ./src
 

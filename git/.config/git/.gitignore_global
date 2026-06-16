@@ -135,12 +135,13 @@ tags
 # [VirtualEnv](https://github.com/github/gitignore/blob/master/Global/VirtualEnv.gitignore)
 # http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
 .Python
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
 pyvenv.cfg
 .venv
 pip-selfcheck.json
+__pycache__/
+*.py[cod]
+.venv/
+venv/
 
 # Ruby
 /.bundle/

@@ -1,0 +1,21 @@
+# systemctl --user enable --now swayidle-sway.service
+[Unit]
+Description=idle manager for Wayland - SwayWM
+Documentation=man:swayidle(1)
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/swayidle -w \
+		timeout 900 'swaylock' \
+		timeout 905 'swaymsg output * power off' \
+		resume 'swaymsg output * power on' \
+		before-sleep 'swaylock'
+
+[Install]
+WantedBy=sway-session.target
+
+# These are from the river config. Need to see if I can get ssh to not timeout
+# resume 'kanshi' \
+# timeout 1710 '/home/shmcg/.local/bin/swayidle-ssh-check.sh' \
+# timeout 1800 'systemctl suspend' \

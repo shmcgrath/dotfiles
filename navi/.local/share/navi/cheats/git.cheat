@@ -5,3 +5,6 @@ git init
 
 # Shallow clone with depth 1 with all branches and submodules
 git clone --depth=1 --no-single-branch --recurse-submodules <repository> <clone_directory>
+
+# Check what .gitignore is ignoring a file or directory
+git check-ignore --verbose <file_or_directory>

@@ -2,25 +2,27 @@
 local wezterm = require 'wezterm'
 -- act is used for keybinds
 local act = wezterm.action
-
-wezterm.on("gui-startup", function(cmd)
-  local screen = wezterm.gui.screens().active
-  local ratio = 0.4
-  local width = screen.width * ratio
-  local height = screen.height
-  local tab, pane, window = wezterm.mux.spawn_window {
-    position = {
-      x = screen.width - width,
-      y = 0,
-      origin = 'ActiveScreen'
-    }
-  }
-  window:gui_window():set_inner_size(width, height)
-  window:gui_window():set_position(screen.width - width, 0)
-end)
-
 -- This will hold the configuration.
 local config = wezterm.config_builder()
+
+if wezterm.target_triple:find("apple%-darwin") then
+  wezterm.on("gui-startup", function(cmd)
+    local screen = wezterm.gui.screens().active
+    local ratio = 0.4
+    local width = screen.width * ratio
+    local height = screen.height
+    local tab, pane, window = wezterm.mux.spawn_window {
+      position = {
+        x = screen.width - width,
+        y = 0,
+        origin = 'ActiveScreen'
+      }
+    }
+    window:gui_window():set_inner_size(width, height)
+    window:gui_window():set_position(screen.width - width, 0)
+  end)
+  config.window_decorations = "RESIZE"
+end
 
 local function terminfo_exists(name)
   local handle = io.popen("infocmp " .. name .. " 2>/dev/null")
@@ -39,7 +41,6 @@ config.default_cursor_style = 'SteadyBar'
 
 config.font = wezterm.font('CommitMono Nerd Font Mono')
 config.font_size = 13.0
-config.window_decorations = "RESIZE"
 config.max_fps = 144
 config.animation_fps = 30
 

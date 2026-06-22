@@ -1,31 +1,70 @@
 {
 	"single import": {
-		"prefix": ["im"],
+		"prefix": ["im", "import"],
 		"body": [
 			"import \"${1:package}\""
 		],
 		"description": "import statement"
 	},
 	"multiple imports": {
-		"prefix": ["ims"],
+		"prefix": ["ims", "imports"],
 		"body": [
 			"import (\n\t\"${1:package}\"\n)"
 		],
 		"description": "import block"
 	},
 	"import with alias": {
-		"prefix": ["ima"],
+		"prefix": ["ima", "importas"],
 		"body": [
 			"import ${1:alias} \"${2:package}\""
 		],
 		"description": "import with an alias"
 	},
+	"package": {
+		"prefix": ["pack", "package"],
+		"body": [
+			"package $1"
+		],
+		"description": "package definition"
+	},
     "error handling": {
         "prefix": ["iferr"],
         "description": "Error handling",
         "body": [
-            "if err != nil {\n\tlog.Println(err)\n\treturn\n}"
+            "if err != nil {",
+			"\tlog.Printf(\"[$TM_FILENAME_BASE] %s\\n\", err)",
+			"\t// log.Fatalf(\"[$TM_FILENAME_BASE] %s\\n\", err)",
+			"\t// return err",
+			"}"
         ]
+    },
+    "fmt.Println": {
+    	"prefix": ["fl"],
+    	"body": [
+    		"fmt.Println(\"$1\")$0"
+    	],
+    	"description": "fmt.Println()"
+    },
+    "fmt.Printf": {
+    	"prefix": ["ff"],
+    	"body": [
+    		"fmt.Printf(\"$1: %s\\n\", ${2:var})$0"
+    	],
+    	"description": "fmt.Printf()"
+    },
+    "log.Println": {
+    	"prefix": ["lp"],
+    	"body": [
+    		"log.Println(\"$2[$TM_FILENAME_BASE]$1\")$0"
+    	],
+    	"description": "log.Println()"
+    },
+    "log.Printf": {
+    	"prefix": ["lf"],
+    	"body": [
+    		"log.Printf(\"$3[$TM_FILENAME_BASE]$1: %s\\n\", ${2:var})$0"
+    	],
+    	"description": "log.Printf()"
     },
     "test": {
     	"prefix": ["test"],

@@ -1,6 +1,6 @@
 vim.pack.add({
   {
-    src = "https://github.com/mfussenegger/nvim-dap",
+    src = "https://codeberg.org/mfussenegger/nvim-dap.git",
   },
 })
 

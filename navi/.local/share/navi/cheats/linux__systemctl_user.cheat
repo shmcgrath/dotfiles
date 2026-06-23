@@ -6,6 +6,9 @@ systemctl --user daemon-reload
 # Replaces/re-executes the running systemd process (after upgrade)
 systemctl --user daemon-reexec
 
+## daemon reload and reexec on systemd unit files
+systemctl --user daemon-reload && systemctl --user daemon-reexec
+
 # Start service
 systemctl --user start <service_inactive>
 

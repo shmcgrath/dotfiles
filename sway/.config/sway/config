@@ -1,8 +1,7 @@
 # Read `man 5 sway` for a complete reference of sway config options
-exec_always kanshi
-# TODO Make this a target
 exec systemctl --user start dunst.service
 exec systemctl --user restart wl-to-xclip
+exec systemctl --user restart kanshi.service
 exec systemctl --user start sway-session.target
 
 #NOT SURE IF NEEDED exec systemctl --user restart xdg-desktop-portal
@@ -196,6 +195,9 @@ mode "media-control" {
     bindsym Escape mode "default"
 }
 bindsym $hyperMod+m mode "media-control"
+
+# Monitor Pwer management
+bindsym $hyperMod+o exec swaymsg "output * power on"
 
 # Utilities
 bindsym ctrl+mod1+delete exec wezterm start --class "flying-htop" htop

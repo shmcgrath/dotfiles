@@ -264,6 +264,9 @@ yazi 25.3.2-1
 zola 0.20.0-1
 
 ## Todo
+- look into --no-folding option for stow
+- fuzzel todo scripting [example](https://github.com/CYKLER01/fuzzel-scripts/blob/main/scripts/todo-fuzzel.sh#L28C1-L32C64)
+- write script to rotate irc logs
 - https://aerc-docs.com/recipes/threading/ customize the threading glyphs
 - [lazygit breaking binds](https://github.com/jesseduffield/lazygit/releases/tag/v0.62.0)
 - add a z command for marks you dont want overwrittedn? in lf

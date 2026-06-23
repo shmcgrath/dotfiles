@@ -14,7 +14,6 @@ waybar restart
 dropbox systemd restart
 sway -> power monitors off
 sway -> power monitors on
-kill swayidle timer
 kanshi"
 
 SELECTION=$(printf "%s\n" "$PWR_OPTIONS" | fuzzel --dmenu --minimal-lines --prompt "Power Menu > " --select="swayidle")
@@ -30,9 +29,9 @@ case $SELECTION in
 	*"Reboot")
 		systemctl reboot;;
 	*"Suspend")
-		swaylock && sleep 3 && systemctl suspend;;
+		swaylock && sleep 2 && systemctl suspend;;
 	*"swayidle")
-		sleep 3 && pkill -SIGUSR1 --exact swayidle;;
+		sleep 2 && pkill -SIGUSR1 --exact swayidle;;
 	*"Shutdown")
 		systemctl poweroff;;
 	*"sway -> reload config")
@@ -49,8 +48,6 @@ case $SELECTION in
 		swaymsg "output * power off";;
 	*"sway -> power monitors on")
 		swaymsg "output * power on";;
-	*"kill swayidle timer")
-		pkill --exact swayidle && systemctl --user restart swayidle.service
 	*"kanshi")
 		systemctl --user restart kanshi;;
 esac

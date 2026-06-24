@@ -265,6 +265,8 @@ zola 0.20.0-1
 
 ## Todo
 - look into --no-folding option for stow
+- swtich to mako and mako histroy with fuzzel
+- fuzzel bookmarks maybe?
 - fuzzel todo scripting [example](https://github.com/CYKLER01/fuzzel-scripts/blob/main/scripts/todo-fuzzel.sh#L28C1-L32C64)
 - write script to rotate irc logs
 - https://aerc-docs.com/recipes/threading/ customize the threading glyphs

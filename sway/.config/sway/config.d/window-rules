@@ -7,6 +7,8 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [window_role="dialog"] floating enable
 for_window [window_role = "task_dialog"] floating enable
+# Floating for any window that includes "settings" in the title
+for_window [title="(?i).*settings.*"] floating enable, fullscreen disable
 
 # File Explorer and Dialog
 for_window [app_id="thunar" title="^Rename.*"] floating enable
@@ -31,11 +33,11 @@ for_window [app_id="gpick"] floating enable, resize set width 1030 height 710
 for_window [app_id="lxqt-policykit-agent"] focus, floating enable
 for_window [app_id="^qt[5-6]ct$"]                                                    focus, floating enable
 for_window [app_id="qalculate-gtk"], floating enable
+for_window [app_id="nwg-look"], floating enable
 
 # Application Default Workspaces
 for_window [app_id="org.keepassxc.KeePassXC" title="(?i)KeePassXC$"] move to workspace 10
 for_window [class="discord" title="Discord$"] move to workspace 09
-
 
 # https://github.com/ValveSoftware/steam-for-linux/issues/1040
 for_window [class="(?i)^steam$" title="^Friends$"] floating enable
@@ -53,12 +55,14 @@ for_window [class="(?i)^steam$" title="Steam"] move to workspace 04
 
 # Game Launchers and Support - 04
 for_window [title="Battle.net" app_id="^(?!firefox$).*"] move to workspace 04
+for_window [title="Battle.net Settings"] move to workspace 04, floating enable, fullscreen disable
 for_window [app_id="net.lutris.Lutris" title="Lutris"] move to workspace 04, layout tabbed
 for_window [class="tsmapplication.exe" title="^TradeSkillMaster Application.*"] move to workspace 04
 for_window [title="^TSMApplication.*"] floating enable
 
 # Games - 05
 for_window [title="World of Warcraft" class="steam_app_default"] move to workspace 05, fullscreen enable
-for_window [class="steam_app_default"] move to workspace 05, fullscreen enable
+# The rule below is too broad. Add games as they come up.
+# for_window [class="steam_app_default"] move to workspace 05, fullscreen enable
 
 # vim:ft=swayconfig:

@@ -16,12 +16,12 @@ smudge)
 esac
 
 # To use add to the local config:
-# [filter "gpg"]
-    # clean = ~/.local/bin/git-privacy.sh clean
-    # smudge = ~/.local/bin/git-privacy.sh smudge
+# [filter "private"]
+    # clean = ~/.local/bin/git-private.sh clean
+    # smudge = ~/.local/bin/git-private.sh smudge
     # required = true
 	#
 # Add to local .gitattributes
-# *.private filter=gpg
+# *.private filter=private
 # can also add for specific files:
-# tiny-irc/.config/tiny/config.yml filter=gpg
+# tiny-irc/.config/tiny/config.yml filter=private

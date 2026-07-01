@@ -1,0 +1,5 @@
+.DS_Store
+^\.DS_Store$
+^/\.config/git/gitconfig_private_template
+
+# vim:ft=conf:

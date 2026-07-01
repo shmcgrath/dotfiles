@@ -1,2 +1,8 @@
-secrets/* filter=gpg
-tiny-irc/.config/tiny/config.yml filter=gpg
+*.private filter=private
+secrets/** filter=private
+aerc/.config/aerc/signature filter=private
+aerc/.config/aerc/accounts.conf filter=private
+aerc/.config/aerc/notmuchmap.conf filter=private
+git/.config/git/gitconfig_private filter=private
+irssi/.irssi/config filter=private
+tiny-irc/.config/tiny/config.yml filter=private

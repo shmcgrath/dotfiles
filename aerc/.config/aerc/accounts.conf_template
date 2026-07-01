@@ -1,5 +1,5 @@
 [provider]
-source = maildir://~/.local/share/mail/fastmail
+source = maildir://~/.local/share/mail/provider
 outgoing = msmtp
 default = INBOX
 

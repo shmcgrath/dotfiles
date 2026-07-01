@@ -211,7 +211,6 @@ shzsh:
 	$(MKDIR) $(XDG_DATA_HOME)/zsh
 	@$(STOW) sh-zsh
 
-
 zoxide:
 	zoxide add $(HOME)/dotfiles
 	zoxide add $(XDG_CONFIG_HOME)

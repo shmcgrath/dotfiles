@@ -66,3 +66,5 @@
     sendmailCmd = /usr/bin/msmtp
 	confirm = always
 	validate = true
+[status]
+	showUntrackedFiles = all

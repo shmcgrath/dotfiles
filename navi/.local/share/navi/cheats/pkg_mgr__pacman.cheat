@@ -150,6 +150,12 @@ sudo pacman -Dk
 # Use some magic to fix broken dependencies in a system for pacman dependency level, equal to `apt-get --fix-broken && aptitude install`
 sudo pacman -Dk
 
+# List packages installed from the AUR (-Qm)
+pacman --query --foreign
+
+# List packages installed from the AUR; package names only (-Qpm)
+pacman --query --foreign --quiet
+
 # Use some magic to fix broken dependencies in a system for shared library level, equal to `apt-get --fix-broken && aptitude install`
 findbrokenpkgs # from AUR
 

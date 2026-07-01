@@ -48,7 +48,7 @@ echo "  6:  .config/systemd/user"
 echo "  7:  etc/ (for systemwide configuration)"
 echo "  8:  .local/share/applications (for a .desktop override)"
 echo "all:  make all subdirectories"
-echo "sli"
+echo "sli:  make a stow-local ignore file"
 echo "exit: make no directories and exit"
 
 read -r -p "Selection: " SELECTION

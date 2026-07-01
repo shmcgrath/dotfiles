@@ -1,0 +1,7 @@
+[provider]
+source = maildir://~/.local/share/mail/fastmail
+outgoing = msmtp
+default = INBOX
+
+from = Name <name@name.com>
+copy-to = Sent Items

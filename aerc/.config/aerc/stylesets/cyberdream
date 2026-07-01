@@ -1,0 +1,169 @@
+#
+# aerc default styleset
+#
+# This styleset uses the terminal defaults as its base.
+# More information on how to configure the styleset can be found in
+# the aerc-stylesets(7) manpage. Please read the manual before
+# modifying or creating a styleset.
+
+# Uncomment these two lines to reset all attributes (except in the [viewer]
+# section) and start from scratch.
+*.default = true
+*.normal = true
+
+*.selected.bg = #3c4048
+#*.selected.fg = #ffffff
+*.selected.bold = true
+
+default.fg = #ffffff
+
+title.bg=#5ef1ff
+title.fg=#16181a
+title.bold=true
+
+border.fg = #7b8496
+#border.bold = true
+
+#*warning.dim = false
+#*warning.bold = true
+*warning.fg = #f1ff5e
+#*success.dim = false
+#*success.bold = true
+*success.fg = #5eff6c
+#*error.dim = false
+#*error.bold = true
+*error.fg = #ff6e5e
+
+#title.bg = #1e2124
+#title.fg = 15
+#title.bold = true
+
+header.fg = #bd5eff
+header.bold = true
+
+msglist_unread.bold = true
+msglist_unread.fg = #ffbd5e
+msglist_deleted.dim = true
+msglist_flagged.fg = #ff5ea0
+msglist_flagged.italic = true
+#msglist_marked.bg = 6
+#msglist_marked.fg = 15
+#msglist_pill.bg = 12
+#msglist_pill.fg = 15
+# msglist_result.fg=
+# msglist_result.bold=true
+
+#part_mimetype.fg = 12
+
+#selector_chooser.bold = true
+#selector_focused.bold = true
+#selector_focused.bg = 12
+#selector_focused.fg = 15
+
+completion_*.bg = #7b8496
+completion_pill.bg = turquoise
+#completion_default.fg = 15
+#completion_description.fg = 15
+#completion_description.dim = true
+#completion_default.selected.bg=#7b8496
+
+# tab.fg = 
+# tab.bg = 
+tab.selected.bg = #3c4048
+tab.selected.fg = #ff5ef1
+tab.selected.bold = false
+tab.selected.italic = true
+
+#dirlist.bg = #1e2124
+#dirlist*.selected.bg = #3c4048
+dirlist*.selected.fg = #5ea1ff
+dirlist*.selected.bold = true
+dirlist*.selected.italic = false
+
+#statusline_*.dim = true
+statusline_default.bg = #1e2124
+statusline_default.fg = #7b8496
+statusline_error.bold = true
+statusline_success.italic = true
+
+[viewer]
+# Uncomment these two lines to reset all attributes in the [viewer] section.
+#*.default = true
+#*.normal = true
+url.underline = true
+url.fg = #5ea1ff
+header.bold = true
+#header.fg = 4
+signature.dim = true
+#signature.fg = 4
+diff_meta.bold = true
+diff_chunk.fg = #5ef1ff
+diff_chunk_func.fg = #ff5ef1
+#diff_chunk_func.dim = true
+# diff_cunnk.dim = true -> Dracula
+diff_chunk_func.bold=true
+diff_add.fg = #5eff6c
+diff_del.fg = #ff6e5e
+#diff_whitespace.bg = 1
+#quote_1.fg = 6
+#quote_2.fg = 4
+#quote_3.fg = 6
+#quote_3.dim = true
+#quote_4.fg = 4
+#quote_4.dim = true
+#quote_x.fg = 5
+#quote_x.dim = true
+#quote_*.fg=6 -> Dracula
+#quote_*.dim=true -> Dracula
+#quote_1.dim=false -> Dracula
+
+# not used from catppucin {{{
+# part_filename.selected.fg=#ffffff
+# part_filename.selected.bg=#16181a
+# part_switcher.selected.bg=#16181a
+
+# part_mimetype.selected.fg=#ffffff
+# part_mimetype.selected.bg=#16181a
+# selector_focused.bg=#303446
+# [viewer]
+# quote_*.fg=#737994
+# quote_1.fg=#949cbb
+# end not used from catppucin }}}
+
+# not used from dracula {{{
+# part_*.fg=#ffffff
+# part_mimetype.fg=#44475A
+# part_*.selected.fg=#ffffff
+# part_*.selected.bg=#44475A
+# part_filename.selected.bold=true
+# end not used from dracula }}}
+
+# aerc dracula styleset {{{
+# TODO merge the ones below
+
+# msglist_deleted.fg=#666666
+# msglist_*.selected.bg=#44475A
+# msglist_result.bg=#6272A4
+# msglist_marked.fg=black
+# msglist_marked.selected.fg=black
+# msglist_marked.bg=#BD93F9
+# msglist_marked.selected.bg=#9956f5
+# msglist_pill.reverse=true
+
+
+# completion_pill.reverse=false
+# selector_focused.bold=false
+# selector_focused.bg=#44475A
+# selector_focused.fg=white
+# selector_chooser.bold=false
+# selector_chooser.bg=#44475A
+# selector_chooser.fg=white
+# default.selected.bold=false
+# default.selected.fg=white
+# default.selected.bg=#44475A
+
+# completion_default.selected.bg=#44475A
+# completion_default.selected.fg=white
+# end aerc dracula stylesheet}}}
+
+# vim:ft=dosini

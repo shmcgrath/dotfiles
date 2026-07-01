@@ -1,0 +1,6 @@
+.DS_Store
+^\.DS_Store$
+^/.config/aerc/accounts.conf_template
+^/.config/aerc/signature_template
+
+# vim:ft=conf:

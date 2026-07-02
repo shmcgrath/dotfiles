@@ -1,4 +1,4 @@
-pkgbase = checkmake-bin
+pkgbase = checkmake-bin-shm
 	pkgdesc = Linter/analyzer for Makefiles
 	pkgver = 0.3.2
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = checkmake-bin
 	source_aarch64 = checkmake-aarch64-0.3.2::https://github.com/checkmake/checkmake/releases/download/v0.3.2/checkmake-v0.3.2.linux.arm64
 	sha256sums_aarch64 = 409167c4abb99407bd232c3bbd351b8a39df57997feafde5a08bddffb0f2dcb4
 
-pkgname = checkmake-bin
+pkgname = checkmake-bin-shm

@@ -3,7 +3,7 @@
 # https://github.com/checkmake/checkmake/releases/download/v0.3.0/checkmake-v0.3.0.linux.amd64
 _pkgauthor=checkmake
 _pkgname=checkmake
-pkgname=${_pkgname}-bin
+pkgname=${_pkgname}-bin-shm
 pkgdesc="Linter/analyzer for Makefiles"
 
 pkgver=0.3.2

@@ -29,6 +29,7 @@
 	lgm = log --graph --author='Sarah H. McGrath' --date=format:'%Y-%m-%d %H:%M' --format=format:'%C(auto)%h %d%Creset%Cgreen%ad%Creset %aN <%aE>%n%Cblue%s%Creset%+b'
 	lgp = log --date=format:'%Y-%m-%d %H:%M' --pretty=fuller
 	ls = ls-files | less
+	mt = mergetool
 	rem = remote --verbose
 	rmc = rm -r --cached
 	rs = restore --staged
@@ -55,9 +56,18 @@
 [difftool]
 	prompt = false
 [merge]
-	tool = nvimdiff
+	tool = nvimdiff2
+	; bug in neovim with nvimdiff2, see issues below:
+	; https://github.com/tpope/vim-fugitive/issues/2444
+	; https://github.com/neovim/neovim/issues/22696
+	; https://github.com/neovim/neovim/issues/35513
+	; gist on mergetools https://gist.github.com/karenyyng/f19ff75c60f18b4b8149
 [mergetool]
-	prompt = true
+	prompt = false
+[mergetool "diffview"]
+    cmd = nvim -n -c "DiffviewOpen" "$MERGED"
+[mergetool "fugitive"]
+	cmd = nvim -f -c "Gvdiffsplit!" "$MERGED"
 [init]
 	defaultBranch = main
 [pager]
@@ -67,4 +77,4 @@
 	confirm = always
 	validate = true
 [status]
-	showUntrackedFiles = all
+	showUntrackedFiles = normal

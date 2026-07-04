@@ -57,37 +57,6 @@ config.tab_max_width = 155
 config.window_background_opacity = 0.95
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0, }
 config.color_scheme = 'modus-operandi'
-config.colors = {
-  tab_bar = {
-    background = '#16181a',
-    active_tab = {
-      bg_color = '#3c4048',
-      fg_color = '#ffbd5e',
-      intensity = 'Bold',
-      underline = 'None',
-      italic = false,
-      strikethrough = false,
-    },
-    inactive_tab = {
-      bg_color = '#1e2124',
-      fg_color = '#7b8496',
-    },
-    inactive_tab_hover = {
-      bg_color = '#1e2124',
-      fg_color = '#bd5eff',
-      italic = true,
-    },
-    new_tab = {
-      bg_color = '#16181a',
-      fg_color = '#7b8496',
-    },
-    new_tab_hover = {
-      bg_color = '#3c4048',
-      fg_color = '#bd5eff',
-      italic = true,
-    },
-  },
-}
 
 -- to see default keybinds: wezterm show-keys --lua
 -- remove default keybinds and minimize keyboard shortcuts

@@ -41,5 +41,5 @@ bg_color = "#e0d4ce"
 [metadata]
 aliases = []
 author = "miikanissi"
-name = "Modus Operandi"
+name = "modus-operandi-tinted"
 origin_url="https://github.com/miikanissi/modus-themes.nvim/blob/master/extras/wezterm/modus_operandi_tinted.toml"

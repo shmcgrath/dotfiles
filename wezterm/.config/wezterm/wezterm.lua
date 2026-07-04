@@ -56,67 +56,8 @@ config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 155
 config.window_background_opacity = 0.95
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0, }
+config.color_scheme = 'modus-operandi'
 config.colors = {
-  -- Cyberdream by https://github.com/scottmckendry/cyberdream.nvim
-  -- I could not get my tab setup working with importing cyberdream, just copied it manually
-  -- Cyberdream Dark Palette:
-  -- #16181a bg 0
-  -- #1e2124 bg_alt 235
-  -- #3c4048 bg_highlight (8) 237
-  -- #ffffff fg 7
-  -- #7b8496 grey 247
-  -- #5ea1ff blue 4
-  -- #5eff6c green 2
-  -- #5ef1ff cyan 6
-  -- #ff6e5e red 1, 17
-  -- #f1ff5e yellow 3
-  -- #ff5ef1 magenta 207
-  -- #ff5ea0 pink 205
-  -- #ffbd5e orange 16
-  -- #bd5eff purple 5
-
-  foreground = "#ffffff",
-  background = "#16181a",
-
-  cursor_bg = "#ffffff",
-  cursor_fg = "#16181a",
-  cursor_border = "#ffffff",
-
-  selection_fg = "#ffffff",
-  selection_bg = "#3c4048",
-
-  scrollbar_thumb = "#16181a",
-  split = "#16181a",
-
-  ansi = {
-    "#16181a",
-    "#ff6e5e",
-    "#5eff6c",
-    "#f1ff5e",
-    "#5ea1ff",
-    "#bd5eff",
-    "#5ef1ff",
-    "#ffffff"
-  },
-  brights = {
-    "#3c4048",
-    "#ff6e5e",
-    "#5eff6c",
-    "#f1ff5e",
-    "#5ea1ff",
-    "#bd5eff",
-    "#5ef1ff",
-    "#ffffff"
-  },
-  indexed = {
-    [16] = "#ffbd5e",
-    [17] = "#ff5ea0",
-    [205] = "#ff5ea0",
-    [207] = "#ff5ef1",
-    [235] = "#1e2124",
-    [237] = "#3c4048",
-    [247] = "#7b8496"
-  },
   tab_bar = {
     background = '#16181a',
     active_tab = {

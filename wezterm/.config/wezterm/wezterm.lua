@@ -56,7 +56,7 @@ config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 155
 config.window_background_opacity = 0.95
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0, }
-config.color_scheme = 'modus-operandi-tinted'
+config.color_scheme = 'cyberdream-dark'
 
 -- to see default keybinds: wezterm show-keys --lua
 -- remove default keybinds and minimize keyboard shortcuts

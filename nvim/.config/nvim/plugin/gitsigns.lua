@@ -66,13 +66,13 @@ end, {
   desc = "Gitsigns show git blame for current line",
 })
 
-vim.keymap.set("n", "<leader>gd", function()
-  gitsigns.diffthis()
-end, {
-  noremap = true,
-  silent = true,
-  desc = "Gitsigns diffthis file to HEAD",
-})
+-- vim.keymap.set("n", "<leader>gD", function()
+--   gitsigns.diffthis()
+-- end, {
+--   noremap = true,
+--   silent = true,
+--   desc = "Gitsigns diffthis file to HEAD",
+-- })
 
 vim.keymap.set("n", "[h", function()
   gitsigns.prev_hunk()
@@ -98,12 +98,42 @@ end, {
   desc = "Gitsigns stage hunk",
 })
 
-vim.keymap.set("n", "<leader>gS", function()
+vim.keymap.set("v", "<leader>gs", function()
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+
+  gitsigns.stage_hunk({ start_line, end_line })
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Stage selected lines (partial hunk)",
+})
+
+vim.keymap.set("n", "<leader>gu", function()
   gitsigns.undo_stage_hunk()
 end, {
   noremap = true,
   silent = true,
   desc = "Gitsigns unstage hunk",
+})
+
+vim.keymap.set("v", "<leader>gu", function()
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+
+  gitsigns.undo_stage_hunk({ start_line, end_line })
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Undo stage selected lines (partial hunk)",
 })
 
 vim.keymap.set("n", "<leader>gq", function()
@@ -114,10 +144,18 @@ end, {
   desc = "Gitsigns set quickfix list for all files in working directory",
 })
 
-vim.keymap.set("n", "<leader>gp", function()
+vim.keymap.set("n", "<leader>gv", function()
   gitsigns.preview_hunk()
 end, {
   noremap = true,
   silent = true,
   desc = "Gitsigns preview hunk",
+})
+
+vim.keymap.set("n", "<leader>gS", function()
+  gitsigns.select_hunk()
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Gitsigns select hunk",
 })

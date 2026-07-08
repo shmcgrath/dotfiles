@@ -129,3 +129,37 @@ end, {
   silent = true,
   desc = "fix indentation for whole buffer",
 })
+
+vim.keymap.set("n", "<leader>go", function()
+  vim.cmd("diffget LOCAL")
+  -- vim.cmd("diffget //2")
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Git merge resolution: take OURS/LOCAL",
+})
+
+vim.keymap.set("v", "<leader>go", function()
+  vim.cmd("'<,'>diffget LOCAL")
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Take OURS (LOCAL //2) for selected range: git merge resolution",
+})
+
+vim.keymap.set("n", "<leader>gt", function()
+  vim.cmd("diffget REMOTE")
+  -- vim.cmd("diffget //3")
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Git merge resolution: take THEIRS/REMOTE",
+})
+
+vim.keymap.set("v", "<leader>gt", function()
+  vim.cmd("'<,'>diffget REMOTE")
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Take THEIRS (REMOTE //3) for selected range: git merge resolution",
+})

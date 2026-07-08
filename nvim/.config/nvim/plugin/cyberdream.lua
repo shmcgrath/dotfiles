@@ -22,26 +22,19 @@ require("cyberdream").setup({
     -- Improve start up time by caching highlights. Generate cache with :CyberdreamBuildCache and clear with :CyberdreamClearCache
     cache = false,
     -- Disable or enable colorscheme extensions
+    highlights = {
+      GitSignsCurrentLineBlame = { fg = "#16181a" }
+    },
     extensions = {
         blinkcmp = true,
         dapui = true,
-        fzflua = false,
+        fzflua = true,
         gitsigns = true,
         mini = true,
         notify = true,
         treesitter = true,
         whichkey = true,
     },
-})
-
--- highlight overrides
--- with cursorline, it is hard to see gitsigns blame
-vim.api.nvim_create_autocmd("ColorScheme", {
-  callback = function()
-    vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", {
-      fg="#16181a",
-    })
-  end,
 })
 
 vim.cmd("colorscheme cyberdream")

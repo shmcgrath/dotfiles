@@ -59,11 +59,14 @@ bookmarks/ 
 emacs/ 
 homebrew/ 
 hyprland/ 
+macos/ 
 mouse-configs/ 
 neomutt/ 󰩃
 nvim/ 
 openbsd/ 
 pacman/ 󰣇
+perl/ 
+quickshell/ 
 readline/ 
 reference/ 󱉟
 river/ 
@@ -73,6 +76,7 @@ ssh/ 󰣀
 stow/ 
 sway/ 
 tmux/ 
+todo-txt/ 
 vim/ 
 typst-templates/ 
 windows/ 

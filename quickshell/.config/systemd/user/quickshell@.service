@@ -1,0 +1,14 @@
+# ~/.config/systemd/user/quickshell@.service
+[Unit]
+Description=Quickshell instance for %i
+Documentation=https://quickshell.org/
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/quickshell --config %i
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,9 +1,0 @@
-[Unit]
-Description=Run NeoMutt temp cleanup daily
-
-[Timer]
-OnCalendar=daily
-Persistent=true
-
-[Install]
-WantedBy=default.target

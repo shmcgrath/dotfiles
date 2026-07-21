@@ -77,4 +77,4 @@
 	confirm = always
 	validate = true
 [status]
-	showUntrackedFiles = normal
+	showUntrackedFiles = all

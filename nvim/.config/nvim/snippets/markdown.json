@@ -1,24 +1,66 @@
 {
 	"i": {
-		"prefix": ["i"],
+		"prefix": ["i", "italic"],
 		"body": [
 			"*${1:$TM_SELECTED_TEXT}*$0"
 		],
-		"description": "Italics"
+		"description": "Italics - Pandoc Markdown"
 	},
 	"b": {
-		"prefix": ["b"],
+		"prefix": ["b", "bold"],
 		"body": [
-			"**${1:$TM_SELECTED_TEXT}**$0"
+			"__${1:$TM_SELECTED_TEXT}__$0"
 		],
-		"description": "Bold"
+		"description": "Bold - Pandoc Markdown"
 	},
 	"bi": {
-		"prefix": ["bi"],
+		"prefix": ["bi", "bold-italic", "italic-bold"],
 		"body": [
-			"***${1:$TM_SELECTED_TEXT}***$0"
+			"*__${1:$TM_SELECTED_TEXT}__*$0"
 		],
-		"description": "Bold italics"
+		"description": "Bold italics - Pandoc Markdown"
+	},
+	"strikeout": {
+		"prefix": ["k", "strikeout", "struck out"],
+		"body": [
+			"~~${1:$TM_SELECTED_TEXT}~~$0"
+		],
+		"description": "Strikeout - Pandoc Markdown"
+	},
+	"superscript": {
+		"prefix": ["super", "superscript", "script-super"],
+		"body": [
+			"~${1:$TM_SELECTED_TEXT}~$0"
+		],
+		"description": "Superscript - Pandoc Markdown"
+	},
+	"subscript": {
+		"prefix": ["sub", "subscript", "script-sub"],
+		"body": [
+			"^${1:$TM_SELECTED_TEXT}^$0"
+		],
+		"description": "Subscript - Pandoc Markdown"
+	},
+	"ul": {
+		"prefix": ["ul", "underline"],
+		"body": [
+			"[${1:$TM_SELECTED_TEXT}]{.underline}$0"
+		],
+		"description": "Underline - Pandoc Markdown"
+	},
+	"sc": {
+		"prefix": ["sc", "smallcaps", "caps-small"],
+		"body": [
+			"[${1:$TM_SELECTED_TEXT}]{.smallcaps}$0"
+		],
+		"description": "Small Caps - Pandoc Markdown"
+	},
+	"hl": {
+		"prefix": ["hl", "highlight", "mark"],
+		"body": [
+			"[${1:$TM_SELECTED_TEXT}]{.mark}$0"
+		],
+		"description": "Highlight - Pandoc Markdown"
 	},
 	"h1": {
 		"prefix": ["h1"],
@@ -81,6 +123,13 @@
 			"[${1:$TM_SELECTED_TEXT}](${2:$CLIPBOARD})"
 		],
 		"description": "Markdown link"
+	},
+	"link-bare": {
+		"prefix": ["link-bare", "link-automatic"],
+		"body": [
+			"<${1:$CLIPBOARD}>"
+		],
+		"description": "Automatic/Bare link"
 	},
 	"linkref": {
 		"prefix": ["linkref"],

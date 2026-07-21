@@ -71,8 +71,8 @@
 
 
 ;; Set defalt theme
-;; (load-theme 'misterioso)
-(load-theme 'modus-operandi-tinted)
+(load-theme 'misterioso)
+; (load-theme 'modus-operandi-tinted)
 
 ;(use-package catppuccin-theme
   ;:config
@@ -102,23 +102,23 @@
 ;nerd-icons-grep                20250625.1435  available    melpa    Add nerd-icons to grep-mode
 
 
-(use-package evil
-  :init
-  (setq evil-want-integration t)
-  ;; set evil-want-keybinding to nil and install evil-collection
-  ;; and evil-magit to be able to use vim movements in other Emacs buffers.
-  (setq evil-want-keybinding t)
-  (setq evil-want-C-u-scroll t)
-  (setq evil-want-C-i-jump nil)
-  (setq evil-normal-state-cursor 'box
-	evil-insert-state-cursor 'bar
-	evil-visual-state-cursor 'box)
-  (setq evil-esc-delay 0)
-  :config
-  ;; Enable evil-mode in all buffers
-  (evil-mode 1)
-  (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
-  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state))
+; (use-package evil
+;   :init
+;   (setq evil-want-integration t)
+;   ;; set evil-want-keybinding to nil and install evil-collection
+;   ;; and evil-magit to be able to use vim movements in other Emacs buffers.
+;   (setq evil-want-keybinding t)
+;   (setq evil-want-C-u-scroll t)
+;   (setq evil-want-C-i-jump nil)
+;   (setq evil-normal-state-cursor 'box
+; 	evil-insert-state-cursor 'bar
+; 	evil-visual-state-cursor 'box)
+;   (setq evil-esc-delay 0)
+;   :config
+;   ;; Enable evil-mode in all buffers
+;   (evil-mode 1)
+;   (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
+;   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state))
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -127,12 +127,12 @@
 (setq enable-recursive-minibuffers t)
 
 ;;(use-package evil-collection)
-(use-package evil-org
-  :after (evil org)
-  :hook (org-mode . (lambda () evil-org-mode))
-  :config
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
+; (use-package evil-org
+;   :after (evil org)
+;   :hook (org-mode . (lambda () evil-org-mode))
+;   :config
+;   (require 'evil-org-agenda)
+;   (evil-org-agenda-set-keys))
 
 					; (use-package goto-chg)
 
@@ -180,15 +180,15 @@
                  :key "a")))
 )
 
-(use-package evil-collection
-  :after (evil)
-  :config
-  (evil-collection-notmuch-setup))
-
-(evil-define-key 'normal 'global
-  (kbd "-") #'dired-jump)
-(with-eval-after-load 'dired
-  (define-key dired-mode-map (kbd "-") #'dired-jump))
+; (use-package evil-collection
+;   :after (evil)
+;   :config
+;   (evil-collection-notmuch-setup))
+;
+; (evil-define-key 'normal 'global
+;   (kbd "-") #'dired-jump)
+; (with-eval-after-load 'dired
+;   (define-key dired-mode-map (kbd "-") #'dired-jump))
 
 ;; Vertico (completion UI)
 (use-package vertico
@@ -229,19 +229,54 @@
 	(embark-collect-mode . consult-preview-at-point-mode))
 
 ;; set up fzf-lua equivalent
-(defvar shm-find-map (make-sparse-keymap))
-
-(global-set-key (kbd "C-p") shm-find-map)
-(with-eval-after-load 'evil
-  (define-key evil-normal-state-map (kbd "C-p") shm-find-map))
-
-(define-key shm-find-map (kbd "f") #'consult-fd)
-(define-key shm-find-map (kbd "g") #'consult-ripgrep)
-(define-key shm-find-map (kbd "b") #'consult-buffer)
-(define-key shm-find-map (kbd "r") #'consult-recent-file)
+; (defvar shm-find-map (make-sparse-keymap))
+;
+; (global-set-key (kbd "C-p") shm-find-map)
+; (with-eval-after-load 'evil
+;   (define-key evil-normal-state-map (kbd "C-p") shm-find-map))
+;
+; (define-key shm-find-map (kbd "f") #'consult-fd)
+; (define-key shm-find-map (kbd "g") #'consult-ripgrep)
+; (define-key shm-find-map (kbd "b") #'consult-buffer)
+; (define-key shm-find-map (kbd "r") #'consult-recent-file)
 
 (use-package clipetty
   :bind ("M-k" . clipetty-kill-ring-save))
+
+(use-package elfeed
+  :commands elfeed
+  :config
+  (setq elfeed-feeds
+        '(
+          ("https://www.theguardian.com/football/rss" football sport)
+          ("https://planet.kernel.org/rss20.xml" linux kernel)
+          ))
+
+  (setq elfeed-db-directory "~/.local/share/elfeed")
+
+  ; (setq elfeed-search-filter "@1-months +unread")
+
+  (setq elfeed-search-title-max-width 100))
+
+; move categories from article to tags
+
+(defun my/elfeed-categories-to-tags (entry)
+  (when-let ((categories (elfeed-meta entry :categories)))
+    (apply #'elfeed-tag
+           entry
+           (mapcar
+            (lambda (category)
+              (intern
+               (downcase
+                (replace-regexp-in-string
+                 " "
+                 "-"
+                 category))))
+            categories))))
+
+(add-hook 'elfeed-new-entry-hook
+          #'my/elfeed-categories-to-tags)
+
 
 ;; Store custom variables in an external file so init.el can be kept in source control
 (setq custom-file (concat user-emacs-directory "custom.el"))

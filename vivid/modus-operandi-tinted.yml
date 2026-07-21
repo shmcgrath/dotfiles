@@ -1,0 +1,108 @@
+colors:
+  black: "000000"
+  green: "006300"
+  purple: "4a3a8a"
+  blue: "0031a9"
+  red: "a60000"
+  yellow: "6d5000"
+  cyan: "00598b"
+  pink: "7b435c"
+  orange: "80601f"
+  white: "fbf7f0"
+  gray: "efe9dd"
+  magenta: "721045"
+  bg_alt: "dfd5cf"
+  bg_hi: "c9b9b0"
+core:
+  normal_text:
+    foreground: black
+  regular_file:
+    foreground: black
+  reset_to_normal:
+    foreground: yellow
+  directory:
+    foreground: blue
+  symlink:
+    foreground: cyan
+  multi_hard_link: {}
+  fifo:
+    foreground: orange
+    background: white
+  socket:
+    foreground: pink
+    background: white
+    font-style: bold
+  door:
+    foreground: pink
+    background: white
+    font-style: bold
+  block_device:
+    foreground: orange
+    background: white
+    font-style: bold
+  character_device:
+    foreground: orange
+    background: white
+    font-style: bold
+  broken_symlink:
+    foreground: gray
+    background: red
+    font-style: bold
+  missing_symlink_target:
+    foreground: red
+    background: white
+  setuid:
+    foreground: black
+    background: red
+  setgid:
+    foreground: white
+    background: orange
+  file_with_capability: {}
+  sticky_other_writable:
+    foreground: white
+    background: green
+  other_writable:
+    foreground: black
+    background: green
+  sticky:
+    foreground: black
+    background: yellow
+  executable_file:
+    foreground: green
+text:
+  special:
+    foreground: purple
+  todo:
+    foreground: purple
+    font-style: bold
+  licenses:
+    foreground: purple
+  configuration:
+    foreground: purple
+  other:
+    foreground: purple
+markup:
+  foreground: purple
+programming:
+  foreground: purple
+media:
+  image:
+    foreground: pink
+  audio:
+    foreground: magenta
+  video:
+    foreground: pink
+    font-style: bold
+  fonts:
+    foreground: magenta
+  3d:
+    foreground: pink
+office:
+  foreground: green
+archives:
+  foreground: yellow
+  font-style: bold
+executable:
+  foreground: green
+unimportant:
+  foreground: gray

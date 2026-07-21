@@ -10,13 +10,13 @@ Shutdown
 sway -> reload config
 sway -> restart
 sway -> exit
-quickshell restart
+waybar restart
 dropbox systemd restart
 sway -> power monitors off
 sway -> power monitors on
 inhibit sleep
 kanshi
-waybar restart"
+quickshell restart"
 
 SELECTION=$(printf "%s\n" "$PWR_OPTIONS" | fuzzel --dmenu --minimal-lines --prompt "Power Menu > " --select="swayidle")
 
@@ -42,8 +42,8 @@ case $SELECTION in
 		swaymsg restart;;
 	*"sway -> exit")
 		swaymsg exit;;
-	*"quickshell restart")
-		systemctl --user restart quickshell.service;;
+	*"waybar restart")
+		systemctl --user restart waybar@*;;
 	*"dropbox systemd restart")
 		systemctl --user restart dropbox;;
 	*"sway -> power monitors off")
@@ -54,6 +54,6 @@ case $SELECTION in
 		sleep 3;;
 	*"kanshi")
 		systemctl --user restart kanshi;;
-	*"waybar restart")
-		systemctl --user restart waybar@*;;
+	*"quickshell restart")
+		systemctl --user restart quickshell.service;;
 esac

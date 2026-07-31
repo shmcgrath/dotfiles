@@ -132,7 +132,7 @@
 	"script tag": {
 		"prefix": ["script"],
 		"body": [
-			"<script type=\"text/javascript\" src=\"${1:./script/main.js}\"></script>",
+			"<script type=\"text/javascript\" src=\"${1:./script/main.js}\"></script>"
 		],
 		"description": "javascript link - external or other file"
 	},

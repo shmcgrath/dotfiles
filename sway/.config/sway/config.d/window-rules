@@ -37,7 +37,7 @@ for_window [app_id="nwg-look"], floating enable
 
 # Application Default Workspaces
 for_window [app_id="org.keepassxc.KeePassXC" title="(?i)KeePassXC$"] move to workspace 10
-for_window [class="discord" title="Discord$"] move to workspace 09
+for_window [app_id="discord"] move to workspace 09
 
 # https://github.com/ValveSoftware/steam-for-linux/issues/1040
 for_window [class="(?i)^steam$" title="^Friends$"] floating enable

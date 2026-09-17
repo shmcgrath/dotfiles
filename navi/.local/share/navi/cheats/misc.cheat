@@ -77,5 +77,9 @@ ls /usr/share/themes/
 # list themes installed on the system
 ls /usr/share/icons
 
+% gpg, gnupg
+# trigger gnupg unlock from terminal
+echo "test" | gpg --clearsign
+
 $ user: echo "$USER"
 $ pid: ps -u $USER --no-headers ux | awk '{print $2}'

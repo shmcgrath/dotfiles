@@ -61,7 +61,7 @@ for_window [class="tsmapplication.exe" title="^TradeSkillMaster Application.*"] 
 for_window [title="^TSMApplication.*"] floating enable
 
 # Games - 05
-for_window [title="World of Warcraft" class="steam_app_default"] move to workspace 05, fullscreen enable
+for_window [app_id="wow.exe"] move to workspace 05, fullscreen enable
 # The rule below is too broad. Add games as they come up.
 # for_window [class="steam_app_default"] move to workspace 05, fullscreen enable
 

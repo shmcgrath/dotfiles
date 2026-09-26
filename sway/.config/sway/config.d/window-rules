@@ -59,6 +59,7 @@ for_window [title="Battle.net Settings"] move to workspace 04, floating enable, 
 for_window [app_id="net.lutris.Lutris" title="Lutris"] move to workspace 04, layout tabbed
 for_window [class="tsmapplication.exe" title="^TradeSkillMaster Application.*"] move to workspace 04
 for_window [title="^TSMApplication.*"] floating enable
+for_window [app_id="curseforge"] move to workspace 04, layout tabbed
 
 # Games - 05
 for_window [app_id="wow.exe"] move to workspace 05, fullscreen enable
